@@ -1,59 +1,63 @@
 {
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs": {
-		"description": "Lists indexing jobs for an AI Search instance.",
 		"operationId": "ai-search-instance-list-jobs",
+		"summary": "List Jobs",
+		"description": "Lists indexing jobs for an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of AI Search Jobs.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"description": {
@@ -73,11 +77,11 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "string",
 												"enum": [
 													"user",
 													"schedule"
 												],
-												"type": "string",
 												"x-auditable": true
 											},
 											"started_at": {
@@ -89,10 +93,10 @@
 											"source"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -112,8 +116,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -123,19 +126,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of AI Search Jobs."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -145,10 +149,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -157,32 +161,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -197,32 +201,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -237,25 +241,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -267,7 +268,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Jobs",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -288,49 +288,53 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
-		"description": "Retrieves details for a specific AI Search indexing job.",
 		"operationId": "ai-search-instance-get-job",
+		"summary": "Get a Job Details",
+		"description": "Retrieves details for a specific AI Search indexing job.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a AI Search Job Details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"description": {
 											"type": "string"
@@ -349,11 +353,11 @@
 											"type": "string"
 										},
 										"source": {
+											"type": "string",
 											"enum": [
 												"user",
 												"schedule"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"started_at": {
@@ -363,8 +367,7 @@
 									"required": [
 										"id",
 										"source"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -373,19 +376,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a AI Search Job Details."
+				}
 			},
 			"404": {
+				"description": "Job not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -400,32 +404,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -440,25 +444,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -470,7 +471,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a Job Details",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -491,68 +491,72 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs": {
-		"description": "Lists log entries for an AI Search indexing job.",
 		"operationId": "ai-search-instance-list-job-logs",
+		"summary": "List Job Logs",
+		"description": "Lists log entries for an AI Search indexing job.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
-				"name": "page",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
 				"schema": {
-					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
+				"name": "page",
 				"in": "query",
-				"name": "per_page",
 				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 500,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of AI Search Job Logs.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
@@ -575,10 +579,10 @@
 											"created_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -598,8 +602,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -609,19 +612,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of AI Search Job Logs."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -631,10 +635,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -643,32 +647,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -683,32 +687,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -723,25 +727,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -753,7 +754,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Job Logs",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -774,70 +774,74 @@
 		"x-fern-sdk-method-name": "logs"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs": {
-		"description": "Lists indexing jobs for an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-list-jobs",
+		"summary": "List Jobs",
+		"description": "Lists indexing jobs for an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of AI Search Jobs.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"description": {
@@ -857,11 +861,11 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "string",
 												"enum": [
 													"user",
 													"schedule"
 												],
-												"type": "string",
 												"x-auditable": true
 											},
 											"started_at": {
@@ -873,10 +877,10 @@
 											"source"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -896,8 +900,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -907,19 +910,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of AI Search Jobs."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -929,10 +933,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -941,32 +945,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -981,32 +985,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1021,25 +1025,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -1051,7 +1052,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Jobs",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -1082,59 +1082,63 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
-		"description": "Retrieves details for a specific AI Search indexing job.",
 		"operationId": "ai-search-namespace-instance-get-job",
+		"summary": "Get a Job Details",
+		"description": "Retrieves details for a specific AI Search indexing job.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a AI Search Job Details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"description": {
 											"type": "string"
@@ -1153,11 +1157,11 @@
 											"type": "string"
 										},
 										"source": {
+											"type": "string",
 											"enum": [
 												"user",
 												"schedule"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"started_at": {
@@ -1167,8 +1171,7 @@
 									"required": [
 										"id",
 										"source"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1177,19 +1180,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a AI Search Job Details."
+				}
 			},
 			"404": {
+				"description": "Job not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1204,32 +1208,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1244,25 +1248,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -1274,7 +1275,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a Job Details",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -1309,78 +1309,82 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}/logs": {
-		"description": "Lists log entries for an AI Search indexing job.",
 		"operationId": "ai-search-namespace-instance-list-job-logs",
+		"summary": "List Job Logs",
+		"description": "Lists log entries for an AI Search indexing job.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
-				"name": "page",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
 				"schema": {
-					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
+				"name": "page",
 				"in": "query",
-				"name": "per_page",
 				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 500,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of AI Search Job Logs.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
@@ -1403,10 +1407,10 @@
 											"created_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -1426,8 +1430,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1437,19 +1440,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of AI Search Job Logs."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1459,10 +1463,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -1471,32 +1475,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1511,32 +1515,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1551,25 +1555,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -1581,7 +1582,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Job Logs",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -1616,39 +1616,40 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
-		"description": "Cancel an in-progress indexing job for an AI Search instance.",
 		"operationId": "ai-search-instance-change-job-status",
+		"summary": "Cancel an indexing job.",
+		"description": "Cancel an in-progress indexing job for an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
@@ -1656,29 +1657,32 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"action": {
+								"type": "string",
 								"enum": [
 									"cancel"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"action"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated AI Search Job.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"description": {
 											"type": "string"
@@ -1697,11 +1701,11 @@
 											"type": "string"
 										},
 										"source": {
+											"type": "string",
 											"enum": [
 												"user",
 												"schedule"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"started_at": {
@@ -1711,8 +1715,7 @@
 									"required": [
 										"id",
 										"source"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1721,19 +1724,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated AI Search Job."
+				}
 			},
 			"400": {
+				"description": "Job cannot be cancelled.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1748,32 +1752,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job cannot be cancelled."
+				}
 			},
 			"404": {
+				"description": "Job not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1788,32 +1792,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1828,25 +1832,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -1858,7 +1859,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Cancel an indexing job.",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -1880,79 +1880,83 @@
 		"x-forge-require-confirmation": "This operation cancels the running indexing job."
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
-		"description": "Cancel an in-progress indexing job for an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-change-job-status",
+		"summary": "Cancel an indexing job.",
+		"description": "Cancel an in-progress indexing job for an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"action": {
+								"type": "string",
 								"enum": [
 									"cancel"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"action"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated AI Search Job.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"description": {
 											"type": "string"
@@ -1971,11 +1975,11 @@
 											"type": "string"
 										},
 										"source": {
+											"type": "string",
 											"enum": [
 												"user",
 												"schedule"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"started_at": {
@@ -1985,8 +1989,7 @@
 									"required": [
 										"id",
 										"source"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1995,19 +1998,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated AI Search Job."
+				}
 			},
 			"400": {
+				"description": "Job cannot be cancelled.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2022,32 +2026,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job cannot be cancelled."
+				}
 			},
 			"404": {
+				"description": "Job not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2062,32 +2066,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2102,25 +2106,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -2132,7 +2133,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Cancel an indexing job.",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -2172,31 +2172,32 @@
 		"x-forge-require-confirmation": "This operation cancels the running indexing job."
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/jobs": {
-		"description": "Creates a new indexing job for an AI Search instance.",
 		"operationId": "ai-search-instance-create-job",
+		"summary": "Create new job",
+		"description": "Creates a new indexing job for an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
@@ -2204,24 +2205,27 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"maxLength": 255,
-								"type": "string"
+								"type": "string",
+								"maxLength": 255
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the AI Search job id.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"description": {
 											"type": "string"
@@ -2240,11 +2244,11 @@
 											"type": "string"
 										},
 										"source": {
+											"type": "string",
 											"enum": [
 												"user",
 												"schedule"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"started_at": {
@@ -2254,8 +2258,7 @@
 									"required": [
 										"id",
 										"source"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2264,19 +2267,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the AI Search job id."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2286,10 +2290,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -2298,32 +2302,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2338,32 +2342,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"429": {
+				"description": "Sync in cooldown.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2378,32 +2382,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sync in cooldown."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2418,25 +2422,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -2448,7 +2449,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create new job",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -2469,66 +2469,70 @@
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs": {
-		"description": "Creates a new indexing job for an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-create-job",
+		"summary": "Create new job",
+		"description": "Creates a new indexing job for an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"maxLength": 255,
-								"type": "string"
+								"type": "string",
+								"maxLength": 255
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the AI Search job id.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"description": {
 											"type": "string"
@@ -2547,11 +2551,11 @@
 											"type": "string"
 										},
 										"source": {
+											"type": "string",
 											"enum": [
 												"user",
 												"schedule"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"started_at": {
@@ -2561,8 +2565,7 @@
 									"required": [
 										"id",
 										"source"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2571,19 +2574,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the AI Search job id."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2593,10 +2597,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -2605,32 +2609,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2645,32 +2649,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"429": {
+				"description": "Sync in cooldown.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2685,32 +2689,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sync in cooldown."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2725,25 +2729,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -2755,7 +2756,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create new job",
 		"tags": [
 			"AI Search Instances Jobs"
 		],

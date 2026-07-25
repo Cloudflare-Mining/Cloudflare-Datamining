@@ -1,23 +1,25 @@
 {
 	"GET /zones/{zone_id}/bot_management/feedback": {
-		"description": "Returns all feedback reports previously submitted for the specified zone. Feedback reports help improve detection by sharing samples of traffic that were misclassified as bots or humans.\n",
 		"operationId": "bot-management-zone-feedback-list",
+		"summary": "List zone feedback reports",
+		"description": "Returns all feedback reports previously submitted for the specified zone. Feedback reports help improve detection by sharing samples of traffic that were misclassified as bots or humans.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of feedback reports",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -66,12 +68,14 @@
 							}
 						},
 						"schema": {
+							"type": "array",
 							"items": {
+								"type": "object",
 								"properties": {
 									"created_at": {
+										"type": "string",
 										"format": "date-time",
-										"readOnly": true,
-										"type": "string"
+										"readOnly": true
 									},
 									"description": {
 										"type": "string"
@@ -81,67 +85,67 @@
 										"type": "string"
 									},
 									"first_request_seen_at": {
-										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"format": "date-time"
 									},
 									"last_request_seen_at": {
-										"format": "date-time",
-										"type": "string"
+										"type": "string",
+										"format": "date-time"
 									},
 									"requests": {
-										"format": "int64",
-										"type": "integer"
+										"type": "integer",
+										"format": "int64"
 									},
 									"requests_by_attribute": {
+										"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
+										"type": "object",
 										"additionalProperties": {
 											"items": {
+												"type": "object",
 												"properties": {
 													"metric": {
 														"type": "string"
 													},
 													"requests": {
-														"format": "int64",
-														"type": "integer"
+														"type": "integer",
+														"format": "int64"
 													}
 												},
 												"required": [
 													"metric",
 													"requests"
-												],
-												"type": "object"
+												]
 											},
 											"type": "array"
-										},
-										"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
-										"type": "object"
+										}
 									},
 									"requests_by_score": {
+										"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
+										"type": "object",
 										"additionalProperties": {
 											"format": "int64",
 											"type": "integer"
-										},
-										"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
-										"type": "object"
+										}
 									},
 									"requests_by_score_src": {
+										"description": "Map of score source to request counts. Sum must equal `requests`.",
+										"type": "object",
 										"additionalProperties": {
 											"format": "int64",
 											"type": "integer"
-										},
-										"description": "Map of score source to request counts. Sum must equal `requests`.",
-										"type": "object"
+										}
 									},
 									"subtype": {
 										"type": "string"
 									},
 									"type": {
 										"description": "Type of feedback report.",
+										"type": "string",
+										"example": "false_positive",
 										"enum": [
 											"false_positive",
 											"false_negative"
-										],
-										"example": "false_positive",
-										"type": "string"
+										]
 									}
 								},
 								"required": [
@@ -154,72 +158,34 @@
 									"requests_by_score",
 									"requests_by_score_src",
 									"requests_by_attribute"
-								],
-								"type": "object"
-							},
-							"type": "array"
+								]
+							}
 						}
 					}
-				},
-				"description": "List of feedback reports"
+				}
 			},
 			"4XX": {
+				"description": "Feedback list failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -228,12 +194,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -243,25 +209,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -269,12 +272,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Feedback list failure"
+				}
 			}
 		},
 		"security": [
@@ -286,7 +287,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List zone feedback reports",
 		"tags": [
 			"Feedback"
 		],
@@ -304,23 +304,25 @@
 		}
 	},
 	"POST /zones/{zone_id}/bot_management/feedback": {
-		"description": "Submit a feedback report for the specified zone. Use `type` to indicate whether the report is a false positive (good traffic flagged as bot) or a false negative (bot traffic missed). Furthermore, you can also use `expression` as a wirefilter to identify the affected traffic sample.\n\nSee more accepted API fields and expression types at https://developers.cloudflare.com/bots/concepts/feedback-loop/#api-fields and https://developers.cloudflare.com/bots/concepts/feedback-loop/#expression-fields, respectively.\n",
 		"operationId": "bot-management-zone-feedback-create",
+		"summary": "Submit a feedback report",
+		"description": "Submit a feedback report for the specified zone. Use `type` to indicate whether the report is a false positive (good traffic flagged as bot) or a false negative (bot traffic missed). Furthermore, you can also use `expression` as a wirefilter to identify the affected traffic sample.\n\nSee more accepted API fields and expression types at https://developers.cloudflare.com/bots/concepts/feedback-loop/#api-fields and https://developers.cloudflare.com/bots/concepts/feedback-loop/#expression-fields, respectively.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -397,11 +399,12 @@
 						}
 					},
 					"schema": {
+						"type": "object",
 						"properties": {
 							"created_at": {
+								"type": "string",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+								"readOnly": true
 							},
 							"description": {
 								"type": "string"
@@ -411,67 +414,67 @@
 								"type": "string"
 							},
 							"first_request_seen_at": {
-								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"format": "date-time"
 							},
 							"last_request_seen_at": {
-								"format": "date-time",
-								"type": "string"
+								"type": "string",
+								"format": "date-time"
 							},
 							"requests": {
-								"format": "int64",
-								"type": "integer"
+								"type": "integer",
+								"format": "int64"
 							},
 							"requests_by_attribute": {
+								"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
+								"type": "object",
 								"additionalProperties": {
 									"items": {
+										"type": "object",
 										"properties": {
 											"metric": {
 												"type": "string"
 											},
 											"requests": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											}
 										},
 										"required": [
 											"metric",
 											"requests"
-										],
-										"type": "object"
+										]
 									},
 									"type": "array"
-								},
-								"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
-								"type": "object"
+								}
 							},
 							"requests_by_score": {
+								"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
+								"type": "object",
 								"additionalProperties": {
 									"format": "int64",
 									"type": "integer"
-								},
-								"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
-								"type": "object"
+								}
 							},
 							"requests_by_score_src": {
+								"description": "Map of score source to request counts. Sum must equal `requests`.",
+								"type": "object",
 								"additionalProperties": {
 									"format": "int64",
 									"type": "integer"
-								},
-								"description": "Map of score source to request counts. Sum must equal `requests`.",
-								"type": "object"
+								}
 							},
 							"subtype": {
 								"type": "string"
 							},
 							"type": {
 								"description": "Type of feedback report.",
+								"type": "string",
+								"example": "false_positive",
 								"enum": [
 									"false_positive",
 									"false_negative"
-								],
-								"example": "false_positive",
-								"type": "string"
+								]
 							}
 						},
 						"required": [
@@ -484,74 +487,37 @@
 							"requests_by_score",
 							"requests_by_score_src",
 							"requests_by_attribute"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
 				"description": "Feedback report created"
 			},
 			"4XX": {
+				"description": "Feedback creation failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -560,12 +526,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -575,25 +541,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -601,12 +604,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Feedback creation failure"
+				}
 			}
 		},
 		"security": [
@@ -618,7 +619,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Submit a feedback report",
 		"tags": [
 			"Feedback"
 		],

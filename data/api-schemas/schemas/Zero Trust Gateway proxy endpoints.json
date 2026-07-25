@@ -1,52 +1,57 @@
 {
 	"DELETE /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
-		"description": "Delete a configured Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-delete-proxy-endpoint",
+		"summary": "Delete a proxy endpoint",
+		"description": "Delete a configured Zero Trust Gateway proxy endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "proxy_endpoint_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns a deleted proxy endpoint response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -59,15 +64,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -80,26 +85,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -109,34 +112,37 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a deleted proxy endpoint response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a deleted proxy endpoint response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"type": "object"
 								},
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -149,15 +155,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -170,26 +176,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -199,53 +203,27 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -258,26 +236,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -285,15 +289,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a deleted proxy endpoint response failure."
+				}
 			}
 		},
 		"security": [
@@ -303,43 +304,47 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints": {
-		"description": "List all Zero Trust Gateway proxy endpoints for an account.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-list-proxy-endpoints",
+		"summary": "List proxy endpoints",
+		"description": "List all Zero Trust Gateway proxy endpoints for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of proxy endpoints response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -352,15 +357,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -373,60 +378,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"discriminator": {
 													"mapping": {
@@ -437,143 +441,145 @@
 												},
 												"oneOf": [
 													{
+														"type": "object",
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"id": {
-																"example": "ed35569b41ce4d1facfe683550f54086",
 																"type": "string",
+																"example": "ed35569b41ce4d1facfe683550f54086",
 																"x-auditable": true
 															},
 															"ips": {
 																"description": "Specify the list of CIDRs to restrict ingress connections.",
+																"type": "array",
 																"items": {
 																	"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																	"example": "192.0.2.1/32",
 																	"type": "string",
 																	"x-auditable": true
-																},
-																"type": "array"
+																}
 															},
 															"kind": {
 																"description": "The proxy endpoint kind",
+																"type": "string",
+																"example": "ip",
 																"enum": [
 																	"ip"
 																],
-																"example": "ip",
-																"type": "string",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "Specify the name of the proxy endpoint.",
-																"example": "Devops team",
 																"type": "string",
+																"example": "Devops team",
 																"x-auditable": true
 															},
 															"subdomain": {
 																"description": "Specify the subdomain to use as the destination in the proxy client.",
+																"type": "string",
 																"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
 															"name",
 															"ips"
-														],
-														"type": "object"
+														]
 													},
 													{
+														"type": "object",
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"id": {
-																"example": "ed35569b41ce4d1facfe683550f54086",
 																"type": "string",
+																"example": "ed35569b41ce4d1facfe683550f54086",
 																"x-auditable": true
 															},
 															"kind": {
 																"description": "The proxy endpoint kind",
+																"type": "string",
+																"example": "identity",
 																"enum": [
 																	"identity"
 																],
-																"example": "identity",
-																"type": "string",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "Specify the name of the proxy endpoint.",
-																"example": "Devops team",
 																"type": "string",
+																"example": "Devops team",
 																"x-auditable": true
 															},
 															"subdomain": {
 																"description": "Specify the subdomain to use as the destination in the proxy client.",
+																"type": "string",
 																"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
 															"kind",
 															"name"
-														],
-														"type": "object"
+														]
 													}
 												]
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of proxy endpoints response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a list of proxy endpoints response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -586,15 +592,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -607,60 +613,59 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"discriminator": {
 															"mapping": {
@@ -671,165 +676,138 @@
 														},
 														"oneOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"id": {
-																		"example": "ed35569b41ce4d1facfe683550f54086",
 																		"type": "string",
+																		"example": "ed35569b41ce4d1facfe683550f54086",
 																		"x-auditable": true
 																	},
 																	"ips": {
 																		"description": "Specify the list of CIDRs to restrict ingress connections.",
+																		"type": "array",
 																		"items": {
 																			"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																			"example": "192.0.2.1/32",
 																			"type": "string",
 																			"x-auditable": true
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"kind": {
 																		"description": "The proxy endpoint kind",
+																		"type": "string",
+																		"example": "ip",
 																		"enum": [
 																			"ip"
 																		],
-																		"example": "ip",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Specify the name of the proxy endpoint.",
-																		"example": "Devops team",
 																		"type": "string",
+																		"example": "Devops team",
 																		"x-auditable": true
 																	},
 																	"subdomain": {
 																		"description": "Specify the subdomain to use as the destination in the proxy client.",
+																		"type": "string",
 																		"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"updated_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
 																	"name",
 																	"ips"
-																],
-																"type": "object"
+																]
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"id": {
-																		"example": "ed35569b41ce4d1facfe683550f54086",
 																		"type": "string",
+																		"example": "ed35569b41ce4d1facfe683550f54086",
 																		"x-auditable": true
 																	},
 																	"kind": {
 																		"description": "The proxy endpoint kind",
+																		"type": "string",
+																		"example": "identity",
 																		"enum": [
 																			"identity"
 																		],
-																		"example": "identity",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "Specify the name of the proxy endpoint.",
-																		"example": "Devops team",
 																		"type": "string",
+																		"example": "Devops team",
 																		"x-auditable": true
 																	},
 																	"subdomain": {
 																		"description": "Specify the subdomain to use as the destination in the proxy client.",
+																		"type": "string",
 																		"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"updated_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
 																	"kind",
 																	"name"
-																],
-																"type": "object"
+																]
 															}
 														]
-													},
-													"type": "array"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -842,26 +820,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -869,15 +873,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of proxy endpoints response failure."
+				}
 			}
 		},
 		"security": [
@@ -887,7 +888,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List proxy endpoints",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],
@@ -897,47 +897,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
-		"description": "Get a single Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-proxy-endpoint-details",
+		"summary": "Get a proxy endpoint",
+		"description": "Get a single Zero Trust Gateway proxy endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "proxy_endpoint_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a proxy endpoint response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -950,15 +955,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -971,26 +976,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1004,144 +1007,147 @@
 											},
 											"oneOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"ips": {
 															"description": "Specify the list of CIDRs to restrict ingress connections.",
+															"type": "array",
 															"items": {
 																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																"example": "192.0.2.1/32",
 																"type": "string",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														},
 														"kind": {
 															"description": "The proxy endpoint kind",
+															"type": "string",
+															"example": "ip",
 															"enum": [
 																"ip"
 															],
-															"example": "ip",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"type": "string",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"name",
 														"ips"
-													],
-													"type": "object"
+													]
 												},
 												{
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"kind": {
 															"description": "The proxy endpoint kind",
+															"type": "string",
+															"example": "identity",
 															"enum": [
 																"identity"
 															],
-															"example": "identity",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"type": "string",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"kind",
 														"name"
-													],
-													"type": "object"
+													]
 												}
 											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a proxy endpoint response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a proxy endpoint response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"type": "object"
 								},
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1154,15 +1160,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1175,26 +1181,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1208,163 +1212,137 @@
 													},
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"id": {
-																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"type": "string",
+																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"x-auditable": true
 																},
 																"ips": {
 																	"description": "Specify the list of CIDRs to restrict ingress connections.",
+																	"type": "array",
 																	"items": {
 																		"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																		"example": "192.0.2.1/32",
 																		"type": "string",
 																		"x-auditable": true
-																	},
-																	"type": "array"
+																	}
 																},
 																"kind": {
 																	"description": "The proxy endpoint kind",
+																	"type": "string",
+																	"example": "ip",
 																	"enum": [
 																		"ip"
 																	],
-																	"example": "ip",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Specify the name of the proxy endpoint.",
-																	"example": "Devops team",
 																	"type": "string",
+																	"example": "Devops team",
 																	"x-auditable": true
 																},
 																"subdomain": {
 																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"type": "string",
 																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"updated_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																}
 															},
 															"required": [
 																"name",
 																"ips"
-															],
-															"type": "object"
+															]
 														},
 														{
+															"type": "object",
 															"properties": {
 																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"id": {
-																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"type": "string",
+																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"x-auditable": true
 																},
 																"kind": {
 																	"description": "The proxy endpoint kind",
+																	"type": "string",
+																	"example": "identity",
 																	"enum": [
 																		"identity"
 																	],
-																	"example": "identity",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Specify the name of the proxy endpoint.",
-																	"example": "Devops team",
 																	"type": "string",
+																	"example": "Devops team",
 																	"x-auditable": true
 																},
 																"subdomain": {
 																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"type": "string",
 																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"updated_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																}
 															},
 															"required": [
 																"kind",
 																"name"
-															],
-															"type": "object"
+															]
 														}
 													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1377,26 +1355,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1404,15 +1408,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a proxy endpoint response failure."
+				}
 			}
 		},
 		"security": [
@@ -1422,7 +1423,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],
@@ -1432,75 +1432,80 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
-		"description": "Update a configured Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-update-proxy-endpoint",
+		"summary": "Update a proxy endpoint",
+		"description": "Update a configured Zero Trust Gateway proxy endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "proxy_endpoint_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"ips": {
 								"description": "Specify the list of CIDRs to restrict ingress connections.",
+								"type": "array",
 								"items": {
 									"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 									"example": "192.0.2.1/32",
 									"type": "string",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							},
 							"name": {
 								"description": "Specify the name of the proxy endpoint.",
-								"example": "Devops team",
 								"type": "string",
+								"example": "Devops team",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns an updated proxy endpoint response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1513,15 +1518,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1534,26 +1539,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1567,141 +1570,144 @@
 											},
 											"oneOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"ips": {
 															"description": "Specify the list of CIDRs to restrict ingress connections.",
+															"type": "array",
 															"items": {
 																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																"example": "192.0.2.1/32",
 																"type": "string",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														},
 														"kind": {
 															"description": "The proxy endpoint kind",
+															"type": "string",
+															"example": "ip",
 															"enum": [
 																"ip"
 															],
-															"example": "ip",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"type": "string",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"name",
 														"ips"
-													],
-													"type": "object"
+													]
 												},
 												{
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"kind": {
 															"description": "The proxy endpoint kind",
+															"type": "string",
+															"example": "identity",
 															"enum": [
 																"identity"
 															],
-															"example": "identity",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"type": "string",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"kind",
 														"name"
-													],
-													"type": "object"
+													]
 												}
 											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns an updated proxy endpoint response."
+				}
 			},
 			"4XX": {
+				"description": "Returns an updated proxy endpoint response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1714,15 +1720,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1735,26 +1741,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1768,163 +1772,137 @@
 													},
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"id": {
-																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"type": "string",
+																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"x-auditable": true
 																},
 																"ips": {
 																	"description": "Specify the list of CIDRs to restrict ingress connections.",
+																	"type": "array",
 																	"items": {
 																		"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																		"example": "192.0.2.1/32",
 																		"type": "string",
 																		"x-auditable": true
-																	},
-																	"type": "array"
+																	}
 																},
 																"kind": {
 																	"description": "The proxy endpoint kind",
+																	"type": "string",
+																	"example": "ip",
 																	"enum": [
 																		"ip"
 																	],
-																	"example": "ip",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Specify the name of the proxy endpoint.",
-																	"example": "Devops team",
 																	"type": "string",
+																	"example": "Devops team",
 																	"x-auditable": true
 																},
 																"subdomain": {
 																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"type": "string",
 																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"updated_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																}
 															},
 															"required": [
 																"name",
 																"ips"
-															],
-															"type": "object"
+															]
 														},
 														{
+															"type": "object",
 															"properties": {
 																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"id": {
-																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"type": "string",
+																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"x-auditable": true
 																},
 																"kind": {
 																	"description": "The proxy endpoint kind",
+																	"type": "string",
+																	"example": "identity",
 																	"enum": [
 																		"identity"
 																	],
-																	"example": "identity",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Specify the name of the proxy endpoint.",
-																	"example": "Devops team",
 																	"type": "string",
+																	"example": "Devops team",
 																	"x-auditable": true
 																},
 																"subdomain": {
 																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"type": "string",
 																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"updated_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																}
 															},
 															"required": [
 																"kind",
 																"name"
-															],
-															"type": "object"
+															]
 														}
 													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1937,26 +1915,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1964,15 +1968,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns an updated proxy endpoint response failure."
+				}
 			}
 		},
 		"security": [
@@ -1982,30 +1983,42 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/proxy_endpoints": {
-		"description": "Create a new Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-create-proxy-endpoint",
+		"summary": "Create a proxy endpoint",
+		"description": "Create a new Zero Trust Gateway proxy endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"properties": {
+							"kind": {
+								"description": "The proxy endpoint kind.",
+								"type": "string",
+								"default": "ip",
+								"enum": [
+									"ip",
+									"identity"
+								]
+							}
+						},
 						"discriminator": {
 							"mapping": {
 								"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity-create",
@@ -2015,87 +2028,79 @@
 						},
 						"oneOf": [
 							{
+								"type": "object",
 								"properties": {
 									"kind": {
 										"description": "The proxy endpoint kind",
+										"type": "string",
+										"example": "ip",
 										"enum": [
 											"ip"
 										],
-										"example": "ip",
-										"type": "string",
 										"x-auditable": true
 									},
 									"name": {
 										"description": "Specify the name of the proxy endpoint.",
-										"example": "Devops team",
 										"type": "string",
+										"example": "Devops team",
 										"x-auditable": true
 									}
 								},
 								"required": [
 									"name",
 									"ips"
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"properties": {
 									"kind": {
 										"description": "The proxy endpoint kind",
+										"type": "string",
+										"example": "identity",
 										"enum": [
 											"identity"
 										],
-										"example": "identity",
-										"type": "string",
 										"x-auditable": true
 									},
 									"name": {
 										"description": "Specify the name of the proxy endpoint.",
-										"example": "Devops team",
 										"type": "string",
+										"example": "Devops team",
 										"x-auditable": true
 									}
 								},
 								"required": [
 									"kind",
 									"name"
-								],
-								"type": "object"
+								]
 							}
-						],
-						"properties": {
-							"kind": {
-								"default": "ip",
-								"description": "The proxy endpoint kind.",
-								"enum": [
-									"ip",
-									"identity"
-								],
-								"type": "string"
-							}
-						}
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns a created proxy endpoint response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2108,15 +2113,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2129,26 +2134,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -2162,141 +2165,144 @@
 											},
 											"oneOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"ips": {
 															"description": "Specify the list of CIDRs to restrict ingress connections.",
+															"type": "array",
 															"items": {
 																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																"example": "192.0.2.1/32",
 																"type": "string",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														},
 														"kind": {
 															"description": "The proxy endpoint kind",
+															"type": "string",
+															"example": "ip",
 															"enum": [
 																"ip"
 															],
-															"example": "ip",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"type": "string",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"name",
 														"ips"
-													],
-													"type": "object"
+													]
 												},
 												{
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"kind": {
 															"description": "The proxy endpoint kind",
+															"type": "string",
+															"example": "identity",
 															"enum": [
 																"identity"
 															],
-															"example": "identity",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"subdomain": {
 															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"type": "string",
 															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"kind",
 														"name"
-													],
-													"type": "object"
+													]
 												}
 											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a created proxy endpoint response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a created proxy endpoint response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2309,15 +2315,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2330,26 +2336,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2363,163 +2367,137 @@
 													},
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"id": {
-																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"type": "string",
+																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"x-auditable": true
 																},
 																"ips": {
 																	"description": "Specify the list of CIDRs to restrict ingress connections.",
+																	"type": "array",
 																	"items": {
 																		"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
 																		"example": "192.0.2.1/32",
 																		"type": "string",
 																		"x-auditable": true
-																	},
-																	"type": "array"
+																	}
 																},
 																"kind": {
 																	"description": "The proxy endpoint kind",
+																	"type": "string",
+																	"example": "ip",
 																	"enum": [
 																		"ip"
 																	],
-																	"example": "ip",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Specify the name of the proxy endpoint.",
-																	"example": "Devops team",
 																	"type": "string",
+																	"example": "Devops team",
 																	"x-auditable": true
 																},
 																"subdomain": {
 																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"type": "string",
 																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"updated_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																}
 															},
 															"required": [
 																"name",
 																"ips"
-															],
-															"type": "object"
+															]
 														},
 														{
+															"type": "object",
 															"properties": {
 																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"id": {
-																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"type": "string",
+																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"x-auditable": true
 																},
 																"kind": {
 																	"description": "The proxy endpoint kind",
+																	"type": "string",
+																	"example": "identity",
 																	"enum": [
 																		"identity"
 																	],
-																	"example": "identity",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Specify the name of the proxy endpoint.",
-																	"example": "Devops team",
 																	"type": "string",
+																	"example": "Devops team",
 																	"x-auditable": true
 																},
 																"subdomain": {
 																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"type": "string",
 																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"updated_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																}
 															},
 															"required": [
 																"kind",
 																"name"
-															],
-															"type": "object"
+															]
 														}
 													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2532,26 +2510,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2559,15 +2563,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a created proxy endpoint response failure."
+				}
 			}
 		},
 		"security": [
@@ -2577,7 +2578,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],

@@ -1,50 +1,53 @@
 {
 	"DELETE /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}": {
-		"description": "Marks a profile for deletion.",
 		"operationId": "agent-memory-profile-delete",
+		"summary": "Delete a profile",
+		"description": "Marks a profile for deletion.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Profile deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -52,18 +55,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -72,17 +75,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -90,18 +93,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -110,11 +113,11 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -128,70 +131,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Profile deleted."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -199,18 +202,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -219,12 +222,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -238,12 +241,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -251,70 +252,72 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a profile",
 		"tags": [
 			"Memory"
 		]
 	},
 	"DELETE /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories/{memory_id}": {
-		"description": "Deletes a memory by ID. Removes the memory and any source messages linked to it. Returns the deleted memory.",
 		"operationId": "agent-memory-memory-delete",
+		"summary": "Delete a memory",
+		"description": "Deletes a memory by ID. Removes the memory and any source messages linked to it. Returns the deleted memory.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "memory_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Memory Identifier.",
+					"type": "string",
 					"example": "01JSGCEXAMPLE000000000000",
 					"maxLength": 26,
 					"minLength": 26,
-					"pattern": "^[0-9A-HJKMNP-TV-Z]{26}$",
-					"type": "string"
+					"pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The deleted memory.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -322,18 +325,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -342,17 +345,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -360,18 +363,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -380,9 +383,10 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"content": {
 											"description": "Full memory content extracted from the conversation.",
@@ -391,42 +395,42 @@
 										},
 										"createdAt": {
 											"description": "Time the memory was created.",
-											"example": "2025-09-21T14:30:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2025-09-21T14:30:00Z"
 										},
 										"id": {
 											"description": "Unique identifier of the memory.",
-											"example": "01JSGCEXAMPLE000000000000",
-											"type": "string"
+											"type": "string",
+											"example": "01JSGCEXAMPLE000000000000"
 										},
 										"sessionId": {
 											"description": "Identifier of the session this memory is associated with.",
+											"type": "string",
 											"example": "chat-session-42",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"summary": {
 											"description": "Short, human-readable summary of the memory.",
-											"example": "User prefers dark mode in the dashboard.",
-											"type": "string"
+											"type": "string",
+											"example": "User prefers dark mode in the dashboard."
 										},
 										"type": {
 											"description": "Classification of a memory: 'fact', 'event', 'instruction', or 'task'.",
+											"type": "string",
+											"example": "fact",
 											"enum": [
 												"fact",
 												"event",
 												"instruction",
 												"task"
-											],
-											"example": "fact",
-											"type": "string"
+											]
 										},
 										"updatedAt": {
 											"description": "Time the memory was last updated.",
-											"example": "2025-09-21T14:30:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2025-09-21T14:30:00Z"
 										}
 									},
 									"required": [
@@ -437,8 +441,7 @@
 										"sessionId",
 										"createdAt",
 										"updatedAt"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -452,70 +455,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The deleted memory."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -523,18 +526,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -543,12 +546,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -562,12 +565,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -575,70 +576,72 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a memory",
 		"tags": [
 			"Memory"
 		]
 	},
 	"DELETE /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/sessions/{session_id}": {
-		"description": "Marks all memories and messages in a profile that are tagged with the given session ID for deletion.",
 		"operationId": "agent-memory-session-delete",
+		"summary": "Delete a session",
+		"description": "Marks all memories and messages in a profile that are tagged with the given session ID for deletion.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"description": "Session identifier.",
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
+				"description": "Session identifier.",
 				"required": true,
 				"schema": {
 					"description": "Session Identifier.",
+					"type": "string",
 					"example": "chat-session-44",
 					"maxLength": 64,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Session deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -646,18 +649,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -666,17 +669,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -684,18 +687,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -704,11 +707,11 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -722,70 +725,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Session deleted."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -793,18 +796,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -813,12 +816,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -832,12 +835,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -845,105 +846,107 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a session",
 		"tags": [
 			"Memory"
 		]
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories": {
-		"description": "List memories stored in a profile.",
 		"operationId": "agent-memory-memory-list",
+		"summary": "List memories",
+		"description": "List memories stored in a profile.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
 					"description": "Number of results per page.",
+					"type": "integer",
 					"example": 20,
 					"maximum": 500,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
 				"schema": {
 					"description": "Continuation cursor for paginated results.",
+					"type": "string",
 					"example": "01JSGCEXAMPLE000000000000",
 					"maxLength": 26,
-					"minLength": 26,
-					"type": "string"
+					"minLength": 26
 				}
 			},
 			{
-				"in": "query",
 				"name": "session_id",
+				"in": "query",
 				"schema": {
 					"description": "Session identifier for filtering.",
+					"type": "string",
 					"example": "chat-session-42",
 					"maxLength": 64,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "type",
+				"in": "query",
 				"schema": {
 					"description": "Memory type for filtering.",
+					"type": "string",
+					"example": "fact",
 					"enum": [
 						"fact",
 						"event",
 						"instruction",
 						"task"
-					],
-					"example": "fact",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "A page of memory metadata.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -951,18 +954,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -971,17 +974,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -989,18 +992,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1009,49 +1012,50 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"createdAt": {
 												"description": "Time the memory was created.",
-												"example": "2025-09-21T14:30:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2025-09-21T14:30:00Z"
 											},
 											"id": {
 												"description": "Unique identifier of the memory.",
-												"example": "01JSGCEXAMPLE000000000000",
-												"type": "string"
+												"type": "string",
+												"example": "01JSGCEXAMPLE000000000000"
 											},
 											"sessionId": {
 												"description": "Identifier of the session this memory is associated with.",
+												"type": "string",
 												"example": "chat-session-42",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"summary": {
 												"description": "Short, human-readable summary of the memory.",
-												"example": "User prefers dark mode in the dashboard.",
-												"type": "string"
+												"type": "string",
+												"example": "User prefers dark mode in the dashboard."
 											},
 											"type": {
 												"description": "Classification of a memory: 'fact', 'event', 'instruction', or 'task'.",
+												"type": "string",
+												"example": "fact",
 												"enum": [
 													"fact",
 													"event",
 													"instruction",
 													"task"
-												],
-												"example": "fact",
-												"type": "string"
+												]
 											},
 											"updatedAt": {
 												"description": "Time the memory was last updated.",
-												"example": "2025-09-21T14:30:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2025-09-21T14:30:00Z"
 											}
 										},
 										"required": [
@@ -1063,28 +1067,27 @@
 											"updatedAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"description": "Number of results returned in this page.",
-											"example": 1,
-											"type": "integer"
+											"type": "integer",
+											"example": 1
 										},
 										"cursor": {
 											"description": "Opaque cursor for the next page; omitted on the last page.",
-											"example": "01JSGCEXAMPLE000000000000",
-											"type": "string"
+											"type": "string",
+											"example": "01JSGCEXAMPLE000000000000"
 										},
 										"per_page": {
 											"description": "Page size used for this query.",
-											"example": 20,
-											"type": "integer"
+											"type": "integer",
+											"example": 20
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -1098,70 +1101,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "A page of memory metadata."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1169,18 +1172,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1189,12 +1192,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -1208,12 +1211,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -1221,70 +1222,72 @@
 				"api_token": []
 			}
 		],
-		"summary": "List memories",
 		"tags": [
 			"Memory"
 		]
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories/{memory_id}": {
-		"description": "Retrieves a memory by ID.",
 		"operationId": "agent-memory-memory-get",
+		"summary": "Get a memory",
+		"description": "Retrieves a memory by ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "memory_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Memory Identifier.",
+					"type": "string",
 					"example": "01JSGCEXAMPLE000000000000",
 					"maxLength": 26,
 					"minLength": 26,
-					"pattern": "^[0-9A-HJKMNP-TV-Z]{26}$",
-					"type": "string"
+					"pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The requested memory.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1292,18 +1295,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1312,17 +1315,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1330,18 +1333,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1350,9 +1353,10 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"content": {
 											"description": "Full memory content extracted from the conversation.",
@@ -1361,42 +1365,42 @@
 										},
 										"createdAt": {
 											"description": "Time the memory was created.",
-											"example": "2025-09-21T14:30:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2025-09-21T14:30:00Z"
 										},
 										"id": {
 											"description": "Unique identifier of the memory.",
-											"example": "01JSGCEXAMPLE000000000000",
-											"type": "string"
+											"type": "string",
+											"example": "01JSGCEXAMPLE000000000000"
 										},
 										"sessionId": {
 											"description": "Identifier of the session this memory is associated with.",
+											"type": "string",
 											"example": "chat-session-42",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"summary": {
 											"description": "Short, human-readable summary of the memory.",
-											"example": "User prefers dark mode in the dashboard.",
-											"type": "string"
+											"type": "string",
+											"example": "User prefers dark mode in the dashboard."
 										},
 										"type": {
 											"description": "Classification of a memory: 'fact', 'event', 'instruction', or 'task'.",
+											"type": "string",
+											"example": "fact",
 											"enum": [
 												"fact",
 												"event",
 												"instruction",
 												"task"
-											],
-											"example": "fact",
-											"type": "string"
+											]
 										},
 										"updatedAt": {
 											"description": "Time the memory was last updated.",
-											"example": "2025-09-21T14:30:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2025-09-21T14:30:00Z"
 										}
 									},
 									"required": [
@@ -1407,8 +1411,7 @@
 										"sessionId",
 										"createdAt",
 										"updatedAt"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -1422,70 +1425,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The requested memory."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1493,18 +1496,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1513,12 +1516,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -1532,12 +1535,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -1545,49 +1546,52 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a memory",
 		"tags": [
 			"Memory"
 		]
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/ingest": {
-		"description": "Processes a conversation and extracts structured memories from it. Agent Memory identifies facts, events, instructions, and tasks automatically.",
 		"operationId": "agent-memory-ingest",
+		"summary": "Ingest messages",
+		"description": "Processes a conversation and extracts structured memories from it. Agent Memory identifies facts, events, instructions, and tasks automatically.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"messages": {
 								"description": "Conversation messages to extract memories from.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"content": {
@@ -1598,18 +1602,18 @@
 										},
 										"role": {
 											"description": "Author role of the message.",
+											"type": "string",
+											"example": "user",
 											"enum": [
 												"system",
 												"user",
 												"assistant"
-											],
-											"example": "user",
-											"type": "string"
+											]
 										},
 										"timestamp": {
 											"description": "Message timestamp.",
-											"example": "2025-09-21T14:30:00Z",
-											"type": "string"
+											"type": "string",
+											"example": "2025-09-21T14:30:00Z"
 										}
 									},
 									"required": [
@@ -1618,40 +1622,39 @@
 									],
 									"type": "object"
 								},
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							},
 							"sessionId": {
 								"description": "Session identifier.",
+								"type": "string",
 								"example": "chat-session-42",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							}
 						},
 						"required": [
 							"messages"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Conversation ingested.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1659,18 +1662,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1679,17 +1682,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1697,18 +1700,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1717,11 +1720,11 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -1735,70 +1738,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Conversation ingested."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1806,18 +1809,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1826,12 +1829,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -1845,12 +1848,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -1858,46 +1859,48 @@
 				"api_token": []
 			}
 		],
-		"summary": "Ingest messages",
 		"tags": [
 			"Memory"
 		]
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/recall": {
-		"description": "Retrieves memories relevant to the query and returns a synthesized answer.",
 		"operationId": "agent-memory-recall",
+		"summary": "Recall memories",
+		"description": "Retrieves memories relevant to the query and returns a synthesized answer.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"query": {
 								"description": "Natural-language query to match against stored memories.",
@@ -1907,54 +1910,54 @@
 							},
 							"referenceDate": {
 								"description": "Temporal anchor for relative date references in the query.",
-								"example": "2025-09-21",
-								"type": "string"
+								"type": "string",
+								"example": "2025-09-21"
 							},
 							"responseLength": {
 								"description": "Verbosity of the synthesized answer. Defaults to 'medium'.",
+								"type": "string",
+								"example": "short",
 								"enum": [
 									"short",
 									"medium",
 									"long"
-								],
-								"example": "short",
-								"type": "string"
+								]
 							},
 							"thinkingLevel": {
 								"description": "Recall intensity / search depth. Defaults to 'low'.",
+								"type": "string",
+								"example": "medium",
 								"enum": [
 									"low",
 									"medium",
 									"high"
-								],
-								"example": "medium",
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"query"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Recall result.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -1962,18 +1965,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1982,17 +1985,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2000,18 +2003,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2020,39 +2023,41 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"answer": {
 											"description": "LLM-synthesized answer to the query. Omitted when synthesis is skipped.",
-											"example": "You prefer dark mode in the dashboard.",
-											"type": "string"
+											"type": "string",
+											"example": "You prefer dark mode in the dashboard."
 										},
 										"candidates": {
 											"description": "Matching memories ranked by relevance (most relevant first).",
+											"type": "array",
 											"items": {
 												"properties": {
 													"id": {
 														"description": "Unique identifier of the memory.",
-														"example": "01JSGCEXAMPLE000000000000",
-														"type": "string"
+														"type": "string",
+														"example": "01JSGCEXAMPLE000000000000"
 													},
 													"score": {
 														"description": "Relevance score for the query; higher is more relevant.",
-														"example": 0.87,
-														"type": "number"
+														"type": "number",
+														"example": 0.87
 													},
 													"sessionId": {
 														"description": "Session the candidate memory is associated with, or null if not session-scoped.",
+														"type": "string",
 														"example": "chat-session-42",
-														"nullable": true,
-														"type": "string"
+														"nullable": true
 													},
 													"summary": {
 														"description": "Short summary of the candidate memory.",
-														"example": "User prefers dark mode in the dashboard.",
-														"type": "string"
+														"type": "string",
+														"example": "User prefers dark mode in the dashboard."
 													}
 												},
 												"required": [
@@ -2062,20 +2067,18 @@
 													"score"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"count": {
 											"description": "Number of matching memories returned in `candidates`.",
-											"example": 1,
-											"type": "number"
+											"type": "number",
+											"example": 1
 										}
 									},
 									"required": [
 										"count",
 										"candidates"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -2089,70 +2092,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Recall result."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2160,18 +2163,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2180,12 +2183,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -2199,12 +2202,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -2212,46 +2213,48 @@
 				"api_token": []
 			}
 		],
-		"summary": "Recall memories",
 		"tags": [
 			"Memory"
 		]
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/remember": {
-		"description": "Stores a single memory explicitly.",
 		"operationId": "agent-memory-remember",
+		"summary": "Remember a memory",
+		"description": "Stores a single memory explicitly.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"content": {
 								"description": "Raw memory content to store.",
@@ -2261,35 +2264,35 @@
 							},
 							"sessionId": {
 								"description": "Session identifier.",
+								"type": "string",
 								"example": "chat-session-42",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							}
 						},
 						"required": [
 							"content"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Memory stored.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2297,18 +2300,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2317,17 +2320,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2335,18 +2338,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2355,9 +2358,10 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"content": {
 											"description": "Full memory content extracted from the conversation.",
@@ -2366,42 +2370,42 @@
 										},
 										"createdAt": {
 											"description": "Time the memory was created.",
-											"example": "2025-09-21T14:30:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2025-09-21T14:30:00Z"
 										},
 										"id": {
 											"description": "Unique identifier of the memory.",
-											"example": "01JSGCEXAMPLE000000000000",
-											"type": "string"
+											"type": "string",
+											"example": "01JSGCEXAMPLE000000000000"
 										},
 										"sessionId": {
 											"description": "Identifier of the session this memory is associated with.",
+											"type": "string",
 											"example": "chat-session-42",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"summary": {
 											"description": "Short, human-readable summary of the memory.",
-											"example": "User prefers dark mode in the dashboard.",
-											"type": "string"
+											"type": "string",
+											"example": "User prefers dark mode in the dashboard."
 										},
 										"type": {
 											"description": "Classification of a memory: 'fact', 'event', 'instruction', or 'task'.",
+											"type": "string",
+											"example": "fact",
 											"enum": [
 												"fact",
 												"event",
 												"instruction",
 												"task"
-											],
-											"example": "fact",
-											"type": "string"
+											]
 										},
 										"updatedAt": {
 											"description": "Time the memory was last updated.",
-											"example": "2025-09-21T14:30:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2025-09-21T14:30:00Z"
 										}
 									},
 									"required": [
@@ -2412,8 +2416,7 @@
 										"sessionId",
 										"createdAt",
 										"updatedAt"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -2427,70 +2430,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Memory stored."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2498,18 +2501,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2518,12 +2521,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -2537,12 +2540,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -2550,75 +2551,77 @@
 				"api_token": []
 			}
 		],
-		"summary": "Remember a memory",
 		"tags": [
 			"Memory"
 		]
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/summary": {
-		"description": "Generates a structured Markdown summary of everything stored in a memory profile.",
 		"operationId": "agent-memory-summary",
+		"summary": "Get a profile summary",
+		"description": "Generates a structured Markdown summary of everything stored in a memory profile.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "namespace_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Namespace name.",
+					"type": "string",
 					"example": "support-agent",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Profile name.",
+					"type": "string",
 					"example": "my-profile",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"sessionId": {
 								"description": "Session identifier.",
+								"type": "string",
 								"example": "chat-session-42",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Profile summary.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Always empty for a successful response.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2626,18 +2629,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2646,17 +2649,17 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2664,18 +2667,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2684,20 +2687,20 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"summary": {
 											"description": "Markdown summary of everything stored in the profile.",
-											"example": "## Preferences\n- Prefers dark mode\n\n## Tasks\n- Finish onboarding",
-											"type": "string"
+											"type": "string",
+											"example": "## Preferences\n- Prefers dark mode\n\n## Tasks\n- Finish onboarding"
 										}
 									},
 									"required": [
 										"summary"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Always true for a successful response.",
@@ -2711,70 +2714,70 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Profile summary."
+				}
 			},
 			"4XX": {
+				"description": "Error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "One or more errors describing what went wrong.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Machine-readable status code.",
+												"type": "number",
+												"example": 1003
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation, when available.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message describing the error or status.",
+												"type": "string",
+												"example": "namespace not found"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the request field that caused the error.",
+														"type": "string",
+														"example": "/name"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 1003,
 											"message": "namespace not found"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
-											},
-											"documentation_url": {
-												"description": "Link to relevant documentation, when available.",
-												"type": "string"
-											},
-											"message": {
-												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
-											},
-											"source": {
-												"properties": {
-													"pointer": {
-														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
 									"description": "Informational, non-error messages, if any.",
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Machine-readable status code.",
-												"example": 1003,
-												"type": "number"
+												"type": "number",
+												"example": 1003
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation, when available.",
@@ -2782,18 +2785,18 @@
 											},
 											"message": {
 												"description": "Human-readable message describing the error or status.",
-												"example": "namespace not found",
-												"type": "string"
+												"type": "string",
+												"example": "namespace not found"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the request field that caused the error.",
-														"example": "/name",
-														"type": "string"
+														"type": "string",
+														"example": "/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2802,12 +2805,12 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"description": "Always null for an error response.",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Always false for an error response.",
@@ -2821,12 +2824,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error response."
+				}
 			}
 		},
 		"security": [
@@ -2834,7 +2835,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a profile summary",
 		"tags": [
 			"Memory"
 		]

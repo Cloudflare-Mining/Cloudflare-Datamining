@@ -1,100 +1,102 @@
 {
 	"POST /accounts/{account_id}/diagnostics/traceroute": {
-		"description": "Run traceroutes from Cloudflare colos.",
 		"operationId": "diagnostics-traceroute",
+		"summary": "Traceroute",
+		"description": "Run traceroutes from Cloudflare colos.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"colos": {
 								"description": "If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes.",
-								"example": [
-									"den",
-									"sin"
-								],
+								"type": "array",
 								"items": {
 									"description": "Source colo name.",
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"den",
+									"sin"
+								]
 							},
 							"options": {
-								"example": {
-									"max_ttl": 15,
-									"packet_type": "icmp"
-								},
+								"type": "object",
 								"properties": {
 									"max_ttl": {
-										"default": 15,
 										"description": "Max TTL.",
+										"type": "integer",
+										"default": 15,
 										"maximum": 64,
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"packet_type": {
-										"default": "icmp",
 										"description": "Type of packet sent.",
+										"type": "string",
+										"example": "icmp",
+										"default": "icmp",
 										"enum": [
 											"icmp",
 											"tcp",
 											"udp",
 											"gre",
 											"gre+icmp"
-										],
-										"example": "icmp",
-										"type": "string"
+										]
 									},
 									"packets_per_ttl": {
-										"default": 3,
 										"description": "Number of packets sent at each TTL.",
+										"type": "integer",
+										"default": 3,
 										"maximum": 10,
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"port": {
-										"default": 0,
 										"description": "For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol.",
+										"type": "integer",
+										"default": 0,
 										"maximum": 65535,
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"wait_time": {
-										"default": 1,
 										"description": "Set the time (in seconds) to wait for a response to a probe.",
+										"type": "integer",
+										"default": 1,
 										"maximum": 5,
-										"minimum": 1,
-										"type": "integer"
+										"minimum": 1
 									}
 								},
-								"type": "object"
+								"example": {
+									"max_ttl": 15,
+									"packet_type": "icmp"
+								}
 							},
 							"targets": {
-								"example": [
-									"203.0.113.1",
-									"cloudflare.com"
-								],
+								"type": "array",
 								"items": {
 									"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings.",
 									"example": "203.0.113.1",
 									"type": "string"
 								},
-								"maxLength": 10,
-								"type": "array"
+								"example": [
+									"203.0.113.1",
+									"cloudflare.com"
+								],
+								"maxLength": 10
 							}
 						},
 						"required": [
@@ -102,24 +104,25 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Traceroute response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -128,12 +131,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -143,15 +146,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -160,12 +163,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -175,75 +178,72 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"colos": {
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"colo": {
+																	"type": "object",
 																	"properties": {
 																		"city": {
 																			"description": "Source colo city.",
-																			"example": "Denver, CO, US",
-																			"type": "string"
+																			"type": "string",
+																			"example": "Denver, CO, US"
 																		},
 																		"name": {
 																			"description": "Source colo name.",
-																			"example": "den01",
-																			"type": "string"
+																			"type": "string",
+																			"example": "den01"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"error": {
 																	"description": "Errors resulting from collecting traceroute from colo to target.",
+																	"type": "string",
+																	"example": "",
 																	"enum": [
 																		"",
 																		"Could not gather traceroute data: Code 1",
 																		"Could not gather traceroute data: Code 2",
 																		"Could not gather traceroute data: Code 3",
 																		"Could not gather traceroute data: Code 4"
-																	],
-																	"example": "",
-																	"type": "string"
+																	]
 																},
 																"hops": {
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"nodes": {
 																				"description": "An array of node objects.",
+																				"type": "array",
 																				"items": {
-																					"example": {
-																						"asn": "AS13335",
-																						"ip": "1.1.1.1",
-																						"max_latency_ms": 0.034,
-																						"mean_latency_ms": 0.021,
-																						"min_latency_ms": 0.014,
-																						"name": "one.one.one.one",
-																						"packet_count": 3,
-																						"std_dev_latency_ms": 0.011269427669584647
-																					},
+																					"type": "object",
 																					"properties": {
 																						"asn": {
 																							"description": "AS number associated with the node object.",
@@ -255,10 +255,10 @@
 																						},
 																						"labels": {
 																							"description": "Field appears if there is an additional annotation printed when the probe returns. Field also appears when running a GRE+ICMP traceroute to denote which traceroute a node comes from.",
+																							"type": "array",
 																							"items": {
 																								"type": "string"
-																							},
-																							"type": "array"
+																							}
 																						},
 																						"max_rtt_ms": {
 																							"description": "Maximum RTT in ms.",
@@ -285,9 +285,17 @@
 																							"type": "number"
 																						}
 																					},
-																					"type": "object"
-																				},
-																				"type": "array"
+																					"example": {
+																						"asn": "AS13335",
+																						"ip": "1.1.1.1",
+																						"max_latency_ms": 0.034,
+																						"mean_latency_ms": 0.021,
+																						"min_latency_ms": 0.014,
+																						"name": "one.one.one.one",
+																						"packet_count": 3,
+																						"std_dev_latency_ms": 0.011269427669584647
+																					}
+																				}
 																			},
 																			"packets_lost": {
 																				"description": "Number of packets where no response was received.",
@@ -301,13 +309,12 @@
 																				"description": "The time to live (TTL).",
 																				"type": "integer"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"target_summary": {
 																	"description": "Aggregated statistics from all hops about the target.",
+																	"type": "object",
 																	"example": {
 																		"asn": "",
 																		"ip": "1.1.1.1",
@@ -317,37 +324,32 @@
 																		"name": "1.1.1.1",
 																		"packet_count": 3,
 																		"std_dev_latency_ms": 0.011269427669584647
-																	},
-																	"type": "object"
+																	}
 																},
 																"traceroute_time_ms": {
 																	"description": "Total time of traceroute in ms.",
 																	"type": "integer"
 																}
-															},
-															"type": "object"
-														},
-														"type": "array"
+															}
+														}
 													},
 													"target": {
 														"description": "The target hostname, IPv6, or IPv6 address.",
-														"example": "1.1.1.1",
-														"type": "string"
+														"type": "string",
+														"example": "1.1.1.1"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Traceroute response."
+				}
 			},
 			"4XX": {
+				"description": "Traceroute response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -355,14 +357,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -371,12 +374,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -386,15 +389,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -403,12 +406,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -418,75 +421,72 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"colos": {
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"colo": {
+																			"type": "object",
 																			"properties": {
 																				"city": {
 																					"description": "Source colo city.",
-																					"example": "Denver, CO, US",
-																					"type": "string"
+																					"type": "string",
+																					"example": "Denver, CO, US"
 																				},
 																				"name": {
 																					"description": "Source colo name.",
-																					"example": "den01",
-																					"type": "string"
+																					"type": "string",
+																					"example": "den01"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"error": {
 																			"description": "Errors resulting from collecting traceroute from colo to target.",
+																			"type": "string",
+																			"example": "",
 																			"enum": [
 																				"",
 																				"Could not gather traceroute data: Code 1",
 																				"Could not gather traceroute data: Code 2",
 																				"Could not gather traceroute data: Code 3",
 																				"Could not gather traceroute data: Code 4"
-																			],
-																			"example": "",
-																			"type": "string"
+																			]
 																		},
 																		"hops": {
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"nodes": {
 																						"description": "An array of node objects.",
+																						"type": "array",
 																						"items": {
-																							"example": {
-																								"asn": "AS13335",
-																								"ip": "1.1.1.1",
-																								"max_latency_ms": 0.034,
-																								"mean_latency_ms": 0.021,
-																								"min_latency_ms": 0.014,
-																								"name": "one.one.one.one",
-																								"packet_count": 3,
-																								"std_dev_latency_ms": 0.011269427669584647
-																							},
+																							"type": "object",
 																							"properties": {
 																								"asn": {
 																									"description": "AS number associated with the node object.",
@@ -498,10 +498,10 @@
 																								},
 																								"labels": {
 																									"description": "Field appears if there is an additional annotation printed when the probe returns. Field also appears when running a GRE+ICMP traceroute to denote which traceroute a node comes from.",
+																									"type": "array",
 																									"items": {
 																										"type": "string"
-																									},
-																									"type": "array"
+																									}
 																								},
 																								"max_rtt_ms": {
 																									"description": "Maximum RTT in ms.",
@@ -528,9 +528,17 @@
 																									"type": "number"
 																								}
 																							},
-																							"type": "object"
-																						},
-																						"type": "array"
+																							"example": {
+																								"asn": "AS13335",
+																								"ip": "1.1.1.1",
+																								"max_latency_ms": 0.034,
+																								"mean_latency_ms": 0.021,
+																								"min_latency_ms": 0.014,
+																								"name": "one.one.one.one",
+																								"packet_count": 3,
+																								"std_dev_latency_ms": 0.011269427669584647
+																							}
+																						}
 																					},
 																					"packets_lost": {
 																						"description": "Number of packets where no response was received.",
@@ -544,13 +552,12 @@
 																						"description": "The time to live (TTL).",
 																						"type": "integer"
 																					}
-																				},
-																				"type": "object"
-																			},
-																			"type": "array"
+																				}
+																			}
 																		},
 																		"target_summary": {
 																			"description": "Aggregated statistics from all hops about the target.",
+																			"type": "object",
 																			"example": {
 																				"asn": "",
 																				"ip": "1.1.1.1",
@@ -560,86 +567,45 @@
 																				"name": "1.1.1.1",
 																				"packet_count": 3,
 																				"std_dev_latency_ms": 0.011269427669584647
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"traceroute_time_ms": {
 																			"description": "Total time of traceroute in ms.",
 																			"type": "integer"
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															},
 															"target": {
 																"description": "The target hostname, IPv6, or IPv6 address.",
-																"example": "1.1.1.1",
-																"type": "string"
+																"type": "string",
+																"example": "1.1.1.1"
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -648,12 +614,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -663,25 +629,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -689,14 +692,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Traceroute response failure."
+				}
 			}
 		},
 		"security": [
@@ -708,7 +709,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Traceroute",
 		"tags": [
 			"Diagnostics"
 		],

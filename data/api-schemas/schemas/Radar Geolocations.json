@@ -1,176 +1,183 @@
 {
 	"GET /radar/geolocations": {
-		"description": "Retrieves a list of geolocations. Geolocation names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"operationId": "radar-get-geolocations",
+		"summary": "List Geolocations",
+		"description": "Retrieves a list of geolocations. Geolocation names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by geolocation. Specify a comma-separated list of GeoNames IDs.",
-				"in": "query",
 				"name": "geoId",
+				"in": "query",
+				"description": "Filters results by geolocation. Specify a comma-separated list of GeoNames IDs.",
 				"schema": {
 					"description": "Filters results by geolocation. Specify a comma-separated list of GeoNames IDs.",
-					"example": "3190509,360689",
-					"type": "string"
+					"type": "string",
+					"example": "3190509,360689"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"schema": {
 					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-					"example": "US,CA",
-					"type": "string"
+					"type": "string",
+					"example": "US,CA"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"geolocations": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": "PT-11",
-														"type": "string"
+														"type": "string",
+														"example": "PT-11"
 													},
 													"geoId": {
-														"example": "2267056",
-														"type": "string"
+														"type": "string",
+														"example": "2267056"
 													},
 													"latitude": {
 														"description": "A numeric string.",
+														"type": "string",
 														"example": "10",
-														"pattern": "^-?\\d+(\\.\\d+)?$",
-														"type": "string"
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"locale": {
 														"description": "BCP 47 locale code used for the geolocation name translation",
-														"example": "pt-PT",
-														"type": "string"
+														"type": "string",
+														"example": "pt-PT"
 													},
 													"longitude": {
 														"description": "A numeric string.",
+														"type": "string",
 														"example": "10",
-														"pattern": "^-?\\d+(\\.\\d+)?$",
-														"type": "string"
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"name": {
-														"example": "Lisbon",
-														"type": "string"
+														"type": "string",
+														"example": "Lisbon"
 													},
 													"parent": {
+														"type": "object",
 														"properties": {
 															"code": {
-																"example": "PT-11",
-																"type": "string"
+																"type": "string",
+																"example": "PT-11"
 															},
 															"geoId": {
-																"example": "2267056",
-																"type": "string"
+																"type": "string",
+																"example": "2267056"
 															},
 															"latitude": {
 																"description": "A numeric string.",
+																"type": "string",
 																"example": "10",
-																"pattern": "^-?\\d+(\\.\\d+)?$",
-																"type": "string"
+																"pattern": "^-?\\d+(\\.\\d+)?$"
 															},
 															"locale": {
 																"description": "BCP 47 locale code used for the geolocation name translation",
-																"example": "pt-PT",
-																"type": "string"
+																"type": "string",
+																"example": "pt-PT"
 															},
 															"longitude": {
 																"description": "A numeric string.",
+																"type": "string",
 																"example": "10",
-																"pattern": "^-?\\d+(\\.\\d+)?$",
-																"type": "string"
+																"pattern": "^-?\\d+(\\.\\d+)?$"
 															},
 															"name": {
-																"example": "Lisbon",
-																"type": "string"
+																"type": "string",
+																"example": "Lisbon"
 															},
 															"parent": {
+																"type": "object",
 																"properties": {
 																	"code": {
-																		"example": "PT-11",
-																		"type": "string"
+																		"type": "string",
+																		"example": "PT-11"
 																	},
 																	"geoId": {
-																		"example": "2267056",
-																		"type": "string"
+																		"type": "string",
+																		"example": "2267056"
 																	},
 																	"latitude": {
 																		"description": "A numeric string.",
+																		"type": "string",
 																		"example": "10",
-																		"pattern": "^-?\\d+(\\.\\d+)?$",
-																		"type": "string"
+																		"pattern": "^-?\\d+(\\.\\d+)?$"
 																	},
 																	"locale": {
 																		"description": "BCP 47 locale code used for the geolocation name translation",
-																		"example": "pt-PT",
-																		"type": "string"
+																		"type": "string",
+																		"example": "pt-PT"
 																	},
 																	"longitude": {
 																		"description": "A numeric string.",
+																		"type": "string",
 																		"example": "10",
-																		"pattern": "^-?\\d+(\\.\\d+)?$",
-																		"type": "string"
+																		"pattern": "^-?\\d+(\\.\\d+)?$"
 																	},
 																	"name": {
-																		"example": "Lisbon",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Lisbon"
 																	},
 																	"type": {
 																		"description": "The type of the geolocation.",
+																		"type": "string",
 																		"enum": [
 																			"CONTINENT",
 																			"COUNTRY",
 																			"ADM1"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
@@ -179,17 +186,16 @@
 																	"type",
 																	"latitude",
 																	"longitude"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
 																"description": "The type of the geolocation.",
+																"type": "string",
 																"enum": [
 																	"CONTINENT",
 																	"COUNTRY",
 																	"ADM1"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -199,17 +205,16 @@
 															"latitude",
 															"longitude",
 															"parent"
-														],
-														"type": "object"
+														]
 													},
 													"type": {
 														"description": "The type of the geolocation.",
+														"type": "string",
 														"enum": [
 															"CONTINENT",
 															"COUNTRY",
 															"ADM1"
-														],
-														"type": "string"
+														]
 													}
 												},
 												"required": [
@@ -221,36 +226,35 @@
 													"parent"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"geolocations"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -261,27 +265,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -291,7 +292,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Geolocations",
 		"tags": [
 			"Radar Geolocations"
 		],
@@ -311,145 +311,152 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/geolocations/{geo_id}": {
-		"description": "Retrieves the requested Geolocation information. Geolocation names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"operationId": "radar-get-geolocation-details",
+		"summary": "Get Geolocation details",
+		"description": "Retrieves the requested Geolocation information. Geolocation names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"parameters": [
 			{
-				"description": "Geolocation ID. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt)",
-				"in": "path",
 				"name": "geo_id",
+				"in": "path",
+				"description": "Geolocation ID. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt)",
 				"required": true,
 				"schema": {
 					"description": "Geolocation ID. Refer to [GeoNames](https://download.geonames.org/export/dump/readme.txt)",
+					"type": "string",
 					"example": "3190509",
-					"maxLength": 100,
-					"type": "string"
+					"maxLength": 100
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"geolocation": {
+											"type": "object",
 											"properties": {
 												"code": {
-													"example": "PT-11",
-													"type": "string"
+													"type": "string",
+													"example": "PT-11"
 												},
 												"geoId": {
-													"example": "2267056",
-													"type": "string"
+													"type": "string",
+													"example": "2267056"
 												},
 												"latitude": {
 													"description": "A numeric string.",
+													"type": "string",
 													"example": "10",
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"locale": {
 													"description": "BCP 47 locale code used for the geolocation name translation",
-													"example": "pt-PT",
-													"type": "string"
+													"type": "string",
+													"example": "pt-PT"
 												},
 												"longitude": {
 													"description": "A numeric string.",
+													"type": "string",
 													"example": "10",
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"name": {
-													"example": "Lisbon",
-													"type": "string"
+													"type": "string",
+													"example": "Lisbon"
 												},
 												"parent": {
+													"type": "object",
 													"properties": {
 														"code": {
-															"example": "PT-11",
-															"type": "string"
+															"type": "string",
+															"example": "PT-11"
 														},
 														"geoId": {
-															"example": "2267056",
-															"type": "string"
+															"type": "string",
+															"example": "2267056"
 														},
 														"latitude": {
 															"description": "A numeric string.",
+															"type": "string",
 															"example": "10",
-															"pattern": "^-?\\d+(\\.\\d+)?$",
-															"type": "string"
+															"pattern": "^-?\\d+(\\.\\d+)?$"
 														},
 														"locale": {
 															"description": "BCP 47 locale code used for the geolocation name translation",
-															"example": "pt-PT",
-															"type": "string"
+															"type": "string",
+															"example": "pt-PT"
 														},
 														"longitude": {
 															"description": "A numeric string.",
+															"type": "string",
 															"example": "10",
-															"pattern": "^-?\\d+(\\.\\d+)?$",
-															"type": "string"
+															"pattern": "^-?\\d+(\\.\\d+)?$"
 														},
 														"name": {
-															"example": "Lisbon",
-															"type": "string"
+															"type": "string",
+															"example": "Lisbon"
 														},
 														"parent": {
+															"type": "object",
 															"properties": {
 																"code": {
-																	"example": "PT-11",
-																	"type": "string"
+																	"type": "string",
+																	"example": "PT-11"
 																},
 																"geoId": {
-																	"example": "2267056",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2267056"
 																},
 																"latitude": {
 																	"description": "A numeric string.",
+																	"type": "string",
 																	"example": "10",
-																	"pattern": "^-?\\d+(\\.\\d+)?$",
-																	"type": "string"
+																	"pattern": "^-?\\d+(\\.\\d+)?$"
 																},
 																"locale": {
 																	"description": "BCP 47 locale code used for the geolocation name translation",
-																	"example": "pt-PT",
-																	"type": "string"
+																	"type": "string",
+																	"example": "pt-PT"
 																},
 																"longitude": {
 																	"description": "A numeric string.",
+																	"type": "string",
 																	"example": "10",
-																	"pattern": "^-?\\d+(\\.\\d+)?$",
-																	"type": "string"
+																	"pattern": "^-?\\d+(\\.\\d+)?$"
 																},
 																"name": {
-																	"example": "Lisbon",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Lisbon"
 																},
 																"type": {
 																	"description": "The type of the geolocation.",
+																	"type": "string",
 																	"enum": [
 																		"CONTINENT",
 																		"COUNTRY",
 																		"ADM1"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
@@ -458,17 +465,16 @@
 																"type",
 																"latitude",
 																"longitude"
-															],
-															"type": "object"
+															]
 														},
 														"type": {
 															"description": "The type of the geolocation.",
+															"type": "string",
 															"enum": [
 																"CONTINENT",
 																"COUNTRY",
 																"ADM1"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -478,17 +484,16 @@
 														"latitude",
 														"longitude",
 														"parent"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
 													"description": "The type of the geolocation.",
+													"type": "string",
 													"enum": [
 														"CONTINENT",
 														"COUNTRY",
 														"ADM1"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -498,48 +503,44 @@
 												"latitude",
 												"longitude",
 												"parent"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"geolocation"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -549,7 +550,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Geolocation details",
 		"tags": [
 			"Radar Geolocations"
 		],

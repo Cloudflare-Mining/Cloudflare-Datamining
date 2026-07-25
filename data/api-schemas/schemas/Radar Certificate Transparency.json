@@ -1,108 +1,113 @@
 {
 	"GET /radar/ct/authorities": {
-		"description": "Retrieves a list of certificate authorities.",
 		"operationId": "radar-get-certificate-authorities",
+		"summary": "List certificate authorities",
+		"description": "Retrieves a list of certificate authorities.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"certificateAuthorities": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"certificateRecordType": {
 														"description": "Specifies the type of certificate in the trust chain.",
+														"type": "string",
 														"enum": [
 															"ROOT_CERTIFICATE",
 															"INTERMEDIATE_CERTIFICATE"
-														],
-														"type": "string"
+														]
 													},
 													"country": {
 														"description": "The two-letter ISO country code where the CA organization is based.",
-														"example": "PT",
-														"type": "string"
+														"type": "string",
+														"example": "PT"
 													},
 													"countryName": {
 														"description": "The full country name corresponding to the country code.",
-														"example": "Portugal",
-														"type": "string"
+														"type": "string",
+														"example": "Portugal"
 													},
 													"name": {
 														"description": "The full name of the certificate authority (CA).",
-														"example": "MULTICERT Advanced Certification Authority 005",
-														"type": "string"
+														"type": "string",
+														"example": "MULTICERT Advanced Certification Authority 005"
 													},
 													"owner": {
 														"description": "The organization that owns and operates the CA.",
-														"example": "MULTICERT",
-														"type": "string"
+														"type": "string",
+														"example": "MULTICERT"
 													},
 													"parentName": {
 														"description": "The name of the parent/root certificate authority that issued this intermediate certificate.",
-														"example": "MULTICERT Root Certification Authority 01",
-														"type": "string"
+														"type": "string",
+														"example": "MULTICERT Root Certification Authority 01"
 													},
 													"parentSha256Fingerprint": {
 														"description": "The SHA-256 fingerprint of the parent certificate.",
-														"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
-														"type": "string"
+														"type": "string",
+														"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3"
 													},
 													"revocationStatus": {
 														"description": "The current revocation status of a Certificate Authority (CA) certificate.",
+														"type": "string",
 														"enum": [
 															"NOT_REVOKED",
 															"REVOKED",
 															"PARENT_CERT_REVOKED"
-														],
-														"type": "string"
+														]
 													},
 													"sha256Fingerprint": {
 														"description": "The SHA-256 fingerprint of the intermediate certificate.",
-														"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
-														"type": "string"
+														"type": "string",
+														"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3"
 													}
 												},
 												"required": [
@@ -117,36 +122,35 @@
 													"revocationStatus"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"certificateAuthorities"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -157,27 +161,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -187,7 +188,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List certificate authorities",
 		"tags": [
 			"Radar Certificate Transparency"
 		],
@@ -207,48 +207,54 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/ct/authorities/{ca_slug}": {
-		"description": "Retrieves the requested CA information.",
 		"operationId": "radar-get-certificate-authority-details",
+		"summary": "Get certificate authority details",
+		"description": "Retrieves the requested CA information.",
 		"parameters": [
 			{
-				"description": "Certificate authority SHA256 fingerprint.",
-				"in": "path",
 				"name": "ca_slug",
+				"in": "path",
+				"description": "Certificate authority SHA256 fingerprint.",
 				"required": true,
 				"schema": {
 					"description": "Certificate authority SHA256 fingerprint.",
+					"type": "string",
 					"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
-					"pattern": "^[A-F0-9]{64}$",
-					"type": "string"
+					"pattern": "^[A-F0-9]{64}$"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"certificateAuthority": {
+											"type": "object",
 											"properties": {
 												"appleStatus": {
 													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"type": "string",
 													"enum": [
 														"INCLUDED",
 														"NOT_YET_INCLUDED",
@@ -257,24 +263,24 @@
 														"REMOVED",
 														"DISABLED",
 														"BLOCKED"
-													],
-													"type": "string"
+													]
 												},
 												"authorityKeyIdentifier": {
 													"description": "The authorityKeyIdentifier value extracted from the certificate PEM.",
-													"example": "1TkcnFtvBKqilUzvIN0pdKTFRXE",
-													"type": "string"
+													"type": "string",
+													"example": "1TkcnFtvBKqilUzvIN0pdKTFRXE"
 												},
 												"certificateRecordType": {
 													"description": "Specifies the type of certificate in the trust chain.",
+													"type": "string",
 													"enum": [
 														"ROOT_CERTIFICATE",
 														"INTERMEDIATE_CERTIFICATE"
-													],
-													"type": "string"
+													]
 												},
 												"chromeStatus": {
 													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"type": "string",
 													"enum": [
 														"INCLUDED",
 														"NOT_YET_INCLUDED",
@@ -283,21 +289,21 @@
 														"REMOVED",
 														"DISABLED",
 														"BLOCKED"
-													],
-													"type": "string"
+													]
 												},
 												"country": {
 													"description": "The two-letter ISO country code where the CA organization is based.",
-													"example": "PT",
-													"type": "string"
+													"type": "string",
+													"example": "PT"
 												},
 												"countryName": {
 													"description": "The full country name corresponding to the country code.",
-													"example": "Portugal",
-													"type": "string"
+													"type": "string",
+													"example": "Portugal"
 												},
 												"microsoftStatus": {
 													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"type": "string",
 													"enum": [
 														"INCLUDED",
 														"NOT_YET_INCLUDED",
@@ -306,11 +312,11 @@
 														"REMOVED",
 														"DISABLED",
 														"BLOCKED"
-													],
-													"type": "string"
+													]
 												},
 												"mozillaStatus": {
 													"description": "The inclusion status of a Certificate Authority (CA) in the trust store.",
+													"type": "string",
 													"enum": [
 														"INCLUDED",
 														"NOT_YET_INCLUDED",
@@ -319,59 +325,59 @@
 														"REMOVED",
 														"DISABLED",
 														"BLOCKED"
-													],
-													"type": "string"
+													]
 												},
 												"name": {
 													"description": "The full name of the certificate authority (CA).",
-													"example": "MULTICERT Advanced Certification Authority 005",
-													"type": "string"
+													"type": "string",
+													"example": "MULTICERT Advanced Certification Authority 005"
 												},
 												"owner": {
 													"description": "The organization that owns and operates the CA.",
-													"example": "MULTICERT",
-													"type": "string"
+													"type": "string",
+													"example": "MULTICERT"
 												},
 												"parentName": {
 													"description": "The name of the parent/root certificate authority that issued this intermediate certificate.",
-													"example": "MULTICERT Root Certification Authority 01",
-													"type": "string"
+													"type": "string",
+													"example": "MULTICERT Root Certification Authority 01"
 												},
 												"parentSha256Fingerprint": {
 													"description": "The SHA-256 fingerprint of the parent certificate.",
-													"example": "604D32D036895AED3BFEFAEB727C009EC0F2B3CDFA42A1C71730E6A72C3BE9D4",
-													"type": "string"
+													"type": "string",
+													"example": "604D32D036895AED3BFEFAEB727C009EC0F2B3CDFA42A1C71730E6A72C3BE9D4"
 												},
 												"related": {
 													"description": "CAs from the same owner.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"certificateRecordType": {
 																"description": "Specifies the type of certificate in the trust chain.",
+																"type": "string",
 																"enum": [
 																	"ROOT_CERTIFICATE",
 																	"INTERMEDIATE_CERTIFICATE"
-																],
-																"type": "string"
+																]
 															},
 															"name": {
 																"description": "The full name of the certificate authority (CA).",
-																"example": "MULTICERT Advanced Certification Authority 005",
-																"type": "string"
+																"type": "string",
+																"example": "MULTICERT Advanced Certification Authority 005"
 															},
 															"revocationStatus": {
 																"description": "The current revocation status of a Certificate Authority (CA) certificate.",
+																"type": "string",
 																"enum": [
 																	"NOT_REVOKED",
 																	"REVOKED",
 																	"PARENT_CERT_REVOKED"
-																],
-																"type": "string"
+																]
 															},
 															"sha256Fingerprint": {
 																"description": "The SHA-256 fingerprint of the intermediate certificate.",
-																"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
-																"type": "string"
+																"type": "string",
+																"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3"
 															}
 														},
 														"required": [
@@ -381,37 +387,36 @@
 															"certificateRecordType"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"revocationStatus": {
 													"description": "The current revocation status of a Certificate Authority (CA) certificate.",
+													"type": "string",
 													"enum": [
 														"NOT_REVOKED",
 														"REVOKED",
 														"PARENT_CERT_REVOKED"
-													],
-													"type": "string"
+													]
 												},
 												"sha256Fingerprint": {
 													"description": "The SHA-256 fingerprint of the intermediate certificate.",
-													"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3",
-													"type": "string"
+													"type": "string",
+													"example": "24EDD4E503A8D3FDB5FFB4AF66C887359901CBE687A5A0760D10A08EED99A7C3"
 												},
 												"subjectKeyIdentifier": {
 													"description": "The subjectKeyIdentifier value extracted from the certificate PEM.",
-													"example": "VbqXmCURhMmiMtD7nFY6iCr4z",
-													"type": "string"
+													"type": "string",
+													"example": "VbqXmCURhMmiMtD7nFY6iCr4z"
 												},
 												"validFrom": {
 													"description": "The start date of the certificate’s validity period (ISO format).",
-													"example": "2019-12-09",
-													"type": "string"
+													"type": "string",
+													"example": "2019-12-09"
 												},
 												"validTo": {
 													"description": "The end date of the certificate’s validity period (ISO format).",
-													"example": "2032-06-08",
-													"type": "string"
+													"type": "string",
+													"example": "2032-06-08"
 												}
 											},
 											"required": [
@@ -433,48 +438,44 @@
 												"authorityKeyIdentifier",
 												"subjectKeyIdentifier",
 												"related"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"certificateAuthority"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -484,7 +485,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get certificate authority details",
 		"tags": [
 			"Radar Certificate Transparency"
 		],
@@ -504,95 +504,101 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/ct/logs": {
-		"description": "Retrieves a list of certificate logs.",
 		"operationId": "radar-get-certificate-logs",
+		"summary": "List certificate logs",
+		"description": "Retrieves a list of certificate logs.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"certificateLogs": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"api": {
 														"description": "The API standard that the certificate log follows.",
+														"type": "string",
 														"enum": [
 															"RFC6962",
 															"STATIC"
-														],
-														"type": "string"
+														]
 													},
 													"description": {
 														"description": "A brief description of the certificate log.",
-														"example": "Google 'Argon2024' log",
-														"type": "string"
+														"type": "string",
+														"example": "Google 'Argon2024' log"
 													},
 													"endExclusive": {
 														"description": "The end date and time for when the log will stop accepting certificates.",
-														"example": "2025-01-01T00:00:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2025-01-01T00:00:00Z"
 													},
 													"operator": {
 														"description": "The organization responsible for operating the certificate log.",
-														"example": "Google",
-														"type": "string"
+														"type": "string",
+														"example": "Google"
 													},
 													"slug": {
 														"description": "A URL-friendly, kebab-case identifier for the certificate log.",
-														"example": "argon2024",
-														"type": "string"
+														"type": "string",
+														"example": "argon2024"
 													},
 													"startInclusive": {
 														"description": "The start date and time for when the log starts accepting certificates.",
-														"example": "2024-01-01T00:00:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2024-01-01T00:00:00Z"
 													},
 													"state": {
 														"description": "The current state of the certificate log. More details about log states can be found here: https://googlechrome.github.io/CertificateTransparency/log_states.html",
+														"type": "string",
 														"enum": [
 															"USABLE",
 															"PENDING",
@@ -600,19 +606,18 @@
 															"READ_ONLY",
 															"RETIRED",
 															"REJECTED"
-														],
-														"type": "string"
+														]
 													},
 													"stateTimestamp": {
 														"description": "Timestamp of when the log state was last updated.",
-														"example": "2025-02-01T08:53:20Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2025-02-01T08:53:20Z"
 													},
 													"url": {
 														"description": "The URL for the certificate log.",
-														"example": "https://ct.googleapis.com/logs/us1/argon2024/",
-														"type": "string"
+														"type": "string",
+														"example": "https://ct.googleapis.com/logs/us1/argon2024/"
 													}
 												},
 												"required": [
@@ -627,36 +632,35 @@
 													"url"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"certificateLogs"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -667,27 +671,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -697,7 +698,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List certificate logs",
 		"tags": [
 			"Radar Certificate Transparency"
 		],
@@ -717,53 +717,58 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/ct/logs/{log_slug}": {
-		"description": "Retrieves the requested certificate log information.",
 		"operationId": "radar-get-certificate-log-details",
+		"summary": "Get certificate log details",
+		"description": "Retrieves the requested certificate log information.",
 		"parameters": [
 			{
-				"description": "Certificate log slug.",
-				"in": "path",
 				"name": "log_slug",
+				"in": "path",
+				"description": "Certificate log slug.",
 				"required": true,
 				"schema": {
 					"description": "Certificate log slug.",
+					"type": "string",
 					"example": "argon2024",
-					"maxLength": 100,
-					"type": "string"
+					"maxLength": 100
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"certificateLog": {
+											"type": "object",
 											"properties": {
 												"api": {
 													"description": "The API standard that the certificate log follows.",
+													"type": "string",
 													"enum": [
 														"RFC6962",
 														"STATIC"
-													],
-													"type": "string"
+													]
 												},
 												"avgThroughput": {
 													"description": "The average throughput of the CT log, measured in certificates per hour (certs/hour).",
@@ -771,35 +776,38 @@
 												},
 												"description": {
 													"description": "A brief description of the certificate log.",
-													"example": "Google 'Argon2024' log",
-													"type": "string"
+													"type": "string",
+													"example": "Google 'Argon2024' log"
 												},
 												"endExclusive": {
 													"description": "The end date and time for when the log will stop accepting certificates.",
-													"example": "2025-01-01T00:00:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T00:00:00Z"
 												},
 												"lastUpdate": {
 													"description": "Timestamp of the most recent update to the CT log.",
-													"example": "2025-01-01T00:00:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T00:00:00Z"
 												},
 												"operator": {
 													"description": "The organization responsible for operating the certificate log.",
-													"example": "Google",
-													"type": "string"
+													"type": "string",
+													"example": "Google"
 												},
 												"performance": {
 													"description": "Log performance metrics, including averages and per-endpoint details.",
+													"type": "object",
 													"nullable": true,
 													"properties": {
 														"endpoints": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"endpoint": {
 																		"description": "The certificate log endpoint names used in performance metrics.",
+																		"type": "string",
 																		"enum": [
 																			"add-chain (new)",
 																			"add-chain (old)",
@@ -808,8 +816,7 @@
 																			"get-entries",
 																			"get-roots",
 																			"get-sth"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"responseTime": {
 																		"type": "number"
@@ -824,8 +831,7 @@
 																	"uptime"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"responseTime": {
 															"type": "number"
@@ -838,37 +844,38 @@
 														"responseTime",
 														"uptime",
 														"endpoints"
-													],
-													"type": "object"
+													]
 												},
 												"related": {
 													"description": "Logs from the same operator.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"description": {
 																"description": "A brief description of the certificate log.",
-																"example": "Google 'Argon2024' log",
-																"type": "string"
+																"type": "string",
+																"example": "Google 'Argon2024' log"
 															},
 															"endExclusive": {
 																"description": "The end date and time for when the log will stop accepting certificates.",
-																"example": "2025-01-01T00:00:00Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2025-01-01T00:00:00Z"
 															},
 															"slug": {
 																"description": "A URL-friendly, kebab-case identifier for the certificate log.",
-																"example": "argon2024",
-																"type": "string"
+																"type": "string",
+																"example": "argon2024"
 															},
 															"startInclusive": {
 																"description": "The start date and time for when the log starts accepting certificates.",
-																"example": "2024-01-01T00:00:00Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2024-01-01T00:00:00Z"
 															},
 															"state": {
 																"description": "The current state of the certificate log. More details about log states can be found here: https://googlechrome.github.io/CertificateTransparency/log_states.html",
+																"type": "string",
 																"enum": [
 																	"USABLE",
 																	"PENDING",
@@ -876,8 +883,7 @@
 																	"READ_ONLY",
 																	"RETIRED",
 																	"REJECTED"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -888,22 +894,22 @@
 															"endExclusive"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"slug": {
 													"description": "A URL-friendly, kebab-case identifier for the certificate log.",
-													"example": "argon2024",
-													"type": "string"
+													"type": "string",
+													"example": "argon2024"
 												},
 												"startInclusive": {
 													"description": "The start date and time for when the log starts accepting certificates.",
-													"example": "2024-01-01T00:00:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-01T00:00:00Z"
 												},
 												"state": {
 													"description": "The current state of the certificate log. More details about log states can be found here: https://googlechrome.github.io/CertificateTransparency/log_states.html",
+													"type": "string",
 													"enum": [
 														"USABLE",
 														"PENDING",
@@ -911,33 +917,32 @@
 														"READ_ONLY",
 														"RETIRED",
 														"REJECTED"
-													],
-													"type": "string"
+													]
 												},
 												"stateTimestamp": {
 													"description": "Timestamp of when the log state was last updated.",
-													"example": "2025-02-01T08:53:20Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-02-01T08:53:20Z"
 												},
 												"submittableCertCount": {
 													"description": "Number of certificates that are eligible for inclusion to this log but have not been included yet. Based on certificates signed by trusted root CAs within the log's accepted date range.",
+													"type": "string",
 													"example": "10",
 													"nullable": true,
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"submittedCertCount": {
 													"description": "Number of certificates already included in this CT log.",
+													"type": "string",
 													"example": "10",
 													"nullable": true,
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"url": {
 													"description": "The URL for the certificate log.",
-													"example": "https://ct.googleapis.com/logs/us1/argon2024/",
-													"type": "string"
+													"type": "string",
+													"example": "https://ct.googleapis.com/logs/us1/argon2024/"
 												}
 											},
 											"required": [
@@ -956,48 +961,44 @@
 												"submittableCertCount",
 												"lastUpdate",
 												"related"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"certificateLog"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -1007,7 +1008,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get certificate log details",
 		"tags": [
 			"Radar Certificate Transparency"
 		],
@@ -1027,16 +1027,18 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/ct/summary/{dimension}": {
-		"description": "Retrieves an aggregated summary of certificates grouped by the specified dimension.",
 		"operationId": "radar-get-ct-summary",
+		"summary": "Get certificate distribution by dimension",
+		"description": "Retrieves an aggregated summary of certificates grouped by the specified dimension.",
 		"parameters": [
 			{
-				"description": "Specifies the certificate attribute by which to group the results.",
-				"in": "path",
 				"name": "dimension",
+				"in": "path",
+				"description": "Specifies the certificate attribute by which to group the results.",
 				"required": true,
 				"schema": {
 					"description": "Specifies the certificate attribute by which to group the results.",
+					"type": "string",
 					"enum": [
 						"CA",
 						"CA_OWNER",
@@ -1052,106 +1054,106 @@
 						"SIGNATURE_ALGORITHM",
 						"TLD",
 						"VALIDATION_LEVEL"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-				"in": "query",
 				"name": "limitPerGroup",
+				"in": "query",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 				"schema": {
 					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-					"example": 10,
-					"type": "integer"
+					"type": "integer",
+					"example": 10
 				}
 			},
 			{
-				"description": "Filters results by certificate authority.",
-				"in": "query",
 				"name": "ca",
+				"in": "query",
+				"description": "Filters results by certificate authority.",
 				"schema": {
 					"description": "Filters results by certificate authority.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate authority owner.",
-				"in": "query",
 				"name": "caOwner",
+				"in": "query",
+				"description": "Filters results by certificate authority owner.",
 				"schema": {
 					"description": "Filters results by certificate authority owner.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate duration.",
-				"in": "query",
 				"name": "duration",
+				"in": "query",
+				"description": "Filters results by certificate duration.",
 				"schema": {
 					"description": "Filters results by certificate duration.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"LTE_3D",
@@ -1163,114 +1165,114 @@
 							"GT_200D"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "entryType",
+				"in": "query",
+				"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"PRECERTIFICATE",
 							"CERTIFICATE"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by expiration status (expired vs. valid).",
-				"in": "query",
 				"name": "expirationStatus",
+				"in": "query",
+				"description": "Filters results by expiration status (expired vs. valid).",
 				"schema": {
 					"description": "Filters results by expiration status (expired vs. valid).",
+					"type": "array",
 					"items": {
 						"enum": [
 							"EXPIRED",
 							"VALID"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
-				"in": "query",
 				"name": "hasIps",
+				"in": "query",
+				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
 				"schema": {
 					"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+					"type": "array",
 					"items": {
 						"type": "boolean"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results based on whether the certificates contain wildcard domains.",
-				"in": "query",
 				"name": "hasWildcards",
+				"in": "query",
+				"description": "Filters results based on whether the certificates contain wildcard domains.",
 				"schema": {
 					"description": "Filters results based on whether the certificates contain wildcard domains.",
+					"type": "array",
 					"items": {
 						"type": "boolean"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "log",
+				"in": "query",
+				"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"maxLength": 100,
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "logApi",
+				"in": "query",
+				"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"RFC6962",
 							"STATIC"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "logOperator",
+				"in": "query",
+				"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"maxLength": 100,
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by public key algorithm.",
-				"in": "query",
 				"name": "publicKeyAlgorithm",
+				"in": "query",
+				"description": "Filters results by public key algorithm.",
 				"schema": {
 					"description": "Filters results by public key algorithm.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DSA",
@@ -1278,16 +1280,16 @@
 							"RSA"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by signature algorithm.",
-				"in": "query",
 				"name": "signatureAlgorithm",
+				"in": "query",
+				"description": "Filters results by signature algorithm.",
 				"schema": {
 					"description": "Filters results by signature algorithm.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DSA_SHA_1",
@@ -1307,17 +1309,16 @@
 							"RSA_SHA_512"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
-				"in": "query",
 				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
 				"schema": {
 					"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
-					"example": "com",
+					"type": "array",
 					"items": {
 						"example": "com",
 						"maxLength": 63,
@@ -1325,15 +1326,16 @@
 						"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "com"
 				}
 			},
 			{
-				"description": "Filters results by validation level.",
-				"in": "query",
 				"name": "validationLevel",
+				"in": "query",
+				"description": "Filters results by validation level.",
 				"schema": {
 					"description": "Filters results by validation level.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DOMAIN",
@@ -1341,75 +1343,81 @@
 							"EXTENDED"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
-				"in": "query",
 				"name": "uniqueEntries",
+				"in": "query",
+				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
 				"schema": {
 					"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"true",
 							"false"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
-				"in": "query",
 				"name": "normalization",
+				"in": "query",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"schema": {
-					"default": "RAW_VALUES",
 					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"type": "string",
+					"example": "RAW_VALUES",
+					"default": "RAW_VALUES",
 					"enum": [
 						"RAW_VALUES",
 						"PERCENTAGE"
-					],
-					"example": "RAW_VALUES",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -1436,19 +1444,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -1456,27 +1464,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -1489,8 +1496,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -1500,23 +1506,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -1524,16 +1530,16 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -1543,20 +1549,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -1564,8 +1570,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -1574,8 +1579,7 @@
 												"normalization",
 												"lastUpdated",
 												"units"
-											],
-											"type": "object"
+											]
 										},
 										"summary_0": {
 											"anyOf": [
@@ -1732,30 +1736,30 @@
 									"required": [
 										"summary_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1766,27 +1770,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -1796,7 +1797,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get certificate distribution by dimension",
 		"tags": [
 			"Radar Certificate Transparency"
 		],
@@ -1816,111 +1816,113 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/ct/timeseries": {
-		"description": "Retrieves certificate volume over time.",
 		"operationId": "radar-get-ct-timeseries",
+		"summary": "Get certificates time series",
+		"description": "Retrieves certificate volume over time.",
 		"parameters": [
 			{
-				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
-				"in": "query",
 				"name": "aggInterval",
+				"in": "query",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 				"schema": {
 					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
+					"type": "string",
+					"example": "1h",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
-					],
-					"example": "1h",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by certificate authority.",
-				"in": "query",
 				"name": "ca",
+				"in": "query",
+				"description": "Filters results by certificate authority.",
 				"schema": {
 					"description": "Filters results by certificate authority.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate authority owner.",
-				"in": "query",
 				"name": "caOwner",
+				"in": "query",
+				"description": "Filters results by certificate authority owner.",
 				"schema": {
 					"description": "Filters results by certificate authority owner.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate duration.",
-				"in": "query",
 				"name": "duration",
+				"in": "query",
+				"description": "Filters results by certificate duration.",
 				"schema": {
 					"description": "Filters results by certificate duration.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"LTE_3D",
@@ -1932,114 +1934,114 @@
 							"GT_200D"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "entryType",
+				"in": "query",
+				"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"PRECERTIFICATE",
 							"CERTIFICATE"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by expiration status (expired vs. valid).",
-				"in": "query",
 				"name": "expirationStatus",
+				"in": "query",
+				"description": "Filters results by expiration status (expired vs. valid).",
 				"schema": {
 					"description": "Filters results by expiration status (expired vs. valid).",
+					"type": "array",
 					"items": {
 						"enum": [
 							"EXPIRED",
 							"VALID"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
-				"in": "query",
 				"name": "hasIps",
+				"in": "query",
+				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
 				"schema": {
 					"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+					"type": "array",
 					"items": {
 						"type": "boolean"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results based on whether the certificates contain wildcard domains.",
-				"in": "query",
 				"name": "hasWildcards",
+				"in": "query",
+				"description": "Filters results based on whether the certificates contain wildcard domains.",
 				"schema": {
 					"description": "Filters results based on whether the certificates contain wildcard domains.",
+					"type": "array",
 					"items": {
 						"type": "boolean"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "log",
+				"in": "query",
+				"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"maxLength": 100,
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "logApi",
+				"in": "query",
+				"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"RFC6962",
 							"STATIC"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "logOperator",
+				"in": "query",
+				"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"maxLength": 100,
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by public key algorithm.",
-				"in": "query",
 				"name": "publicKeyAlgorithm",
+				"in": "query",
+				"description": "Filters results by public key algorithm.",
 				"schema": {
 					"description": "Filters results by public key algorithm.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DSA",
@@ -2047,16 +2049,16 @@
 							"RSA"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by signature algorithm.",
-				"in": "query",
 				"name": "signatureAlgorithm",
+				"in": "query",
+				"description": "Filters results by signature algorithm.",
 				"schema": {
 					"description": "Filters results by signature algorithm.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DSA_SHA_1",
@@ -2076,17 +2078,16 @@
 							"RSA_SHA_512"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
-				"in": "query",
 				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
 				"schema": {
 					"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
-					"example": "com",
+					"type": "array",
 					"items": {
 						"example": "com",
 						"maxLength": 63,
@@ -2094,15 +2095,16 @@
 						"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "com"
 				}
 			},
 			{
-				"description": "Filters results by validation level.",
-				"in": "query",
 				"name": "validationLevel",
+				"in": "query",
+				"description": "Filters results by validation level.",
 				"schema": {
 					"description": "Filters results by validation level.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DOMAIN",
@@ -2110,65 +2112,67 @@
 							"EXTENDED"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
-				"in": "query",
 				"name": "uniqueEntries",
+				"in": "query",
+				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
 				"schema": {
 					"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"true",
 							"false"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"additionalProperties": {
 										"properties": {
 											"timestamps": {
+												"type": "array",
 												"items": {
 													"format": "date-time",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"values": {
+												"type": "array",
 												"items": {
 													"description": "A numeric string.",
 													"example": "10",
 													"pattern": "^-?\\d+(\\.\\d+)?$",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -2180,26 +2184,30 @@
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"aggInterval": {
 													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"type": "string",
 													"enum": [
 														"FIFTEEN_MINUTES",
 														"ONE_HOUR",
 														"ONE_DAY",
 														"ONE_WEEK",
 														"ONE_MONTH"
-													],
-													"type": "string"
+													]
 												},
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -2226,19 +2234,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -2246,27 +2254,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -2279,8 +2286,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -2290,23 +2296,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -2314,16 +2320,16 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -2333,20 +2339,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -2354,8 +2360,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -2365,36 +2370,35 @@
 												"lastUpdated",
 												"units",
 												"aggInterval"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2405,27 +2409,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -2435,7 +2436,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get certificates time series",
 		"tags": [
 			"Radar Certificate Transparency"
 		],
@@ -2455,16 +2455,18 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/ct/timeseries_groups/{dimension}": {
-		"description": "Retrieves the distribution of certificates grouped by the specified dimension over time.",
 		"operationId": "radar-get-ct-timeseries-group",
+		"summary": "Get time series of certificate distribution by dimension",
+		"description": "Retrieves the distribution of certificates grouped by the specified dimension over time.",
 		"parameters": [
 			{
-				"description": "Specifies the certificate attribute by which to group the results.",
-				"in": "path",
 				"name": "dimension",
+				"in": "path",
+				"description": "Specifies the certificate attribute by which to group the results.",
 				"required": true,
 				"schema": {
 					"description": "Specifies the certificate attribute by which to group the results.",
+					"type": "string",
 					"enum": [
 						"CA",
 						"CA_OWNER",
@@ -2480,122 +2482,122 @@
 						"SIGNATURE_ALGORITHM",
 						"TLD",
 						"VALIDATION_LEVEL"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
-				"in": "query",
 				"name": "aggInterval",
+				"in": "query",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 				"schema": {
 					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
+					"type": "string",
+					"example": "1h",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
-					],
-					"example": "1h",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-				"in": "query",
 				"name": "limitPerGroup",
+				"in": "query",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 				"schema": {
 					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-					"example": 10,
-					"type": "integer"
+					"type": "integer",
+					"example": 10
 				}
 			},
 			{
-				"description": "Filters results by certificate authority.",
-				"in": "query",
 				"name": "ca",
+				"in": "query",
+				"description": "Filters results by certificate authority.",
 				"schema": {
 					"description": "Filters results by certificate authority.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate authority owner.",
-				"in": "query",
 				"name": "caOwner",
+				"in": "query",
+				"description": "Filters results by certificate authority owner.",
 				"schema": {
 					"description": "Filters results by certificate authority owner.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate duration.",
-				"in": "query",
 				"name": "duration",
+				"in": "query",
+				"description": "Filters results by certificate duration.",
 				"schema": {
 					"description": "Filters results by certificate duration.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"LTE_3D",
@@ -2607,114 +2609,114 @@
 							"GT_200D"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "entryType",
+				"in": "query",
+				"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by entry type (certificate vs. pre-certificate). Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"PRECERTIFICATE",
 							"CERTIFICATE"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by expiration status (expired vs. valid).",
-				"in": "query",
 				"name": "expirationStatus",
+				"in": "query",
+				"description": "Filters results by expiration status (expired vs. valid).",
 				"schema": {
 					"description": "Filters results by expiration status (expired vs. valid).",
+					"type": "array",
 					"items": {
 						"enum": [
 							"EXPIRED",
 							"VALID"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
-				"in": "query",
 				"name": "hasIps",
+				"in": "query",
+				"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
 				"schema": {
 					"description": "Filters results based on whether the certificates are bound to specific IP addresses.",
+					"type": "array",
 					"items": {
 						"type": "boolean"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results based on whether the certificates contain wildcard domains.",
-				"in": "query",
 				"name": "hasWildcards",
+				"in": "query",
+				"description": "Filters results based on whether the certificates contain wildcard domains.",
 				"schema": {
 					"description": "Filters results based on whether the certificates contain wildcard domains.",
+					"type": "array",
 					"items": {
 						"type": "boolean"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "log",
+				"in": "query",
+				"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log. Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"maxLength": 100,
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "logApi",
+				"in": "query",
+				"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log API (RFC6962 vs. static). Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"RFC6962",
 							"STATIC"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
-				"in": "query",
 				"name": "logOperator",
+				"in": "query",
+				"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
 				"schema": {
 					"description": "Filters results by certificate log operator. Incompatible with the `tld` filter/dimension.",
+					"type": "array",
 					"items": {
 						"maxLength": 100,
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by public key algorithm.",
-				"in": "query",
 				"name": "publicKeyAlgorithm",
+				"in": "query",
+				"description": "Filters results by public key algorithm.",
 				"schema": {
 					"description": "Filters results by public key algorithm.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DSA",
@@ -2722,16 +2724,16 @@
 							"RSA"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by signature algorithm.",
-				"in": "query",
 				"name": "signatureAlgorithm",
+				"in": "query",
+				"description": "Filters results by signature algorithm.",
 				"schema": {
 					"description": "Filters results by signature algorithm.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DSA_SHA_1",
@@ -2751,16 +2753,16 @@
 							"RSA_SHA_512"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by validation level.",
-				"in": "query",
 				"name": "validationLevel",
+				"in": "query",
+				"description": "Filters results by validation level.",
 				"schema": {
 					"description": "Filters results by validation level.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"DOMAIN",
@@ -2768,17 +2770,16 @@
 							"EXTENDED"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
-				"in": "query",
 				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
 				"schema": {
 					"description": "Filters results by top-level domain. Incompatible with the `log`, `logApi`, `logOperator`, and `entryType` filters/dimensions.",
-					"example": "com",
+					"type": "array",
 					"items": {
 						"example": "com",
 						"maxLength": 63,
@@ -2786,85 +2787,92 @@
 						"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "com"
 				}
 			},
 			{
-				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
-				"in": "query",
 				"name": "normalization",
+				"in": "query",
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 				"schema": {
-					"default": "RAW_VALUES",
 					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"type": "string",
+					"example": "RAW_VALUES",
+					"default": "RAW_VALUES",
 					"enum": [
 						"RAW_VALUES",
 						"PERCENTAGE"
-					],
-					"example": "RAW_VALUES",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
-				"in": "query",
 				"name": "uniqueEntries",
+				"in": "query",
+				"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
 				"schema": {
 					"description": "Specifies whether to filter out duplicate certificates and pre-certificates. Set to true for unique entries only.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"true",
 							"false"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"aggInterval": {
 													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"type": "string",
 													"enum": [
 														"FIFTEEN_MINUTES",
 														"ONE_HOUR",
 														"ONE_DAY",
 														"ONE_WEEK",
 														"ONE_MONTH"
-													],
-													"type": "string"
+													]
 												},
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -2891,19 +2899,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -2911,27 +2919,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -2944,8 +2951,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -2955,23 +2961,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -2979,16 +2985,16 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -2998,20 +3004,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -3019,8 +3025,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -3030,8 +3035,7 @@
 												"lastUpdated",
 												"units",
 												"aggInterval"
-											],
-											"type": "object"
+											]
 										},
 										"serie_0": {
 											"anyOf": [
@@ -3061,11 +3065,11 @@
 													},
 													"properties": {
 														"timestamps": {
+															"type": "array",
 															"items": {
 																"format": "date-time",
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3076,16 +3080,16 @@
 												{
 													"properties": {
 														"rfc6962": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"static": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3097,40 +3101,40 @@
 												{
 													"properties": {
 														"gt_121d": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"gt_16d_lte_31d": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"gt_31d_lte_91d": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"gt_3d_lte_16d": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"gt_91d_lte_121d": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"lte_3d": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3146,16 +3150,16 @@
 												{
 													"properties": {
 														"CERTIFICATE": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"PRECERTIFICATE": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3167,16 +3171,16 @@
 												{
 													"properties": {
 														"EXPIRED": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"VALID": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3188,16 +3192,16 @@
 												{
 													"properties": {
 														"NEGATIVE": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"POSITIVE": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3209,22 +3213,22 @@
 												{
 													"properties": {
 														"DSA": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"ECDSA": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"RSA": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3237,28 +3241,28 @@
 												{
 													"properties": {
 														"domain": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"extended": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"organization": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"unknown": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3275,30 +3279,30 @@
 									"required": [
 										"serie_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3309,27 +3313,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -3339,7 +3340,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get time series of certificate distribution by dimension",
 		"tags": [
 			"Radar Certificate Transparency"
 		],

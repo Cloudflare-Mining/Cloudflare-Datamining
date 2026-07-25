@@ -1,48 +1,53 @@
 {
 	"DELETE /accounts/{account_id}/access/tags/{tag_name}": {
-		"description": "Delete a tag",
 		"operationId": "access-tags-delete-a-tag",
+		"summary": "Delete a tag",
+		"description": "Delete a tag",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "tag_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The name of the tag",
-					"example": "engineers",
-					"type": "string"
+					"type": "string",
+					"example": "engineers"
 				}
 			}
 		],
 		"responses": {
 			"202": {
+				"description": "Delete a tag response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -51,12 +56,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -66,15 +71,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -83,12 +88,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -98,106 +103,67 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"name": {
 													"description": "The name of the tag",
-													"example": "engineers",
-													"type": "string"
+													"type": "string",
+													"example": "engineers"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete a tag response"
+				}
 			},
 			"4XX": {
+				"description": "Delete a tag response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -206,12 +172,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -221,25 +187,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -247,12 +250,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete a tag response failure"
+				}
 			}
 		},
 		"security": [
@@ -262,7 +263,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a tag",
 		"tags": [
 			"Access tags"
 		],
@@ -272,18 +272,19 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/tags": {
-		"description": "List tags",
 		"operationId": "access-tags-list-tags",
+		"summary": "List tags",
+		"description": "List tags",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
@@ -291,39 +292,43 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Page number of results.",
-					"type": "integer"
+					"type": "integer",
+					"default": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 50,
 					"description": "Number of results per page.",
-					"maximum": 1000,
-					"type": "integer"
+					"type": "integer",
+					"default": 50,
+					"maximum": 1000
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List tags response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -332,12 +337,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -347,15 +352,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -364,12 +369,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -379,72 +384,72 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "A tag",
+												"type": "object",
 												"properties": {
 													"app_count": {
 														"description": "The number of applications that have this tag",
-														"example": 1,
 														"type": "integer",
+														"example": 1,
 														"x-auditable": true,
 														"x-stainless-skip": true
 													},
@@ -454,17 +459,17 @@
 																"x-stainless-skip": true
 															},
 															{
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															}
 														]
 													},
 													"name": {
 														"description": "The name of the tag",
-														"example": "engineers",
-														"type": "string"
+														"type": "string",
+														"example": "engineers"
 													},
 													"updated_at": {
 														"allOf": [
@@ -472,9 +477,9 @@
 																"x-stainless-skip": true
 															},
 															{
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															}
 														]
@@ -482,78 +487,39 @@
 												},
 												"required": [
 													"name"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List tags response"
+				}
 			},
 			"4XX": {
+				"description": "List tags response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -562,12 +528,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -577,25 +543,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -603,12 +606,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List tags response failure"
+				}
 			}
 		},
 		"security": [
@@ -618,7 +619,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List tags",
 		"tags": [
 			"Access tags"
 		],
@@ -628,49 +628,54 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/tags/{tag_name}": {
-		"description": "Get a tag",
 		"operationId": "access-tags-get-a-tag",
+		"summary": "Get a tag",
+		"description": "Get a tag",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "tag_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The name of the tag",
-					"example": "engineers",
-					"type": "string"
+					"type": "string",
+					"example": "engineers"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get a tag response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -679,12 +684,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -694,15 +699,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -711,12 +716,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -726,36 +731,35 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A tag",
+											"type": "object",
 											"properties": {
 												"app_count": {
 													"description": "The number of applications that have this tag",
-													"example": 1,
 													"type": "integer",
+													"example": 1,
 													"x-auditable": true,
 													"x-stainless-skip": true
 												},
@@ -765,17 +769,17 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												},
 												"name": {
 													"description": "The name of the tag",
-													"example": "engineers",
-													"type": "string"
+													"type": "string",
+													"example": "engineers"
 												},
 												"updated_at": {
 													"allOf": [
@@ -783,9 +787,9 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
@@ -793,76 +797,38 @@
 											},
 											"required": [
 												"name"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get a tag response"
+				}
 			},
 			"4XX": {
+				"description": "Get a tag response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -871,12 +837,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -886,25 +852,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -912,12 +915,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get a tag response failure"
+				}
 			}
 		},
 		"security": [
@@ -927,7 +928,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a tag",
 		"tags": [
 			"Access tags"
 		],
@@ -937,18 +937,19 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/tags": {
-		"description": "Create a tag",
 		"operationId": "access-tags-create-tag",
+		"summary": "Create a tag",
+		"description": "Create a tag",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -960,8 +961,8 @@
 						"properties": {
 							"name": {
 								"description": "The name of the tag",
-								"example": "engineers",
-								"type": "string"
+								"type": "string",
+								"example": "engineers"
 							}
 						}
 					}
@@ -970,21 +971,25 @@
 		},
 		"responses": {
 			"201": {
+				"description": "Create a tag response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -993,12 +998,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1008,15 +1013,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1025,12 +1030,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1040,36 +1045,35 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A tag",
+											"type": "object",
 											"properties": {
 												"app_count": {
 													"description": "The number of applications that have this tag",
-													"example": 1,
 													"type": "integer",
+													"example": 1,
 													"x-auditable": true,
 													"x-stainless-skip": true
 												},
@@ -1079,17 +1083,17 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												},
 												"name": {
 													"description": "The name of the tag",
-													"example": "engineers",
-													"type": "string"
+													"type": "string",
+													"example": "engineers"
 												},
 												"updated_at": {
 													"allOf": [
@@ -1097,9 +1101,9 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
@@ -1107,76 +1111,38 @@
 											},
 											"required": [
 												"name"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create a tag response"
+				}
 			},
 			"4XX": {
+				"description": "Create a tag response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1185,12 +1151,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1200,25 +1166,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1226,12 +1229,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create a tag response failure"
+				}
 			}
 		},
 		"security": [
@@ -1241,7 +1242,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a tag",
 		"tags": [
 			"Access tags"
 		],
@@ -1251,29 +1251,30 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/tags/{tag_name}": {
-		"description": "Update a tag",
 		"operationId": "access-tags-update-a-tag",
+		"summary": "Update a tag",
+		"description": "Update a tag",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "tag_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The name of the tag",
-					"example": "engineers",
-					"type": "string"
+					"type": "string",
+					"example": "engineers"
 				}
 			}
 		],
@@ -1282,6 +1283,7 @@
 				"application/json": {
 					"schema": {
 						"description": "A tag",
+						"type": "object",
 						"properties": {
 							"created_at": {
 								"allOf": [
@@ -1289,17 +1291,17 @@
 										"x-stainless-skip": true
 									},
 									{
-										"example": "2014-01-01T05:20:00.12345Z",
-										"format": "date-time",
 										"type": "string",
+										"format": "date-time",
+										"example": "2014-01-01T05:20:00.12345Z",
 										"x-auditable": true
 									}
 								]
 							},
 							"name": {
 								"description": "The name of the tag",
-								"example": "engineers",
-								"type": "string"
+								"type": "string",
+								"example": "engineers"
 							},
 							"updated_at": {
 								"allOf": [
@@ -1307,9 +1309,9 @@
 										"x-stainless-skip": true
 									},
 									{
-										"example": "2014-01-01T05:20:00.12345Z",
-										"format": "date-time",
 										"type": "string",
+										"format": "date-time",
+										"example": "2014-01-01T05:20:00.12345Z",
 										"x-auditable": true
 									}
 								]
@@ -1317,29 +1319,32 @@
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a tag response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1348,12 +1353,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1363,15 +1368,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1380,12 +1385,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1395,36 +1400,35 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A tag",
+											"type": "object",
 											"properties": {
 												"app_count": {
 													"description": "The number of applications that have this tag",
-													"example": 1,
 													"type": "integer",
+													"example": 1,
 													"x-auditable": true,
 													"x-stainless-skip": true
 												},
@@ -1434,17 +1438,17 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												},
 												"name": {
 													"description": "The name of the tag",
-													"example": "engineers",
-													"type": "string"
+													"type": "string",
+													"example": "engineers"
 												},
 												"updated_at": {
 													"allOf": [
@@ -1452,9 +1456,9 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
@@ -1462,76 +1466,38 @@
 											},
 											"required": [
 												"name"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update a tag response"
+				}
 			},
 			"4XX": {
+				"description": "Update a tag response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1540,12 +1506,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1555,25 +1521,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1581,12 +1584,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update a tag response failure"
+				}
 			}
 		},
 		"security": [
@@ -1596,7 +1597,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a tag",
 		"tags": [
 			"Access tags"
 		],

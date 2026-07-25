@@ -1,48 +1,52 @@
 {
 	"DELETE /zones/{zone_id}/workers/routes/{route_id}": {
-		"description": "Deletes a route.",
 		"operationId": "worker-routes-delete-route",
+		"summary": "Delete Route",
+		"description": "Deletes a route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Route response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -51,12 +55,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -66,15 +70,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -83,12 +87,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -98,37 +102,36 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier.",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"required": [
@@ -136,70 +139,33 @@
 									],
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Route response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Route response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -208,12 +174,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -223,25 +189,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -249,12 +252,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Route response failure."
+				}
 			}
 		},
 		"security": [
@@ -266,7 +267,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Route",
 		"tags": [
 			"Worker Routes"
 		],
@@ -279,37 +279,41 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/workers/routes": {
-		"description": "Returns routes for a zone.",
 		"operationId": "worker-routes-list-routes",
+		"summary": "List Routes",
+		"description": "Returns routes for a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Routes response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -318,12 +322,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -333,15 +337,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -350,12 +354,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -365,36 +369,37 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"id": {
 														"allOf": [
 															{
 																"description": "Identifier.",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															}
 														],
@@ -402,24 +407,22 @@
 													},
 													"pattern": {
 														"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
-														"example": "example.com/*",
 														"type": "string",
+														"example": "example.com/*",
 														"x-auditable": true
 													},
 													"script": {
 														"description": "Name of the script to run if the route matches.",
-														"example": "my-workers-script",
 														"type": "string",
+														"example": "my-workers-script",
 														"x-auditable": true
 													}
 												},
 												"required": [
 													"id",
 													"pattern"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -427,70 +430,33 @@
 									],
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Routes response."
+				}
 			},
 			"4XX": {
+				"description": "List Routes response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -499,12 +465,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -514,25 +480,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -540,12 +543,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Routes response failure."
+				}
 			}
 		},
 		"security": [
@@ -557,7 +558,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Routes",
 		"tags": [
 			"Worker Routes"
 		],
@@ -571,49 +571,53 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/workers/routes/{route_id}": {
-		"description": "Returns information about a route, including URL pattern and Worker.",
 		"operationId": "worker-routes-get-route",
+		"summary": "Get Route",
+		"description": "Returns information about a route, including URL pattern and Worker.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Route response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -622,12 +626,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -637,15 +641,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -654,12 +658,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -669,35 +673,35 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"allOf": [
 														{
 															"description": "Identifier.",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
@@ -705,22 +709,21 @@
 												},
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
-													"example": "example.com/*",
 													"type": "string",
+													"example": "example.com/*",
 													"x-auditable": true
 												},
 												"script": {
 													"description": "Name of the script to run if the route matches.",
-													"example": "my-workers-script",
 													"type": "string",
+													"example": "my-workers-script",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id",
 												"pattern"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -728,70 +731,33 @@
 									],
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Route response."
+				}
 			},
 			"4XX": {
+				"description": "Get Route response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -800,12 +766,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -815,25 +781,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -841,12 +844,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Route response failure."
+				}
 			}
 		},
 		"security": [
@@ -858,7 +859,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Route",
 		"tags": [
 			"Worker Routes"
 		],
@@ -872,34 +872,37 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/workers/routes": {
-		"description": "Creates a route that maps a URL pattern to a Worker.",
 		"operationId": "worker-routes-create-route",
+		"summary": "Create Route",
+		"description": "Creates a route that maps a URL pattern to a Worker.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"id": {
 								"allOf": [
 									{
 										"description": "Identifier.",
+										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
-										"type": "string",
 										"x-auditable": true
 									}
 								],
@@ -907,42 +910,43 @@
 							},
 							"pattern": {
 								"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
-								"example": "example.com/*",
 								"type": "string",
+								"example": "example.com/*",
 								"x-auditable": true
 							},
 							"script": {
 								"description": "Name of the script to run if the route matches.",
-								"example": "my-workers-script",
 								"type": "string",
+								"example": "my-workers-script",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"id",
 							"pattern"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Route response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -951,12 +955,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -966,15 +970,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -983,12 +987,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -998,35 +1002,35 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"allOf": [
 														{
 															"description": "Identifier.",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
@@ -1034,22 +1038,21 @@
 												},
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
-													"example": "example.com/*",
 													"type": "string",
+													"example": "example.com/*",
 													"x-auditable": true
 												},
 												"script": {
 													"description": "Name of the script to run if the route matches.",
-													"example": "my-workers-script",
 													"type": "string",
+													"example": "my-workers-script",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id",
 												"pattern"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1057,70 +1060,33 @@
 									],
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Route response."
+				}
 			},
 			"4XX": {
+				"description": "Create Route response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1129,12 +1095,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1144,25 +1110,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1170,12 +1173,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Route response failure."
+				}
 			}
 		},
 		"security": [
@@ -1187,7 +1188,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Route",
 		"tags": [
 			"Worker Routes"
 		],
@@ -1200,46 +1200,49 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/workers/routes/{route_id}": {
-		"description": "Updates the URL pattern or Worker associated with a route.",
 		"operationId": "worker-routes-update-route",
+		"summary": "Update Route",
+		"description": "Updates the URL pattern or Worker associated with a route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"id": {
 								"allOf": [
 									{
 										"description": "Identifier.",
+										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
-										"type": "string",
 										"x-auditable": true
 									}
 								],
@@ -1247,42 +1250,43 @@
 							},
 							"pattern": {
 								"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
-								"example": "example.com/*",
 								"type": "string",
+								"example": "example.com/*",
 								"x-auditable": true
 							},
 							"script": {
 								"description": "Name of the script to run if the route matches.",
-								"example": "my-workers-script",
 								"type": "string",
+								"example": "my-workers-script",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"id",
 							"pattern"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Route response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1291,12 +1295,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1306,15 +1310,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1323,12 +1327,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1338,35 +1342,35 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"allOf": [
 														{
 															"description": "Identifier.",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
@@ -1374,22 +1378,21 @@
 												},
 												"pattern": {
 													"description": "Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).",
-													"example": "example.com/*",
 													"type": "string",
+													"example": "example.com/*",
 													"x-auditable": true
 												},
 												"script": {
 													"description": "Name of the script to run if the route matches.",
-													"example": "my-workers-script",
 													"type": "string",
+													"example": "my-workers-script",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id",
 												"pattern"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1397,70 +1400,33 @@
 									],
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Route response."
+				}
 			},
 			"4XX": {
+				"description": "Update Route response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1469,12 +1435,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1484,25 +1450,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1510,12 +1513,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Route response failure."
+				}
 			}
 		},
 		"security": [
@@ -1527,7 +1528,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Route",
 		"tags": [
 			"Worker Routes"
 		],

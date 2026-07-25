@@ -1,37 +1,40 @@
 {
 	"GET /accounts/{account_id}/alerting/v3/destinations/eligible": {
-		"description": "Get a list of all delivery mechanism types for which an account is eligible.",
 		"operationId": "notification-mechanism-eligibility-get-delivery-mechanism-eligibility",
+		"summary": "Get delivery mechanism eligibility",
+		"description": "Get a list of all delivery mechanism types for which an account is eligible.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account id",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get delivery mechanism eligibility response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -43,15 +46,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -63,58 +66,27 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"items": {
-													"properties": {
-														"eligible": {
-															"description": "Determines whether or not the account is eligible for the delivery mechanism.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"ready": {
-															"description": "Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"type": {
-															"description": "Determines type of delivery mechanism.",
-															"enum": [
-																"email",
-																"pagerduty",
-																"webhook"
-															],
-															"example": "email",
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												},
-												"type": "array"
-											},
+											"type": "object",
 											"example": {
 												"email": {
 													"eligible": true,
@@ -122,63 +94,69 @@
 													"type": "email"
 												}
 											},
-											"type": "object"
+											"additionalProperties": {
+												"items": {
+													"type": "object",
+													"properties": {
+														"eligible": {
+															"description": "Determines whether or not the account is eligible for the delivery mechanism.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"ready": {
+															"description": "Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"type": {
+															"description": "Determines type of delivery mechanism.",
+															"type": "string",
+															"example": "email",
+															"enum": [
+																"email",
+																"pagerduty",
+																"webhook"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												"type": "array"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get delivery mechanism eligibility response"
+				}
 			},
 			"4XX": {
+				"description": "Get delivery mechanism eligibility response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -190,32 +168,55 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get delivery mechanism eligibility response failure"
+				}
 			}
 		},
 		"security": [
@@ -227,7 +228,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get delivery mechanism eligibility",
 		"tags": [
 			"Notification Mechanism Eligibility"
 		]

@@ -1,61 +1,65 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/tokens/{id}": {
-		"description": "Permanently delete a stored AI Search credential. Credentials in use by an instance cannot be deleted.",
 		"operationId": "ai-search-delete-tokens",
+		"summary": "Delete a token",
+		"description": "Permanently delete a stored AI Search credential. Credentials in use by an instance cannot be deleted.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0",
+					"type": "string",
 					"format": "uuid",
-					"type": "string"
+					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Token deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
-									"additionalProperties": false,
-									"type": "object"
+									"type": "object",
+									"additionalProperties": false
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token deleted."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -65,10 +69,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -77,32 +81,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Token not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -117,32 +121,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token not found."
+				}
 			},
 			"409": {
+				"description": "Token in use by instances.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -157,25 +161,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token in use by instances."
+				}
 			}
 		},
 		"security": [
@@ -187,7 +188,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a token",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -214,63 +214,67 @@
 		"x-forge-require-confirmation": "This operation permanently deletes the stored credential."
 	},
 	"GET /accounts/{account_id}/ai-search/tokens": {
-		"description": "List stored AI Search credentials in the account without exposing their secrets.",
 		"operationId": "ai-search-list-tokens",
+		"summary": "List tokens",
+		"description": "List stored AI Search credentials in the account without exposing their secrets.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Page number (1-indexed).",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Page number (1-indexed).",
 				"schema": {
-					"default": 1,
 					"description": "Page number (1-indexed).",
+					"type": "integer",
 					"example": 1,
+					"default": 1,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Number of results per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
 				"schema": {
-					"default": 20,
 					"description": "Number of results per page.",
+					"type": "integer",
 					"example": 20,
+					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Filter tokens whose name contains this string (case-insensitive).",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Filter tokens whose name contains this string (case-insensitive).",
 				"schema": {
 					"description": "Filter tokens whose name contains this string (case-insensitive).",
+					"type": "string",
 					"example": "my-token",
-					"maxLength": 256,
-					"type": "string"
+					"maxLength": 256
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of tokens.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"cf_api_id": {
@@ -278,39 +282,39 @@
 												"x-auditable": true
 											},
 											"created_at": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"created_by": {
+												"type": "string",
 												"nullable": true,
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"enabled": {
-												"default": true,
 												"type": "boolean",
+												"default": true,
 												"x-auditable": true
 											},
 											"id": {
-												"format": "uuid",
 												"type": "string",
+												"format": "uuid",
 												"x-auditable": true
 											},
 											"legacy": {
+												"type": "boolean",
 												"default": true,
-												"readOnly": true,
-												"type": "boolean"
+												"readOnly": true
 											},
 											"modified_at": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"modified_by": {
+												"type": "string",
 												"nullable": true,
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"name": {
 												"type": "string",
@@ -325,10 +329,10 @@
 											"modified_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -348,33 +352,33 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of tokens."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -384,10 +388,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -396,25 +400,22 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -426,7 +427,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List tokens",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -446,75 +446,79 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/tokens/{id}": {
-		"description": "Retrieve a stored AI Search credential without exposing its secret.",
 		"operationId": "ai-search-fetch-tokens",
+		"summary": "Get a token",
+		"description": "Retrieve a stored AI Search credential without exposing its secret.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0",
+					"type": "string",
 					"format": "uuid",
-					"type": "string"
+					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Token details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"cf_api_id": {
 											"type": "string",
 											"x-auditable": true
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"created_by": {
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"enabled": {
-											"default": true,
 											"type": "boolean",
+											"default": true,
 											"x-auditable": true
 										},
 										"id": {
-											"format": "uuid",
 											"type": "string",
+											"format": "uuid",
 											"x-auditable": true
 										},
 										"legacy": {
+											"type": "boolean",
 											"default": true,
-											"readOnly": true,
-											"type": "boolean"
+											"readOnly": true
 										},
 										"modified_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_by": {
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"name": {
 											"type": "string",
@@ -527,32 +531,32 @@
 										"cf_api_id",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token details."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -562,10 +566,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -574,32 +578,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Token not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -614,25 +618,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token not found."
+				}
 			}
 		},
 		"security": [
@@ -644,7 +645,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a token",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -670,16 +670,17 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/tokens": {
-		"description": "Create a stored Cloudflare credential for an AI Search instance to access its data source.",
 		"operationId": "ai-search-create-tokens",
+		"summary": "Create a token",
+		"description": "Create a stored Cloudflare credential for an AI Search instance to access its data source.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
@@ -687,82 +688,85 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"cf_api_id": {
-								"example": "a1b2c3d4e5f6",
-								"type": "string"
+								"type": "string",
+								"example": "a1b2c3d4e5f6"
 							},
 							"cf_api_key": {
-								"example": "abc123",
 								"type": "string",
+								"example": "abc123",
 								"writeOnly": true,
 								"x-sensitive": true
 							},
 							"legacy": {
-								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"default": true
 							},
 							"name": {
-								"example": "my-token",
-								"type": "string"
+								"type": "string",
+								"example": "my-token"
 							}
 						},
 						"required": [
 							"name",
 							"cf_api_id",
 							"cf_api_key"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"201": {
+				"description": "Token created.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"cf_api_id": {
 											"type": "string",
 											"x-auditable": true
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"created_by": {
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"enabled": {
-											"default": true,
 											"type": "boolean",
+											"default": true,
 											"x-auditable": true
 										},
 										"id": {
-											"format": "uuid",
 											"type": "string",
+											"format": "uuid",
 											"x-auditable": true
 										},
 										"legacy": {
+											"type": "boolean",
 											"default": true,
-											"readOnly": true,
-											"type": "boolean"
+											"readOnly": true
 										},
 										"modified_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_by": {
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"name": {
 											"type": "string",
@@ -775,32 +779,32 @@
 										"cf_api_id",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token created."
+				}
 			},
 			"400": {
+				"description": "Ai search instance invalid token.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -815,25 +819,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search instance invalid token."
+				}
 			}
 		},
 		"security": [
@@ -845,7 +846,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a token",
 		"tags": [
 			"AI Search Tokens"
 		],
@@ -882,26 +882,27 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/tokens/{id}": {
-		"description": "Replace a stored AI Search credential and invalidate cached credentials for instances that use it.",
 		"operationId": "ai-search-update-tokens",
+		"summary": "Update a token",
+		"description": "Replace a stored AI Search credential and invalidate cached credentials for instances that use it.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0",
+					"type": "string",
 					"format": "uuid",
-					"type": "string"
+					"example": "62af0db3-c410-40b2-9ee3-0e93f6dd1de0"
 				}
 			}
 		],
@@ -909,82 +910,85 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"cf_api_id": {
-								"example": "a1b2c3d4e5f6",
-								"type": "string"
+								"type": "string",
+								"example": "a1b2c3d4e5f6"
 							},
 							"cf_api_key": {
-								"example": "abc123",
 								"type": "string",
+								"example": "abc123",
 								"writeOnly": true,
 								"x-sensitive": true
 							},
 							"legacy": {
-								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"default": true
 							},
 							"name": {
-								"example": "my-token",
-								"type": "string"
+								"type": "string",
+								"example": "my-token"
 							}
 						},
 						"required": [
 							"name",
 							"cf_api_id",
 							"cf_api_key"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated token.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"cf_api_id": {
 											"type": "string",
 											"x-auditable": true
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"created_by": {
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"enabled": {
-											"default": true,
 											"type": "boolean",
+											"default": true,
 											"x-auditable": true
 										},
 										"id": {
-											"format": "uuid",
 											"type": "string",
+											"format": "uuid",
 											"x-auditable": true
 										},
 										"legacy": {
+											"type": "boolean",
 											"default": true,
-											"readOnly": true,
-											"type": "boolean"
+											"readOnly": true
 										},
 										"modified_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_by": {
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"name": {
 											"type": "string",
@@ -997,32 +1001,32 @@
 										"cf_api_id",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated token."
+				}
 			},
 			"400": {
+				"description": "Ai search instance invalid token.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1037,32 +1041,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search instance invalid token."
+				}
 			},
 			"404": {
+				"description": "Token not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1077,25 +1081,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token not found."
+				}
 			}
 		},
 		"security": [
@@ -1107,7 +1108,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a token",
 		"tags": [
 			"AI Search Tokens"
 		],

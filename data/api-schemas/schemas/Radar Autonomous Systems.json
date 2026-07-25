@@ -1,128 +1,133 @@
 {
 	"GET /radar/entities/asns": {
-		"description": "Retrieves a list of autonomous systems.",
 		"operationId": "radar-get-entities-asn-list",
+		"summary": "List autonomous systems",
+		"description": "Retrieves a list of autonomous systems.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list.",
-					"example": "174,7922",
-					"type": "string"
+					"type": "string",
+					"example": "174,7922"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify an alpha-2 location code.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Specifies the metric to order the ASNs by.",
-				"in": "query",
 				"name": "orderBy",
+				"in": "query",
+				"description": "Specifies the metric to order the ASNs by.",
 				"schema": {
-					"default": "ASN",
 					"description": "Specifies the metric to order the ASNs by.",
+					"type": "string",
+					"default": "ASN",
 					"enum": [
 						"ASN",
 						"POPULATION"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asns": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"aka": {
 														"type": "string"
 													},
 													"asn": {
-														"example": 714,
-														"type": "integer"
+														"type": "integer",
+														"example": 714
 													},
 													"country": {
-														"example": "GB",
-														"type": "string"
+														"type": "string",
+														"example": "GB"
 													},
 													"countryName": {
-														"example": "United Kingdom",
-														"type": "string"
+														"type": "string",
+														"example": "United Kingdom"
 													},
 													"estimatedUsers": {
+														"type": "object",
 														"properties": {
 															"estimatedUsers": {
 																"description": "Total estimated users.",
-																"example": 86099,
-																"type": "integer"
+																"type": "integer",
+																"example": 86099
 															}
-														},
-														"type": "object"
+														}
 													},
 													"name": {
-														"example": "Apple Inc.",
-														"type": "string"
+														"type": "string",
+														"example": "Apple Inc."
 													},
 													"orgName": {
 														"type": "string"
 													},
 													"website": {
-														"example": "https://www.apple.com/support/systemstatus/",
-														"type": "string"
+														"type": "string",
+														"example": "https://www.apple.com/support/systemstatus/"
 													}
 												},
 												"required": [
@@ -133,36 +138,35 @@
 													"estimatedUsers"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"asns"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -173,27 +177,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -203,7 +204,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List autonomous systems",
 		"tags": [
 			"Radar Autonomous Systems"
 		],
@@ -223,86 +223,93 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/entities/asns/{asn}": {
-		"description": "Retrieves the requested autonomous system information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"operationId": "radar-get-entities-asn-by-id",
+		"summary": "Get AS details by ASN",
+		"description": "Retrieves the requested autonomous system information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"parameters": [
 			{
-				"description": "Single Autonomous System Number (ASN) as integer.",
-				"in": "path",
 				"name": "asn",
+				"in": "path",
+				"description": "Single Autonomous System Number (ASN) as integer.",
 				"required": true,
 				"schema": {
 					"description": "Single Autonomous System Number (ASN) as integer.",
-					"example": 174,
-					"type": "integer"
+					"type": "integer",
+					"example": 174
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asn": {
+											"type": "object",
 											"properties": {
 												"aka": {
 													"type": "string"
 												},
 												"asn": {
-													"example": 714,
-													"type": "integer"
+													"type": "integer",
+													"example": 714
 												},
 												"confidenceLevel": {
-													"example": 5,
-													"type": "integer"
+													"type": "integer",
+													"example": 5
 												},
 												"country": {
-													"example": "GB",
-													"type": "string"
+													"type": "string",
+													"example": "GB"
 												},
 												"countryName": {
-													"example": "United Kingdom",
-													"type": "string"
+													"type": "string",
+													"example": "United Kingdom"
 												},
 												"estimatedUsers": {
+													"type": "object",
 													"properties": {
 														"estimatedUsers": {
 															"description": "Total estimated users.",
-															"example": 86099,
-															"type": "integer"
+															"type": "integer",
+															"example": 86099
 														},
 														"locations": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"estimatedUsers": {
 																		"description": "Estimated users per location.",
-																		"example": 16710,
-																		"type": "integer"
+																		"type": "integer",
+																		"example": 16710
 																	},
 																	"locationAlpha2": {
-																		"example": "US",
-																		"type": "string"
+																		"type": "string",
+																		"example": "US"
 																	},
 																	"locationName": {
-																		"example": "United States",
-																		"type": "string"
+																		"type": "string",
+																		"example": "United States"
 																	}
 																},
 																"required": [
@@ -310,40 +317,39 @@
 																	"locationAlpha2"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"locations"
-													],
-													"type": "object"
+													]
 												},
 												"name": {
-													"example": "Apple Inc.",
-													"type": "string"
+													"type": "string",
+													"example": "Apple Inc."
 												},
 												"orgName": {
 													"type": "string"
 												},
 												"related": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"aka": {
 																"type": "string"
 															},
 															"asn": {
-																"example": 174,
-																"type": "integer"
+																"type": "integer",
+																"example": 174
 															},
 															"estimatedUsers": {
 																"description": "Total estimated users.",
-																"example": 65345,
-																"type": "integer"
+																"type": "integer",
+																"example": 65345
 															},
 															"name": {
-																"example": "Cogent-174",
-																"type": "string"
+																"type": "string",
+																"example": "Cogent-174"
 															}
 														},
 														"required": [
@@ -351,17 +357,16 @@
 															"asn"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"source": {
 													"description": "Regional Internet Registry.",
-													"example": "RIPE",
-													"type": "string"
+													"type": "string",
+													"example": "RIPE"
 												},
 												"website": {
-													"example": "https://www.apple.com/support/systemstatus/",
-													"type": "string"
+													"type": "string",
+													"example": "https://www.apple.com/support/systemstatus/"
 												}
 											},
 											"required": [
@@ -375,48 +380,44 @@
 												"website",
 												"orgName",
 												"estimatedUsers"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"asn"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -426,7 +427,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get AS details by ASN",
 		"tags": [
 			"Radar Autonomous Systems"
 		],
@@ -446,44 +446,49 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/entities/asns/{asn}/as_set": {
-		"description": "Retrieves Internet Routing Registry AS-SETs that an AS is a member of.",
 		"operationId": "radar-get-asns-as-set",
+		"summary": "Get IRR AS-SETs that an AS is a member of",
+		"description": "Retrieves Internet Routing Registry AS-SETs that an AS is a member of.",
 		"parameters": [
 			{
-				"description": "Retrieves all AS-SETs that the given AS is a member of.",
-				"in": "path",
 				"name": "asn",
+				"in": "path",
+				"description": "Retrieves all AS-SETs that the given AS is a member of.",
 				"required": true,
 				"schema": {
 					"description": "Retrieves all AS-SETs that the given AS is a member of.",
-					"example": 3,
-					"type": "integer"
+					"type": "integer",
+					"example": 3
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"as_sets": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"as_members_count": {
@@ -512,10 +517,10 @@
 													},
 													"irr_sources": {
 														"description": "The IRR sources of the AS-SET",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"name": {
 														"description": "The name of the AS-SET",
@@ -535,47 +540,46 @@
 													"as_set_upstreams_count"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"paths": {
 											"description": "Paths from the AS-SET that include the given AS to its upstreams recursively",
+											"type": "array",
 											"items": {
 												"items": {
 													"type": "string"
 												},
 												"type": "array"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"as_sets",
 										"paths"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -586,27 +590,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -616,7 +617,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get IRR AS-SETs that an AS is a member of",
 		"tags": [
 			"Radar Autonomous Systems"
 		],
@@ -636,53 +636,58 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/entities/asns/{asn}/rel": {
-		"description": "Retrieves AS-level relationship for given networks.",
 		"operationId": "radar-get-asns-rel",
+		"summary": "Get AS-level relationships by ASN",
+		"description": "Retrieves AS-level relationship for given networks.",
 		"parameters": [
 			{
-				"description": "Retrieves all ASNs with provider-customer or peering relationships with the given ASN.",
-				"in": "path",
 				"name": "asn",
+				"in": "path",
+				"description": "Retrieves all ASNs with provider-customer or peering relationships with the given ASN.",
 				"required": true,
 				"schema": {
 					"description": "Retrieves all ASNs with provider-customer or peering relationships with the given ASN.",
-					"example": 3,
-					"type": "integer"
+					"type": "integer",
+					"example": 3
 				}
 			},
 			{
-				"description": "Retrieves the AS relationship of ASN2 with respect to the given ASN.",
-				"in": "query",
 				"name": "asn2",
+				"in": "query",
+				"description": "Retrieves the AS relationship of ASN2 with respect to the given ASN.",
 				"schema": {
 					"description": "Retrieves the AS relationship of ASN2 with respect to the given ASN.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"data_time": {
 													"type": "string"
@@ -698,10 +703,10 @@
 												"data_time",
 												"query_time",
 												"total_peers"
-											],
-											"type": "object"
+											]
 										},
 										"rels": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn1": {
@@ -736,37 +741,36 @@
 													"rel"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"rels",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -777,27 +781,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -807,7 +808,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get AS-level relationships by ASN",
 		"tags": [
 			"Radar Autonomous Systems"
 		],
@@ -827,152 +827,157 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/entities/asns/botnet_threat_feed": {
-		"description": "Retrieves a ranked list of Autonomous Systems based on their presence in the Cloudflare Botnet Threat Feed. Rankings can be sorted by offense count or number of bad IPs. Optionally compare to a previous date to see rank changes.",
 		"operationId": "radar-get-as-botnet-threat-feed",
+		"summary": "Get AS rankings by botnet threat feed activity",
+		"description": "Retrieves a ranked list of Autonomous Systems based on their presence in the Cloudflare Botnet Threat Feed. Rankings can be sorted by offense count or number of bad IPs. Optionally compare to a previous date to see rank changes.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Metric to rank ASNs by.",
-				"in": "query",
 				"name": "metric",
+				"in": "query",
+				"description": "Metric to rank ASNs by.",
 				"schema": {
-					"default": "NUMBER_OF_OFFENDING_IPS",
 					"description": "Metric to rank ASNs by.",
+					"type": "string",
+					"default": "NUMBER_OF_OFFENDING_IPS",
 					"enum": [
 						"OFFENSE_COUNT",
 						"NUMBER_OF_OFFENDING_IPS"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "The date to retrieve (YYYY-MM-DD format). If not specified, returns the most recent available data. Note: This is the date the report was generated. The report is generated from information collected from the previous day (e.g., the 2026-02-23 entry contains data from 2026-02-22).",
-				"in": "query",
 				"name": "date",
+				"in": "query",
+				"description": "The date to retrieve (YYYY-MM-DD format). If not specified, returns the most recent available data. Note: This is the date the report was generated. The report is generated from information collected from the previous day (e.g., the 2026-02-23 entry contains data from 2026-02-22).",
 				"schema": {
 					"description": "The date to retrieve (YYYY-MM-DD format). If not specified, returns the most recent available data. Note: This is the date the report was generated. The report is generated from information collected from the previous day (e.g., the 2026-02-23 entry contains data from 2026-02-22).",
-					"example": "2026-02-04",
+					"type": "string",
 					"format": "date",
-					"type": "string"
+					"example": "2026-02-04"
 				}
 			},
 			{
-				"description": "Relative date range for rank change comparison (e.g., \"1d\", \"7d\", \"30d\").",
-				"in": "query",
 				"name": "compareDateRange",
+				"in": "query",
+				"description": "Relative date range for rank change comparison (e.g., \"1d\", \"7d\", \"30d\").",
 				"schema": {
 					"description": "Relative date range for rank change comparison (e.g., \"1d\", \"7d\", \"30d\").",
+					"type": "string",
 					"example": "7d",
-					"pattern": "^([1-9][0-9]?|[1-9][0-9]{1,2}|3[0-5][0-9]|36[0-4])d|([1-9]|[1-4][0-9]|5[0-2])w$",
-					"type": "string"
+					"pattern": "^([1-9][0-9]?|[1-9][0-9]{1,2}|3[0-5][0-9]|36[0-4])d|([1-9]|[1-4][0-9]|5[0-2])w$"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify an alpha-2 location code.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "15169"
 				}
 			},
 			{
-				"description": "Sort order.",
-				"in": "query",
 				"name": "sortOrder",
+				"in": "query",
+				"description": "Sort order.",
 				"schema": {
 					"description": "Sort order.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"ASC",
 						"DESC"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"ases": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn": {
-														"example": 4134,
-														"type": "integer"
+														"type": "integer",
+														"example": 4134
 													},
 													"country": {
-														"example": "CN",
-														"type": "string"
+														"type": "string",
+														"example": "CN"
 													},
 													"name": {
-														"example": "CHINANET-BACKBONE",
-														"type": "string"
+														"type": "string",
+														"example": "CHINANET-BACKBONE"
 													},
 													"rank": {
-														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"example": 1
 													},
 													"rankChange": {
-														"example": -2,
-														"type": "integer"
+														"type": "integer",
+														"example": -2
 													}
 												},
 												"required": [
@@ -982,58 +987,57 @@
 													"rank"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"meta": {
+											"type": "object",
 											"properties": {
 												"compareDate": {
-													"example": "2026-01-28",
-													"type": "string"
+													"type": "string",
+													"example": "2026-01-28"
 												},
 												"date": {
-													"example": "2026-02-04",
-													"type": "string"
+													"type": "string",
+													"example": "2026-02-04"
 												},
 												"total": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												}
 											},
 											"required": [
 												"date",
 												"total"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"ases",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1044,27 +1048,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -1074,7 +1075,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get AS rankings by botnet threat feed activity",
 		"tags": [
 			"Radar Autonomous Systems"
 		],
@@ -1094,83 +1094,90 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/entities/asns/ip": {
-		"description": "Retrieves the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"operationId": "radar-get-entities-asn-by-ip",
+		"summary": "Get AS details by IP address",
+		"description": "Retrieves the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"parameters": [
 			{
-				"description": "IP address.",
-				"in": "query",
 				"name": "ip",
+				"in": "query",
+				"description": "IP address.",
 				"required": true,
 				"schema": {
 					"description": "IP address.",
-					"example": "8.8.8.8",
+					"type": "string",
 					"format": "ip",
-					"type": "string"
+					"example": "8.8.8.8"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asn": {
+											"type": "object",
 											"properties": {
 												"aka": {
 													"type": "string"
 												},
 												"asn": {
-													"example": 714,
-													"type": "integer"
+													"type": "integer",
+													"example": 714
 												},
 												"country": {
-													"example": "GB",
-													"type": "string"
+													"type": "string",
+													"example": "GB"
 												},
 												"countryName": {
-													"example": "United Kingdom",
-													"type": "string"
+													"type": "string",
+													"example": "United Kingdom"
 												},
 												"estimatedUsers": {
+													"type": "object",
 													"properties": {
 														"estimatedUsers": {
 															"description": "Total estimated users.",
-															"example": 86099,
-															"type": "integer"
+															"type": "integer",
+															"example": 86099
 														},
 														"locations": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"estimatedUsers": {
 																		"description": "Estimated users per location.",
-																		"example": 16710,
-																		"type": "integer"
+																		"type": "integer",
+																		"example": 16710
 																	},
 																	"locationAlpha2": {
-																		"example": "US",
-																		"type": "string"
+																		"type": "string",
+																		"example": "US"
 																	},
 																	"locationName": {
-																		"example": "United States",
-																		"type": "string"
+																		"type": "string",
+																		"example": "United States"
 																	}
 																},
 																"required": [
@@ -1178,23 +1185,22 @@
 																	"locationAlpha2"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"locations"
-													],
-													"type": "object"
+													]
 												},
 												"name": {
-													"example": "Apple Inc.",
-													"type": "string"
+													"type": "string",
+													"example": "Apple Inc."
 												},
 												"orgName": {
 													"type": "string"
 												},
 												"related": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"aka": {
@@ -1205,8 +1211,8 @@
 															},
 															"estimatedUsers": {
 																"description": "Total estimated users.",
-																"example": 65345,
-																"type": "integer"
+																"type": "integer",
+																"example": 65345
 															},
 															"name": {
 																"type": "string"
@@ -1217,17 +1223,16 @@
 															"asn"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"source": {
 													"description": "Regional Internet Registry.",
-													"example": "RIPE",
-													"type": "string"
+													"type": "string",
+													"example": "RIPE"
 												},
 												"website": {
-													"example": "https://www.apple.com/support/systemstatus/",
-													"type": "string"
+													"type": "string",
+													"example": "https://www.apple.com/support/systemstatus/"
 												}
 											},
 											"required": [
@@ -1240,48 +1245,44 @@
 												"orgName",
 												"source",
 												"estimatedUsers"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"asn"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -1291,7 +1292,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get AS details by IP address",
 		"tags": [
 			"Radar Autonomous Systems"
 		],

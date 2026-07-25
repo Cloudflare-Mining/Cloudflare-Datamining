@@ -1,21 +1,24 @@
 {
 	"DELETE /accounts/{account_id}/brand-protection/brands": {
-		"description": "Return a success message after deleting brands by ID",
 		"operationId": "deleteAccountsAccountIdBrandProtectionBrands",
+		"summary": "Delete brands by ID",
+		"description": "Return a success message after deleting brands by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -25,12 +28,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -38,7 +39,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete brands by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -51,22 +51,25 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/brand-protection/brands/patterns": {
-		"description": "Return a success message after deleting patterns for brands by ID",
 		"operationId": "deleteAccountsAccountIdBrandProtectionBrandsPatterns",
+		"summary": "Delete patterns for brands by ID",
+		"description": "Return a success message after deleting patterns for brands by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -76,12 +79,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -89,7 +90,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete patterns for brands by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -102,22 +102,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/alerts": {
-		"description": "Return all alerts on submitted domains",
 		"operationId": "getAccountsAccountIdBrandProtectionAlerts",
+		"summary": "Read all alerts on submitted domains",
+		"description": "Return all alerts on submitted domains",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -127,12 +130,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -140,7 +141,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read all alerts on submitted domains",
 		"tags": [
 			"brand_protection"
 		],
@@ -154,22 +154,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/brands": {
-		"description": "Return all brands",
 		"operationId": "getAccountsAccountIdBrandProtectionBrands",
+		"summary": "Read all brands",
+		"description": "Return all brands",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -179,12 +182,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -192,7 +193,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read all brands",
 		"tags": [
 			"brand_protection"
 		],
@@ -206,22 +206,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/brands/patterns": {
-		"description": "Return patterns for brands based on ID",
 		"operationId": "getAccountsAccountIdBrandProtectionBrandsPatterns",
+		"summary": "Read patterns for brands by ID",
+		"description": "Return patterns for brands based on ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -231,12 +234,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -244,7 +245,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read patterns for brands by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -258,22 +258,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/domain-info": {
-		"description": "Return submitted domains based on ID",
 		"operationId": "getAccountsAccountIdBrandProtectionDomainInfo",
+		"summary": "Read submitted domains by ID",
+		"description": "Return submitted domains based on ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -283,12 +286,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -296,7 +297,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read submitted domains by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -310,22 +310,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/recent-submissions": {
-		"description": "Return recent URL submissions",
 		"operationId": "getAccountsAccountIdBrandProtectionRecentSubmissions",
+		"summary": "Read recent URL submissions",
+		"description": "Return recent URL submissions",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -335,12 +338,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -348,7 +349,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read recent URL submissions",
 		"tags": [
 			"brand_protection"
 		],
@@ -362,22 +362,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/submission-info": {
-		"description": "Return URL submissions based on ID",
 		"operationId": "getAccountsAccountIdBrandProtectionSubmissionInfo",
+		"summary": "Read URL submissions by ID",
+		"description": "Return URL submissions based on ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -387,12 +390,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -400,7 +401,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read URL submissions by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -414,22 +414,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/tracked-domains": {
-		"description": "Return submitted domains based on pattern",
 		"operationId": "getAccountsAccountIdBrandProtectionTrackedDomains",
+		"summary": "Read submitted domains by pattern",
+		"description": "Return submitted domains based on pattern",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -439,12 +442,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -452,7 +453,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read submitted domains by pattern",
 		"tags": [
 			"brand_protection"
 		],
@@ -466,41 +466,44 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/url-info": {
-		"description": "Return submitted URLs based on ID",
 		"operationId": "getAccountsAccountIdBrandProtectionUrlInfo",
+		"summary": "Read submitted URLs by ID",
+		"description": "Return submitted URLs based on ID",
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -510,12 +513,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -523,7 +524,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read submitted URLs by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -537,22 +537,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /live": {
-		"description": "Return a success message after running liveness checks",
 		"operationId": "getLive",
+		"summary": "Run liveness checks",
+		"description": "Return a success message after running liveness checks",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -562,12 +565,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -575,7 +576,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Run liveness checks",
 		"tags": [
 			"brand_protection"
 		],
@@ -585,22 +585,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /ready": {
-		"description": "Return a success message after running readiness checks",
 		"operationId": "getReady",
+		"summary": "Run readiness checks",
+		"description": "Return a success message after running readiness checks",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -610,12 +613,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -623,7 +624,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Run readiness checks",
 		"tags": [
 			"brand_protection"
 		],
@@ -633,22 +633,25 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts": {
-		"description": "Return a success message after updating alerts on submitted domains by ID",
 		"operationId": "patchAccountsAccountIdBrandProtectionAlerts",
+		"summary": "Update alerts on submitted domains by ID",
+		"description": "Return a success message after updating alerts on submitted domains by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -658,12 +661,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -671,7 +672,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update alerts on submitted domains by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -684,22 +684,25 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/clear": {
-		"description": "Return a success message after updating verification statuses of tracked URLs to awaiting by ID",
 		"operationId": "patchAccountsAccountIdBrandProtectionAlertsClear",
+		"summary": "Update verification statuses of tracked URLs to awaiting by ID",
+		"description": "Return a success message after updating verification statuses of tracked URLs to awaiting by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -709,12 +712,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -722,7 +723,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update verification statuses of tracked URLs to awaiting by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -735,22 +735,25 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/refute": {
-		"description": "Return a success message after updating verification statuses of tracked URLs to disproven by ID",
 		"operationId": "patchAccountsAccountIdBrandProtectionAlertsRefute",
+		"summary": "Update verification statuses of tracked URLs to disproven by ID",
+		"description": "Return a success message after updating verification statuses of tracked URLs to disproven by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -760,12 +763,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -773,7 +774,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update verification statuses of tracked URLs to disproven by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -786,22 +786,25 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/alerts/verify": {
-		"description": "Return a success message after updating verification statuses of tracked URLs to confirmed by ID",
 		"operationId": "patchAccountsAccountIdBrandProtectionAlertsVerify",
+		"summary": "Update verification statuses of tracked URLs to confirmed by ID",
+		"description": "Return a success message after updating verification statuses of tracked URLs to confirmed by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -811,12 +814,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -824,7 +825,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update verification statuses of tracked URLs to confirmed by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -837,22 +837,25 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/clear": {
-		"description": "Return a success message after updating verification statuses of submitted URLs to awaiting by ID",
 		"operationId": "patchAccountsAccountIdBrandProtectionClear",
+		"summary": "Update verification statuses of submitted URLs to awaiting by ID",
+		"description": "Return a success message after updating verification statuses of submitted URLs to awaiting by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -862,12 +865,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -875,7 +876,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update verification statuses of submitted URLs to awaiting by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -888,22 +888,25 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/refute": {
-		"description": "Return a success message after updating verification statuses of submitted URLs to disproven by ID",
 		"operationId": "patchAccountsAccountIdBrandProtectionRefute",
+		"summary": "Update verification statuses of submitted URLs to disproven by ID",
+		"description": "Return a success message after updating verification statuses of submitted URLs to disproven by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -913,12 +916,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -926,7 +927,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update verification statuses of submitted URLs to disproven by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -939,22 +939,25 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/verify": {
-		"description": "Return a success message after updating verification statuses of submitted URLs to confirmed by ID",
 		"operationId": "patchAccountsAccountIdBrandProtectionVerify",
+		"summary": "Update verification statuses of submitted URLs to confirmed by ID",
+		"description": "Return a success message after updating verification statuses of submitted URLs to confirmed by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -964,12 +967,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -977,7 +978,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update verification statuses of submitted URLs to confirmed by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -990,22 +990,25 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/brands": {
-		"description": "Return new brands",
 		"operationId": "postAccountsAccountIdBrandProtectionBrands",
+		"summary": "Create new brands",
+		"description": "Return new brands",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -1015,12 +1018,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -1028,7 +1029,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new brands",
 		"tags": [
 			"brand_protection"
 		],
@@ -1041,22 +1041,25 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/brands/patterns": {
-		"description": "Return a success message after creating new patterns for brands by ID",
 		"operationId": "postAccountsAccountIdBrandProtectionBrandsPatterns",
+		"summary": "Create new patterns for brands by ID",
+		"description": "Return a success message after creating new patterns for brands by ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -1066,12 +1069,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -1079,7 +1080,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new patterns for brands by ID",
 		"tags": [
 			"brand_protection"
 		],
@@ -1092,48 +1092,51 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/submit": {
-		"description": "Return new URL submissions",
 		"operationId": "postAccountsAccountIdBrandProtectionSubmit",
+		"summary": "Create new URL submissions",
+		"description": "Return new URL submissions",
 		"responses": {
 			"201": {
+				"description": "Created",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"skipped_urls": {
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"submitted_urls": {
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Created"
+				}
 			},
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -1143,12 +1146,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -1156,7 +1157,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new URL submissions",
 		"tags": [
 			"brand_protection"
 		],
@@ -1169,22 +1169,25 @@
 		"x-forge-hidden": true
 	},
 	"POST /internal/submit": {
-		"description": "Internal route for testing URL submissions.",
 		"operationId": "postInternalSubmit",
+		"summary": "Internal route for testing URL submissions",
+		"description": "Internal route for testing URL submissions.",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -1194,12 +1197,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -1207,7 +1208,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Internal route for testing URL submissions",
 		"tags": [
 			"brand_protection"
 		],

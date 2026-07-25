@@ -1,67 +1,69 @@
 {
 	"GET /accounts/{account_id}/registrar-sandbox/domain-search": {
-		"description": "Searches for domain name suggestions based on a keyword, phrase, or partial domain name.\nReturns a list of potentially available domains with pricing information.\n\n**Important:** Results are non-authoritative and based on cached data. Always use the\n`/domain-check` endpoint to verify real-time availability before attempting registration.\n\nSuggestions are scoped to extensions supported for programmatic registration\nvia this API (`POST /registrations`). Domains on unsupported extensions will\nnot appear in results, even if they are available at the registry level.\n\n### Use cases\n- Brand name discovery (e.g., \"acme corp\" → acmecorp.com, acmecorp.dev)\n- Keyword-based suggestions (e.g., \"coffee shop\" → coffeeshop.com, mycoffeeshop.net)\n- Alternative extension discovery (e.g., \"example.com\" → example.com, example.app, example.xyz)\n\n### Workflow\n1. Call this endpoint with a keyword or domain name.\n2. Present suggestions to the user.\n3. Call `/domain-check` with the user's chosen domains to confirm real-time availability and pricing.\n4. Proceed to `POST /registrations` only for supported non-premium domains\n   where the Check response returns `registrable: true`.\n\n**Note:** Searching with just a domain extension (e.g., \"com\" or \".app\") is not supported. Provide a keyword or domain name.\n",
 		"operationId": "sandbox-registrar-domain-discovery-search",
+		"summary": "Search for available domains",
+		"description": "Searches for domain name suggestions based on a keyword, phrase, or partial domain name.\nReturns a list of potentially available domains with pricing information.\n\n**Important:** Results are non-authoritative and based on cached data. Always use the\n`/domain-check` endpoint to verify real-time availability before attempting registration.\n\nSuggestions are scoped to extensions supported for programmatic registration\nvia this API (`POST /registrations`). Domains on unsupported extensions will\nnot appear in results, even if they are available at the registry level.\n\n### Use cases\n- Brand name discovery (e.g., \"acme corp\" → acmecorp.com, acmecorp.dev)\n- Keyword-based suggestions (e.g., \"coffee shop\" → coffeeshop.com, mycoffeeshop.net)\n- Alternative extension discovery (e.g., \"example.com\" → example.com, example.app, example.xyz)\n\n### Workflow\n1. Call this endpoint with a keyword or domain name.\n2. Present suggestions to the user.\n3. Call `/domain-check` with the user's chosen domains to confirm real-time availability and pricing.\n4. Proceed to `POST /registrations` only for supported non-premium domains\n   where the Check response returns `registrable: true`.\n\n**Note:** Searching with just a domain extension (e.g., \"com\" or \".app\") is not supported. Provide a keyword or domain name.\n",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID. Required for all Registrar API operations.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "The search term to find domain suggestions. Accepts keywords, phrases, or full domain names.\n- Phrases: \"coffee shop\" returns coffeeshop.com, mycoffeeshop.net, etc.\n- Domain names: \"example.com\" returns example.com and variations across extensions\n",
-				"example": "coffee shop",
-				"in": "query",
 				"name": "q",
+				"in": "query",
+				"description": "The search term to find domain suggestions. Accepts keywords, phrases, or full domain names.\n- Phrases: \"coffee shop\" returns coffeeshop.com, mycoffeeshop.net, etc.\n- Domain names: \"example.com\" returns example.com and variations across extensions\n",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 100,
-					"minLength": 1,
-					"type": "string"
-				}
+					"minLength": 1
+				},
+				"example": "coffee shop"
 			},
 			{
+				"name": "extensions",
+				"in": "query",
 				"description": "Limits results to specific domain extensions from the supported set. If not specified,\nreturns results across all supported extensions. Extensions not in the supported\nset are silently ignored.\n",
+				"schema": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"maxItems": 20
+				},
 				"example": [
 					"com",
 					"net",
 					"org"
 				],
 				"explode": false,
-				"in": "query",
-				"name": "extensions",
-				"schema": {
-					"items": {
-						"type": "string"
-					},
-					"maxItems": 20,
-					"type": "array"
-				},
 				"style": "form"
 			},
 			{
-				"description": "Maximum number of domain suggestions to return. Defaults to 20 if not specified.\n",
-				"example": 20,
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of domain suggestions to return. Defaults to 20 if not specified.\n",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 1,
-					"type": "integer"
-				}
+					"minimum": 1
+				},
+				"example": 20
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully returned domain search results.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -263,14 +265,15 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -283,15 +286,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -304,7 +307,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -324,11 +327,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -336,90 +339,89 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Contains the search results.",
+											"type": "object",
 											"properties": {
 												"domains": {
 													"description": "Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria.",
+													"type": "array",
 													"items": {
 														"description": "Represents a single domain suggestion returned by the Search endpoint. Search results are non-authoritative and may be based on cached data. Use POST /domain-check to confirm real-time availability and pricing before registration.",
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs).",
-																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"example": "example.com"
 															},
 															"pricing": {
 																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"type": "object",
 																"properties": {
 																	"currency": {
 																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"example": "USD",
-																		"type": "string"
+																		"type": "string",
+																		"example": "USD"
 																	},
 																	"registration_cost": {
 																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	},
 																	"renewal_cost": {
 																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	}
 																},
 																"required": [
 																	"currency",
 																	"registration_cost",
 																	"renewal_cost"
-																],
-																"type": "object"
+																]
 															},
 															"reason": {
 																"description": "Present only when `registrable` is `false` on search results. Explains why the domain does not appear registrable through this API. These values are advisory; use POST /domain-check for authoritative status.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain appears unavailable.",
+																"type": "string",
+																"example": "domain_unavailable",
 																"enum": [
 																	"extension_not_supported_via_api",
 																	"extension_not_supported",
 																	"extension_disallows_registration",
 																	"domain_premium",
 																	"domain_unavailable"
-																],
-																"example": "domain_unavailable",
-																"type": "string"
+																]
 															},
 															"registrable": {
 																"description": "Indicates whether this domain appears available based on search data. Search results are non-authoritative and may be stale. - `true`: The domain appears available. Use POST /domain-check to confirm before registration.\n- `false`: The domain does not appear available in search results.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"tier": {
 																"description": "The pricing tier for this domain. Always present when `registrable` is `true`;\ndefaults to `standard` for most domains. May be absent when `registrable`\nis `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry\n",
+																"type": "string",
+																"example": "standard",
 																"enum": [
 																	"standard",
 																	"premium"
-																],
-																"example": "standard",
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"name",
 															"registrable"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
 												"domains"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -430,10 +432,10 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully returned domain search results."
+				}
 			},
 			"400": {
+				"description": "Invalid request parameters. Common causes:\n- Missing required `q` parameter\n- Query exceeds 100 character limit\n- Invalid extension format\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -469,48 +471,23 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minItems": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -523,25 +500,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -549,12 +552,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request parameters. Common causes:\n- Missing required `q` parameter\n- Query exceeds 100 character limit\n- Invalid extension format\n"
+				}
 			}
 		},
 		"security": [
@@ -566,74 +567,75 @@
 				"api_key": []
 			}
 		],
-		"summary": "Search for available domains",
 		"tags": [
 			"Domain Discovery"
 		]
 	},
 	"GET /accounts/{account_id}/registrar/domain-search": {
-		"description": "Searches for domain name suggestions based on a keyword, phrase, or partial domain name.\nReturns a list of potentially available domains with pricing information.\n\n**Important:** Results are non-authoritative and based on cached data. Always use the\n`/domain-check` endpoint to verify real-time availability before attempting registration.\n\nSuggestions are scoped to extensions supported for programmatic registration\nvia this API (`POST /registrations`). Domains on unsupported extensions will\nnot appear in results, even if they are available at the registry level.\n\n### Use cases\n- Brand name discovery (e.g., \"acme corp\" → acmecorp.com, acmecorp.dev)\n- Keyword-based suggestions (e.g., \"coffee shop\" → coffeeshop.com, mycoffeeshop.net)\n- Alternative extension discovery (e.g., \"example.com\" → example.com, example.app, example.xyz)\n\n### Workflow\n1. Call this endpoint with a keyword or domain name.\n2. Present suggestions to the user.\n3. Call `/domain-check` with the user's chosen domains to confirm real-time availability and pricing.\n4. Proceed to `POST /registrations` only for supported non-premium domains\n   where the Check response returns `registrable: true`.\n\n**Note:** Searching with just a domain extension (e.g., \"com\" or \".app\") is not supported. Provide a keyword or domain name.\n",
 		"operationId": "registrar-domain-discovery-search",
+		"summary": "Search for available domains",
+		"description": "Searches for domain name suggestions based on a keyword, phrase, or partial domain name.\nReturns a list of potentially available domains with pricing information.\n\n**Important:** Results are non-authoritative and based on cached data. Always use the\n`/domain-check` endpoint to verify real-time availability before attempting registration.\n\nSuggestions are scoped to extensions supported for programmatic registration\nvia this API (`POST /registrations`). Domains on unsupported extensions will\nnot appear in results, even if they are available at the registry level.\n\n### Use cases\n- Brand name discovery (e.g., \"acme corp\" → acmecorp.com, acmecorp.dev)\n- Keyword-based suggestions (e.g., \"coffee shop\" → coffeeshop.com, mycoffeeshop.net)\n- Alternative extension discovery (e.g., \"example.com\" → example.com, example.app, example.xyz)\n\n### Workflow\n1. Call this endpoint with a keyword or domain name.\n2. Present suggestions to the user.\n3. Call `/domain-check` with the user's chosen domains to confirm real-time availability and pricing.\n4. Proceed to `POST /registrations` only for supported non-premium domains\n   where the Check response returns `registrable: true`.\n\n**Note:** Searching with just a domain extension (e.g., \"com\" or \".app\") is not supported. Provide a keyword or domain name.\n",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID. Required for all Registrar API operations.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "The search term to find domain suggestions. Accepts keywords, phrases, or full domain names.\n- Phrases: \"coffee shop\" returns coffeeshop.com, mycoffeeshop.net, etc.\n- Domain names: \"example.com\" returns example.com and variations across extensions\n",
-				"example": "coffee shop",
-				"in": "query",
 				"name": "q",
+				"in": "query",
+				"description": "The search term to find domain suggestions. Accepts keywords, phrases, or full domain names.\n- Phrases: \"coffee shop\" returns coffeeshop.com, mycoffeeshop.net, etc.\n- Domain names: \"example.com\" returns example.com and variations across extensions\n",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 100,
-					"minLength": 1,
-					"type": "string"
-				}
+					"minLength": 1
+				},
+				"example": "coffee shop"
 			},
 			{
+				"name": "extensions",
+				"in": "query",
 				"description": "Limits results to specific domain extensions from the supported set. If not specified,\nreturns results across all supported extensions. Extensions not in the supported\nset are silently ignored.\n",
+				"schema": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"maxItems": 20
+				},
 				"example": [
 					"com",
 					"net",
 					"org"
 				],
 				"explode": false,
-				"in": "query",
-				"name": "extensions",
-				"schema": {
-					"items": {
-						"type": "string"
-					},
-					"maxItems": 20,
-					"type": "array"
-				},
 				"style": "form"
 			},
 			{
-				"description": "Maximum number of domain suggestions to return. Defaults to 20 if not specified.\n",
-				"example": 20,
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of domain suggestions to return. Defaults to 20 if not specified.\n",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 1,
-					"type": "integer"
-				}
+					"minimum": 1
+				},
+				"example": 20
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully returned domain search results.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -835,14 +837,15 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -855,15 +858,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -876,7 +879,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -896,11 +899,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -908,90 +911,89 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Contains the search results.",
+											"type": "object",
 											"properties": {
 												"domains": {
 													"description": "Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria.",
+													"type": "array",
 													"items": {
 														"description": "Represents a single domain suggestion returned by the Search endpoint. Search results are non-authoritative and may be based on cached data. Use POST /domain-check to confirm real-time availability and pricing before registration.",
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs).",
-																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"example": "example.com"
 															},
 															"pricing": {
 																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"type": "object",
 																"properties": {
 																	"currency": {
 																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"example": "USD",
-																		"type": "string"
+																		"type": "string",
+																		"example": "USD"
 																	},
 																	"registration_cost": {
 																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	},
 																	"renewal_cost": {
 																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	}
 																},
 																"required": [
 																	"currency",
 																	"registration_cost",
 																	"renewal_cost"
-																],
-																"type": "object"
+																]
 															},
 															"reason": {
 																"description": "Present only when `registrable` is `false` on search results. Explains why the domain does not appear registrable through this API. These values are advisory; use POST /domain-check for authoritative status.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain appears unavailable.",
+																"type": "string",
+																"example": "domain_unavailable",
 																"enum": [
 																	"extension_not_supported_via_api",
 																	"extension_not_supported",
 																	"extension_disallows_registration",
 																	"domain_premium",
 																	"domain_unavailable"
-																],
-																"example": "domain_unavailable",
-																"type": "string"
+																]
 															},
 															"registrable": {
 																"description": "Indicates whether this domain appears available based on search data. Search results are non-authoritative and may be stale. - `true`: The domain appears available. Use POST /domain-check to confirm before registration.\n- `false`: The domain does not appear available in search results.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"tier": {
 																"description": "The pricing tier for this domain. Always present when `registrable` is `true`;\ndefaults to `standard` for most domains. May be absent when `registrable`\nis `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry\n",
+																"type": "string",
+																"example": "standard",
 																"enum": [
 																	"standard",
 																	"premium"
-																],
-																"example": "standard",
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"name",
 															"registrable"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
 												"domains"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1002,10 +1004,10 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully returned domain search results."
+				}
 			},
 			"400": {
+				"description": "Invalid request parameters. Common causes:\n- Missing required `q` parameter\n- Query exceeds 100 character limit\n- Invalid extension format\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1041,48 +1043,23 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minItems": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1095,25 +1072,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1121,12 +1124,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request parameters. Common causes:\n- Missing required `q` parameter\n- Query exceeds 100 character limit\n- Invalid extension format\n"
+				}
 			}
 		},
 		"security": [
@@ -1138,30 +1139,32 @@
 				"api_key": []
 			}
 		],
-		"summary": "Search for available domains",
 		"tags": [
 			"Domain Discovery"
 		]
 	},
 	"POST /accounts/{account_id}/registrar-sandbox/domain-check": {
-		"description": "Performs real-time, authoritative availability checks directly against domain\nregistries. Use this endpoint to verify a domain is available before attempting\nregistration via `POST /registrations`.\n\n**Important:** Unlike the Search endpoint, these results are authoritative and\nreflect current registry status. Always check availability immediately before\nregistration as domain status can change rapidly.\n\n**Note:** This endpoint uses POST to accept a list of domains in the request\nbody. It is a read-only operation — it does not create, modify, or reserve\nany domains.\n\n### Extension support\n\nOnly domains on extensions supported for programmatic registration by this API\ncan be registered. If you check a domain on an unsupported extension, the response\nwill include `registrable: false` with a `reason` field explaining why:\n\n- `extension_not_supported_via_api` — Cloudflare Registrar supports this extension\n  in the dashboard, but it is not yet available for programmatic registration via\n  this API. Register via `https://dash.cloudflare.com/{account_id}/domains/registrations` instead.\n- `extension_not_supported` — This extension is not supported by Cloudflare\n  Registrar.\n- `extension_disallows_registration` — The extension's registry has temporarily\n  or permanently frozen new registrations. No registrar can register domains on\n  this extension at this time.\n- `domain_premium` — The domain is premium priced. Premium registration is not\n  currently supported by this API.\n- `domain_unavailable` — The domain is already registered, reserved, or otherwise\n  not available for registration on a supported extension.\n\nThe `reason` field is only present when `registrable` is `false`.\n\n### Behavior\n- Maximum 20 domains per request\n- Pricing is only returned for domains where `registrable: true`\n- Results are not cached; each request queries the registry\n\n### Workflow\n1. Call this endpoint with domains the user wants to register.\n2. For each domain where `registrable: true`, present pricing to the user.\n3. If `tier: premium`, note that premium registration is not currently\n   supported by this API and do not proceed to `POST /registrations`.\n4. Proceed to `POST /registrations` only for supported non-premium domains.\n",
 		"operationId": "sandbox-registrar-domain-discovery-check",
+		"summary": "Check domain availability",
+		"description": "Performs real-time, authoritative availability checks directly against domain\nregistries. Use this endpoint to verify a domain is available before attempting\nregistration via `POST /registrations`.\n\n**Important:** Unlike the Search endpoint, these results are authoritative and\nreflect current registry status. Always check availability immediately before\nregistration as domain status can change rapidly.\n\n**Note:** This endpoint uses POST to accept a list of domains in the request\nbody. It is a read-only operation — it does not create, modify, or reserve\nany domains.\n\n### Extension support\n\nOnly domains on extensions supported for programmatic registration by this API\ncan be registered. If you check a domain on an unsupported extension, the response\nwill include `registrable: false` with a `reason` field explaining why:\n\n- `extension_not_supported_via_api` — Cloudflare Registrar supports this extension\n  in the dashboard, but it is not yet available for programmatic registration via\n  this API. Register via `https://dash.cloudflare.com/{account_id}/domains/registrations` instead.\n- `extension_not_supported` — This extension is not supported by Cloudflare\n  Registrar.\n- `extension_disallows_registration` — The extension's registry has temporarily\n  or permanently frozen new registrations. No registrar can register domains on\n  this extension at this time.\n- `domain_premium` — The domain is premium priced. Premium registration is not\n  currently supported by this API.\n- `domain_unavailable` — The domain is already registered, reserved, or otherwise\n  not available for registration on a supported extension.\n\nThe `reason` field is only present when `registrable` is `false`.\n\n### Behavior\n- Maximum 20 domains per request\n- Pricing is only returned for domains where `registrable: true`\n- Results are not cached; each request queries the registry\n\n### Workflow\n1. Call this endpoint with domains the user wants to register.\n2. For each domain where `registrable: true`, present pricing to the user.\n3. If `tier: premium`, note that premium registration is not currently\n   supported by this API and do not proceed to `POST /registrations`.\n4. Proceed to `POST /registrations` only for supported non-premium domains.\n",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID. Required for all Registrar API operations.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"description": "List of fully qualified domain names (FQDNs) to check. Each domain must include the extension (e.g., \"example.com\", not \"example\").",
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -1199,33 +1202,32 @@
 					},
 					"schema": {
 						"description": "Request body for checking domain availability.",
+						"type": "object",
 						"properties": {
 							"domains": {
 								"description": "List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.\n- Minimum: 1 domain\n- Maximum: 20 domains per request\n- Domains on unsupported extensions are returned with `registrable: false` and a `reason` field\n- Malformed domain names (e.g., missing extension) may be omitted from the response\n",
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
 								"example": [
 									"example.com",
 									"example.net"
 								],
-								"items": {
-									"type": "string"
-								},
 								"maxItems": 20,
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							}
 						},
 						"required": [
 							"domains"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "List of fully qualified domain names (FQDNs) to check. Each domain must include the extension (e.g., \"example.com\", not \"example\").",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully returned availability results. Each requested domain appears in the `domains` array with its current availability status and pricing (if available).",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1415,14 +1417,15 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1435,15 +1438,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1456,7 +1459,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -1476,11 +1479,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1488,90 +1491,89 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Contains the availability check results.",
+											"type": "object",
 											"properties": {
 												"domains": {
 													"description": "Array of domain availability results. Domains on unsupported\nextensions are included with `registrable: false` and a `reason`\nfield. Malformed domain names may be omitted.\n",
+													"type": "array",
 													"items": {
 														"description": "Represents a single authoritative domain availability result returned by the Check endpoint. Check results reflect current registry status and should be used immediately before registration.",
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs).",
-																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"example": "example.com"
 															},
 															"pricing": {
 																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"type": "object",
 																"properties": {
 																	"currency": {
 																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"example": "USD",
-																		"type": "string"
+																		"type": "string",
+																		"example": "USD"
 																	},
 																	"registration_cost": {
 																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	},
 																	"renewal_cost": {
 																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	}
 																},
 																"required": [
 																	"currency",
 																	"registration_cost",
 																	"renewal_cost"
-																],
-																"type": "object"
+																]
 															},
 															"reason": {
 																"description": "Present only when `registrable` is `false`. Explains why the domain cannot be registered via this API.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API. The user can register via `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations. No registrar can register domains on this extension at this time.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain is already registered, reserved, or otherwise not available on a supported extension.",
+																"type": "string",
+																"example": "domain_unavailable",
 																"enum": [
 																	"extension_not_supported_via_api",
 																	"extension_not_supported",
 																	"extension_disallows_registration",
 																	"domain_premium",
 																	"domain_unavailable"
-																],
-																"example": "domain_unavailable",
-																"type": "string"
+																]
 															},
 															"registrable": {
 																"description": "Indicates whether this domain can be registered programmatically through this API based on a real-time registry check.\n- `true`: Domain is available for registration. The `pricing` object will be included.\n- `false`: Domain is not available. See the `reason` field for why. `tier` may still be present on some non-registrable results, such as premium domains.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"tier": {
 																"description": "The pricing tier for this domain. Always present when `registrable` is `true`; defaults to `standard` for most domains. May be absent when `registrable` is `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry",
+																"type": "string",
+																"example": "standard",
 																"enum": [
 																	"standard",
 																	"premium"
-																],
-																"example": "standard",
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"name",
 															"registrable"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
 												"domains"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1582,10 +1584,10 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully returned availability results. Each requested domain appears in the `domains` array with its current availability status and pricing (if available)."
+				}
 			},
 			"400": {
+				"description": "Invalid request parameters. Common causes:\n- Empty `domains` array\n- Exceeds maximum of 20 domains per request\n- Malformed request body\n- None of the provided domains are valid\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1636,48 +1638,23 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minItems": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1690,25 +1667,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1716,12 +1719,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request parameters. Common causes:\n- Empty `domains` array\n- Exceeds maximum of 20 domains per request\n- Malformed request body\n- None of the provided domains are valid\n"
+				}
 			}
 		},
 		"security": [
@@ -1733,30 +1734,32 @@
 				"api_key": []
 			}
 		],
-		"summary": "Check domain availability",
 		"tags": [
 			"Domain Discovery"
 		]
 	},
 	"POST /accounts/{account_id}/registrar/domain-check": {
-		"description": "Performs real-time, authoritative availability checks directly against domain\nregistries. Use this endpoint to verify a domain is available before attempting\nregistration via `POST /registrations`.\n\n**Important:** Unlike the Search endpoint, these results are authoritative and\nreflect current registry status. Always check availability immediately before\nregistration as domain status can change rapidly.\n\n**Note:** This endpoint uses POST to accept a list of domains in the request\nbody. It is a read-only operation — it does not create, modify, or reserve\nany domains.\n\n### Extension support\n\nOnly domains on extensions supported for programmatic registration by this API\ncan be registered. If you check a domain on an unsupported extension, the response\nwill include `registrable: false` with a `reason` field explaining why:\n\n- `extension_not_supported_via_api` — Cloudflare Registrar supports this extension\n  in the dashboard, but it is not yet available for programmatic registration via\n  this API. Register via `https://dash.cloudflare.com/{account_id}/domains/registrations` instead.\n- `extension_not_supported` — This extension is not supported by Cloudflare\n  Registrar.\n- `extension_disallows_registration` — The extension's registry has temporarily\n  or permanently frozen new registrations. No registrar can register domains on\n  this extension at this time.\n- `domain_premium` — The domain is premium priced. Premium registration is not\n  currently supported by this API.\n- `domain_unavailable` — The domain is already registered, reserved, or otherwise\n  not available for registration on a supported extension.\n\nThe `reason` field is only present when `registrable` is `false`.\n\n### Behavior\n- Maximum 20 domains per request\n- Pricing is only returned for domains where `registrable: true`\n- Results are not cached; each request queries the registry\n\n### Workflow\n1. Call this endpoint with domains the user wants to register.\n2. For each domain where `registrable: true`, present pricing to the user.\n3. If `tier: premium`, note that premium registration is not currently\n   supported by this API and do not proceed to `POST /registrations`.\n4. Proceed to `POST /registrations` only for supported non-premium domains.\n",
 		"operationId": "registrar-domain-discovery-check",
+		"summary": "Check domain availability",
+		"description": "Performs real-time, authoritative availability checks directly against domain\nregistries. Use this endpoint to verify a domain is available before attempting\nregistration via `POST /registrations`.\n\n**Important:** Unlike the Search endpoint, these results are authoritative and\nreflect current registry status. Always check availability immediately before\nregistration as domain status can change rapidly.\n\n**Note:** This endpoint uses POST to accept a list of domains in the request\nbody. It is a read-only operation — it does not create, modify, or reserve\nany domains.\n\n### Extension support\n\nOnly domains on extensions supported for programmatic registration by this API\ncan be registered. If you check a domain on an unsupported extension, the response\nwill include `registrable: false` with a `reason` field explaining why:\n\n- `extension_not_supported_via_api` — Cloudflare Registrar supports this extension\n  in the dashboard, but it is not yet available for programmatic registration via\n  this API. Register via `https://dash.cloudflare.com/{account_id}/domains/registrations` instead.\n- `extension_not_supported` — This extension is not supported by Cloudflare\n  Registrar.\n- `extension_disallows_registration` — The extension's registry has temporarily\n  or permanently frozen new registrations. No registrar can register domains on\n  this extension at this time.\n- `domain_premium` — The domain is premium priced. Premium registration is not\n  currently supported by this API.\n- `domain_unavailable` — The domain is already registered, reserved, or otherwise\n  not available for registration on a supported extension.\n\nThe `reason` field is only present when `registrable` is `false`.\n\n### Behavior\n- Maximum 20 domains per request\n- Pricing is only returned for domains where `registrable: true`\n- Results are not cached; each request queries the registry\n\n### Workflow\n1. Call this endpoint with domains the user wants to register.\n2. For each domain where `registrable: true`, present pricing to the user.\n3. If `tier: premium`, note that premium registration is not currently\n   supported by this API and do not proceed to `POST /registrations`.\n4. Proceed to `POST /registrations` only for supported non-premium domains.\n",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID. Required for all Registrar API operations.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"description": "List of fully qualified domain names (FQDNs) to check. Each domain must include the extension (e.g., \"example.com\", not \"example\").",
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -1794,33 +1797,32 @@
 					},
 					"schema": {
 						"description": "Request body for checking domain availability.",
+						"type": "object",
 						"properties": {
 							"domains": {
 								"description": "List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.\n- Minimum: 1 domain\n- Maximum: 20 domains per request\n- Domains on unsupported extensions are returned with `registrable: false` and a `reason` field\n- Malformed domain names (e.g., missing extension) may be omitted from the response\n",
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
 								"example": [
 									"example.com",
 									"example.net"
 								],
-								"items": {
-									"type": "string"
-								},
 								"maxItems": 20,
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							}
 						},
 						"required": [
 							"domains"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "List of fully qualified domain names (FQDNs) to check. Each domain must include the extension (e.g., \"example.com\", not \"example\").",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully returned availability results. Each requested domain appears in the `domains` array with its current availability status and pricing (if available).",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -2010,14 +2012,15 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2030,15 +2033,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2051,7 +2054,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -2071,11 +2074,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2083,90 +2086,89 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Contains the availability check results.",
+											"type": "object",
 											"properties": {
 												"domains": {
 													"description": "Array of domain availability results. Domains on unsupported\nextensions are included with `registrable: false` and a `reason`\nfield. Malformed domain names may be omitted.\n",
+													"type": "array",
 													"items": {
 														"description": "Represents a single authoritative domain availability result returned by the Check endpoint. Check results reflect current registry status and should be used immediately before registration.",
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs).",
-																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"example": "example.com"
 															},
 															"pricing": {
 																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"type": "object",
 																"properties": {
 																	"currency": {
 																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
-																		"example": "USD",
-																		"type": "string"
+																		"type": "string",
+																		"example": "USD"
 																	},
 																	"registration_cost": {
 																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	},
 																	"renewal_cost": {
 																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
-																		"example": "8.57",
-																		"type": "string"
+																		"type": "string",
+																		"example": "8.57"
 																	}
 																},
 																"required": [
 																	"currency",
 																	"registration_cost",
 																	"renewal_cost"
-																],
-																"type": "object"
+																]
 															},
 															"reason": {
 																"description": "Present only when `registrable` is `false`. Explains why the domain cannot be registered via this API.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API. The user can register via `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations. No registrar can register domains on this extension at this time.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain is already registered, reserved, or otherwise not available on a supported extension.",
+																"type": "string",
+																"example": "domain_unavailable",
 																"enum": [
 																	"extension_not_supported_via_api",
 																	"extension_not_supported",
 																	"extension_disallows_registration",
 																	"domain_premium",
 																	"domain_unavailable"
-																],
-																"example": "domain_unavailable",
-																"type": "string"
+																]
 															},
 															"registrable": {
 																"description": "Indicates whether this domain can be registered programmatically through this API based on a real-time registry check.\n- `true`: Domain is available for registration. The `pricing` object will be included.\n- `false`: Domain is not available. See the `reason` field for why. `tier` may still be present on some non-registrable results, such as premium domains.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"tier": {
 																"description": "The pricing tier for this domain. Always present when `registrable` is `true`; defaults to `standard` for most domains. May be absent when `registrable` is `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry",
+																"type": "string",
+																"example": "standard",
 																"enum": [
 																	"standard",
 																	"premium"
-																],
-																"example": "standard",
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"name",
 															"registrable"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
 												"domains"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -2177,10 +2179,10 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully returned availability results. Each requested domain appears in the `domains` array with its current availability status and pricing (if available)."
+				}
 			},
 			"400": {
+				"description": "Invalid request parameters. Common causes:\n- Empty `domains` array\n- Exceeds maximum of 20 domains per request\n- Malformed request body\n- None of the provided domains are valid\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -2231,48 +2233,23 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minItems": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2285,25 +2262,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minItems": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2311,12 +2314,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request parameters. Common causes:\n- Empty `domains` array\n- Exceeds maximum of 20 domains per request\n- Malformed request body\n- None of the provided domains are valid\n"
+				}
 			}
 		},
 		"security": [
@@ -2328,7 +2329,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Check domain availability",
 		"tags": [
 			"Domain Discovery"
 		]

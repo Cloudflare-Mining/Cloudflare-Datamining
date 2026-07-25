@@ -1,87 +1,89 @@
 {
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces": {
-		"description": "Returns a list of namespaces in the specified R2 catalog.\nSupports hierarchical filtering and pagination for efficient traversal\nof large namespace hierarchies.\n",
 		"operationId": "list-namespaces",
+		"summary": "List namespaces in catalog",
+		"description": "Returns a list of namespaces in the specified R2 catalog.\nSupports hierarchical filtering and pagination for efficient traversal\nof large namespace hierarchies.\n",
 		"parameters": [
 			{
-				"description": "Identifies the account.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Identifies the account.",
 				"required": true,
 				"schema": {
 					"description": "Use this to identify the account.",
+					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef",
-					"pattern": "^[a-fA-F0-9]{32}$",
-					"type": "string"
+					"pattern": "^[a-fA-F0-9]{32}$"
 				}
 			},
 			{
-				"description": "Specifies the R2 bucket name.",
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
+				"description": "Specifies the R2 bucket name.",
 				"required": true,
 				"schema": {
 					"description": "Specifies the R2 bucket name.",
+					"type": "string",
 					"example": "my-data-bucket",
 					"maxLength": 63,
 					"minLength": 3,
-					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"description": "Opaque pagination token from a previous response.\nUse this to fetch the next page of results.\n",
-				"example": "MSYxNzU5NzU1NTc4NTA0MTk0JjAxOTliOTliLTJjODgtNzNiMy04ZGJiLTQyMWUwZThmMjc1Nw",
-				"in": "query",
 				"name": "page_token",
+				"in": "query",
+				"description": "Opaque pagination token from a previous response.\nUse this to fetch the next page of results.\n",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "MSYxNzU5NzU1NTc4NTA0MTk0JjAxOTliOTliLTJjODgtNzNiMy04ZGJiLTQyMWUwZThmMjc1Nw"
 			},
 			{
-				"description": "Maximum number of namespaces to return per page.\nDefaults to 100, maximum 1000.\n",
-				"example": 100,
-				"in": "query",
 				"name": "page_size",
+				"in": "query",
+				"description": "Maximum number of namespaces to return per page.\nDefaults to 100, maximum 1000.\n",
 				"schema": {
+					"type": "integer",
 					"default": 100,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
-				}
+					"minimum": 1
+				},
+				"example": 100
 			},
 			{
-				"description": "Parent namespace to filter by. Only returns direct children of this namespace.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\nOmit this parameter to list top-level namespaces.\n",
-				"example": "bronze",
-				"in": "query",
 				"name": "parent",
+				"in": "query",
+				"description": "Parent namespace to filter by. Only returns direct children of this namespace.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\nOmit this parameter to list top-level namespaces.\n",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "bronze"
 			},
 			{
-				"description": "Whether to include namespace UUIDs in the response.\nSet to true to receive the namespace_uuids array.\n",
-				"example": true,
-				"in": "query",
 				"name": "return_uuids",
+				"in": "query",
+				"description": "Whether to include namespace UUIDs in the response.\nSet to true to receive the namespace_uuids array.\n",
 				"schema": {
-					"default": false,
-					"type": "boolean"
-				}
+					"type": "boolean",
+					"default": false
+				},
+				"example": true
 			},
 			{
-				"description": "Whether to include additional metadata (timestamps).\nWhen true, response includes created_at and updated_at arrays.\n",
-				"example": true,
-				"in": "query",
 				"name": "return_details",
+				"in": "query",
+				"description": "Whether to include additional metadata (timestamps).\nWhen true, response includes created_at and updated_at arrays.\n",
 				"schema": {
-					"default": false,
-					"type": "boolean"
-				}
+					"type": "boolean",
+					"default": false
+				},
+				"example": true
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of namespaces retrieved successfully.",
 				"content": {
 					"application/json": {
 						"example": {
@@ -137,9 +139,11 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Contains errors if the API call was unsuccessful.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -156,11 +160,11 @@
 													"message"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
 											"description": "Contains informational messages.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -177,113 +181,111 @@
 													"message"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
 											"description": "Indicates whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Contains the list of namespaces with optional pagination.",
+											"type": "object",
 											"properties": {
 												"details": {
 													"description": "Contains detailed metadata for each namespace when return_details is true.\nEach object includes the namespace, UUID, and timestamps.\n",
+													"type": "array",
 													"items": {
 														"description": "Contains namespace with metadata details.",
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "Indicates the creation timestamp in ISO 8601 format.",
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"namespace": {
 																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"bronze",
 																	"analytics"
 																],
-																"items": {
-																	"type": "string"
-																},
 																"maxItems": 16,
-																"minItems": 1,
-																"type": "array"
+																"minItems": 1
 															},
 															"namespace_uuid": {
 																"description": "Contains the UUID that persists across renames.",
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"updated_at": {
 																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															}
 														},
 														"required": [
 															"namespace",
 															"namespace_uuid"
-														],
-														"type": "object"
+														]
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"namespace_uuids": {
 													"description": "Contains UUIDs for each namespace when return_uuids is true.\nThe order corresponds to the namespaces array.\n",
-													"example": [
-														"0199b999-6869-7383-bb1f-d30e059d5326",
-														"0199b99b-2c88-73b3-8dbb-421e0e8f2757"
-													],
+													"type": "array",
 													"items": {
 														"format": "uuid",
 														"type": "string"
 													},
-													"nullable": true,
-													"type": "array"
+													"example": [
+														"0199b999-6869-7383-bb1f-d30e059d5326",
+														"0199b99b-2c88-73b3-8dbb-421e0e8f2757"
+													],
+													"nullable": true
 												},
 												"namespaces": {
 													"description": "Lists namespaces in the catalog.",
+													"type": "array",
 													"items": {
 														"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
 														"example": [
 															"bronze",
 															"analytics"
 														],
-														"items": {
-															"type": "string"
-														},
 														"maxItems": 16,
-														"minItems": 1,
-														"type": "array"
-													},
-													"type": "array"
+														"minItems": 1
+													}
 												},
 												"next_page_token": {
 													"description": "Use this opaque token to fetch the next page of results.\nA null or absent value indicates the last page.\n",
+													"type": "string",
 													"example": "MSYxNzU5NzU1NTc4NTA0MTk0JjAxOTliOTliLTJjODgtNzNiMy04ZGJiLTQyMWUwZThmMjc1Nw",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												}
 											},
 											"required": [
 												"namespaces"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -291,15 +293,17 @@
 							]
 						}
 					}
-				},
-				"description": "List of namespaces retrieved successfully."
+				}
 			},
 			"400": {
+				"description": "Bad request (e.g., invalid page_size, malformed parent namespace).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -311,34 +315,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad request (e.g., invalid page_size, malformed parent namespace)."
+				}
 			},
 			"401": {
+				"description": "Authentication failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -350,34 +354,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Authentication failed."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -389,34 +393,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Catalog not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -428,34 +432,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Catalog not found."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -467,27 +471,24 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -499,7 +500,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List namespaces in catalog",
 		"tags": [
 			"Namespace Management"
 		],

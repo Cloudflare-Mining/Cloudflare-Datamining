@@ -1,36 +1,40 @@
 {
 	"POST /accounts/{account_id}/mnm/vpc-flows/token": {
-		"description": "Generate authentication token for VPC flow logs export.",
 		"operationId": "magic-network-monitoring-vpc-flows-generate-authentication-token",
+		"summary": "Generate authentication token for VPC flow logs export.",
+		"description": "Generate authentication token for VPC flow logs export.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "6f91088a406011ed95aed352566e8d4c",
 					"type": "string",
+					"example": "6f91088a406011ed95aed352566e8d4c",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Generate authentication token for VPC flow logs export response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -43,15 +47,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -64,7 +68,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -82,11 +86,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -94,8 +98,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -113,15 +116,14 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Authentication token to be used for VPC Flows export authentication.",
-											"example": "JWE/JWT auth token",
 											"type": "string",
+											"example": "JWE/JWT auth token",
 											"x-sensitive": true
 										}
 									},
@@ -130,10 +132,10 @@
 							]
 						}
 					}
-				},
-				"description": "Generate authentication token for VPC flow logs export response."
+				}
 			},
 			"4XX": {
+				"description": "Generate authentication token for VPC flow logs export failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -141,16 +143,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -163,15 +167,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -184,7 +188,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -202,11 +206,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -214,8 +218,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -233,15 +236,14 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "Authentication token to be used for VPC Flows export authentication.",
-													"example": "JWE/JWT auth token",
 													"type": "string",
+													"example": "JWE/JWT auth token",
 													"x-sensitive": true
 												}
 											},
@@ -250,48 +252,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -304,25 +281,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -330,14 +333,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Generate authentication token for VPC flow logs export failure."
+				}
 			}
 		},
 		"security": [
@@ -346,7 +347,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Generate authentication token for VPC flow logs export.",
 		"tags": [
 			"Magic Network Monitoring VPC Flow logs"
 		],

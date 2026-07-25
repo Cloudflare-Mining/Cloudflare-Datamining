@@ -1,43 +1,47 @@
 {
 	"DELETE /accounts/{account_id}/dlp/entries/predefined/{entry_id}": {
-		"description": "This is a no-op as predefined entires can't be deleted but is needed for our generated terraform API.",
 		"operationId": "dlp-entries-delete-predefined-entry",
+		"summary": "Delete predefined entry",
+		"description": "This is a no-op as predefined entires can't be deleted but is needed for our generated terraform API.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "entry_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete predefined entry response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -46,12 +50,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -61,15 +65,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -78,12 +82,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -93,32 +97,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -126,66 +128,30 @@
 							]
 						}
 					}
-				},
-				"description": "Delete predefined entry response."
+				}
 			},
 			"4XX": {
+				"description": "Delete entry failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -194,12 +160,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -209,25 +175,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -235,12 +238,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete entry failure response."
+				}
 			}
 		},
 		"security": [
@@ -250,7 +251,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete predefined entry",
 		"tags": [
 			"DLP Predefined Entries"
 		],
@@ -259,12 +259,13 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries/predefined": {
-		"description": "Predefined entries can't be created, this will update an existing predefined entry.\nThis is needed for our generated terraform API.",
 		"operationId": "dlp-entries-create-predefined-entry",
+		"summary": "Create predefined entry",
+		"description": "Predefined entries can't be created, this will update an existing predefined entry.\nThis is needed for our generated terraform API.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -272,53 +273,56 @@
 			}
 		],
 		"requestBody": {
+			"description": "This endpoint will update an existing predefined entry. It is not possible to create new predefined entries.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Used to create a new predefined or integration entry.\n\nPredefined or integration entries can not be updated via the API so\nthese fields will update the entry's settings.",
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"type": "boolean"
 							},
 							"entry_id": {
-								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"format": "uuid"
 							},
 							"profile_id": {
 								"description": "This field is not used as the owning profile.\nFor predefined entries it is already set to a predefined profile.",
+								"type": "string",
 								"format": "uuid",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							}
 						},
 						"required": [
 							"enabled",
 							"entry_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "This endpoint will update an existing predefined entry. It is not possible to create new predefined entries.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create predefined entry response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -327,12 +331,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -342,15 +346,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -359,12 +363,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -374,32 +378,32 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"confidence": {
+													"type": "object",
 													"properties": {
 														"ai_context_available": {
 															"description": "Indicates whether this entry has AI remote service validation.",
@@ -413,24 +417,23 @@
 													"required": [
 														"available",
 														"ai_context_available"
-													],
-													"type": "object"
+													]
 												},
 												"enabled": {
 													"type": "boolean"
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"name": {
 													"type": "string"
 												},
 												"profile_id": {
-													"deprecated": true,
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"deprecated": true,
+													"nullable": true
 												},
 												"variant": {
 													"allOf": [
@@ -441,21 +444,21 @@
 																	"properties": {
 																		"description": {
 																			"description": "A customer-facing explanation of what this predefined AI prompt topic represents.",
-																			"nullable": true,
-																			"type": "string"
+																			"type": "string",
+																			"nullable": true
 																		},
 																		"topic_type": {
+																			"type": "string",
 																			"enum": [
 																				"Intent",
 																				"Content"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"PromptTopic"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -469,14 +472,14 @@
 																	"properties": {
 																		"description": {
 																			"description": "A customer-facing explanation of what this predefined entry represents.",
-																			"nullable": true,
-																			"type": "string"
+																			"type": "string",
+																			"nullable": true
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"General"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -494,8 +497,7 @@
 												"name",
 												"enabled",
 												"confidence"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -503,66 +505,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create predefined entry response."
+				}
 			},
 			"4XX": {
+				"description": "Create entry failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -571,12 +537,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -586,25 +552,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -612,12 +615,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create entry failure response."
+				}
 			}
 		},
 		"security": [
@@ -627,7 +628,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create predefined entry",
 		"tags": [
 			"DLP Predefined Entries"
 		],

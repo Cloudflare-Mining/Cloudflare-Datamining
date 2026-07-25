@@ -1,38 +1,42 @@
 {
 	"GET /zones/{zone_id}/analytics/latency/colos": {
-		"description": "Retrieves Argo Smart Routing analytics broken down by geographic points of presence (PoPs). Shows latency improvements and routing efficiency per location.",
 		"operationId": "argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-different-po-ps",
+		"summary": "Argo Analytics for a zone at different PoPs",
+		"description": "Retrieves Argo Smart Routing analytics broken down by geographic points of presence (PoPs). Shows latency improvements and routing efficiency per location.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Argo Analytics for a zone at different PoPs response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -45,15 +49,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -66,7 +70,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -84,11 +88,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -96,8 +100,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -115,8 +118,7 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -129,10 +131,10 @@
 							]
 						}
 					}
-				},
-				"description": "Argo Analytics for a zone at different PoPs response"
+				}
 			},
 			"4XX": {
+				"description": "Argo Analytics for a zone at different PoPs response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -140,16 +142,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -162,15 +166,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -183,7 +187,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -201,11 +205,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -213,8 +217,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -232,8 +235,7 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -246,48 +248,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -300,25 +277,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -326,14 +329,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Argo Analytics for a zone at different PoPs response failure"
+				}
 			}
 		},
 		"security": [
@@ -345,7 +346,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Argo Analytics for a zone at different PoPs",
 		"tags": [
 			"Argo Analytics for Geolocation"
 		],

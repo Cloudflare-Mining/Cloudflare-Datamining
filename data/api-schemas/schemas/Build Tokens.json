@@ -1,7 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/tokens/{build_token_uuid}": {
-		"description": "Remove a build authentication token",
 		"operationId": "deleteBuildToken",
+		"summary": "Delete build token",
+		"description": "Remove a build authentication token",
 		"parameters": [
 			{
 				"in": "path",
@@ -9,23 +10,24 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
-				"in": "path",
 				"name": "build_token_uuid",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Build token UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Operation successful",
 				"content": {
 					"application/json": {
 						"example": {
@@ -35,61 +37,62 @@
 							"success": true
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
-											"example": 25,
-											"type": "integer"
+											"type": "integer",
+											"example": 25
 										},
 										"page": {
-											"example": 1,
-											"type": "integer"
+											"type": "integer",
+											"example": 1
 										},
 										"per_page": {
-											"example": 50,
-											"type": "integer"
+											"type": "integer",
+											"example": 50
 										},
 										"total_count": {
-											"example": 150,
-											"type": "integer"
+											"type": "integer",
+											"example": 150
 										},
 										"total_pages": {
-											"example": 3,
-											"type": "integer"
+											"type": "integer",
+											"example": 3
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -97,14 +100,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Operation successful"
+				}
 			},
 			"404": {
+				"description": "Resource not found",
 				"content": {
 					"application/json": {
 						"example": {
@@ -119,39 +121,40 @@
 							"success": false
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -159,12 +162,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found"
+				}
 			}
 		},
 		"security": [
@@ -176,7 +177,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete build token",
 		"tags": [
 			"Build Tokens"
 		],
@@ -189,8 +189,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/tokens": {
-		"description": "Get all build tokens with pagination",
 		"operationId": "listBuildTokens",
+		"summary": "List build tokens",
+		"description": "Get all build tokens with pagination",
 		"parameters": [
 			{
 				"in": "path",
@@ -198,8 +199,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -207,9 +208,9 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -217,75 +218,77 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 50,
 					"maximum": 200,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Build tokens retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -293,60 +296,59 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"build_token_name": {
-														"example": "My Build Token",
-														"type": "string"
+														"type": "string",
+														"example": "My Build Token"
 													},
 													"build_token_uuid": {
 														"description": "Build token UUID.",
-														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"format": "uuid"
 													},
 													"cloudflare_token_id": {
-														"example": "cf-token-123",
-														"type": "string"
+														"type": "string",
+														"example": "cf-token-123"
 													},
 													"owner_type": {
-														"example": "user",
-														"type": "string"
+														"type": "string",
+														"example": "user"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -354,8 +356,7 @@
 							]
 						}
 					}
-				},
-				"description": "Build tokens retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -367,7 +368,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List build tokens",
 		"tags": [
 			"Build Tokens"
 		],
@@ -381,8 +381,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/builds/tokens": {
-		"description": "Create a new build authentication token",
 		"operationId": "createBuildToken",
+		"summary": "Create build token",
+		"description": "Create a new build authentication token",
 		"parameters": [
 			{
 				"in": "path",
@@ -390,102 +391,104 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"build_token_name": {
-								"example": "My Build Token",
-								"type": "string"
+								"type": "string",
+								"example": "My Build Token"
 							},
 							"build_token_secret": {
-								"example": "super-secret-token",
-								"type": "string"
+								"type": "string",
+								"example": "super-secret-token"
 							},
 							"cloudflare_token_id": {
-								"example": "cf-token-123",
-								"type": "string"
+								"type": "string",
+								"example": "cf-token-123"
 							}
 						},
 						"required": [
 							"build_token_name",
 							"build_token_secret",
 							"cloudflare_token_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Build token created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -493,32 +496,31 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"build_token_name": {
-													"example": "My Build Token",
-													"type": "string"
+													"type": "string",
+													"example": "My Build Token"
 												},
 												"build_token_uuid": {
 													"description": "Build token UUID.",
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"cloudflare_token_id": {
-													"example": "cf-token-123",
-													"type": "string"
+													"type": "string",
+													"example": "cf-token-123"
 												},
 												"owner_type": {
-													"example": "user",
-													"type": "string"
+													"type": "string",
+													"example": "user"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -526,8 +528,7 @@
 							]
 						}
 					}
-				},
-				"description": "Build token created successfully"
+				}
 			}
 		},
 		"security": [
@@ -539,7 +540,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create build token",
 		"tags": [
 			"Build Tokens"
 		],

@@ -1,22 +1,26 @@
 {
 	"DELETE /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
-		"description": "Removes a target environment.",
 		"operationId": "delete-target-environment",
+		"summary": "Delete Target Environment",
+		"description": "Removes a target environment.",
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "Standard response envelope with a `null` result. Operations\nthat produce no result body return this response.\n",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -25,12 +29,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -40,15 +44,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -57,12 +61,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -72,101 +76,63 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"description": "Standard response envelope with a `null` result. Operations\nthat produce no result body return this response.\n"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -175,12 +141,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -190,25 +156,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -216,12 +219,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -233,23 +234,23 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Target Environment",
 		"tags": [
 			"Target Environments"
 		]
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments": {
-		"description": "Returns all target environments for the account.",
 		"operationId": "list-target-environments",
+		"summary": "List Target Environments",
+		"description": "Returns all target environments for the account.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -257,30 +258,33 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "integer"
+					"minimum": 5
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -289,12 +293,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -304,15 +308,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -321,12 +325,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -336,83 +340,83 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"description": {
 														"description": "Optional description providing additional context.",
+														"type": "string",
 														"example": "Main production environment",
-														"nullable": true,
-														"type": "string"
+														"nullable": true
 													},
 													"id": {
 														"description": "Target environment identifier.",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
 														"x-auditable": true
 													},
 													"name": {
 														"description": "Human-readable name.",
-														"example": "Production Zone",
 														"type": "string",
+														"example": "Production Zone",
 														"x-auditable": true
 													},
 													"target": {
@@ -425,25 +429,25 @@
 														},
 														"oneOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"zone"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"zone_tag": {
 																		"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+																		"type": "string",
 																		"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-																		"maxLength": 32,
-																		"type": "string"
+																		"maxLength": 32
 																	}
 																},
 																"required": [
 																	"type",
 																	"zone_tag"
-																],
-																"type": "object"
+																]
 															}
 														],
 														"x-auditable": true
@@ -453,10 +457,8 @@
 													"id",
 													"name",
 													"target"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -464,66 +466,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -532,12 +498,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -547,25 +513,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -573,12 +576,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -590,29 +591,31 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Target Environments",
 		"tags": [
 			"Target Environments"
 		]
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
-		"description": "Returns a single target environment by ID.",
 		"operationId": "get-target-environment",
+		"summary": "Get Target Environment",
+		"description": "Returns a single target environment by ID.",
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -621,12 +624,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -636,15 +639,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -653,12 +656,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -668,44 +671,44 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "Optional description providing additional context.",
+													"type": "string",
 													"example": "Main production environment",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"id": {
 													"description": "Target environment identifier.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Human-readable name.",
-													"example": "Production Zone",
 													"type": "string",
+													"example": "Production Zone",
 													"x-auditable": true
 												},
 												"target": {
@@ -718,25 +721,25 @@
 													},
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"type": {
+																	"type": "string",
 																	"enum": [
 																		"zone"
-																	],
-																	"type": "string"
+																	]
 																},
 																"zone_tag": {
 																	"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+																	"type": "string",
 																	"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-																	"maxLength": 32,
-																	"type": "string"
+																	"maxLength": 32
 																}
 															},
 															"required": [
 																"type",
 																"zone_tag"
-															],
-															"type": "object"
+															]
 														}
 													],
 													"x-auditable": true
@@ -746,12 +749,11 @@
 												"id",
 												"name",
 												"target"
-											],
-											"type": "object"
+											]
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -759,66 +761,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -827,12 +793,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -842,25 +808,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -868,12 +871,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -885,30 +886,32 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Target Environment",
 		"tags": [
 			"Target Environments"
 		]
 	},
 	"PATCH /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
-		"description": "Updates a target environment with only the provided fields; omitted fields remain unchanged.",
 		"operationId": "edit-target-environment",
+		"summary": "Edit Target Environment",
+		"description": "Updates a target environment with only the provided fields; omitted fields remain unchanged.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Applies a partial update. Only the provided fields change; omitted fields remain unchanged.\n\nThe `description` field supports three states:\n- **omitted**: leave unchanged\n- **`null`**: clear the description\n- **`\"value\"`**: set to the given string\n",
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Optional description. Omit to leave unchanged, set to `null`\nto clear, or provide a string to update.\n",
+								"type": "string",
 								"example": "Main production environment",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"name": {
 								"description": "Human-readable name.",
-								"example": "Production Zone",
-								"type": "string"
+								"type": "string",
+								"example": "Production Zone"
 							},
 							"target": {
 								"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
@@ -920,51 +923,51 @@
 								},
 								"oneOf": [
 									{
+										"type": "object",
 										"properties": {
 											"type": {
+												"type": "string",
 												"enum": [
 													"zone"
-												],
-												"type": "string"
+												]
 											},
 											"zone_tag": {
 												"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+												"type": "string",
 												"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-												"maxLength": 32,
-												"type": "string"
+												"maxLength": 32
 											}
 										},
 										"required": [
 											"type",
 											"zone_tag"
-										],
-										"type": "object"
+										]
 									}
 								],
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -973,12 +976,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -988,15 +991,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1005,12 +1008,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1020,44 +1023,44 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "Optional description providing additional context.",
+													"type": "string",
 													"example": "Main production environment",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"id": {
 													"description": "Target environment identifier.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Human-readable name.",
-													"example": "Production Zone",
 													"type": "string",
+													"example": "Production Zone",
 													"x-auditable": true
 												},
 												"target": {
@@ -1070,25 +1073,25 @@
 													},
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"type": {
+																	"type": "string",
 																	"enum": [
 																		"zone"
-																	],
-																	"type": "string"
+																	]
 																},
 																"zone_tag": {
 																	"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+																	"type": "string",
 																	"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-																	"maxLength": 32,
-																	"type": "string"
+																	"maxLength": 32
 																}
 															},
 															"required": [
 																"type",
 																"zone_tag"
-															],
-															"type": "object"
+															]
 														}
 													],
 													"x-auditable": true
@@ -1098,12 +1101,11 @@
 												"id",
 												"name",
 												"target"
-											],
-											"type": "object"
+											]
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -1111,66 +1113,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1179,12 +1145,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1194,25 +1160,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1220,12 +1223,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -1237,29 +1238,31 @@
 				"api_key": []
 			}
 		],
-		"summary": "Edit Target Environment",
 		"tags": [
 			"Target Environments"
 		]
 	},
 	"POST /accounts/{account_id}/vuln_scanner/target_environments": {
-		"description": "Creates a new target environment for the account.",
 		"operationId": "create-target-environment",
+		"summary": "Create Target Environment",
+		"description": "Creates a new target environment for the account.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Optional description.",
+								"type": "string",
 								"example": "Main production environment",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"name": {
 								"description": "Human-readable name.",
-								"example": "Production Zone",
-								"type": "string"
+								"type": "string",
+								"example": "Production Zone"
 							},
 							"target": {
 								"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
@@ -1271,25 +1274,25 @@
 								},
 								"oneOf": [
 									{
+										"type": "object",
 										"properties": {
 											"type": {
+												"type": "string",
 												"enum": [
 													"zone"
-												],
-												"type": "string"
+												]
 											},
 											"zone_tag": {
 												"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+												"type": "string",
 												"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-												"maxLength": 32,
-												"type": "string"
+												"maxLength": 32
 											}
 										},
 										"required": [
 											"type",
 											"zone_tag"
-										],
-										"type": "object"
+										]
 									}
 								],
 								"x-auditable": true
@@ -1298,28 +1301,28 @@
 						"required": [
 							"name",
 							"target"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1328,12 +1331,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1343,15 +1346,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1360,12 +1363,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1375,44 +1378,44 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "Optional description providing additional context.",
+													"type": "string",
 													"example": "Main production environment",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"id": {
 													"description": "Target environment identifier.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Human-readable name.",
-													"example": "Production Zone",
 													"type": "string",
+													"example": "Production Zone",
 													"x-auditable": true
 												},
 												"target": {
@@ -1425,25 +1428,25 @@
 													},
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"type": {
+																	"type": "string",
 																	"enum": [
 																		"zone"
-																	],
-																	"type": "string"
+																	]
 																},
 																"zone_tag": {
 																	"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+																	"type": "string",
 																	"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-																	"maxLength": 32,
-																	"type": "string"
+																	"maxLength": 32
 																}
 															},
 															"required": [
 																"type",
 																"zone_tag"
-															],
-															"type": "object"
+															]
 														}
 													],
 													"x-auditable": true
@@ -1453,12 +1456,11 @@
 												"id",
 												"name",
 												"target"
-											],
-											"type": "object"
+											]
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -1466,66 +1468,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1534,12 +1500,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1549,25 +1515,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1575,12 +1578,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -1592,30 +1593,32 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Target Environment",
 		"tags": [
 			"Target Environments"
 		]
 	},
 	"PUT /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
-		"description": "Replaces a target environment. All fields must be provided.",
 		"operationId": "update-target-environment",
+		"summary": "Update Target Environment",
+		"description": "Replaces a target environment. All fields must be provided.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Full replacement.",
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Optional description.",
+								"type": "string",
 								"example": "Main production environment",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"name": {
 								"description": "Human-readable name.",
-								"example": "Production Zone",
-								"type": "string"
+								"type": "string",
+								"example": "Production Zone"
 							},
 							"target": {
 								"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
@@ -1627,25 +1630,25 @@
 								},
 								"oneOf": [
 									{
+										"type": "object",
 										"properties": {
 											"type": {
+												"type": "string",
 												"enum": [
 													"zone"
-												],
-												"type": "string"
+												]
 											},
 											"zone_tag": {
 												"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+												"type": "string",
 												"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-												"maxLength": 32,
-												"type": "string"
+												"maxLength": 32
 											}
 										},
 										"required": [
 											"type",
 											"zone_tag"
-										],
-										"type": "object"
+										]
 									}
 								],
 								"x-auditable": true
@@ -1654,28 +1657,28 @@
 						"required": [
 							"name",
 							"target"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1684,12 +1687,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1699,15 +1702,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1716,12 +1719,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1731,44 +1734,44 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "Optional description providing additional context.",
+													"type": "string",
 													"example": "Main production environment",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"id": {
 													"description": "Target environment identifier.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Human-readable name.",
-													"example": "Production Zone",
 													"type": "string",
+													"example": "Production Zone",
 													"x-auditable": true
 												},
 												"target": {
@@ -1781,25 +1784,25 @@
 													},
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"type": {
+																	"type": "string",
 																	"enum": [
 																		"zone"
-																	],
-																	"type": "string"
+																	]
 																},
 																"zone_tag": {
 																	"description": "Cloudflare zone tag. The zone must belong to the account.\n",
+																	"type": "string",
 																	"example": "d8e8fca2dc0f896fd7cb4cb0031ba249",
-																	"maxLength": 32,
-																	"type": "string"
+																	"maxLength": 32
 																}
 															},
 															"required": [
 																"type",
 																"zone_tag"
-															],
-															"type": "object"
+															]
 														}
 													],
 													"x-auditable": true
@@ -1809,12 +1812,11 @@
 												"id",
 												"name",
 												"target"
-											],
-											"type": "object"
+											]
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -1822,66 +1824,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1890,12 +1856,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1905,25 +1871,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1931,12 +1934,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -1948,7 +1949,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Target Environment",
 		"tags": [
 			"Target Environments"
 		]

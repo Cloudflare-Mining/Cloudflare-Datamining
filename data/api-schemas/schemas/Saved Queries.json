@@ -1,11 +1,12 @@
 {
 	"DELETE /accounts/{account_id}/workers/observability/queries/{queryId}": {
-		"description": "Delete a saved query.",
 		"operationId": "queries.delete",
+		"summary": "Delete query",
+		"description": "Delete a saved query.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "queryId",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -14,11 +15,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -29,27 +33,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"adhoc": {
 											"description": "If the query wasn't explcitly saved",
@@ -62,24 +66,25 @@
 											"type": "string"
 										},
 										"description": {
+											"type": "string",
 											"example": "Query description",
 											"maxLength": 1000,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"id": {
 											"type": "string"
 										},
 										"name": {
 											"description": "Query name",
+											"type": "string",
 											"maxLength": 250,
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										},
 										"parameters": {
 											"properties": {
 												"calculations": {
 													"description": "Create Calculations to compute as part of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"alias": {
@@ -89,14 +94,15 @@
 																"type": "string"
 															},
 															"keyType": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"operator": {
+																"type": "string",
 																"enum": [
 																	"uniq",
 																	"count",
@@ -136,60 +142,61 @@
 																	"P999",
 																	"STDDEV",
 																	"VARIANCE"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"operator"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"datasets": {
 													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-													"example": [],
+													"type": "array",
 													"items": {
 														"type": "string"
 													},
-													"type": "array"
+													"example": []
 												},
 												"filterCombination": {
 													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"type": "string",
 													"enum": [
 														"and",
 														"or",
 														"AND",
 														"OR"
-													],
-													"type": "string"
+													]
 												},
 												"filters": {
 													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"type": "array",
 													"items": {
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object",
 														"anyOf": [
 															{
 																"properties": {
 																	"filterCombination": {
+																		"type": "string",
 																		"enum": [
 																			"and",
 																			"or",
 																			"AND",
 																			"OR"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"filters": {
+																		"type": "array",
 																		"items": "[Circular ~.DELETE /accounts/{account_id}/workers/observability/queries/{queryId}.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
-																		"minItems": 1,
-																		"type": "array"
+																		"minItems": 1
 																	},
 																	"kind": {
+																		"type": "string",
 																		"enum": [
 																			"group"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
@@ -201,6 +208,7 @@
 															},
 															{
 																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -208,13 +216,14 @@
 																	},
 																	"kind": {
 																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"operation": {
 																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																		"type": "string",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -246,19 +255,19 @@
 																			"NOT_IN",
 																			"STARTS_WITH",
 																			"ENDS_WITH"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"type": {
 																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																		"type": "string",
 																		"enum": [
 																			"string",
 																			"number",
 																			"boolean"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"value": {
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																		"anyOf": [
 																			{
 																				"type": "string"
@@ -269,34 +278,30 @@
 																			{
 																				"type": "boolean"
 																			}
-																		],
-																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																		]
 																	}
 																},
 																"required": [
 																	"key",
 																	"operation",
 																	"type"
-																],
-																"type": "object"
+																]
 															}
-														],
-														"description": "Supports nested groups via kind: 'group'.",
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"groupBys": {
 													"description": "Define how to group the results of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"type": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "string"
@@ -307,17 +312,18 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"havings": {
 													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
 																"type": "string"
 															},
 															"operation": {
+																"type": "string",
 																"enum": [
 																	"eq",
 																	"neq",
@@ -325,8 +331,7 @@
 																	"gte",
 																	"lt",
 																	"lte"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "number"
@@ -338,17 +343,17 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"limit": {
 													"description": "Set a limit on the number of results / records returned by the query",
+													"type": "integer",
 													"maximum": 100,
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"needle": {
 													"description": "Define an expression to search using full-text search.",
+													"type": "object",
 													"properties": {
 														"isRegex": {
 															"type": "boolean"
@@ -380,19 +385,19 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												},
 												"orderBy": {
 													"description": "Configure the order of the results returned by the query.",
+													"type": "object",
 													"properties": {
 														"order": {
 															"description": "Set the order of the results",
+															"type": "string",
 															"enum": [
 																"asc",
 																"desc"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"description": "Configure which Calculation to order the results by.",
@@ -401,8 +406,7 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -424,14 +428,13 @@
 										"createdBy",
 										"updated",
 										"updatedBy"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -439,39 +442,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -482,53 +486,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"404": {
+				"description": "Not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Not found"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -539,53 +543,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -596,29 +600,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "Delete query",
 		"tags": [
 			"Saved Queries"
 		],
@@ -631,60 +631,64 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/observability/queries": {
-		"description": "List saved queries.",
 		"operationId": "queries.list",
+		"summary": "List queries",
+		"description": "List saved queries.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "number",
 					"default": 1,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "perPage",
+				"in": "query",
 				"schema": {
+					"type": "number",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "number"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "orderBy",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"default": "updated",
 					"enum": [
 						"created",
 						"updated"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -695,28 +699,29 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"adhoc": {
 												"description": "If the query wasn't explcitly saved",
@@ -729,24 +734,25 @@
 												"type": "string"
 											},
 											"description": {
+												"type": "string",
 												"example": "Query description",
 												"maxLength": 1000,
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"id": {
 												"type": "string"
 											},
 											"name": {
 												"description": "Query name",
+												"type": "string",
 												"maxLength": 250,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"parameters": {
 												"properties": {
 													"calculations": {
 														"description": "Create Calculations to compute as part of the query.",
+														"type": "array",
 														"items": {
 															"properties": {
 																"alias": {
@@ -756,14 +762,15 @@
 																	"type": "string"
 																},
 																"keyType": {
+																	"type": "string",
 																	"enum": [
 																		"string",
 																		"number",
 																		"boolean"
-																	],
-																	"type": "string"
+																	]
 																},
 																"operator": {
+																	"type": "string",
 																	"enum": [
 																		"uniq",
 																		"count",
@@ -803,60 +810,61 @@
 																		"P999",
 																		"STDDEV",
 																		"VARIANCE"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
 																"operator"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"datasets": {
 														"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-														"example": [],
+														"type": "array",
 														"items": {
 															"type": "string"
 														},
-														"type": "array"
+														"example": []
 													},
 													"filterCombination": {
 														"description": "Set a Flag to describe how to combine the filters on the query.",
+														"type": "string",
 														"enum": [
 															"and",
 															"or",
 															"AND",
 															"OR"
-														],
-														"type": "string"
+														]
 													},
 													"filters": {
 														"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+														"type": "array",
 														"items": {
+															"description": "Supports nested groups via kind: 'group'.",
+															"type": "object",
 															"anyOf": [
 																{
 																	"properties": {
 																		"filterCombination": {
+																			"type": "string",
 																			"enum": [
 																				"and",
 																				"or",
 																				"AND",
 																				"OR"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"filters": {
+																			"type": "array",
 																			"items": "[Circular ~.GET /accounts/{account_id}/workers/observability/queries.responses.200.content.application/json.schema.properties.result.items.properties.parameters.properties.filters.items]",
-																			"minItems": 1,
-																			"type": "array"
+																			"minItems": 1
 																		},
 																		"kind": {
+																			"type": "string",
 																			"enum": [
 																				"group"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -868,6 +876,7 @@
 																},
 																{
 																	"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																	"type": "object",
 																	"properties": {
 																		"key": {
 																			"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -875,13 +884,14 @@
 																		},
 																		"kind": {
 																			"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																			"type": "string",
 																			"enum": [
 																				"filter"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"operation": {
 																			"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																			"type": "string",
 																			"enum": [
 																				"includes",
 																				"not_includes",
@@ -913,19 +923,19 @@
 																				"NOT_IN",
 																				"STARTS_WITH",
 																				"ENDS_WITH"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"type": {
 																			"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																			"type": "string",
 																			"enum": [
 																				"string",
 																				"number",
 																				"boolean"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"value": {
+																			"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																			"anyOf": [
 																				{
 																					"type": "string"
@@ -936,34 +946,30 @@
 																				{
 																					"type": "boolean"
 																				}
-																			],
-																			"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																			]
 																		}
 																	},
 																	"required": [
 																		"key",
 																		"operation",
 																		"type"
-																	],
-																	"type": "object"
+																	]
 																}
-															],
-															"description": "Supports nested groups via kind: 'group'.",
-															"type": "object"
-														},
-														"type": "array"
+															]
+														}
 													},
 													"groupBys": {
 														"description": "Define how to group the results of the query.",
+														"type": "array",
 														"items": {
 															"properties": {
 																"type": {
+																	"type": "string",
 																	"enum": [
 																		"string",
 																		"number",
 																		"boolean"
-																	],
-																	"type": "string"
+																	]
 																},
 																"value": {
 																	"type": "string"
@@ -974,17 +980,18 @@
 																"value"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"havings": {
 														"description": "Configure the Having clauses that filter on calculations in the query result.",
+														"type": "array",
 														"items": {
 															"properties": {
 																"key": {
 																	"type": "string"
 																},
 																"operation": {
+																	"type": "string",
 																	"enum": [
 																		"eq",
 																		"neq",
@@ -992,8 +999,7 @@
 																		"gte",
 																		"lt",
 																		"lte"
-																	],
-																	"type": "string"
+																	]
 																},
 																"value": {
 																	"type": "number"
@@ -1005,17 +1011,17 @@
 																"value"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"limit": {
 														"description": "Set a limit on the number of results / records returned by the query",
+														"type": "integer",
 														"maximum": 100,
-														"minimum": 0,
-														"type": "integer"
+														"minimum": 0
 													},
 													"needle": {
 														"description": "Define an expression to search using full-text search.",
+														"type": "object",
 														"properties": {
 															"isRegex": {
 																"type": "boolean"
@@ -1047,19 +1053,19 @@
 														},
 														"required": [
 															"value"
-														],
-														"type": "object"
+														]
 													},
 													"orderBy": {
 														"description": "Configure the order of the results returned by the query.",
+														"type": "object",
 														"properties": {
 															"order": {
 																"description": "Set the order of the results",
+																"type": "string",
 																"enum": [
 																	"asc",
 																	"desc"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"description": "Configure which Calculation to order the results by.",
@@ -1068,8 +1074,7 @@
 														},
 														"required": [
 															"value"
-														],
-														"type": "object"
+														]
 													}
 												},
 												"type": "object"
@@ -1091,16 +1096,14 @@
 											"createdBy",
 											"updated",
 											"updatedBy"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1108,39 +1111,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1151,53 +1155,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"404": {
+				"description": "Not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Not found"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1208,53 +1212,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1265,29 +1269,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "List queries",
 		"tags": [
 			"Saved Queries"
 		],
@@ -1301,12 +1301,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/observability/queries/{queryId}": {
-		"description": "Retrieve a saved query.",
 		"operationId": "queries.get",
+		"summary": "Get query",
+		"description": "Retrieve a saved query.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "queryId",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1315,11 +1316,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1330,27 +1334,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"adhoc": {
 											"description": "If the query wasn't explcitly saved",
@@ -1363,24 +1367,25 @@
 											"type": "string"
 										},
 										"description": {
+											"type": "string",
 											"example": "Query description",
 											"maxLength": 1000,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"id": {
 											"type": "string"
 										},
 										"name": {
 											"description": "Query name",
+											"type": "string",
 											"maxLength": 250,
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										},
 										"parameters": {
 											"properties": {
 												"calculations": {
 													"description": "Create Calculations to compute as part of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"alias": {
@@ -1390,14 +1395,15 @@
 																"type": "string"
 															},
 															"keyType": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"operator": {
+																"type": "string",
 																"enum": [
 																	"uniq",
 																	"count",
@@ -1437,60 +1443,61 @@
 																	"P999",
 																	"STDDEV",
 																	"VARIANCE"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"operator"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"datasets": {
 													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-													"example": [],
+													"type": "array",
 													"items": {
 														"type": "string"
 													},
-													"type": "array"
+													"example": []
 												},
 												"filterCombination": {
 													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"type": "string",
 													"enum": [
 														"and",
 														"or",
 														"AND",
 														"OR"
-													],
-													"type": "string"
+													]
 												},
 												"filters": {
 													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"type": "array",
 													"items": {
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object",
 														"anyOf": [
 															{
 																"properties": {
 																	"filterCombination": {
+																		"type": "string",
 																		"enum": [
 																			"and",
 																			"or",
 																			"AND",
 																			"OR"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"filters": {
+																		"type": "array",
 																		"items": "[Circular ~.GET /accounts/{account_id}/workers/observability/queries/{queryId}.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
-																		"minItems": 1,
-																		"type": "array"
+																		"minItems": 1
 																	},
 																	"kind": {
+																		"type": "string",
 																		"enum": [
 																			"group"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
@@ -1502,6 +1509,7 @@
 															},
 															{
 																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -1509,13 +1517,14 @@
 																	},
 																	"kind": {
 																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"operation": {
 																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																		"type": "string",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -1547,19 +1556,19 @@
 																			"NOT_IN",
 																			"STARTS_WITH",
 																			"ENDS_WITH"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"type": {
 																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																		"type": "string",
 																		"enum": [
 																			"string",
 																			"number",
 																			"boolean"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"value": {
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																		"anyOf": [
 																			{
 																				"type": "string"
@@ -1570,34 +1579,30 @@
 																			{
 																				"type": "boolean"
 																			}
-																		],
-																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																		]
 																	}
 																},
 																"required": [
 																	"key",
 																	"operation",
 																	"type"
-																],
-																"type": "object"
+																]
 															}
-														],
-														"description": "Supports nested groups via kind: 'group'.",
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"groupBys": {
 													"description": "Define how to group the results of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"type": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "string"
@@ -1608,17 +1613,18 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"havings": {
 													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
 																"type": "string"
 															},
 															"operation": {
+																"type": "string",
 																"enum": [
 																	"eq",
 																	"neq",
@@ -1626,8 +1632,7 @@
 																	"gte",
 																	"lt",
 																	"lte"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "number"
@@ -1639,17 +1644,17 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"limit": {
 													"description": "Set a limit on the number of results / records returned by the query",
+													"type": "integer",
 													"maximum": 100,
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"needle": {
 													"description": "Define an expression to search using full-text search.",
+													"type": "object",
 													"properties": {
 														"isRegex": {
 															"type": "boolean"
@@ -1681,19 +1686,19 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												},
 												"orderBy": {
 													"description": "Configure the order of the results returned by the query.",
+													"type": "object",
 													"properties": {
 														"order": {
 															"description": "Set the order of the results",
+															"type": "string",
 															"enum": [
 																"asc",
 																"desc"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"description": "Configure which Calculation to order the results by.",
@@ -1702,8 +1707,7 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -1725,14 +1729,13 @@
 										"createdBy",
 										"updated",
 										"updatedBy"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1740,39 +1743,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1783,53 +1787,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"404": {
+				"description": "Not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Not found"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1840,53 +1844,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1897,29 +1901,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "Get query",
 		"tags": [
 			"Saved Queries"
 		],
@@ -1933,12 +1933,13 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/observability/queries/{queryId}": {
-		"description": "Update saved query.",
 		"operationId": "queries.patch",
+		"summary": "Update query",
+		"description": "Update saved query.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "queryId",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1946,26 +1947,30 @@
 			}
 		],
 		"requestBody": {
+			"description": "Specify the new contents of the query.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
+								"type": "string",
 								"example": "Query description",
 								"maxLength": 1000,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"name": {
 								"description": "Query name",
+								"type": "string",
 								"maxLength": 250,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"parameters": {
 								"properties": {
 									"calculations": {
 										"description": "Create Calculations to compute as part of the query.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"alias": {
@@ -1975,14 +1980,15 @@
 													"type": "string"
 												},
 												"keyType": {
+													"type": "string",
 													"enum": [
 														"string",
 														"number",
 														"boolean"
-													],
-													"type": "string"
+													]
 												},
 												"operator": {
+													"type": "string",
 													"enum": [
 														"uniq",
 														"count",
@@ -2022,60 +2028,61 @@
 														"P999",
 														"STDDEV",
 														"VARIANCE"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
 												"operator"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"datasets": {
 										"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-										"example": [],
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"example": []
 									},
 									"filterCombination": {
 										"description": "Set a Flag to describe how to combine the filters on the query.",
+										"type": "string",
 										"enum": [
 											"and",
 											"or",
 											"AND",
 											"OR"
-										],
-										"type": "string"
+										]
 									},
 									"filters": {
 										"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+										"type": "array",
 										"items": {
+											"description": "Supports nested groups via kind: 'group'.",
+											"type": "object",
 											"anyOf": [
 												{
 													"properties": {
 														"filterCombination": {
+															"type": "string",
 															"enum": [
 																"and",
 																"or",
 																"AND",
 																"OR"
-															],
-															"type": "string"
+															]
 														},
 														"filters": {
+															"type": "array",
 															"items": "[Circular ~.PATCH /accounts/{account_id}/workers/observability/queries/{queryId}.requestBody.content.application/json.schema.properties.parameters.properties.filters.items]",
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"kind": {
+															"type": "string",
 															"enum": [
 																"group"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -2087,6 +2094,7 @@
 												},
 												{
 													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -2094,13 +2102,14 @@
 														},
 														"kind": {
 															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"operation": {
 															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"type": "string",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -2132,19 +2141,19 @@
 																"NOT_IN",
 																"STARTS_WITH",
 																"ENDS_WITH"
-															],
-															"type": "string"
+															]
 														},
 														"type": {
 															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+															"type": "string",
 															"enum": [
 																"string",
 																"number",
 																"boolean"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 															"anyOf": [
 																{
 																	"type": "string"
@@ -2155,34 +2164,30 @@
 																{
 																	"type": "boolean"
 																}
-															],
-															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+															]
 														}
 													},
 													"required": [
 														"key",
 														"operation",
 														"type"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"description": "Supports nested groups via kind: 'group'.",
-											"type": "object"
-										},
-										"type": "array"
+											]
+										}
 									},
 									"groupBys": {
 										"description": "Define how to group the results of the query.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"type": {
+													"type": "string",
 													"enum": [
 														"string",
 														"number",
 														"boolean"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "string"
@@ -2193,17 +2198,18 @@
 												"value"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"havings": {
 										"description": "Configure the Having clauses that filter on calculations in the query result.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"key": {
 													"type": "string"
 												},
 												"operation": {
+													"type": "string",
 													"enum": [
 														"eq",
 														"neq",
@@ -2211,8 +2217,7 @@
 														"gte",
 														"lt",
 														"lte"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "number"
@@ -2224,17 +2229,17 @@
 												"value"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"limit": {
 										"description": "Set a limit on the number of results / records returned by the query",
+										"type": "integer",
 										"maximum": 100,
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"needle": {
 										"description": "Define an expression to search using full-text search.",
+										"type": "object",
 										"properties": {
 											"isRegex": {
 												"type": "boolean"
@@ -2266,19 +2271,19 @@
 										},
 										"required": [
 											"value"
-										],
-										"type": "object"
+										]
 									},
 									"orderBy": {
 										"description": "Configure the order of the results returned by the query.",
+										"type": "object",
 										"properties": {
 											"order": {
 												"description": "Set the order of the results",
+												"type": "string",
 												"enum": [
 													"asc",
 													"desc"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"description": "Configure which Calculation to order the results by.",
@@ -2287,8 +2292,7 @@
 										},
 										"required": [
 											"value"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"type": "object"
@@ -2298,21 +2302,21 @@
 							"description",
 							"name",
 							"parameters"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Specify the new contents of the query.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2323,27 +2327,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"adhoc": {
 											"description": "If the query wasn't explcitly saved",
@@ -2356,24 +2360,25 @@
 											"type": "string"
 										},
 										"description": {
+											"type": "string",
 											"example": "Query description",
 											"maxLength": 1000,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"id": {
 											"type": "string"
 										},
 										"name": {
 											"description": "Query name",
+											"type": "string",
 											"maxLength": 250,
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										},
 										"parameters": {
 											"properties": {
 												"calculations": {
 													"description": "Create Calculations to compute as part of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"alias": {
@@ -2383,14 +2388,15 @@
 																"type": "string"
 															},
 															"keyType": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"operator": {
+																"type": "string",
 																"enum": [
 																	"uniq",
 																	"count",
@@ -2430,60 +2436,61 @@
 																	"P999",
 																	"STDDEV",
 																	"VARIANCE"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"operator"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"datasets": {
 													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-													"example": [],
+													"type": "array",
 													"items": {
 														"type": "string"
 													},
-													"type": "array"
+													"example": []
 												},
 												"filterCombination": {
 													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"type": "string",
 													"enum": [
 														"and",
 														"or",
 														"AND",
 														"OR"
-													],
-													"type": "string"
+													]
 												},
 												"filters": {
 													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"type": "array",
 													"items": {
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object",
 														"anyOf": [
 															{
 																"properties": {
 																	"filterCombination": {
+																		"type": "string",
 																		"enum": [
 																			"and",
 																			"or",
 																			"AND",
 																			"OR"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"filters": {
+																		"type": "array",
 																		"items": "[Circular ~.PATCH /accounts/{account_id}/workers/observability/queries/{queryId}.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
-																		"minItems": 1,
-																		"type": "array"
+																		"minItems": 1
 																	},
 																	"kind": {
+																		"type": "string",
 																		"enum": [
 																			"group"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
@@ -2495,6 +2502,7 @@
 															},
 															{
 																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -2502,13 +2510,14 @@
 																	},
 																	"kind": {
 																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"operation": {
 																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																		"type": "string",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -2540,19 +2549,19 @@
 																			"NOT_IN",
 																			"STARTS_WITH",
 																			"ENDS_WITH"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"type": {
 																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																		"type": "string",
 																		"enum": [
 																			"string",
 																			"number",
 																			"boolean"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"value": {
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																		"anyOf": [
 																			{
 																				"type": "string"
@@ -2563,34 +2572,30 @@
 																			{
 																				"type": "boolean"
 																			}
-																		],
-																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																		]
 																	}
 																},
 																"required": [
 																	"key",
 																	"operation",
 																	"type"
-																],
-																"type": "object"
+																]
 															}
-														],
-														"description": "Supports nested groups via kind: 'group'.",
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"groupBys": {
 													"description": "Define how to group the results of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"type": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "string"
@@ -2601,17 +2606,18 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"havings": {
 													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
 																"type": "string"
 															},
 															"operation": {
+																"type": "string",
 																"enum": [
 																	"eq",
 																	"neq",
@@ -2619,8 +2625,7 @@
 																	"gte",
 																	"lt",
 																	"lte"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "number"
@@ -2632,17 +2637,17 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"limit": {
 													"description": "Set a limit on the number of results / records returned by the query",
+													"type": "integer",
 													"maximum": 100,
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"needle": {
 													"description": "Define an expression to search using full-text search.",
+													"type": "object",
 													"properties": {
 														"isRegex": {
 															"type": "boolean"
@@ -2674,19 +2679,19 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												},
 												"orderBy": {
 													"description": "Configure the order of the results returned by the query.",
+													"type": "object",
 													"properties": {
 														"order": {
 															"description": "Set the order of the results",
+															"type": "string",
 															"enum": [
 																"asc",
 																"desc"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"description": "Configure which Calculation to order the results by.",
@@ -2695,8 +2700,7 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -2718,14 +2722,13 @@
 										"createdBy",
 										"updated",
 										"updatedBy"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2733,39 +2736,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2776,53 +2780,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"404": {
+				"description": "Not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Not found"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2833,53 +2837,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2890,29 +2894,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "Update query",
 		"tags": [
 			"Saved Queries"
 		],
@@ -2925,29 +2925,34 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/observability/queries": {
-		"description": "Persist query for later use.",
 		"operationId": "queries.post",
+		"summary": "Save query",
+		"description": "Persist query for later use.",
 		"requestBody": {
+			"description": "Specify the new contents of the query.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
+								"type": "string",
 								"example": "Query description",
 								"maxLength": 1000,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"name": {
 								"description": "Query name",
+								"type": "string",
 								"maxLength": 250,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"parameters": {
 								"properties": {
 									"calculations": {
 										"description": "Create Calculations to compute as part of the query.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"alias": {
@@ -2957,14 +2962,15 @@
 													"type": "string"
 												},
 												"keyType": {
+													"type": "string",
 													"enum": [
 														"string",
 														"number",
 														"boolean"
-													],
-													"type": "string"
+													]
 												},
 												"operator": {
+													"type": "string",
 													"enum": [
 														"uniq",
 														"count",
@@ -3004,60 +3010,61 @@
 														"P999",
 														"STDDEV",
 														"VARIANCE"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
 												"operator"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"datasets": {
 										"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-										"example": [],
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"example": []
 									},
 									"filterCombination": {
 										"description": "Set a Flag to describe how to combine the filters on the query.",
+										"type": "string",
 										"enum": [
 											"and",
 											"or",
 											"AND",
 											"OR"
-										],
-										"type": "string"
+										]
 									},
 									"filters": {
 										"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+										"type": "array",
 										"items": {
+											"description": "Supports nested groups via kind: 'group'.",
+											"type": "object",
 											"anyOf": [
 												{
 													"properties": {
 														"filterCombination": {
+															"type": "string",
 															"enum": [
 																"and",
 																"or",
 																"AND",
 																"OR"
-															],
-															"type": "string"
+															]
 														},
 														"filters": {
+															"type": "array",
 															"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/queries.requestBody.content.application/json.schema.properties.parameters.properties.filters.items]",
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"kind": {
+															"type": "string",
 															"enum": [
 																"group"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -3069,6 +3076,7 @@
 												},
 												{
 													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -3076,13 +3084,14 @@
 														},
 														"kind": {
 															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"operation": {
 															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"type": "string",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -3114,19 +3123,19 @@
 																"NOT_IN",
 																"STARTS_WITH",
 																"ENDS_WITH"
-															],
-															"type": "string"
+															]
 														},
 														"type": {
 															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+															"type": "string",
 															"enum": [
 																"string",
 																"number",
 																"boolean"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 															"anyOf": [
 																{
 																	"type": "string"
@@ -3137,34 +3146,30 @@
 																{
 																	"type": "boolean"
 																}
-															],
-															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+															]
 														}
 													},
 													"required": [
 														"key",
 														"operation",
 														"type"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"description": "Supports nested groups via kind: 'group'.",
-											"type": "object"
-										},
-										"type": "array"
+											]
+										}
 									},
 									"groupBys": {
 										"description": "Define how to group the results of the query.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"type": {
+													"type": "string",
 													"enum": [
 														"string",
 														"number",
 														"boolean"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "string"
@@ -3175,17 +3180,18 @@
 												"value"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"havings": {
 										"description": "Configure the Having clauses that filter on calculations in the query result.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"key": {
 													"type": "string"
 												},
 												"operation": {
+													"type": "string",
 													"enum": [
 														"eq",
 														"neq",
@@ -3193,8 +3199,7 @@
 														"gte",
 														"lt",
 														"lte"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "number"
@@ -3206,17 +3211,17 @@
 												"value"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"limit": {
 										"description": "Set a limit on the number of results / records returned by the query",
+										"type": "integer",
 										"maximum": 100,
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"needle": {
 										"description": "Define an expression to search using full-text search.",
+										"type": "object",
 										"properties": {
 											"isRegex": {
 												"type": "boolean"
@@ -3248,19 +3253,19 @@
 										},
 										"required": [
 											"value"
-										],
-										"type": "object"
+										]
 									},
 									"orderBy": {
 										"description": "Configure the order of the results returned by the query.",
+										"type": "object",
 										"properties": {
 											"order": {
 												"description": "Set the order of the results",
+												"type": "string",
 												"enum": [
 													"asc",
 													"desc"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"description": "Configure which Calculation to order the results by.",
@@ -3269,8 +3274,7 @@
 										},
 										"required": [
 											"value"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"type": "object"
@@ -3280,21 +3284,21 @@
 							"description",
 							"name",
 							"parameters"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Specify the new contents of the query.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3305,27 +3309,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"adhoc": {
 											"description": "If the query wasn't explcitly saved",
@@ -3338,24 +3342,25 @@
 											"type": "string"
 										},
 										"description": {
+											"type": "string",
 											"example": "Query description",
 											"maxLength": 1000,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"id": {
 											"type": "string"
 										},
 										"name": {
 											"description": "Query name",
+											"type": "string",
 											"maxLength": 250,
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										},
 										"parameters": {
 											"properties": {
 												"calculations": {
 													"description": "Create Calculations to compute as part of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"alias": {
@@ -3365,14 +3370,15 @@
 																"type": "string"
 															},
 															"keyType": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"operator": {
+																"type": "string",
 																"enum": [
 																	"uniq",
 																	"count",
@@ -3412,60 +3418,61 @@
 																	"P999",
 																	"STDDEV",
 																	"VARIANCE"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
 															"operator"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"datasets": {
 													"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-													"example": [],
+													"type": "array",
 													"items": {
 														"type": "string"
 													},
-													"type": "array"
+													"example": []
 												},
 												"filterCombination": {
 													"description": "Set a Flag to describe how to combine the filters on the query.",
+													"type": "string",
 													"enum": [
 														"and",
 														"or",
 														"AND",
 														"OR"
-													],
-													"type": "string"
+													]
 												},
 												"filters": {
 													"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+													"type": "array",
 													"items": {
+														"description": "Supports nested groups via kind: 'group'.",
+														"type": "object",
 														"anyOf": [
 															{
 																"properties": {
 																	"filterCombination": {
+																		"type": "string",
 																		"enum": [
 																			"and",
 																			"or",
 																			"AND",
 																			"OR"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"filters": {
+																		"type": "array",
 																		"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/queries.responses.200.content.application/json.schema.properties.result.properties.parameters.properties.filters.items]",
-																		"minItems": 1,
-																		"type": "array"
+																		"minItems": 1
 																	},
 																	"kind": {
+																		"type": "string",
 																		"enum": [
 																			"group"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
@@ -3477,6 +3484,7 @@
 															},
 															{
 																"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -3484,13 +3492,14 @@
 																	},
 																	"kind": {
 																		"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"operation": {
 																		"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																		"type": "string",
 																		"enum": [
 																			"includes",
 																			"not_includes",
@@ -3522,19 +3531,19 @@
 																			"NOT_IN",
 																			"STARTS_WITH",
 																			"ENDS_WITH"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"type": {
 																		"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																		"type": "string",
 																		"enum": [
 																			"string",
 																			"number",
 																			"boolean"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"value": {
+																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																		"anyOf": [
 																			{
 																				"type": "string"
@@ -3545,34 +3554,30 @@
 																			{
 																				"type": "boolean"
 																			}
-																		],
-																		"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																		]
 																	}
 																},
 																"required": [
 																	"key",
 																	"operation",
 																	"type"
-																],
-																"type": "object"
+																]
 															}
-														],
-														"description": "Supports nested groups via kind: 'group'.",
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"groupBys": {
 													"description": "Define how to group the results of the query.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"type": {
+																"type": "string",
 																"enum": [
 																	"string",
 																	"number",
 																	"boolean"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "string"
@@ -3583,17 +3588,18 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"havings": {
 													"description": "Configure the Having clauses that filter on calculations in the query result.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
 																"type": "string"
 															},
 															"operation": {
+																"type": "string",
 																"enum": [
 																	"eq",
 																	"neq",
@@ -3601,8 +3607,7 @@
 																	"gte",
 																	"lt",
 																	"lte"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"type": "number"
@@ -3614,17 +3619,17 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"limit": {
 													"description": "Set a limit on the number of results / records returned by the query",
+													"type": "integer",
 													"maximum": 100,
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"needle": {
 													"description": "Define an expression to search using full-text search.",
+													"type": "object",
 													"properties": {
 														"isRegex": {
 															"type": "boolean"
@@ -3656,19 +3661,19 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												},
 												"orderBy": {
 													"description": "Configure the order of the results returned by the query.",
+													"type": "object",
 													"properties": {
 														"order": {
 															"description": "Set the order of the results",
+															"type": "string",
 															"enum": [
 																"asc",
 																"desc"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"description": "Configure which Calculation to order the results by.",
@@ -3677,8 +3682,7 @@
 													},
 													"required": [
 														"value"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -3700,14 +3704,13 @@
 										"createdBy",
 										"updated",
 										"updatedBy"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3715,39 +3718,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3758,53 +3762,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"409": {
+				"description": "Conflict",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Conflict"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3815,53 +3819,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Conflict"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3872,29 +3876,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "Save query",
 		"tags": [
 			"Saved Queries"
 		],

@@ -1,17 +1,18 @@
 {
 	"GET /accounts/{account_id}/access/logs/jit_requests": {
-		"description": "Lists account-wide Access JIT request logs reconstructed from request lifecycle events.",
 		"operationId": "access-jit-request-logs-list",
+		"summary": "List Access JIT request logs",
+		"description": "Lists account-wide Access JIT request logs reconstructed from request lifecycle events.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
@@ -19,80 +20,83 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Page number of results.",
-					"type": "integer"
+					"type": "integer",
+					"default": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 25,
 					"description": "Number of results per page.",
-					"maximum": 1000,
-					"type": "integer"
+					"type": "integer",
+					"default": 25,
+					"maximum": 1000
 				}
 			},
 			{
-				"in": "query",
 				"name": "status",
+				"in": "query",
 				"schema": {
 					"description": "JIT request status. `SPENT` is deprecated and interpreted as `APPROVED`.",
+					"type": "string",
 					"enum": [
 						"PENDING",
 						"APPROVED",
 						"DENIED",
 						"CANCELED",
 						"SPENT"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Case-insensitive search over request ID, requester email, application audience, and application hostname.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Case-insensitive search over request ID, requester email, application audience, and application hostname.",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "The earliest request timestamp to query. Defaults to 366 days before the current time.",
-				"in": "query",
 				"name": "since",
+				"in": "query",
+				"description": "The earliest request timestamp to query. Defaults to 366 days before the current time.",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
-				"description": "The latest request timestamp to query. Defaults to the current time.",
-				"in": "query",
 				"name": "until",
+				"in": "query",
+				"description": "The latest request timestamp to query. Defaults to the current time.",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Access JIT request logs response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -101,12 +105,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -116,15 +120,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -133,12 +137,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -148,66 +152,66 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"app_aud": {
 														"description": "Audience of the Access application.",
@@ -222,22 +226,22 @@
 													},
 													"approver_emails": {
 														"description": "Unique actors who approved the request.",
+														"type": "array",
 														"items": {
 															"format": "email",
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"expires_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"knock_request_id": {
@@ -248,24 +252,22 @@
 														"type": "string"
 													},
 													"requester_email": {
-														"format": "email",
-														"type": "string"
+														"type": "string",
+														"format": "email"
 													},
 													"status": {
 														"description": "JIT request status. `SPENT` is deprecated and interpreted as `APPROVED`.",
+														"type": "string",
 														"enum": [
 															"PENDING",
 															"APPROVED",
 															"DENIED",
 															"CANCELED",
 															"SPENT"
-														],
-														"type": "string"
+														]
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -273,66 +275,30 @@
 							]
 						}
 					}
-				},
-				"description": "Access JIT request logs response"
+				}
 			},
 			"4XX": {
+				"description": "Access JIT request logs response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -341,12 +307,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -356,25 +322,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -382,12 +385,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Access JIT request logs response failure"
+				}
 			}
 		},
 		"security": [
@@ -396,54 +397,57 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Access JIT request logs",
 		"tags": [
 			"Access JIT request logs"
 		]
 	},
 	"GET /accounts/{account_id}/access/logs/jit_requests/{knock_request_id}": {
-		"description": "Gets an account-scoped Access JIT request summary and its lifecycle events in chronological order.",
 		"operationId": "access-jit-request-logs-get",
+		"summary": "Get an Access JIT request log",
+		"description": "Gets an account-scoped Access JIT request summary and its lifecycle events in chronological order.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "knock_request_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Access JIT request log detail response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -452,12 +456,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -467,15 +471,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -484,12 +488,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -499,32 +503,31 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"app_aud": {
 															"description": "Audience of the Access application.",
@@ -539,22 +542,22 @@
 														},
 														"approver_emails": {
 															"description": "Unique actors who approved the request.",
+															"type": "array",
 															"items": {
 																"format": "email",
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"expires_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"knock_request_id": {
@@ -565,38 +568,39 @@
 															"type": "string"
 														},
 														"requester_email": {
-															"format": "email",
-															"type": "string"
+															"type": "string",
+															"format": "email"
 														},
 														"status": {
 															"description": "JIT request status. `SPENT` is deprecated and interpreted as `APPROVED`.",
+															"type": "string",
 															"enum": [
 																"PENDING",
 																"APPROVED",
 																"DENIED",
 																"CANCELED",
 																"SPENT"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
 														"events": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"actor_email": {
-																		"format": "email",
-																		"type": "string"
+																		"type": "string",
+																		"format": "email"
 																	},
 																	"actor_idp": {
 																		"type": "string"
 																	},
 																	"actor_uuid": {
-																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uuid"
 																	},
 																	"decision_outcome": {
 																		"type": "string"
@@ -611,12 +615,13 @@
 																		"type": "boolean"
 																	},
 																	"timestamp": {
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
 																		"x-auditable": true
 																	},
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"CREATED",
 																			"APPROVER_DECISION",
@@ -624,13 +629,10 @@
 																			"CANCELED",
 																			"LOGIN_SUCCESS",
 																			"REDIRECT_TO_ACTIVE"
-																		],
-																		"type": "string"
+																		]
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
 													},
 													"type": "object"
@@ -643,66 +645,30 @@
 							]
 						}
 					}
-				},
-				"description": "Access JIT request log detail response"
+				}
 			},
 			"404": {
+				"description": "Access JIT request log not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -711,12 +677,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -726,25 +692,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -752,70 +755,33 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Access JIT request log not found"
+				}
 			},
 			"4XX": {
+				"description": "Access JIT request log detail response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -824,12 +790,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -839,25 +805,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -865,12 +868,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Access JIT request log detail response failure"
+				}
 			}
 		},
 		"security": [
@@ -879,7 +880,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get an Access JIT request log",
 		"tags": [
 			"Access JIT request logs"
 		]

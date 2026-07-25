@@ -1,49 +1,52 @@
 {
 	"DELETE /accounts/{account_id}/teamnet/routes/{route_id}": {
-		"description": "Deletes a private network route from an account.\n",
 		"operationId": "tunnel-route-delete-a-tunnel-route",
+		"summary": "Delete a tunnel route",
+		"description": "Deletes a private network route from an account.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID of the route.",
+					"type": "string",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete a tunnel route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -56,15 +59,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -77,7 +80,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -95,11 +98,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -107,66 +110,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -174,10 +176,10 @@
 							]
 						}
 					}
-				},
-				"description": "Delete a tunnel route response"
+				}
 			},
 			"4XX": {
+				"description": "Delete a tunnel route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -185,14 +187,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -205,15 +208,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -226,7 +229,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -244,11 +247,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -256,66 +259,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -323,48 +325,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -377,25 +354,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -403,14 +406,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete a tunnel route response failure"
+				}
 			}
 		},
 		"security": [
@@ -425,7 +426,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Delete a tunnel route",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -439,49 +439,51 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
-		"deprecated": true,
-		"description": "Deletes a private network route from an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format. If no virtual_network_id is provided it will delete the route from the default vnet. If no tun_type is provided it will fetch the type from the tunnel_id or if that is missing it will assume Cloudflare Tunnel as default. If tunnel_id is provided it will delete the route from that tunnel, otherwise it will delete the route based on the vnet and tun_type.\n",
 		"operationId": "tunnel-route-delete-a-tunnel-route-with-cidr",
+		"summary": "Delete a tunnel route (CIDR Endpoint)",
+		"description": "Deletes a private network route from an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format. If no virtual_network_id is provided it will delete the route from the default vnet. If no tun_type is provided it will fetch the type from the tunnel_id or if that is missing it will assume Cloudflare Tunnel as default. If tunnel_id is provided it will delete the route from that tunnel, otherwise it will delete the route based on the vnet and tun_type.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "ip_network_encoded",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "IP/CIDR range in URL-encoded format",
-					"example": "172.16.0.0%2F16",
-					"type": "string"
+					"type": "string",
+					"example": "172.16.0.0%2F16"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "virtual_network_id",
+				"in": "query",
 				"schema": {
 					"description": "UUID of the virtual network.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"format": "uuid",
 					"type": "string",
+					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "tun_type",
+				"in": "query",
 				"schema": {
 					"description": "The type of tunnel.",
+					"type": "string",
+					"example": "cfd_tunnel",
 					"enum": [
 						"cfd_tunnel",
 						"warp_connector",
@@ -491,40 +493,40 @@
 						"gre",
 						"cni"
 					],
-					"example": "cfd_tunnel",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "tunnel_id",
+				"in": "query",
 				"schema": {
 					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"type": "string",
 					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete a tunnel route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -537,15 +539,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -558,7 +560,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -576,11 +578,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -588,66 +590,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -655,10 +656,10 @@
 							]
 						}
 					}
-				},
-				"description": "Delete a tunnel route response"
+				}
 			},
 			"4XX": {
+				"description": "Delete a tunnel route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -666,14 +667,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -686,15 +688,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -707,7 +709,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -725,11 +727,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -737,66 +739,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -804,48 +805,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -858,25 +834,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -884,16 +886,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete a tunnel route response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -906,7 +907,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Delete a tunnel route (CIDR Endpoint)",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -918,114 +918,117 @@
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"GET /accounts/{account_id}/teamnet/routes": {
-		"description": "Lists and filters private network routes in an account.",
 		"operationId": "tunnel-route-list-tunnel-routes",
+		"summary": "List tunnel routes",
+		"description": "Lists and filters private network routes in an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "comment",
+				"in": "query",
 				"schema": {
-					"default": "",
 					"description": "Optional remark describing the route.",
-					"example": "Example comment for this route.",
-					"maxLength": 100,
 					"type": "string",
+					"example": "Example comment for this route.",
+					"default": "",
+					"maxLength": 100,
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "is_deleted",
+				"in": "query",
 				"schema": {
 					"description": "If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.",
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "network_subset",
+				"in": "query",
 				"schema": {
+					"description": "If set, only list routes that are contained within this IP range.",
 					"allOf": [
 						{
 							"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-							"example": "172.16.0.0/16",
 							"type": "string",
+							"example": "172.16.0.0/16",
 							"x-auditable": true
 						}
-					],
-					"description": "If set, only list routes that are contained within this IP range."
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "network_superset",
+				"in": "query",
 				"schema": {
+					"description": "If set, only list routes that contain this IP range.",
 					"allOf": [
 						{
 							"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-							"example": "172.16.0.0/16",
 							"type": "string",
+							"example": "172.16.0.0/16",
 							"x-auditable": true
 						}
-					],
-					"description": "If set, only list routes that contain this IP range."
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "existed_at",
+				"in": "query",
 				"schema": {
 					"description": "If provided, include only resources that were created (and not deleted) before this time. URL encoded.",
-					"example": "2019-10-12T07%3A20%3A50.52Z",
+					"type": "string",
 					"format": "url-encoded-date-time",
-					"type": "string"
+					"example": "2019-10-12T07%3A20%3A50.52Z"
 				}
 			},
 			{
-				"in": "query",
 				"name": "tunnel_id",
+				"in": "query",
 				"schema": {
 					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"type": "string",
 					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "route_id",
+				"in": "query",
 				"schema": {
 					"description": "UUID of the route.",
+					"type": "string",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "tun_types",
+				"in": "query",
 				"schema": {
 					"description": "The types of tunnels to filter by, separated by commas.",
-					"example": "cfd_tunnel,warp_connector",
+					"type": "array",
 					"items": {
 						"description": "The type of tunnel.",
+						"type": "string",
+						"example": "cfd_tunnel",
 						"enum": [
 							"cfd_tunnel",
 							"warp_connector",
@@ -1035,62 +1038,63 @@
 							"gre",
 							"cni"
 						],
-						"example": "cfd_tunnel",
-						"type": "string",
 						"x-auditable": true
 					},
-					"type": "array"
+					"example": "cfd_tunnel,warp_connector"
 				}
 			},
 			{
-				"in": "query",
 				"name": "virtual_network_id",
+				"in": "query",
 				"schema": {
 					"description": "UUID of the virtual network.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"format": "uuid",
 					"type": "string",
+					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
 					"description": "Number of results to display.",
+					"type": "number",
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List tunnel routes response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1103,15 +1107,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1124,7 +1128,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1142,11 +1146,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1154,88 +1158,90 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"comment": {
-														"default": "",
 														"description": "Optional remark describing the route.",
-														"example": "Example comment for this route.",
-														"maxLength": 100,
 														"type": "string",
+														"example": "Example comment for this route.",
+														"default": "",
+														"maxLength": 100,
 														"x-auditable": true
 													},
 													"created_at": {
 														"description": "Timestamp of when the resource was created.",
-														"example": "2021-01-25T18:22:34.317854Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2021-01-25T18:22:34.317854Z",
+														"readOnly": true
 													},
 													"deleted_at": {
 														"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-														"example": "2009-11-10T23:00:00.000000Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2009-11-10T23:00:00.000000Z",
+														"readOnly": true
 													},
 													"id": {
 														"description": "UUID of the route.",
+														"type": "string",
 														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"network": {
 														"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-														"example": "172.16.0.0/16",
 														"type": "string",
+														"example": "172.16.0.0/16",
 														"x-auditable": true
 													},
 													"tun_type": {
 														"description": "The type of tunnel.",
+														"type": "string",
+														"example": "cfd_tunnel",
 														"enum": [
 															"cfd_tunnel",
 															"warp_connector",
@@ -1245,43 +1251,39 @@
 															"gre",
 															"cni"
 														],
-														"example": "cfd_tunnel",
-														"type": "string",
 														"x-auditable": true
 													},
 													"tunnel_id": {
 														"description": "UUID of the tunnel.",
-														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+														"type": "string",
 														"format": "uuid",
+														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"tunnel_name": {
 														"description": "A user-friendly name for a tunnel.",
-														"example": "blog",
-														"type": "string"
+														"type": "string",
+														"example": "blog"
 													},
 													"virtual_network_id": {
 														"description": "UUID of the virtual network.",
-														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
+														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"virtual_network_name": {
 														"description": "A user-friendly name for the virtual network.",
+														"type": "string",
 														"example": "us-east-1-vpc",
 														"maxLength": 256,
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -1289,10 +1291,10 @@
 							]
 						}
 					}
-				},
-				"description": "List tunnel routes response"
+				}
 			},
 			"4XX": {
+				"description": "List tunnel routes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1300,16 +1302,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1322,15 +1326,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1343,7 +1347,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1361,11 +1365,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1373,88 +1377,90 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"comment": {
-																"default": "",
 																"description": "Optional remark describing the route.",
-																"example": "Example comment for this route.",
-																"maxLength": 100,
 																"type": "string",
+																"example": "Example comment for this route.",
+																"default": "",
+																"maxLength": 100,
 																"x-auditable": true
 															},
 															"created_at": {
 																"description": "Timestamp of when the resource was created.",
-																"example": "2021-01-25T18:22:34.317854Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2021-01-25T18:22:34.317854Z",
+																"readOnly": true
 															},
 															"deleted_at": {
 																"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-																"example": "2009-11-10T23:00:00.000000Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2009-11-10T23:00:00.000000Z",
+																"readOnly": true
 															},
 															"id": {
 																"description": "UUID of the route.",
+																"type": "string",
 																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"network": {
 																"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-																"example": "172.16.0.0/16",
 																"type": "string",
+																"example": "172.16.0.0/16",
 																"x-auditable": true
 															},
 															"tun_type": {
 																"description": "The type of tunnel.",
+																"type": "string",
+																"example": "cfd_tunnel",
 																"enum": [
 																	"cfd_tunnel",
 																	"warp_connector",
@@ -1464,43 +1470,39 @@
 																	"gre",
 																	"cni"
 																],
-																"example": "cfd_tunnel",
-																"type": "string",
 																"x-auditable": true
 															},
 															"tunnel_id": {
 																"description": "UUID of the tunnel.",
-																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																"type": "string",
 																"format": "uuid",
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"tunnel_name": {
 																"description": "A user-friendly name for a tunnel.",
-																"example": "blog",
-																"type": "string"
+																"type": "string",
+																"example": "blog"
 															},
 															"virtual_network_id": {
 																"description": "UUID of the virtual network.",
-																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-																"format": "uuid",
 																"type": "string",
+																"format": "uuid",
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"virtual_network_name": {
 																"description": "A user-friendly name for the virtual network.",
+																"type": "string",
 																"example": "us-east-1-vpc",
 																"maxLength": 256,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -1508,48 +1510,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1562,25 +1539,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1588,14 +1591,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List tunnel routes response failure"
+				}
 			}
 		},
 		"security": [
@@ -1610,7 +1611,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "List tunnel routes",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -1626,50 +1626,53 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/teamnet/routes/{route_id}": {
-		"description": "Get a private network route in an account.",
 		"operationId": "tunnel-route-get-tunnel-route",
+		"summary": "Get tunnel route",
+		"description": "Get a private network route in an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID of the route.",
+					"type": "string",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get a tunnel route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1682,15 +1685,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1703,7 +1706,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -1721,11 +1724,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1733,66 +1736,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1800,10 +1802,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get a tunnel route response"
+				}
 			},
 			"4XX": {
+				"description": "Get a tunnel route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1811,14 +1813,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1831,15 +1834,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1852,7 +1855,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1870,11 +1873,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1882,66 +1885,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -1949,48 +1951,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2003,25 +1980,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2029,14 +2032,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get a tunnel route response failure"
+				}
 			}
 		},
 		"security": [
@@ -2051,7 +2052,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Get tunnel route",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -2061,67 +2061,70 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/teamnet/routes/ip/{ip}": {
-		"description": "Fetches routes that contain the given IP address.",
 		"operationId": "tunnel-route-get-tunnel-route-by-ip",
+		"summary": "Get tunnel route by IP",
+		"description": "Fetches routes that contain the given IP address.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "ip",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "10.1.0.137",
-					"type": "string"
+					"type": "string",
+					"example": "10.1.0.137"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "virtual_network_id",
+				"in": "query",
 				"schema": {
 					"description": "UUID of the virtual network.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-					"format": "uuid",
 					"type": "string",
+					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "When the virtual_network_id parameter is not provided the request filter will default search routes that are in the default virtual network for the account. If this parameter is set to false, the search will include routes that do not have a virtual network.",
-				"in": "query",
 				"name": "default_virtual_network_fallback",
+				"in": "query",
+				"description": "When the virtual_network_id parameter is not provided the request filter will default search routes that are in the default virtual network for the account. If this parameter is set to false, the search will include routes that do not have a virtual network.",
 				"schema": {
-					"default": true,
-					"type": "boolean"
+					"type": "boolean",
+					"default": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get tunnel route by IP response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2134,15 +2137,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2155,7 +2158,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -2173,11 +2176,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2185,50 +2188,52 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tun_type": {
 													"description": "The type of tunnel.",
+													"type": "string",
+													"example": "cfd_tunnel",
 													"enum": [
 														"cfd_tunnel",
 														"warp_connector",
@@ -2238,41 +2243,38 @@
 														"gre",
 														"cni"
 													],
-													"example": "cfd_tunnel",
-													"type": "string",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"tunnel_name": {
 													"description": "A user-friendly name for a tunnel.",
-													"example": "blog",
-													"type": "string"
+													"type": "string",
+													"example": "blog"
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"virtual_network_name": {
 													"description": "A user-friendly name for the virtual network.",
+													"type": "string",
 													"example": "us-east-1-vpc",
 													"maxLength": 256,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2280,10 +2282,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get tunnel route by IP response"
+				}
 			},
 			"4XX": {
+				"description": "Get tunnel route by IP response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2291,14 +2293,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2311,15 +2314,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2332,7 +2335,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2350,11 +2353,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2362,50 +2365,52 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tun_type": {
 															"description": "The type of tunnel.",
+															"type": "string",
+															"example": "cfd_tunnel",
 															"enum": [
 																"cfd_tunnel",
 																"warp_connector",
@@ -2415,41 +2420,38 @@
 																"gre",
 																"cni"
 															],
-															"example": "cfd_tunnel",
-															"type": "string",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"tunnel_name": {
 															"description": "A user-friendly name for a tunnel.",
-															"example": "blog",
-															"type": "string"
+															"type": "string",
+															"example": "blog"
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"virtual_network_name": {
 															"description": "A user-friendly name for the virtual network.",
+															"type": "string",
 															"example": "us-east-1-vpc",
 															"maxLength": 256,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -2457,48 +2459,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2511,25 +2488,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2537,14 +2540,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get tunnel route by IP response failure"
+				}
 			}
 		},
 		"security": [
@@ -2559,7 +2560,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Get tunnel route by IP",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -2575,93 +2575,96 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
-		"description": "Updates an existing private network route in an account. The fields that are meant to be updated should be provided in the body of the request.",
 		"operationId": "tunnel-route-update-a-tunnel-route",
+		"summary": "Update a tunnel route",
+		"description": "Updates an existing private network route in an account. The fields that are meant to be updated should be provided in the body of the request.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID of the route.",
+					"type": "string",
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"comment": {
-								"default": "",
 								"description": "Optional remark describing the route.",
-								"example": "Example comment for this route.",
-								"maxLength": 100,
 								"type": "string",
+								"example": "Example comment for this route.",
+								"default": "",
+								"maxLength": 100,
 								"x-auditable": true
 							},
 							"network": {
 								"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-								"example": "172.16.0.0/16",
 								"type": "string",
+								"example": "172.16.0.0/16",
 								"x-auditable": true
 							},
 							"tunnel_id": {
 								"description": "UUID of the tunnel.",
-								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"type": "string",
 								"format": "uuid",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"maxLength": 36,
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"virtual_network_id": {
 								"description": "UUID of the virtual network.",
-								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-								"format": "uuid",
 								"type": "string",
+								"format": "uuid",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a tunnel route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2674,15 +2677,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2695,7 +2698,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -2713,11 +2716,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2725,66 +2728,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2792,10 +2794,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update a tunnel route response"
+				}
 			},
 			"4XX": {
+				"description": "Update a tunnel route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2803,14 +2805,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2823,15 +2826,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2844,7 +2847,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2862,11 +2865,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2874,66 +2877,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -2941,48 +2943,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2995,25 +2972,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3021,14 +3024,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a tunnel route response failure"
+				}
 			}
 		},
 		"security": [
@@ -3043,7 +3044,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Update a tunnel route",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -3057,49 +3057,51 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
-		"deprecated": true,
-		"description": "Updates an existing private network route in an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 		"operationId": "tunnel-route-update-a-tunnel-route-with-cidr",
+		"summary": "Update a tunnel route (CIDR Endpoint)",
+		"description": "Updates an existing private network route in an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "ip_network_encoded",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "IP/CIDR range in URL-encoded format",
-					"example": "172.16.0.0%2F16",
-					"type": "string"
+					"type": "string",
+					"example": "172.16.0.0%2F16"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Update a tunnel route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3112,15 +3114,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3133,7 +3135,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -3151,11 +3153,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3163,66 +3165,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3230,10 +3231,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update a tunnel route response"
+				}
 			},
 			"4XX": {
+				"description": "Update a tunnel route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3241,14 +3242,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3261,15 +3263,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3282,7 +3284,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3300,11 +3302,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3312,66 +3314,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -3379,48 +3380,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3433,25 +3409,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3459,16 +3461,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a tunnel route response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -3481,7 +3482,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Update a tunnel route (CIDR Endpoint)",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -3493,56 +3493,59 @@
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"POST /accounts/{account_id}/teamnet/routes": {
-		"description": "Routes a private network through a Cloudflare Tunnel.",
 		"operationId": "tunnel-route-create-a-tunnel-route",
+		"summary": "Create a tunnel route",
+		"description": "Routes a private network through a Cloudflare Tunnel.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"comment": {
-								"default": "",
 								"description": "Optional remark describing the route.",
-								"example": "Example comment for this route.",
-								"maxLength": 100,
 								"type": "string",
+								"example": "Example comment for this route.",
+								"default": "",
+								"maxLength": 100,
 								"x-auditable": true
 							},
 							"network": {
 								"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-								"example": "172.16.0.0/16",
 								"type": "string",
+								"example": "172.16.0.0/16",
 								"x-auditable": true
 							},
 							"tunnel_id": {
 								"description": "UUID of the tunnel.",
-								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"type": "string",
 								"format": "uuid",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"maxLength": 36,
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"virtual_network_id": {
 								"description": "UUID of the virtual network.",
-								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-								"format": "uuid",
 								"type": "string",
+								"format": "uuid",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
@@ -3550,28 +3553,28 @@
 						"required": [
 							"network",
 							"tunnel_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a tunnel route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3584,15 +3587,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3605,7 +3608,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -3623,11 +3626,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3635,66 +3638,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3702,10 +3704,10 @@
 							]
 						}
 					}
-				},
-				"description": "Create a tunnel route response"
+				}
 			},
 			"4XX": {
+				"description": "Create a tunnel route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3713,14 +3715,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3733,15 +3736,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3754,7 +3757,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3772,11 +3775,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3784,66 +3787,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -3851,48 +3853,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3905,25 +3882,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3931,14 +3934,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a tunnel route response failure"
+				}
 			}
 		},
 		"security": [
@@ -3953,7 +3954,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Create a tunnel route",
 		"tags": [
 			"Tunnel Routing"
 		],
@@ -3967,88 +3967,90 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
-		"deprecated": true,
-		"description": "Routes a private network through a Cloudflare Tunnel. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 		"operationId": "tunnel-route-create-a-tunnel-route-with-cidr",
+		"summary": "Create a tunnel route (CIDR Endpoint)",
+		"description": "Routes a private network through a Cloudflare Tunnel. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "ip_network_encoded",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "IP/CIDR range in URL-encoded format",
-					"example": "172.16.0.0%2F16",
-					"type": "string"
+					"type": "string",
+					"example": "172.16.0.0%2F16"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
+					"type": "string",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"comment": {
-								"default": "",
 								"description": "Optional remark describing the route.",
-								"example": "Example comment for this route.",
-								"maxLength": 100,
 								"type": "string",
+								"example": "Example comment for this route.",
+								"default": "",
+								"maxLength": 100,
 								"x-auditable": true
 							},
 							"tunnel_id": {
 								"description": "UUID of the tunnel.",
-								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"type": "string",
 								"format": "uuid",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"maxLength": 36,
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"virtual_network_id": {
 								"description": "UUID of the virtual network.",
-								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-								"format": "uuid",
 								"type": "string",
+								"format": "uuid",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"tunnel_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a tunnel route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4061,15 +4063,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4082,7 +4084,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -4100,11 +4102,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4112,66 +4114,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"default": "",
 													"description": "Optional remark describing the route.",
-													"example": "Example comment for this route.",
-													"maxLength": 100,
 													"type": "string",
+													"example": "Example comment for this route.",
+													"default": "",
+													"maxLength": 100,
 													"x-auditable": true
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"deleted_at": {
 													"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-													"example": "2009-11-10T23:00:00.000000Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2009-11-10T23:00:00.000000Z",
+													"readOnly": true
 												},
 												"id": {
 													"description": "UUID of the route.",
+													"type": "string",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"network": {
 													"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-													"example": "172.16.0.0/16",
 													"type": "string",
+													"example": "172.16.0.0/16",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "UUID of the virtual network.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4179,10 +4180,10 @@
 							]
 						}
 					}
-				},
-				"description": "Create a tunnel route response"
+				}
 			},
 			"4XX": {
+				"description": "Create a tunnel route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4190,14 +4191,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4210,15 +4212,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4231,7 +4233,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -4249,11 +4251,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -4261,66 +4263,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"comment": {
-															"default": "",
 															"description": "Optional remark describing the route.",
-															"example": "Example comment for this route.",
-															"maxLength": 100,
 															"type": "string",
+															"example": "Example comment for this route.",
+															"default": "",
+															"maxLength": 100,
 															"x-auditable": true
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
-															"example": "2021-01-25T18:22:34.317854Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2021-01-25T18:22:34.317854Z",
+															"readOnly": true
 														},
 														"deleted_at": {
 															"description": "Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.",
-															"example": "2009-11-10T23:00:00.000000Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2009-11-10T23:00:00.000000Z",
+															"readOnly": true
 														},
 														"id": {
 															"description": "UUID of the route.",
+															"type": "string",
 															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"network": {
 															"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
-															"example": "172.16.0.0/16",
 															"type": "string",
+															"example": "172.16.0.0/16",
 															"x-auditable": true
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+															"type": "string",
 															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"virtual_network_id": {
 															"description": "UUID of the virtual network.",
-															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
+															"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -4328,48 +4329,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4382,25 +4358,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4408,16 +4410,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a tunnel route response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -4430,7 +4431,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Create a tunnel route (CIDR Endpoint)",
 		"tags": [
 			"Tunnel Routing"
 		],

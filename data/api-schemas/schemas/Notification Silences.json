@@ -1,47 +1,50 @@
 {
 	"DELETE /accounts/{account_id}/alerting/v3/silences/{silence_id}": {
-		"description": "Deletes an existing silence for an account.",
 		"operationId": "notification-silences-delete-silences",
+		"summary": "Delete Silence",
+		"description": "Deletes an existing silence for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account id",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "silence_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Silence ID",
+					"type": "string",
 					"example": "f878e90c23f44126ae3cfc399f646977",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Silence response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -53,15 +56,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -73,29 +76,28 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Silence response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Silence response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -103,14 +105,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -122,15 +125,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -142,115 +145,90 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_at": {
 															"description": "When the silence was created.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														},
 														"end_time": {
 															"description": "When the silence ends.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Silence ID",
+															"type": "string",
 															"example": "f878e90c23f44126ae3cfc399f646977",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"policy_id": {
 															"description": "The unique identifier of a notification policy",
+															"type": "string",
 															"example": "0da2b59ef118439d8097bdfb215203c9",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"start_time": {
 															"description": "When the silence starts.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														},
 														"updated_at": {
 															"description": "When the silence was modified.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -262,32 +240,55 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Silence response failure"
+				}
 			}
 		},
 		"security": [
@@ -299,7 +300,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Silence",
 		"tags": [
 			"Notification Silences"
 		],
@@ -309,38 +309,41 @@
 		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/silences": {
-		"description": "Gets a list of silences for an account.",
 		"operationId": "notification-silences-list-silences",
+		"summary": "List Silences",
+		"description": "Gets a list of silences for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account id",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Silences response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -352,15 +355,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -372,81 +375,80 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"description": "When the silence was created.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													},
 													"end_time": {
 														"description": "When the silence ends.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Silence ID",
+														"type": "string",
 														"example": "f878e90c23f44126ae3cfc399f646977",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"policy_id": {
 														"description": "The unique identifier of a notification policy",
+														"type": "string",
 														"example": "0da2b59ef118439d8097bdfb215203c9",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"start_time": {
 														"description": "When the silence starts.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													},
 													"updated_at": {
 														"description": "When the silence was modified.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Silences response"
+				}
 			},
 			"4XX": {
+				"description": "List Silences response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -454,14 +456,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -473,15 +476,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -493,118 +496,93 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "When the silence was created.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"end_time": {
 																"description": "When the silence ends.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Silence ID",
+																"type": "string",
 																"example": "f878e90c23f44126ae3cfc399f646977",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"policy_id": {
 																"description": "The unique identifier of a notification policy",
+																"type": "string",
 																"example": "0da2b59ef118439d8097bdfb215203c9",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"start_time": {
 																"description": "When the silence starts.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "When the silence was modified.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -616,32 +594,55 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Silences response failure"
+				}
 			}
 		},
 		"security": [
@@ -653,7 +654,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Silences",
 		"tags": [
 			"Notification Silences"
 		],
@@ -666,50 +666,53 @@
 		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/silences/{silence_id}": {
-		"description": "Gets a specific silence for an account.",
 		"operationId": "notification-silences-get-silence",
+		"summary": "Get Silence",
+		"description": "Gets a specific silence for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account id",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "silence_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Silence ID",
+					"type": "string",
 					"example": "f878e90c23f44126ae3cfc399f646977",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Silence response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -721,15 +724,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -741,78 +744,77 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "When the silence was created.",
-													"example": "2022-01-01T00:00:00Z",
 													"type": "string",
+													"example": "2022-01-01T00:00:00Z",
 													"x-auditable": true
 												},
 												"end_time": {
 													"description": "When the silence ends.",
-													"example": "2022-01-01T00:00:00Z",
 													"type": "string",
+													"example": "2022-01-01T00:00:00Z",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Silence ID",
+													"type": "string",
 													"example": "f878e90c23f44126ae3cfc399f646977",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"policy_id": {
 													"description": "The unique identifier of a notification policy",
+													"type": "string",
 													"example": "0da2b59ef118439d8097bdfb215203c9",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"start_time": {
 													"description": "When the silence starts.",
-													"example": "2022-01-01T00:00:00Z",
 													"type": "string",
+													"example": "2022-01-01T00:00:00Z",
 													"x-auditable": true
 												},
 												"updated_at": {
 													"description": "When the silence was modified.",
-													"example": "2022-01-01T00:00:00Z",
 													"type": "string",
+													"example": "2022-01-01T00:00:00Z",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Silence response"
+				}
 			},
 			"4XX": {
+				"description": "Get Silence response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -820,14 +822,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -839,15 +842,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -859,115 +862,90 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_at": {
 															"description": "When the silence was created.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														},
 														"end_time": {
 															"description": "When the silence ends.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Silence ID",
+															"type": "string",
 															"example": "f878e90c23f44126ae3cfc399f646977",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"policy_id": {
 															"description": "The unique identifier of a notification policy",
+															"type": "string",
 															"example": "0da2b59ef118439d8097bdfb215203c9",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"start_time": {
 															"description": "When the silence starts.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														},
 														"updated_at": {
 															"description": "When the silence was modified.",
-															"example": "2022-01-01T00:00:00Z",
 															"type": "string",
+															"example": "2022-01-01T00:00:00Z",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -979,32 +957,55 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Silence response failure"
+				}
 			}
 		},
 		"security": [
@@ -1016,7 +1017,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Silence",
 		"tags": [
 			"Notification Silences"
 		],
@@ -1029,70 +1029,73 @@
 		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/silences": {
-		"description": "Creates a new silence for an account.",
 		"operationId": "notification-silences-create-silences",
+		"summary": "Create Silences",
+		"description": "Creates a new silence for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account id",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
+							"type": "object",
 							"properties": {
 								"end_time": {
 									"description": "When the silence ends.",
-									"example": "2022-01-01T00:00:00Z",
 									"type": "string",
+									"example": "2022-01-01T00:00:00Z",
 									"x-auditable": true
 								},
 								"policy_id": {
 									"description": "The unique identifier of a notification policy",
+									"type": "string",
 									"example": "0da2b59ef118439d8097bdfb215203c9",
 									"maxLength": 32,
-									"type": "string",
 									"x-auditable": true
 								},
 								"start_time": {
 									"description": "When the silence starts.",
-									"example": "2022-01-01T00:00:00Z",
 									"type": "string",
+									"example": "2022-01-01T00:00:00Z",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
-						},
-						"type": "array"
+							}
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Silences response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1104,15 +1107,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1124,29 +1127,28 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Silences response"
+				}
 			},
 			"4XX": {
+				"description": "Create Silences response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1154,14 +1156,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1173,15 +1176,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1193,118 +1196,93 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "When the silence was created.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"end_time": {
 																"description": "When the silence ends.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Silence ID",
+																"type": "string",
 																"example": "f878e90c23f44126ae3cfc399f646977",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"policy_id": {
 																"description": "The unique identifier of a notification policy",
+																"type": "string",
 																"example": "0da2b59ef118439d8097bdfb215203c9",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"start_time": {
 																"description": "When the silence starts.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "When the silence was modified.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1316,32 +1294,55 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Silences response failure"
+				}
 			}
 		},
 		"security": [
@@ -1353,7 +1354,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Silences",
 		"tags": [
 			"Notification Silences"
 		],
@@ -1363,72 +1363,75 @@
 		]
 	},
 	"PUT /accounts/{account_id}/alerting/v3/silences": {
-		"description": "Updates existing silences for an account.",
 		"operationId": "notification-silences-update-silences",
+		"summary": "Update Silences",
+		"description": "Updates existing silences for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account id",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
+							"type": "object",
 							"properties": {
 								"end_time": {
 									"description": "When the silence ends.",
-									"example": "2022-01-01T00:00:00Z",
 									"type": "string",
+									"example": "2022-01-01T00:00:00Z",
 									"x-auditable": true
 								},
 								"id": {
 									"description": "Silence ID",
+									"type": "string",
 									"example": "f878e90c23f44126ae3cfc399f646977",
 									"maxLength": 32,
-									"type": "string",
 									"x-auditable": true
 								},
 								"start_time": {
 									"description": "When the silence starts.",
-									"example": "2022-01-01T00:00:00Z",
 									"type": "string",
+									"example": "2022-01-01T00:00:00Z",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
-						},
-						"type": "array"
+							}
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Silences response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1440,15 +1443,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1460,81 +1463,80 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"description": "When the silence was created.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													},
 													"end_time": {
 														"description": "When the silence ends.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Silence ID",
+														"type": "string",
 														"example": "f878e90c23f44126ae3cfc399f646977",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"policy_id": {
 														"description": "The unique identifier of a notification policy",
+														"type": "string",
 														"example": "0da2b59ef118439d8097bdfb215203c9",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"start_time": {
 														"description": "When the silence starts.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													},
 													"updated_at": {
 														"description": "When the silence was modified.",
-														"example": "2022-01-01T00:00:00Z",
 														"type": "string",
+														"example": "2022-01-01T00:00:00Z",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Silences response"
+				}
 			},
 			"4XX": {
+				"description": "Update Silences response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1542,14 +1544,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1561,15 +1564,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1581,118 +1584,93 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "When the silence was created.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"end_time": {
 																"description": "When the silence ends.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Silence ID",
+																"type": "string",
 																"example": "f878e90c23f44126ae3cfc399f646977",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"policy_id": {
 																"description": "The unique identifier of a notification policy",
+																"type": "string",
 																"example": "0da2b59ef118439d8097bdfb215203c9",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"start_time": {
 																"description": "When the silence starts.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "When the silence was modified.",
-																"example": "2022-01-01T00:00:00Z",
 																"type": "string",
+																"example": "2022-01-01T00:00:00Z",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1704,32 +1682,55 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Silences response failure"
+				}
 			}
 		},
 		"security": [
@@ -1741,7 +1742,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Silences",
 		"tags": [
 			"Notification Silences"
 		],

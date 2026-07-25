@@ -1,116 +1,120 @@
 {
 	"POST /accounts/{account_id}/intel/miscategorization": {
-		"description": "Allows you to submit requests to change a domain’s category.\n\nRequests that include category `169` (New Domains) or category `177` (Newly Seen)\nin any of `content_adds`, `content_removes`, `security_adds`, or `security_removes`\nwill be rejected with a `400 Bad Request`. These categories are automatically\nmanaged and fall off 30 days after they are applied.\n",
 		"operationId": "miscategorization-create-miscategorization",
+		"summary": "Create Miscategorization",
+		"description": "Allows you to submit requests to change a domain’s category.\n\nRequests that include category `169` (New Domains) or category `177` (Newly Seen)\nin any of `content_adds`, `content_removes`, `security_adds`, or `security_removes`\nwill be rejected with a `400 Bad Request`. These categories are automatically\nmanaged and fall off 30 days after they are applied.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"content_adds": {
 								"description": "Content category IDs to add.",
-								"example": [
-									82
-								],
+								"type": "array",
 								"items": {
 									"type": "integer",
 									"x-auditable": true
 								},
-								"type": "array"
+								"example": [
+									82
+								]
 							},
 							"content_removes": {
 								"description": "Content category IDs to remove.",
-								"example": [
-									155
-								],
+								"type": "array",
 								"items": {
 									"type": "integer",
 									"x-auditable": true
 								},
-								"type": "array"
+								"example": [
+									155
+								]
 							},
 							"indicator_type": {
+								"type": "string",
+								"example": "domain",
 								"enum": [
 									"domain",
 									"ipv4",
 									"ipv6",
 									"url"
 								],
-								"example": "domain",
-								"type": "string",
 								"x-auditable": true
 							},
 							"ip": {
 								"description": "Provide only if indicator_type is `ipv4` or `ipv6`.",
-								"nullable": true,
 								"type": "string",
+								"nullable": true,
 								"x-auditable": true
 							},
 							"security_adds": {
 								"description": "Security category IDs to add.",
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"x-auditable": true
+								},
 								"example": [
 									117,
 									131
-								],
-								"items": {
-									"type": "integer",
-									"x-auditable": true
-								},
-								"type": "array"
+								]
 							},
 							"security_removes": {
 								"description": "Security category IDs to remove.",
-								"example": [
-									83
-								],
+								"type": "array",
 								"items": {
 									"type": "integer",
 									"x-auditable": true
 								},
-								"type": "array"
+								"example": [
+									83
+								]
 							},
 							"url": {
 								"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`.",
 								"type": "string",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Miscategorization response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -119,12 +123,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -134,15 +138,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -151,12 +155,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -166,47 +170,47 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Miscategorization response."
+				}
 			},
 			"4XX": {
+				"description": "Create Miscategorization response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -215,12 +219,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -230,15 +234,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -247,12 +251,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -262,70 +266,43 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -338,22 +315,48 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -361,14 +364,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Miscategorization response failure."
+				}
 			}
 		},
 		"security": [
@@ -380,7 +381,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Miscategorization",
 		"tags": [
 			"Miscategorization"
 		]

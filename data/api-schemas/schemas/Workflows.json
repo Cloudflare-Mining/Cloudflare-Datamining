@@ -1,22 +1,23 @@
 {
 	"DELETE /accounts/{account_id}/workflows/{workflow_name}": {
-		"description": "Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it.",
 		"operationId": "wor-delete-workflow",
+		"summary": "Deletes a Workflow",
+		"description": "Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -25,11 +26,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Deletes a Workflow.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -44,10 +48,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -62,29 +66,29 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"status": {
+											"type": "string",
 											"enum": [
 												"ok"
-											],
-											"type": "string"
+											]
 										},
 										"success": {
-											"nullable": true,
-											"type": "boolean"
+											"type": "boolean",
+											"nullable": true
 										}
 									},
 									"required": [
 										"success",
 										"status"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -109,14 +113,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -124,19 +127,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Deletes a Workflow."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -151,27 +155,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -179,19 +182,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Workflow not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -206,27 +210,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -234,12 +237,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow not found."
+				}
 			}
 		},
 		"security": [
@@ -249,7 +250,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Deletes a Workflow",
 		"tags": [
 			"Workflows"
 		],
@@ -274,34 +274,35 @@
 		"x-forge-require-confirmation": "This operation permanently deletes the Workflow."
 	},
 	"DELETE /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
-		"description": "Deletes a workflow instance and its stored state.",
 		"operationId": "wor-delete-workflow-instance",
+		"summary": "Delete a workflow instance",
+		"description": "Deletes a workflow instance and its stored state.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "instance_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"type": "string",
 					"maxLength": 271,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -310,11 +311,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Instance deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -329,10 +333,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -347,27 +351,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"instanceId": {
 											"type": "string"
 										},
 										"timestamp": {
 											"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										}
 									},
 									"required": [
 										"instanceId",
 										"timestamp"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -392,14 +396,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -407,19 +410,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Instance deleted."
+				}
 			},
 			"404": {
+				"description": "Workflow not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -434,27 +438,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -462,12 +465,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow not found."
+				}
 			}
 		},
 		"security": [
@@ -477,7 +478,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a workflow instance",
 		"tags": [
 			"Workflows"
 		],
@@ -498,43 +498,44 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows": {
-		"description": "Lists all workflows configured for the account.",
 		"operationId": "wor-list-workflows",
+		"summary": "List all Workflows",
+		"description": "Lists all workflows configured for the account.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "number",
 					"default": 10,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "number",
 					"default": 1,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Allows filtering workflows` name.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Allows filtering workflows` name.",
 				"schema": {
 					"description": "Allows filtering workflows` name.",
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -543,11 +544,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of all Workflows belonging to a account.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -562,10 +566,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -580,24 +584,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"class_name": {
 												"type": "string"
 											},
 											"created_on": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"instances": {
+												"type": "object",
 												"properties": {
 													"complete": {
 														"type": "number"
@@ -626,20 +631,20 @@
 													"waitingForPause": {
 														"type": "number"
 													}
-												},
-												"type": "object"
+												}
 											},
 											"modified_on": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"name": {
+												"type": "string",
 												"maxLength": 64,
 												"minLength": 1,
-												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-												"type": "string"
+												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 											},
 											"schedules": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"cron": {
@@ -654,16 +659,15 @@
 														"next_instance"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"script_name": {
 												"type": "string"
 											},
 											"triggered_on": {
+												"type": "string",
 												"format": "date-time",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											}
 										},
 										"required": [
@@ -677,10 +681,10 @@
 											"instances"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -705,14 +709,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -720,19 +723,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of all Workflows belonging to a account."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -747,27 +751,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -775,12 +778,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error."
+				}
 			}
 		},
 		"security": [
@@ -790,7 +791,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List all Workflows",
 		"tags": [
 			"Workflows"
 		],
@@ -816,23 +816,24 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}": {
-		"description": "Retrieves configuration and metadata for a specific workflow.",
 		"operationId": "wor-get-workflow-details",
+		"summary": "Get Workflow details",
+		"description": "Retrieves configuration and metadata for a specific workflow.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -841,11 +842,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get Workflow details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -860,10 +864,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -878,23 +882,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"class_name": {
 											"type": "string"
 										},
 										"created_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"instances": {
+											"type": "object",
 											"properties": {
 												"complete": {
 													"type": "number"
@@ -923,20 +928,20 @@
 												"waitingForPause": {
 													"type": "number"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"modified_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
+											"type": "string",
 											"maxLength": 64,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 										},
 										"schedules": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"cron": {
@@ -951,16 +956,15 @@
 													"next_instance"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"script_name": {
 											"type": "string"
 										},
 										"triggered_on": {
+											"type": "string",
 											"format": "date-time",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										}
 									},
 									"required": [
@@ -972,10 +976,10 @@
 										"class_name",
 										"triggered_on",
 										"instances"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -1000,14 +1004,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1015,19 +1018,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Workflow details."
+				}
 			},
 			"400": {
+				"description": "Workflow has no deployed versions.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1042,27 +1046,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1070,19 +1073,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow has no deployed versions."
+				}
 			},
 			"404": {
+				"description": "Workflow not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1097,27 +1101,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1125,12 +1128,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow not found."
+				}
 			}
 		},
 		"security": [
@@ -1140,7 +1141,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Workflow details",
 		"tags": [
 			"Workflows"
 		],
@@ -1166,66 +1166,68 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances": {
-		"description": "Lists all instances of a workflow with their execution status.",
 		"operationId": "wor-list-workflow-instances",
+		"summary": "List of workflow instances",
+		"description": "Lists all instances of a workflow with their execution status.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
 					"description": "Deprecated: use `cursor` for pagination instead.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"deprecated": true,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "number",
 					"default": 50,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Opaque token for cursor-based pagination. Mutually exclusive with `page`.",
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
+				"description": "Opaque token for cursor-based pagination. Mutually exclusive with `page`.",
 				"schema": {
 					"description": "Opaque token for cursor-based pagination. Mutually exclusive with `page`.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Defines the direction for cursor-based pagination.",
-				"in": "query",
 				"name": "direction",
+				"in": "query",
+				"description": "Defines the direction for cursor-based pagination.",
 				"schema": {
 					"description": "Defines the direction for cursor-based pagination.",
+					"type": "string",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "status",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"queued",
 						"running",
@@ -1236,33 +1238,32 @@
 						"waitingForPause",
 						"waiting",
 						"rollingBack"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
-				"in": "query",
 				"name": "date_start",
-				"schema": {
-					"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
-					"format": "date-time",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
 				"in": "query",
-				"name": "date_end",
+				"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
 				"schema": {
 					"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
-				"in": "path",
+				"name": "date_end",
+				"in": "query",
+				"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
+				"schema": {
+					"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1271,11 +1272,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of workflow instances.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1290,10 +1294,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1308,37 +1312,38 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_on": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"ended_on": {
+												"type": "string",
 												"format": "date-time",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"id": {
+												"type": "string",
 												"maxLength": 100,
 												"minLength": 1,
-												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-												"type": "string"
+												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 											},
 											"modified_on": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"started_on": {
+												"type": "string",
 												"format": "date-time",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"status": {
+												"type": "string",
 												"enum": [
 													"queued",
 													"running",
@@ -1349,26 +1354,25 @@
 													"waitingForPause",
 													"waiting",
 													"rollingBack"
-												],
-												"type": "string"
+												]
 											},
 											"trigger_source": {
+												"type": "string",
 												"enum": [
 													"unknown",
 													"api",
 													"binding",
 													"event",
 													"cron"
-												],
-												"type": "string"
+												]
 											},
 											"version_id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"workflow_id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											}
 										},
 										"required": [
@@ -1382,10 +1386,10 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -1394,17 +1398,17 @@
 											"type": "string"
 										},
 										"page": {
-											"deprecated": true,
 											"description": "Deprecated: use cursor-based pagination instead.",
-											"type": "number"
+											"type": "number",
+											"deprecated": true
 										},
 										"per_page": {
 											"type": "number"
 										},
 										"total_count": {
-											"deprecated": true,
 											"description": "Deprecated: total count is not reliable with cursor-based pagination.",
-											"type": "number"
+											"type": "number",
+											"deprecated": true
 										},
 										"total_pages": {
 											"type": "number"
@@ -1414,14 +1418,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1429,19 +1432,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of workflow instances."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1456,27 +1460,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1484,19 +1487,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error."
+				}
 			},
 			"404": {
+				"description": "Workflow Name not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1511,27 +1515,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1539,12 +1542,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow Name not found."
+				}
 			}
 		},
 		"security": [
@@ -1554,7 +1555,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List of workflow instances",
 		"tags": [
 			"Workflows"
 		],
@@ -1588,62 +1588,63 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
-		"description": "Retrieves logs and execution status for a specific workflow instance.",
 		"operationId": "wor-describe-workflow-instance",
+		"summary": "Get logs and status from instance",
+		"description": "Retrieves logs and execution status for a specific workflow instance.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "instance_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"type": "string",
 					"maxLength": 271,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			},
 			{
-				"description": "When true, omits step details and returns only metadata with step_count.",
-				"in": "query",
 				"name": "simple",
+				"in": "query",
+				"description": "When true, omits step details and returns only metadata with step_count.",
 				"schema": {
-					"default": "false",
 					"description": "When true, omits step details and returns only metadata with step_count.",
+					"type": "string",
+					"default": "false",
 					"enum": [
 						"true",
 						"false"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Step ordering: \"asc\" (default, oldest first) or \"desc\" (newest first).",
-				"in": "query",
 				"name": "order",
+				"in": "query",
+				"description": "Step ordering: \"asc\" (default, oldest first) or \"desc\" (newest first).",
 				"schema": {
-					"default": "asc",
 					"description": "Step ordering: \"asc\" (default, oldest first) or \"desc\" (newest first).",
+					"type": "string",
+					"default": "asc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1652,11 +1653,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get all logs and status from the instance.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1671,10 +1675,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1689,17 +1693,18 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"end": {
+											"type": "string",
 											"format": "date-time",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"error": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"message": {
@@ -1712,8 +1717,7 @@
 											"required": [
 												"name",
 												"message"
-											],
-											"type": "object"
+											]
 										},
 										"output": {
 											"anyOf": [
@@ -1729,13 +1733,15 @@
 											"type": "object"
 										},
 										"queued": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"rollback": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"error": {
+													"type": "object",
 													"nullable": true,
 													"properties": {
 														"message": {
@@ -1748,24 +1754,23 @@
 													"required": [
 														"name",
 														"message"
-													],
-													"type": "object"
+													]
 												},
 												"outcome": {
+													"type": "string",
 													"enum": [
 														"complete",
 														"failed"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
 												"outcome",
 												"error"
-											],
-											"type": "object"
+											]
 										},
 										"schedule": {
+											"type": "object",
 											"properties": {
 												"cron": {
 													"type": "string"
@@ -1777,15 +1782,15 @@
 											"required": [
 												"cron",
 												"scheduledTime"
-											],
-											"type": "object"
+											]
 										},
 										"start": {
+											"type": "string",
 											"format": "date-time",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -1796,26 +1801,28 @@
 												"waitingForPause",
 												"waiting",
 												"rollingBack"
-											],
-											"type": "string"
+											]
 										},
 										"step_count": {
 											"type": "integer"
 										},
 										"steps": {
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
 														"properties": {
 															"attempts": {
+																"type": "array",
 																"items": {
 																	"properties": {
 																		"end": {
+																			"type": "string",
 																			"format": "date-time",
-																			"nullable": true,
-																			"type": "string"
+																			"nullable": true
 																		},
 																		"error": {
+																			"type": "object",
 																			"nullable": true,
 																			"properties": {
 																				"message": {
@@ -1828,16 +1835,15 @@
 																			"required": [
 																				"name",
 																				"message"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"start": {
-																			"format": "date-time",
-																			"type": "string"
+																			"type": "string",
+																			"format": "date-time"
 																		},
 																		"success": {
-																			"nullable": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"nullable": true
 																		}
 																	},
 																	"required": [
@@ -1847,22 +1853,24 @@
 																		"error"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															},
 															"config": {
+																"type": "object",
 																"properties": {
 																	"retries": {
+																		"type": "object",
 																		"properties": {
 																			"backoff": {
+																				"type": "string",
 																				"enum": [
 																					"constant",
 																					"linear",
 																					"exponential"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"delay": {
+																				"description": "Specifies the delay duration. '[dynamic]' indicates the delay is computed by a user-supplied function.",
 																				"anyOf": [
 																					{
 																						"type": "string"
@@ -1870,8 +1878,7 @@
 																					{
 																						"type": "number"
 																					}
-																				],
-																				"description": "Specifies the delay duration. '[dynamic]' indicates the delay is computed by a user-supplied function."
+																				]
 																			},
 																			"limit": {
 																				"type": "number"
@@ -1880,17 +1887,17 @@
 																		"required": [
 																			"limit",
 																			"delay"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"sensitive": {
 																		"description": "When set to 'output', step output is redacted from log and step output responses.",
+																		"type": "string",
 																		"enum": [
 																			"output"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"timeout": {
+																		"description": "Specifies the timeout duration.",
 																		"anyOf": [
 																			{
 																				"type": "string"
@@ -1898,42 +1905,40 @@
 																			{
 																				"type": "number"
 																			}
-																		],
-																		"description": "Specifies the timeout duration."
+																		]
 																	}
 																},
 																"required": [
 																	"retries",
 																	"timeout"
-																],
-																"type": "object"
+																]
 															},
 															"end": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"name": {
 																"type": "string"
 															},
 															"output": {
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"start": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"success": {
-																"nullable": true,
-																"type": "boolean"
+																"type": "boolean",
+																"nullable": true
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"step",
 																	"rollback"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -1951,10 +1956,11 @@
 													{
 														"properties": {
 															"end": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"error": {
+																"type": "object",
 																"nullable": true,
 																"properties": {
 																	"message": {
@@ -1967,8 +1973,7 @@
 																"required": [
 																	"name",
 																	"message"
-																],
-																"type": "object"
+																]
 															},
 															"finished": {
 																"type": "boolean"
@@ -1977,14 +1982,14 @@
 																"type": "string"
 															},
 															"start": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"sleep"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2000,6 +2005,7 @@
 													{
 														"properties": {
 															"trigger": {
+																"type": "object",
 																"properties": {
 																	"source": {
 																		"type": "string"
@@ -2007,14 +2013,13 @@
 																},
 																"required": [
 																	"source"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"termination"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2026,10 +2031,11 @@
 													{
 														"properties": {
 															"end": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"error": {
+																"type": "object",
 																"nullable": true,
 																"properties": {
 																	"message": {
@@ -2042,8 +2048,7 @@
 																"required": [
 																	"name",
 																	"message"
-																],
-																"type": "object"
+																]
 															},
 															"finished": {
 																"type": "boolean"
@@ -2055,14 +2060,14 @@
 																"type": "string"
 															},
 															"start": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"waitForEvent"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2076,34 +2081,33 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"nullable": true,
-											"type": "boolean"
+											"type": "boolean",
+											"nullable": true
 										},
 										"trigger": {
+											"type": "object",
 											"properties": {
 												"source": {
+													"type": "string",
 													"enum": [
 														"unknown",
 														"api",
 														"binding",
 														"event",
 														"cron"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
 												"source"
-											],
-											"type": "object"
+											]
 										},
 										"versionId": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										}
 									},
 									"required": [
@@ -2120,10 +2124,10 @@
 										"status",
 										"output",
 										"rollback"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -2148,14 +2152,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2163,19 +2166,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get all logs and status from the instance."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2190,27 +2194,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2218,19 +2221,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Instance not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2245,27 +2249,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2273,12 +2276,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Instance not found."
+				}
 			}
 		},
 		"security": [
@@ -2288,7 +2289,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get logs and status from instance",
 		"tags": [
 			"Workflows"
 		],
@@ -2314,70 +2314,71 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/step": {
-		"description": "Retrieves the full, untruncated output for a specific step on a workflow instance. Returns a flat status-shaped JSON body with step `status` ('running' | 'waiting' | 'complete' | 'errored'), `error` (nullable), and `output` (the step value, or null while running/waiting/errored). When the step returned a ReadableStream from step.do, the response is served as 'application/octet-stream' with the raw bytes as the body instead of JSON. A `status='running'` response with non-null `error` indicates the step is currently retrying after a prior attempt failed.",
 		"operationId": "wor-get-workflow-instance-step",
+		"summary": "Get full step output from instance",
+		"description": "Retrieves the full, untruncated output for a specific step on a workflow instance. Returns a flat status-shaped JSON body with step `status` ('running' | 'waiting' | 'complete' | 'errored'), `error` (nullable), and `output` (the step value, or null while running/waiting/errored). When the step returned a ReadableStream from step.do, the response is served as 'application/octet-stream' with the raw bytes as the body instead of JSON. A `status='running'` response with non-null `error` indicates the step is currently retrying after a prior attempt failed.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "instance_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"type": "string",
 					"maxLength": 271,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			},
 			{
-				"description": "Exact step name from the instance logs response, including the generated counter suffix.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Exact step name from the instance logs response, including the generated counter suffix.",
 				"required": true,
 				"schema": {
 					"description": "Exact step name from the instance logs response, including the generated counter suffix.",
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"description": "Step type to disambiguate step.do and waitForEvent entries that share the same name.",
-				"in": "query",
 				"name": "type",
+				"in": "query",
+				"description": "Step type to disambiguate step.do and waitForEvent entries that share the same name.",
 				"required": true,
 				"schema": {
 					"description": "Step type to disambiguate step.do and waitForEvent entries that share the same name.",
+					"type": "string",
 					"enum": [
 						"step",
 						"waitForEvent"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Specific attempt number to retrieve output or error for.",
-				"in": "query",
 				"name": "attempt",
+				"in": "query",
+				"description": "Specific attempt number to retrieve output or error for.",
 				"schema": {
 					"description": "Specific attempt number to retrieve output or error for.",
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2386,11 +2387,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get the full output from a specific instance step.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2405,10 +2409,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2423,13 +2427,14 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"error": {
 											"description": "Error details when status='errored'; null otherwise.",
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"message": {
@@ -2442,14 +2447,14 @@
 											"required": [
 												"name",
 												"message"
-											],
-											"type": "object"
+											]
 										},
 										"output": {
 											"description": "Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON.",
 											"type": "object"
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -2460,17 +2465,16 @@
 												"waitingForPause",
 												"waiting",
 												"rollingBack"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"status",
 										"error"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -2495,14 +2499,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2510,26 +2513,27 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					},
 					"application/octet-stream": {
 						"schema": {
 							"description": "Raw bytes of the ReadableStream returned from step.do.",
-							"format": "binary",
-							"type": "string"
+							"type": "string",
+							"format": "binary"
 						}
 					}
-				},
-				"description": "Get the full output from a specific instance step."
+				}
 			},
 			"400": {
+				"description": "Bad Request (e.g. 'attempt' parameter supplied with type='waitForEvent').",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2544,27 +2548,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2572,19 +2575,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request (e.g. 'attempt' parameter supplied with type='waitForEvent')."
+				}
 			},
 			"404": {
+				"description": "Step not found on this instance, or requested attempt is out of range.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2599,27 +2603,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2627,19 +2630,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Step not found on this instance, or requested attempt is out of range."
+				}
 			},
 			"429": {
+				"description": "Step output requests are rate limited.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2654,27 +2658,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2682,19 +2685,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Step output requests are rate limited."
+				}
 			},
 			"500": {
+				"description": "Step completed but its stored output is corrupt or missing (server-side data-integrity failure).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2709,27 +2713,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2737,12 +2740,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Step completed but its stored output is corrupt or missing (server-side data-integrity failure)."
+				}
 			}
 		},
 		"security": [
@@ -2752,7 +2753,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get full step output from instance",
 		"tags": [
 			"Workflows"
 		],
@@ -2778,23 +2778,24 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
-		"description": "Gets the status of a bulk workflow instance termination job.",
 		"operationId": "wor-status-terminate-workflow-instances",
+		"summary": "Get status of the job responsible for terminate all instances of a workflow",
+		"description": "Gets the status of a bulk workflow instance termination job.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2803,11 +2804,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get status of the job responsible for terminate all instances of a workflow.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2822,10 +2826,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2840,25 +2844,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"status": {
+											"type": "string",
 											"enum": [
 												"running",
 												"not_running"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"status"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -2883,14 +2887,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2898,19 +2901,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get status of the job responsible for terminate all instances of a workflow."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2925,27 +2929,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2953,19 +2956,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error."
+				}
 			},
 			"404": {
+				"description": "Workflow Name not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2980,27 +2984,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3008,12 +3011,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow Name not found."
+				}
 			}
 		},
 		"security": [
@@ -3023,7 +3024,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get status of the job responsible for terminate all instances of a workflow",
 		"tags": [
 			"Workflows"
 		],
@@ -3047,42 +3047,43 @@
 		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
-		"description": "Lists all deployed versions of a workflow.",
 		"operationId": "wor-list-workflow-versions",
+		"summary": "List deployed Workflow versions",
+		"description": "Lists all deployed versions of a workflow.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "number",
 					"default": 50,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "number",
 					"default": 1,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -3091,11 +3092,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List deployed workflow versions.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3110,10 +3114,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3128,20 +3132,21 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"class_name": {
 												"type": "string"
 											},
 											"created_on": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"default_retention": {
+												"type": "object",
 												"properties": {
 													"error_retention": {
 														"description": "Default error retention in milliseconds.",
@@ -3151,40 +3156,39 @@
 														"description": "Default success retention in milliseconds.",
 														"type": "integer"
 													}
-												},
-												"type": "object"
+												}
 											},
 											"has_dag": {
 												"type": "boolean"
 											},
 											"id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"language": {
 												"description": "The programming language of the workflow implementation",
+												"type": "string",
 												"enum": [
 													"javascript",
 													"python"
-												],
-												"type": "string"
+												]
 											},
 											"limits": {
+												"type": "object",
 												"properties": {
 													"steps": {
-														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1
 													}
-												},
-												"type": "object"
+												}
 											},
 											"modified_on": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"workflow_id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											}
 										},
 										"required": [
@@ -3197,10 +3201,10 @@
 											"language"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -3225,14 +3229,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3240,19 +3243,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List deployed workflow versions."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3267,27 +3271,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3295,12 +3298,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -3310,7 +3311,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List deployed Workflow versions",
 		"tags": [
 			"Workflows"
 		],
@@ -3336,32 +3336,33 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}": {
-		"description": "Retrieves details for a specific deployed workflow version.",
 		"operationId": "wor-describe-workflow-versions",
+		"summary": "Get Workflow version details",
+		"description": "Retrieves details for a specific deployed workflow version.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "version_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -3370,11 +3371,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get specific version details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3389,10 +3393,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3407,19 +3411,20 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"class_name": {
 											"type": "string"
 										},
 										"created_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"default_retention": {
+											"type": "object",
 											"properties": {
 												"error_retention": {
 													"description": "Default error retention in milliseconds.",
@@ -3429,40 +3434,39 @@
 													"description": "Default success retention in milliseconds.",
 													"type": "integer"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"has_dag": {
 											"type": "boolean"
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"language": {
 											"description": "The programming language of the workflow implementation",
+											"type": "string",
 											"enum": [
 												"javascript",
 												"python"
-											],
-											"type": "string"
+											]
 										},
 										"limits": {
+											"type": "object",
 											"properties": {
 												"steps": {
-													"minimum": 1,
-													"type": "integer"
+													"type": "integer",
+													"minimum": 1
 												}
-											},
-											"type": "object"
+											}
 										},
 										"modified_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"workflow_id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										}
 									},
 									"required": [
@@ -3473,10 +3477,10 @@
 										"class_name",
 										"has_dag",
 										"language"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -3501,14 +3505,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3516,19 +3519,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get specific version details."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3543,27 +3547,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3571,19 +3574,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Version not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3598,27 +3602,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3626,12 +3629,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Version not found."
+				}
 			}
 		},
 		"security": [
@@ -3641,7 +3642,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Workflow version details",
 		"tags": [
 			"Workflows"
 		],
@@ -3667,32 +3667,33 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/dag": {
-		"description": "Retrieves the directed acyclic graph (DAG) representation of a workflow version.",
 		"operationId": "wor-describe-workflow-versions-dag",
+		"summary": "Get Workflow version dag",
+		"description": "Retrieves the directed acyclic graph (DAG) representation of a workflow version.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "version_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -3701,11 +3702,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get the parsed DAG for a specific workflow version.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3720,10 +3724,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3738,33 +3742,33 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"class_name": {
 											"type": "string"
 										},
 										"created_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"dag": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"modified_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"workflow_id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										}
 									},
 									"required": [
@@ -3774,10 +3778,10 @@
 										"workflow_id",
 										"class_name",
 										"dag"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -3802,14 +3806,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3817,19 +3820,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get the parsed DAG for a specific workflow version."
+				}
 			},
 			"404": {
+				"description": "Version not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3844,27 +3848,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3872,12 +3875,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Version not found."
+				}
 			}
 		},
 		"security": [
@@ -3887,7 +3888,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Workflow version dag",
 		"tags": [
 			"Workflows"
 		],
@@ -3911,32 +3911,33 @@
 		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/graph": {
-		"description": "Retrieves the graph visualization of a workflow version.",
 		"operationId": "wor-describe-workflow-versions-graph",
+		"summary": "Get Workflow version graph",
+		"description": "Retrieves the graph visualization of a workflow version.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "version_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -3945,11 +3946,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get the parsed graph for a specific workflow version.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3964,10 +3968,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3982,20 +3986,21 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"class_name": {
 											"type": "string"
 										},
 										"created_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"graph": {
 											"description": "Versioned workflow graph payload.",
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"version": {
@@ -4003,11 +4008,13 @@
 												},
 												"workflow": {
 													"description": "A parsed workflow entrypoint with its step graph.",
+													"type": "object",
 													"properties": {
 														"class_name": {
 															"type": "string"
 														},
 														"functions": {
+															"type": "object",
 															"additionalProperties": {
 																"properties": {
 																	"name": {
@@ -4015,16 +4022,16 @@
 																	},
 																	"nodes": {
 																		"description": "Child nodes (recursive).",
+																		"type": "array",
 																		"items": {
 																			"type": "object"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"function_def"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
@@ -4033,15 +4040,16 @@
 																	"nodes"
 																],
 																"type": "object"
-															},
-															"type": "object"
+															}
 														},
 														"nodes": {
+															"type": "array",
 															"items": {
 																"oneOf": [
 																	{
 																		"properties": {
 																			"duration": {
+																				"description": "Duration as milliseconds (number) or human-readable string.",
 																				"anyOf": [
 																					{
 																						"type": "number"
@@ -4049,8 +4057,7 @@
 																					{
 																						"type": "string"
 																					}
-																				],
-																				"description": "Duration as milliseconds (number) or human-readable string."
+																				]
 																			},
 																			"name": {
 																				"type": "string"
@@ -4062,10 +4069,10 @@
 																				"type": "number"
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"step_sleep"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4079,20 +4086,23 @@
 																		"properties": {
 																			"config": {
 																				"description": "Configuration for a step (retries and timeout).",
+																				"type": "object",
 																				"properties": {
 																					"retries": {
 																						"description": "Retry policy for a step.",
+																						"type": "object",
 																						"properties": {
 																							"backoff": {
 																								"description": "Backoff strategy for step retries.",
+																								"type": "string",
 																								"enum": [
 																									"constant",
 																									"linear",
 																									"exponential"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"delay": {
+																								"description": "Duration as milliseconds (number) or human-readable string.",
 																								"anyOf": [
 																									{
 																										"type": "number"
@@ -4100,8 +4110,7 @@
 																									{
 																										"type": "string"
 																									}
-																								],
-																								"description": "Duration as milliseconds (number) or human-readable string."
+																								]
 																							},
 																							"limit": {
 																								"type": "number"
@@ -4111,10 +4120,10 @@
 																							"limit",
 																							"delay",
 																							"backoff"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					"timeout": {
+																						"description": "Duration as milliseconds (number) or human-readable string.",
 																						"anyOf": [
 																							{
 																								"type": "number"
@@ -4122,25 +4131,23 @@
 																							{
 																								"type": "string"
 																							}
-																						],
-																						"description": "Duration as milliseconds (number) or human-readable string."
+																						]
 																					}
 																				},
 																				"required": [
 																					"retries",
 																					"timeout"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"name": {
 																				"type": "string"
 																			},
 																			"nodes": {
 																				"description": "Child nodes (recursive).",
+																				"type": "array",
 																				"items": {
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"resolves": {
 																				"type": "number"
@@ -4149,10 +4156,10 @@
 																				"type": "number"
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"step_do"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4170,12 +4177,14 @@
 																			},
 																			"options": {
 																				"description": "Options for a waitForEvent step.",
+																				"type": "object",
 																				"nullable": true,
 																				"properties": {
 																					"event_type": {
 																						"type": "string"
 																					},
 																					"timeout": {
+																						"description": "Duration as milliseconds (number) or human-readable string.",
 																						"anyOf": [
 																							{
 																								"type": "number"
@@ -4183,25 +4192,24 @@
 																							{
 																								"type": "string"
 																							}
-																						],
-																						"description": "Duration as milliseconds (number) or human-readable string."
+																						]
 																					}
 																				},
 																				"required": [
 																					"event_type",
 																					"timeout"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"payload": {
+																				"description": "Shape descriptor for JSON payloads.",
 																				"anyOf": [
 																					{
 																						"properties": {
 																							"type": {
+																								"type": "string",
 																								"enum": [
 																									"unknown"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -4212,17 +4220,17 @@
 																					{
 																						"properties": {
 																							"fields": {
+																								"description": "Nested JsonShape fields (recursive structure).",
+																								"type": "object",
 																								"additionalProperties": {
 																									"type": "object"
-																								},
-																								"description": "Nested JsonShape fields (recursive structure).",
-																								"type": "object"
+																								}
 																							},
 																							"type": {
+																								"type": "string",
 																								"enum": [
 																									"object"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -4231,8 +4239,7 @@
 																						],
 																						"type": "object"
 																					}
-																				],
-																				"description": "Shape descriptor for JSON payloads."
+																				]
 																			},
 																			"resolves": {
 																				"type": "number"
@@ -4241,10 +4248,10 @@
 																				"type": "number"
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"step_wait_for_event"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4269,10 +4276,10 @@
 																				"type": "string"
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"step_sleep_until"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4286,16 +4293,16 @@
 																		"properties": {
 																			"nodes": {
 																				"description": "Child nodes (recursive).",
+																				"type": "array",
 																				"items": {
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"loop"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4308,26 +4315,26 @@
 																		"properties": {
 																			"kind": {
 																				"description": "Parallel execution strategy.",
+																				"type": "string",
 																				"enum": [
 																					"all",
 																					"any",
 																					"all_settled",
 																					"race"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"nodes": {
 																				"description": "Child nodes (recursive).",
+																				"type": "array",
 																				"items": {
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"parallel"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4340,79 +4347,79 @@
 																	{
 																		"properties": {
 																			"catch_block": {
+																				"type": "object",
 																				"nullable": true,
 																				"properties": {
 																					"nodes": {
 																						"description": "Child nodes (recursive).",
+																						"type": "array",
 																						"items": {
 																							"type": "object"
-																						},
-																						"type": "array"
+																						}
 																					},
 																					"type": {
+																						"type": "string",
 																						"enum": [
 																							"block"
-																						],
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"required": [
 																					"type",
 																					"nodes"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"finally_block": {
+																				"type": "object",
 																				"nullable": true,
 																				"properties": {
 																					"nodes": {
 																						"description": "Child nodes (recursive).",
+																						"type": "array",
 																						"items": {
 																							"type": "object"
-																						},
-																						"type": "array"
+																						}
 																					},
 																					"type": {
+																						"type": "string",
 																						"enum": [
 																							"block"
-																						],
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"required": [
 																					"type",
 																					"nodes"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"try_block": {
+																				"type": "object",
 																				"nullable": true,
 																				"properties": {
 																					"nodes": {
 																						"description": "Child nodes (recursive).",
+																						"type": "array",
 																						"items": {
 																							"type": "object"
-																						},
-																						"type": "array"
+																						}
 																					},
 																					"type": {
+																						"type": "string",
 																						"enum": [
 																							"block"
-																						],
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"required": [
 																					"type",
 																					"nodes"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"try"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4427,16 +4434,16 @@
 																		"properties": {
 																			"nodes": {
 																				"description": "Child nodes (recursive).",
+																				"type": "array",
 																				"items": {
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"block"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4448,18 +4455,19 @@
 																	{
 																		"properties": {
 																			"branches": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"condition": {
-																							"nullable": true,
-																							"type": "string"
+																							"type": "string",
+																							"nullable": true
 																						},
 																						"nodes": {
 																							"description": "Child nodes (recursive).",
+																							"type": "array",
 																							"items": {
 																								"type": "object"
-																							},
-																							"type": "array"
+																							}
 																						}
 																					},
 																					"required": [
@@ -4467,14 +4475,13 @@
 																						"nodes"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"if"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4486,18 +4493,19 @@
 																	{
 																		"properties": {
 																			"branches": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"condition": {
-																							"nullable": true,
-																							"type": "string"
+																							"type": "string",
+																							"nullable": true
 																						},
 																						"nodes": {
 																							"description": "Child nodes (recursive).",
+																							"type": "array",
 																							"items": {
 																								"type": "object"
-																							},
-																							"type": "array"
+																							}
 																						}
 																					},
 																					"required": [
@@ -4505,17 +4513,16 @@
 																						"nodes"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"discriminant": {
 																				"type": "string"
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"switch"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4531,6 +4538,7 @@
 																				"type": "string"
 																			},
 																			"functions": {
+																				"type": "object",
 																				"additionalProperties": {
 																					"properties": {
 																						"name": {
@@ -4538,16 +4546,16 @@
 																						},
 																						"nodes": {
 																							"description": "Child nodes (recursive).",
+																							"type": "array",
 																							"items": {
 																								"type": "object"
-																							},
-																							"type": "array"
+																							}
 																						},
 																						"type": {
+																							"type": "string",
 																							"enum": [
 																								"function_def"
-																							],
-																							"type": "string"
+																							]
 																						}
 																					},
 																					"required": [
@@ -4556,25 +4564,25 @@
 																						"nodes"
 																					],
 																					"type": "object"
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"nodes": {
 																				"description": "Child nodes (recursive).",
+																				"type": "array",
 																				"items": {
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"payload": {
+																				"description": "Shape descriptor for JSON payloads.",
 																				"anyOf": [
 																					{
 																						"properties": {
 																							"type": {
+																								"type": "string",
 																								"enum": [
 																									"unknown"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -4585,17 +4593,17 @@
 																					{
 																						"properties": {
 																							"fields": {
+																								"description": "Nested JsonShape fields (recursive structure).",
+																								"type": "object",
 																								"additionalProperties": {
 																									"type": "object"
-																								},
-																								"description": "Nested JsonShape fields (recursive structure).",
-																								"type": "object"
+																								}
 																							},
 																							"type": {
+																								"type": "string",
 																								"enum": [
 																									"object"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -4604,14 +4612,13 @@
 																						],
 																						"type": "object"
 																					}
-																				],
-																				"description": "Shape descriptor for JSON payloads."
+																				]
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"start"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4634,10 +4641,10 @@
 																				"type": "number"
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"function_call"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4653,16 +4660,16 @@
 																			},
 																			"nodes": {
 																				"description": "Child nodes (recursive).",
+																				"type": "array",
 																				"items": {
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"function_def"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4676,17 +4683,17 @@
 																		"properties": {
 																			"kind": {
 																				"description": "Break or return from a loop.",
+																				"type": "string",
 																				"enum": [
 																					"break",
 																					"return"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"type": {
+																				"type": "string",
 																				"enum": [
 																					"break"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -4696,18 +4703,18 @@
 																		"type": "object"
 																	}
 																]
-															},
-															"type": "array"
+															}
 														},
 														"payload": {
+															"description": "Shape descriptor for JSON payloads.",
 															"anyOf": [
 																{
 																	"properties": {
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"unknown"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -4718,17 +4725,17 @@
 																{
 																	"properties": {
 																		"fields": {
+																			"description": "Nested JsonShape fields (recursive structure).",
+																			"type": "object",
 																			"additionalProperties": {
 																				"type": "object"
-																			},
-																			"description": "Nested JsonShape fields (recursive structure).",
-																			"type": "object"
+																			}
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"object"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -4737,35 +4744,32 @@
 																	],
 																	"type": "object"
 																}
-															],
-															"description": "Shape descriptor for JSON payloads."
+															]
 														}
 													},
 													"required": [
 														"class_name",
 														"functions",
 														"nodes"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"version",
 												"workflow"
-											],
-											"type": "object"
+											]
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"modified_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"workflow_id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										}
 									},
 									"required": [
@@ -4775,10 +4779,10 @@
 										"workflow_id",
 										"class_name",
 										"graph"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -4803,14 +4807,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4818,19 +4821,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get the parsed graph for a specific workflow version."
+				}
 			},
 			"404": {
+				"description": "Version not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -4845,27 +4849,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4873,12 +4876,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Version not found."
+				}
 			}
 		},
 		"security": [
@@ -4888,7 +4889,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Workflow version graph",
 		"tags": [
 			"Workflows"
 		],
@@ -4914,12 +4914,13 @@
 		"x-fern-sdk-method-name": "graph"
 	},
 	"GET /accounts/{account_id}/workflows/settings": {
-		"description": "Retrieves account-level Workflows settings, such as the default instance retention.",
 		"operationId": "wor-get-workflow-settings",
+		"summary": "Get account settings",
+		"description": "Retrieves account-level Workflows settings, such as the default instance retention.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -4928,11 +4929,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Account settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -4947,10 +4951,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -4965,12 +4969,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"default_retention": {
+											"type": "object",
 											"properties": {
 												"error_retention": {
 													"description": "Default error retention in milliseconds.",
@@ -4980,13 +4985,12 @@
 													"description": "Default success retention in milliseconds.",
 													"type": "integer"
 												}
-											},
-											"type": "object"
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -5011,14 +5015,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5026,19 +5029,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Account settings."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5053,27 +5057,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5081,12 +5084,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5096,7 +5097,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get account settings",
 		"tags": [
 			"Workflows"
 		],
@@ -5119,34 +5119,35 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
-		"description": "Changes the execution status of a workflow instance (e.g., pause, resume, terminate).",
 		"operationId": "wor-change-status-workflow-instance",
+		"summary": "Change status of instance",
+		"description": "Changes the execution status of a workflow instance (e.g., pause, resume, terminate).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "instance_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"type": "string",
 					"maxLength": 271,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -5161,10 +5162,10 @@
 							{
 								"properties": {
 									"status": {
+										"type": "string",
 										"enum": [
 											"pause"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
@@ -5175,10 +5176,10 @@
 							{
 								"properties": {
 									"status": {
+										"type": "string",
 										"enum": [
 											"resume"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
@@ -5193,10 +5194,10 @@
 										"type": "boolean"
 									},
 									"status": {
+										"type": "string",
 										"enum": [
 											"terminate"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
@@ -5208,36 +5209,36 @@
 								"properties": {
 									"from": {
 										"description": "Step to restart from.",
+										"type": "object",
 										"properties": {
 											"count": {
+												"type": "integer",
 												"exclusiveMinimum": true,
-												"minimum": 0,
-												"type": "integer"
+												"minimum": 0
 											},
 											"name": {
+												"type": "string",
 												"maxLength": 256,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"do",
 													"sleep",
 													"waitForEvent"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"name"
-										],
-										"type": "object"
+										]
 									},
 									"status": {
+										"type": "string",
 										"enum": [
 											"restart"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
@@ -5252,11 +5253,14 @@
 		},
 		"responses": {
 			"200": {
+				"description": "Change status of instance - it can be paused, resumed or terminated.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5271,10 +5275,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5289,12 +5293,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -5305,22 +5310,21 @@
 												"waitingForPause",
 												"waiting",
 												"rollingBack"
-											],
-											"type": "string"
+											]
 										},
 										"timestamp": {
 											"description": "Accepts ISO 8601 with no timezone offsets and in UTC.",
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										}
 									},
 									"required": [
 										"status",
 										"timestamp"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -5345,14 +5349,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5360,19 +5363,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Change status of instance - it can be paused, resumed or terminated."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5387,27 +5391,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5415,19 +5418,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Instance not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5442,27 +5446,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5470,19 +5473,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Instance not found."
+				}
 			},
 			"409": {
+				"description": "Instance not in a restartable state.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5497,27 +5501,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5525,12 +5528,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Instance not in a restartable state."
+				}
 			}
 		},
 		"security": [
@@ -5540,7 +5541,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Change status of instance",
 		"tags": [
 			"Workflows"
 		],
@@ -5626,12 +5626,13 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/workflows/settings": {
-		"description": "Partially updates account-level Workflows settings; only the fields present in the body are changed.",
 		"operationId": "wor-update-workflow-settings",
+		"summary": "Update account settings",
+		"description": "Partially updates account-level Workflows settings; only the fields present in the body are changed.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -5642,11 +5643,14 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"default_retention": {
 								"description": "Default retention applied to instances of this version when they do not set their own retention.",
+								"type": "object",
 								"properties": {
 									"error_retention": {
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"anyOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5656,7 +5660,6 @@
 												"type": "string"
 											}
 										],
-										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5670,6 +5673,7 @@
 										]
 									},
 									"success_retention": {
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"anyOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5679,7 +5683,6 @@
 												"type": "string"
 											}
 										],
-										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5692,22 +5695,23 @@
 											}
 										]
 									}
-								},
-								"type": "object"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Updated account settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5722,10 +5726,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5740,12 +5744,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"default_retention": {
+											"type": "object",
 											"properties": {
 												"error_retention": {
 													"description": "Default error retention in milliseconds.",
@@ -5755,13 +5760,12 @@
 													"description": "Default success retention in milliseconds.",
 													"type": "integer"
 												}
-											},
-											"type": "object"
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -5786,14 +5790,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5801,19 +5804,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Updated account settings."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -5828,27 +5832,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -5856,12 +5859,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5871,7 +5872,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update account settings",
 		"tags": [
 			"Workflows"
 		],
@@ -5892,23 +5892,24 @@
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances": {
-		"description": "Creates a new instance of a workflow, starting its execution.",
 		"operationId": "wor-create-new-workflow-instance",
+		"summary": "Create a new workflow instance",
+		"description": "Creates a new instance of a workflow, starting its execution.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -5919,16 +5920,19 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"instance_id": {
+								"type": "string",
 								"maximum": 100,
 								"minimum": 1,
-								"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-								"type": "string"
+								"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 							},
 							"instance_retention": {
+								"type": "object",
 								"properties": {
 									"error_retention": {
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"anyOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5938,7 +5942,6 @@
 												"type": "string"
 											}
 										],
-										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5952,6 +5955,7 @@
 										]
 									},
 									"success_retention": {
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"anyOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5961,7 +5965,6 @@
 												"type": "string"
 											}
 										],
-										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -5974,26 +5977,27 @@
 											}
 										]
 									}
-								},
-								"type": "object"
+								}
 							},
 							"params": {
 								"description": "JSON-encoded event payload passed into the new instance.",
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create workflow instance. Body is a JSON parsable string that it's passed into the new instance as the event payload.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6008,10 +6012,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6026,18 +6030,19 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
+											"type": "string",
 											"maxLength": 100,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -6048,26 +6053,25 @@
 												"waitingForPause",
 												"waiting",
 												"rollingBack"
-											],
-											"type": "string"
+											]
 										},
 										"trigger_source": {
+											"type": "string",
 											"enum": [
 												"unknown",
 												"api",
 												"binding",
 												"event",
 												"cron"
-											],
-											"type": "string"
+											]
 										},
 										"version_id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"workflow_id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										}
 									},
 									"required": [
@@ -6075,10 +6079,10 @@
 										"workflow_id",
 										"version_id",
 										"status"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -6103,14 +6107,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6118,19 +6121,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create workflow instance. Body is a JSON parsable string that it's passed into the new instance as the event payload."
+				}
 			},
 			"400": {
+				"description": "Provided Workflow ID is not valid.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6145,27 +6149,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6173,19 +6176,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Provided Workflow ID is not valid."
+				}
 			},
 			"404": {
+				"description": "Workflow Name not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6200,27 +6204,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6228,12 +6231,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow Name not found."
+				}
 			}
 		},
 		"security": [
@@ -6243,7 +6244,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new workflow instance",
 		"tags": [
 			"Workflows"
 		],
@@ -6280,45 +6280,46 @@
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}": {
-		"description": "Sends an event to a running workflow instance to trigger state transitions.",
 		"operationId": "wor-send-event-workflow-instance",
+		"summary": "Send event to instance",
+		"description": "Sends an event to a running workflow instance to trigger state transitions.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "instance_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"type": "string",
 					"maxLength": 271,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "event_type",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 100,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -6336,11 +6337,14 @@
 		},
 		"responses": {
 			"200": {
+				"description": "Send an event to an instance.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6355,10 +6359,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6373,13 +6377,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -6404,33 +6408,33 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Send an event to an instance."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6445,27 +6449,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6473,19 +6476,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Workflow not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6500,27 +6504,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6528,12 +6531,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow not found."
+				}
 			}
 		},
 		"security": [
@@ -6543,7 +6544,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Send event to instance",
 		"tags": [
 			"Workflows"
 		],
@@ -6567,23 +6567,24 @@
 		"x-fern-sdk-method-name": "send"
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch": {
-		"description": "Creates multiple workflow instances in a single batch operation.",
 		"operationId": "wor-batch-create-workflow-instance",
+		"summary": "Batch create new Workflow instances",
+		"description": "Creates multiple workflow instances in a single batch operation.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -6594,17 +6595,20 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
 							"properties": {
 								"instance_id": {
+									"type": "string",
 									"maximum": 100,
 									"minimum": 1,
-									"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-									"type": "string"
+									"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 								},
 								"instance_retention": {
+									"type": "object",
 									"properties": {
 										"error_retention": {
+											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 											"anyOf": [
 												{
 													"description": "Specifies the duration in milliseconds.",
@@ -6614,7 +6618,6 @@
 													"type": "string"
 												}
 											],
-											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 											"oneOf": [
 												{
 													"description": "Specifies the duration in milliseconds.",
@@ -6628,6 +6631,7 @@
 											]
 										},
 										"success_retention": {
+											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 											"anyOf": [
 												{
 													"description": "Specifies the duration in milliseconds.",
@@ -6637,7 +6641,6 @@
 													"type": "string"
 												}
 											],
-											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 											"oneOf": [
 												{
 													"description": "Specifies the duration in milliseconds.",
@@ -6650,8 +6653,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								},
 								"params": {
 									"description": "JSON-encoded event payload passed into the new instance.",
@@ -6661,19 +6663,21 @@
 							"type": "object"
 						},
 						"maxItems": 100,
-						"minItems": 1,
-						"type": "array"
+						"minItems": 1
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Batch create workflow instances. Body is a JSON list that contain all payloads and ids that are passed into the new instance as the event payload.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6688,10 +6692,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6706,19 +6710,20 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"id": {
+												"type": "string",
 												"maxLength": 100,
 												"minLength": 1,
-												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-												"type": "string"
+												"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 											},
 											"status": {
+												"type": "string",
 												"enum": [
 													"queued",
 													"running",
@@ -6729,26 +6734,25 @@
 													"waitingForPause",
 													"waiting",
 													"rollingBack"
-												],
-												"type": "string"
+												]
 											},
 											"trigger_source": {
+												"type": "string",
 												"enum": [
 													"unknown",
 													"api",
 													"binding",
 													"event",
 													"cron"
-												],
-												"type": "string"
+												]
 											},
 											"version_id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"workflow_id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											}
 										},
 										"required": [
@@ -6758,10 +6762,10 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -6786,14 +6790,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6801,19 +6804,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Batch create workflow instances. Body is a JSON list that contain all payloads and ids that are passed into the new instance as the event payload."
+				}
 			},
 			"400": {
+				"description": "Provided Workflow ID is not valid.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6828,27 +6832,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6856,19 +6859,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Provided Workflow ID is not valid."
+				}
 			},
 			"404": {
+				"description": "Workflow Name not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -6883,27 +6887,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -6911,12 +6914,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow Name not found."
+				}
 			}
 		},
 		"security": [
@@ -6926,7 +6927,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Batch create new Workflow instances",
 		"tags": [
 			"Workflows"
 		],
@@ -6950,23 +6950,24 @@
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
-		"description": "Terminates multiple workflow instances in a single batch operation.",
 		"operationId": "wor-batch-terminate-workflow-instances",
+		"summary": "Batch terminate instances of a workflow",
+		"description": "Terminates multiple workflow instances in a single batch operation.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -6977,6 +6978,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
 							"maximum": 100,
 							"minimum": 1,
@@ -6984,19 +6986,21 @@
 							"type": "string"
 						},
 						"maxItems": 100,
-						"minItems": 1,
-						"type": "array"
+						"minItems": 1
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Batch terminate instances of a workflow, via a async job. Body is a JSON list that contain the ids of the instances to terminate.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -7011,10 +7015,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -7029,29 +7033,29 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"instancesTerminated": {
 											"type": "number"
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"ok",
 												"already_running"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"status",
 										"instancesTerminated"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -7076,14 +7080,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -7091,19 +7094,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Batch terminate instances of a workflow, via a async job. Body is a JSON list that contain the ids of the instances to terminate."
+				}
 			},
 			"400": {
+				"description": "Provided Workflow ID is not valid.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -7118,27 +7122,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -7146,19 +7149,20 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Provided Workflow ID is not valid."
+				}
 			},
 			"404": {
+				"description": "Workflow Name not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -7173,27 +7177,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -7201,12 +7204,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Workflow Name not found."
+				}
 			}
 		},
 		"security": [
@@ -7216,7 +7217,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Batch terminate instances of a workflow",
 		"tags": [
 			"Workflows"
 		],
@@ -7238,23 +7238,24 @@
 		"x-fern-ignore": true
 	},
 	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
-		"description": "Creates a new workflow or updates an existing workflow definition.",
 		"operationId": "wor-create-or-modify-workflow",
+		"summary": "Create/modify Workflow",
+		"description": "Creates a new workflow or updates an existing workflow definition.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "workflow_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"maxLength": 64,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-					"type": "string"
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -7262,19 +7263,23 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"class_name": {
+								"type": "string",
 								"maxLength": 255,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"default_retention": {
 								"description": "Default retention applied to instances of this version when they do not set their own retention.",
+								"type": "object",
 								"properties": {
 									"error_retention": {
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"anyOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -7284,7 +7289,6 @@
 												"type": "string"
 											}
 										],
-										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -7298,6 +7302,7 @@
 										]
 									},
 									"success_retention": {
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"anyOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -7307,7 +7312,6 @@
 												"type": "string"
 											}
 										],
-										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
 												"description": "Specifies the duration in milliseconds.",
@@ -7320,25 +7324,25 @@
 											}
 										]
 									}
-								},
-								"type": "object"
+								}
 							},
 							"limits": {
+								"type": "object",
 								"properties": {
 									"steps": {
-										"minimum": 1,
-										"type": "integer"
+										"type": "integer",
+										"minimum": 1
 									}
-								},
-								"type": "object"
+								}
 							},
 							"schedules": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"cron": {
+											"type": "string",
 											"maxLength": 256,
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -7346,32 +7350,32 @@
 									],
 									"type": "object"
 								},
-								"maxItems": 200,
-								"type": "array"
+								"maxItems": 200
 							},
 							"script_name": {
+								"type": "string",
 								"maxLength": 255,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							}
 						},
 						"required": [
 							"script_name",
 							"class_name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create/modify a Workflow based on a deployed script with an existing `WorkflowEntrypoint` class. Must be done after deploying the corresponding script.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -7386,10 +7390,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -7404,34 +7408,34 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"class_name": {
 											"type": "string"
 										},
 										"created_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"is_deleted": {
 											"type": "number"
 										},
 										"modified_on": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
+											"type": "string",
 											"maxLength": 64,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
 										},
 										"script_name": {
 											"type": "string"
@@ -7440,13 +7444,13 @@
 											"type": "number"
 										},
 										"triggered_on": {
+											"type": "string",
 											"format": "date-time",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"version_id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										}
 									},
 									"required": [
@@ -7460,10 +7464,10 @@
 										"triggered_on",
 										"is_deleted",
 										"terminator_running"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -7488,14 +7492,13 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -7503,19 +7506,20 @@
 								"errors",
 								"result",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create/modify a Workflow based on a deployed script with an existing `WorkflowEntrypoint` class. Must be done after deploying the corresponding script."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -7530,27 +7534,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -7558,12 +7561,10 @@
 								"messages",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -7573,7 +7574,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create/modify Workflow",
 		"tags": [
 			"Workflows"
 		],

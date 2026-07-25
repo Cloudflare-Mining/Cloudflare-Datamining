@@ -1,68 +1,72 @@
 {
 	"DELETE /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
-		"description": "Remove a specific Site WAN.",
 		"operationId": "magic-site-wans-delete-wan",
+		"summary": "Delete Site WAN",
+		"description": "Remove a specific Site WAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "wan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Site WAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -75,15 +79,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -96,7 +100,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -114,11 +118,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -126,8 +130,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -145,37 +148,37 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"health_check_rate": {
-													"default": "mid",
 													"description": "Magic WAN health check rate for tunnels created on this link. The default value is `mid`.",
+													"type": "string",
+													"example": "low",
+													"default": "mid",
 													"enum": [
 														"low",
 														"mid",
 														"high"
-													],
-													"example": "low",
-													"type": "string"
+													]
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"type": "string"
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"priority": {
 													"description": "Priority of WAN for traffic loadbalancing.",
@@ -183,99 +186,73 @@
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"gateway_address": {
 															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.1"
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address",
 														"gateway_address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Site WAN response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Site WAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -288,25 +265,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -314,12 +317,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Site WAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -329,7 +330,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Site WAN",
 		"tags": [
 			"Magic Site WANs"
 		],
@@ -354,51 +354,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/wans": {
-		"description": "Lists Site WANs associated with an account.",
 		"operationId": "magic-site-wans-list-wans",
+		"summary": "List Site WANs",
+		"description": "Lists Site WANs associated with an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Site WANs response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -411,15 +415,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -432,7 +436,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -450,11 +454,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -462,8 +466,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -481,38 +484,39 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"health_check_rate": {
-														"default": "mid",
 														"description": "Magic WAN health check rate for tunnels created on this link. The default value is `mid`.",
+														"type": "string",
+														"example": "low",
+														"default": "mid",
 														"enum": [
 															"low",
 															"mid",
 															"high"
-														],
-														"example": "low",
-														"type": "string"
+														]
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"physport": {
-														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"example": 1
 													},
 													"priority": {
 														"description": "Priority of WAN for traffic loadbalancing.",
@@ -520,101 +524,74 @@
 													},
 													"site_id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"static_addressing": {
 														"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+														"type": "object",
 														"properties": {
 															"address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															"gateway_address": {
 																"description": "A valid IPv4 address.",
-																"example": "192.0.2.1",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.1"
 															},
 															"secondary_address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"address",
 															"gateway_address"
-														],
-														"type": "object"
+														]
 													},
 													"vlan_tag": {
 														"description": "VLAN ID. Use zero for untagged.",
-														"example": 42,
 														"type": "integer",
+														"example": 42,
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Site WANs response"
+				}
 			},
 			"4XX": {
+				"description": "List Site WANs response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -627,25 +604,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -653,12 +656,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Site WANs response failure"
+				}
 			}
 		},
 		"security": [
@@ -668,7 +669,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Site WANs",
 		"tags": [
 			"Magic Site WANs"
 		],
@@ -690,63 +690,67 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
-		"description": "Get a specific Site WAN.",
 		"operationId": "magic-site-wans-wan-details",
+		"summary": "Site WAN Details",
+		"description": "Get a specific Site WAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "wan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Site WAN Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -759,15 +763,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -780,7 +784,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -798,11 +802,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -810,8 +814,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -829,37 +832,37 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"health_check_rate": {
-													"default": "mid",
 													"description": "Magic WAN health check rate for tunnels created on this link. The default value is `mid`.",
+													"type": "string",
+													"example": "low",
+													"default": "mid",
 													"enum": [
 														"low",
 														"mid",
 														"high"
-													],
-													"example": "low",
-													"type": "string"
+													]
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"type": "string"
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"priority": {
 													"description": "Priority of WAN for traffic loadbalancing.",
@@ -867,99 +870,73 @@
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"gateway_address": {
 															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.1"
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address",
 														"gateway_address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Site WAN Details response"
+				}
 			},
 			"4XX": {
+				"description": "Site WAN Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -972,25 +949,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -998,12 +1001,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Site WAN Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1013,7 +1014,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Site WAN Details",
 		"tags": [
 			"Magic Site WANs"
 		],
@@ -1040,116 +1040,120 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
-		"description": "Patch a specific Site WAN.",
 		"operationId": "magic-site-wans-patch-wan",
+		"summary": "Patch Site WAN",
+		"description": "Patch a specific Site WAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "wan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"type": "string"
 							},
 							"physport": {
-								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"example": 1
 							},
 							"priority": {
 								"type": "integer"
 							},
 							"static_addressing": {
 								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+								"type": "object",
 								"properties": {
 									"address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"gateway_address": {
 										"description": "A valid IPv4 address.",
-										"example": "192.0.2.1",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.1"
 									},
 									"secondary_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
 								},
 								"required": [
 									"address",
 									"gateway_address"
-								],
-								"type": "object"
+								]
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
-								"example": 42,
 								"type": "integer",
+								"example": 42,
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Site WAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1162,15 +1166,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1183,7 +1187,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1201,11 +1205,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1213,8 +1217,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1232,37 +1235,37 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"health_check_rate": {
-													"default": "mid",
 													"description": "Magic WAN health check rate for tunnels created on this link. The default value is `mid`.",
+													"type": "string",
+													"example": "low",
+													"default": "mid",
 													"enum": [
 														"low",
 														"mid",
 														"high"
-													],
-													"example": "low",
-													"type": "string"
+													]
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"type": "string"
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"priority": {
 													"description": "Priority of WAN for traffic loadbalancing.",
@@ -1270,99 +1273,73 @@
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"gateway_address": {
 															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.1"
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address",
 														"gateway_address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Patch Site WAN response"
+				}
 			},
 			"4XX": {
+				"description": "Patch Site WAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1375,25 +1352,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1401,12 +1404,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Site WAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -1416,7 +1417,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Patch Site WAN",
 		"tags": [
 			"Magic Site WANs"
 		],
@@ -1441,107 +1441,111 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/wans": {
-		"description": "Creates a new Site WAN.",
 		"operationId": "magic-site-wans-create-wan",
+		"summary": "Create a new Site WAN",
+		"description": "Creates a new Site WAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"type": "string"
 							},
 							"physport": {
-								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"example": 1
 							},
 							"priority": {
 								"type": "integer"
 							},
 							"static_addressing": {
 								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+								"type": "object",
 								"properties": {
 									"address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"gateway_address": {
 										"description": "A valid IPv4 address.",
-										"example": "192.0.2.1",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.1"
 									},
 									"secondary_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
 								},
 								"required": [
 									"address",
 									"gateway_address"
-								],
-								"type": "object"
+								]
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
-								"example": 42,
 								"type": "integer",
+								"example": 42,
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"physport"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Site WAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1554,15 +1558,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1575,7 +1579,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1593,11 +1597,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1605,8 +1609,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1624,38 +1627,39 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"health_check_rate": {
-														"default": "mid",
 														"description": "Magic WAN health check rate for tunnels created on this link. The default value is `mid`.",
+														"type": "string",
+														"example": "low",
+														"default": "mid",
 														"enum": [
 															"low",
 															"mid",
 															"high"
-														],
-														"example": "low",
-														"type": "string"
+														]
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"physport": {
-														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"example": 1
 													},
 													"priority": {
 														"description": "Priority of WAN for traffic loadbalancing.",
@@ -1663,101 +1667,74 @@
 													},
 													"site_id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"static_addressing": {
 														"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+														"type": "object",
 														"properties": {
 															"address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															"gateway_address": {
 																"description": "A valid IPv4 address.",
-																"example": "192.0.2.1",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.1"
 															},
 															"secondary_address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"address",
 															"gateway_address"
-														],
-														"type": "object"
+														]
 													},
 													"vlan_tag": {
 														"description": "VLAN ID. Use zero for untagged.",
-														"example": 42,
 														"type": "integer",
+														"example": 42,
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Site WAN response"
+				}
 			},
 			"4XX": {
+				"description": "Create Site WAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1770,25 +1747,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1796,12 +1799,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Site WAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -1811,7 +1812,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new Site WAN",
 		"tags": [
 			"Magic Site WANs"
 		],
@@ -1831,116 +1831,120 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}": {
-		"description": "Update a specific Site WAN.",
 		"operationId": "magic-site-wans-update-wan",
+		"summary": "Update Site WAN",
+		"description": "Update a specific Site WAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "wan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"type": "string"
 							},
 							"physport": {
-								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"example": 1
 							},
 							"priority": {
 								"type": "integer"
 							},
 							"static_addressing": {
 								"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+								"type": "object",
 								"properties": {
 									"address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"gateway_address": {
 										"description": "A valid IPv4 address.",
-										"example": "192.0.2.1",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.1"
 									},
 									"secondary_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
 								},
 								"required": [
 									"address",
 									"gateway_address"
-								],
-								"type": "object"
+								]
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
-								"example": 42,
 								"type": "integer",
+								"example": 42,
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Site WAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1953,15 +1957,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1974,7 +1978,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1992,11 +1996,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2004,8 +2008,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2023,37 +2026,37 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"health_check_rate": {
-													"default": "mid",
 													"description": "Magic WAN health check rate for tunnels created on this link. The default value is `mid`.",
+													"type": "string",
+													"example": "low",
+													"default": "mid",
 													"enum": [
 														"low",
 														"mid",
 														"high"
-													],
-													"example": "low",
-													"type": "string"
+													]
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"type": "string"
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"priority": {
 													"description": "Priority of WAN for traffic loadbalancing.",
@@ -2061,99 +2064,73 @@
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"gateway_address": {
 															"description": "A valid IPv4 address.",
-															"example": "192.0.2.1",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.1"
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address",
 														"gateway_address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Site WAN response"
+				}
 			},
 			"4XX": {
+				"description": "Update Site WAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2166,25 +2143,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2192,12 +2195,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Site WAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -2207,7 +2208,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Site WAN",
 		"tags": [
 			"Magic Site WANs"
 		],

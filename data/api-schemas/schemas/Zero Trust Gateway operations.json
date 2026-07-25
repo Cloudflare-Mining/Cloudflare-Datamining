@@ -1,38 +1,43 @@
 {
 	"GET /accounts/{account_id}/gateway/operations": {
-		"description": "List all Zero Trust Gateway operations for an account.",
 		"operationId": "zero-trust-gateway-operations-list-zero-trust-gateway-operations",
+		"summary": "List Zero Trust Gateway operations",
+		"description": "List all Zero Trust Gateway operations for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Provide the identifier string.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Zero Trust Gateway operations response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -45,15 +50,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -66,67 +71,67 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"data": {
 														"description": "Provide metadata describing the resource the operation acts on. The fields present depend on the `operation_type`.",
@@ -134,80 +139,81 @@
 													},
 													"id": {
 														"description": "Identify the API resource with a UUID.",
+														"type": "string",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string",
 														"x-auditable": true
 													},
 													"operation_type": {
 														"description": "The type of operation.",
+														"type": "string",
+														"example": "create_list",
 														"enum": [
 															"create_list"
-														],
-														"example": "create_list",
-														"type": "string"
+														]
 													},
 													"processing_error": {
 														"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"result": {
 														"description": "The result of the operation. Only present when the operation has completed successfully.",
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"status": {
 														"description": "The status of the operation.",
+														"type": "string",
+														"example": "pending",
 														"enum": [
 															"pending",
 															"active",
 															"failed",
 															"complete"
-														],
-														"example": "pending",
-														"type": "string"
+														]
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													}
 												},
-												"readOnly": true,
-												"type": "object"
-											},
-											"type": "array"
+												"readOnly": true
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Zero Trust Gateway operations response."
+				}
 			},
 			"4XX": {
+				"description": "List Zero Trust Gateway operations response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -220,15 +226,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -241,67 +247,67 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"data": {
 																"description": "Provide metadata describing the resource the operation acts on. The fields present depend on the `operation_type`.",
@@ -309,102 +315,74 @@
 															},
 															"id": {
 																"description": "Identify the API resource with a UUID.",
+																"type": "string",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string",
 																"x-auditable": true
 															},
 															"operation_type": {
 																"description": "The type of operation.",
+																"type": "string",
+																"example": "create_list",
 																"enum": [
 																	"create_list"
-																],
-																"example": "create_list",
-																"type": "string"
+																]
 															},
 															"processing_error": {
 																"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"result": {
 																"description": "The result of the operation. Only present when the operation has completed successfully.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"status": {
 																"description": "The status of the operation.",
+																"type": "string",
+																"example": "pending",
 																"enum": [
 																	"pending",
 																	"active",
 																	"failed",
 																	"complete"
-																],
-																"example": "pending",
-																"type": "string"
+																]
 															},
 															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
-														"readOnly": true,
-														"type": "object"
-													},
-													"type": "array"
+														"readOnly": true
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -417,26 +395,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -444,15 +448,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Zero Trust Gateway operations response failure."
+				}
 			}
 		},
 		"security": [
@@ -462,7 +463,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Zero Trust Gateway operations",
 		"tags": [
 			"Zero Trust Gateway operations"
 		],
@@ -472,51 +472,56 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/operations/{operation_id}": {
-		"description": "Fetch a single Zero Trust Gateway operation by its ID.",
 		"operationId": "zero-trust-gateway-operations-zero-trust-gateway-operation-details",
+		"summary": "Zero Trust Gateway operation details",
+		"description": "Fetch a single Zero Trust Gateway operation by its ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "operation_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Provide the identifier string.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Zero Trust Gateway operation details response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -529,15 +534,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -550,36 +555,35 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"data": {
 													"description": "Provide metadata describing the resource the operation acts on. The fields present depend on the `operation_type`.",
@@ -587,78 +591,80 @@
 												},
 												"id": {
 													"description": "Identify the API resource with a UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"operation_type": {
 													"description": "The type of operation.",
+													"type": "string",
+													"example": "create_list",
 													"enum": [
 														"create_list"
-													],
-													"example": "create_list",
-													"type": "string"
+													]
 												},
 												"processing_error": {
 													"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"result": {
 													"description": "The result of the operation. Only present when the operation has completed successfully.",
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"status": {
 													"description": "The status of the operation.",
+													"type": "string",
+													"example": "pending",
 													"enum": [
 														"pending",
 														"active",
 														"failed",
 														"complete"
-													],
-													"example": "pending",
-													"type": "string"
+													]
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Zero Trust Gateway operation details response."
+				}
 			},
 			"4XX": {
+				"description": "Zero Trust Gateway operation details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -671,15 +677,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -692,36 +698,35 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"data": {
 															"description": "Provide metadata describing the resource the operation acts on. The fields present depend on the `operation_type`.",
@@ -729,100 +734,73 @@
 														},
 														"id": {
 															"description": "Identify the API resource with a UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"operation_type": {
 															"description": "The type of operation.",
+															"type": "string",
+															"example": "create_list",
 															"enum": [
 																"create_list"
-															],
-															"example": "create_list",
-															"type": "string"
+															]
 														},
 														"processing_error": {
 															"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"result": {
 															"description": "The result of the operation. Only present when the operation has completed successfully.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"status": {
 															"description": "The status of the operation.",
+															"type": "string",
+															"example": "pending",
 															"enum": [
 																"pending",
 																"active",
 																"failed",
 																"complete"
-															],
-															"example": "pending",
-															"type": "string"
+															]
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
-													"readOnly": true,
-													"type": "object"
+													"readOnly": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -835,26 +813,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -862,15 +866,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Zero Trust Gateway operation details response failure."
+				}
 			}
 		},
 		"security": [
@@ -880,7 +881,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Zero Trust Gateway operation details",
 		"tags": [
 			"Zero Trust Gateway operations"
 		],

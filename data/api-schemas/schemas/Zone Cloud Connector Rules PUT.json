@@ -1,17 +1,18 @@
 {
 	"PUT /zones/{zone_id}/cloud_connector/rules": {
-		"description": "Updates Cloud Connector rules for a zone, replacing the existing rule configuration.",
 		"operationId": "zone-cloud-conenctor-rules-put",
+		"summary": "Put Rules",
+		"description": "Updates Cloud Connector rules for a zone, replacing the existing rule configuration.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -20,26 +21,28 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
+							"type": "object",
 							"properties": {
 								"description": {
-									"example": "Rule description",
 									"type": "string",
+									"example": "Rule description",
 									"x-auditable": true
 								},
 								"enabled": {
-									"example": true,
 									"type": "boolean",
+									"example": true,
 									"x-auditable": true
 								},
 								"expression": {
-									"example": "http.cookie eq \"a=b\"",
 									"type": "string",
+									"example": "http.cookie eq \"a=b\"",
 									"x-auditable": true
 								},
 								"id": {
-									"example": "95c365e17e1b46599cd99e5b231fac4e",
 									"type": "string",
+									"example": "95c365e17e1b46599cd99e5b231fac4e",
 									"x-auditable": true
 								},
 								"parameters": {
@@ -47,8 +50,8 @@
 									"properties": {
 										"host": {
 											"description": "Host to perform Cloud Connection to",
-											"example": "examplebucket.s3.eu-north-1.amazonaws.com",
 											"type": "string",
+											"example": "examplebucket.s3.eu-north-1.amazonaws.com",
 											"x-auditable": true
 										}
 									},
@@ -56,39 +59,40 @@
 								},
 								"provider": {
 									"description": "Cloud Provider type",
+									"type": "string",
+									"example": "aws_s3",
 									"enum": [
 										"aws_s3",
 										"cloudflare_r2",
 										"gcp_storage",
 										"azure_storage"
 									],
-									"example": "aws_s3",
-									"type": "string",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
-						},
-						"type": "array"
+							}
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Cloud Connector rules response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -97,12 +101,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -112,15 +116,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -129,12 +133,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -144,48 +148,49 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "List of Cloud Connector rules",
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"description": {
-														"example": "Rule description",
 														"type": "string",
+														"example": "Rule description",
 														"x-auditable": true
 													},
 													"enabled": {
-														"example": true,
 														"type": "boolean",
+														"example": true,
 														"x-auditable": true
 													},
 													"expression": {
-														"example": "http.cookie eq \"a=b\"",
 														"type": "string",
+														"example": "http.cookie eq \"a=b\"",
 														"x-auditable": true
 													},
 													"id": {
-														"example": "95c365e17e1b46599cd99e5b231fac4e",
 														"type": "string",
+														"example": "95c365e17e1b46599cd99e5b231fac4e",
 														"x-auditable": true
 													},
 													"parameters": {
@@ -193,8 +198,8 @@
 														"properties": {
 															"host": {
 																"description": "Host to perform Cloud Connection to",
-																"example": "examplebucket.s3.eu-north-1.amazonaws.com",
 																"type": "string",
+																"example": "examplebucket.s3.eu-north-1.amazonaws.com",
 																"x-auditable": true
 															}
 														},
@@ -202,90 +207,51 @@
 													},
 													"provider": {
 														"description": "Cloud Provider type",
+														"type": "string",
+														"example": "aws_s3",
 														"enum": [
 															"aws_s3",
 															"cloudflare_r2",
 															"gcp_storage",
 															"azure_storage"
 														],
-														"example": "aws_s3",
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Cloud Connector rules response"
+				}
 			},
 			"4XX": {
+				"description": "Cloud Connector response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -294,12 +260,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -309,25 +275,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -335,74 +338,37 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Cloud Connector response failure"
+				}
 			},
 			"5XX": {
+				"description": "Cloud Connector response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -411,12 +377,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -426,25 +392,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -452,14 +455,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Cloud Connector response failure"
+				}
 			}
 		},
 		"security": [
@@ -468,7 +469,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Put Rules",
 		"tags": [
 			"Zone Cloud Connector Rules PUT"
 		],

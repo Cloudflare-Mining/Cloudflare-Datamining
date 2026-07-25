@@ -1,58 +1,62 @@
 {
 	"DELETE /zones/{zone_id}/content-upload-scan/payloads/{expression_id}": {
-		"description": "Delete a Content Scan Custom Expression.",
 		"operationId": "waf-content-scanning-delete-custom-scan-expressions",
+		"summary": "Delete a Custom Scan Expression",
+		"description": "Delete a Content Scan Custom Expression.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "expression_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "defines the unique ID for this custom scan expression.",
+					"example": "a350a054caa840c9becd89c3b4f0195b",
 					"allOf": [
 						{
 							"description": "Defines an identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
-							"type": "string",
 							"x-auditable": true
 						}
-					],
-					"description": "defines the unique ID for this custom scan expression.",
-					"example": "a350a054caa840c9becd89c3b4f0195b"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Content Scan custom scan expressions response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -65,15 +69,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -86,7 +90,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -107,11 +111,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -119,54 +123,52 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"type": "object"
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Defines a custom scan expression to match Content Scanning on.",
+												"type": "object",
 												"properties": {
 													"id": {
+														"description": "defines the unique ID for this custom scan expression.",
+														"example": "a350a054caa840c9becd89c3b4f0195b",
 														"allOf": [
 															{
 																"description": "Defines an identifier.",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														],
-														"description": "defines the unique ID for this custom scan expression.",
-														"example": "a350a054caa840c9becd89c3b4f0195b"
+														]
 													},
 													"payload": {
 														"description": "Defines the ruleset expression to use in matching content objects.",
-														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"type": "string",
+														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -174,10 +176,10 @@
 							]
 						}
 					}
-				},
-				"description": "Delete Content Scan custom scan expressions response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Content Scan custom scan expressions failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -185,16 +187,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -207,15 +211,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -228,7 +232,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -249,11 +253,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -261,54 +265,52 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {
 																"type": "object"
 															},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"description": "Defines a custom scan expression to match Content Scanning on.",
+														"type": "object",
 														"properties": {
 															"id": {
+																"description": "defines the unique ID for this custom scan expression.",
+																"example": "a350a054caa840c9becd89c3b4f0195b",
 																"allOf": [
 																	{
 																		"description": "Defines an identifier.",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																],
-																"description": "defines the unique ID for this custom scan expression.",
-																"example": "a350a054caa840c9becd89c3b4f0195b"
+																]
 															},
 															"payload": {
 																"description": "Defines the ruleset expression to use in matching content objects.",
-																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"type": "string",
+																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -316,48 +318,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 10000,
 													"message": "Authentication error"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -370,25 +347,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -396,14 +399,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Content Scan custom scan expressions failure response."
+				}
 			}
 		},
 		"security": [
@@ -413,7 +414,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a Custom Scan Expression",
 		"tags": [
 			"Content Scanning"
 		],
@@ -427,40 +427,44 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/content-upload-scan/payloads": {
-		"description": "Get a list of existing custom scan expressions for Content Scanning.",
 		"operationId": "waf-content-scanning-list-custom-scan-expressions",
+		"summary": "List Existing Custom Scan Expressions",
+		"description": "Get a list of existing custom scan expressions for Content Scanning.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List existing Content Scan custom scan expressions response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -473,15 +477,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -494,7 +498,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -515,11 +519,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -527,54 +531,52 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"type": "object"
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Defines a custom scan expression to match Content Scanning on.",
+												"type": "object",
 												"properties": {
 													"id": {
+														"description": "defines the unique ID for this custom scan expression.",
+														"example": "a350a054caa840c9becd89c3b4f0195b",
 														"allOf": [
 															{
 																"description": "Defines an identifier.",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														],
-														"description": "defines the unique ID for this custom scan expression.",
-														"example": "a350a054caa840c9becd89c3b4f0195b"
+														]
 													},
 													"payload": {
 														"description": "Defines the ruleset expression to use in matching content objects.",
-														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"type": "string",
+														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -582,10 +584,10 @@
 							]
 						}
 					}
-				},
-				"description": "List existing Content Scan custom scan expressions response."
+				}
 			},
 			"4XX": {
+				"description": "List existing Content Scan custom scan expressions failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -593,16 +595,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -615,15 +619,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -636,7 +640,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -657,11 +661,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -669,54 +673,52 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {
 																"type": "object"
 															},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"description": "Defines a custom scan expression to match Content Scanning on.",
+														"type": "object",
 														"properties": {
 															"id": {
+																"description": "defines the unique ID for this custom scan expression.",
+																"example": "a350a054caa840c9becd89c3b4f0195b",
 																"allOf": [
 																	{
 																		"description": "Defines an identifier.",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																],
-																"description": "defines the unique ID for this custom scan expression.",
-																"example": "a350a054caa840c9becd89c3b4f0195b"
+																]
 															},
 															"payload": {
 																"description": "Defines the ruleset expression to use in matching content objects.",
-																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"type": "string",
+																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -724,48 +726,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 10000,
 													"message": "Authentication error"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -778,25 +755,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -804,14 +807,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List existing Content Scan custom scan expressions failure response."
+				}
 			}
 		},
 		"security": [
@@ -821,7 +822,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Existing Custom Scan Expressions",
 		"tags": [
 			"Content Scanning"
 		],
@@ -837,40 +837,44 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/content-upload-scan/settings": {
-		"description": "Retrieve the current status of Content Scanning.",
 		"operationId": "waf-content-scanning-get-status",
+		"summary": "Get Content Scanning Status",
+		"description": "Retrieve the current status of Content Scanning.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Content Scanning status response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -883,15 +887,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -904,7 +908,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -925,11 +929,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -937,8 +941,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -957,28 +960,27 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Defines the status for Content Scanning.",
+											"type": "object",
 											"properties": {
 												"modified": {
 													"description": "Defines the last modification date (ISO 8601) of the Content Scanning status.",
-													"example": "2024-12-02T09:57:23.150259Z",
 													"type": "string",
+													"example": "2024-12-02T09:57:23.150259Z",
 													"x-auditable": true
 												},
 												"value": {
 													"description": "Defines the status of Content Scanning.",
-													"example": "enabled",
 													"type": "string",
+													"example": "enabled",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -986,55 +988,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get Content Scanning status response."
+				}
 			},
 			"4XX": {
+				"description": "Get Content Scanning status failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 10000,
 											"message": "Authentication error"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1047,25 +1024,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1073,12 +1076,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Content Scanning status failure response."
+				}
 			}
 		},
 		"security": [
@@ -1088,7 +1089,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Content Scanning Status",
 		"tags": [
 			"Content Scanning"
 		],
@@ -1104,36 +1104,39 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {
-		"description": "Disable Content Scanning.",
 		"operationId": "waf-content-scanning-disable",
+		"summary": "Disable Content Scanning",
+		"description": "Disable Content Scanning.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Disable Content Scanning response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1146,15 +1149,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1167,7 +1170,7 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"anyOf": [
@@ -1188,11 +1191,11 @@
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1200,61 +1203,35 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Disable Content Scanning response."
+				}
 			},
 			"4XX": {
+				"description": "Disable Content Scanning failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 10000,
 													"message": "Authentication error"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1267,25 +1244,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1293,14 +1296,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Disable Content Scanning failure response."
+				}
 			}
 		},
 		"security": [
@@ -1310,7 +1311,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Disable Content Scanning",
 		"tags": [
 			"Content Scanning"
 		],
@@ -1325,36 +1325,39 @@
 		"x-forge-require-confirmation": "This operation turns off WAF content scanning for a zone."
 	},
 	"POST /zones/{zone_id}/content-upload-scan/enable": {
-		"description": "Enable Content Scanning.",
 		"operationId": "waf-content-scanning-enable",
+		"summary": "Enable Content Scanning",
+		"description": "Enable Content Scanning.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Enable Content Scanning response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1367,15 +1370,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1388,7 +1391,7 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
 									"anyOf": [
@@ -1409,11 +1412,11 @@
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1421,61 +1424,35 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Enable Content Scanning response."
+				}
 			},
 			"4XX": {
+				"description": "Enable Content Scanning failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 10000,
 													"message": "Authentication error"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1488,25 +1465,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1514,14 +1517,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Enable Content Scanning failure response."
+				}
 			}
 		},
 		"security": [
@@ -1531,7 +1532,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Enable Content Scanning",
 		"tags": [
 			"Content Scanning"
 		],
@@ -1545,33 +1545,37 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/content-upload-scan/payloads": {
-		"description": "Add custom scan expressions for Content Scanning.",
 		"operationId": "waf-content-scanning-add-custom-scan-expressions",
+		"summary": "Add Custom Scan Expressions",
+		"description": "Add custom scan expressions for Content Scanning.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"description": "Array of custom scan expressions to add.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
 							"properties": {
 								"payload": {
 									"description": "Defines the ruleset expression to use in matching content objects.",
-									"example": "lookup_json_string(http.request.body.raw, \"file\")",
 									"type": "string",
+									"example": "lookup_json_string(http.request.body.raw, \"file\")",
 									"x-auditable": true
 								}
 							},
@@ -1579,31 +1583,31 @@
 								"payload"
 							],
 							"type": "object"
-						},
-						"type": "array"
+						}
 					}
 				}
-			},
-			"description": "Array of custom scan expressions to add.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add custom scan expressions for Content Scanning.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1616,15 +1620,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1637,7 +1641,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1658,11 +1662,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1670,54 +1674,52 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"type": "object"
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Defines a custom scan expression to match Content Scanning on.",
+												"type": "object",
 												"properties": {
 													"id": {
+														"description": "defines the unique ID for this custom scan expression.",
+														"example": "a350a054caa840c9becd89c3b4f0195b",
 														"allOf": [
 															{
 																"description": "Defines an identifier.",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														],
-														"description": "defines the unique ID for this custom scan expression.",
-														"example": "a350a054caa840c9becd89c3b4f0195b"
+														]
 													},
 													"payload": {
 														"description": "Defines the ruleset expression to use in matching content objects.",
-														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"type": "string",
+														"example": "lookup_json_string(http.request.body.raw, \"file\")",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -1725,10 +1727,10 @@
 							]
 						}
 					}
-				},
-				"description": "Add custom scan expressions for Content Scanning."
+				}
 			},
 			"4XX": {
+				"description": "List existing Content Scan custom scan expressions failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1736,16 +1738,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1758,15 +1762,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1779,7 +1783,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1800,11 +1804,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1812,54 +1816,52 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {
 																"type": "object"
 															},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"description": "Defines a custom scan expression to match Content Scanning on.",
+														"type": "object",
 														"properties": {
 															"id": {
+																"description": "defines the unique ID for this custom scan expression.",
+																"example": "a350a054caa840c9becd89c3b4f0195b",
 																"allOf": [
 																	{
 																		"description": "Defines an identifier.",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																],
-																"description": "defines the unique ID for this custom scan expression.",
-																"example": "a350a054caa840c9becd89c3b4f0195b"
+																]
 															},
 															"payload": {
 																"description": "Defines the ruleset expression to use in matching content objects.",
-																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"type": "string",
+																"example": "lookup_json_string(http.request.body.raw, \"file\")",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -1867,48 +1869,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 10000,
 													"message": "Authentication error"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1921,25 +1898,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1947,14 +1950,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List existing Content Scan custom scan expressions failure response."
+				}
 			}
 		},
 		"security": [
@@ -1964,7 +1965,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Add Custom Scan Expressions",
 		"tags": [
 			"Content Scanning"
 		],
@@ -1978,65 +1978,69 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/content-upload-scan/settings": {
-		"description": "Update the Content Scanning status.",
 		"operationId": "waf-content-scanning-update-settings",
+		"summary": "Update Content Scanning Status",
+		"description": "Update the Content Scanning status.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"description": "Content Scanning settings to update.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"value": {
 								"description": "The status value for Content Scanning.",
+								"type": "string",
+								"example": "enabled",
 								"enum": [
 									"enabled",
 									"disabled"
-								],
-								"example": "enabled",
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"value"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Content Scanning settings to update.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Content Scanning settings response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2049,15 +2053,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2070,7 +2074,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2091,11 +2095,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2103,8 +2107,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2123,28 +2126,27 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Defines the status for Content Scanning.",
+											"type": "object",
 											"properties": {
 												"modified": {
 													"description": "Defines the last modification date (ISO 8601) of the Content Scanning status.",
-													"example": "2024-12-02T09:57:23.150259Z",
 													"type": "string",
+													"example": "2024-12-02T09:57:23.150259Z",
 													"x-auditable": true
 												},
 												"value": {
 													"description": "Defines the status of Content Scanning.",
-													"example": "enabled",
 													"type": "string",
+													"example": "enabled",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2152,55 +2154,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update Content Scanning settings response."
+				}
 			},
 			"4XX": {
+				"description": "Update Content Scanning settings failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 10000,
 											"message": "Authentication error"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2213,25 +2190,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2239,12 +2242,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Content Scanning settings failure response."
+				}
 			}
 		},
 		"security": [
@@ -2254,7 +2255,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Content Scanning Status",
 		"tags": [
 			"Content Scanning"
 		],

@@ -1,60 +1,63 @@
 {
 	"DELETE /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
-		"description": "Delete a Pages project's domain.",
 		"operationId": "pages-domains-delete-domain",
+		"summary": "Delete domain",
+		"description": "Delete a Pages project's domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "domain_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The domain name.",
+					"type": "string",
 					"example": "this-is-my-domain-01.com",
 					"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "project_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the project.",
+					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -63,12 +66,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -78,15 +81,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -95,12 +98,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -110,29 +113,28 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -143,66 +145,30 @@
 							]
 						}
 					}
-				},
-				"description": "Delete domain response."
+				}
 			},
 			"4XX": {
+				"description": "Delete domain response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -211,12 +177,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -226,25 +192,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -252,12 +255,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete domain response failure."
+				}
 			}
 		},
 		"security": [
@@ -269,7 +270,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete domain",
 		"tags": [
 			"Pages Domains"
 		],
@@ -282,51 +282,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/domains": {
-		"description": "Fetch a list of all domains associated with a Pages project.",
 		"operationId": "pages-domains-get-domains",
+		"summary": "Get domains",
+		"description": "Fetch a list of all domains associated with a Pages project.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "project_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the project.",
+					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get domains response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -335,12 +339,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -350,15 +354,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -367,12 +371,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -382,100 +386,101 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"certificate_authority": {
+														"type": "string",
+														"example": "lets_encrypt",
 														"enum": [
 															"google",
 															"lets_encrypt"
 														],
-														"example": "lets_encrypt",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"created_on": {
-														"readOnly": true,
 														"type": "string",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"domain_id": {
-														"readOnly": true,
 														"type": "string",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"id": {
-														"readOnly": true,
 														"type": "string",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"name": {
 														"description": "The domain name.",
+														"type": "string",
 														"example": "this-is-my-domain-01.com",
 														"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-														"type": "string",
 														"x-auditable": true
 													},
 													"status": {
+														"type": "string",
 														"enum": [
 															"initializing",
 															"pending",
@@ -485,24 +490,25 @@
 															"error"
 														],
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"validation_data": {
+														"type": "object",
 														"properties": {
 															"error_message": {
 																"type": "string",
 																"x-auditable": true
 															},
 															"method": {
+																"type": "string",
 																"enum": [
 																	"http",
 																	"txt"
 																],
-																"type": "string",
 																"x-auditable": true
 															},
 															"status": {
+																"type": "string",
 																"enum": [
 																	"initializing",
 																	"pending",
@@ -510,7 +516,6 @@
 																	"deactivated",
 																	"error"
 																],
-																"type": "string",
 																"x-auditable": true
 															},
 															"txt_name": {
@@ -526,35 +531,34 @@
 														"required": [
 															"status",
 															"method"
-														],
-														"type": "object"
+														]
 													},
 													"verification_data": {
+														"type": "object",
 														"properties": {
 															"error_message": {
 																"type": "string",
 																"x-auditable": true
 															},
 															"status": {
+																"type": "string",
 																"enum": [
 																	"pending",
 																	"active",
 																	"deactivated",
 																	"blocked",
 																	"error"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"readOnly": true,
 														"required": [
 															"status"
-														],
-														"type": "object"
+														]
 													},
 													"zone_tag": {
-														"readOnly": true,
 														"type": "string",
+														"readOnly": true,
 														"x-auditable": true
 													}
 												},
@@ -568,10 +572,8 @@
 													"zone_tag",
 													"validation_data",
 													"verification_data"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -582,66 +584,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get domains response."
+				}
 			},
 			"4XX": {
+				"description": "Get domains response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -650,12 +616,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -665,25 +631,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -691,12 +694,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get domains response failure."
+				}
 			}
 		},
 		"security": [
@@ -708,7 +709,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get domains",
 		"tags": [
 			"Pages Domains"
 		],
@@ -722,61 +722,64 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
-		"description": "Fetch a single domain.",
 		"operationId": "pages-domains-get-domain",
+		"summary": "Get domain",
+		"description": "Fetch a single domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "domain_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The domain name.",
+					"type": "string",
 					"example": "this-is-my-domain-01.com",
 					"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "project_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the project.",
+					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -785,12 +788,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -800,15 +803,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -817,12 +820,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -832,61 +835,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"certificate_authority": {
+													"type": "string",
+													"example": "lets_encrypt",
 													"enum": [
 														"google",
 														"lets_encrypt"
 													],
-													"example": "lets_encrypt",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"domain_id": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "The domain name.",
+													"type": "string",
 													"example": "this-is-my-domain-01.com",
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"initializing",
 														"pending",
@@ -896,24 +900,25 @@
 														"error"
 													],
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"validation_data": {
+													"type": "object",
 													"properties": {
 														"error_message": {
 															"type": "string",
 															"x-auditable": true
 														},
 														"method": {
+															"type": "string",
 															"enum": [
 																"http",
 																"txt"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
+															"type": "string",
 															"enum": [
 																"initializing",
 																"pending",
@@ -921,7 +926,6 @@
 																"deactivated",
 																"error"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"txt_name": {
@@ -937,35 +941,34 @@
 													"required": [
 														"status",
 														"method"
-													],
-													"type": "object"
+													]
 												},
 												"verification_data": {
+													"type": "object",
 													"properties": {
 														"error_message": {
 															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
+															"type": "string",
 															"enum": [
 																"pending",
 																"active",
 																"deactivated",
 																"blocked",
 																"error"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"readOnly": true,
 													"required": [
 														"status"
-													],
-													"type": "object"
+													]
 												},
 												"zone_tag": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												}
 											},
@@ -979,8 +982,7 @@
 												"zone_tag",
 												"validation_data",
 												"verification_data"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -991,66 +993,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get domain response."
+				}
 			},
 			"4XX": {
+				"description": "Get domain response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1059,12 +1025,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1074,25 +1040,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1100,12 +1103,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get domain response failure."
+				}
 			}
 		},
 		"security": [
@@ -1117,7 +1118,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get domain",
 		"tags": [
 			"Pages Domains"
 		],
@@ -1131,61 +1131,64 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
-		"description": "Retry the validation status of a single domain.",
 		"operationId": "pages-domains-patch-domain",
+		"summary": "Patch domain",
+		"description": "Retry the validation status of a single domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "domain_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The domain name.",
+					"type": "string",
 					"example": "this-is-my-domain-01.com",
 					"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "project_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the project.",
+					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Patch domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1194,12 +1197,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1209,15 +1212,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1226,12 +1229,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1241,61 +1244,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"certificate_authority": {
+													"type": "string",
+													"example": "lets_encrypt",
 													"enum": [
 														"google",
 														"lets_encrypt"
 													],
-													"example": "lets_encrypt",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"domain_id": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "The domain name.",
+													"type": "string",
 													"example": "this-is-my-domain-01.com",
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"initializing",
 														"pending",
@@ -1305,24 +1309,25 @@
 														"error"
 													],
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"validation_data": {
+													"type": "object",
 													"properties": {
 														"error_message": {
 															"type": "string",
 															"x-auditable": true
 														},
 														"method": {
+															"type": "string",
 															"enum": [
 																"http",
 																"txt"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
+															"type": "string",
 															"enum": [
 																"initializing",
 																"pending",
@@ -1330,7 +1335,6 @@
 																"deactivated",
 																"error"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"txt_name": {
@@ -1346,35 +1350,34 @@
 													"required": [
 														"status",
 														"method"
-													],
-													"type": "object"
+													]
 												},
 												"verification_data": {
+													"type": "object",
 													"properties": {
 														"error_message": {
 															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
+															"type": "string",
 															"enum": [
 																"pending",
 																"active",
 																"deactivated",
 																"blocked",
 																"error"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"readOnly": true,
 													"required": [
 														"status"
-													],
-													"type": "object"
+													]
 												},
 												"zone_tag": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												}
 											},
@@ -1388,8 +1391,7 @@
 												"zone_tag",
 												"validation_data",
 												"verification_data"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1400,66 +1402,30 @@
 							]
 						}
 					}
-				},
-				"description": "Patch domain response."
+				}
 			},
 			"4XX": {
+				"description": "Patch domain response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1468,12 +1434,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1483,25 +1449,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1509,12 +1512,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch domain response failure."
+				}
 			}
 		},
 		"security": [
@@ -1526,7 +1527,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Patch domain",
 		"tags": [
 			"Pages Domains"
 		],
@@ -1539,71 +1539,74 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/domains": {
-		"description": "Add a new domain for the Pages project.",
 		"operationId": "pages-domains-add-domain",
+		"summary": "Add domain",
+		"description": "Add a new domain for the Pages project.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "project_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the project.",
+					"type": "string",
 					"example": "this-is-my-project-01",
 					"pattern": "^[a-z0-9][a-z0-9-]*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "The domain name.",
+								"type": "string",
 								"example": "this-is-my-domain-01.com",
 								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1612,12 +1615,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1627,15 +1630,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1644,12 +1647,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1659,61 +1662,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"certificate_authority": {
+													"type": "string",
+													"example": "lets_encrypt",
 													"enum": [
 														"google",
 														"lets_encrypt"
 													],
-													"example": "lets_encrypt",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"domain_id": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "The domain name.",
+													"type": "string",
 													"example": "this-is-my-domain-01.com",
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"initializing",
 														"pending",
@@ -1723,24 +1727,25 @@
 														"error"
 													],
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"validation_data": {
+													"type": "object",
 													"properties": {
 														"error_message": {
 															"type": "string",
 															"x-auditable": true
 														},
 														"method": {
+															"type": "string",
 															"enum": [
 																"http",
 																"txt"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
+															"type": "string",
 															"enum": [
 																"initializing",
 																"pending",
@@ -1748,7 +1753,6 @@
 																"deactivated",
 																"error"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"txt_name": {
@@ -1764,35 +1768,34 @@
 													"required": [
 														"status",
 														"method"
-													],
-													"type": "object"
+													]
 												},
 												"verification_data": {
+													"type": "object",
 													"properties": {
 														"error_message": {
 															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
+															"type": "string",
 															"enum": [
 																"pending",
 																"active",
 																"deactivated",
 																"blocked",
 																"error"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"readOnly": true,
 													"required": [
 														"status"
-													],
-													"type": "object"
+													]
 												},
 												"zone_tag": {
-													"readOnly": true,
 													"type": "string",
+													"readOnly": true,
 													"x-auditable": true
 												}
 											},
@@ -1806,8 +1809,7 @@
 												"zone_tag",
 												"validation_data",
 												"verification_data"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1818,66 +1820,30 @@
 							]
 						}
 					}
-				},
-				"description": "Add domain response."
+				}
 			},
 			"4XX": {
+				"description": "Add domain response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1886,12 +1852,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1901,25 +1867,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1927,12 +1930,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add domain response failure."
+				}
 			}
 		},
 		"security": [
@@ -1944,7 +1945,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Add domain",
 		"tags": [
 			"Pages Domains"
 		],

@@ -1,83 +1,87 @@
 {
 	"DELETE /accounts/{account_id}/iam/user_groups/{user_group_id}/members/{member_id}": {
-		"description": "Remove a member from User Group",
 		"operationId": "account-user-group-member-delete",
+		"summary": "Remove User Group Member",
+		"description": "Remove a member from User Group",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "member_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "The identifier of an existing account Member.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "The identifier of an existing account Member.",
 					"title": "User Group Member Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete User Group Member response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -86,12 +90,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -101,15 +105,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -118,12 +122,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -133,59 +137,57 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Member attached to a User Group.",
+											"type": "object",
 											"properties": {
 												"email": {
 													"description": "The contact email address of the user.",
+													"type": "string",
 													"example": "user@example.com",
 													"maxLength": 90,
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Account member identifier.",
+													"type": "string",
 													"example": "4f5f0c14a2a41d5063dd301b2f829f04",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"status": {
 													"description": "The member's status in the account.",
+													"example": "accepted",
 													"enum": [
 														"accepted",
 														"pending"
 													],
-													"example": "accepted",
 													"readOnly": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -193,66 +195,30 @@
 							]
 						}
 					}
-				},
-				"description": "Delete User Group Member response"
+				}
 			},
 			"4XX": {
+				"description": "Delete User Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -261,12 +227,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -276,25 +242,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -302,12 +305,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete User Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -316,7 +317,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Remove User Group Member",
 		"tags": [
 			"Account User Group Members"
 		],
@@ -337,108 +337,112 @@
 		}
 	},
 	"GET /accounts/{account_id}/iam/user_groups/{user_group_id}/members": {
-		"description": "List all the members attached to a user group.",
 		"operationId": "account-user-group-member-list",
+		"summary": "List User Group Members",
+		"description": "List all the members attached to a user group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 100,
 					"description": "Maximum number of results per page.",
+					"type": "number",
+					"default": 100,
 					"maximum": 500,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "fuzzyEmail",
+				"in": "query",
 				"schema": {
 					"description": "A string used for filtering members by partial email match.",
-					"example": "user@",
-					"type": "string"
+					"type": "string",
+					"example": "user@"
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
-					"default": "asc",
 					"description": "The sort order of returned user group members by email.",
+					"type": "string",
+					"default": "asc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List User Group Members",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -447,12 +451,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -462,15 +466,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -479,12 +483,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -494,91 +498,89 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Member attached to a User Group.",
+												"type": "object",
 												"properties": {
 													"email": {
 														"description": "The contact email address of the user.",
+														"type": "string",
 														"example": "user@example.com",
 														"maxLength": 90,
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Account member identifier.",
+														"type": "string",
 														"example": "4f5f0c14a2a41d5063dd301b2f829f04",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"status": {
 														"description": "The member's status in the account.",
+														"example": "accepted",
 														"enum": [
 															"accepted",
 															"pending"
 														],
-														"example": "accepted",
 														"readOnly": true
 													}
 												},
 												"required": [
 													"id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -587,66 +589,30 @@
 							"title": "List of members attached to a user group"
 						}
 					}
-				},
-				"description": "List User Group Members"
+				}
 			},
 			"4XX": {
+				"description": "User Group Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -655,12 +621,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -670,25 +636,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -696,12 +699,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "User Group Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -710,7 +711,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List User Group Members",
 		"tags": [
 			"Account User Group Members"
 		],
@@ -732,84 +732,88 @@
 		}
 	},
 	"GET /accounts/{account_id}/iam/user_groups/{user_group_id}/members/{member_id}": {
-		"description": "Get details of a specific member in a user group.",
 		"operationId": "account-user-group-member-get",
+		"summary": "Get User Group Member",
+		"description": "Get details of a specific member in a user group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "member_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "The identifier of an existing account Member.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "The identifier of an existing account Member.",
 					"title": "User Group Member Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get User Group Member response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -818,12 +822,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -833,15 +837,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -850,12 +854,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -865,98 +869,96 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Detailed member information for a User Group member.",
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "When the member was added to the user group.",
-													"example": "2026-01-15T10:30:00Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2026-01-15T10:30:00Z",
+													"readOnly": true
 												},
 												"email": {
 													"description": "The contact email address of the user.",
+													"type": "string",
 													"example": "user@example.com",
 													"maxLength": 90,
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Account member identifier.",
+													"type": "string",
 													"example": "4f5f0c14a2a41d5063dd301b2f829f04",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"status": {
 													"description": "The member's status in the account.",
+													"example": "accepted",
 													"enum": [
 														"accepted",
 														"pending"
 													],
-													"example": "accepted",
 													"readOnly": true
 												},
 												"user": {
 													"description": "Details of the user associated with this membership.",
+													"type": "object",
 													"properties": {
 														"email": {
 															"description": "The contact email address of the user.",
+															"type": "string",
 															"example": "user@example.com",
 															"maxLength": 90,
-															"type": "string",
 															"x-auditable": true
 														},
 														"first_name": {
 															"description": "User's first name.",
+															"type": "string",
 															"example": "Alice",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"id": {
 															"description": "User identifier tag.",
+															"type": "string",
 															"example": "7c5dae5552338874e5053f2534d2767a",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"last_name": {
 															"description": "User's last name.",
+															"type": "string",
 															"example": "Smith",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
-													"readOnly": true,
-													"type": "object"
+													"readOnly": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -964,66 +966,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get User Group Member response"
+				}
 			},
 			"4XX": {
+				"description": "Get User Group Member response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1032,12 +998,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1047,25 +1013,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1073,12 +1076,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get User Group Member response failure"
+				}
 			}
 		},
 		"security": [
@@ -1087,7 +1088,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get User Group Member",
 		"tags": [
 			"Account User Group Members"
 		],
@@ -1109,66 +1109,69 @@
 		}
 	},
 	"POST /accounts/{account_id}/iam/user_groups/{user_group_id}/members": {
-		"description": "Add members to a User Group.",
 		"operationId": "account-user-group-member-create",
+		"summary": "Add User Group Members",
+		"description": "Add members to a User Group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
 							"properties": {
 								"id": {
+									"description": "The identifier of an existing account Member.",
 									"allOf": [
 										{
 											"description": "Identifier",
+											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
 											"minLength": 32,
-											"type": "string",
 											"x-auditable": true
 										}
 									],
-									"description": "The identifier of an existing account Member.",
 									"title": "User Group Member Identifier"
 								}
 							},
@@ -1176,30 +1179,31 @@
 								"id"
 							],
 							"type": "object"
-						},
-						"type": "array"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add User Group Members response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1208,12 +1212,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1223,15 +1227,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1240,12 +1244,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1255,62 +1259,60 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Member attached to a User Group.",
+												"type": "object",
 												"properties": {
 													"email": {
 														"description": "The contact email address of the user.",
+														"type": "string",
 														"example": "user@example.com",
 														"maxLength": 90,
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Account member identifier.",
+														"type": "string",
 														"example": "4f5f0c14a2a41d5063dd301b2f829f04",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"status": {
 														"description": "The member's status in the account.",
+														"example": "accepted",
 														"enum": [
 															"accepted",
 															"pending"
 														],
-														"example": "accepted",
 														"readOnly": true
 													}
 												},
 												"required": [
 													"id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -1318,66 +1320,30 @@
 							]
 						}
 					}
-				},
-				"description": "Add User Group Members response"
+				}
 			},
 			"4XX": {
+				"description": "Add User Group Members response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1386,12 +1352,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1401,25 +1367,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1427,12 +1430,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add User Group Members response failure"
+				}
 			}
 		},
 		"security": [
@@ -1441,7 +1442,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Add User Group Members",
 		"tags": [
 			"Account User Group Members"
 		],
@@ -1462,67 +1462,70 @@
 		}
 	},
 	"PUT /accounts/{account_id}/iam/user_groups/{user_group_id}/members": {
-		"description": "Replace the set of members attached to a User Group.",
 		"operationId": "account-user-group-members-update",
+		"summary": "Update User Group Members",
+		"description": "Replace the set of members attached to a User Group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Set/Replace members to a user group.",
+						"type": "array",
 						"items": {
 							"properties": {
 								"id": {
+									"description": "The identifier of an existing account Member.",
 									"allOf": [
 										{
 											"description": "Identifier",
+											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
 											"minLength": 32,
-											"type": "string",
 											"x-auditable": true
 										}
 									],
-									"description": "The identifier of an existing account Member.",
 									"title": "User Group Member Identifier"
 								}
 							},
@@ -1531,30 +1534,31 @@
 							],
 							"type": "object"
 						},
-						"title": "Update User Group Members",
-						"type": "array"
+						"title": "Update User Group Members"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update User Group Members response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1563,12 +1567,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1578,15 +1582,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1595,12 +1599,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1610,62 +1614,60 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Member attached to a User Group.",
+												"type": "object",
 												"properties": {
 													"email": {
 														"description": "The contact email address of the user.",
+														"type": "string",
 														"example": "user@example.com",
 														"maxLength": 90,
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Account member identifier.",
+														"type": "string",
 														"example": "4f5f0c14a2a41d5063dd301b2f829f04",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"status": {
 														"description": "The member's status in the account.",
+														"example": "accepted",
 														"enum": [
 															"accepted",
 															"pending"
 														],
-														"example": "accepted",
 														"readOnly": true
 													}
 												},
 												"required": [
 													"id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -1673,66 +1675,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update User Group Members response"
+				}
 			},
 			"4XX": {
+				"description": "Update User Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1741,12 +1707,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1756,25 +1722,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1782,12 +1785,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update User Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -1796,7 +1797,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update User Group Members",
 		"tags": [
 			"Account User Group Members"
 		],

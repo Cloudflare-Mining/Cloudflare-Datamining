@@ -1,34 +1,37 @@
 {
 	"GET /zones/{zone_id}/argo/smart_routing": {
-		"description": "Retrieves the value of Argo Smart Routing enablement setting.",
 		"operationId": "argo-smart-routing-get-argo-smart-routing-setting",
+		"summary": "Get Argo Smart Routing setting",
+		"description": "Retrieves the value of Argo Smart Routing enablement setting.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Specifies the zone associated with the API call.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Argo Smart Routing enablement setting response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -41,15 +44,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -62,9 +65,10 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"editable": {
 											"description": "Specifies if the setting is editable.",
@@ -78,18 +82,18 @@
 										},
 										"modified_on": {
 											"description": "Specifies the time when the setting was last modified.",
-											"format": "date-time",
 											"type": "string",
+											"format": "date-time",
 											"x-auditable": true
 										},
 										"value": {
 											"description": "Specifies the enablement value of Argo Smart Routing.",
+											"type": "string",
+											"example": "on",
 											"enum": [
 												"on",
 												"off"
 											],
-											"example": "on",
-											"type": "string",
 											"x-auditable": true
 										}
 									},
@@ -97,16 +101,15 @@
 										"id",
 										"value",
 										"editable"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Describes a successful API response.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -114,61 +117,35 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Argo Smart Routing enablement setting response."
+				}
 			},
 			"4XX": {
+				"description": "Get Argo Smart Routing enablement setting failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -181,25 +158,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Describes a failed API response.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -207,14 +210,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Argo Smart Routing enablement setting failure."
+				}
 			}
 		},
 		"security": [
@@ -226,7 +227,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Argo Smart Routing setting",
 		"tags": [
 			"Argo Smart Routing"
 		],
@@ -247,61 +247,64 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/argo/smart_routing": {
-		"description": "Configures the value of the Argo Smart Routing enablement setting.",
 		"operationId": "argo-smart-routing-patch-argo-smart-routing-setting",
+		"summary": "Patch Argo Smart Routing setting",
+		"description": "Configures the value of the Argo Smart Routing enablement setting.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Specifies the zone associated with the API call.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Configures the enablement of Argo Smart Routing.",
+						"type": "object",
 						"properties": {
 							"value": {
 								"description": "Specifies the enablement value of Argo Smart Routing.",
+								"type": "string",
+								"example": "on",
 								"enum": [
 									"on",
 									"off"
 								],
-								"example": "on",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"value"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Argo Smart Routing enablement setting response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -314,15 +317,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -335,9 +338,10 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"editable": {
 											"description": "Specifies if the setting is editable.",
@@ -351,18 +355,18 @@
 										},
 										"modified_on": {
 											"description": "Specifies the time when the setting was last modified.",
-											"format": "date-time",
 											"type": "string",
+											"format": "date-time",
 											"x-auditable": true
 										},
 										"value": {
 											"description": "Specifies the enablement value of Argo Smart Routing.",
+											"type": "string",
+											"example": "on",
 											"enum": [
 												"on",
 												"off"
 											],
-											"example": "on",
-											"type": "string",
 											"x-auditable": true
 										}
 									},
@@ -370,16 +374,15 @@
 										"id",
 										"value",
 										"editable"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Describes a successful API response.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -387,61 +390,35 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Argo Smart Routing enablement setting response."
+				}
 			},
 			"4XX": {
+				"description": "Patch Argo Smart Routing enablement setting failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -454,25 +431,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Describes a failed API response.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -480,14 +483,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Patch Argo Smart Routing enablement setting failure."
+				}
 			}
 		},
 		"security": [
@@ -499,7 +500,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Patch Argo Smart Routing setting",
 		"tags": [
 			"Argo Smart Routing"
 		],

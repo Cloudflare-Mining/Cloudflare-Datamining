@@ -1,43 +1,48 @@
 {
 	"DELETE /zones/{zone_id}/secondary_dns/outgoing": {
-		"description": "Delete primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-delete-primary-zone-configuration",
+		"summary": "Delete Primary Zone Configuration",
+		"description": "Delete primary zone configuration for outgoing zone transfers.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Primary Zone Configuration response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -46,12 +51,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -61,15 +66,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -78,12 +83,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -93,68 +98,68 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
+													"type": "string",
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Primary Zone Configuration response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Primary Zone Configuration response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -163,12 +168,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -178,15 +183,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -195,12 +200,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -210,100 +215,61 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"id": {
+															"type": "string",
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -312,12 +278,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -327,25 +293,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -353,14 +356,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Primary Zone Configuration response failure."
+				}
 			}
 		},
 		"security": [
@@ -372,7 +373,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Primary Zone Configuration",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],
@@ -392,38 +392,43 @@
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/secondary_dns/outgoing": {
-		"description": "Get primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-primary-zone-configuration-details",
+		"summary": "Primary Zone Configuration Details",
+		"description": "Get primary zone configuration for outgoing zone transfers.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Primary Zone Configuration Details response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -432,12 +437,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -447,15 +452,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -464,12 +469,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -479,113 +484,113 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"checked_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"created_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"id": {
+													"type": "string",
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"last_transferred_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Zone name.",
-													"example": "www.example.com.",
 													"type": "string",
+													"example": "www.example.com.",
 													"x-auditable": true
 												},
 												"peers": {
 													"description": "A list of peer tags.",
+													"type": "array",
+													"items": {
+														"type": "string",
+														"example": "269d8f4853475ca241c4e730be286b20",
+														"readOnly": true,
+														"x-auditable": true
+													},
 													"example": [
 														"23ff594956f20c2a721606e94745a8aa",
 														"00920f38ce07c2e2f4df50b1f61d4194"
 													],
-													"items": {
-														"example": "269d8f4853475ca241c4e730be286b20",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
-													"example": 2019102400,
 													"type": "number",
+													"example": 2019102400,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Primary Zone Configuration Details response."
+				}
 			},
 			"4XX": {
+				"description": "Primary Zone Configuration Details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -594,12 +599,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -609,15 +614,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -626,12 +631,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -641,145 +646,106 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"checked_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"created_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"id": {
+															"type": "string",
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"last_transferred_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Zone name.",
-															"example": "www.example.com.",
 															"type": "string",
+															"example": "www.example.com.",
 															"x-auditable": true
 														},
 														"peers": {
 															"description": "A list of peer tags.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "269d8f4853475ca241c4e730be286b20",
+																"readOnly": true,
+																"x-auditable": true
+															},
 															"example": [
 																"23ff594956f20c2a721606e94745a8aa",
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															],
-															"items": {
-																"example": "269d8f4853475ca241c4e730be286b20",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
-															"example": 2019102400,
 															"type": "number",
+															"example": 2019102400,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -788,12 +754,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -803,25 +769,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -829,14 +832,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Primary Zone Configuration Details response failure."
+				}
 			}
 		},
 		"security": [
@@ -848,7 +849,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Primary Zone Configuration Details",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],
@@ -870,38 +870,43 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/secondary_dns/outgoing/status": {
-		"description": "Get primary zone transfer status.",
 		"operationId": "secondary-dns-(-primary-zone)-get-outgoing-zone-transfer-status",
+		"summary": "Get Outgoing Zone Transfer Status",
+		"description": "Get primary zone transfer status.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Outgoing Zone Transfer Status response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -910,12 +915,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -925,15 +930,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -942,12 +947,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -957,63 +962,63 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The zone transfer status of a primary zone.",
-											"example": "Enabled",
 											"type": "string",
+											"example": "Enabled",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Outgoing Zone Transfer Status response."
+				}
 			},
 			"4XX": {
+				"description": "Get Outgoing Zone Transfer Status response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1022,12 +1027,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1037,15 +1042,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1054,12 +1059,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1069,95 +1074,56 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "The zone transfer status of a primary zone.",
-													"example": "Enabled",
 													"type": "string",
+													"example": "Enabled",
 													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1166,12 +1132,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1181,25 +1147,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1207,14 +1210,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Outgoing Zone Transfer Status response failure."
+				}
 			}
 		},
 		"security": [
@@ -1226,7 +1227,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Outgoing Zone Transfer Status",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],
@@ -1248,51 +1248,53 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing": {
-		"description": "Create primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-create-primary-zone-configuration",
+		"summary": "Create Primary Zone Configuration",
+		"description": "Create primary zone configuration for outgoing zone transfers.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"id": {
+								"type": "string",
 								"example": "269d8f4853475ca241c4e730be286b20",
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Zone name.",
-								"example": "www.example.com.",
 								"type": "string",
+								"example": "www.example.com.",
 								"x-auditable": true
 							},
 							"peers": {
 								"description": "A list of peer tags.",
+								"type": "array",
+								"items": {
+									"type": "string",
+									"example": "269d8f4853475ca241c4e730be286b20",
+									"readOnly": true,
+									"x-auditable": true
+								},
 								"example": [
 									"23ff594956f20c2a721606e94745a8aa",
 									"00920f38ce07c2e2f4df50b1f61d4194"
 								],
-								"items": {
-									"example": "269d8f4853475ca241c4e730be286b20",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
-								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							}
 						},
@@ -1303,26 +1305,29 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Primary Zone Configuration response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1331,12 +1336,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1346,15 +1351,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1363,12 +1368,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1378,113 +1383,113 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"checked_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"created_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"id": {
+													"type": "string",
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"last_transferred_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Zone name.",
-													"example": "www.example.com.",
 													"type": "string",
+													"example": "www.example.com.",
 													"x-auditable": true
 												},
 												"peers": {
 													"description": "A list of peer tags.",
+													"type": "array",
+													"items": {
+														"type": "string",
+														"example": "269d8f4853475ca241c4e730be286b20",
+														"readOnly": true,
+														"x-auditable": true
+													},
 													"example": [
 														"23ff594956f20c2a721606e94745a8aa",
 														"00920f38ce07c2e2f4df50b1f61d4194"
 													],
-													"items": {
-														"example": "269d8f4853475ca241c4e730be286b20",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
-													"example": 2019102400,
 													"type": "number",
+													"example": 2019102400,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Primary Zone Configuration response."
+				}
 			},
 			"4XX": {
+				"description": "Create Primary Zone Configuration response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1493,12 +1498,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1508,15 +1513,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1525,12 +1530,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1540,145 +1545,106 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"checked_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"created_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"id": {
+															"type": "string",
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"last_transferred_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Zone name.",
-															"example": "www.example.com.",
 															"type": "string",
+															"example": "www.example.com.",
 															"x-auditable": true
 														},
 														"peers": {
 															"description": "A list of peer tags.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "269d8f4853475ca241c4e730be286b20",
+																"readOnly": true,
+																"x-auditable": true
+															},
 															"example": [
 																"23ff594956f20c2a721606e94745a8aa",
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															],
-															"items": {
-																"example": "269d8f4853475ca241c4e730be286b20",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
-															"example": 2019102400,
 															"type": "number",
+															"example": 2019102400,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1687,12 +1653,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1702,25 +1668,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1728,14 +1731,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Primary Zone Configuration response failure."
+				}
 			}
 		},
 		"security": [
@@ -1747,7 +1748,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Primary Zone Configuration",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],
@@ -1767,44 +1767,49 @@
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/disable": {
-		"description": "Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone.",
 		"operationId": "secondary-dns-(-primary-zone)-disable-outgoing-zone-transfers",
+		"summary": "Disable Outgoing Zone Transfers",
+		"description": "Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Disable Outgoing Zone Transfers response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1813,12 +1818,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1828,15 +1833,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1845,12 +1850,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1860,63 +1865,63 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The zone transfer status of a primary zone.",
-											"example": "Disabled",
 											"type": "string",
+											"example": "Disabled",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Disable Outgoing Zone Transfers response."
+				}
 			},
 			"4XX": {
+				"description": "Disable Outgoing Zone Transfers response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1925,12 +1930,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1940,15 +1945,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1957,12 +1962,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1972,95 +1977,56 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "The zone transfer status of a primary zone.",
-													"example": "Disabled",
 													"type": "string",
+													"example": "Disabled",
 													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2069,12 +2035,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2084,25 +2050,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2110,14 +2113,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Disable Outgoing Zone Transfers response failure."
+				}
 			}
 		},
 		"security": [
@@ -2129,7 +2130,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Disable Outgoing Zone Transfers",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],
@@ -2150,44 +2150,49 @@
 		"x-forge-require-confirmation": "This operation turns off outgoing zone transfers for the primary zone, which means secondary zones will stop receiving updates."
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/enable": {
-		"description": "Enable outgoing zone transfers for primary zone.",
 		"operationId": "secondary-dns-(-primary-zone)-enable-outgoing-zone-transfers",
+		"summary": "Enable Outgoing Zone Transfers",
+		"description": "Enable outgoing zone transfers for primary zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Enable Outgoing Zone Transfers response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2196,12 +2201,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2211,15 +2216,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2228,12 +2233,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2243,63 +2248,63 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The zone transfer status of a primary zone.",
-											"example": "Enabled",
 											"type": "string",
+											"example": "Enabled",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Enable Outgoing Zone Transfers response."
+				}
 			},
 			"4XX": {
+				"description": "Enable Outgoing Zone Transfers response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2308,12 +2313,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2323,15 +2328,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2340,12 +2345,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2355,95 +2360,56 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "The zone transfer status of a primary zone.",
-													"example": "Enabled",
 													"type": "string",
+													"example": "Enabled",
 													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2452,12 +2418,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2467,25 +2433,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2493,14 +2496,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Enable Outgoing Zone Transfers response failure."
+				}
 			}
 		},
 		"security": [
@@ -2512,7 +2513,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Enable Outgoing Zone Transfers",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],
@@ -2532,44 +2532,49 @@
 		"x-fern-sdk-method-name": "enable"
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/force_notify": {
-		"description": "Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone.",
 		"operationId": "secondary-dns-(-primary-zone)-force-dns-notify",
+		"summary": "Force DNS NOTIFY",
+		"description": "Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Force DNS NOTIFY response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2578,12 +2583,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2593,15 +2598,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2610,12 +2615,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2625,63 +2630,63 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "When force_notify query parameter is set to true, the response is a simple string.",
-											"example": "OK",
 											"type": "string",
+											"example": "OK",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Force DNS NOTIFY response."
+				}
 			},
 			"4XX": {
+				"description": "Force DNS NOTIFY response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2690,12 +2695,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2705,15 +2710,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2722,12 +2727,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2737,95 +2742,56 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "When force_notify query parameter is set to true, the response is a simple string.",
-													"example": "OK",
 													"type": "string",
+													"example": "OK",
 													"x-auditable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2834,12 +2800,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2849,25 +2815,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2875,14 +2878,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Force DNS NOTIFY response failure."
+				}
 			}
 		},
 		"security": [
@@ -2894,7 +2895,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Force DNS NOTIFY",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],
@@ -2914,51 +2914,53 @@
 		"x-fern-sdk-method-name": "force-notify"
 	},
 	"PUT /zones/{zone_id}/secondary_dns/outgoing": {
-		"description": "Update primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-update-primary-zone-configuration",
+		"summary": "Update Primary Zone Configuration",
+		"description": "Update primary zone configuration for outgoing zone transfers.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "269d8f4853475ca241c4e730be286b20",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"id": {
+								"type": "string",
 								"example": "269d8f4853475ca241c4e730be286b20",
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Zone name.",
-								"example": "www.example.com.",
 								"type": "string",
+								"example": "www.example.com.",
 								"x-auditable": true
 							},
 							"peers": {
 								"description": "A list of peer tags.",
+								"type": "array",
+								"items": {
+									"type": "string",
+									"example": "269d8f4853475ca241c4e730be286b20",
+									"readOnly": true,
+									"x-auditable": true
+								},
 								"example": [
 									"23ff594956f20c2a721606e94745a8aa",
 									"00920f38ce07c2e2f4df50b1f61d4194"
 								],
-								"items": {
-									"example": "269d8f4853475ca241c4e730be286b20",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
-								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							}
 						},
@@ -2969,26 +2971,29 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Primary Zone Configuration response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2997,12 +3002,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3012,15 +3017,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3029,12 +3034,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3044,113 +3049,113 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"checked_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"created_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"id": {
+													"type": "string",
 													"example": "269d8f4853475ca241c4e730be286b20",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"last_transferred_time": {
 													"description": "The time for a specific event.",
-													"example": "2019-10-24T17:09:42.883908+01:00",
 													"type": "string",
+													"example": "2019-10-24T17:09:42.883908+01:00",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Zone name.",
-													"example": "www.example.com.",
 													"type": "string",
+													"example": "www.example.com.",
 													"x-auditable": true
 												},
 												"peers": {
 													"description": "A list of peer tags.",
+													"type": "array",
+													"items": {
+														"type": "string",
+														"example": "269d8f4853475ca241c4e730be286b20",
+														"readOnly": true,
+														"x-auditable": true
+													},
 													"example": [
 														"23ff594956f20c2a721606e94745a8aa",
 														"00920f38ce07c2e2f4df50b1f61d4194"
 													],
-													"items": {
-														"example": "269d8f4853475ca241c4e730be286b20",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"soa_serial": {
 													"description": "The serial number of the SOA for the given zone.",
-													"example": 2019102400,
 													"type": "number",
+													"example": 2019102400,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Primary Zone Configuration response."
+				}
 			},
 			"4XX": {
+				"description": "Update Primary Zone Configuration response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3159,12 +3164,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3174,15 +3179,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3191,12 +3196,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3206,145 +3211,106 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"checked_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"created_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"id": {
+															"type": "string",
 															"example": "269d8f4853475ca241c4e730be286b20",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"last_transferred_time": {
 															"description": "The time for a specific event.",
-															"example": "2019-10-24T17:09:42.883908+01:00",
 															"type": "string",
+															"example": "2019-10-24T17:09:42.883908+01:00",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Zone name.",
-															"example": "www.example.com.",
 															"type": "string",
+															"example": "www.example.com.",
 															"x-auditable": true
 														},
 														"peers": {
 															"description": "A list of peer tags.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "269d8f4853475ca241c4e730be286b20",
+																"readOnly": true,
+																"x-auditable": true
+															},
 															"example": [
 																"23ff594956f20c2a721606e94745a8aa",
 																"00920f38ce07c2e2f4df50b1f61d4194"
 															],
-															"items": {
-																"example": "269d8f4853475ca241c4e730be286b20",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"soa_serial": {
 															"description": "The serial number of the SOA for the given zone.",
-															"example": 2019102400,
 															"type": "number",
+															"example": 2019102400,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3353,12 +3319,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3368,25 +3334,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3394,14 +3397,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Primary Zone Configuration response failure."
+				}
 			}
 		},
 		"security": [
@@ -3413,7 +3414,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Primary Zone Configuration",
 		"tags": [
 			"Secondary DNS (Primary Zone)"
 		],

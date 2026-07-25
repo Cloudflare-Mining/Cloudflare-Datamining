@@ -1,12 +1,13 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/graph": {
-		"description": "Expands the single-level relationship neighborhood of one or more seed nodes (event, indicator, or tag) from R2 Data Catalog. Seeds use compact id format (type:uuid), e.g. \"event:550e8400-...\". Multi-seed requests merge and deduplicate results server-side. Hydrates neighbor entities with summary data from Durable Objects. Supports filtering by relationship type and dataset scope.",
 		"operationId": "get_EventGraph",
+		"summary": "Query graph neighborhood from R2 Data Catalog",
+		"description": "Expands the single-level relationship neighborhood of one or more seed nodes (event, indicator, or tag) from R2 Data Catalog. Seeds use compact id format (type:uuid), e.g. \"event:550e8400-...\". Multi-seed requests merge and deduplicate results server-side. Hydrates neighbor entities with summary data from Durable Objects. Supports filtering by relationship type and dataset scope.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,101 +15,102 @@
 				}
 			},
 			{
-				"description": "Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-...,indicator:661fa920-... Provide 1–50 entries; omitting seeds returns 400.",
-				"in": "query",
 				"name": "seeds",
+				"in": "query",
+				"description": "Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-...,indicator:661fa920-... Provide 1–50 entries; omitting seeds returns 400.",
 				"schema": {
 					"description": "Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-...,indicator:661fa920-... Provide 1–50 entries; omitting seeds returns 400.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Edge direction relative to each seed: out (seed→neighbors), in (neighbors→seed), both (default).",
-				"in": "query",
 				"name": "direction",
+				"in": "query",
+				"description": "Edge direction relative to each seed: out (seed→neighbors), in (neighbors→seed), both (default).",
 				"schema": {
 					"description": "Edge direction relative to each seed: out (seed→neighbors), in (neighbors→seed), both (default).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Hydration strategy for neighbor nodes when expand=nodes is set. r2_join (default): use R2 JOIN query + DO fallback. do_only: use plain R2 query + hydrate all neighbors via Durable Objects.",
-				"in": "query",
 				"name": "hydration",
+				"in": "query",
+				"description": "Hydration strategy for neighbor nodes when expand=nodes is set. r2_join (default): use R2 JOIN query + DO fallback. do_only: use plain R2 query + hydrate all neighbors via Durable Objects.",
 				"schema": {
 					"description": "Hydration strategy for neighbor nodes when expand=nodes is set. r2_join (default): use R2 JOIN query + DO fallback. do_only: use plain R2 query + hydrate all neighbors via Durable Objects.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Max neighbors per seed (default: 100, max: 1000). Values above 1000 return 400.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Max neighbors per seed (default: 100, max: 1000). Values above 1000 return 400.",
 				"schema": {
 					"description": "Max neighbors per seed (default: 100, max: 1000). Values above 1000 return 400.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Total accumulated node cap across all seeds (default: 500, max: 1000). Values above 1000 return 400.",
-				"in": "query",
 				"name": "max_nodes",
+				"in": "query",
+				"description": "Total accumulated node cap across all seeds (default: 500, max: 1000). Values above 1000 return 400.",
 				"schema": {
 					"description": "Total accumulated node cap across all seeds (default: 500, max: 1000). Values above 1000 return 400.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Comma-separated relationship types to filter by. Allowed: tagged_with, appears_in, related_to, caused_by, attributed_to.",
-				"in": "query",
 				"name": "relationshipTypes",
+				"in": "query",
+				"description": "Comma-separated relationship types to filter by. Allowed: tagged_with, appears_in, related_to, caused_by, attributed_to.",
 				"schema": {
 					"description": "Comma-separated relationship types to filter by. Allowed: tagged_with, appears_in, related_to, caused_by, attributed_to.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Comma-separated dataset UUIDs to restrict neighbor scope. Intersected with ACL grants.",
-				"in": "query",
 				"name": "datasetIds",
+				"in": "query",
+				"description": "Comma-separated dataset UUIDs to restrict neighbor scope. Intersected with ACL grants.",
 				"schema": {
 					"description": "Comma-separated dataset UUIDs to restrict neighbor scope. Intersected with ACL grants.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Opaque pagination token. Only valid when seeds has exactly 1 entry; 400 otherwise.",
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
+				"description": "Opaque pagination token. Only valid when seeds has exactly 1 entry; 400 otherwise.",
 				"schema": {
 					"description": "Opaque pagination token. Only valid when seeds has exactly 1 entry; 400 otherwise.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Comma-separated list of response sections to expand (hydrate). Allowed: `nodes`. Omitting `expand` returns identifier-only nodes.",
-				"in": "query",
 				"name": "expand",
+				"in": "query",
+				"description": "Comma-separated list of response sections to expand (hydrate). Allowed: `nodes`. Omitting `expand` returns identifier-only nodes.",
 				"schema": {
 					"description": "Comma-separated list of response sections to expand (hydrate). Allowed: `nodes`. Omitting `expand` returns identifier-only nodes.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns merged graph neighborhood from R2 Data Catalog",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -357,24 +359,27 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"additionalProperties": true,
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"additionalProperties": true,
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"edges": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"id": {
@@ -416,31 +421,30 @@
 													"target"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"node": {
-											"additionalProperties": true,
 											"description": "Focal node object (legacy single-seed). Null when unavailable.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"additionalProperties": true,
+											"nullable": true
 										},
 										"nodes": {
+											"type": "array",
 											"items": {
 												"additionalProperties": true,
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"node",
 										"nodes",
 										"edges"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"description": "Number of nodes in result.nodes (seeds + neighbors)",
@@ -448,8 +452,8 @@
 										},
 										"cursor": {
 											"description": "Opaque pagination cursor for the next page; null when exhausted or for multi-seed requests (single-seed only)",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"depth_reached": {
 											"description": "Traversal depth reached (always 1 for single-level)",
@@ -469,10 +473,10 @@
 										},
 										"seeds": {
 											"description": "Composite ids of the seed node(s) (type:uuid). Always an array, even for one seed.",
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"total_count": {
 											"description": "Total count of nodes (same as count for this endpoint)",
@@ -488,8 +492,7 @@
 										"total_count",
 										"edge_count",
 										"query_time_ms"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -500,32 +503,32 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns merged graph neighborhood from R2 Data Catalog"
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -538,32 +541,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -576,32 +579,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"500": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -614,32 +617,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"503": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -652,12 +655,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -665,7 +666,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Query graph neighborhood from R2 Data Catalog",
 		"tags": [
 			"Events",
 			"R2 Catalog"

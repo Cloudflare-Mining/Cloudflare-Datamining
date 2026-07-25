@@ -1,48 +1,52 @@
 {
 	"DELETE /accounts/{account_id}/access/certificates/{certificate_id}": {
-		"description": "Deletes an mTLS certificate.",
 		"operationId": "access-mtls-authentication-delete-an-mtls-certificate",
+		"summary": "Delete an mTLS certificate",
+		"description": "Deletes an mTLS certificate.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "certificate_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete an mTLS certificate response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -51,12 +55,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -66,15 +70,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -83,12 +87,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -98,104 +102,66 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete an mTLS certificate response"
+				}
 			},
 			"4XX": {
+				"description": "Delete an mTLS certificate response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -204,12 +170,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -219,25 +185,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -245,12 +248,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete an mTLS certificate response failure"
+				}
 			}
 		},
 		"security": [
@@ -260,7 +261,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
 		],
@@ -273,18 +273,19 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/certificates": {
-		"description": "Lists all mTLS root certificates.",
 		"operationId": "access-mtls-authentication-list-mtls-certificates",
+		"summary": "List mTLS certificates",
+		"description": "Lists all mTLS root certificates.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
@@ -292,39 +293,43 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Page number of results.",
-					"type": "integer"
+					"type": "integer",
+					"default": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 50,
 					"description": "Number of results per page.",
-					"maximum": 1000,
-					"type": "integer"
+					"type": "integer",
+					"default": 50,
+					"maximum": 1000
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List mTLS certificates response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -333,12 +338,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -348,15 +353,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -365,12 +370,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -380,76 +385,76 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"associated_hostnames": {
 														"description": "The hostnames of the applications that will use this certificate.",
+														"type": "array",
 														"items": {
 															"description": "A fully-qualified domain name (FQDN).",
 															"example": "admin.example.com",
 															"type": "string",
 															"x-auditable": true
-														},
-														"type": "array"
+														}
 													},
 													"created_at": {
 														"allOf": [
@@ -457,23 +462,23 @@
 																"x-stainless-skip": true
 															},
 															{
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															}
 														]
 													},
 													"expires_on": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"fingerprint": {
 														"description": "The MD5 fingerprint of the certificate.",
-														"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91",
-														"type": "string"
+														"type": "string",
+														"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 													},
 													"id": {
 														"description": "The ID of the application that will use this certificate.",
@@ -482,8 +487,8 @@
 													},
 													"name": {
 														"description": "The name of the certificate.",
-														"example": "Allow devs",
 														"type": "string",
+														"example": "Allow devs",
 														"x-auditable": true
 													},
 													"updated_at": {
@@ -492,84 +497,45 @@
 																"x-stainless-skip": true
 															},
 															{
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															}
 														]
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List mTLS certificates response"
+				}
 			},
 			"4XX": {
+				"description": "List mTLS certificates response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -578,12 +544,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -593,25 +559,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -619,12 +622,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List mTLS certificates response failure"
+				}
 			}
 		},
 		"security": [
@@ -634,7 +635,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List mTLS certificates",
 		"tags": [
 			"Access mTLS authentication"
 		],
@@ -648,51 +648,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/certificates/{certificate_id}": {
-		"description": "Fetches a single mTLS certificate.",
 		"operationId": "access-mtls-authentication-get-an-mtls-certificate",
+		"summary": "Get an mTLS certificate",
+		"description": "Fetches a single mTLS certificate.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "certificate_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get an mTLS certificate response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -701,12 +706,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -716,15 +721,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -733,12 +738,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -748,40 +753,39 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"associated_hostnames": {
 													"description": "The hostnames of the applications that will use this certificate.",
+													"type": "array",
 													"items": {
 														"description": "A fully-qualified domain name (FQDN).",
 														"example": "admin.example.com",
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"created_at": {
 													"allOf": [
@@ -789,23 +793,23 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												},
 												"expires_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"fingerprint": {
 													"description": "The MD5 fingerprint of the certificate.",
-													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91",
-													"type": "string"
+													"type": "string",
+													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 												},
 												"id": {
 													"description": "The ID of the application that will use this certificate.",
@@ -814,8 +818,8 @@
 												},
 												"name": {
 													"description": "The name of the certificate.",
-													"example": "Allow devs",
 													"type": "string",
+													"example": "Allow devs",
 													"x-auditable": true
 												},
 												"updated_at": {
@@ -824,82 +828,44 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get an mTLS certificate response"
+				}
 			},
 			"4XX": {
+				"description": "Get an mTLS certificate response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -908,12 +874,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -923,25 +889,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -949,12 +952,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get an mTLS certificate response failure"
+				}
 			}
 		},
 		"security": [
@@ -964,7 +965,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
 		],
@@ -978,39 +978,44 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/certificates/settings": {
-		"description": "List all mTLS hostname settings for this account.",
 		"operationId": "access-mtls-authentication-list-mtls-certificates-hostname-settings",
+		"summary": "List all mTLS hostname settings",
+		"description": "List all mTLS hostname settings for this account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List mTLS hostname settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1019,12 +1024,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1034,15 +1039,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1051,12 +1056,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1066,163 +1071,124 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
-												"additionalProperties": false,
+												"type": "object",
 												"properties": {
 													"china_network": {
 														"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"client_certificate_forwarding": {
 														"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
 														"x-auditable": true
 													},
 													"hostname": {
 														"description": "The hostname that these settings apply to.",
-														"example": "admin.example.com",
 														"type": "string",
+														"example": "admin.example.com",
 														"x-auditable": true
 													}
 												},
+												"additionalProperties": false,
 												"required": [
 													"hostname",
 													"china_network",
 													"client_certificate_forwarding"
 												],
-												"title": "Hostname Settings",
-												"type": "object"
-											},
-											"type": "array"
+												"title": "Hostname Settings"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List mTLS hostname settings response"
+				}
 			},
 			"4XX": {
+				"description": "List mTLS hostname settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1231,12 +1197,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1246,25 +1212,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1272,12 +1275,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List mTLS hostname settings response failure"
+				}
 			}
 		},
 		"security": [
@@ -1287,7 +1288,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List all mTLS hostname settings",
 		"tags": [
 			"Access mTLS authentication"
 		],
@@ -1301,46 +1301,48 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/certificates": {
-		"description": "Adds a new mTLS root certificate to Access.",
 		"operationId": "access-mtls-authentication-add-an-mtls-certificate",
+		"summary": "Add an mTLS certificate",
+		"description": "Adds a new mTLS root certificate to Access.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"associated_hostnames": {
 								"description": "The hostnames of the applications that will use this certificate.",
+								"type": "array",
 								"items": {
 									"description": "A fully-qualified domain name (FQDN).",
 									"example": "admin.example.com",
 									"type": "string",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							},
 							"certificate": {
 								"description": "The certificate content.",
-								"example": "-----BEGIN CERTIFICATE-----\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\nDrUtmu/B\n-----END CERTIFICATE-----",
-								"type": "string"
+								"type": "string",
+								"example": "-----BEGIN CERTIFICATE-----\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\nDrUtmu/B\n-----END CERTIFICATE-----"
 							},
 							"name": {
 								"description": "The name of the certificate.",
-								"example": "Allow devs",
 								"type": "string",
+								"example": "Allow devs",
 								"x-auditable": true
 							}
 						},
@@ -1350,26 +1352,29 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Add an mTLS certificate response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1378,12 +1383,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1393,15 +1398,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1410,12 +1415,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1425,40 +1430,39 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"associated_hostnames": {
 													"description": "The hostnames of the applications that will use this certificate.",
+													"type": "array",
 													"items": {
 														"description": "A fully-qualified domain name (FQDN).",
 														"example": "admin.example.com",
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"created_at": {
 													"allOf": [
@@ -1466,23 +1470,23 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												},
 												"expires_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"fingerprint": {
 													"description": "The MD5 fingerprint of the certificate.",
-													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91",
-													"type": "string"
+													"type": "string",
+													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 												},
 												"id": {
 													"description": "The ID of the application that will use this certificate.",
@@ -1491,8 +1495,8 @@
 												},
 												"name": {
 													"description": "The name of the certificate.",
-													"example": "Allow devs",
 													"type": "string",
+													"example": "Allow devs",
 													"x-auditable": true
 												},
 												"updated_at": {
@@ -1501,82 +1505,44 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add an mTLS certificate response"
+				}
 			},
 			"4XX": {
+				"description": "Add an mTLS certificate response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1585,12 +1551,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1600,25 +1566,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1626,12 +1629,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add an mTLS certificate response failure"
+				}
 			}
 		},
 		"security": [
@@ -1641,7 +1642,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Add an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
 		],
@@ -1654,53 +1654,55 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/certificates/{certificate_id}": {
-		"description": "Updates a configured mTLS certificate.",
 		"operationId": "access-mtls-authentication-update-an-mtls-certificate",
+		"summary": "Update an mTLS certificate",
+		"description": "Updates a configured mTLS certificate.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "certificate_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"associated_hostnames": {
 								"description": "The hostnames of the applications that will use this certificate.",
+								"type": "array",
 								"items": {
 									"description": "A fully-qualified domain name (FQDN).",
 									"example": "admin.example.com",
 									"type": "string",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							},
 							"name": {
 								"description": "The name of the certificate.",
-								"example": "Allow devs",
 								"type": "string",
+								"example": "Allow devs",
 								"x-auditable": true
 							}
 						},
@@ -1709,26 +1711,29 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update an mTLS certificate response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1737,12 +1742,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1752,15 +1757,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1769,12 +1774,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1784,40 +1789,39 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"associated_hostnames": {
 													"description": "The hostnames of the applications that will use this certificate.",
+													"type": "array",
 													"items": {
 														"description": "A fully-qualified domain name (FQDN).",
 														"example": "admin.example.com",
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"created_at": {
 													"allOf": [
@@ -1825,23 +1829,23 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												},
 												"expires_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"fingerprint": {
 													"description": "The MD5 fingerprint of the certificate.",
-													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91",
-													"type": "string"
+													"type": "string",
+													"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 												},
 												"id": {
 													"description": "The ID of the application that will use this certificate.",
@@ -1850,8 +1854,8 @@
 												},
 												"name": {
 													"description": "The name of the certificate.",
-													"example": "Allow devs",
 													"type": "string",
+													"example": "Allow devs",
 													"x-auditable": true
 												},
 												"updated_at": {
@@ -1860,82 +1864,44 @@
 															"x-stainless-skip": true
 														},
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update an mTLS certificate response"
+				}
 			},
 			"4XX": {
+				"description": "Update an mTLS certificate response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1944,12 +1910,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1959,25 +1925,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1985,12 +1988,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update an mTLS certificate response failure"
+				}
 			}
 		},
 		"security": [
@@ -2000,7 +2001,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update an mTLS certificate",
 		"tags": [
 			"Access mTLS authentication"
 		],
@@ -2013,87 +2013,92 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/certificates/settings": {
-		"description": "Updates an mTLS certificate's hostname settings.",
 		"operationId": "access-mtls-authentication-update-an-mtls-certificate-settings",
+		"summary": "Update an mTLS certificate's hostname settings",
+		"description": "Updates an mTLS certificate's hostname settings.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"settings": {
+								"type": "array",
 								"items": {
-									"additionalProperties": false,
+									"type": "object",
 									"properties": {
 										"china_network": {
 											"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
-											"example": false,
 											"type": "boolean",
+											"example": false,
 											"x-auditable": true
 										},
 										"client_certificate_forwarding": {
 											"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
-											"example": true,
 											"type": "boolean",
+											"example": true,
 											"x-auditable": true
 										},
 										"hostname": {
 											"description": "The hostname that these settings apply to.",
-											"example": "admin.example.com",
 											"type": "string",
+											"example": "admin.example.com",
 											"x-auditable": true
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"hostname",
 										"china_network",
 										"client_certificate_forwarding"
 									],
-									"title": "Hostname Settings",
-									"type": "object"
-								},
-								"type": "array"
+									"title": "Hostname Settings"
+								}
 							}
 						},
 						"required": [
 							"settings"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"202": {
+				"description": "Update an mTLS certificates hostname settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2102,12 +2107,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2117,15 +2122,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2134,12 +2139,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2149,163 +2154,124 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
-												"additionalProperties": false,
+												"type": "object",
 												"properties": {
 													"china_network": {
 														"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"client_certificate_forwarding": {
 														"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
 														"x-auditable": true
 													},
 													"hostname": {
 														"description": "The hostname that these settings apply to.",
-														"example": "admin.example.com",
 														"type": "string",
+														"example": "admin.example.com",
 														"x-auditable": true
 													}
 												},
+												"additionalProperties": false,
 												"required": [
 													"hostname",
 													"china_network",
 													"client_certificate_forwarding"
 												],
-												"title": "Hostname Settings",
-												"type": "object"
-											},
-											"type": "array"
+												"title": "Hostname Settings"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update an mTLS certificates hostname settings response"
+				}
 			},
 			"4XX": {
+				"description": "Update an mTLS certificates hostname settings failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2314,12 +2280,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2329,25 +2295,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2355,12 +2358,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update an mTLS certificates hostname settings failure"
+				}
 			}
 		},
 		"security": [
@@ -2370,7 +2371,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update an mTLS certificate's hostname settings",
 		"tags": [
 			"Access mTLS authentication"
 		],

@@ -1,30 +1,31 @@
 {
 	"DELETE /accounts/{account_identifier}/custom_pages/assets/{asset_name}": {
-		"description": "Deletes an existing custom asset.",
 		"operationId": "custom-assets-for-an-account-delete-a-custom-asset",
+		"summary": "Delete a custom asset",
+		"description": "Deletes an existing custom asset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "asset_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+					"type": "string",
 					"example": "my_custom_error_page",
 					"minLength": 1,
 					"pattern": "^[A-Za-z0-9_]+$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -34,62 +35,27 @@
 				"description": "Delete a custom asset response"
 			},
 			"4XX": {
+				"description": "Delete a custom asset response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -98,12 +64,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -113,25 +79,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -139,12 +142,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete a custom asset response failure"
+				}
 			}
 		},
 		"security": [
@@ -153,7 +154,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a custom asset",
 		"tags": [
 			"Custom assets for an account"
 		],
@@ -170,58 +170,62 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_identifier}/custom_pages/assets": {
-		"description": "Fetches all the custom assets at the account level.",
 		"operationId": "custom-assets-for-an-account-list-custom-assets",
+		"summary": "List custom assets",
+		"description": "Fetches all the custom assets at the account level.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 200,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List custom assets response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -230,12 +234,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -245,15 +249,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -262,12 +266,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -277,112 +281,110 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"description": {
 														"description": "A short description of the custom asset.",
-														"example": "Custom 500 error page",
-														"type": "string"
+														"type": "string",
+														"example": "Custom 500 error page"
 													},
 													"last_updated": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"name": {
 														"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+														"type": "string",
 														"example": "my_custom_error_page",
 														"minLength": 1,
 														"pattern": "^[A-Za-z0-9_]+$",
-														"type": "string",
 														"x-auditable": true
 													},
 													"size_bytes": {
 														"description": "The size of the asset content in bytes.",
+														"type": "integer",
 														"example": 1024,
-														"readOnly": true,
-														"type": "integer"
+														"readOnly": true
 													},
 													"url": {
 														"description": "The URL where the asset content is fetched from.",
-														"example": "https://example.com/error.html",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://example.com/error.html"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List custom assets response"
+				}
 			},
 			"4XX": {
+				"description": "List custom assets response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -390,16 +392,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -408,12 +412,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -423,15 +427,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -440,12 +444,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -455,161 +459,123 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																},
 																"total_pages": {
 																	"description": "The number of total pages in the entire result set.",
-																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"description": {
 																"description": "A short description of the custom asset.",
-																"example": "Custom 500 error page",
-																"type": "string"
+																"type": "string",
+																"example": "Custom 500 error page"
 															},
 															"last_updated": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+																"type": "string",
 																"example": "my_custom_error_page",
 																"minLength": 1,
 																"pattern": "^[A-Za-z0-9_]+$",
-																"type": "string",
 																"x-auditable": true
 															},
 															"size_bytes": {
 																"description": "The size of the asset content in bytes.",
+																"type": "integer",
 																"example": 1024,
-																"readOnly": true,
-																"type": "integer"
+																"readOnly": true
 															},
 															"url": {
 																"description": "The URL where the asset content is fetched from.",
-																"example": "https://example.com/error.html",
+																"type": "string",
 																"format": "uri",
-																"type": "string"
+																"example": "https://example.com/error.html"
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -618,12 +584,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -633,25 +599,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -659,14 +662,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List custom assets response failure"
+				}
 			}
 		},
 		"security": [
@@ -675,7 +676,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List custom assets",
 		"tags": [
 			"Custom assets for an account"
 		],
@@ -692,52 +692,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_identifier}/custom_pages/assets/{asset_name}": {
-		"description": "Fetches the details of a custom asset.",
 		"operationId": "custom-assets-for-an-account-get-a-custom-asset",
+		"summary": "Get a custom asset",
+		"description": "Fetches the details of a custom asset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "asset_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+					"type": "string",
 					"example": "my_custom_error_page",
 					"minLength": 1,
 					"pattern": "^[A-Za-z0-9_]+$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get a custom asset response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -746,12 +750,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -761,15 +765,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -778,12 +782,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -793,74 +797,72 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "A short description of the custom asset.",
-													"example": "Custom 500 error page",
-													"type": "string"
+													"type": "string",
+													"example": "Custom 500 error page"
 												},
 												"last_updated": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+													"type": "string",
 													"example": "my_custom_error_page",
 													"minLength": 1,
 													"pattern": "^[A-Za-z0-9_]+$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"size_bytes": {
 													"description": "The size of the asset content in bytes.",
+													"type": "integer",
 													"example": 1024,
-													"readOnly": true,
-													"type": "integer"
+													"readOnly": true
 												},
 												"url": {
 													"description": "The URL where the asset content is fetched from.",
-													"example": "https://example.com/error.html",
+													"type": "string",
 													"format": "uri",
-													"type": "string"
+													"example": "https://example.com/error.html"
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get a custom asset response"
+				}
 			},
 			"4XX": {
+				"description": "Get a custom asset response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -868,16 +870,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -886,12 +890,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -901,15 +905,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -918,12 +922,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -933,123 +937,85 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"description": {
 															"description": "A short description of the custom asset.",
-															"example": "Custom 500 error page",
-															"type": "string"
+															"type": "string",
+															"example": "Custom 500 error page"
 														},
 														"last_updated": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+															"type": "string",
 															"example": "my_custom_error_page",
 															"minLength": 1,
 															"pattern": "^[A-Za-z0-9_]+$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"size_bytes": {
 															"description": "The size of the asset content in bytes.",
+															"type": "integer",
 															"example": 1024,
-															"readOnly": true,
-															"type": "integer"
+															"readOnly": true
 														},
 														"url": {
 															"description": "The URL where the asset content is fetched from.",
-															"example": "https://example.com/error.html",
+															"type": "string",
 															"format": "uri",
-															"type": "string"
+															"example": "https://example.com/error.html"
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1058,12 +1024,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1073,25 +1039,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1099,14 +1102,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get a custom asset response failure"
+				}
 			}
 		},
 		"security": [
@@ -1115,7 +1116,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a custom asset",
 		"tags": [
 			"Custom assets for an account"
 		],
@@ -1132,45 +1132,47 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_identifier}/custom_pages/assets": {
-		"description": "Creates a new custom asset at the account level.",
 		"operationId": "custom-assets-for-an-account-create-a-custom-asset",
+		"summary": "Create a custom asset",
+		"description": "Creates a new custom asset at the account level.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"description": {
 								"description": "A short description of the custom asset.",
-								"example": "Custom 500 error page",
-								"type": "string"
+								"type": "string",
+								"example": "Custom 500 error page"
 							},
 							"name": {
 								"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+								"type": "string",
 								"example": "my_custom_error_page",
 								"minLength": 1,
 								"pattern": "^[A-Za-z0-9_]+$",
-								"type": "string",
 								"x-auditable": true
 							},
 							"url": {
 								"description": "The URL where the asset content is fetched from.",
-								"example": "https://example.com/error.html",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/error.html"
 							}
 						},
 						"required": [
@@ -1180,26 +1182,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create custom asset response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1208,12 +1212,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1223,15 +1227,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1240,12 +1244,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1255,74 +1259,72 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "A short description of the custom asset.",
-													"example": "Custom 500 error page",
-													"type": "string"
+													"type": "string",
+													"example": "Custom 500 error page"
 												},
 												"last_updated": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+													"type": "string",
 													"example": "my_custom_error_page",
 													"minLength": 1,
 													"pattern": "^[A-Za-z0-9_]+$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"size_bytes": {
 													"description": "The size of the asset content in bytes.",
+													"type": "integer",
 													"example": 1024,
-													"readOnly": true,
-													"type": "integer"
+													"readOnly": true
 												},
 												"url": {
 													"description": "The URL where the asset content is fetched from.",
-													"example": "https://example.com/error.html",
+													"type": "string",
 													"format": "uri",
-													"type": "string"
+													"example": "https://example.com/error.html"
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create custom asset response"
+				}
 			},
 			"4XX": {
+				"description": "Create custom asset response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1330,16 +1332,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1348,12 +1352,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1363,15 +1367,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1380,12 +1384,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1395,123 +1399,85 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"description": {
 															"description": "A short description of the custom asset.",
-															"example": "Custom 500 error page",
-															"type": "string"
+															"type": "string",
+															"example": "Custom 500 error page"
 														},
 														"last_updated": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+															"type": "string",
 															"example": "my_custom_error_page",
 															"minLength": 1,
 															"pattern": "^[A-Za-z0-9_]+$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"size_bytes": {
 															"description": "The size of the asset content in bytes.",
+															"type": "integer",
 															"example": 1024,
-															"readOnly": true,
-															"type": "integer"
+															"readOnly": true
 														},
 														"url": {
 															"description": "The URL where the asset content is fetched from.",
-															"example": "https://example.com/error.html",
+															"type": "string",
 															"format": "uri",
-															"type": "string"
+															"example": "https://example.com/error.html"
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1520,12 +1486,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1535,25 +1501,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1561,14 +1564,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create custom asset response failure"
+				}
 			}
 		},
 		"security": [
@@ -1577,7 +1578,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a custom asset",
 		"tags": [
 			"Custom assets for an account"
 		],
@@ -1594,50 +1594,52 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_identifier}/custom_pages/assets/{asset_name}": {
-		"description": "Updates the configuration of an existing custom asset.",
 		"operationId": "custom-assets-for-an-account-update-a-custom-asset",
+		"summary": "Update a custom asset",
+		"description": "Updates the configuration of an existing custom asset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "asset_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+					"type": "string",
 					"example": "my_custom_error_page",
 					"minLength": 1,
 					"pattern": "^[A-Za-z0-9_]+$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"description": {
 								"description": "A short description of the custom asset.",
-								"example": "Custom 500 error page",
-								"type": "string"
+								"type": "string",
+								"example": "Custom 500 error page"
 							},
 							"url": {
 								"description": "The URL where the asset content is fetched from.",
-								"example": "https://example.com/error.html",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/error.html"
 							}
 						},
 						"required": [
@@ -1646,26 +1648,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a custom asset response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1674,12 +1678,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1689,15 +1693,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1706,12 +1710,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1721,74 +1725,72 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "A short description of the custom asset.",
-													"example": "Custom 500 error page",
-													"type": "string"
+													"type": "string",
+													"example": "Custom 500 error page"
 												},
 												"last_updated": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+													"type": "string",
 													"example": "my_custom_error_page",
 													"minLength": 1,
 													"pattern": "^[A-Za-z0-9_]+$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"size_bytes": {
 													"description": "The size of the asset content in bytes.",
+													"type": "integer",
 													"example": 1024,
-													"readOnly": true,
-													"type": "integer"
+													"readOnly": true
 												},
 												"url": {
 													"description": "The URL where the asset content is fetched from.",
-													"example": "https://example.com/error.html",
+													"type": "string",
 													"format": "uri",
-													"type": "string"
+													"example": "https://example.com/error.html"
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a custom asset response"
+				}
 			},
 			"4XX": {
+				"description": "Update a custom asset response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1796,16 +1798,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1814,12 +1818,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1829,15 +1833,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1846,12 +1850,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1861,123 +1865,85 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"description": {
 															"description": "A short description of the custom asset.",
-															"example": "Custom 500 error page",
-															"type": "string"
+															"type": "string",
+															"example": "Custom 500 error page"
 														},
 														"last_updated": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).",
+															"type": "string",
 															"example": "my_custom_error_page",
 															"minLength": 1,
 															"pattern": "^[A-Za-z0-9_]+$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"size_bytes": {
 															"description": "The size of the asset content in bytes.",
+															"type": "integer",
 															"example": 1024,
-															"readOnly": true,
-															"type": "integer"
+															"readOnly": true
 														},
 														"url": {
 															"description": "The URL where the asset content is fetched from.",
-															"example": "https://example.com/error.html",
+															"type": "string",
 															"format": "uri",
-															"type": "string"
+															"example": "https://example.com/error.html"
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1986,12 +1952,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2001,25 +1967,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2027,14 +2030,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a custom asset response failure"
+				}
 			}
 		},
 		"security": [
@@ -2043,7 +2044,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a custom asset",
 		"tags": [
 			"Custom assets for an account"
 		],

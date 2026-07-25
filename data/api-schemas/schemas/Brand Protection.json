@@ -1,32 +1,35 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
-		"description": "Delete a saved brand protection domain query from the account_queries table. This operation will remove the query from the durable object database. Returns 404 if the query ID doesn't exist.",
 		"operationId": "delete_DeleteDomainQuery",
+		"summary": "Delete domain query",
+		"description": "Delete a saved brand protection domain query from the account_queries table. This operation will remove the query from the durable object database. Returns 404 if the query ID doesn't exist.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "query_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Domain query deleted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -38,12 +41,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Domain query deleted successfully"
+				}
 			}
 		},
 		"security": [
@@ -51,7 +52,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete domain query",
 		"tags": [
 			"Brand Protection"
 		],
@@ -60,33 +60,36 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
-		"description": "Delete a user-defined takedown letter template. System templates cannot be deleted.",
 		"operationId": "delete_LetterTemplateDelete",
+		"summary": "Delete letter template",
+		"description": "Delete a user-defined takedown letter template. System templates cannot be deleted.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "template_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Template deleted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -98,12 +101,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Template deleted successfully"
+				}
 			}
 		},
 		"security": [
@@ -111,7 +112,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete letter template",
 		"tags": [
 			"Brand Protection"
 		],
@@ -120,33 +120,36 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{query_id}": {
-		"description": "Delete a saved brand protection logo query. Returns 404 if the query ID doesn't exist.",
 		"operationId": "delete_DeleteLogoQuery",
+		"summary": "Delete logo query",
+		"description": "Delete a saved brand protection logo query. Returns 404 if the query ID doesn't exist.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "query_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Logo query deleted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -158,12 +161,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Logo query deleted successfully"
+				}
 			}
 		},
 		"security": [
@@ -171,7 +172,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete logo query",
 		"tags": [
 			"Brand Protection"
 		],
@@ -180,34 +180,37 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
-		"description": "Delete a takedown notice and all associated letters. PDFs are also removed from storage.",
 		"operationId": "delete_TakedownNoticeDelete",
+		"summary": "Delete takedown notice",
+		"description": "Delete a takedown notice and all associated letters. PDFs are also removed from storage.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Takedown notice deleted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -219,12 +222,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown notice deleted successfully"
+				}
 			}
 		},
 		"security": [
@@ -232,7 +233,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete takedown notice",
 		"tags": [
 			"Brand Protection"
 		],
@@ -241,44 +241,47 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}": {
-		"description": "Delete a specific takedown letter and its associated PDF from storage.",
 		"operationId": "delete_TakedownLetterDelete",
+		"summary": "Delete takedown letter",
+		"description": "Delete a specific takedown letter and its associated PDF from storage.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"in": "path",
 				"name": "letter_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Takedown letter deleted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -290,12 +293,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown letter deleted successfully"
+				}
 			}
 		},
 		"security": [
@@ -303,7 +304,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete takedown letter",
 		"tags": [
 			"Brand Protection"
 		],
@@ -312,102 +312,106 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches": {
-		"description": "Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and individual dismissed state.",
 		"operationId": "get_DomainMatchList",
+		"summary": "List saved query matches",
+		"description": "Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and individual dismissed state.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
-					"default": "0",
-					"type": "string"
+					"type": "string",
+					"default": "0"
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"default": "50",
-					"type": "string"
+					"type": "string",
+					"default": "50"
 				}
 			},
 			{
-				"in": "query",
 				"name": "query_id",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "Query ID or comma-separated list of Query IDs. When multiple IDs are provided, matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and dismissed state.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "include_domain_id",
+				"in": "query",
 				"schema": {
-					"default": "false",
-					"type": "string"
+					"type": "string",
+					"default": "false"
 				}
 			},
 			{
-				"in": "query",
 				"name": "include_dismissed",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "domain_search",
+				"in": "query",
 				"schema": {
 					"description": "Filter matches by domain name (substring match)",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "orderBy",
+				"in": "query",
 				"schema": {
 					"description": "Column to sort by. Options: 'domain', 'first_seen', or 'registrar'",
+					"type": "string",
 					"enum": [
 						"domain",
 						"first_seen",
 						"registrar"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
 					"description": "Sort order. Options: 'asc' (ascending) or 'desc' (descending)",
+					"type": "string",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully retrieved query matches",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"matches": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"dismissed": {
@@ -422,6 +426,7 @@
 											},
 											"match_details": {
 												"description": "Per-match detail objects with query metadata and individual dismissed state. Only present when multiple query_ids are requested.",
+												"type": "array",
 												"items": {
 													"properties": {
 														"dismissed": {
@@ -436,8 +441,8 @@
 														},
 														"query_tag": {
 															"description": "Tag associated with the query, if one exists.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														}
 													},
 													"required": [
@@ -447,10 +452,10 @@
 														"dismissed"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"public_scans": {
+												"type": "object",
 												"nullable": true,
 												"properties": {
 													"submission_id": {
@@ -459,23 +464,22 @@
 												},
 												"required": [
 													"submission_id"
-												],
-												"type": "object"
+												]
 											},
 											"registrar": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"scan_status": {
 												"type": "string"
 											},
 											"scan_submission_id": {
-												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"nullable": true
 											},
 											"source": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -488,23 +492,20 @@
 											"registrar"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"total": {
-									"minimum": 0,
-									"type": "integer"
+									"type": "integer",
+									"minimum": 0
 								}
 							},
 							"required": [
 								"matches",
 								"total"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully retrieved query matches"
+				}
 			}
 		},
 		"security": [
@@ -512,7 +513,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List saved query matches",
 		"tags": [
 			"Brand Protection"
 		],
@@ -522,55 +522,59 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
-		"description": "Get all saved brand protection queries for an account",
 		"operationId": "get_GetDomainQueries",
+		"summary": "Get queries",
+		"description": "Get all saved brand protection queries for an account",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "id",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"description": "Optional page number for paginated list requests. Defaults to 1 when only per_page is supplied. Omit page and per_page to preserve the legacy full-list response.",
+					"type": "integer",
 					"exclusiveMinimum": true,
 					"maximum": 1000000,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
 					"description": "Optional number of queries per page for paginated list requests. Defaults to 100 when only page is supplied. Maximum 100. Omit page and per_page to preserve the legacy full-list response.",
+					"type": "integer",
 					"exclusiveMinimum": true,
 					"maximum": 100,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully retrieved queries",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -591,10 +595,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -615,8 +619,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"anyOf": [
@@ -627,6 +630,9 @@
 														"type": "string"
 													},
 													"parameters": {
+														"required": [
+															"string_matches"
+														],
 														"nullable": true,
 														"properties": {
 															"max_time": {
@@ -636,25 +642,22 @@
 																"type": "string"
 															},
 															"string_matches": {
+																"type": "array",
 																"items": {
 																	"properties": {
 																		"pattern": {
+																			"type": "string",
 																			"maxLength": 200,
-																			"minLength": 1,
-																			"type": "string"
+																			"minLength": 1
 																		}
 																	},
 																	"required": [
 																		"pattern"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															}
 														},
-														"required": [
-															"string_matches"
-														],
 														"type": "object"
 													},
 													"query_id": {
@@ -688,6 +691,9 @@
 													"type": "string"
 												},
 												"parameters": {
+													"required": [
+														"string_matches"
+													],
 													"nullable": true,
 													"properties": {
 														"max_time": {
@@ -697,25 +703,22 @@
 															"type": "string"
 														},
 														"string_matches": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"pattern": {
+																		"type": "string",
 																		"maxLength": 200,
-																		"minLength": 1,
-																		"type": "string"
+																		"minLength": 1
 																	}
 																},
 																"required": [
 																	"pattern"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
-													"required": [
-														"string_matches"
-													],
 													"type": "object"
 												},
 												"query_id": {
@@ -745,24 +748,25 @@
 								},
 								"result_info": {
 									"description": "Present on paginated list responses when page or per_page is supplied.",
+									"type": "object",
 									"properties": {
 										"count": {
-											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"minimum": 0
 										},
 										"page": {
+											"type": "integer",
 											"exclusiveMinimum": true,
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										},
 										"per_page": {
+											"type": "integer",
 											"exclusiveMinimum": true,
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										},
 										"total_count": {
-											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"minimum": 0
 										}
 									},
 									"required": [
@@ -770,8 +774,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -782,12 +785,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully retrieved queries"
+				}
 			}
 		},
 		"security": [
@@ -795,7 +796,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get queries",
 		"tags": [
 			"Brand Protection"
 		],
@@ -805,38 +805,42 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates": {
-		"description": "List user-defined takedown letter templates. System example templates are available via the /templates/examples endpoint.",
 		"operationId": "get_LetterTemplateList",
+		"summary": "List letter templates",
+		"description": "List user-defined takedown letter templates. System example templates are available via the /templates/examples endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Templates listed successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"templates": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"category": {
 												"type": "string"
 											},
 											"createdAt": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"description": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"id": {
 												"type": "string"
@@ -845,15 +849,15 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "string",
 												"enum": [
 													"system",
 													"user"
-												],
-												"type": "string"
+												]
 											},
 											"updatedAt": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -866,18 +870,15 @@
 											"updatedAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"templates"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Templates listed successfully"
+				}
 			}
 		},
 		"security": [
@@ -885,7 +886,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List letter templates",
 		"tags": [
 			"Brand Protection"
 		],
@@ -895,33 +895,36 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
-		"description": "Get a specific user-defined takedown letter template by ID. System example templates are available via the /templates/examples endpoint.",
 		"operationId": "get_LetterTemplateGet",
+		"summary": "Get letter template",
+		"description": "Get a specific user-defined takedown letter template by ID. System example templates are available via the /templates/examples endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "template_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Template retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"body": {
 									"type": "string"
@@ -930,12 +933,12 @@
 									"type": "string"
 								},
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"description": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"id": {
 									"type": "string"
@@ -944,15 +947,15 @@
 									"type": "string"
 								},
 								"source": {
+									"type": "string",
 									"enum": [
 										"system",
 										"user"
-									],
-									"type": "string"
+									]
 								},
 								"updatedAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								}
 							},
 							"required": [
@@ -964,12 +967,10 @@
 								"body",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Template retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -977,7 +978,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get letter template",
 		"tags": [
 			"Brand Protection"
 		],
@@ -987,26 +987,30 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/examples": {
-		"description": "List system-provided example templates that can be used as starting points when creating custom templates. These templates cannot be used directly for letter generation.",
 		"operationId": "get_LetterTemplateExamples",
+		"summary": "List example letter templates",
+		"description": "List system-provided example templates that can be used as starting points when creating custom templates. These templates cannot be used directly for letter generation.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Example templates listed successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"templates": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"body": {
@@ -1016,12 +1020,12 @@
 												"type": "string"
 											},
 											"createdAt": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"description": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"id": {
 												"type": "string"
@@ -1030,15 +1034,15 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "string",
 												"enum": [
 													"system",
 													"user"
-												],
-												"type": "string"
+												]
 											},
 											"updatedAt": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -1052,18 +1056,15 @@
 											"updatedAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"templates"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Example templates listed successfully"
+				}
 			}
 		},
 		"security": [
@@ -1071,7 +1072,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List example letter templates",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1081,92 +1081,96 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches": {
-		"description": "Get paginated list of logo matches for a specific brand protection logo query",
 		"operationId": "get_LogoMatchList",
+		"summary": "List logo matches",
+		"description": "Get paginated list of logo matches for a specific brand protection logo query",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
-					"default": "0",
-					"type": "string"
+					"type": "string",
+					"default": "0"
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"default": "50",
-					"type": "string"
+					"type": "string",
+					"default": "50"
 				}
 			},
 			{
-				"in": "query",
 				"name": "query_id",
+				"in": "query",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "download",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "orderBy",
+				"in": "query",
 				"schema": {
 					"description": "Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar'",
+					"type": "string",
 					"enum": [
 						"matchedAt",
 						"domain",
 						"similarityScore",
 						"registrar"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
 					"description": "Sort order. Options: 'asc' (ascending) or 'desc' (descending)",
+					"type": "string",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully retrieved logo matches",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"matches": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"content_type": {
 												"type": "string"
 											},
 											"domain": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"id": {
 												"type": "integer"
@@ -1175,22 +1179,22 @@
 												"type": "string"
 											},
 											"matched_at": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"query_id": {
 												"type": "integer"
 											},
 											"registrar": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"similarity_score": {
 												"type": "number"
 											},
 											"url_scan_id": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -1203,23 +1207,20 @@
 											"registrar"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"total": {
-									"minimum": 0,
-									"type": "integer"
+									"type": "integer",
+									"minimum": 0
 								}
 							},
 							"required": [
 								"matches",
 								"total"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully retrieved logo matches"
+				}
 			}
 		},
 		"security": [
@@ -1227,7 +1228,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List logo matches",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1237,31 +1237,32 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
-		"description": "Get all saved brand protection logo queries for an account. Optionally specify id to get a single query. Set download=true to include base64-encoded image data.",
 		"operationId": "get_GetLogoQueries",
+		"summary": "Get logo queries",
+		"description": "Get all saved brand protection logo queries for an account. Optionally specify id to get a single query. Set download=true to include base64-encoded image data.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"description": "Optional query ID to retrieve a specific logo query",
-				"in": "query",
 				"name": "id",
+				"in": "query",
+				"description": "Optional query ID to retrieve a specific logo query",
 				"schema": {
 					"description": "Optional query ID to retrieve a specific logo query",
 					"type": "string"
 				}
 			},
 			{
-				"description": "If true, include base64-encoded image data in the response",
-				"in": "query",
 				"name": "download",
+				"in": "query",
+				"description": "If true, include base64-encoded image data in the response",
 				"schema": {
 					"description": "If true, include base64-encoded image data in the response",
 					"type": "string"
@@ -1270,9 +1271,11 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully retrieved logo queries",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"content_type": {
@@ -1296,8 +1299,8 @@
 										"type": "string"
 									},
 									"uploaded_at": {
-										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"nullable": true
 									}
 								},
 								"required": [
@@ -1308,12 +1311,10 @@
 									"uploaded_at"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Successfully retrieved logo queries"
+				}
 			}
 		},
 		"security": [
@@ -1321,7 +1322,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get logo queries",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1331,31 +1331,35 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
-		"description": "List all takedown notices for the account.",
 		"operationId": "get_TakedownNoticeList",
+		"summary": "List takedown notices",
+		"description": "List all takedown notices for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Takedown notices listed successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"notices": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"createdAt": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"domain": {
 												"type": "string"
@@ -1364,33 +1368,33 @@
 												"type": "number"
 											},
 											"matchId": {
-												"nullable": true,
-												"type": "number"
+												"type": "number",
+												"nullable": true
 											},
 											"matchType": {
+												"type": "string",
 												"enum": [
 													"logo",
 													"domain"
 												],
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"queryId": {
-												"nullable": true,
-												"type": "number"
+												"type": "number",
+												"nullable": true
 											},
 											"status": {
+												"type": "string",
 												"enum": [
 													"draft",
 													"sent",
 													"resolved",
 													"expired"
-												],
-												"type": "string"
+												]
 											},
 											"updatedAt": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -1404,18 +1408,15 @@
 											"updatedAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"notices"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown notices listed successfully"
+				}
 			}
 		},
 		"security": [
@@ -1423,7 +1424,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List takedown notices",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1433,38 +1433,41 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
-		"description": "Get a specific takedown notice by ID.",
 		"operationId": "get_TakedownNoticeGet",
+		"summary": "Get takedown notice",
+		"description": "Get a specific takedown notice by ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Takedown notice retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"domain": {
 									"type": "string"
@@ -1473,33 +1476,33 @@
 									"type": "number"
 								},
 								"matchId": {
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"matchType": {
+									"type": "string",
 									"enum": [
 										"logo",
 										"domain"
 									],
-									"nullable": true,
-									"type": "string"
+									"nullable": true
 								},
 								"queryId": {
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"status": {
+									"type": "string",
 									"enum": [
 										"draft",
 										"sent",
 										"resolved",
 										"expired"
-									],
-									"type": "string"
+									]
 								},
 								"updatedAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								}
 							},
 							"required": [
@@ -1511,12 +1514,10 @@
 								"matchType",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown notice retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -1524,7 +1525,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get takedown notice",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1534,41 +1534,45 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters": {
-		"description": "List all letters for a specific takedown notice.",
 		"operationId": "get_TakedownLetterList",
+		"summary": "List takedown letters",
+		"description": "List all letters for a specific takedown notice.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Takedown letters listed successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"letters": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"createdAt": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"id": {
 												"type": "number"
@@ -1591,18 +1595,15 @@
 											"createdAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"letters"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown letters listed successfully"
+				}
 			}
 		},
 		"security": [
@@ -1610,7 +1611,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List takedown letters",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1620,48 +1620,51 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}": {
-		"description": "Get a specific takedown letter by ID, including the rendered text.",
 		"operationId": "get_TakedownLetterGet",
+		"summary": "Get takedown letter",
+		"description": "Get a specific takedown letter by ID, including the rendered text.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"in": "path",
 				"name": "letter_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Takedown letter retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"id": {
 									"type": "number"
@@ -1686,12 +1689,10 @@
 								"letterType",
 								"letterText",
 								"createdAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown letter retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -1699,7 +1700,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get takedown letter",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1709,50 +1709,51 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters/{letter_id}/pdf": {
-		"description": "Download the PDF for a stored takedown letter. If no PDF exists yet, it is generated from the stored letter text and cached for future downloads.",
 		"operationId": "get_TakedownLetterPdfGet",
+		"summary": "Download takedown letter PDF",
+		"description": "Download the PDF for a stored takedown letter. If no PDF exists yet, it is generated from the stored letter text and cached for future downloads.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"in": "path",
 				"name": "letter_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Takedown letter PDF downloaded successfully",
 				"content": {
 					"application/pdf": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "string",
+							"format": "binary"
 						}
 					}
-				},
-				"description": "Takedown letter PDF downloaded successfully"
+				}
 			}
 		},
 		"security": [
@@ -1760,7 +1761,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Download takedown letter PDF",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1770,41 +1770,42 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/total-queries": {
-		"description": "Get the total number of saved brand protection queries (domain + logo) for an account",
 		"operationId": "get_TotalQueries",
+		"summary": "Get total queries",
+		"description": "Get the total number of saved brand protection queries (domain + logo) for an account",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully retrieved total query count",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"total_queries": {
-										"minimum": 0,
-										"type": "integer"
+										"type": "integer",
+										"minimum": 0
 									}
 								},
 								"required": [
 									"total_queries"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Successfully retrieved total query count"
+				}
 			}
 		},
 		"security": [
@@ -1812,7 +1813,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get total queries",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1822,25 +1822,26 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
-		"description": "Update a saved brand protection domain query with string match patterns",
 		"operationId": "patch_UpdateDomainQuery",
+		"summary": "Update domain query",
+		"description": "Update a saved brand protection domain query with string match patterns",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "query_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -1848,6 +1849,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"max_time": {
 								"type": "string"
@@ -1862,17 +1864,18 @@
 								"type": "boolean"
 							},
 							"search_lookback": {
-								"default": true,
 								"description": "If true, search recent domain lookback entries for matches",
-								"type": "boolean"
+								"type": "boolean",
+								"default": true
 							},
 							"string_matches": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"pattern": {
+											"type": "string",
 											"maxLength": 200,
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -1881,28 +1884,28 @@
 									"type": "object"
 								},
 								"maxItems": 100,
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							},
 							"tag": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"tag",
 							"string_matches"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Domain query updated successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -1917,12 +1920,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Domain query updated successfully"
+				}
 			}
 		},
 		"security": [
@@ -1930,7 +1931,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update domain query",
 		"tags": [
 			"Brand Protection"
 		],
@@ -1939,16 +1939,17 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
-		"description": "Create a new saved brand protection query with string match patterns",
 		"operationId": "post_InsertDomainQuery",
+		"summary": "Insert query",
+		"description": "Create a new saved brand protection query with string match patterns",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -1956,6 +1957,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"max_time": {
 								"type": "string"
@@ -1970,17 +1972,18 @@
 								"type": "boolean"
 							},
 							"search_lookback": {
-								"default": true,
 								"description": "If true, search recent domain lookback entries for matches",
-								"type": "boolean"
+								"type": "boolean",
+								"default": true
 							},
 							"string_matches": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"pattern": {
+											"type": "string",
 											"maxLength": 200,
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -1989,28 +1992,28 @@
 									"type": "object"
 								},
 								"maxItems": 100,
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							},
 							"tag": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"tag",
 							"string_matches"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Query inserted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -2025,12 +2028,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query inserted successfully"
+				}
 			}
 		},
 		"security": [
@@ -2038,7 +2039,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Insert query",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2047,16 +2047,17 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/generate": {
-		"description": "Generate a takedown letter from a template. Returns V4 JSON for text format or a PDF binary for pdf format.",
 		"operationId": "post_LetterGenerate",
+		"summary": "Generate takedown letter",
+		"description": "Generate a takedown letter from a template. Returns V4 JSON for text format or a PDF binary for pdf format.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -2064,145 +2065,148 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"createNotice": {
-								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"fields": {
+								"type": "object",
 								"properties": {
 									"discoveryDate": {
-										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-										"type": "string"
+										"type": "string",
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 									},
 									"domain": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"generationDate": {
-										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-										"type": "string"
+										"type": "string",
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 									},
 									"jurisdiction": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"registrantEmail": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"registrar": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"registrarEmail": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"resolutionByDate": {
-										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-										"type": "string"
+										"type": "string",
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 									},
 									"senderCompany": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"senderEmail": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"senderName": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"senderTitle": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"trademarkName": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"trademarkNumber": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"trademarkOwner": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									}
-								},
-								"type": "object"
+								}
 							},
 							"format": {
+								"type": "string",
 								"default": "text",
 								"enum": [
 									"text",
 									"pdf"
-								],
-								"type": "string"
+								]
 							},
 							"noticeParams": {
+								"type": "object",
 								"properties": {
 									"domain": {
+										"type": "string",
 										"maxLength": 253,
-										"minLength": 1,
-										"type": "string"
+										"minLength": 1
 									},
 									"queryId": {
+										"type": "integer",
 										"exclusiveMinimum": true,
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"status": {
+										"type": "string",
 										"default": "sent",
 										"enum": [
 											"draft",
 											"sent",
 											"resolved",
 											"expired"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
 									"domain"
-								],
-								"type": "object"
+								]
 							},
 							"templateId": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"templateId",
 							"fields"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Letter generated successfully. When format=text, returns V4 JSON with { result: { letter: string } }. When format=pdf, returns binary with Content-Type: application/pdf.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"letter": {
 									"type": "string"
 								},
 								"letterId": {
+									"type": "integer",
 									"exclusiveMinimum": true,
-									"minimum": 0,
-									"type": "integer"
+									"minimum": 0
 								},
 								"notice": {
+									"type": "object",
 									"properties": {
 										"createdAt": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"domain": {
 											"type": "string"
@@ -2211,33 +2215,33 @@
 											"type": "number"
 										},
 										"matchId": {
-											"nullable": true,
-											"type": "number"
+											"type": "number",
+											"nullable": true
 										},
 										"matchType": {
+											"type": "string",
 											"enum": [
 												"logo",
 												"domain"
 											],
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"queryId": {
-											"nullable": true,
-											"type": "number"
+											"type": "number",
+											"nullable": true
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"draft",
 												"sent",
 												"resolved",
 												"expired"
-											],
-											"type": "string"
+											]
 										},
 										"updatedAt": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2249,24 +2253,21 @@
 										"matchType",
 										"createdAt",
 										"updatedAt"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"letter"
-							],
-							"type": "object"
+							]
 						}
 					},
 					"application/pdf": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "string",
+							"format": "binary"
 						}
 					}
-				},
-				"description": "Letter generated successfully. When format=text, returns V4 JSON with { result: { letter: string } }. When format=pdf, returns binary with Content-Type: application/pdf."
+				}
 			}
 		},
 		"security": [
@@ -2274,7 +2275,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Generate takedown letter",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2283,16 +2283,17 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates": {
-		"description": "Create a new user-defined takedown letter template",
 		"operationId": "post_LetterTemplateCreate",
+		"summary": "Create letter template",
+		"description": "Create a new user-defined takedown letter template",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -2300,41 +2301,43 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"body": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							},
 							"category": {
+								"type": "string",
 								"maxLength": 100,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"description": {
-								"maxLength": 1000,
-								"type": "string"
+								"type": "string",
+								"maxLength": 1000
 							},
 							"name": {
+								"type": "string",
 								"maxLength": 255,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							}
 						},
 						"required": [
 							"name",
 							"category",
 							"body"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Template created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"body": {
 									"type": "string"
@@ -2343,12 +2346,12 @@
 									"type": "string"
 								},
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"description": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"id": {
 									"type": "string"
@@ -2357,15 +2360,15 @@
 									"type": "string"
 								},
 								"source": {
+									"type": "string",
 									"enum": [
 										"system",
 										"user"
-									],
-									"type": "string"
+									]
 								},
 								"updatedAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								}
 							},
 							"required": [
@@ -2377,12 +2380,10 @@
 								"body",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Template created successfully"
+				}
 			}
 		},
 		"security": [
@@ -2390,7 +2391,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create letter template",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2399,16 +2399,17 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
-		"description": "Create a new saved brand protection logo query for visual similarity matching",
 		"operationId": "post_InsertLogoQuery",
+		"summary": "Insert logo query",
+		"description": "Create a new saved brand protection logo query for visual similarity matching",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -2416,44 +2417,46 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"image_data": {
 								"description": "Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string.",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							},
 							"search_lookback": {
-								"default": true,
 								"description": "If true, search historic scanned images for matches above the similarity threshold",
-								"type": "boolean"
+								"type": "boolean",
+								"default": true
 							},
 							"similarity_threshold": {
 								"description": "Minimum similarity score (0-1) required for visual matches",
+								"type": "number",
 								"maximum": 1,
-								"minimum": 0,
-								"type": "number"
+								"minimum": 0
 							},
 							"tag": {
 								"description": "Unique identifier for the logo query",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"tag",
 							"image_data",
 							"similarity_threshold"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Logo query inserted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -2468,12 +2471,10 @@
 							"required": [
 								"success",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Logo query inserted successfully"
+				}
 			}
 		},
 		"security": [
@@ -2481,7 +2482,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Insert logo query",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2490,32 +2490,33 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/search": {
-		"description": "Submit an image and find the n closest matches from the scanned images index without creating any match records. Returns similarity scores and metadata for each match.",
 		"operationId": "post_SearchLogoSimilarity",
+		"summary": "Search scanned images",
+		"description": "Submit an image and find the n closest matches from the scanned images index without creating any match records. Returns similarity scores and metadata for each match.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"description": "Include scanned images without domain metadata (historic data). Default: false (only show images with domain)",
-				"in": "query",
 				"name": "showHistoric",
+				"in": "query",
+				"description": "Include scanned images without domain metadata (historic data). Default: false (only show images with domain)",
 				"schema": {
-					"default": "false",
 					"description": "Include scanned images without domain metadata (historic data). Default: false (only show images with domain)",
-					"type": "string"
+					"type": "string",
+					"default": "false"
 				}
 			},
 			{
-				"description": "If true, include base64-encoded image data in the response",
-				"in": "query",
 				"name": "download",
+				"in": "query",
+				"description": "If true, include base64-encoded image data in the response",
 				"schema": {
 					"description": "If true, include base64-encoded image data in the response",
 					"type": "string"
@@ -2526,42 +2527,45 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"image_data": {
 								"description": "Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string.",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							},
 							"score_threshold": {
-								"default": 0,
 								"description": "Minimum similarity score threshold for matches (0-1, default: 0)",
+								"type": "number",
+								"default": 0,
 								"maximum": 1,
-								"minimum": 0,
-								"type": "number"
+								"minimum": 0
 							},
 							"top_k": {
-								"default": 10,
 								"description": "Number of closest matches to return (1-100, default: 10)",
+								"type": "integer",
+								"default": 10,
 								"maximum": 100,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							}
 						},
 						"required": [
 							"image_data"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Scanned images search completed successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"matches": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"account_id": {
@@ -2607,18 +2611,15 @@
 											"similarity_score"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"matches"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scanned images search completed successfully"
+				}
 			}
 		},
 		"security": [
@@ -2626,7 +2627,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Search scanned images",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2635,16 +2635,17 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
-		"description": "Create a new takedown notice for a domain suspected of trademark infringement.",
 		"operationId": "post_TakedownNoticeCreate",
+		"summary": "Create takedown notice",
+		"description": "Create a new takedown notice for a domain suspected of trademark infringement.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -2652,57 +2653,59 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"domain": {
+								"type": "string",
 								"maxLength": 253,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"matchId": {
+								"type": "integer",
 								"exclusiveMinimum": true,
-								"minimum": 0,
-								"type": "integer"
+								"minimum": 0
 							},
 							"matchType": {
+								"type": "string",
 								"enum": [
 									"logo",
 									"domain"
-								],
-								"type": "string"
+								]
 							},
 							"queryId": {
+								"type": "integer",
 								"exclusiveMinimum": true,
-								"minimum": 0,
-								"type": "integer"
+								"minimum": 0
 							},
 							"status": {
+								"type": "string",
 								"default": "draft",
 								"enum": [
 									"draft",
 									"sent",
 									"resolved",
 									"expired"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"domain"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Takedown notice created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"domain": {
 									"type": "string"
@@ -2711,33 +2714,33 @@
 									"type": "number"
 								},
 								"matchId": {
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"matchType": {
+									"type": "string",
 									"enum": [
 										"logo",
 										"domain"
 									],
-									"nullable": true,
-									"type": "string"
+									"nullable": true
 								},
 								"queryId": {
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"status": {
+									"type": "string",
 									"enum": [
 										"draft",
 										"sent",
 										"resolved",
 										"expired"
-									],
-									"type": "string"
+									]
 								},
 								"updatedAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								}
 							},
 							"required": [
@@ -2749,12 +2752,10 @@
 								"matchType",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown notice created successfully"
+				}
 			},
 			"409": {
 				"description": "A takedown notice already exists for this domain"
@@ -2765,7 +2766,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create takedown notice",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2774,26 +2774,27 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}/letters": {
-		"description": "Generate a takedown letter for a notice and persist the rendered text. The PDF is generated lazily on download.",
 		"operationId": "post_TakedownLetterCreate",
+		"summary": "Create takedown letter",
+		"description": "Generate a takedown letter for a notice and persist the rendered text. The PDF is generated lazily on download.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
@@ -2801,95 +2802,97 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"fields": {
+								"type": "object",
 								"properties": {
 									"discoveryDate": {
-										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-										"type": "string"
+										"type": "string",
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 									},
 									"domain": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"generationDate": {
-										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-										"type": "string"
+										"type": "string",
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 									},
 									"jurisdiction": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"registrantEmail": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"registrar": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"registrarEmail": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"resolutionByDate": {
-										"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-										"type": "string"
+										"type": "string",
+										"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 									},
 									"senderCompany": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"senderEmail": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"senderName": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"senderTitle": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"trademarkName": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"trademarkNumber": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"trademarkOwner": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									}
-								},
-								"type": "object"
+								}
 							},
 							"templateId": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"templateId",
 							"fields"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Takedown letter created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"id": {
 									"type": "number"
@@ -2914,12 +2917,10 @@
 								"letterType",
 								"letterText",
 								"createdAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown letter created successfully"
+				}
 			}
 		},
 		"security": [
@@ -2927,7 +2928,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create takedown letter",
 		"tags": [
 			"Brand Protection"
 		],
@@ -2936,16 +2936,17 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/lookup": {
-		"description": "Bulk lookup of takedown notices by domain names. Returns an array of { domain, queryId, notice } entries (notice is null when no match exists). Supports optional queryId or queryIds to scope lookups per query. Uses POST to avoid URL length limits when looking up many domains. This endpoint is read-only. Domains are normalized (trimmed, lowercased) and deduplicated.",
 		"operationId": "post_TakedownNoticeLookup",
+		"summary": "Lookup takedown notices by domains",
+		"description": "Bulk lookup of takedown notices by domain names. Returns an array of { domain, queryId, notice } entries (notice is null when no match exists). Supports optional queryId or queryIds to scope lookups per query. Uses POST to avoid URL length limits when looking up many domains. This endpoint is read-only. Domains are normalized (trimmed, lowercased) and deduplicated.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -2953,58 +2954,62 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"domains": {
+								"type": "array",
 								"items": {
 									"maxLength": 253,
 									"minLength": 1,
 									"type": "string"
 								},
 								"maxItems": 100,
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							},
 							"queryId": {
+								"type": "integer",
 								"exclusiveMinimum": true,
-								"minimum": 0,
-								"type": "integer"
+								"minimum": 0
 							},
 							"queryIds": {
+								"type": "array",
 								"items": {
 									"exclusiveMinimum": true,
 									"minimum": 0,
 									"type": "integer"
 								},
-								"maxItems": 100,
-								"type": "array"
+								"maxItems": 100
 							}
 						},
 						"required": [
 							"domains"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Takedown notice lookup results",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"notices": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"domain": {
 												"type": "string"
 											},
 											"notice": {
+												"type": "object",
 												"nullable": true,
 												"properties": {
 													"createdAt": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"domain": {
 														"type": "string"
@@ -3013,33 +3018,33 @@
 														"type": "number"
 													},
 													"matchId": {
-														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"nullable": true
 													},
 													"matchType": {
+														"type": "string",
 														"enum": [
 															"logo",
 															"domain"
 														],
-														"nullable": true,
-														"type": "string"
+														"nullable": true
 													},
 													"queryId": {
-														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"nullable": true
 													},
 													"status": {
+														"type": "string",
 														"enum": [
 															"draft",
 															"sent",
 															"resolved",
 															"expired"
-														],
-														"type": "string"
+														]
 													},
 													"updatedAt": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													}
 												},
 												"required": [
@@ -3051,12 +3056,11 @@
 													"matchType",
 													"createdAt",
 													"updatedAt"
-												],
-												"type": "object"
+												]
 											},
 											"queryId": {
-												"nullable": true,
-												"type": "number"
+												"type": "number",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -3065,18 +3069,15 @@
 											"notice"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"notices"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown notice lookup results"
+				}
 			}
 		},
 		"security": [
@@ -3084,7 +3085,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lookup takedown notices by domains",
 		"tags": [
 			"Brand Protection"
 		],
@@ -3093,25 +3093,26 @@
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
-		"description": "Update a user-defined takedown letter template. System templates cannot be modified.",
 		"operationId": "put_LetterTemplateUpdate",
+		"summary": "Update letter template",
+		"description": "Update a user-defined takedown letter template. System templates cannot be modified.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "template_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			}
 		],
@@ -3119,37 +3120,39 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"body": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							},
 							"category": {
+								"type": "string",
 								"maxLength": 100,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"description": {
+								"type": "string",
 								"maxLength": 1000,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"name": {
+								"type": "string",
 								"maxLength": 255,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Template updated successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"body": {
 									"type": "string"
@@ -3158,12 +3161,12 @@
 									"type": "string"
 								},
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"description": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"id": {
 									"type": "string"
@@ -3172,15 +3175,15 @@
 									"type": "string"
 								},
 								"source": {
+									"type": "string",
 									"enum": [
 										"system",
 										"user"
-									],
-									"type": "string"
+									]
 								},
 								"updatedAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								}
 							},
 							"required": [
@@ -3192,12 +3195,10 @@
 								"body",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Template updated successfully"
+				}
 			}
 		},
 		"security": [
@@ -3205,7 +3206,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update letter template",
 		"tags": [
 			"Brand Protection"
 		],
@@ -3214,26 +3214,27 @@
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
-		"description": "Update a takedown notice (e.g. change status to sent, resolved, etc.).",
 		"operationId": "put_TakedownNoticeUpdate",
+		"summary": "Update takedown notice",
+		"description": "Update a takedown notice (e.g. change status to sent, resolved, etc.).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"minLength": 1,
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				}
 			},
 			{
-				"in": "path",
 				"name": "notice_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "integer",
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
@@ -3241,56 +3242,58 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"domain": {
+								"type": "string",
 								"maxLength": 253,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"matchId": {
+								"type": "integer",
 								"exclusiveMinimum": true,
 								"minimum": 0,
-								"nullable": true,
-								"type": "integer"
+								"nullable": true
 							},
 							"matchType": {
+								"type": "string",
 								"enum": [
 									"logo",
 									"domain"
 								],
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"queryId": {
+								"type": "integer",
 								"exclusiveMinimum": true,
 								"minimum": 0,
-								"nullable": true,
-								"type": "integer"
+								"nullable": true
 							},
 							"status": {
+								"type": "string",
 								"enum": [
 									"draft",
 									"sent",
 									"resolved",
 									"expired"
-								],
-								"type": "string"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Takedown notice updated successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"domain": {
 									"type": "string"
@@ -3299,33 +3302,33 @@
 									"type": "number"
 								},
 								"matchId": {
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"matchType": {
+									"type": "string",
 									"enum": [
 										"logo",
 										"domain"
 									],
-									"nullable": true,
-									"type": "string"
+									"nullable": true
 								},
 								"queryId": {
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"status": {
+									"type": "string",
 									"enum": [
 										"draft",
 										"sent",
 										"resolved",
 										"expired"
-									],
-									"type": "string"
+									]
 								},
 								"updatedAt": {
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								}
 							},
 							"required": [
@@ -3337,12 +3340,10 @@
 								"matchType",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Takedown notice updated successfully"
+				}
 			},
 			"409": {
 				"description": "A takedown notice already exists for the target domain"
@@ -3353,7 +3354,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update takedown notice",
 		"tags": [
 			"Brand Protection"
 		],

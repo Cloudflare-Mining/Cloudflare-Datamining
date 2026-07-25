@@ -1,7 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/repos/connections/{repo_connection_uuid}": {
-		"description": "Remove a repository connection",
 		"operationId": "deleteRepoConnection",
+		"summary": "Delete repository connection",
+		"description": "Remove a repository connection",
 		"parameters": [
 			{
 				"in": "path",
@@ -9,8 +10,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -19,13 +20,14 @@
 				"required": true,
 				"schema": {
 					"description": "Repository connection UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Operation successful",
 				"content": {
 					"application/json": {
 						"example": {
@@ -35,61 +37,62 @@
 							"success": true
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
-											"example": 25,
-											"type": "integer"
+											"type": "integer",
+											"example": 25
 										},
 										"page": {
-											"example": 1,
-											"type": "integer"
+											"type": "integer",
+											"example": 1
 										},
 										"per_page": {
-											"example": 50,
-											"type": "integer"
+											"type": "integer",
+											"example": 50
 										},
 										"total_count": {
-											"example": 150,
-											"type": "integer"
+											"type": "integer",
+											"example": 150
 										},
 										"total_pages": {
-											"example": 3,
-											"type": "integer"
+											"type": "integer",
+											"example": 3
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -97,14 +100,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Operation successful"
+				}
 			},
 			"404": {
+				"description": "Resource not found",
 				"content": {
 					"application/json": {
 						"example": {
@@ -119,39 +121,40 @@
 							"success": false
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -159,12 +162,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found"
+				}
 			}
 		},
 		"security": [
@@ -176,7 +177,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete repository connection",
 		"tags": [
 			"Repository Connections"
 		],
@@ -189,8 +189,9 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/builds/repos/connections": {
-		"description": "Upsert a repository connection for CI/CD integration",
 		"operationId": "upsertRepoConnection",
+		"summary": "Create or update repository connection",
+		"description": "Upsert a repository connection for CI/CD integration",
 		"parameters": [
 			{
 				"in": "path",
@@ -198,42 +199,44 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"provider_account_id": {
 								"description": "Provider account identifier.",
-								"example": "cloudflare",
-								"type": "string"
+								"type": "string",
+								"example": "cloudflare"
 							},
 							"provider_account_name": {
-								"example": "Cloudflare",
-								"type": "string"
+								"type": "string",
+								"example": "Cloudflare"
 							},
 							"provider_type": {
+								"type": "string",
+								"example": "github",
 								"enum": [
 									"github",
 									"gitlab",
 									"gitlab_internal"
-								],
-								"example": "github",
-								"type": "string"
+								]
 							},
 							"repo_id": {
 								"description": "Repository identifier.",
-								"example": "workers-sdk",
-								"type": "string"
+								"type": "string",
+								"example": "workers-sdk"
 							},
 							"repo_name": {
-								"example": "workers-sdk",
-								"type": "string"
+								"type": "string",
+								"example": "workers-sdk"
 							}
 						},
 						"required": [
@@ -242,75 +245,75 @@
 							"provider_type",
 							"provider_account_id",
 							"provider_account_name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Repository connection upserted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -318,60 +321,59 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"deleted_on": {
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"modified_on": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"provider_account_id": {
 													"description": "Provider account identifier.",
-													"example": "cloudflare",
-													"type": "string"
+													"type": "string",
+													"example": "cloudflare"
 												},
 												"provider_account_name": {
-													"example": "Cloudflare",
-													"type": "string"
+													"type": "string",
+													"example": "Cloudflare"
 												},
 												"provider_type": {
+													"type": "string",
+													"example": "github",
 													"enum": [
 														"github",
 														"gitlab",
 														"gitlab_internal"
-													],
-													"example": "github",
-													"type": "string"
+													]
 												},
 												"repo_connection_uuid": {
 													"description": "Repository connection UUID.",
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"repo_id": {
 													"description": "Repository identifier.",
-													"example": "workers-sdk",
-													"type": "string"
+													"type": "string",
+													"example": "workers-sdk"
 												},
 												"repo_name": {
-													"example": "workers-sdk",
-													"type": "string"
+													"type": "string",
+													"example": "workers-sdk"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -379,8 +381,7 @@
 							]
 						}
 					}
-				},
-				"description": "Repository connection upserted successfully"
+				}
 			}
 		},
 		"security": [
@@ -392,7 +393,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create or update repository connection",
 		"tags": [
 			"Repository Connections"
 		],

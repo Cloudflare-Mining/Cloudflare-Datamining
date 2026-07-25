@@ -1,12 +1,13 @@
 {
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/evaluate": {
-		"description": "Evaluates a flag against the provided context. Pass context attributes as query parameters; values are forwarded as strings. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint.",
 		"operationId": "flagship_evaluate_flag",
+		"summary": "Evaluate flag",
+		"description": "Evaluates a flag against the provided context. Pass context attributes as query parameters; values are forwarded as strings. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -24,9 +25,9 @@
 				}
 			},
 			{
-				"description": "The flag key to evaluate.",
-				"in": "query",
 				"name": "flagKey",
+				"in": "query",
+				"description": "The flag key to evaluate.",
 				"required": true,
 				"schema": {
 					"description": "The flag key to evaluate.",
@@ -34,9 +35,9 @@
 				}
 			},
 			{
-				"description": "Context targeting key (per OpenFeature spec); used for percentage rollout bucketing.",
-				"in": "query",
 				"name": "targetingKey",
+				"in": "query",
+				"description": "Context targeting key (per OpenFeature spec); used for percentage rollout bucketing.",
 				"schema": {
 					"description": "Context targeting key (per OpenFeature spec); used for percentage rollout bucketing.",
 					"type": "string"
@@ -45,21 +46,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Flag evaluation result.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"flagKey": {
 									"type": "string"
 								},
 								"reason": {
+									"type": "string",
 									"enum": [
 										"TARGETING_MATCH",
 										"DEFAULT",
 										"DISABLED",
 										"SPLIT"
-									],
-									"type": "string"
+									]
 								},
 								"value": {
 									"oneOf": [
@@ -91,20 +94,22 @@
 								"flagKey",
 								"variant",
 								"reason"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag evaluation result."
+				}
 			},
 			"400": {
+				"description": "Missing or invalid flagKey.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -112,13 +117,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -126,17 +131,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -147,20 +150,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Missing or invalid flagKey."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -168,13 +173,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -182,17 +187,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -203,20 +206,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -224,13 +229,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -238,17 +243,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -259,20 +262,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Flag or app not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -280,13 +285,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -294,17 +299,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -315,20 +318,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag or app not found."
+				}
 			},
 			"500": {
+				"description": "Evaluation error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -336,13 +341,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -350,17 +355,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -371,20 +374,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Evaluation error."
+				}
 			},
 			"503": {
+				"description": "Flag store temporarily unavailable.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -392,13 +397,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -406,17 +411,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -427,12 +430,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag store temporarily unavailable."
+				}
 			}
 		},
 		"security": [
@@ -444,7 +445,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Evaluate flag",
 		"tags": [
 			"Evaluation"
 		],
@@ -470,13 +470,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/evaluate": {
-		"description": "Evaluates a flag against the provided context, passed as a JSON request body (OFREP-shaped) rather than query parameters. Returns the same response shape as the GET variant.",
 		"operationId": "flagship_evaluate_flag_post",
+		"summary": "Evaluate flag (POST)",
+		"description": "Evaluates a flag against the provided context, passed as a JSON request body (OFREP-shaped) rather than query parameters. Returns the same response shape as the GET variant.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -484,9 +485,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -495,12 +496,15 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"context": {
+								"type": "object",
+								"default": {},
 								"additionalProperties": {
 									"oneOf": [
 										{
@@ -522,43 +526,42 @@
 											"type": "array"
 										}
 									]
-								},
-								"default": {},
-								"type": "object"
+								}
 							},
 							"flagKey": {
+								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
-								"pattern": "^[a-zA-Z0-9_-]+$",
-								"type": "string"
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"flagKey"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Flag evaluation result.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"flagKey": {
 									"type": "string"
 								},
 								"reason": {
+									"type": "string",
 									"enum": [
 										"TARGETING_MATCH",
 										"DEFAULT",
 										"DISABLED",
 										"SPLIT"
-									],
-									"type": "string"
+									]
 								},
 								"value": {
 									"oneOf": [
@@ -590,20 +593,22 @@
 								"flagKey",
 								"variant",
 								"reason"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag evaluation result."
+				}
 			},
 			"400": {
+				"description": "Missing or invalid flagKey, or malformed context.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -611,13 +616,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -625,17 +630,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -646,20 +649,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Missing or invalid flagKey, or malformed context."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -667,13 +672,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -681,17 +686,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -702,20 +705,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -723,13 +728,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -737,17 +742,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -758,20 +761,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Flag or app not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -779,13 +784,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -793,17 +798,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -814,20 +817,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag or app not found."
+				}
 			},
 			"500": {
+				"description": "Evaluation error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -835,13 +840,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -849,17 +854,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -870,20 +873,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Evaluation error."
+				}
 			},
 			"503": {
+				"description": "Flag store temporarily unavailable.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -891,13 +896,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -905,17 +910,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -926,12 +929,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag store temporarily unavailable."
+				}
 			}
 		},
 		"security": [
@@ -943,7 +944,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Evaluate flag (POST)",
 		"tags": [
 			"Evaluation"
 		],

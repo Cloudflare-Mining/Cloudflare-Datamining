@@ -1,69 +1,72 @@
 {
 	"GET /radar/entities/locations": {
-		"description": "Retrieves a list of locations.",
 		"operationId": "radar-get-entities-locations",
+		"summary": "List locations",
+		"description": "Retrieves a list of locations.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"schema": {
 					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-					"example": "US,CA",
-					"type": "string"
+					"type": "string",
+					"example": "US,CA"
 				}
 			},
 			{
-				"description": "Filters results by region.",
-				"in": "query",
 				"name": "region",
+				"in": "query",
+				"description": "Filters results by region.",
 				"schema": {
 					"description": "Filters results by region.",
+					"type": "string",
 					"example": "Middle East",
-					"maxLength": 100,
-					"type": "string"
+					"maxLength": 100
 				}
 			},
 			{
-				"description": "Filters results by subregion.",
-				"in": "query",
 				"name": "subregion",
+				"in": "query",
+				"description": "Filters results by subregion.",
 				"schema": {
 					"description": "Filters results by subregion.",
+					"type": "string",
 					"example": "Southern Europe",
-					"maxLength": 100,
-					"type": "string"
+					"maxLength": 100
 				}
 			},
 			{
-				"description": "Filters results by continent code.",
-				"in": "query",
 				"name": "continent",
+				"in": "query",
+				"description": "Filters results by continent code.",
 				"schema": {
 					"description": "Filters results by continent code.",
+					"type": "string",
+					"example": "EU",
 					"enum": [
 						"AF",
 						"AS",
@@ -71,68 +74,70 @@
 						"NA",
 						"OC",
 						"SA"
-					],
-					"example": "EU",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"locations": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alpha2": {
-														"example": "AF",
-														"type": "string"
+														"type": "string",
+														"example": "AF"
 													},
 													"continent": {
-														"example": "AS",
-														"type": "string"
+														"type": "string",
+														"example": "AS"
 													},
 													"latitude": {
 														"description": "A numeric string.",
+														"type": "string",
 														"example": "10",
-														"pattern": "^-?\\d+(\\.\\d+)?$",
-														"type": "string"
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"longitude": {
 														"description": "A numeric string.",
+														"type": "string",
 														"example": "10",
-														"pattern": "^-?\\d+(\\.\\d+)?$",
-														"type": "string"
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													},
 													"name": {
-														"example": "Afghanistan",
-														"type": "string"
+														"type": "string",
+														"example": "Afghanistan"
 													},
 													"region": {
-														"example": "Middle East",
-														"type": "string"
+														"type": "string",
+														"example": "Middle East"
 													},
 													"subregion": {
-														"example": "Southern Asia",
-														"type": "string"
+														"type": "string",
+														"example": "Southern Asia"
 													}
 												},
 												"required": [
@@ -145,36 +150,35 @@
 													"alpha2"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"locations"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -185,27 +189,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -215,7 +216,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List locations",
 		"tags": [
 			"Radar Locations"
 		],
@@ -235,82 +235,87 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/entities/locations/{location}": {
-		"description": "Retrieves the requested location information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
 		"operationId": "radar-get-entities-location-by-alpha2",
+		"summary": "Get location details",
+		"description": "Retrieves the requested location information. (A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
 		"parameters": [
 			{
-				"description": "Location alpha-2 code.",
-				"in": "path",
 				"name": "location",
+				"in": "path",
+				"description": "Location alpha-2 code.",
 				"required": true,
 				"schema": {
 					"description": "Location alpha-2 code.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"location": {
+											"type": "object",
 											"properties": {
 												"alpha2": {
-													"example": "AF",
-													"type": "string"
+													"type": "string",
+													"example": "AF"
 												},
 												"confidenceLevel": {
-													"example": 5,
-													"type": "integer"
+													"type": "integer",
+													"example": 5
 												},
 												"continent": {
-													"example": "AS",
-													"type": "string"
+													"type": "string",
+													"example": "AS"
 												},
 												"latitude": {
 													"description": "A numeric string.",
+													"type": "string",
 													"example": "10",
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"longitude": {
 													"description": "A numeric string.",
+													"type": "string",
 													"example": "10",
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
+													"pattern": "^-?\\d+(\\.\\d+)?$"
 												},
 												"name": {
-													"example": "Afghanistan",
-													"type": "string"
+													"type": "string",
+													"example": "Afghanistan"
 												},
 												"region": {
-													"example": "Middle East",
-													"type": "string"
+													"type": "string",
+													"example": "Middle East"
 												},
 												"subregion": {
-													"example": "Southern Asia",
-													"type": "string"
+													"type": "string",
+													"example": "Southern Asia"
 												}
 											},
 											"required": [
@@ -322,48 +327,44 @@
 												"longitude",
 												"alpha2",
 												"confidenceLevel"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"location"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -373,7 +374,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get location details",
 		"tags": [
 			"Radar Locations"
 		],

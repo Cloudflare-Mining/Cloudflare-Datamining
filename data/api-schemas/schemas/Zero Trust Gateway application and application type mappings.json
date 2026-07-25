@@ -1,38 +1,43 @@
 {
 	"GET /accounts/{account_id}/gateway/app_types": {
-		"description": "List all application and application type mappings.",
 		"operationId": "zero-trust-gateway-application-and-application-type-mappings-list-application-and-application-type-mappings",
+		"summary": "List application and application type mappings",
+		"description": "List all application and application type mappings.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Provide the identifier string.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List application and application type mappings response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -45,15 +50,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -66,63 +71,64 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"oneOf": [
 													{
+														"type": "object",
 														"properties": {
 															"application_type_id": {
 																"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
@@ -130,9 +136,9 @@
 																"x-auditable": true
 															},
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z"
 															},
 															"id": {
 																"description": "Identify this application. Only one application per ID.",
@@ -141,24 +147,24 @@
 															},
 															"name": {
 																"description": "Specify the name of the application or application type.",
-																"example": "Facebook",
 																"type": "string",
+																"example": "Facebook",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													{
+														"type": "object",
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z"
 															},
 															"description": {
 																"description": "Provide a short summary of applications with this type.",
-																"example": "Applications used to communicate or collaborate in a business setting.",
-																"type": "string"
+																"type": "string",
+																"example": "Applications used to communicate or collaborate in a business setting."
 															},
 															"id": {
 																"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
@@ -167,47 +173,46 @@
 															},
 															"name": {
 																"description": "Specify the name of the application or application type.",
-																"example": "Facebook",
 																"type": "string",
+																"example": "Facebook",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												],
-												"readOnly": true,
-												"type": "object"
-											},
-											"type": "array"
+												"readOnly": true
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List application and application type mappings response."
+				}
 			},
 			"4XX": {
+				"description": "List application and application type mappings response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -220,15 +225,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -241,63 +246,64 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"oneOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"application_type_id": {
 																		"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
@@ -305,9 +311,9 @@
 																		"x-auditable": true
 																	},
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z"
 																	},
 																	"id": {
 																		"description": "Identify this application. Only one application per ID.",
@@ -316,24 +322,24 @@
 																	},
 																	"name": {
 																		"description": "Specify the name of the application or application type.",
-																		"example": "Facebook",
 																		"type": "string",
+																		"example": "Facebook",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z"
 																	},
 																	"description": {
 																		"description": "Provide a short summary of applications with this type.",
-																		"example": "Applications used to communicate or collaborate in a business setting.",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Applications used to communicate or collaborate in a business setting."
 																	},
 																	"id": {
 																		"description": "Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.",
@@ -342,69 +348,40 @@
 																	},
 																	"name": {
 																		"description": "Specify the name of the application or application type.",
-																		"example": "Facebook",
 																		"type": "string",
+																		"example": "Facebook",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														],
-														"readOnly": true,
-														"type": "object"
-													},
-													"type": "array"
+														"readOnly": true
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -417,26 +394,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -444,14 +447,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List application and application type mappings response failure."
+				}
 			}
 		},
 		"security": [
@@ -461,7 +462,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List application and application type mappings",
 		"tags": [
 			"Zero Trust Gateway application and application type mappings"
 		],

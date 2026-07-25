@@ -1,258 +1,261 @@
 {
 	"GET /accounts/{account_id}/access/logs/access_requests": {
-		"description": "Gets a list of Access authentication audit logs for an account.",
 		"operationId": "access-authentication-logs-get-access-authentication-logs",
+		"summary": "Get Access authentication logs",
+		"description": "Gets a list of Access authentication audit logs for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "The maximum number of log entries to retrieve.",
-				"example": 25,
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "The maximum number of log entries to retrieve.",
 				"schema": {
-					"default": 25,
-					"type": "integer"
-				}
+					"type": "integer",
+					"default": 25
+				},
+				"example": 25
 			},
 			{
-				"description": "The chronological sorting order for the logs.",
-				"example": "desc",
-				"in": "query",
 				"name": "direction",
+				"in": "query",
+				"description": "The chronological sorting order for the logs.",
 				"schema": {
 					"default": "desc",
 					"enum": [
 						"desc",
 						"asc"
 					]
-				}
+				},
+				"example": "desc"
 			},
 			{
-				"description": "The earliest event timestamp to query.",
-				"in": "query",
 				"name": "since",
+				"in": "query",
+				"description": "The earliest event timestamp to query.",
 				"schema": {
-					"example": "2020-07-01T05:20:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2020-07-01T05:20:00Z"
 				}
 			},
 			{
-				"description": "The latest event timestamp to query.",
-				"in": "query",
 				"name": "until",
+				"in": "query",
+				"description": "The latest event timestamp to query.",
 				"schema": {
-					"example": "2020-10-01T05:20:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2020-10-01T05:20:00Z"
 				}
 			},
 			{
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Page number of results.",
-					"type": "integer"
+					"type": "integer",
+					"default": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 25,
 					"description": "Number of results per page.",
-					"type": "integer"
+					"type": "integer",
+					"default": 25
 				}
 			},
 			{
-				"description": "Filter by user email. Match mode is controlled by `emailOp` (preferred) or the legacy `email_exact` flag.\n- Default (no `emailOp`, `email_exact=false` or unset): substring match — `email=@example.com` returns all events with that domain.\n- Exact match: set `emailOp=eq` (preferred) or `email_exact=true` — e.g. `email=user@example.com&email_exact=true` returns only that user.\n- Explicit substring match: set `emailOp=contains` (without `email_exact=true`). When both are set, `email_exact=true` takes precedence and the match is exact.\n- Exclusion: set `emailOp=neq`. With `email_exact=true` this is an exact-value exclusion; without it, a fuzzy substring exclusion.\n",
-				"in": "query",
 				"name": "email",
+				"in": "query",
+				"description": "Filter by user email. Match mode is controlled by `emailOp` (preferred) or the legacy `email_exact` flag.\n- Default (no `emailOp`, `email_exact=false` or unset): substring match — `email=@example.com` returns all events with that domain.\n- Exact match: set `emailOp=eq` (preferred) or `email_exact=true` — e.g. `email=user@example.com&email_exact=true` returns only that user.\n- Explicit substring match: set `emailOp=contains` (without `email_exact=true`). When both are set, `email_exact=true` takes precedence and the match is exact.\n- Exclusion: set `emailOp=neq`. With `email_exact=true` this is an exact-value exclusion; without it, a fuzzy substring exclusion.\n",
 				"schema": {
 					"description": "The email address of the authenticating user.",
-					"example": "user@example.com",
+					"type": "string",
 					"format": "email",
-					"type": "string"
+					"example": "user@example.com"
 				}
 			},
 			{
-				"description": "When true, `email` is matched exactly instead of substring matching.",
-				"example": true,
-				"in": "query",
 				"name": "email_exact",
+				"in": "query",
+				"description": "When true, `email` is matched exactly instead of substring matching.",
 				"schema": {
-					"default": false,
-					"type": "boolean"
-				}
+					"type": "boolean",
+					"default": false
+				},
+				"example": true
 			},
 			{
-				"deprecated": true,
-				"description": "Deprecated. Accepted for backward compatibility but no longer applied\nas a filter. Use `email` instead.\n",
-				"in": "query",
 				"name": "user_id",
+				"in": "query",
+				"description": "Deprecated. Accepted for backward compatibility but no longer applied\nas a filter. Use `email` instead.\n",
 				"schema": {
 					"description": "The UUID of the authenticating user.",
-					"example": "f757c5c3-c1b2-50f7-9126-150a099b6f7e",
+					"type": "string",
 					"format": "uuid",
-					"type": "string"
-				}
+					"example": "f757c5c3-c1b2-50f7-9126-150a099b6f7e"
+				},
+				"deprecated": true
 			},
 			{
-				"description": "Operator for the `allowed` filter.",
-				"in": "query",
 				"name": "allowedOp",
+				"in": "query",
+				"description": "Operator for the `allowed` filter.",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Operator for the `country_code` filter.",
-				"in": "query",
 				"name": "country_codeOp",
+				"in": "query",
+				"description": "Operator for the `country_code` filter.",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Operator for the `app_type` filter.",
-				"in": "query",
 				"name": "app_typeOp",
+				"in": "query",
+				"description": "Operator for the `app_type` filter.",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Operator for the `app_uid` filter.",
-				"in": "query",
 				"name": "app_uidOp",
+				"in": "query",
+				"description": "Operator for the `app_uid` filter.",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Operator for the `ray_id` filter.",
-				"in": "query",
 				"name": "ray_idOp",
+				"in": "query",
+				"description": "Operator for the `ray_id` filter.",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Operator for the `email` filter.\n`contains` performs a substring (case-sensitive) match. When `email_exact=true`\nis also set, `email_exact` takes precedence and `contains` is ignored.\n",
-				"in": "query",
 				"name": "emailOp",
+				"in": "query",
+				"description": "Operator for the `email` filter.\n`contains` performs a substring (case-sensitive) match. When `email_exact=true`\nis also set, `email_exact` takes precedence and `contains` is ignored.\n",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq",
 						"contains"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Operator for the `idp` filter.",
-				"in": "query",
 				"name": "idpOp",
+				"in": "query",
+				"description": "Operator for the `idp` filter.",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Operator for the `non_identity` filter.",
-				"in": "query",
 				"name": "non_identityOp",
+				"in": "query",
+				"description": "Operator for the `non_identity` filter.",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"deprecated": true,
-				"description": "Deprecated. Accepted for backward compatibility but no longer applied\nas a filter (the `user_id` parameter is itself deprecated).\n",
-				"in": "query",
 				"name": "user_idOp",
+				"in": "query",
+				"description": "Deprecated. Accepted for backward compatibility but no longer applied\nas a filter (the `user_id` parameter is itself deprecated).\n",
 				"schema": {
+					"type": "string",
 					"default": "eq",
 					"enum": [
 						"eq",
 						"neq"
-					],
-					"type": "string"
-				}
+					]
+				},
+				"deprecated": true
 			},
 			{
-				"description": "Comma-separated list of fields to include in the response.\nWhen omitted, all fields are returned.\n",
-				"example": "action,allowed,app_name,country,created_at,ray_id,user_email",
-				"in": "query",
 				"name": "fields",
+				"in": "query",
+				"description": "Comma-separated list of fields to include in the response.\nWhen omitted, all fields are returned.\n",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "action,allowed,app_name,country,created_at,ray_id,user_email"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Access authentication logs response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -261,12 +264,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -276,15 +279,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -293,12 +296,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -308,147 +311,110 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"action": {
 														"description": "The event that occurred, such as a login attempt.",
-														"example": "login",
-														"type": "string"
+														"type": "string",
+														"example": "login"
 													},
 													"allowed": {
-														"default": false,
 														"description": "The result of the authentication event.",
-														"type": "boolean"
+														"type": "boolean",
+														"default": false
 													},
 													"app_domain": {
 														"description": "The URL of the Access application.",
-														"example": "test.example.com/admin",
-														"type": "string"
+														"type": "string",
+														"example": "test.example.com/admin"
 													},
 													"app_uid": {
 														"description": "The unique identifier for the Access application.",
-														"example": "df7e2w5f-02b7-4d9d-af26-8d1988fca630",
-														"type": "string"
+														"type": "string",
+														"example": "df7e2w5f-02b7-4d9d-af26-8d1988fca630"
 													},
 													"connection": {
 														"description": "The IdP used to authenticate.",
-														"example": "saml",
-														"type": "string"
+														"type": "string",
+														"example": "saml"
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"ip_address": {
 														"description": "The IP address of the authenticating user.",
-														"example": "198.41.129.166",
-														"type": "string"
+														"type": "string",
+														"example": "198.41.129.166"
 													},
 													"ray_id": {
 														"description": "The unique identifier for the request to Cloudflare.",
+														"type": "string",
 														"example": "187d944c61940c77",
-														"maxLength": 16,
-														"type": "string"
+														"maxLength": 16
 													},
 													"user_email": {
 														"description": "The email address of the authenticating user.",
-														"example": "user@example.com",
+														"type": "string",
 														"format": "email",
-														"type": "string"
+														"example": "user@example.com"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Access authentication logs response"
+				}
 			},
 			"4XX": {
+				"description": "Get Access authentication logs response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -457,12 +423,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -472,25 +438,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -498,12 +501,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Access authentication logs response failure"
+				}
 			}
 		},
 		"security": [
@@ -512,7 +513,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Access authentication logs",
 		"tags": [
 			"Access authentication logs"
 		],

@@ -1,36 +1,40 @@
 {
 	"GET /accounts/{account_id}/ai/finetunes": {
-		"description": "Lists all fine-tuning jobs created by the account, including status and metrics.",
 		"operationId": "workers-ai-list-finetunes",
+		"summary": "List Finetunes",
+		"description": "Lists all fine-tuning jobs created by the account, including status and metrics.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns all finetunes",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"description": {
 											"type": "string"
 										},
 										"id": {
-											"format": "uuid",
 											"type": "string",
+											"format": "uuid",
 											"x-auditable": true
 										},
 										"model": {
@@ -38,8 +42,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -52,8 +56,7 @@
 										"name",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -62,19 +65,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns all finetunes"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -85,27 +89,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -117,7 +118,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Finetunes",
 		"tags": [
 			"Workers AI Finetune"
 		],
@@ -138,42 +138,43 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/finetunes/public": {
-		"description": "Lists publicly available fine-tuned models that can be used with Workers AI.",
 		"operationId": "workers-ai-list-public-finetunes",
+		"summary": "List Public Finetunes",
+		"description": "Lists publicly available fine-tuned models that can be used with Workers AI.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Pagination Limit",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Pagination Limit",
 				"schema": {
-					"default": 20,
 					"description": "Pagination Limit",
-					"type": "number"
+					"type": "number",
+					"default": 20
 				}
 			},
 			{
-				"description": "Pagination Offset",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Pagination Offset",
 				"schema": {
-					"default": 0,
 					"description": "Pagination Offset",
-					"type": "number"
+					"type": "number",
+					"default": 0
 				}
 			},
 			{
-				"description": "Order By Column Name",
-				"in": "query",
 				"name": "orderBy",
+				"in": "query",
+				"description": "Order By Column Name",
 				"schema": {
 					"description": "Order By Column Name",
 					"type": "string"
@@ -182,23 +183,26 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns all public finetunes",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"description": {
 												"type": "string"
 											},
 											"id": {
-												"format": "uuid",
 												"type": "string",
+												"format": "uuid",
 												"x-auditable": true
 											},
 											"model": {
@@ -206,8 +210,8 @@
 												"x-auditable": true
 											},
 											"modified_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"name": {
 												"type": "string",
@@ -227,8 +231,7 @@
 											"modified_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -237,19 +240,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns all public finetunes"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -260,27 +264,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -292,7 +293,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Public Finetunes",
 		"tags": [
 			"Workers AI Finetune"
 		],
@@ -313,16 +313,17 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/finetunes": {
-		"description": "Creates a new fine-tuning job for a Workers AI model using custom training data.",
 		"operationId": "workers-ai-create-finetune",
+		"summary": "Create a new Finetune",
+		"description": "Creates a new fine-tuning job for a Workers AI model using custom training data.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
@@ -330,6 +331,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"type": "string"
@@ -343,38 +345,40 @@
 								"x-auditable": true
 							},
 							"public": {
-								"default": false,
 								"type": "boolean",
+								"default": false,
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"model",
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created finetune",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"description": {
 											"type": "string"
 										},
 										"id": {
-											"format": "uuid",
 											"type": "string",
+											"format": "uuid",
 											"x-auditable": true
 										},
 										"model": {
@@ -382,8 +386,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -401,8 +405,7 @@
 										"public",
 										"name",
 										"model"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -411,23 +414,23 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created finetune"
+				}
 			},
 			"400": {
+				"description": "Finetune creation failed",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -436,12 +439,10 @@
 							"required": [
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Finetune creation failed"
+				}
 			}
 		},
 		"security": [
@@ -453,7 +454,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Finetune",
 		"tags": [
 			"Workers AI Finetune"
 		],
@@ -473,37 +473,40 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets": {
-		"description": "Uploads training data assets for a Workers AI fine-tuning job.",
 		"operationId": "workers-ai-upload-finetune-asset",
+		"summary": "Upload a Finetune Asset",
+		"description": "Uploads training data assets for a Workers AI fine-tuning job.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"in": "path",
 				"name": "finetune_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "bc451aef-f723-4b26-a6b2-901afd2e7a8a",
-					"type": "string"
+					"type": "string",
+					"example": "bc451aef-f723-4b26-a6b2-901afd2e7a8a"
 				}
 			}
 		],
 		"requestBody": {
+			"description": "Finetune asset file upload",
 			"content": {
 				"multipart/form-data": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"file": {
 								"description": "File to upload",
-								"format": "binary",
-								"type": "string"
+								"type": "string",
+								"format": "binary"
 							},
 							"file_name": {
 								"description": "Name of the file (adapter_config.json or adapter_model.safetensors)",
@@ -513,18 +516,18 @@
 						"required": [
 							"file_name",
 							"file"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Finetune asset file upload"
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns successfully if finetunes were uploaded",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"success": {
 									"type": "boolean"
@@ -532,23 +535,23 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns successfully if finetunes were uploaded"
+				}
 			},
 			"400": {
+				"description": "Finetune creation failed",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -557,12 +560,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Finetune creation failed"
+				}
 			}
 		},
 		"security": [
@@ -574,7 +575,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Upload a Finetune Asset",
 		"tags": [
 			"Workers AI Finetune"
 		],

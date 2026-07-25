@@ -1,19 +1,20 @@
 {
 	"DELETE /accounts/{account_id}/devices/deployment-groups/{group_id}": {
-		"description": "Deletes a deployment group. Associated policies no longer apply and devices stop receiving version targets. This endpoint is in Beta.",
 		"operationId": "delete-deployment-group",
+		"summary": "Delete deployment group",
+		"description": "Deletes a deployment group. Associated policies no longer apply and devices stop receiving version targets. This endpoint is in Beta.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -22,13 +23,17 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Deletes deployment group response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -40,14 +45,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -59,21 +64,19 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"description": "The ID of a deleted deployment group.",
-											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"type": "string",
+											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
@@ -85,12 +88,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Deletes deployment group response."
+				}
 			}
 		},
 		"security": [
@@ -98,7 +99,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete deployment group",
 		"tags": [
 			"Deployment Groups"
 		],
@@ -109,48 +109,53 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups": {
-		"description": "Lists all deployment groups for an account. Use deployment groups to assign target WARP client versions to specific devices. This endpoint is in Beta.",
 		"operationId": "list-deployment-groups",
+		"summary": "List deployment groups",
+		"description": "Lists all deployment groups for an account. Use deployment groups to assign target WARP client versions to specific devices. This endpoint is in Beta.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "The page number to return.",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "The page number to return.",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "The maximum number of deployment groups to return per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "The maximum number of deployment groups to return per page.",
 				"schema": {
+					"type": "integer",
 					"default": 50,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Lists deployment group response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -162,14 +167,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -181,76 +186,76 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"created_at": {
 												"description": "The RFC3339Nano timestamp when the deployment group was created.",
-												"example": "2026-02-14T13:17:00.123456789Z",
-												"type": "string"
+												"type": "string",
+												"example": "2026-02-14T13:17:00.123456789Z"
 											},
 											"id": {
 												"description": "The ID of the deployment group.",
-												"example": "550e8400-e29b-41d4-a716-446655440000",
 												"type": "string",
+												"example": "550e8400-e29b-41d4-a716-446655440000",
 												"x-auditable": true
 											},
 											"name": {
 												"description": "A user-friendly name for the deployment group.",
+												"type": "string",
 												"example": "Engineering Ring 0",
 												"maxLength": 255,
 												"minLength": 1,
-												"type": "string",
 												"x-auditable": true
 											},
 											"policy_ids": {
 												"description": "Contains a list of policy IDs assigned to this deployment group.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
 												"example": [
 													"policy-uuid-1",
 													"policy-uuid-2"
 												],
-												"items": {
-													"type": "string"
-												},
 												"nullable": true,
-												"type": "array",
 												"x-auditable": true
 											},
 											"updated_at": {
 												"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
-												"example": "2026-02-14T13:17:00.123456789Z",
-												"type": "string"
+												"type": "string",
+												"example": "2026-02-14T13:17:00.123456789Z"
 											},
 											"version_config": {
 												"description": "Contains version configurations for different target environments.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"target_environment": {
 															"description": "The target environment for the client version (e.g., windows, macos).",
+															"type": "string",
 															"example": "windows",
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"version": {
 															"description": "The specific client version to deploy.",
-															"example": "2026.6.234.0",
 															"type": "string",
+															"example": "2026.6.234.0",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"version",
 														"target_environment"
-													],
-													"type": "object"
-												},
-												"type": "array"
+													]
+												}
 											}
 										},
 										"required": [
@@ -259,19 +264,11 @@
 											"version_config",
 											"created_at",
 											"updated_at"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result_info": {
-									"example": {
-										"count": 1,
-										"page": 1,
-										"per_page": 10,
-										"total_count": 10,
-										"total_pages": 1
-									},
+									"type": "object",
 									"properties": {
 										"count": {
 											"description": "Number of records in the response.",
@@ -294,13 +291,19 @@
 											"type": "integer"
 										}
 									},
+									"example": {
+										"count": 1,
+										"page": 1,
+										"per_page": 10,
+										"total_count": 10,
+										"total_pages": 1
+									},
 									"required": [
 										"page",
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
@@ -313,12 +316,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Lists deployment group response."
+				}
 			}
 		},
 		"security": [
@@ -326,7 +327,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List deployment groups",
 		"tags": [
 			"Deployment Groups"
 		],
@@ -336,20 +336,21 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups/{group_id}": {
-		"description": "Fetches a single deployment group by its ID. This endpoint is in Beta.",
 		"operationId": "get-deployment-group",
+		"summary": "Get deployment group",
+		"description": "Fetches a single deployment group by its ID. This endpoint is in Beta.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -358,13 +359,17 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Gets deployment group response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -376,14 +381,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -395,75 +400,74 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was created.",
-											"example": "2026-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2026-02-14T13:17:00.123456789Z"
 										},
 										"id": {
 											"description": "The ID of the deployment group.",
-											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"type": "string",
+											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"x-auditable": true
 										},
 										"name": {
 											"description": "A user-friendly name for the deployment group.",
+											"type": "string",
 											"example": "Engineering Ring 0",
 											"maxLength": 255,
 											"minLength": 1,
-											"type": "string",
 											"x-auditable": true
 										},
 										"policy_ids": {
 											"description": "Contains a list of policy IDs assigned to this deployment group.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
 											"example": [
 												"policy-uuid-1",
 												"policy-uuid-2"
 											],
-											"items": {
-												"type": "string"
-											},
 											"nullable": true,
-											"type": "array",
 											"x-auditable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
-											"example": "2026-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2026-02-14T13:17:00.123456789Z"
 										},
 										"version_config": {
 											"description": "Contains version configurations for different target environments.",
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"target_environment": {
 														"description": "The target environment for the client version (e.g., windows, macos).",
+														"type": "string",
 														"example": "windows",
 														"nullable": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"version": {
 														"description": "The specific client version to deploy.",
-														"example": "2026.6.234.0",
 														"type": "string",
+														"example": "2026.6.234.0",
 														"x-auditable": true
 													}
 												},
 												"required": [
 													"version",
 													"target_environment"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -472,8 +476,7 @@
 										"version_config",
 										"created_at",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
@@ -485,12 +488,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Gets deployment group response."
+				}
 			}
 		},
 		"security": [
@@ -498,7 +499,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get deployment group",
 		"tags": [
 			"Deployment Groups"
 		],
@@ -508,20 +508,21 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/devices/deployment-groups/{group_id}": {
-		"description": "Updates a deployment group. Returns 409 if any newly added policy IDs already belong to another deployment group. This endpoint is in Beta.",
 		"operationId": "update-deployment-group",
+		"summary": "Update deployment group",
+		"description": "Updates a deployment group. Returns 409 if any newly added policy IDs already belong to another deployment group. This endpoint is in Beta.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -529,67 +530,71 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "A user-friendly name for the deployment group.",
+								"type": "string",
 								"example": "Engineering Ring 0",
 								"maxLength": 255,
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							},
 							"policy_ids": {
 								"description": "Replaces the entire list of policy IDs.",
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"version_config": {
 								"description": "Replaces the entire version_config array.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"target_environment": {
 											"description": "The target environment for the client version (e.g., windows, macos).",
+											"type": "string",
 											"example": "windows",
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"version": {
 											"description": "The specific client version to deploy.",
-											"example": "2026.6.234.0",
 											"type": "string",
+											"example": "2026.6.234.0",
 											"x-auditable": true
 										}
 									},
 									"required": [
 										"version",
 										"target_environment"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Updates deployment group response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -601,14 +606,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -620,75 +625,74 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was created.",
-											"example": "2026-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2026-02-14T13:17:00.123456789Z"
 										},
 										"id": {
 											"description": "The ID of the deployment group.",
-											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"type": "string",
+											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"x-auditable": true
 										},
 										"name": {
 											"description": "A user-friendly name for the deployment group.",
+											"type": "string",
 											"example": "Engineering Ring 0",
 											"maxLength": 255,
 											"minLength": 1,
-											"type": "string",
 											"x-auditable": true
 										},
 										"policy_ids": {
 											"description": "Contains a list of policy IDs assigned to this deployment group.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
 											"example": [
 												"policy-uuid-1",
 												"policy-uuid-2"
 											],
-											"items": {
-												"type": "string"
-											},
 											"nullable": true,
-											"type": "array",
 											"x-auditable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
-											"example": "2026-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2026-02-14T13:17:00.123456789Z"
 										},
 										"version_config": {
 											"description": "Contains version configurations for different target environments.",
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"target_environment": {
 														"description": "The target environment for the client version (e.g., windows, macos).",
+														"type": "string",
 														"example": "windows",
 														"nullable": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"version": {
 														"description": "The specific client version to deploy.",
-														"example": "2026.6.234.0",
 														"type": "string",
+														"example": "2026.6.234.0",
 														"x-auditable": true
 													}
 												},
 												"required": [
 													"version",
 													"target_environment"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -697,8 +701,7 @@
 										"version_config",
 										"created_at",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
@@ -710,12 +713,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Updates deployment group response."
+				}
 			}
 		},
 		"security": [
@@ -723,7 +724,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update deployment group",
 		"tags": [
 			"Deployment Groups"
 		],
@@ -734,12 +734,13 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/deployment-groups": {
-		"description": "Creates a new deployment group. Policy IDs must be unique across all deployment groups. This endpoint is in Beta.",
 		"operationId": "create-deployment-group",
+		"summary": "Create deployment group",
+		"description": "Creates a new deployment group. Policy IDs must be unique across all deployment groups. This endpoint is in Beta.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -747,72 +748,76 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "A user-friendly name for the deployment group.",
+								"type": "string",
 								"example": "Engineering Ring 0",
 								"maxLength": 255,
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							},
 							"policy_ids": {
 								"description": "Contains an optional list of policy IDs assigned to a group.",
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"version_config": {
 								"description": "Contains at least one version configuration.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"target_environment": {
 											"description": "The target environment for the client version (e.g., windows, macos).",
+											"type": "string",
 											"example": "windows",
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"version": {
 											"description": "The specific client version to deploy.",
-											"example": "2026.6.234.0",
 											"type": "string",
+											"example": "2026.6.234.0",
 											"x-auditable": true
 										}
 									},
 									"required": [
 										"version",
 										"target_environment"
-									],
-									"type": "object"
+									]
 								},
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							}
 						},
 						"required": [
 							"name",
 							"version_config"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Creates deployment group response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -824,14 +829,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -843,75 +848,74 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was created.",
-											"example": "2026-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2026-02-14T13:17:00.123456789Z"
 										},
 										"id": {
 											"description": "The ID of the deployment group.",
-											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"type": "string",
+											"example": "550e8400-e29b-41d4-a716-446655440000",
 											"x-auditable": true
 										},
 										"name": {
 											"description": "A user-friendly name for the deployment group.",
+											"type": "string",
 											"example": "Engineering Ring 0",
 											"maxLength": 255,
 											"minLength": 1,
-											"type": "string",
 											"x-auditable": true
 										},
 										"policy_ids": {
 											"description": "Contains a list of policy IDs assigned to this deployment group.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
 											"example": [
 												"policy-uuid-1",
 												"policy-uuid-2"
 											],
-											"items": {
-												"type": "string"
-											},
 											"nullable": true,
-											"type": "array",
 											"x-auditable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the deployment group was last updated.",
-											"example": "2026-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2026-02-14T13:17:00.123456789Z"
 										},
 										"version_config": {
 											"description": "Contains version configurations for different target environments.",
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"target_environment": {
 														"description": "The target environment for the client version (e.g., windows, macos).",
+														"type": "string",
 														"example": "windows",
 														"nullable": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"version": {
 														"description": "The specific client version to deploy.",
-														"example": "2026.6.234.0",
 														"type": "string",
+														"example": "2026.6.234.0",
 														"x-auditable": true
 													}
 												},
 												"required": [
 													"version",
 													"target_environment"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -920,8 +924,7 @@
 										"version_config",
 										"created_at",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
@@ -933,12 +936,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Creates deployment group response."
+				}
 			}
 		},
 		"security": [
@@ -946,7 +947,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create deployment group",
 		"tags": [
 			"Deployment Groups"
 		],

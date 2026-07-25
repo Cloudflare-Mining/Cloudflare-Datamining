@@ -1,50 +1,54 @@
 {
 	"DELETE /accounts/{account_id}/stream/{identifier}/downloads": {
-		"description": "Delete the downloads for a video. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`.",
 		"operationId": "stream-m-p-4-downloads-delete-downloads",
+		"summary": "Delete downloads",
+		"description": "Delete the downloads for a video. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a media item.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete downloads response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -53,12 +57,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -68,15 +72,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -85,12 +89,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -100,32 +104,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"example": "ok",
-											"type": "string"
+											"type": "string",
+											"example": "ok"
 										}
 									},
 									"type": "object"
@@ -133,66 +135,30 @@
 							]
 						}
 					}
-				},
-				"description": "Delete downloads response."
+				}
 			},
 			"4XX": {
+				"description": "Delete downloads response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -201,12 +167,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -216,25 +182,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -242,12 +245,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete downloads response failure."
+				}
 			}
 		},
 		"security": [
@@ -257,7 +258,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete downloads",
 		"tags": [
 			"Stream MP4 Downloads"
 		],
@@ -270,67 +270,71 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
-		"description": "Delete specific type of download. For backwards-compatibility, DELETE requests to /downloads will delete the default download.",
 		"operationId": "stream-downloads-delete-type-specific-downloads",
+		"summary": "Delete download",
+		"description": "Delete specific type of download. For backwards-compatibility, DELETE requests to /downloads will delete the default download.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a media item.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "download_type",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"default": "default",
 					"description": "The type of downloads available are: `default`, `audio`.",
+					"type": "string",
+					"example": "audio",
+					"default": "default",
 					"enum": [
 						"default",
 						"audio"
 					],
-					"example": "audio",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete downloads response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -339,12 +343,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -354,15 +358,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -371,12 +375,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -386,32 +390,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"example": "ok",
-											"type": "string"
+											"type": "string",
+											"example": "ok"
 										}
 									},
 									"type": "object"
@@ -419,66 +421,30 @@
 							]
 						}
 					}
-				},
-				"description": "Delete downloads response."
+				}
 			},
 			"4XX": {
+				"description": "Delete downloads response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -487,12 +453,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -502,25 +468,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -528,12 +531,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete downloads response failure."
+				}
 			}
 		},
 		"security": [
@@ -543,7 +544,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete download",
 		"tags": [
 			"Stream MP4 Downloads"
 		],
@@ -556,51 +556,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/downloads": {
-		"description": "Lists the downloads created for a video.",
 		"operationId": "stream-m-p-4-downloads-list-downloads",
+		"summary": "List downloads",
+		"description": "Lists the downloads created for a video.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a media item.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List downloads response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -609,12 +613,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -624,15 +628,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -641,12 +645,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -656,110 +660,108 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "An object with download type keys. Each key is optional and only present if that download type has been created.",
+											"type": "object",
 											"properties": {
 												"audio": {
+													"description": "The audio-only download. Only present if this download type has been created.",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"percentComplete": {
 																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"type": "number",
 																	"maximum": 100,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of a generated download.",
+																	"type": "string",
 																	"enum": [
 																		"ready",
 																		"inprogress",
 																		"error"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"url": {
 																	"description": "The URL to access the generated download.",
-																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
-																	"format": "uri",
 																	"type": "string",
+																	"format": "uri",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"status",
 																"percentComplete"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"description": "The audio-only download. Only present if this download type has been created."
+													]
 												},
 												"default": {
+													"description": "The default video download. Only present if this download type has been created.",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"percentComplete": {
 																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"type": "number",
 																	"maximum": 100,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of a generated download.",
+																	"type": "string",
 																	"enum": [
 																		"ready",
 																		"inprogress",
 																		"error"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"url": {
 																	"description": "The URL to access the generated download.",
-																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
-																	"format": "uri",
 																	"type": "string",
+																	"format": "uri",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"status",
 																"percentComplete"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"description": "The default video download. Only present if this download type has been created."
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -767,66 +769,30 @@
 							]
 						}
 					}
-				},
-				"description": "List downloads response."
+				}
 			},
 			"4XX": {
+				"description": "List downloads response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -835,12 +801,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -850,25 +816,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -876,12 +879,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List downloads response failure."
+				}
 			}
 		},
 		"security": [
@@ -891,7 +892,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List downloads",
 		"tags": [
 			"Stream MP4 Downloads"
 		],
@@ -905,51 +905,55 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads": {
-		"description": "Creates a download for a video when a video is ready to view. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`.",
 		"operationId": "stream-m-p-4-downloads-create-downloads",
+		"summary": "Create downloads",
+		"description": "Creates a download for a video when a video is ready to view. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a media item.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Create downloads response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -958,12 +962,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -973,15 +977,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -990,12 +994,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1005,110 +1009,108 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "An object with download type keys. Each key is optional and only present if that download type has been created.",
+											"type": "object",
 											"properties": {
 												"audio": {
+													"description": "The audio-only download. Only present if this download type has been created.",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"percentComplete": {
 																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"type": "number",
 																	"maximum": 100,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of a generated download.",
+																	"type": "string",
 																	"enum": [
 																		"ready",
 																		"inprogress",
 																		"error"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"url": {
 																	"description": "The URL to access the generated download.",
-																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
-																	"format": "uri",
 																	"type": "string",
+																	"format": "uri",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"status",
 																"percentComplete"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"description": "The audio-only download. Only present if this download type has been created."
+													]
 												},
 												"default": {
+													"description": "The default video download. Only present if this download type has been created.",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"percentComplete": {
 																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"type": "number",
 																	"maximum": 100,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of a generated download.",
+																	"type": "string",
 																	"enum": [
 																		"ready",
 																		"inprogress",
 																		"error"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"url": {
 																	"description": "The URL to access the generated download.",
-																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
-																	"format": "uri",
 																	"type": "string",
+																	"format": "uri",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"status",
 																"percentComplete"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"description": "The default video download. Only present if this download type has been created."
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1116,66 +1118,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create downloads response."
+				}
 			},
 			"4XX": {
+				"description": "Create downloads response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1184,12 +1150,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1199,25 +1165,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1225,12 +1228,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create downloads response failure."
+				}
 			}
 		},
 		"security": [
@@ -1240,7 +1241,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create downloads",
 		"tags": [
 			"Stream MP4 Downloads"
 		],
@@ -1250,67 +1250,71 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
-		"description": "Creates a download for a video of specified type. For backwards-compatibility, POST requests to /downloads will enable the default download.",
 		"operationId": "stream-downloads-create-type-specific-downloads",
+		"summary": "Create download",
+		"description": "Creates a download for a video of specified type. For backwards-compatibility, POST requests to /downloads will enable the default download.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a media item.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "download_type",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"default": "default",
 					"description": "The type of downloads available are: `default`, `audio`.",
+					"type": "string",
+					"example": "audio",
+					"default": "default",
 					"enum": [
 						"default",
 						"audio"
 					],
-					"example": "audio",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Create download of specified type response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1319,12 +1323,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1334,15 +1338,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1351,12 +1355,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1366,110 +1370,108 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "An object with download type keys. Each key is optional and only present if that download type has been created.",
+											"type": "object",
 											"properties": {
 												"audio": {
+													"description": "The audio-only download. Only present if this download type has been created.",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"percentComplete": {
 																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"type": "number",
 																	"maximum": 100,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of a generated download.",
+																	"type": "string",
 																	"enum": [
 																		"ready",
 																		"inprogress",
 																		"error"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"url": {
 																	"description": "The URL to access the generated download.",
-																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
-																	"format": "uri",
 																	"type": "string",
+																	"format": "uri",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"status",
 																"percentComplete"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"description": "The audio-only download. Only present if this download type has been created."
+													]
 												},
 												"default": {
+													"description": "The default video download. Only present if this download type has been created.",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"percentComplete": {
 																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"type": "number",
 																	"maximum": 100,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of a generated download.",
+																	"type": "string",
 																	"enum": [
 																		"ready",
 																		"inprogress",
 																		"error"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"url": {
 																	"description": "The URL to access the generated download.",
-																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
-																	"format": "uri",
 																	"type": "string",
+																	"format": "uri",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"status",
 																"percentComplete"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"description": "The default video download. Only present if this download type has been created."
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1477,66 +1479,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create download of specified type response."
+				}
 			},
 			"4XX": {
+				"description": "Create downloads of specified type response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1545,12 +1511,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1560,25 +1526,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1586,12 +1589,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create downloads of specified type response failure."
+				}
 			}
 		},
 		"security": [
@@ -1601,7 +1602,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create download",
 		"tags": [
 			"Stream MP4 Downloads"
 		],

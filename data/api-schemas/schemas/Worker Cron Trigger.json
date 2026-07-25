@@ -1,48 +1,51 @@
 {
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/schedules": {
-		"description": "Fetches Cron Triggers for a Worker.",
 		"operationId": "worker-cron-trigger-get-cron-triggers",
+		"summary": "Get Cron Triggers",
+		"description": "Fetches Cron Triggers for a Worker.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "script_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the script, used in URLs and route configuration.",
+					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Cron Triggers response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -51,12 +54,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -66,15 +69,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -83,12 +86,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -98,59 +101,58 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"schedules": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
-																"readOnly": true,
 																"type": "string",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"cron": {
-																"example": "*/30 * * * *",
 																"type": "string",
+																"example": "*/30 * * * *",
 																"x-auditable": true
 															},
 															"modified_on": {
-																"readOnly": true,
 																"type": "string",
+																"readOnly": true,
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"cron"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
 												"schedules"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -161,66 +163,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get Cron Triggers response."
+				}
 			},
 			"4XX": {
+				"description": "Get Cron Triggers response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -229,12 +195,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -244,25 +210,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -270,12 +273,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Cron Triggers response failure."
+				}
 			}
 		},
 		"security": [
@@ -287,7 +288,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Cron Triggers",
 		"tags": [
 			"Worker Cron Trigger"
 		],
@@ -301,82 +301,85 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/schedules": {
-		"description": "Updates Cron Triggers for a Worker.",
 		"operationId": "worker-cron-trigger-update-cron-triggers",
+		"summary": "Update Cron Triggers",
+		"description": "Updates Cron Triggers for a Worker.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "script_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the script, used in URLs and route configuration.",
+					"type": "string",
 					"example": "this-is_my_script-01",
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
+							"type": "object",
 							"properties": {
 								"created_on": {
-									"readOnly": true,
 									"type": "string",
+									"readOnly": true,
 									"x-auditable": true
 								},
 								"cron": {
-									"example": "*/30 * * * *",
 									"type": "string",
+									"example": "*/30 * * * *",
 									"x-auditable": true
 								},
 								"modified_on": {
-									"readOnly": true,
 									"type": "string",
+									"readOnly": true,
 									"x-auditable": true
 								}
 							},
 							"required": [
 								"cron"
-							],
-							"type": "object"
-						},
-						"type": "array"
+							]
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Cron Triggers response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -385,12 +388,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -400,15 +403,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -417,12 +420,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -432,59 +435,58 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"schedules": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
-																"readOnly": true,
 																"type": "string",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"cron": {
-																"example": "*/30 * * * *",
 																"type": "string",
+																"example": "*/30 * * * *",
 																"x-auditable": true
 															},
 															"modified_on": {
-																"readOnly": true,
 																"type": "string",
+																"readOnly": true,
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"cron"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
 												"schedules"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -495,66 +497,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update Cron Triggers response."
+				}
 			},
 			"4XX": {
+				"description": "Update Cron Triggers response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -563,12 +529,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -578,25 +544,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -604,12 +607,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Cron Triggers response failure."
+				}
 			}
 		},
 		"security": [
@@ -621,7 +622,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Cron Triggers",
 		"tags": [
 			"Worker Cron Trigger"
 		],

@@ -1,38 +1,42 @@
 {
 	"GET /zones/{zone_id}/acm/total_tls": {
-		"description": "Get Total TLS Settings for a Zone.",
 		"operationId": "total-tls-total-tls-settings-details",
+		"summary": "Total TLS Settings Details",
+		"description": "Get Total TLS Settings for a Zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Total TLS Settings Details response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -41,12 +45,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -56,15 +60,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -73,12 +77,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -88,58 +92,56 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"certificate_authority": {
 													"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+													"type": "string",
+													"example": "google",
 													"enum": [
 														"google",
 														"lets_encrypt",
 														"ssl_com"
 													],
-													"example": "google",
-													"type": "string",
 													"x-auditable": true
 												},
 												"enabled": {
 													"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"validity_period": {
 													"description": "The validity period in days for the certificates ordered via Total TLS.",
+													"type": "integer",
 													"enum": [
 														90
 													],
-													"type": "integer",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -147,10 +149,10 @@
 							]
 						}
 					}
-				},
-				"description": "Total TLS Settings Details response."
+				}
 			},
 			"4XX": {
+				"description": "Total TLS Settings Details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -158,16 +160,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -176,12 +180,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -191,15 +195,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -208,12 +212,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -223,58 +227,56 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"certificate_authority": {
 															"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+															"type": "string",
+															"example": "google",
 															"enum": [
 																"google",
 																"lets_encrypt",
 																"ssl_com"
 															],
-															"example": "google",
-															"type": "string",
 															"x-auditable": true
 														},
 														"enabled": {
 															"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"validity_period": {
 															"description": "The validity period in days for the certificates ordered via Total TLS.",
+															"type": "integer",
 															"enum": [
 																90
 															],
-															"type": "integer",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -282,59 +284,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -343,12 +309,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -358,25 +324,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -384,14 +387,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Total TLS Settings Details response failure."
+				}
 			}
 		},
 		"security": [
@@ -403,7 +404,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Total TLS Settings Details",
 		"tags": [
 			"Total TLS"
 		],
@@ -428,71 +428,75 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/acm/total_tls": {
-		"description": "Set Total TLS Settings or disable the feature for a Zone.",
 		"operationId": "total-tls-enable-or-disable-total-tls",
+		"summary": "Enable or Disable Total TLS",
+		"description": "Set Total TLS Settings or disable the feature for a Zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"certificate_authority": {
 								"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+								"type": "string",
+								"example": "google",
 								"enum": [
 									"google",
 									"lets_encrypt",
 									"ssl_com"
 								],
-								"example": "google",
-								"type": "string",
 								"x-auditable": true
 							},
 							"enabled": {
 								"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"enabled"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Enable or Disable Total TLS response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -501,12 +505,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -516,15 +520,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -533,12 +537,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -548,58 +552,56 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"certificate_authority": {
 													"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+													"type": "string",
+													"example": "google",
 													"enum": [
 														"google",
 														"lets_encrypt",
 														"ssl_com"
 													],
-													"example": "google",
-													"type": "string",
 													"x-auditable": true
 												},
 												"enabled": {
 													"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"validity_period": {
 													"description": "The validity period in days for the certificates ordered via Total TLS.",
+													"type": "integer",
 													"enum": [
 														90
 													],
-													"type": "integer",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -607,10 +609,10 @@
 							]
 						}
 					}
-				},
-				"description": "Enable or Disable Total TLS response."
+				}
 			},
 			"4XX": {
+				"description": "Enable or Disable Total TLS response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -618,16 +620,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -636,12 +640,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -651,15 +655,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -668,12 +672,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -683,58 +687,56 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"certificate_authority": {
 															"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+															"type": "string",
+															"example": "google",
 															"enum": [
 																"google",
 																"lets_encrypt",
 																"ssl_com"
 															],
-															"example": "google",
-															"type": "string",
 															"x-auditable": true
 														},
 														"enabled": {
 															"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"validity_period": {
 															"description": "The validity period in days for the certificates ordered via Total TLS.",
+															"type": "integer",
 															"enum": [
 																90
 															],
-															"type": "integer",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -742,59 +744,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -803,12 +769,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -818,25 +784,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -844,14 +847,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Enable or Disable Total TLS response failure."
+				}
 			}
 		},
 		"security": [
@@ -863,7 +864,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Enable or Disable Total TLS",
 		"tags": [
 			"Total TLS"
 		],

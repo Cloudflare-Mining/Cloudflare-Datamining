@@ -1,70 +1,73 @@
 {
 	"GET /radar/annotations": {
-		"description": "Retrieves the latest annotations.",
 		"operationId": "radar-get-annotations",
+		"summary": "Get latest annotations",
+		"description": "Retrieves the latest annotations.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
 				"schema": {
 					"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
+					"type": "string",
 					"example": "7d",
-					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
-					"type": "string"
+					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by data source.",
-				"in": "query",
 				"name": "dataSource",
+				"in": "query",
+				"description": "Filters results by data source.",
 				"schema": {
 					"description": "Filters results by data source.",
+					"type": "string",
+					"example": "ALL",
 					"enum": [
 						"ALL",
 						"AI_BOTS",
@@ -91,17 +94,17 @@
 						"ROBOTS_TXT",
 						"SPEED",
 						"WORKERS_AI"
-					],
-					"example": "ALL",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filters results by event type.",
-				"in": "query",
 				"name": "eventType",
+				"in": "query",
+				"description": "Filters results by event type.",
 				"schema": {
 					"description": "Filters results by event type.",
+					"type": "string",
+					"example": "OUTAGE",
 					"enum": [
 						"EVENT",
 						"GENERAL",
@@ -109,104 +112,107 @@
 						"PARTIAL_PROJECTION",
 						"PIPELINE",
 						"TRAFFIC_ANOMALY"
-					],
-					"example": "OUTAGE",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
-					"example": 174,
-					"type": "integer"
+					"type": "integer",
+					"example": 174
 				}
 			},
 			{
-				"description": "Filters results by location. Specify an alpha-2 location code.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Filters results by origin.",
-				"in": "query",
 				"name": "origin",
+				"in": "query",
+				"description": "Filters results by origin.",
 				"schema": {
 					"description": "Filters results by origin.",
+					"type": "string",
 					"example": "amazon-us-east-1",
-					"maxLength": 100,
-					"type": "string"
+					"maxLength": 100
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"annotations": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asns": {
+														"type": "array",
 														"items": {
 															"example": 189,
 															"type": "integer"
-														},
-														"type": "array"
+														}
 													},
 													"asnsDetails": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"asn": {
-																	"example": "189",
-																	"type": "string"
+																	"type": "string",
+																	"example": "189"
 																},
 																"locations": {
+																	"type": "object",
 																	"properties": {
 																		"code": {
-																			"example": "US",
-																			"type": "string"
+																			"type": "string",
+																			"example": "US"
 																		},
 																		"name": {
-																			"example": "United States",
-																			"type": "string"
+																			"type": "string",
+																			"example": "United States"
 																		}
 																	},
 																	"required": [
 																		"code",
 																		"name"
-																	],
-																	"type": "object"
+																	]
 																},
 																"name": {
-																	"example": "LUMEN-LEGACY-L3-PARTITION",
-																	"type": "string"
+																	"type": "string",
+																	"example": "LUMEN-LEGACY-L3-PARTITION"
 																}
 															},
 															"required": [
@@ -214,50 +220,50 @@
 																"name"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"dataSource": {
-														"example": "ALL",
-														"type": "string"
+														"type": "string",
+														"example": "ALL"
 													},
 													"description": {
-														"example": "example",
-														"type": "string"
+														"type": "string",
+														"example": "example"
 													},
 													"endDate": {
-														"example": "2022-09-08T10:00:28Z",
-														"type": "string"
+														"type": "string",
+														"example": "2022-09-08T10:00:28Z"
 													},
 													"eventType": {
-														"example": "OUTAGE",
-														"type": "string"
+														"type": "string",
+														"example": "OUTAGE"
 													},
 													"id": {
-														"example": "550",
-														"type": "string"
+														"type": "string",
+														"example": "550"
 													},
 													"linkedUrl": {
-														"example": "http://example.com",
-														"type": "string"
+														"type": "string",
+														"example": "http://example.com"
 													},
 													"locations": {
+														"type": "array",
 														"items": {
 															"example": "US",
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"locationsDetails": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"code": {
-																	"example": "US",
-																	"type": "string"
+																	"type": "string",
+																	"example": "US"
 																},
 																"name": {
-																	"example": "United States",
-																	"type": "string"
+																	"type": "string",
+																	"example": "United States"
 																}
 															},
 															"required": [
@@ -265,26 +271,26 @@
 																"name"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"origins": {
+														"type": "array",
 														"items": {
 															"example": "amazon-us-east-1",
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"originsDetails": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"name": {
-																	"example": "us-east-1 Amazon Web Services",
-																	"type": "string"
+																	"type": "string",
+																	"example": "us-east-1 Amazon Web Services"
 																},
 																"origin": {
-																	"example": "amazon-us-east-1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "amazon-us-east-1"
 																}
 															},
 															"required": [
@@ -292,33 +298,32 @@
 																"name"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"outage": {
+														"type": "object",
 														"properties": {
 															"outageCause": {
-																"example": "CABLE_CUT",
-																"type": "string"
+																"type": "string",
+																"example": "CABLE_CUT"
 															},
 															"outageType": {
-																"example": "NATIONWIDE",
-																"type": "string"
+																"type": "string",
+																"example": "NATIONWIDE"
 															}
 														},
 														"required": [
 															"outageCause",
 															"outageType"
-														],
-														"type": "object"
+														]
 													},
 													"scope": {
-														"example": "Colima, Michoacán, México",
-														"type": "string"
+														"type": "string",
+														"example": "Colima, Michoacán, México"
 													},
 													"startDate": {
-														"example": "2022-09-06T10:00:28Z",
-														"type": "string"
+														"type": "string",
+														"example": "2022-09-06T10:00:28Z"
 													}
 												},
 												"required": [
@@ -335,36 +340,35 @@
 													"outage"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"annotations"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -375,27 +379,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -405,7 +406,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get latest annotations",
 		"tags": [
 			"Radar Annotations"
 		],
@@ -425,158 +425,164 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/annotations/outages": {
-		"description": "Retrieves the latest Internet outages and anomalies.",
 		"operationId": "radar-get-annotations-outages",
+		"summary": "Get latest Internet outages and anomalies",
+		"description": "Retrieves the latest Internet outages and anomalies.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
 				"schema": {
 					"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
+					"type": "string",
 					"example": "7d",
-					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
-					"type": "string"
+					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
-					"example": 174,
-					"type": "integer"
+					"type": "integer",
+					"example": 174
 				}
 			},
 			{
-				"description": "Filters results by location. Specify an alpha-2 location code.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Filters results by origin.",
-				"in": "query",
 				"name": "origin",
+				"in": "query",
+				"description": "Filters results by origin.",
 				"schema": {
 					"description": "Filters results by origin.",
+					"type": "string",
 					"example": "amazon-us-east-1",
-					"maxLength": 100,
-					"type": "string"
+					"maxLength": 100
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"annotations": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asns": {
+														"type": "array",
 														"items": {
 															"example": 189,
 															"type": "integer"
-														},
-														"type": "array"
+														}
 													},
 													"asnsDetails": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"asn": {
-																	"example": "189",
-																	"type": "string"
+																	"type": "string",
+																	"example": "189"
 																},
 																"locations": {
+																	"type": "object",
 																	"properties": {
 																		"code": {
-																			"example": "US",
-																			"type": "string"
+																			"type": "string",
+																			"example": "US"
 																		},
 																		"name": {
-																			"example": "United States",
-																			"type": "string"
+																			"type": "string",
+																			"example": "United States"
 																		}
 																	},
 																	"required": [
 																		"code",
 																		"name"
-																	],
-																	"type": "object"
+																	]
 																},
 																"name": {
-																	"example": "LUMEN-LEGACY-L3-PARTITION",
-																	"type": "string"
+																	"type": "string",
+																	"example": "LUMEN-LEGACY-L3-PARTITION"
 																}
 															},
 															"required": [
@@ -584,50 +590,50 @@
 																"name"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"dataSource": {
-														"example": "ALL",
-														"type": "string"
+														"type": "string",
+														"example": "ALL"
 													},
 													"description": {
-														"example": "example",
-														"type": "string"
+														"type": "string",
+														"example": "example"
 													},
 													"endDate": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"eventType": {
-														"example": "OUTAGE",
-														"type": "string"
+														"type": "string",
+														"example": "OUTAGE"
 													},
 													"id": {
-														"example": "550",
-														"type": "string"
+														"type": "string",
+														"example": "550"
 													},
 													"linkedUrl": {
-														"example": "http://example.com",
-														"type": "string"
+														"type": "string",
+														"example": "http://example.com"
 													},
 													"locations": {
+														"type": "array",
 														"items": {
 															"example": "US",
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"locationsDetails": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"code": {
-																	"example": "US",
-																	"type": "string"
+																	"type": "string",
+																	"example": "US"
 																},
 																"name": {
-																	"example": "United States",
-																	"type": "string"
+																	"type": "string",
+																	"example": "United States"
 																}
 															},
 															"required": [
@@ -635,26 +641,26 @@
 																"name"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"origins": {
+														"type": "array",
 														"items": {
 															"example": "amazon-us-east-1",
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"originsDetails": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"name": {
-																	"example": "us-east-1 Amazon Web Services",
-																	"type": "string"
+																	"type": "string",
+																	"example": "us-east-1 Amazon Web Services"
 																},
 																"origin": {
-																	"example": "amazon-us-east-1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "amazon-us-east-1"
 																}
 															},
 															"required": [
@@ -662,33 +668,32 @@
 																"name"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"outage": {
+														"type": "object",
 														"properties": {
 															"outageCause": {
-																"example": "CABLE_CUT",
-																"type": "string"
+																"type": "string",
+																"example": "CABLE_CUT"
 															},
 															"outageType": {
-																"example": "NATIONWIDE",
-																"type": "string"
+																"type": "string",
+																"example": "NATIONWIDE"
 															}
 														},
 														"required": [
 															"outageCause",
 															"outageType"
-														],
-														"type": "object"
+														]
 													},
 													"scope": {
-														"example": "Colima, Michoacán, México",
-														"type": "string"
+														"type": "string",
+														"example": "Colima, Michoacán, México"
 													},
 													"startDate": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													}
 												},
 												"required": [
@@ -705,36 +710,35 @@
 													"outage"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"annotations"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -745,27 +749,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -775,7 +776,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get latest Internet outages and anomalies",
 		"tags": [
 			"Radar Annotations"
 		],
@@ -795,94 +795,99 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/annotations/outages/locations": {
-		"description": "Retrieves the number of outages by location.",
 		"operationId": "radar-get-annotations-outages-top",
+		"summary": "Get the number of outages by location",
+		"description": "Retrieves the number of outages by location.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
 				"schema": {
 					"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
+					"type": "string",
 					"example": "7d",
-					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
-					"type": "string"
+					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"annotations": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"clientCountryAlpha2": {
-														"example": "PT",
-														"type": "string"
+														"type": "string",
+														"example": "PT"
 													},
 													"clientCountryName": {
-														"example": "Portugal",
-														"type": "string"
+														"type": "string",
+														"example": "Portugal"
 													},
 													"value": {
 														"description": "A numeric string.",
+														"type": "string",
 														"example": "10",
-														"pattern": "^-?\\d+(\\.\\d+)?$",
-														"type": "string"
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													}
 												},
 												"required": [
@@ -891,36 +896,35 @@
 													"value"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"annotations"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -931,27 +935,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -961,7 +962,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get the number of outages by location",
 		"tags": [
 			"Radar Annotations"
 		],

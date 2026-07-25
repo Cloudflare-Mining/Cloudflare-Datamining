@@ -1,30 +1,31 @@
 {
 	"DELETE /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-delete",
+		"summary": "Delete target",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			},
 			{
-				"in": "path",
 				"name": "target_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Target identifier",
-					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+					"type": "string",
 					"format": "uuid",
+					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 					"maxLength": 36,
 					"title": "target_id",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -34,62 +35,27 @@
 				"description": "Successfully deleted the target"
 			},
 			"4XX": {
+				"description": "Failed to delete the target",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -98,12 +64,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -113,25 +79,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -139,12 +142,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to delete the target"
+				}
 			}
 		},
 		"security": [
@@ -154,118 +155,82 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete target",
 		"tags": [
 			"Infrastructure Access Targets"
 		]
 	},
 	"DELETE /accounts/{account_id}/infrastructure/targets/batch": {
-		"deprecated": true,
-		"description": "Removes one or more targets.",
 		"operationId": "infra-targets-delete-batch",
+		"summary": "Delete targets (Deprecated)",
+		"description": "Removes one or more targets.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"target_ids": {
 								"description": "List of target IDs to bulk delete",
+								"type": "array",
 								"items": {
 									"description": "Target identifier",
-									"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+									"type": "string",
 									"format": "uuid",
+									"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 									"maxLength": 36,
 									"title": "target_id",
-									"type": "string",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"target_ids"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
 				"description": "Successfully deleted the targets"
 			},
 			"4XX": {
+				"description": "Failed to delete the targets",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -274,12 +239,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -289,25 +254,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -315,14 +317,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to delete the targets"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -330,228 +331,228 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete targets (Deprecated)",
 		"tags": [
 			"Infrastructure Access Targets"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
-		"description": "Lists and sorts an account’s targets. Filters are optional and are ANDed\ntogether.",
 		"operationId": "infra-targets-list",
+		"summary": "List all targets",
+		"description": "Lists and sorts an account’s targets. Filters are optional and are ANDed\ntogether.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			},
 			{
-				"description": "Hostname of a target",
-				"in": "query",
 				"name": "hostname",
+				"in": "query",
+				"description": "Hostname of a target",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Partial match to the hostname of a target",
-				"in": "query",
 				"name": "hostname_contains",
+				"in": "query",
+				"description": "Partial match to the hostname of a target",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Private virtual network identifier of the target",
-				"in": "query",
 				"name": "virtual_network_id",
+				"in": "query",
+				"description": "Private virtual network identifier of the target",
 				"schema": {
+					"type": "string",
 					"format": "uuid",
-					"nullable": true,
-					"type": "string"
+					"nullable": true
 				}
 			},
 			{
-				"description": "IPv4 address of the target",
-				"in": "query",
 				"name": "ip_v4",
+				"in": "query",
+				"description": "IPv4 address of the target",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "IPv6 address of the target",
-				"in": "query",
 				"name": "ip_v6",
+				"in": "query",
+				"description": "IPv6 address of the target",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Date and time at which the target was created before (inclusive)",
-				"in": "query",
 				"name": "created_before",
+				"in": "query",
+				"description": "Date and time at which the target was created before (inclusive)",
 				"schema": {
+					"type": "string",
 					"format": "date-time",
-					"nullable": true,
-					"type": "string"
+					"nullable": true
 				}
 			},
 			{
-				"description": "Date and time at which the target was created after (inclusive)",
-				"in": "query",
 				"name": "created_after",
+				"in": "query",
+				"description": "Date and time at which the target was created after (inclusive)",
 				"schema": {
+					"type": "string",
 					"format": "date-time",
-					"nullable": true,
-					"type": "string"
+					"nullable": true
 				}
 			},
 			{
-				"description": "Date and time at which the target was modified before (inclusive)",
-				"in": "query",
 				"name": "modified_before",
+				"in": "query",
+				"description": "Date and time at which the target was modified before (inclusive)",
 				"schema": {
+					"type": "string",
 					"format": "date-time",
-					"nullable": true,
-					"type": "string"
+					"nullable": true
 				}
 			},
 			{
-				"description": "Date and time at which the target was modified after (inclusive)",
-				"in": "query",
 				"name": "modified_after",
+				"in": "query",
+				"description": "Date and time at which the target was modified after (inclusive)",
 				"schema": {
+					"type": "string",
 					"format": "date-time",
-					"nullable": true,
-					"type": "string"
+					"nullable": true
 				}
 			},
 			{
-				"description": "Filters for targets that have any of the following IP addresses. Specify\n`ips` multiple times in query parameter to build list of candidates.",
-				"in": "query",
 				"name": "ips",
+				"in": "query",
+				"description": "Filters for targets that have any of the following IP addresses. Specify\n`ips` multiple times in query parameter to build list of candidates.",
 				"schema": {
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters for targets that have any of the following UUIDs. Specify\n`target_ids` multiple times in query parameter to build list of\ncandidates.",
-				"in": "query",
 				"name": "target_ids",
+				"in": "query",
+				"description": "Filters for targets that have any of the following UUIDs. Specify\n`target_ids` multiple times in query parameter to build list of\ncandidates.",
 				"schema": {
+					"type": "array",
 					"items": {
 						"format": "uuid",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters for targets whose IP addresses look like the specified string.\nSupports `*` as a wildcard character",
-				"in": "query",
 				"name": "ip_like",
+				"in": "query",
+				"description": "Filters for targets whose IP addresses look like the specified string.\nSupports `*` as a wildcard character",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Defines an IPv4 filter range's starting value (inclusive). Requires\n`ipv4_end` to be specified as well.",
-				"in": "query",
 				"name": "ipv4_start",
+				"in": "query",
+				"description": "Defines an IPv4 filter range's starting value (inclusive). Requires\n`ipv4_end` to be specified as well.",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Defines an IPv4 filter range's ending value (inclusive). Requires\n`ipv4_start` to be specified as well.",
-				"in": "query",
 				"name": "ipv4_end",
+				"in": "query",
+				"description": "Defines an IPv4 filter range's ending value (inclusive). Requires\n`ipv4_start` to be specified as well.",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Defines an IPv6 filter range's starting value (inclusive). Requires\n`ipv6_end` to be specified as well.",
-				"in": "query",
 				"name": "ipv6_start",
+				"in": "query",
+				"description": "Defines an IPv6 filter range's starting value (inclusive). Requires\n`ipv6_end` to be specified as well.",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Defines an IPv6 filter range's ending value (inclusive). Requires\n`ipv6_start` to be specified as well.",
-				"in": "query",
 				"name": "ipv6_end",
+				"in": "query",
+				"description": "Defines an IPv6 filter range's ending value (inclusive). Requires\n`ipv6_start` to be specified as well.",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "Current page in the response",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Current page in the response",
 				"schema": {
+					"type": "integer",
+					"format": "int32",
 					"default": 1,
-					"format": "int32",
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Max amount of entries returned per page",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Max amount of entries returned per page",
 				"schema": {
-					"default": 1000,
+					"type": "integer",
 					"format": "int32",
+					"default": 1000,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "The field to sort by.",
-				"in": "query",
 				"name": "order",
+				"in": "query",
+				"description": "The field to sort by.",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"hostname",
 						"created_at"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "The sorting direction.",
-				"in": "query",
 				"name": "direction",
+				"in": "query",
+				"description": "The sorting direction.",
 				"schema": {
 					"allOf": [
 						{
+							"type": "string",
 							"enum": [
 								"asc",
 								"desc"
-							],
-							"type": "string"
+							]
 						}
 					]
 				}
@@ -559,21 +560,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully retrieved all targets in the account",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -582,12 +586,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -597,15 +601,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -614,12 +618,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -629,138 +633,138 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"description": "Date and time at which the target was created",
-														"example": "2019-08-24T14:15:22Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2019-08-24T14:15:22Z"
 													},
 													"hostname": {
 														"description": "A non-unique field that refers to a target",
-														"example": "infra-access-target",
-														"type": "string"
+														"type": "string",
+														"example": "infra-access-target"
 													},
 													"id": {
 														"description": "Target identifier",
-														"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+														"type": "string",
 														"format": "uuid",
+														"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 														"maxLength": 36,
 														"title": "target_id",
-														"type": "string",
 														"x-auditable": true
 													},
 													"ip": {
 														"description": "The IPv4/IPv6 address that identifies where to reach a target",
+														"type": "object",
 														"properties": {
 															"ipv4": {
 																"description": "The target's IPv4 address",
+																"type": "object",
 																"properties": {
 																	"ip_addr": {
 																		"description": "IP address of the target",
-																		"example": "187.26.29.249",
 																		"type": "string",
+																		"example": "187.26.29.249",
 																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																		"format": "uuid",
 																		"type": "string",
+																		"format": "uuid",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"ipv6": {
 																"description": "The target's IPv6 address",
+																"type": "object",
 																"properties": {
 																	"ip_addr": {
 																		"description": "IP address of the target",
-																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																		"type": "string",
+																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																		"format": "uuid",
 																		"type": "string",
+																		"format": "uuid",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
+														}
 													},
 													"modified_at": {
 														"description": "Date and time at which the target was modified",
-														"example": "2019-08-24T14:15:22Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2019-08-24T14:15:22Z"
 													}
 												},
 												"required": [
@@ -769,10 +773,8 @@
 													"ip",
 													"created_at",
 													"modified_at"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -780,66 +782,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully retrieved all targets in the account"
+				}
 			},
 			"4XX": {
+				"description": "Failed to retrieve all targets in the account",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -848,12 +814,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -863,25 +829,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -889,12 +892,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to retrieve all targets in the account"
+				}
 			}
 		},
 		"security": [
@@ -904,58 +905,61 @@
 				"api_token": []
 			}
 		],
-		"summary": "List all targets",
 		"tags": [
 			"Infrastructure Access Targets"
 		]
 	},
 	"GET /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-get",
+		"summary": "Get target",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			},
 			{
-				"in": "path",
 				"name": "target_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Target identifier",
-					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+					"type": "string",
 					"format": "uuid",
+					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 					"maxLength": 36,
 					"title": "target_id",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successfully retrieved the target",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -964,12 +968,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -979,15 +983,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -996,12 +1000,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1011,102 +1015,101 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Date and time at which the target was created",
-													"example": "2019-08-24T14:15:22Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2019-08-24T14:15:22Z"
 												},
 												"hostname": {
 													"description": "A non-unique field that refers to a target",
-													"example": "infra-access-target",
-													"type": "string"
+													"type": "string",
+													"example": "infra-access-target"
 												},
 												"id": {
 													"description": "Target identifier",
-													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+													"type": "string",
 													"format": "uuid",
+													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 													"maxLength": 36,
 													"title": "target_id",
-													"type": "string",
 													"x-auditable": true
 												},
 												"ip": {
 													"description": "The IPv4/IPv6 address that identifies where to reach a target",
+													"type": "object",
 													"properties": {
 														"ipv4": {
 															"description": "The target's IPv4 address",
+															"type": "object",
 															"properties": {
 																"ip_addr": {
 																	"description": "IP address of the target",
-																	"example": "187.26.29.249",
 																	"type": "string",
+																	"example": "187.26.29.249",
 																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv6": {
 															"description": "The target's IPv6 address",
+															"type": "object",
 															"properties": {
 																"ip_addr": {
 																	"description": "IP address of the target",
-																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																	"type": "string",
+																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"modified_at": {
 													"description": "Date and time at which the target was modified",
-													"example": "2019-08-24T14:15:22Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2019-08-24T14:15:22Z"
 												}
 											},
 											"required": [
@@ -1115,8 +1118,7 @@
 												"ip",
 												"created_at",
 												"modified_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1124,66 +1126,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully retrieved the target"
+				}
 			},
 			"4XX": {
+				"description": "Failed to retrieve the target",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1192,12 +1158,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1207,25 +1173,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1233,12 +1236,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to retrieve the target"
+				}
 			}
 		},
 		"security": [
@@ -1248,112 +1249,115 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get target",
 		"tags": [
 			"Infrastructure Access Targets"
 		]
 	},
 	"POST /accounts/{account_id}/infrastructure/targets": {
 		"operationId": "infra-targets-post",
+		"summary": "Create new target",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"hostname": {
 								"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
-								"example": "infra-access-target",
 								"type": "string",
+								"example": "infra-access-target",
 								"x-auditable": true
 							},
 							"ip": {
 								"description": "The IPv4/IPv6 address that identifies where to reach a target",
+								"type": "object",
 								"properties": {
 									"ipv4": {
 										"description": "The target's IPv4 address",
+										"type": "object",
 										"properties": {
 											"ip_addr": {
 												"description": "IP address of the target",
-												"example": "187.26.29.249",
 												"type": "string",
+												"example": "187.26.29.249",
 												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-												"format": "uuid",
 												"type": "string",
+												"format": "uuid",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"ipv6": {
 										"description": "The target's IPv6 address",
+										"type": "object",
 										"properties": {
 											"ip_addr": {
 												"description": "IP address of the target",
-												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 												"type": "string",
+												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-												"format": "uuid",
 												"type": "string",
+												"format": "uuid",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									}
-								},
-								"type": "object"
+								}
 							}
 						},
 						"required": [
 							"hostname",
 							"ip"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully created the target",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1362,12 +1366,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1377,15 +1381,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1394,12 +1398,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1409,102 +1413,101 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Date and time at which the target was created",
-													"example": "2019-08-24T14:15:22Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2019-08-24T14:15:22Z"
 												},
 												"hostname": {
 													"description": "A non-unique field that refers to a target",
-													"example": "infra-access-target",
-													"type": "string"
+													"type": "string",
+													"example": "infra-access-target"
 												},
 												"id": {
 													"description": "Target identifier",
-													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+													"type": "string",
 													"format": "uuid",
+													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 													"maxLength": 36,
 													"title": "target_id",
-													"type": "string",
 													"x-auditable": true
 												},
 												"ip": {
 													"description": "The IPv4/IPv6 address that identifies where to reach a target",
+													"type": "object",
 													"properties": {
 														"ipv4": {
 															"description": "The target's IPv4 address",
+															"type": "object",
 															"properties": {
 																"ip_addr": {
 																	"description": "IP address of the target",
-																	"example": "187.26.29.249",
 																	"type": "string",
+																	"example": "187.26.29.249",
 																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv6": {
 															"description": "The target's IPv6 address",
+															"type": "object",
 															"properties": {
 																"ip_addr": {
 																	"description": "IP address of the target",
-																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																	"type": "string",
+																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"modified_at": {
 													"description": "Date and time at which the target was modified",
-													"example": "2019-08-24T14:15:22Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2019-08-24T14:15:22Z"
 												}
 											},
 											"required": [
@@ -1513,8 +1516,7 @@
 												"ip",
 												"created_at",
 												"modified_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1522,66 +1524,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully created the target"
+				}
 			},
 			"4XX": {
+				"description": "Failed to create the target",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1590,12 +1556,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1605,25 +1571,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1631,12 +1634,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to create the target"
+				}
 			}
 		},
 		"security": [
@@ -1646,117 +1647,82 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new target",
 		"tags": [
 			"Infrastructure Access Targets"
 		]
 	},
 	"POST /accounts/{account_id}/infrastructure/targets/batch_delete": {
-		"description": "Removes one or more targets.",
 		"operationId": "infra-targets-delete-batch-post",
+		"summary": "Delete targets",
+		"description": "Removes one or more targets.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"target_ids": {
 								"description": "List of target IDs to bulk delete",
+								"type": "array",
 								"items": {
 									"description": "Target identifier",
-									"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+									"type": "string",
 									"format": "uuid",
+									"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 									"maxLength": 36,
 									"title": "target_id",
-									"type": "string",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"target_ids"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
 				"description": "Successfully deleted the targets"
 			},
 			"4XX": {
+				"description": "Failed to delete the targets",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1765,12 +1731,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1780,25 +1746,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1806,12 +1809,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to delete the targets"
+				}
 			}
 		},
 		"security": [
@@ -1821,126 +1822,129 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete targets",
 		"tags": [
 			"Infrastructure Access Targets"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-put",
+		"summary": "Update target",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			},
 			{
-				"in": "path",
 				"name": "target_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Target identifier",
-					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+					"type": "string",
 					"format": "uuid",
+					"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 					"maxLength": 36,
 					"title": "target_id",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"hostname": {
 								"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
-								"example": "infra-access-target",
 								"type": "string",
+								"example": "infra-access-target",
 								"x-auditable": true
 							},
 							"ip": {
 								"description": "The IPv4/IPv6 address that identifies where to reach a target",
+								"type": "object",
 								"properties": {
 									"ipv4": {
 										"description": "The target's IPv4 address",
+										"type": "object",
 										"properties": {
 											"ip_addr": {
 												"description": "IP address of the target",
-												"example": "187.26.29.249",
 												"type": "string",
+												"example": "187.26.29.249",
 												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-												"format": "uuid",
 												"type": "string",
+												"format": "uuid",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"ipv6": {
 										"description": "The target's IPv6 address",
+										"type": "object",
 										"properties": {
 											"ip_addr": {
 												"description": "IP address of the target",
-												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 												"type": "string",
+												"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 												"x-auditable": true
 											},
 											"virtual_network_id": {
 												"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-												"format": "uuid",
 												"type": "string",
+												"format": "uuid",
+												"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									}
-								},
-								"type": "object"
+								}
 							}
 						},
 						"required": [
 							"hostname",
 							"ip"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully updated the target",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1949,12 +1953,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1964,15 +1968,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1981,12 +1985,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1996,102 +2000,101 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Date and time at which the target was created",
-													"example": "2019-08-24T14:15:22Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2019-08-24T14:15:22Z"
 												},
 												"hostname": {
 													"description": "A non-unique field that refers to a target",
-													"example": "infra-access-target",
-													"type": "string"
+													"type": "string",
+													"example": "infra-access-target"
 												},
 												"id": {
 													"description": "Target identifier",
-													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+													"type": "string",
 													"format": "uuid",
+													"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 													"maxLength": 36,
 													"title": "target_id",
-													"type": "string",
 													"x-auditable": true
 												},
 												"ip": {
 													"description": "The IPv4/IPv6 address that identifies where to reach a target",
+													"type": "object",
 													"properties": {
 														"ipv4": {
 															"description": "The target's IPv4 address",
+															"type": "object",
 															"properties": {
 																"ip_addr": {
 																	"description": "IP address of the target",
-																	"example": "187.26.29.249",
 																	"type": "string",
+																	"example": "187.26.29.249",
 																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv6": {
 															"description": "The target's IPv6 address",
+															"type": "object",
 															"properties": {
 																"ip_addr": {
 																	"description": "IP address of the target",
-																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																	"type": "string",
+																	"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																	"x-auditable": true
 																},
 																"virtual_network_id": {
 																	"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
+																	"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"modified_at": {
 													"description": "Date and time at which the target was modified",
-													"example": "2019-08-24T14:15:22Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2019-08-24T14:15:22Z"
 												}
 											},
 											"required": [
@@ -2100,8 +2103,7 @@
 												"ip",
 												"created_at",
 												"modified_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2109,66 +2111,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully updated the target"
+				}
 			},
 			"4XX": {
+				"description": "Failed to update the target",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2177,12 +2143,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2192,25 +2158,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2218,12 +2221,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to update the target"
+				}
 			}
 		},
 		"security": [
@@ -2233,85 +2234,87 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update target",
 		"tags": [
 			"Infrastructure Access Targets"
 		]
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/batch": {
-		"description": "Adds one or more targets.",
 		"operationId": "infra-targets-put-batch",
+		"summary": "Create new targets",
+		"description": "Adds one or more targets.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"title": "account_id",
-					"type": "string"
+					"title": "account_id"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
 							"properties": {
 								"hostname": {
 									"description": "A non-unique field that refers to a target. Case insensitive, maximum\nlength of 255 characters, supports the use of special characters dash\nand period, does not support spaces, and must start and end with an\nalphanumeric character.",
-									"example": "infra-access-target",
 									"type": "string",
+									"example": "infra-access-target",
 									"x-auditable": true
 								},
 								"ip": {
 									"description": "The IPv4/IPv6 address that identifies where to reach a target",
+									"type": "object",
 									"properties": {
 										"ipv4": {
 											"description": "The target's IPv4 address",
+											"type": "object",
 											"properties": {
 												"ip_addr": {
 													"description": "IP address of the target",
-													"example": "187.26.29.249",
 													"type": "string",
+													"example": "187.26.29.249",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"ipv6": {
 											"description": "The target's IPv6 address",
+											"type": "object",
 											"properties": {
 												"ip_addr": {
 													"description": "IP address of the target",
-													"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 													"type": "string",
+													"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 													"x-auditable": true
 												},
 												"virtual_network_id": {
 													"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
+													"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
-											},
-											"type": "object"
+											}
 										}
-									},
-									"type": "object"
+									}
 								}
 							},
 							"required": [
@@ -2319,30 +2322,31 @@
 								"ip"
 							],
 							"type": "object"
-						},
-						"type": "array"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully created the targets",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2351,12 +2355,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2366,15 +2370,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2383,12 +2387,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2398,103 +2402,103 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"description": "Date and time at which the target was created",
-														"example": "2019-08-24T14:15:22Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2019-08-24T14:15:22Z"
 													},
 													"hostname": {
 														"description": "A non-unique field that refers to a target",
-														"example": "infra-access-target",
-														"type": "string"
+														"type": "string",
+														"example": "infra-access-target"
 													},
 													"id": {
 														"description": "Target identifier",
-														"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
+														"type": "string",
 														"format": "uuid",
+														"example": "0191dce4-9ab4-7fce-b660-8e5dec5172da",
 														"maxLength": 36,
 														"title": "target_id",
-														"type": "string",
 														"x-auditable": true
 													},
 													"ip": {
 														"description": "The IPv4/IPv6 address that identifies where to reach a target",
+														"type": "object",
 														"properties": {
 															"ipv4": {
 																"description": "The target's IPv4 address",
+																"type": "object",
 																"properties": {
 																	"ip_addr": {
 																		"description": "IP address of the target",
-																		"example": "187.26.29.249",
 																		"type": "string",
+																		"example": "187.26.29.249",
 																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																		"format": "uuid",
 																		"type": "string",
+																		"format": "uuid",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"ipv6": {
 																"description": "The target's IPv6 address",
+																"type": "object",
 																"properties": {
 																	"ip_addr": {
 																		"description": "IP address of the target",
-																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																		"type": "string",
+																		"example": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 																		"x-auditable": true
 																	},
 																	"virtual_network_id": {
 																		"description": "(optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.",
-																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
-																		"format": "uuid",
 																		"type": "string",
+																		"format": "uuid",
+																		"example": "c77b744e-acc8-428f-9257-6878c046ed55",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
+														}
 													},
 													"modified_at": {
 														"description": "Date and time at which the target was modified",
-														"example": "2019-08-24T14:15:22Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2019-08-24T14:15:22Z"
 													}
 												},
 												"required": [
@@ -2503,10 +2507,8 @@
 													"ip",
 													"created_at",
 													"modified_at"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -2514,66 +2516,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successfully created the targets"
+				}
 			},
 			"4XX": {
+				"description": "Failed to create the targets",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2582,12 +2548,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2597,25 +2563,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2623,12 +2626,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to create the targets"
+				}
 			}
 		},
 		"security": [
@@ -2638,7 +2639,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new targets",
 		"tags": [
 			"Infrastructure Access Targets"
 		]

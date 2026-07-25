@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}": {
-		"description": "Deletes a collection and all its items. This action cannot be undone. The Durable Object storage is deleted asynchronously.",
 		"operationId": "delete_CollectionDelete",
+		"summary": "Delete collection",
+		"description": "Deletes a collection and all its items. This action cannot be undone. The Durable Object storage is deleted asynchronously.",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "Collection UUID",
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
+				"description": "Collection UUID",
 				"required": true,
 				"schema": {
 					"description": "Collection UUID",
@@ -26,39 +27,39 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Collection deleted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Collection deleted successfully"
+				}
 			},
 			"404": {
 				"description": "Collection not found"
@@ -69,7 +70,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete collection",
 		"tags": [
 			"Collections"
 		],
@@ -78,29 +78,30 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/columns/{column_id}": {
-		"description": "Delete a column from the collection schema. Data is preserved as orphaned UUID keys (forensic safety) and filtered from API responses.",
 		"operationId": "delete_ColumnDelete",
+		"summary": "Delete column",
+		"description": "Delete a column from the collection schema. Data is preserved as orphaned UUID keys (forensic safety) and filtered from API responses.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Column UUID",
-				"in": "path",
 				"name": "column_id",
+				"in": "path",
+				"description": "Column UUID",
 				"required": true,
 				"schema": {
 					"description": "Column UUID",
@@ -110,11 +111,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Column deleted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"type": "string"
@@ -138,18 +142,15 @@
 										"type",
 										"required",
 										"position"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Column deleted successfully"
+				}
 			},
 			"400": {
 				"description": "Cannot delete imported column"
@@ -163,7 +164,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete column",
 		"tags": [
 			"Collections"
 		],
@@ -172,28 +172,29 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
-		"description": "Delete an item from a collection by its identifier.",
 		"operationId": "delete_ItemDelete",
+		"summary": "Delete collection item",
+		"description": "Delete an item from a collection by its identifier.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -202,11 +203,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Item deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"deleted": {
 											"type": "boolean"
@@ -214,8 +218,7 @@
 									},
 									"required": [
 										"deleted"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -224,12 +227,10 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item deleted"
+				}
 			},
 			"404": {
 				"description": "Collection or item not found"
@@ -240,7 +241,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete collection item",
 		"tags": [
 			"Collections"
 		],
@@ -249,13 +249,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections": {
-		"description": "Retrieves all collections for an account with pagination",
 		"operationId": "get_CollectionList",
+		"summary": "List collections",
+		"description": "Retrieves all collections for an account with pagination",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -263,18 +264,18 @@
 				}
 			},
 			{
-				"description": "Page number",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Page number",
 				"schema": {
 					"description": "Page number",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Items per page",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Items per page",
 				"schema": {
 					"description": "Items per page",
 					"type": "number"
@@ -283,11 +284,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Collections retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"pagination": {
+									"type": "object",
 									"properties": {
 										"limit": {
 											"type": "number"
@@ -303,10 +307,10 @@
 										"page",
 										"limit",
 										"total"
-									],
-									"type": "object"
+									]
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
@@ -322,8 +326,8 @@
 												"type": "number"
 											},
 											"metadata": {
-												"additionalProperties": true,
-												"type": "object"
+												"type": "object",
+												"additionalProperties": true
 											},
 											"name": {
 												"type": "string"
@@ -345,26 +349,23 @@
 											"updated_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result",
 								"pagination"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Collections retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -372,7 +373,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List collections",
 		"tags": [
 			"Collections"
 		],
@@ -382,13 +382,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}": {
-		"description": "Retrieves a single collection by ID with its schema and metadata",
 		"operationId": "get_CollectionGet",
+		"summary": "Get collection",
+		"description": "Retrieves a single collection by ID with its schema and metadata",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -396,9 +397,9 @@
 				}
 			},
 			{
-				"description": "Collection UUID",
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
+				"description": "Collection UUID",
 				"required": true,
 				"schema": {
 					"description": "Collection UUID",
@@ -408,18 +409,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Collection retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"columns": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"default": {
-														"nullable": true,
-														"type": "object"
+														"type": "object",
+														"nullable": true
 													},
 													"id": {
 														"type": "string"
@@ -445,8 +450,7 @@
 													"position"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"created_at": {
 											"type": "string"
@@ -461,8 +465,8 @@
 											"type": "number"
 										},
 										"metadata": {
-											"additionalProperties": true,
-											"type": "object"
+											"type": "object",
+											"additionalProperties": true
 										},
 										"name": {
 											"type": "string"
@@ -483,25 +487,22 @@
 										"created_by",
 										"updated_at",
 										"columns"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Collection retrieved successfully"
+				}
 			},
 			"404": {
 				"description": "Collection not found"
@@ -512,7 +513,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get collection",
 		"tags": [
 			"Collections"
 		],
@@ -522,13 +522,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/export": {
-		"description": "Streams collection data in the requested format. Supports CSV (default), JSONL, or Markdown via Accept header. Queries items in batches of 1000 to avoid memory/timeout limits.",
 		"operationId": "get_CollectionExportEndpoint",
+		"summary": "Export collection to CSV, JSONL, or Markdown",
+		"description": "Streams collection data in the requested format. Supports CSV (default), JSONL, or Markdown via Accept header. Queries items in batches of 1000 to avoid memory/timeout limits.",
 		"parameters": [
 			{
-				"description": "Account ID (hex format)",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID (hex format)",
 				"required": true,
 				"schema": {
 					"description": "Account ID (hex format)",
@@ -536,9 +537,9 @@
 				}
 			},
 			{
-				"description": "Collection UUID",
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
+				"description": "Collection UUID",
 				"required": true,
 				"schema": {
 					"description": "Collection UUID",
@@ -546,18 +547,18 @@
 				}
 			},
 			{
-				"description": "Include item IDs in export (default: false)",
-				"in": "query",
 				"name": "include_ids",
+				"in": "query",
+				"description": "Include item IDs in export (default: false)",
 				"schema": {
 					"description": "Include item IDs in export (default: false)",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Requested format: text/csv (default), application/x-ndjson, text/markdown",
-				"in": "header",
 				"name": "accept",
+				"in": "header",
+				"description": "Requested format: text/csv (default), application/x-ndjson, text/markdown",
 				"schema": {
 					"description": "Requested format: text/csv (default), application/x-ndjson, text/markdown",
 					"type": "string"
@@ -566,6 +567,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Streaming export response",
 				"content": {
 					"application/x-ndjson": {
 						"schema": {
@@ -585,8 +587,7 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Streaming export response"
+				}
 			},
 			"404": {
 				"description": "Collection not found"
@@ -600,7 +601,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Export collection to CSV, JSONL, or Markdown",
 		"tags": [
 			"Collections"
 		],
@@ -610,13 +610,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items": {
-		"description": "Retrieves items from a collection with keyset pagination and optional column-based filters",
 		"operationId": "get_ItemQuery",
+		"summary": "Query collection items",
+		"description": "Retrieves items from a collection with keyset pagination and optional column-based filters",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -624,9 +625,9 @@
 				}
 			},
 			{
-				"description": "Collection UUID",
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
+				"description": "Collection UUID",
 				"required": true,
 				"schema": {
 					"description": "Collection UUID",
@@ -634,44 +635,48 @@
 				}
 			},
 			{
-				"description": "Opaque pagination cursor from a previous response. Omit for the first page.",
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
+				"description": "Opaque pagination cursor from a previous response. Omit for the first page.",
 				"schema": {
 					"description": "Opaque pagination cursor from a previous response. Omit for the first page.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Items per page",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Items per page",
 				"schema": {
 					"description": "Items per page",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
-				"in": "query",
 				"name": "q",
+				"in": "query",
+				"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
 				"schema": {
 					"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
+					"type": "string",
 					"maxLength": 500,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Items retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"pagination": {
+									"type": "object",
 									"properties": {
 										"cursors": {
+											"type": "object",
 											"properties": {
 												"current": {
 													"type": "string"
@@ -680,12 +685,12 @@
 													"type": "string"
 												},
 												"next": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"prev": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												}
 											},
 											"required": [
@@ -693,8 +698,7 @@
 												"current",
 												"prev",
 												"next"
-											],
-											"type": "object"
+											]
 										},
 										"limit": {
 											"type": "number"
@@ -711,18 +715,18 @@
 										"limit",
 										"total",
 										"cursors"
-									],
-									"type": "object"
+									]
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
 												"type": "string"
 											},
 											"data": {
-												"additionalProperties": true,
-												"type": "object"
+												"type": "object",
+												"additionalProperties": true
 											},
 											"id": {
 												"type": "string"
@@ -738,26 +742,23 @@
 											"updated_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result",
 								"pagination"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Items retrieved successfully"
+				}
 			},
 			"400": {
 				"description": "Invalid cursor"
@@ -771,7 +772,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Query collection items",
 		"tags": [
 			"Collections"
 		],
@@ -781,28 +781,29 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
-		"description": "Retrieve a single item from a collection by its identifier.",
 		"operationId": "get_ItemGet",
+		"summary": "Get collection item",
+		"description": "Retrieve a single item from a collection by its identifier.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -811,18 +812,21 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Item retrieved",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"type": "string"
 										},
 										"data": {
-											"additionalProperties": true,
-											"type": "object"
+											"type": "object",
+											"additionalProperties": true
 										},
 										"id": {
 											"type": "string"
@@ -836,8 +840,7 @@
 										"data",
 										"created_at",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -846,12 +849,10 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item retrieved"
+				}
 			},
 			"404": {
 				"description": "Collection or item not found"
@@ -862,7 +863,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get collection item",
 		"tags": [
 			"Collections"
 		],
@@ -872,13 +872,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}": {
-		"description": "Updates collection name and/or metadata. Schema (columns) cannot be modified.",
 		"operationId": "patch_CollectionUpdate",
+		"summary": "Update collection",
+		"description": "Updates collection name and/or metadata. Schema (columns) cannot be modified.",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -886,9 +887,9 @@
 				}
 			},
 			{
-				"description": "Collection UUID",
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
+				"description": "Collection UUID",
 				"required": true,
 				"schema": {
 					"description": "Collection UUID",
@@ -900,8 +901,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"metadata": {
+								"type": "object",
 								"properties": {
 									"description": {
 										"description": "Collection description",
@@ -912,31 +915,32 @@
 										"type": "string"
 									},
 									"tags": {
+										"type": "array",
 										"items": {
 											"type": "string"
-										},
-										"type": "array"
+										}
 									}
-								},
-								"type": "object"
+								}
 							},
 							"name": {
 								"description": "Collection name",
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Collection updated successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"type": "string"
@@ -951,8 +955,8 @@
 											"type": "number"
 										},
 										"metadata": {
-											"additionalProperties": true,
-											"type": "object"
+											"type": "object",
+											"additionalProperties": true
 										},
 										"name": {
 											"type": "string"
@@ -972,25 +976,22 @@
 										"created_at",
 										"created_by",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Collection updated successfully"
+				}
 			},
 			"404": {
 				"description": "Collection not found"
@@ -1001,7 +1002,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update collection",
 		"tags": [
 			"Collections"
 		],
@@ -1010,29 +1010,30 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/columns/{column_id}": {
-		"description": "Update name, type, required, or position of a column.",
 		"operationId": "patch_ColumnUpdate",
+		"summary": "Update column",
+		"description": "Update name, type, required, or position of a column.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Column UUID",
-				"in": "path",
 				"name": "column_id",
+				"in": "path",
+				"description": "Column UUID",
 				"required": true,
 				"schema": {
 					"description": "Column UUID",
@@ -1044,6 +1045,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "New column name (must be unique)",
@@ -1059,27 +1061,29 @@
 							},
 							"type": {
 								"description": "Column type: text, number, boolean, or date",
+								"type": "string",
 								"enum": [
 									"text",
 									"number",
 									"boolean",
 									"date"
-								],
-								"type": "string"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Column updated successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"type": "string"
@@ -1103,18 +1107,15 @@
 										"type",
 										"required",
 										"position"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Column updated successfully"
+				}
 			},
 			"400": {
 				"description": "Invalid request (validation error)"
@@ -1131,7 +1132,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update column",
 		"tags": [
 			"Collections"
 		],
@@ -1140,28 +1140,29 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
-		"description": "Update an item in a collection with partial data.",
 		"operationId": "patch_ItemUpdate",
+		"summary": "Update collection item",
+		"description": "Update an item in a collection with partial data.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1172,34 +1173,37 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"data": {
-								"additionalProperties": true,
-								"type": "object"
+								"type": "object",
+								"additionalProperties": true
 							}
 						},
 						"required": [
 							"data"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Item updated",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"type": "string"
 										},
 										"data": {
-											"additionalProperties": true,
-											"type": "object"
+											"type": "object",
+											"additionalProperties": true
 										},
 										"id": {
 											"type": "string"
@@ -1213,8 +1217,7 @@
 										"data",
 										"created_at",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1223,12 +1226,10 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item updated"
+				}
 			},
 			"400": {
 				"description": "Validation error"
@@ -1242,7 +1243,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update collection item",
 		"tags": [
 			"Collections"
 		],
@@ -1251,13 +1251,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/collections": {
-		"description": "Creates a collection with four patterns: schema-only (empty collection), rows-only (inferred schema), schema+rows (validated data), or file upload (CSV/JSON/JSONL)",
 		"operationId": "post_CollectionCreate",
+		"summary": "Create a new collection",
+		"description": "Creates a collection with four patterns: schema-only (empty collection), rows-only (inferred schema), schema+rows (validated data), or file upload (CSV/JSON/JSONL)",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -1273,31 +1274,32 @@
 							{
 								"properties": {
 									"columns": {
+										"type": "array",
 										"items": {
 											"properties": {
 												"default": {
 													"description": "Default value for the column (type depends on column type)",
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												},
 												"name": {
+													"type": "string",
 													"maxLength": 64,
 													"minLength": 1,
-													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string"
+													"pattern": "^[a-zA-Z0-9_]+$"
 												},
 												"required": {
-													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"text",
 														"number",
 														"boolean",
 														"date"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -1307,31 +1309,30 @@
 											"type": "object"
 										},
 										"maxItems": 100,
-										"minItems": 1,
-										"type": "array"
+										"minItems": 1
 									},
 									"description": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"metadata": {
-										"additionalProperties": true,
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									},
 									"name": {
+										"type": "string",
 										"maxLength": 64,
 										"minLength": 1,
-										"pattern": "^[a-zA-Z0-9_]+$",
-										"type": "string"
+										"pattern": "^[a-zA-Z0-9_]+$"
 									},
 									"project_id": {
 										"type": "string"
 									},
 									"tags": {
+										"type": "array",
 										"items": {
 											"type": "string"
-										},
-										"type": "array"
+										}
 									}
 								},
 								"required": [
@@ -1343,36 +1344,36 @@
 							{
 								"properties": {
 									"description": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"metadata": {
-										"additionalProperties": true,
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									},
 									"name": {
+										"type": "string",
 										"maxLength": 64,
 										"minLength": 1,
-										"pattern": "^[a-zA-Z0-9_]+$",
-										"type": "string"
+										"pattern": "^[a-zA-Z0-9_]+$"
 									},
 									"project_id": {
 										"type": "string"
 									},
 									"rows": {
+										"type": "array",
 										"items": {
 											"additionalProperties": true,
 											"type": "object"
 										},
 										"maxItems": 1000,
-										"minItems": 1,
-										"type": "array"
+										"minItems": 1
 									},
 									"tags": {
+										"type": "array",
 										"items": {
 											"type": "string"
-										},
-										"type": "array"
+										}
 									}
 								},
 								"required": [
@@ -1384,31 +1385,32 @@
 							{
 								"properties": {
 									"columns": {
+										"type": "array",
 										"items": {
 											"properties": {
 												"default": {
 													"description": "Default value for the column (type depends on column type)",
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												},
 												"name": {
+													"type": "string",
 													"maxLength": 64,
 													"minLength": 1,
-													"pattern": "^[a-zA-Z0-9_]+$",
-													"type": "string"
+													"pattern": "^[a-zA-Z0-9_]+$"
 												},
 												"required": {
-													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"text",
 														"number",
 														"boolean",
 														"date"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -1418,40 +1420,39 @@
 											"type": "object"
 										},
 										"maxItems": 100,
-										"minItems": 1,
-										"type": "array"
+										"minItems": 1
 									},
 									"description": {
-										"maxLength": 500,
-										"type": "string"
+										"type": "string",
+										"maxLength": 500
 									},
 									"metadata": {
-										"additionalProperties": true,
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									},
 									"name": {
+										"type": "string",
 										"maxLength": 64,
 										"minLength": 1,
-										"pattern": "^[a-zA-Z0-9_]+$",
-										"type": "string"
+										"pattern": "^[a-zA-Z0-9_]+$"
 									},
 									"project_id": {
 										"type": "string"
 									},
 									"rows": {
+										"type": "array",
 										"items": {
 											"additionalProperties": true,
 											"type": "object"
 										},
 										"maxItems": 1000,
-										"minItems": 1,
-										"type": "array"
+										"minItems": 1
 									},
 									"tags": {
+										"type": "array",
 										"items": {
 											"type": "string"
-										},
-										"type": "array"
+										}
 									}
 								},
 								"required": [
@@ -1466,6 +1467,7 @@
 				},
 				"multipart/form-data": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Optional description",
@@ -1473,8 +1475,8 @@
 							},
 							"file": {
 								"description": "File to upload (CSV, JSON, or JSONL)",
-								"format": "binary",
-								"type": "string"
+								"type": "string",
+								"format": "binary"
 							},
 							"metadata": {
 								"description": "Optional custom metadata as JSON object (e.g., '{\"key\":\"value\"}')",
@@ -1496,49 +1498,52 @@
 						"required": [
 							"name",
 							"file"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"201": {
+				"description": "Collection created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"columns": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"default_value": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"id": {
-														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"format": "uuid"
 													},
 													"name": {
 														"type": "string"
 													},
 													"position": {
-														"minimum": 0,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 0
 													},
 													"required": {
 														"type": "boolean"
 													},
 													"type": {
+														"type": "string",
 														"enum": [
 															"text",
 															"number",
 															"boolean",
 															"date"
-														],
-														"type": "string"
+														]
 													}
 												},
 												"required": [
@@ -1550,12 +1555,11 @@
 													"position"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"created_by": {
 											"type": "string"
@@ -1564,12 +1568,12 @@
 											"type": "string"
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"item_count": {
-											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"minimum": 0
 										},
 										"name": {
 											"type": "string"
@@ -1578,22 +1582,22 @@
 											"type": "string"
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"ready",
 												"processing",
 												"failed"
-											],
-											"type": "string"
+											]
 										},
 										"tags": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"updated_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										}
 									},
 									"required": [
@@ -1605,25 +1609,22 @@
 										"item_count",
 										"created_at",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Collection created successfully"
+				}
 			},
 			"400": {
 				"description": "Invalid request - validation failed"
@@ -1640,7 +1641,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new collection",
 		"tags": [
 			"Collections"
 		],
@@ -1649,29 +1649,30 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/columns": {
-		"description": "Adds a new column to an existing collection schema. Existing items will have NULL for the new column unless a default value is provided.",
 		"operationId": "post_ColumnAdd",
+		"summary": "Add column to collection",
+		"description": "Adds a new column to an existing collection schema. Existing items will have NULL for the new column unless a default value is provided.",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
-					"example": "10d79d097895ae7ed7942a2b3832186c",
-					"type": "string"
+					"type": "string",
+					"example": "10d79d097895ae7ed7942a2b3832186c"
 				}
 			},
 			{
-				"description": "Collection UUID",
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
+				"description": "Collection UUID",
 				"required": true,
 				"schema": {
 					"description": "Collection UUID",
-					"example": "550e8400-e29b-41d4-a716-446655440000",
-					"type": "string"
+					"type": "string",
+					"example": "550e8400-e29b-41d4-a716-446655440000"
 				}
 			}
 		],
@@ -1679,51 +1680,54 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"default": {
-								"nullable": true,
-								"type": "object"
+								"type": "object",
+								"nullable": true
 							},
 							"name": {
+								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
-								"pattern": "^[a-zA-Z0-9_]+$",
-								"type": "string"
+								"pattern": "^[a-zA-Z0-9_]+$"
 							},
 							"required": {
-								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"type": {
+								"type": "string",
 								"enum": [
 									"text",
 									"number",
 									"boolean",
 									"date"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"name",
 							"type"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Column added successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"name": {
 											"type": "string"
@@ -1735,13 +1739,13 @@
 											"type": "boolean"
 										},
 										"type": {
+											"type": "string",
 											"enum": [
 												"text",
 												"number",
 												"boolean",
 												"date"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
@@ -1750,8 +1754,7 @@
 										"type",
 										"required",
 										"position"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1760,12 +1763,10 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Column added successfully"
+				}
 			},
 			"404": {
 				"description": "Collection not found"
@@ -1779,7 +1780,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Add column to collection",
 		"tags": [
 			"Collections"
 		],

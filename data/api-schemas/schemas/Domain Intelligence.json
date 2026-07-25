@@ -1,63 +1,68 @@
 {
 	"GET /accounts/{account_id}/intel/domain": {
-		"description": "Gets security details and statistics about a domain.",
 		"operationId": "domain-intelligence-get-domain-details",
+		"summary": "Get Domain Details",
+		"description": "Gets security details and statistics about a domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "domain",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Skip DNS resolution lookups for faster response.",
-				"in": "query",
 				"name": "skip_dns",
+				"in": "query",
+				"description": "Skip DNS resolution lookups for faster response.",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Skip the domain ranking lookup for faster responses. Defaults to\n`false` (ranking is included). Set to `true` to opt out — primarily\nused by callers like Cloudflare Radar that need to avoid a\ncircular dependency when building the domain details page.\nNote: the bulk endpoint (`/intel/domain/bulk`) uses opposite\ndefaults — see `include_ranking` there.\n",
-				"in": "query",
 				"name": "skip_ranking",
+				"in": "query",
+				"description": "Skip the domain ranking lookup for faster responses. Defaults to\n`false` (ranking is included). Set to `true` to opt out — primarily\nused by callers like Cloudflare Radar that need to avoid a\ncircular dependency when building the domain details page.\nNote: the bulk endpoint (`/intel/domain/bulk`) uses opposite\ndefaults — see `include_ranking` there.\n",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Domain Details response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -66,12 +71,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -81,15 +86,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -98,12 +103,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -113,66 +118,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"additional_information": {
 													"description": "Additional information related to the host name.",
+													"type": "object",
 													"properties": {
 														"suspected_malware_family": {
 															"description": "Suspected DGA malware family.",
-															"example": "",
 															"type": "string",
+															"example": "",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"application": {
 													"description": "Application that the hostname belongs to.",
+													"type": "object",
 													"properties": {
 														"id": {
 															"type": "integer",
 															"x-auditable": true
 														},
 														"name": {
-															"example": "CLOUDFLARE",
 															"type": "string",
+															"example": "CLOUDFLARE",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"content_categories": {
-													"example": [
-														{
-															"id": 155,
-															"name": "Technology",
-															"super_category_id": 26
-														}
-													],
+													"type": "array",
 													"items": {
 														"description": "Current content categories.",
 														"properties": {
@@ -191,16 +189,23 @@
 														},
 														"type": "object"
 													},
-													"type": "array"
+													"example": [
+														{
+															"id": 155,
+															"name": "Technology",
+															"super_category_id": 26
+														}
+													]
 												},
 												"domain": {
-													"example": "cloudflare.com",
 													"type": "string",
+													"example": "cloudflare.com",
 													"x-auditable": true
 												},
 												"inherited_content_categories": {
-													"example": [],
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
 																"type": "integer",
@@ -214,10 +219,9 @@
 																"type": "integer",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
-													"type": "array"
+													"example": []
 												},
 												"inherited_from": {
 													"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
@@ -225,8 +229,9 @@
 													"x-auditable": true
 												},
 												"inherited_risk_types": {
-													"example": [],
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
 																"type": "integer",
@@ -240,10 +245,9 @@
 																"type": "integer",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
-													"type": "array"
+													"example": []
 												},
 												"popularity_rank": {
 													"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
@@ -252,32 +256,33 @@
 												},
 												"resolves_to_refs": {
 													"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c.",
-																"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
 																"type": "string",
+																"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
 																"x-auditable": true
 															},
 															"value": {
 																"description": "IP address or domain name.",
-																"example": "192.0.2.0",
 																"type": "string",
+																"example": "192.0.2.0",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"risk_score": {
 													"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
 													"type": "number"
 												},
 												"risk_types": {
-													"example": [],
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
 																"type": "integer",
@@ -291,42 +296,42 @@
 																"type": "integer",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
-													"type": "array"
+													"example": []
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Domain Details response."
+				}
 			},
 			"4XX": {
+				"description": "Get Domain Details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -335,12 +340,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -350,15 +355,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -367,12 +372,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -382,66 +387,59 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"additional_information": {
 															"description": "Additional information related to the host name.",
+															"type": "object",
 															"properties": {
 																"suspected_malware_family": {
 																	"description": "Suspected DGA malware family.",
-																	"example": "",
 																	"type": "string",
+																	"example": "",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"application": {
 															"description": "Application that the hostname belongs to.",
+															"type": "object",
 															"properties": {
 																"id": {
 																	"type": "integer",
 																	"x-auditable": true
 																},
 																"name": {
-																	"example": "CLOUDFLARE",
 																	"type": "string",
+																	"example": "CLOUDFLARE",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"content_categories": {
-															"example": [
-																{
-																	"id": 155,
-																	"name": "Technology",
-																	"super_category_id": 26
-																}
-															],
+															"type": "array",
 															"items": {
 																"description": "Current content categories.",
 																"properties": {
@@ -460,16 +458,23 @@
 																},
 																"type": "object"
 															},
-															"type": "array"
+															"example": [
+																{
+																	"id": 155,
+																	"name": "Technology",
+																	"super_category_id": 26
+																}
+															]
 														},
 														"domain": {
-															"example": "cloudflare.com",
 															"type": "string",
+															"example": "cloudflare.com",
 															"x-auditable": true
 														},
 														"inherited_content_categories": {
-															"example": [],
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"id": {
 																		"type": "integer",
@@ -483,10 +488,9 @@
 																		"type": "integer",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
-															"type": "array"
+															"example": []
 														},
 														"inherited_from": {
 															"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
@@ -494,8 +498,9 @@
 															"x-auditable": true
 														},
 														"inherited_risk_types": {
-															"example": [],
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"id": {
 																		"type": "integer",
@@ -509,10 +514,9 @@
 																		"type": "integer",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
-															"type": "array"
+															"example": []
 														},
 														"popularity_rank": {
 															"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
@@ -521,32 +525,33 @@
 														},
 														"resolves_to_refs": {
 															"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"id": {
 																		"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c.",
-																		"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
 																		"type": "string",
+																		"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "IP address or domain name.",
-																		"example": "192.0.2.0",
 																		"type": "string",
+																		"example": "192.0.2.0",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														},
 														"risk_score": {
 															"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
 															"type": "number"
 														},
 														"risk_types": {
-															"example": [],
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"id": {
 																		"type": "integer",
@@ -560,63 +565,35 @@
 																		"type": "integer",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
-															"type": "array"
+															"example": []
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -629,22 +606,48 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -652,14 +655,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Domain Details response failure."
+				}
 			}
 		},
 		"security": [
@@ -671,7 +672,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Domain Details",
 		"tags": [
 			"Domain Intelligence"
 		],
@@ -681,71 +681,76 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/domain/bulk": {
-		"description": "Returns security details and statistics about multiple domains in a\nsingle request.\n\n**Behavior change — domain ranking is becoming opt-in.** This endpoint\npreviously included domain ranking data in every response and accepted\na `skip_ranking=true` query parameter to opt out. That parameter is\nbeing deprecated and ranking will no longer be returned by default.\nCallers that want ranking data must pass `include_ranking=true`. The\n`skip_ranking` parameter will be silently ignored once the change ships.\n",
 		"operationId": "domain-intelligence-get-multiple-domain-details",
+		"summary": "Get Multiple Domain Details",
+		"description": "Returns security details and statistics about multiple domains in a\nsingle request.\n\n**Behavior change — domain ranking is becoming opt-in.** This endpoint\npreviously included domain ranking data in every response and accepted\na `skip_ranking=true` query parameter to opt out. That parameter is\nbeing deprecated and ranking will no longer be returned by default.\nCallers that want ranking data must pass `include_ranking=true`. The\n`skip_ranking` parameter will be silently ignored once the change ships.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "Accepts multiple values like `?domain=cloudflare.com&domain=example.com`.",
-				"explode": true,
-				"in": "query",
 				"name": "domain",
+				"in": "query",
+				"description": "Accepts multiple values like `?domain=cloudflare.com&domain=example.com`.",
 				"schema": {
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"description": "Whether to include domain ranking data in the response. Defaults to\n`false` — ranking lookups are expensive at bulk scale and most\ncallers do not need them. Set to `true` to opt in. This parameter\nreplaces the deprecated `skip_ranking` (see below).\n",
-				"in": "query",
 				"name": "include_ranking",
+				"in": "query",
+				"description": "Whether to include domain ranking data in the response. Defaults to\n`false` — ranking lookups are expensive at bulk scale and most\ncallers do not need them. Set to `true` to opt in. This parameter\nreplaces the deprecated `skip_ranking` (see below).\n",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			},
 			{
-				"deprecated": true,
-				"description": "**Deprecated.** Previously controlled whether the ranking lookup\nwas skipped (defaulted to `false`, meaning ranking ran). The\nendpoint's default behavior is being flipped — ranking is now\nopt-in via `include_ranking=true` — and this parameter will be\nsilently ignored. Remove it from your callers and use\n`include_ranking` instead.\n",
-				"in": "query",
 				"name": "skip_ranking",
+				"in": "query",
+				"description": "**Deprecated.** Previously controlled whether the ranking lookup\nwas skipped (defaulted to `false`, meaning ranking ran). The\nendpoint's default behavior is being flipped — ranking is now\nopt-in via `include_ranking=true` — and this parameter will be\nsilently ignored. Remove it from your callers and use\n`include_ranking` instead.\n",
 				"schema": {
 					"type": "boolean"
-				}
+				},
+				"deprecated": true
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Multiple Domain Details response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -758,15 +763,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -779,7 +784,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -806,11 +811,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -818,12 +823,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"oneOf": [
 															{
@@ -834,80 +839,73 @@
 															}
 														]
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"additional_information": {
 														"description": "Additional information related to the host name.",
+														"type": "object",
 														"properties": {
 															"suspected_malware_family": {
 																"description": "Suspected DGA malware family.",
-																"example": "",
 																"type": "string",
+																"example": "",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"application": {
 														"description": "Application that the hostname belongs to.",
+														"type": "object",
 														"properties": {
 															"id": {
 																"type": "integer",
 																"x-auditable": true
 															},
 															"name": {
-																"example": "CLOUDFLARE",
 																"type": "string",
+																"example": "CLOUDFLARE",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"content_categories": {
-														"example": [
-															{
-																"id": 155,
-																"name": "Technology",
-																"super_category_id": 26
-															}
-														],
+														"type": "array",
 														"items": {
 															"description": "Current content categories.",
 															"properties": {
@@ -926,16 +924,23 @@
 															},
 															"type": "object"
 														},
-														"type": "array"
+														"example": [
+															{
+																"id": 155,
+																"name": "Technology",
+																"super_category_id": 26
+															}
+														]
 													},
 													"domain": {
-														"example": "cloudflare.com",
 														"type": "string",
+														"example": "cloudflare.com",
 														"x-auditable": true
 													},
 													"inherited_content_categories": {
-														"example": [],
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"id": {
 																	"type": "integer",
@@ -949,10 +954,9 @@
 																	"type": "integer",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
-														"type": "array"
+														"example": []
 													},
 													"inherited_from": {
 														"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
@@ -960,8 +964,9 @@
 														"x-auditable": true
 													},
 													"inherited_risk_types": {
-														"example": [],
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"id": {
 																	"type": "integer",
@@ -975,10 +980,9 @@
 																	"type": "integer",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
-														"type": "array"
+														"example": []
 													},
 													"popularity_rank": {
 														"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
@@ -990,8 +994,9 @@
 														"type": "number"
 													},
 													"risk_types": {
-														"example": [],
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"id": {
 																	"type": "integer",
@@ -1005,44 +1010,44 @@
 																	"type": "integer",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
-														"type": "array"
+														"example": []
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Multiple Domain Details response."
+				}
 			},
 			"4XX": {
+				"description": "Get Multiple Domain Details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1055,15 +1060,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1076,7 +1081,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1103,11 +1108,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1115,12 +1120,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {
 																"oneOf": [
 																	{
@@ -1131,80 +1136,73 @@
 																	}
 																]
 															},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"additional_information": {
 																"description": "Additional information related to the host name.",
+																"type": "object",
 																"properties": {
 																	"suspected_malware_family": {
 																		"description": "Suspected DGA malware family.",
-																		"example": "",
 																		"type": "string",
+																		"example": "",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"application": {
 																"description": "Application that the hostname belongs to.",
+																"type": "object",
 																"properties": {
 																	"id": {
 																		"type": "integer",
 																		"x-auditable": true
 																	},
 																	"name": {
-																		"example": "CLOUDFLARE",
 																		"type": "string",
+																		"example": "CLOUDFLARE",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"content_categories": {
-																"example": [
-																	{
-																		"id": 155,
-																		"name": "Technology",
-																		"super_category_id": 26
-																	}
-																],
+																"type": "array",
 																"items": {
 																	"description": "Current content categories.",
 																	"properties": {
@@ -1223,16 +1221,23 @@
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"example": [
+																	{
+																		"id": 155,
+																		"name": "Technology",
+																		"super_category_id": 26
+																	}
+																]
 															},
 															"domain": {
-																"example": "cloudflare.com",
 																"type": "string",
+																"example": "cloudflare.com",
 																"x-auditable": true
 															},
 															"inherited_content_categories": {
-																"example": [],
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"id": {
 																			"type": "integer",
@@ -1246,10 +1251,9 @@
 																			"type": "integer",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
-																"type": "array"
+																"example": []
 															},
 															"inherited_from": {
 																"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
@@ -1257,8 +1261,9 @@
 																"x-auditable": true
 															},
 															"inherited_risk_types": {
-																"example": [],
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"id": {
 																			"type": "integer",
@@ -1272,10 +1277,9 @@
 																			"type": "integer",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
-																"type": "array"
+																"example": []
 															},
 															"popularity_rank": {
 																"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
@@ -1287,8 +1291,9 @@
 																"type": "number"
 															},
 															"risk_types": {
-																"example": [],
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"id": {
 																			"type": "integer",
@@ -1302,65 +1307,37 @@
 																			"type": "integer",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
-																"type": "array"
+																"example": []
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1373,22 +1350,48 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -1396,14 +1399,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Multiple Domain Details response failure."
+				}
 			}
 		},
 		"security": [
@@ -1415,7 +1416,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Multiple Domain Details",
 		"tags": [
 			"Domain Intelligence"
 		],

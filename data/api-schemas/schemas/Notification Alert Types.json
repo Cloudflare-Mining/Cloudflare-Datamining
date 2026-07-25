@@ -1,37 +1,40 @@
 {
 	"GET /accounts/{account_id}/alerting/v3/available_alerts": {
-		"description": "Gets a list of all alert types for which an account is eligible.",
 		"operationId": "notification-alert-types-get-alert-types",
+		"summary": "Get Alert Types",
+		"description": "Gets a list of all alert types for which an account is eligible.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account id",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Alert Types response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -43,15 +46,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -63,81 +66,27 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"items": {
-													"properties": {
-														"description": {
-															"description": "Describes the alert type.",
-															"example": "High levels of 5xx HTTP errors at your origin",
-															"type": "string",
-															"x-auditable": true
-														},
-														"display_name": {
-															"description": "Alert type name.",
-															"example": "Origin Error Rate Alert",
-															"type": "string",
-															"x-auditable": true
-														},
-														"filter_options": {
-															"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
-															"example": [
-																{
-																	"AvailableValues": null,
-																	"ComparisonOperator": "==",
-																	"Key": "zones",
-																	"Range": "1-n"
-																},
-																{
-																	"AvailableValues": [
-																		{
-																			"Description": "Service-Level Objective of 99.7",
-																			"ID": "99.7"
-																		},
-																		{
-																			"Description": "Service-Level Objective of 99.8",
-																			"ID": "99.8"
-																		}
-																	],
-																	"ComparisonOperator": ">=",
-																	"Key": "slo",
-																	"Range": "0-1"
-																}
-															],
-															"items": {},
-															"type": "array"
-														},
-														"type": {
-															"description": "Use this value when creating and updating a notification policy.",
-															"example": "http_alert_origin_error",
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
-												},
-												"type": "array"
-											},
+											"type": "object",
 											"example": {
 												"Origin Monitoring": [
 													{
@@ -170,63 +119,92 @@
 													}
 												]
 											},
-											"type": "object"
+											"additionalProperties": {
+												"items": {
+													"type": "object",
+													"properties": {
+														"description": {
+															"description": "Describes the alert type.",
+															"type": "string",
+															"example": "High levels of 5xx HTTP errors at your origin",
+															"x-auditable": true
+														},
+														"display_name": {
+															"description": "Alert type name.",
+															"type": "string",
+															"example": "Origin Error Rate Alert",
+															"x-auditable": true
+														},
+														"filter_options": {
+															"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
+															"type": "array",
+															"items": {},
+															"example": [
+																{
+																	"AvailableValues": null,
+																	"ComparisonOperator": "==",
+																	"Key": "zones",
+																	"Range": "1-n"
+																},
+																{
+																	"AvailableValues": [
+																		{
+																			"Description": "Service-Level Objective of 99.7",
+																			"ID": "99.7"
+																		},
+																		{
+																			"Description": "Service-Level Objective of 99.8",
+																			"ID": "99.8"
+																		}
+																	],
+																	"ComparisonOperator": ">=",
+																	"Key": "slo",
+																	"Range": "0-1"
+																}
+															]
+														},
+														"type": {
+															"description": "Use this value when creating and updating a notification policy.",
+															"type": "string",
+															"example": "http_alert_origin_error",
+															"x-auditable": true
+														}
+													}
+												},
+												"type": "array"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Alert Types response"
+				}
 			},
 			"4XX": {
+				"description": "Get Alert Types response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -238,32 +216,55 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Alert Types response failure"
+				}
 			}
 		},
 		"security": [
@@ -275,7 +276,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Alert Types",
 		"tags": [
 			"Notification Alert Types"
 		],

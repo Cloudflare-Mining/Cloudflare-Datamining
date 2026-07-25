@@ -1,111 +1,119 @@
 {
 	"GET /radar/post_quantum/origin/summary/{dimension}": {
-		"description": "Returns a summary of origin post-quantum data grouped by the specified dimension.",
 		"operationId": "radar-get-origin-post-quantum-summary",
+		"summary": "Get Origin Post-Quantum Data Summary",
+		"description": "Returns a summary of origin post-quantum data grouped by the specified dimension.",
 		"parameters": [
 			{
-				"description": "Specifies the origin post-quantum data dimension by which to group the results.",
-				"in": "path",
 				"name": "dimension",
+				"in": "path",
+				"description": "Specifies the origin post-quantum data dimension by which to group the results.",
 				"required": true,
 				"schema": {
 					"description": "Specifies the origin post-quantum data dimension by which to group the results.",
+					"type": "string",
 					"enum": [
 						"KEY_AGREEMENT"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -132,19 +140,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -152,27 +160,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -185,8 +192,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -196,23 +202,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -220,16 +226,16 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -239,20 +245,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -260,8 +266,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -270,16 +275,10 @@
 												"normalization",
 												"lastUpdated",
 												"units"
-											],
-											"type": "object"
+											]
 										},
 										"summary_0": {
-											"additionalProperties": {
-												"description": "A numeric string.",
-												"example": "10",
-												"pattern": "^-?\\d+(\\.\\d+)?$",
-												"type": "string"
-											},
+											"type": "object",
 											"example": {
 												"CurveP256": "99.1234",
 												"CurveP384": "85.5678",
@@ -287,36 +286,41 @@
 												"X25519": "98.3456",
 												"X25519MLKEM768": "12.7890"
 											},
-											"type": "object"
+											"additionalProperties": {
+												"description": "A numeric string.",
+												"example": "10",
+												"pattern": "^-?\\d+(\\.\\d+)?$",
+												"type": "string"
+											}
 										}
 									},
 									"required": [
 										"summary_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -327,27 +331,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -357,7 +358,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Origin Post-Quantum Data Summary",
 		"tags": [
 			"Radar Post-Quantum"
 		],
@@ -377,123 +377,131 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/post_quantum/origin/timeseries_groups/{dimension}": {
-		"description": "Returns a timeseries of origin post-quantum data grouped by the specified dimension.",
 		"operationId": "radar-get-origin-post-quantum-timeseries-groups",
+		"summary": "Get Origin Post-Quantum Data Over Time",
+		"description": "Returns a timeseries of origin post-quantum data grouped by the specified dimension.",
 		"parameters": [
 			{
-				"description": "Specifies the origin post-quantum data dimension by which to group the results.",
-				"in": "path",
 				"name": "dimension",
+				"in": "path",
+				"description": "Specifies the origin post-quantum data dimension by which to group the results.",
 				"required": true,
 				"schema": {
 					"description": "Specifies the origin post-quantum data dimension by which to group the results.",
+					"type": "string",
 					"enum": [
 						"KEY_AGREEMENT"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"aggInterval": {
 													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"type": "string",
 													"enum": [
 														"FIFTEEN_MINUTES",
 														"ONE_HOUR",
 														"ONE_DAY",
 														"ONE_WEEK",
 														"ONE_MONTH"
-													],
-													"type": "string"
+													]
 												},
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -520,19 +528,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -540,27 +548,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -573,8 +580,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -584,23 +590,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -608,16 +614,16 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -627,20 +633,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -648,8 +654,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -659,19 +664,10 @@
 												"lastUpdated",
 												"units",
 												"aggInterval"
-											],
-											"type": "object"
+											]
 										},
 										"serie_0": {
-											"additionalProperties": {
-												"items": {
-													"description": "A numeric string.",
-													"example": "10",
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
-												},
-												"type": "array"
-											},
+											"type": "object",
 											"example": {
 												"CurveP256": [
 													"99.1234",
@@ -698,48 +694,56 @@
 													"2025-01-02T00:00:00Z"
 												]
 											},
+											"additionalProperties": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
+													"type": "string"
+												},
+												"type": "array"
+											},
 											"properties": {
 												"timestamps": {
+													"type": "array",
 													"items": {
 														"format": "date-time",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"timestamps"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"serie_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -750,27 +754,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -780,7 +781,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Origin Post-Quantum Data Over Time",
 		"tags": [
 			"Radar Post-Quantum"
 		],
@@ -800,31 +800,36 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/post_quantum/tls/support": {
-		"description": "Tests whether a hostname or IP address supports Post-Quantum (PQ) TLS key exchange. Returns information about the negotiated key exchange algorithm, whether it uses PQ cryptography, and any detected TLS implementation bugs (Split ClientHello, HRR failure, etc.).",
 		"operationId": "radar-get-post-quantum-tls-support",
+		"summary": "Check Post-Quantum TLS support",
+		"description": "Tests whether a hostname or IP address supports Post-Quantum (PQ) TLS key exchange. Returns information about the negotiated key exchange algorithm, whether it uses PQ cryptography, and any detected TLS implementation bugs (Split ClientHello, HRR failure, etc.).",
 		"parameters": [
 			{
-				"description": "Hostname or IP address to test for Post-Quantum TLS support, optionally with port (defaults to 443).",
-				"in": "query",
 				"name": "host",
+				"in": "query",
+				"description": "Hostname or IP address to test for Post-Quantum TLS support, optionally with port (defaults to 443).",
 				"required": true,
 				"schema": {
 					"description": "Hostname or IP address to test for Post-Quantum TLS support, optionally with port (defaults to 443).",
+					"type": "string",
 					"example": "cloudflare.com",
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"bugs": {
+											"type": "object",
 											"properties": {
 												"hrrFailure": {
 													"description": "Server sends a HelloRetryRequest but fails to complete the handshake after the client sends the second ClientHello. Often caused by non-compliant TLS 1.3 implementations on shared hosting providers.",
@@ -843,8 +848,7 @@
 												"splitClientHello",
 												"hrrFailure",
 												"unknownKeyshare"
-											],
-											"type": "object"
+											]
 										},
 										"host": {
 											"description": "The host that was tested",
@@ -869,30 +873,30 @@
 										"pq",
 										"host",
 										"bugs"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -903,27 +907,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -933,7 +934,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Check Post-Quantum TLS support",
 		"tags": [
 			"Radar Post-Quantum"
 		],

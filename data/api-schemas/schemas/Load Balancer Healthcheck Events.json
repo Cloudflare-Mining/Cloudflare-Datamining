@@ -1,96 +1,100 @@
 {
 	"GET /user/load_balancing_analytics/events": {
-		"description": "List origin health changes.",
 		"operationId": "load-balancer-healthcheck-events-list-healthcheck-events",
+		"summary": "List Healthcheck Events",
+		"description": "List origin health changes.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "until",
+				"in": "query",
 				"schema": {
 					"description": "End date and time of requesting data period in the ISO8601 format.",
-					"example": "2016-11-11T13:00:00Z",
-					"format": "date-time",
 					"type": "string",
+					"format": "date-time",
+					"example": "2016-11-11T13:00:00Z",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "pool_name",
+				"in": "query",
 				"schema": {
 					"description": "The name for the pool to filter.",
+					"type": "string",
 					"example": "primary-dc",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "origin_healthy",
+				"in": "query",
 				"schema": {
-					"default": true,
 					"description": "If true, filter events where the origin status is healthy. If false, filter events where the origin status is unhealthy.",
-					"example": true,
 					"type": "boolean",
+					"example": true,
+					"default": true,
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "pool_id",
+				"in": "query",
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"type": "string",
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "since",
+				"in": "query",
 				"schema": {
 					"description": "Start date and time of requesting data period in the ISO8601 format.",
-					"example": "2016-11-11T12:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2016-11-11T12:00:00Z"
 				}
 			},
 			{
-				"in": "query",
 				"name": "origin_name",
+				"in": "query",
 				"schema": {
 					"description": "The name for the origin to filter.",
-					"example": "primary-dc-1",
-					"type": "string"
+					"type": "string",
+					"example": "primary-dc-1"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pool_healthy",
+				"in": "query",
 				"schema": {
-					"default": true,
 					"description": "If true, filter events where the pool status is healthy. If false, filter events where the pool status is unhealthy.",
+					"type": "boolean",
 					"example": true,
-					"type": "boolean"
+					"default": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Healthcheck Events response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -103,15 +107,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -124,15 +128,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -140,40 +144,39 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results on the current page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "Total number of pages available.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -181,19 +184,69 @@
 									],
 									"required": [
 										"result_info"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"id": {
-														"default": 1,
-														"type": "integer"
+														"type": "integer",
+														"default": 1
 													},
 													"origins": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"address": {
+																	"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
+																	"type": "string",
+																	"example": "0.0.0.0",
+																	"x-auditable": true
+																},
+																"changed": {
+																	"description": "Whether the origin has changed health status.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
+																	"type": "boolean",
+																	"example": true,
+																	"default": true,
+																	"x-auditable": true
+																},
+																"failure_reason": {
+																	"description": "Failure reason for un-healthy origin health check.",
+																	"type": "string",
+																	"example": "No failures",
+																	"x-auditable": true
+																},
+																"healthy": {
+																	"description": "Whether the origin is reported as healthy.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"ip": {
+																	"description": "The IP address (IPv4 or IPv6) of the origin.",
+																	"type": "string",
+																	"example": "198.51.100.4",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "A human-identifiable name for the origin.",
+																	"type": "string",
+																	"example": "app-server-1",
+																	"x-auditable": true
+																}
+															}
+														},
 														"example": [
 															{
 																"address": "198.51.100.4",
@@ -204,76 +257,25 @@
 																"ip": "198.51.100.4",
 																"name": "some-origin"
 															}
-														],
-														"items": {
-															"properties": {
-																"address": {
-																	"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																	"example": "0.0.0.0",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"changed": {
-																	"description": "Whether the origin has changed health status.",
-																	"example": true,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"enabled": {
-																	"default": true,
-																	"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																	"example": true,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"failure_reason": {
-																	"description": "Failure reason for un-healthy origin health check.",
-																	"example": "No failures",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"healthy": {
-																	"description": "Whether the origin is reported as healthy.",
-																	"example": true,
-																	"type": "boolean",
-																	"x-auditable": true
-																},
-																"ip": {
-																	"description": "The IP address (IPv4 or IPv6) of the origin.",
-																	"example": "198.51.100.4",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "A human-identifiable name for the origin.",
-																	"example": "app-server-1",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														},
-														"type": "array"
+														]
 													},
 													"pool": {
+														"type": "object",
 														"example": {
 															"changed": true,
 															"healthy": true,
 															"id": "74bc6a8b9b0dda3d651707a2928bad0c",
 															"minimum_origins": 1,
 															"name": "some-pool"
-														},
-														"type": "object"
+														}
 													},
 													"timestamp": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -281,10 +283,10 @@
 							]
 						}
 					}
-				},
-				"description": "List Healthcheck Events response."
+				}
 			},
 			"4XX": {
+				"description": "List Healthcheck Events response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -292,16 +294,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -314,15 +318,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -335,15 +339,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -351,40 +355,39 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results on the current page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																},
 																"total_pages": {
 																	"description": "Total number of pages available.",
-																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
@@ -392,19 +395,69 @@
 											],
 											"required": [
 												"result_info"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
-																"default": 1,
-																"type": "integer"
+																"type": "integer",
+																"default": 1
 															},
 															"origins": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"address": {
+																			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
+																			"type": "string",
+																			"example": "0.0.0.0",
+																			"x-auditable": true
+																		},
+																		"changed": {
+																			"description": "Whether the origin has changed health status.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
+																			"type": "boolean",
+																			"example": true,
+																			"default": true,
+																			"x-auditable": true
+																		},
+																		"failure_reason": {
+																			"description": "Failure reason for un-healthy origin health check.",
+																			"type": "string",
+																			"example": "No failures",
+																			"x-auditable": true
+																		},
+																		"healthy": {
+																			"description": "Whether the origin is reported as healthy.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		},
+																		"ip": {
+																			"description": "The IP address (IPv4 or IPv6) of the origin.",
+																			"type": "string",
+																			"example": "198.51.100.4",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "A human-identifiable name for the origin.",
+																			"type": "string",
+																			"example": "app-server-1",
+																			"x-auditable": true
+																		}
+																	}
+																},
 																"example": [
 																	{
 																		"address": "198.51.100.4",
@@ -415,76 +468,25 @@
 																		"ip": "198.51.100.4",
 																		"name": "some-origin"
 																	}
-																],
-																"items": {
-																	"properties": {
-																		"address": {
-																			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
-																			"example": "0.0.0.0",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"changed": {
-																			"description": "Whether the origin has changed health status.",
-																			"example": true,
-																			"type": "boolean",
-																			"x-auditable": true
-																		},
-																		"enabled": {
-																			"default": true,
-																			"description": "Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
-																			"example": true,
-																			"type": "boolean",
-																			"x-auditable": true
-																		},
-																		"failure_reason": {
-																			"description": "Failure reason for un-healthy origin health check.",
-																			"example": "No failures",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"healthy": {
-																			"description": "Whether the origin is reported as healthy.",
-																			"example": true,
-																			"type": "boolean",
-																			"x-auditable": true
-																		},
-																		"ip": {
-																			"description": "The IP address (IPv4 or IPv6) of the origin.",
-																			"example": "198.51.100.4",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "A human-identifiable name for the origin.",
-																			"example": "app-server-1",
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																]
 															},
 															"pool": {
+																"type": "object",
 																"example": {
 																	"changed": true,
 																	"healthy": true,
 																	"id": "74bc6a8b9b0dda3d651707a2928bad0c",
 																	"minimum_origins": 1,
 																	"name": "some-pool"
-																},
-																"type": "object"
+																}
 															},
 															"timestamp": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z"
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -492,48 +494,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -546,25 +523,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -572,14 +575,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Healthcheck Events response failure."
+				}
 			}
 		},
 		"security": [
@@ -589,7 +590,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Healthcheck Events",
 		"tags": [
 			"Load Balancer Healthcheck Events"
 		],

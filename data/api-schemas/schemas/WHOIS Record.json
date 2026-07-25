@@ -1,23 +1,24 @@
 {
 	"GET /accounts/{account_id}/intel/whois": {
-		"description": "Retrieves WHOIS registration data for a domain, including registrant and nameserver information.",
 		"operationId": "whois-record-get-whois-record",
+		"summary": "Get WHOIS Record",
+		"description": "Retrieves WHOIS registration data for a domain, including registrant and nameserver information.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Use to uniquely identify or reference the resource.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "domain",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
@@ -25,21 +26,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get WHOIS Record response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -48,12 +52,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -63,15 +67,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -80,12 +84,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -95,32 +99,31 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Returns a boolean for the success/failure of the API call.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"administrative_city": {
 															"type": "string"
@@ -207,59 +210,59 @@
 															"type": "string"
 														},
 														"created_date": {
-															"example": "2009-02-17T22:07:54.000Z",
+															"type": "string",
 															"format": "date-time",
-															"type": "string"
+															"example": "2009-02-17T22:07:54.000Z"
 														},
 														"created_date_raw": {
-															"example": "2009-02-17T22:07:54Z",
-															"type": "string"
+															"type": "string",
+															"example": "2009-02-17T22:07:54Z"
 														},
 														"dnssec": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"domain": {
-															"example": "cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"example": "cloudflare.com"
 														},
 														"expiration_date": {
-															"example": "2033-02-17T22:07:54.000Z",
+															"type": "string",
 															"format": "date-time",
-															"type": "string"
+															"example": "2033-02-17T22:07:54.000Z"
 														},
 														"expiration_date_raw": {
-															"example": "2033-02-17T22:07:54Z",
-															"type": "string"
+															"type": "string",
+															"example": "2033-02-17T22:07:54Z"
 														},
 														"extension": {
-															"example": "com",
-															"type": "string"
+															"type": "string",
+															"example": "com"
 														},
 														"found": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"id": {
-															"example": "1542998887_DOMAIN_COM-VRSN",
-															"type": "string"
+															"type": "string",
+															"example": "1542998887_DOMAIN_COM-VRSN"
 														},
 														"nameservers": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
 															"example": [
 																"ns3.cloudflare.com",
 																"ns4.cloudflare.com",
 																"ns5.cloudflare.com",
 																"ns6.cloudflare.com",
 																"ns7.cloudflare.com"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
+															]
 														},
 														"punycode": {
-															"example": "cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"example": "cloudflare.com"
 														},
 														"registrant": {
 															"type": "string"
@@ -307,8 +310,8 @@
 															"type": "string"
 														},
 														"registrar": {
-															"example": "Cloudflare, Inc.",
-															"type": "string"
+															"type": "string",
+															"example": "Cloudflare, Inc."
 														},
 														"registrar_city": {
 															"type": "string"
@@ -353,6 +356,10 @@
 															"type": "string"
 														},
 														"status": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
 															"example": [
 																"clientdeleteprohibited",
 																"clienttransferprohibited",
@@ -360,11 +367,7 @@
 																"serverdeleteprohibited",
 																"servertransferprohibited",
 																"serverupdateprohibited"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
+															]
 														},
 														"technical_city": {
 															"type": "string"
@@ -409,17 +412,17 @@
 															"type": "string"
 														},
 														"updated_date": {
-															"example": "2024-01-09T16:45:28.000Z",
+															"type": "string",
 															"format": "date-time",
-															"type": "string"
+															"example": "2024-01-09T16:45:28.000Z"
 														},
 														"updated_date_raw": {
-															"example": "2024-01-09T16:45:28Z",
-															"type": "string"
+															"type": "string",
+															"example": "2024-01-09T16:45:28Z"
 														},
 														"whois_server": {
-															"example": "whois.cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"example": "whois.cloudflare.com"
 														}
 													},
 													"required": [
@@ -431,8 +434,7 @@
 														"punycode",
 														"registrar",
 														"registrant"
-													],
-													"type": "object"
+													]
 												}
 											]
 										}
@@ -442,10 +444,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get WHOIS Record response."
+				}
 			},
 			"4XX": {
+				"description": "Get WHOIS Record response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -453,16 +455,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -471,12 +475,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -486,15 +490,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -503,12 +507,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -518,32 +522,31 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Returns a boolean for the success/failure of the API call.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"administrative_city": {
 																	"type": "string"
@@ -630,59 +633,59 @@
 																	"type": "string"
 																},
 																"created_date": {
-																	"example": "2009-02-17T22:07:54.000Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2009-02-17T22:07:54.000Z"
 																},
 																"created_date_raw": {
-																	"example": "2009-02-17T22:07:54Z",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2009-02-17T22:07:54Z"
 																},
 																"dnssec": {
-																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": true
 																},
 																"domain": {
-																	"example": "cloudflare.com",
-																	"type": "string"
+																	"type": "string",
+																	"example": "cloudflare.com"
 																},
 																"expiration_date": {
-																	"example": "2033-02-17T22:07:54.000Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2033-02-17T22:07:54.000Z"
 																},
 																"expiration_date_raw": {
-																	"example": "2033-02-17T22:07:54Z",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2033-02-17T22:07:54Z"
 																},
 																"extension": {
-																	"example": "com",
-																	"type": "string"
+																	"type": "string",
+																	"example": "com"
 																},
 																"found": {
-																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": true
 																},
 																"id": {
-																	"example": "1542998887_DOMAIN_COM-VRSN",
-																	"type": "string"
+																	"type": "string",
+																	"example": "1542998887_DOMAIN_COM-VRSN"
 																},
 																"nameservers": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
 																	"example": [
 																		"ns3.cloudflare.com",
 																		"ns4.cloudflare.com",
 																		"ns5.cloudflare.com",
 																		"ns6.cloudflare.com",
 																		"ns7.cloudflare.com"
-																	],
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
+																	]
 																},
 																"punycode": {
-																	"example": "cloudflare.com",
-																	"type": "string"
+																	"type": "string",
+																	"example": "cloudflare.com"
 																},
 																"registrant": {
 																	"type": "string"
@@ -730,8 +733,8 @@
 																	"type": "string"
 																},
 																"registrar": {
-																	"example": "Cloudflare, Inc.",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Cloudflare, Inc."
 																},
 																"registrar_city": {
 																	"type": "string"
@@ -776,6 +779,10 @@
 																	"type": "string"
 																},
 																"status": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
 																	"example": [
 																		"clientdeleteprohibited",
 																		"clienttransferprohibited",
@@ -783,11 +790,7 @@
 																		"serverdeleteprohibited",
 																		"servertransferprohibited",
 																		"serverupdateprohibited"
-																	],
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
+																	]
 																},
 																"technical_city": {
 																	"type": "string"
@@ -832,17 +835,17 @@
 																	"type": "string"
 																},
 																"updated_date": {
-																	"example": "2024-01-09T16:45:28.000Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2024-01-09T16:45:28.000Z"
 																},
 																"updated_date_raw": {
-																	"example": "2024-01-09T16:45:28Z",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2024-01-09T16:45:28Z"
 																},
 																"whois_server": {
-																	"example": "whois.cloudflare.com",
-																	"type": "string"
+																	"type": "string",
+																	"example": "whois.cloudflare.com"
 																}
 															},
 															"required": [
@@ -854,8 +857,7 @@
 																"punycode",
 																"registrar",
 																"registrant"
-															],
-															"type": "object"
+															]
 														}
 													]
 												}
@@ -865,48 +867,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -919,25 +896,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Returns a boolean for the success/failure of the API call.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -945,14 +948,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get WHOIS Record response failure."
+				}
 			}
 		},
 		"security": [
@@ -964,7 +965,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get WHOIS Record",
 		"tags": [
 			"WHOIS Record"
 		],

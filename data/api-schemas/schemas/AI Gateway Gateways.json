@@ -1,39 +1,43 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{id}": {
-		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-gateway",
+		"summary": "Delete a Gateway",
+		"description": "Deletes an AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the Object if it was successfully deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"authentication": {
 											"type": "boolean",
@@ -44,9 +48,9 @@
 											"x-auditable": true
 										},
 										"cache_ttl": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"collect_logs": {
@@ -54,28 +58,28 @@
 											"x-auditable": true
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"dlp": {
 											"anyOf": [
 												{
 													"properties": {
 														"action": {
+															"type": "string",
 															"enum": [
 																"BLOCK",
 																"FLAG"
-															],
-															"type": "string"
+															]
 														},
 														"enabled": {
 															"type": "boolean"
 														},
 														"profiles": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -91,24 +95,25 @@
 															"type": "boolean"
 														},
 														"policies": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"action": {
+																		"type": "string",
 																		"enum": [
 																			"FLAG",
 																			"BLOCK"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"check": {
+																		"type": "array",
 																		"items": {
 																			"enum": [
 																				"REQUEST",
 																				"RESPONSE"
 																			],
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"enabled": {
 																		"type": "boolean"
@@ -117,10 +122,10 @@
 																		"type": "string"
 																	},
 																	"profiles": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -131,8 +136,7 @@
 																	"check"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -144,229 +148,229 @@
 											]
 										},
 										"guardrails": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"prompt": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"response": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"required": [
 												"prompt",
 												"response"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"is_default": {
@@ -374,19 +378,19 @@
 											"x-auditable": true
 										},
 										"log_management": {
+											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"log_management_strategy": {
+											"type": "string",
 											"enum": [
 												"STOP_INSERTING",
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"logpush": {
@@ -394,42 +398,43 @@
 											"x-auditable": true
 										},
 										"logpush_public_key": {
+											"type": "string",
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"otel": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"authorization": {
-														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"maxLength": 256
 													},
 													"content_type": {
+														"type": "string",
 														"default": "json",
 														"enum": [
 															"json",
 															"protobuf"
-														],
-														"type": "string"
+														]
 													},
 													"headers": {
+														"type": "object",
 														"additionalProperties": {
 															"maxLength": 4096,
 															"type": "string"
-														},
-														"type": "object"
+														}
 													},
 													"url": {
+														"type": "string",
 														"format": "uri",
-														"maxLength": 2048,
-														"type": "string"
+														"maxLength": 2048
 													}
 												},
 												"required": [
@@ -440,99 +445,100 @@
 											},
 											"maxItems": 5,
 											"nullable": true,
-											"type": "array",
 											"x-auditable": true
 										},
 										"rate_limiting_interval": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_limit": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_technique": {
+											"type": "string",
 											"enum": [
 												"fixed",
 												"sliding"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_backoff": {
 											"description": "Backoff strategy for retry delays",
+											"type": "string",
 											"enum": [
 												"constant",
 												"linear",
 												"exponential"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_delay": {
 											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"type": "integer",
 											"maximum": 5000,
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"retry_max_attempts": {
 											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"type": "integer",
 											"maximum": 5,
 											"minimum": 1,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"spend_limits": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"enabled": {
-													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"rules": {
-													"default": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"enabled": {
-																"default": true,
-																"type": "boolean"
+																"type": "boolean",
+																"default": true
 															},
 															"id": {
-																"default": "afa90619",
+																"type": "string",
+																"default": "91d7032e",
 																"minLength": 1,
-																"pattern": "^[a-zA-Z0-9_-]+$",
-																"type": "string"
+																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
 															"limit": {
+																"type": "number",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "number"
+																"minimum": 0
 															},
 															"limitType": {
+																"type": "string",
 																"enum": [
 																	"cost"
-																],
-																"type": "string"
+																]
 															},
 															"metadata": {
+																"type": "object",
 																"additionalProperties": {
 																	"oneOf": [
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"partition"
-																					],
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"required": [
@@ -543,16 +549,16 @@
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"filter"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"values": {
+																					"type": "array",
 																					"items": {
 																						"type": "string"
-																					},
-																					"type": "array"
+																					}
 																				}
 																			},
 																			"required": [
@@ -562,63 +568,62 @@
 																			"type": "object"
 																		}
 																	]
-																},
-																"type": "object"
+																}
 															},
 															"model": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"provider": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"technique": {
+																"type": "string",
 																"default": "sliding",
 																"enum": [
 																	"fixed",
 																	"sliding"
-																],
-																"type": "string"
+																]
 															},
 															"window": {
+																"type": "integer",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "integer"
+																"minimum": 0
 															}
 														},
 														"required": [
@@ -628,24 +633,25 @@
 														],
 														"type": "object"
 													},
-													"maxItems": 20,
-													"type": "array"
+													"default": [],
+													"maxItems": 20
 												}
 											},
-											"type": "object",
 											"x-auditable": true
 										},
 										"store_id": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"stripe": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"authorization": {
 													"type": "string"
 												},
 												"usage_events": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"payload": {
@@ -656,24 +662,22 @@
 															"payload"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"authorization",
 												"usage_events"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"default": "postpaid",
 											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"type": "string",
+											"default": "postpaid",
 											"enum": [
 												"postpaid"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"zdr": {
@@ -690,8 +694,7 @@
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -700,28 +703,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the Object if it was successfully deleted"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -729,8 +733,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -739,12 +742,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -756,7 +757,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Gateway",
 		"tags": [
 			"AI Gateway Gateways"
 		],
@@ -776,40 +776,41 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways": {
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-gateway",
+		"summary": "List Gateways",
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
 					"description": "Search by id",
 					"type": "string"
@@ -818,11 +819,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"authentication": {
@@ -834,9 +838,9 @@
 												"x-auditable": true
 											},
 											"cache_ttl": {
+												"type": "integer",
 												"minimum": 0,
 												"nullable": true,
-												"type": "integer",
 												"x-auditable": true
 											},
 											"collect_logs": {
@@ -844,28 +848,28 @@
 												"x-auditable": true
 											},
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"dlp": {
 												"anyOf": [
 													{
 														"properties": {
 															"action": {
+																"type": "string",
 																"enum": [
 																	"BLOCK",
 																	"FLAG"
-																],
-																"type": "string"
+																]
 															},
 															"enabled": {
 																"type": "boolean"
 															},
 															"profiles": {
+																"type": "array",
 																"items": {
 																	"type": "string"
-																},
-																"type": "array"
+																}
 															}
 														},
 														"required": [
@@ -881,24 +885,25 @@
 																"type": "boolean"
 															},
 															"policies": {
+																"type": "array",
 																"items": {
 																	"properties": {
 																		"action": {
+																			"type": "string",
 																			"enum": [
 																				"FLAG",
 																				"BLOCK"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"check": {
+																			"type": "array",
 																			"items": {
 																				"enum": [
 																					"REQUEST",
 																					"RESPONSE"
 																				],
 																				"type": "string"
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"enabled": {
 																			"type": "boolean"
@@ -907,10 +912,10 @@
 																			"type": "string"
 																		},
 																		"profiles": {
+																			"type": "array",
 																			"items": {
 																				"type": "string"
-																			},
-																			"type": "array"
+																			}
 																		}
 																	},
 																	"required": [
@@ -921,8 +926,7 @@
 																		"check"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															}
 														},
 														"required": [
@@ -934,229 +938,229 @@
 												]
 											},
 											"guardrails": {
+												"type": "object",
 												"nullable": true,
 												"properties": {
 													"prompt": {
+														"type": "object",
 														"properties": {
 															"P1": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S1": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S10": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S11": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S12": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S13": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S2": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S3": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S4": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S5": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S6": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S7": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S8": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S9": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															}
-														},
-														"type": "object"
+														}
 													},
 													"response": {
+														"type": "object",
 														"properties": {
 															"P1": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S1": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S10": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S11": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S12": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S13": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S2": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S3": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S4": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S5": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S6": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S7": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S8": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															},
 															"S9": {
+																"type": "string",
 																"enum": [
 																	"FLAG",
 																	"BLOCK"
-																],
-																"type": "string"
+																]
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"prompt",
 													"response"
 												],
-												"type": "object",
 												"x-auditable": true
 											},
 											"id": {
 												"description": "gateway id",
+												"type": "string",
 												"example": "my-gateway",
 												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string",
 												"x-auditable": true
 											},
 											"is_default": {
@@ -1164,19 +1168,19 @@
 												"x-auditable": true
 											},
 											"log_management": {
+												"type": "integer",
 												"maximum": 10000000,
 												"minimum": 10000,
 												"nullable": true,
-												"type": "integer",
 												"x-auditable": true
 											},
 											"log_management_strategy": {
+												"type": "string",
 												"enum": [
 													"STOP_INSERTING",
 													"DELETE_OLDEST"
 												],
 												"nullable": true,
-												"type": "string",
 												"x-auditable": true
 											},
 											"logpush": {
@@ -1184,42 +1188,43 @@
 												"x-auditable": true
 											},
 											"logpush_public_key": {
+												"type": "string",
 												"maxLength": 1024,
 												"minLength": 16,
 												"nullable": true,
-												"type": "string",
 												"x-auditable": true
 											},
 											"modified_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"otel": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"authorization": {
-															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"maxLength": 256
 														},
 														"content_type": {
+															"type": "string",
 															"default": "json",
 															"enum": [
 																"json",
 																"protobuf"
-															],
-															"type": "string"
+															]
 														},
 														"headers": {
+															"type": "object",
 															"additionalProperties": {
 																"maxLength": 4096,
 																"type": "string"
-															},
-															"type": "object"
+															}
 														},
 														"url": {
+															"type": "string",
 															"format": "uri",
-															"maxLength": 2048,
-															"type": "string"
+															"maxLength": 2048
 														}
 													},
 													"required": [
@@ -1230,99 +1235,100 @@
 												},
 												"maxItems": 5,
 												"nullable": true,
-												"type": "array",
 												"x-auditable": true
 											},
 											"rate_limiting_interval": {
+												"type": "integer",
 												"minimum": 0,
 												"nullable": true,
-												"type": "integer",
 												"x-auditable": true
 											},
 											"rate_limiting_limit": {
+												"type": "integer",
 												"minimum": 0,
 												"nullable": true,
-												"type": "integer",
 												"x-auditable": true
 											},
 											"rate_limiting_technique": {
+												"type": "string",
 												"enum": [
 													"fixed",
 													"sliding"
 												],
 												"nullable": true,
-												"type": "string",
 												"x-auditable": true
 											},
 											"retry_backoff": {
 												"description": "Backoff strategy for retry delays",
+												"type": "string",
 												"enum": [
 													"constant",
 													"linear",
 													"exponential"
 												],
 												"nullable": true,
-												"type": "string",
 												"x-auditable": true
 											},
 											"retry_delay": {
 												"description": "Delay between retry attempts in milliseconds (0-5000)",
+												"type": "integer",
 												"maximum": 5000,
 												"minimum": 0,
 												"nullable": true,
-												"type": "integer",
 												"x-auditable": true
 											},
 											"retry_max_attempts": {
 												"description": "Maximum number of retry attempts for failed requests (1-5)",
+												"type": "integer",
 												"maximum": 5,
 												"minimum": 1,
 												"nullable": true,
-												"type": "integer",
 												"x-auditable": true
 											},
 											"spend_limits": {
+												"type": "object",
 												"nullable": true,
 												"properties": {
 													"enabled": {
-														"default": false,
-														"type": "boolean"
+														"type": "boolean",
+														"default": false
 													},
 													"rules": {
-														"default": [],
+														"type": "array",
 														"items": {
 															"properties": {
 																"enabled": {
-																	"default": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"default": true
 																},
 																"id": {
-																	"default": "04c5b445",
+																	"type": "string",
+																	"default": "42c0089f",
 																	"minLength": 1,
-																	"pattern": "^[a-zA-Z0-9_-]+$",
-																	"type": "string"
+																	"pattern": "^[a-zA-Z0-9_-]+$"
 																},
 																"limit": {
+																	"type": "number",
 																	"exclusiveMinimum": true,
-																	"minimum": 0,
-																	"type": "number"
+																	"minimum": 0
 																},
 																"limitType": {
+																	"type": "string",
 																	"enum": [
 																		"cost"
-																	],
-																	"type": "string"
+																	]
 																},
 																"metadata": {
+																	"type": "object",
 																	"additionalProperties": {
 																		"oneOf": [
 																			{
 																				"properties": {
 																					"mode": {
+																						"type": "string",
 																						"enum": [
 																							"partition"
-																						],
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"required": [
@@ -1333,16 +1339,16 @@
 																			{
 																				"properties": {
 																					"mode": {
+																						"type": "string",
 																						"enum": [
 																							"filter"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"values": {
+																						"type": "array",
 																						"items": {
 																							"type": "string"
-																						},
-																						"type": "array"
+																						}
 																					}
 																				},
 																				"required": [
@@ -1352,63 +1358,62 @@
 																				"type": "object"
 																			}
 																		]
-																	},
-																	"type": "object"
+																	}
 																},
 																"model": {
+																	"type": "object",
 																	"properties": {
 																		"mode": {
+																			"type": "string",
 																			"enum": [
 																				"filter"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"values": {
+																			"type": "array",
 																			"items": {
 																				"type": "string"
-																			},
-																			"type": "array"
+																			}
 																		}
 																	},
 																	"required": [
 																		"mode",
 																		"values"
-																	],
-																	"type": "object"
+																	]
 																},
 																"provider": {
+																	"type": "object",
 																	"properties": {
 																		"mode": {
+																			"type": "string",
 																			"enum": [
 																				"filter"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"values": {
+																			"type": "array",
 																			"items": {
 																				"type": "string"
-																			},
-																			"type": "array"
+																			}
 																		}
 																	},
 																	"required": [
 																		"mode",
 																		"values"
-																	],
-																	"type": "object"
+																	]
 																},
 																"technique": {
+																	"type": "string",
 																	"default": "sliding",
 																	"enum": [
 																		"fixed",
 																		"sliding"
-																	],
-																	"type": "string"
+																	]
 																},
 																"window": {
+																	"type": "integer",
 																	"exclusiveMinimum": true,
-																	"minimum": 0,
-																	"type": "integer"
+																	"minimum": 0
 																}
 															},
 															"required": [
@@ -1418,24 +1423,25 @@
 															],
 															"type": "object"
 														},
-														"maxItems": 20,
-														"type": "array"
+														"default": [],
+														"maxItems": 20
 													}
 												},
-												"type": "object",
 												"x-auditable": true
 											},
 											"store_id": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"stripe": {
+												"type": "object",
 												"nullable": true,
 												"properties": {
 													"authorization": {
 														"type": "string"
 													},
 													"usage_events": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"payload": {
@@ -1446,24 +1452,22 @@
 																"payload"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													}
 												},
 												"required": [
 													"authorization",
 													"usage_events"
 												],
-												"type": "object",
 												"x-auditable": true
 											},
 											"workers_ai_billing_mode": {
-												"default": "postpaid",
 												"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+												"type": "string",
+												"default": "postpaid",
 												"enum": [
 													"postpaid"
 												],
-												"type": "string",
 												"x-auditable": true
 											},
 											"zdr": {
@@ -1482,8 +1486,7 @@
 											"modified_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1492,19 +1495,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List objects"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1515,27 +1519,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1547,7 +1548,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Gateways",
 		"tags": [
 			"AI Gateway Gateways"
 		],
@@ -1568,47 +1568,50 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}": {
-		"description": "Retrieves the endpoint URL for an AI Gateway.",
 		"operationId": "aig-config-get-gateway-url",
+		"summary": "Get Gateway URL",
+		"description": "Retrieves the endpoint URL for an AI Gateway.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "provider",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "workers-ai",
-					"type": "string"
+					"type": "string",
+					"example": "workers-ai"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the log details",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
 									"type": "string"
@@ -1620,19 +1623,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the log details"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1643,27 +1647,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1675,7 +1676,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Gateway URL",
 		"tags": [
 			"AI Gateway Gateways"
 		],
@@ -1700,40 +1700,44 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{id}": {
-		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"operationId": "aig-config-fetch-gateway",
+		"summary": "Fetch a Gateway",
+		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a single object if found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"authentication": {
 											"type": "boolean",
@@ -1744,9 +1748,9 @@
 											"x-auditable": true
 										},
 										"cache_ttl": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"collect_logs": {
@@ -1754,28 +1758,28 @@
 											"x-auditable": true
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"dlp": {
 											"anyOf": [
 												{
 													"properties": {
 														"action": {
+															"type": "string",
 															"enum": [
 																"BLOCK",
 																"FLAG"
-															],
-															"type": "string"
+															]
 														},
 														"enabled": {
 															"type": "boolean"
 														},
 														"profiles": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -1791,24 +1795,25 @@
 															"type": "boolean"
 														},
 														"policies": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"action": {
+																		"type": "string",
 																		"enum": [
 																			"FLAG",
 																			"BLOCK"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"check": {
+																		"type": "array",
 																		"items": {
 																			"enum": [
 																				"REQUEST",
 																				"RESPONSE"
 																			],
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"enabled": {
 																		"type": "boolean"
@@ -1817,10 +1822,10 @@
 																		"type": "string"
 																	},
 																	"profiles": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -1831,8 +1836,7 @@
 																	"check"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -1844,229 +1848,229 @@
 											]
 										},
 										"guardrails": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"prompt": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"response": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"required": [
 												"prompt",
 												"response"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"is_default": {
@@ -2074,19 +2078,19 @@
 											"x-auditable": true
 										},
 										"log_management": {
+											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"log_management_strategy": {
+											"type": "string",
 											"enum": [
 												"STOP_INSERTING",
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"logpush": {
@@ -2094,42 +2098,43 @@
 											"x-auditable": true
 										},
 										"logpush_public_key": {
+											"type": "string",
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"otel": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"authorization": {
-														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"maxLength": 256
 													},
 													"content_type": {
+														"type": "string",
 														"default": "json",
 														"enum": [
 															"json",
 															"protobuf"
-														],
-														"type": "string"
+														]
 													},
 													"headers": {
+														"type": "object",
 														"additionalProperties": {
 															"maxLength": 4096,
 															"type": "string"
-														},
-														"type": "object"
+														}
 													},
 													"url": {
+														"type": "string",
 														"format": "uri",
-														"maxLength": 2048,
-														"type": "string"
+														"maxLength": 2048
 													}
 												},
 												"required": [
@@ -2140,99 +2145,100 @@
 											},
 											"maxItems": 5,
 											"nullable": true,
-											"type": "array",
 											"x-auditable": true
 										},
 										"rate_limiting_interval": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_limit": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_technique": {
+											"type": "string",
 											"enum": [
 												"fixed",
 												"sliding"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_backoff": {
 											"description": "Backoff strategy for retry delays",
+											"type": "string",
 											"enum": [
 												"constant",
 												"linear",
 												"exponential"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_delay": {
 											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"type": "integer",
 											"maximum": 5000,
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"retry_max_attempts": {
 											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"type": "integer",
 											"maximum": 5,
 											"minimum": 1,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"spend_limits": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"enabled": {
-													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"rules": {
-													"default": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"enabled": {
-																"default": true,
-																"type": "boolean"
+																"type": "boolean",
+																"default": true
 															},
 															"id": {
-																"default": "e1fd02b3",
+																"type": "string",
+																"default": "2fda3fa3",
 																"minLength": 1,
-																"pattern": "^[a-zA-Z0-9_-]+$",
-																"type": "string"
+																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
 															"limit": {
+																"type": "number",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "number"
+																"minimum": 0
 															},
 															"limitType": {
+																"type": "string",
 																"enum": [
 																	"cost"
-																],
-																"type": "string"
+																]
 															},
 															"metadata": {
+																"type": "object",
 																"additionalProperties": {
 																	"oneOf": [
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"partition"
-																					],
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"required": [
@@ -2243,16 +2249,16 @@
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"filter"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"values": {
+																					"type": "array",
 																					"items": {
 																						"type": "string"
-																					},
-																					"type": "array"
+																					}
 																				}
 																			},
 																			"required": [
@@ -2262,63 +2268,62 @@
 																			"type": "object"
 																		}
 																	]
-																},
-																"type": "object"
+																}
 															},
 															"model": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"provider": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"technique": {
+																"type": "string",
 																"default": "sliding",
 																"enum": [
 																	"fixed",
 																	"sliding"
-																],
-																"type": "string"
+																]
 															},
 															"window": {
+																"type": "integer",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "integer"
+																"minimum": 0
 															}
 														},
 														"required": [
@@ -2328,24 +2333,25 @@
 														],
 														"type": "object"
 													},
-													"maxItems": 20,
-													"type": "array"
+													"default": [],
+													"maxItems": 20
 												}
 											},
-											"type": "object",
 											"x-auditable": true
 										},
 										"store_id": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"stripe": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"authorization": {
 													"type": "string"
 												},
 												"usage_events": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"payload": {
@@ -2356,24 +2362,22 @@
 															"payload"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"authorization",
 												"usage_events"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"default": "postpaid",
 											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"type": "string",
+											"default": "postpaid",
 											"enum": [
 												"postpaid"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"zdr": {
@@ -2390,8 +2394,7 @@
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2400,28 +2403,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a single object if found"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -2429,8 +2433,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -2439,12 +2442,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -2456,7 +2457,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Fetch a Gateway",
 		"tags": [
 			"AI Gateway Gateways"
 		],
@@ -2477,16 +2477,17 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways": {
-		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-gateway",
+		"summary": "Create a new Gateway",
+		"description": "Creates a new AI Gateway.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			}
 		],
@@ -2494,6 +2495,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"authentication": {
 								"type": "boolean",
@@ -2504,9 +2506,9 @@
 								"x-auditable": true
 							},
 							"cache_ttl": {
+								"type": "integer",
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"collect_logs": {
@@ -2515,27 +2517,27 @@
 							},
 							"id": {
 								"description": "gateway id",
+								"type": "string",
 								"example": "my-gateway",
 								"maxLength": 64,
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-								"type": "string",
 								"x-auditable": true
 							},
 							"log_management": {
+								"type": "integer",
 								"maximum": 10000000,
 								"minimum": 10000,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"log_management_strategy": {
+								"type": "string",
 								"enum": [
 									"STOP_INSERTING",
 									"DELETE_OLDEST"
 								],
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"logpush": {
@@ -2543,67 +2545,67 @@
 								"x-auditable": true
 							},
 							"logpush_public_key": {
+								"type": "string",
 								"maxLength": 1024,
 								"minLength": 16,
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"rate_limiting_interval": {
+								"type": "integer",
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"rate_limiting_limit": {
+								"type": "integer",
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"rate_limiting_technique": {
+								"type": "string",
 								"enum": [
 									"fixed",
 									"sliding"
 								],
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"retry_backoff": {
 								"description": "Backoff strategy for retry delays",
+								"type": "string",
 								"enum": [
 									"constant",
 									"linear",
 									"exponential"
 								],
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"retry_delay": {
 								"description": "Delay between retry attempts in milliseconds (0-5000)",
+								"type": "integer",
 								"maximum": 5000,
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"retry_max_attempts": {
 								"description": "Maximum number of retry attempts for failed requests (1-5)",
+								"type": "integer",
 								"maximum": 5,
 								"minimum": 1,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"workers_ai_billing_mode": {
-								"default": "postpaid",
 								"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+								"type": "string",
+								"default": "postpaid",
 								"enum": [
 									"postpaid"
 								],
-								"type": "string",
 								"x-auditable": true
 							},
 							"zdr": {
@@ -2618,19 +2620,21 @@
 							"collect_logs",
 							"cache_ttl",
 							"cache_invalidate_on_update"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"authentication": {
 											"type": "boolean",
@@ -2641,9 +2645,9 @@
 											"x-auditable": true
 										},
 										"cache_ttl": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"collect_logs": {
@@ -2651,28 +2655,28 @@
 											"x-auditable": true
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"dlp": {
 											"anyOf": [
 												{
 													"properties": {
 														"action": {
+															"type": "string",
 															"enum": [
 																"BLOCK",
 																"FLAG"
-															],
-															"type": "string"
+															]
 														},
 														"enabled": {
 															"type": "boolean"
 														},
 														"profiles": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -2688,24 +2692,25 @@
 															"type": "boolean"
 														},
 														"policies": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"action": {
+																		"type": "string",
 																		"enum": [
 																			"FLAG",
 																			"BLOCK"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"check": {
+																		"type": "array",
 																		"items": {
 																			"enum": [
 																				"REQUEST",
 																				"RESPONSE"
 																			],
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"enabled": {
 																		"type": "boolean"
@@ -2714,10 +2719,10 @@
 																		"type": "string"
 																	},
 																	"profiles": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -2728,8 +2733,7 @@
 																	"check"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -2741,229 +2745,229 @@
 											]
 										},
 										"guardrails": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"prompt": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"response": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"required": [
 												"prompt",
 												"response"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"is_default": {
@@ -2971,19 +2975,19 @@
 											"x-auditable": true
 										},
 										"log_management": {
+											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"log_management_strategy": {
+											"type": "string",
 											"enum": [
 												"STOP_INSERTING",
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"logpush": {
@@ -2991,42 +2995,43 @@
 											"x-auditable": true
 										},
 										"logpush_public_key": {
+											"type": "string",
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"otel": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"authorization": {
-														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"maxLength": 256
 													},
 													"content_type": {
+														"type": "string",
 														"default": "json",
 														"enum": [
 															"json",
 															"protobuf"
-														],
-														"type": "string"
+														]
 													},
 													"headers": {
+														"type": "object",
 														"additionalProperties": {
 															"maxLength": 4096,
 															"type": "string"
-														},
-														"type": "object"
+														}
 													},
 													"url": {
+														"type": "string",
 														"format": "uri",
-														"maxLength": 2048,
-														"type": "string"
+														"maxLength": 2048
 													}
 												},
 												"required": [
@@ -3037,99 +3042,100 @@
 											},
 											"maxItems": 5,
 											"nullable": true,
-											"type": "array",
 											"x-auditable": true
 										},
 										"rate_limiting_interval": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_limit": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_technique": {
+											"type": "string",
 											"enum": [
 												"fixed",
 												"sliding"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_backoff": {
 											"description": "Backoff strategy for retry delays",
+											"type": "string",
 											"enum": [
 												"constant",
 												"linear",
 												"exponential"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_delay": {
 											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"type": "integer",
 											"maximum": 5000,
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"retry_max_attempts": {
 											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"type": "integer",
 											"maximum": 5,
 											"minimum": 1,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"spend_limits": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"enabled": {
-													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"rules": {
-													"default": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"enabled": {
-																"default": true,
-																"type": "boolean"
+																"type": "boolean",
+																"default": true
 															},
 															"id": {
-																"default": "fa07518c",
+																"type": "string",
+																"default": "413b5296",
 																"minLength": 1,
-																"pattern": "^[a-zA-Z0-9_-]+$",
-																"type": "string"
+																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
 															"limit": {
+																"type": "number",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "number"
+																"minimum": 0
 															},
 															"limitType": {
+																"type": "string",
 																"enum": [
 																	"cost"
-																],
-																"type": "string"
+																]
 															},
 															"metadata": {
+																"type": "object",
 																"additionalProperties": {
 																	"oneOf": [
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"partition"
-																					],
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"required": [
@@ -3140,16 +3146,16 @@
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"filter"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"values": {
+																					"type": "array",
 																					"items": {
 																						"type": "string"
-																					},
-																					"type": "array"
+																					}
 																				}
 																			},
 																			"required": [
@@ -3159,63 +3165,62 @@
 																			"type": "object"
 																		}
 																	]
-																},
-																"type": "object"
+																}
 															},
 															"model": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"provider": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"technique": {
+																"type": "string",
 																"default": "sliding",
 																"enum": [
 																	"fixed",
 																	"sliding"
-																],
-																"type": "string"
+																]
 															},
 															"window": {
+																"type": "integer",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "integer"
+																"minimum": 0
 															}
 														},
 														"required": [
@@ -3225,24 +3230,25 @@
 														],
 														"type": "object"
 													},
-													"maxItems": 20,
-													"type": "array"
+													"default": [],
+													"maxItems": 20
 												}
 											},
-											"type": "object",
 											"x-auditable": true
 										},
 										"store_id": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"stripe": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"authorization": {
 													"type": "string"
 												},
 												"usage_events": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"payload": {
@@ -3253,24 +3259,22 @@
 															"payload"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"authorization",
 												"usage_events"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"default": "postpaid",
 											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"type": "string",
+											"default": "postpaid",
 											"enum": [
 												"postpaid"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"zdr": {
@@ -3287,8 +3291,7 @@
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -3297,35 +3300,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -3334,8 +3338,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -3344,12 +3347,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -3361,7 +3362,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Gateway",
 		"tags": [
 			"AI Gateway Gateways"
 		],
@@ -3381,29 +3381,30 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{id}": {
-		"description": "Updates an existing AI Gateway dataset.",
 		"operationId": "aig-config-update-gateway",
+		"summary": "Update a Gateway",
+		"description": "Updates an existing AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -3412,6 +3413,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"authentication": {
 								"type": "boolean",
@@ -3422,9 +3424,9 @@
 								"x-auditable": true
 							},
 							"cache_ttl": {
+								"type": "integer",
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"collect_logs": {
@@ -3436,20 +3438,20 @@
 									{
 										"properties": {
 											"action": {
+												"type": "string",
 												"enum": [
 													"BLOCK",
 													"FLAG"
-												],
-												"type": "string"
+												]
 											},
 											"enabled": {
 												"type": "boolean"
 											},
 											"profiles": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -3465,24 +3467,25 @@
 												"type": "boolean"
 											},
 											"policies": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"action": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"check": {
+															"type": "array",
 															"items": {
 																"enum": [
 																	"REQUEST",
 																	"RESPONSE"
 																],
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"enabled": {
 															"type": "boolean"
@@ -3491,10 +3494,10 @@
 															"type": "string"
 														},
 														"profiles": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -3505,8 +3508,7 @@
 														"check"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -3518,236 +3520,236 @@
 								]
 							},
 							"guardrails": {
+								"type": "object",
 								"nullable": true,
 								"properties": {
 									"prompt": {
+										"type": "object",
 										"properties": {
 											"P1": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S1": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S10": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S11": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S12": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S13": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S2": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S3": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S4": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S5": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S6": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S7": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S8": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S9": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											}
-										},
-										"type": "object"
+										}
 									},
 									"response": {
+										"type": "object",
 										"properties": {
 											"P1": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S1": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S10": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S11": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S12": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S13": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S2": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S3": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S4": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S5": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S6": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S7": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S8": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											},
 											"S9": {
+												"type": "string",
 												"enum": [
 													"FLAG",
 													"BLOCK"
-												],
-												"type": "string"
+												]
 											}
-										},
-										"type": "object"
+										}
 									}
 								},
 								"required": [
 									"prompt",
 									"response"
 								],
-								"type": "object",
 								"x-auditable": true
 							},
 							"log_management": {
+								"type": "integer",
 								"maximum": 10000000,
 								"minimum": 10000,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"log_management_strategy": {
+								"type": "string",
 								"enum": [
 									"STOP_INSERTING",
 									"DELETE_OLDEST"
 								],
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"logpush": {
@@ -3755,38 +3757,39 @@
 								"x-auditable": true
 							},
 							"logpush_public_key": {
+								"type": "string",
 								"maxLength": 1024,
 								"minLength": 16,
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"otel": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"authorization": {
-											"maxLength": 256,
-											"type": "string"
+											"type": "string",
+											"maxLength": 256
 										},
 										"content_type": {
+											"type": "string",
 											"default": "json",
 											"enum": [
 												"json",
 												"protobuf"
-											],
-											"type": "string"
+											]
 										},
 										"headers": {
+											"type": "object",
 											"additionalProperties": {
 												"maxLength": 4096,
 												"type": "string"
-											},
-											"type": "object"
+											}
 										},
 										"url": {
+											"type": "string",
 											"format": "uri",
-											"maxLength": 2048,
-											"type": "string"
+											"maxLength": 2048
 										}
 									},
 									"required": [
@@ -3797,99 +3800,100 @@
 								},
 								"maxItems": 5,
 								"nullable": true,
-								"type": "array",
 								"x-auditable": true
 							},
 							"rate_limiting_interval": {
+								"type": "integer",
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"rate_limiting_limit": {
+								"type": "integer",
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"rate_limiting_technique": {
+								"type": "string",
 								"enum": [
 									"fixed",
 									"sliding"
 								],
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"retry_backoff": {
 								"description": "Backoff strategy for retry delays",
+								"type": "string",
 								"enum": [
 									"constant",
 									"linear",
 									"exponential"
 								],
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"retry_delay": {
 								"description": "Delay between retry attempts in milliseconds (0-5000)",
+								"type": "integer",
 								"maximum": 5000,
 								"minimum": 0,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"retry_max_attempts": {
 								"description": "Maximum number of retry attempts for failed requests (1-5)",
+								"type": "integer",
 								"maximum": 5,
 								"minimum": 1,
 								"nullable": true,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"spend_limits": {
+								"type": "object",
 								"nullable": true,
 								"properties": {
 									"enabled": {
-										"default": false,
-										"type": "boolean"
+										"type": "boolean",
+										"default": false
 									},
 									"rules": {
-										"default": [],
+										"type": "array",
 										"items": {
 											"properties": {
 												"enabled": {
-													"default": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": true
 												},
 												"id": {
-													"default": "dbc8d9ec",
+													"type": "string",
+													"default": "6092b66a",
 													"minLength": 1,
-													"pattern": "^[a-zA-Z0-9_-]+$",
-													"type": "string"
+													"pattern": "^[a-zA-Z0-9_-]+$"
 												},
 												"limit": {
+													"type": "number",
 													"exclusiveMinimum": true,
-													"minimum": 0,
-													"type": "number"
+													"minimum": 0
 												},
 												"limitType": {
+													"type": "string",
 													"enum": [
 														"cost"
-													],
-													"type": "string"
+													]
 												},
 												"metadata": {
+													"type": "object",
 													"additionalProperties": {
 														"oneOf": [
 															{
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"partition"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
@@ -3900,16 +3904,16 @@
 															{
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -3919,63 +3923,62 @@
 																"type": "object"
 															}
 														]
-													},
-													"type": "object"
+													}
 												},
 												"model": {
+													"type": "object",
 													"properties": {
 														"mode": {
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"values": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"mode",
 														"values"
-													],
-													"type": "object"
+													]
 												},
 												"provider": {
+													"type": "object",
 													"properties": {
 														"mode": {
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"values": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"mode",
 														"values"
-													],
-													"type": "object"
+													]
 												},
 												"technique": {
+													"type": "string",
 													"default": "sliding",
 													"enum": [
 														"fixed",
 														"sliding"
-													],
-													"type": "string"
+													]
 												},
 												"window": {
+													"type": "integer",
 													"exclusiveMinimum": true,
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												}
 											},
 											"required": [
@@ -3985,24 +3988,25 @@
 											],
 											"type": "object"
 										},
-										"maxItems": 20,
-										"type": "array"
+										"default": [],
+										"maxItems": 20
 									}
 								},
-								"type": "object",
 								"x-auditable": true
 							},
 							"store_id": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							},
 							"stripe": {
+								"type": "object",
 								"nullable": true,
 								"properties": {
 									"authorization": {
 										"type": "string"
 									},
 									"usage_events": {
+										"type": "array",
 										"items": {
 											"properties": {
 												"payload": {
@@ -4013,24 +4017,22 @@
 												"payload"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									}
 								},
 								"required": [
 									"authorization",
 									"usage_events"
 								],
-								"type": "object",
 								"x-auditable": true
 							},
 							"workers_ai_billing_mode": {
-								"default": "postpaid",
 								"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+								"type": "string",
+								"default": "postpaid",
 								"enum": [
 									"postpaid"
 								],
-								"type": "string",
 								"x-auditable": true
 							},
 							"zdr": {
@@ -4044,19 +4046,21 @@
 							"collect_logs",
 							"cache_ttl",
 							"cache_invalidate_on_update"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"authentication": {
 											"type": "boolean",
@@ -4067,9 +4071,9 @@
 											"x-auditable": true
 										},
 										"cache_ttl": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"collect_logs": {
@@ -4077,28 +4081,28 @@
 											"x-auditable": true
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"dlp": {
 											"anyOf": [
 												{
 													"properties": {
 														"action": {
+															"type": "string",
 															"enum": [
 																"BLOCK",
 																"FLAG"
-															],
-															"type": "string"
+															]
 														},
 														"enabled": {
 															"type": "boolean"
 														},
 														"profiles": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -4114,24 +4118,25 @@
 															"type": "boolean"
 														},
 														"policies": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"action": {
+																		"type": "string",
 																		"enum": [
 																			"FLAG",
 																			"BLOCK"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"check": {
+																		"type": "array",
 																		"items": {
 																			"enum": [
 																				"REQUEST",
 																				"RESPONSE"
 																			],
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"enabled": {
 																		"type": "boolean"
@@ -4140,10 +4145,10 @@
 																		"type": "string"
 																	},
 																	"profiles": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -4154,8 +4159,7 @@
 																	"check"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -4167,229 +4171,229 @@
 											]
 										},
 										"guardrails": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"prompt": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"response": {
+													"type": "object",
 													"properties": {
 														"P1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S1": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S10": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S11": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S12": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S13": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S2": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S3": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S4": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S5": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S6": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S7": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S8": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														},
 														"S9": {
+															"type": "string",
 															"enum": [
 																"FLAG",
 																"BLOCK"
-															],
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"required": [
 												"prompt",
 												"response"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"is_default": {
@@ -4397,19 +4401,19 @@
 											"x-auditable": true
 										},
 										"log_management": {
+											"type": "integer",
 											"maximum": 10000000,
 											"minimum": 10000,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"log_management_strategy": {
+											"type": "string",
 											"enum": [
 												"STOP_INSERTING",
 												"DELETE_OLDEST"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"logpush": {
@@ -4417,42 +4421,43 @@
 											"x-auditable": true
 										},
 										"logpush_public_key": {
+											"type": "string",
 											"maxLength": 1024,
 											"minLength": 16,
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"otel": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"authorization": {
-														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"maxLength": 256
 													},
 													"content_type": {
+														"type": "string",
 														"default": "json",
 														"enum": [
 															"json",
 															"protobuf"
-														],
-														"type": "string"
+														]
 													},
 													"headers": {
+														"type": "object",
 														"additionalProperties": {
 															"maxLength": 4096,
 															"type": "string"
-														},
-														"type": "object"
+														}
 													},
 													"url": {
+														"type": "string",
 														"format": "uri",
-														"maxLength": 2048,
-														"type": "string"
+														"maxLength": 2048
 													}
 												},
 												"required": [
@@ -4463,99 +4468,100 @@
 											},
 											"maxItems": 5,
 											"nullable": true,
-											"type": "array",
 											"x-auditable": true
 										},
 										"rate_limiting_interval": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_limit": {
+											"type": "integer",
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"rate_limiting_technique": {
+											"type": "string",
 											"enum": [
 												"fixed",
 												"sliding"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_backoff": {
 											"description": "Backoff strategy for retry delays",
+											"type": "string",
 											"enum": [
 												"constant",
 												"linear",
 												"exponential"
 											],
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"retry_delay": {
 											"description": "Delay between retry attempts in milliseconds (0-5000)",
+											"type": "integer",
 											"maximum": 5000,
 											"minimum": 0,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"retry_max_attempts": {
 											"description": "Maximum number of retry attempts for failed requests (1-5)",
+											"type": "integer",
 											"maximum": 5,
 											"minimum": 1,
 											"nullable": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"spend_limits": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"enabled": {
-													"default": false,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"rules": {
-													"default": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"enabled": {
-																"default": true,
-																"type": "boolean"
+																"type": "boolean",
+																"default": true
 															},
 															"id": {
-																"default": "edb34bcd",
+																"type": "string",
+																"default": "71833846",
 																"minLength": 1,
-																"pattern": "^[a-zA-Z0-9_-]+$",
-																"type": "string"
+																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
 															"limit": {
+																"type": "number",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "number"
+																"minimum": 0
 															},
 															"limitType": {
+																"type": "string",
 																"enum": [
 																	"cost"
-																],
-																"type": "string"
+																]
 															},
 															"metadata": {
+																"type": "object",
 																"additionalProperties": {
 																	"oneOf": [
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"partition"
-																					],
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"required": [
@@ -4566,16 +4572,16 @@
 																		{
 																			"properties": {
 																				"mode": {
+																					"type": "string",
 																					"enum": [
 																						"filter"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"values": {
+																					"type": "array",
 																					"items": {
 																						"type": "string"
-																					},
-																					"type": "array"
+																					}
 																				}
 																			},
 																			"required": [
@@ -4585,63 +4591,62 @@
 																			"type": "object"
 																		}
 																	]
-																},
-																"type": "object"
+																}
 															},
 															"model": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"provider": {
+																"type": "object",
 																"properties": {
 																	"mode": {
+																		"type": "string",
 																		"enum": [
 																			"filter"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"values": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"mode",
 																	"values"
-																],
-																"type": "object"
+																]
 															},
 															"technique": {
+																"type": "string",
 																"default": "sliding",
 																"enum": [
 																	"fixed",
 																	"sliding"
-																],
-																"type": "string"
+																]
 															},
 															"window": {
+																"type": "integer",
 																"exclusiveMinimum": true,
-																"minimum": 0,
-																"type": "integer"
+																"minimum": 0
 															}
 														},
 														"required": [
@@ -4651,24 +4656,25 @@
 														],
 														"type": "object"
 													},
-													"maxItems": 20,
-													"type": "array"
+													"default": [],
+													"maxItems": 20
 												}
 											},
-											"type": "object",
 											"x-auditable": true
 										},
 										"store_id": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"stripe": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"authorization": {
 													"type": "string"
 												},
 												"usage_events": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"payload": {
@@ -4679,24 +4685,22 @@
 															"payload"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"authorization",
 												"usage_events"
 											],
-											"type": "object",
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"default": "postpaid",
 											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"type": "string",
+											"default": "postpaid",
 											"enum": [
 												"postpaid"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"zdr": {
@@ -4713,8 +4717,7 @@
 										"cache_invalidate_on_update",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -4723,35 +4726,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -4760,8 +4764,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -4770,28 +4773,29 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -4799,8 +4803,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -4809,12 +4812,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -4826,7 +4827,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a Gateway",
 		"tags": [
 			"AI Gateway Gateways"
 		],

@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/{dataset_id}/delete": {
-		"description": "Delete one or more events from a dataset.",
 		"operationId": "delete_EventDelete",
+		"summary": "Deletes one or more events",
+		"description": "Delete one or more events from a dataset.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,33 +15,34 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Array of Event IDs to delete.",
-				"in": "query",
 				"name": "eventIds",
+				"in": "query",
+				"description": "Array of Event IDs to delete.",
 				"required": true,
 				"schema": {
 					"description": "Array of Event IDs to delete.",
+					"type": "array",
 					"items": {
 						"minLength": 1,
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the number of deleted events.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -48,28 +50,29 @@
 							"type": "number"
 						}
 					}
-				},
-				"description": "Returns the number of deleted events."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -82,12 +85,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -95,7 +96,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Deletes one or more events",
 		"tags": [
 			"Event"
 		],
@@ -104,13 +104,14 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}": {
-		"description": "Remove one or more tags from an event.",
 		"operationId": "delete_EventTagDelete",
+		"summary": "Removes a tag from an event",
+		"description": "Remove one or more tags from an event.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -118,9 +119,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -132,75 +133,77 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"tags": {
+								"type": "array",
 								"items": {
 									"example": "malware",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"tags"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns success if operation succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns success if operation succeeded."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -213,12 +216,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -226,7 +227,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Removes a tag from an event",
 		"tags": [
 			"Event"
 		],
@@ -235,13 +235,14 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
-		"description": "Delete a saved event query by its ID",
 		"operationId": "delete_EventQueryDelete",
+		"summary": "Delete a saved event query",
+		"description": "Delete a saved event query by its ID",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -249,9 +250,9 @@
 				}
 			},
 			{
-				"description": "Event query ID",
-				"in": "path",
 				"name": "query_id",
+				"in": "path",
+				"description": "Event query ID",
 				"required": true,
 				"schema": {
 					"description": "Event query ID",
@@ -264,24 +265,26 @@
 				"description": "Event query deleted successfully."
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -294,12 +297,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -307,7 +308,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a saved event query",
 		"tags": [
 			"Event"
 		],
@@ -316,13 +316,14 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
-		"description": "Remove one or more references from an event.",
 		"operationId": "delete_EventReferenceDelete",
+		"summary": "Removes an event reference",
+		"description": "Remove one or more references from an event.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -330,9 +331,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -344,75 +345,77 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"events": {
+								"type": "array",
 								"items": {
 									"example": "88888888-4444-4444-4444-121212121212",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"events"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns success if operation succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns success if operation succeeded."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -425,12 +428,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -438,7 +439,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Removes an event reference",
 		"tags": [
 			"Event"
 		],
@@ -447,13 +447,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
-		"description": "Use `datasetId=all` or `datasetId=*` to query all event datasets for the account (limited to 50). When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"operationId": "get_EventListGet",
+		"summary": "Filter and list events",
+		"description": "Use `datasetId=all` or `datasetId=*` to query all event datasets for the account (limited to 50). When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -461,28 +462,30 @@
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
 				"schema": {
 					"description": "Cursor for pagination. When provided, filters are embedded in the cursor so you only need to pass cursor and pageSize. Returned in the previous response's result_info.cursor field. Use cursor-based pagination for deep pagination (beyond 100,000 records) or for optimal performance.",
-					"example": "eyJ2ZXJzaW9uIjoxLCJwb3NpdGlvbiI6eyJkYXRlIjoiMjAyNC0wMS0xMlQxMDowMDowMFoiLCJ1dWlkIjoiYWJjMTIzIn19",
-					"type": "string"
+					"type": "string",
+					"example": "eyJ2ZXJzaW9uIjoxLCJwb3NpdGlvbiI6eyJkYXRlIjoiMjAyNC0wMS0xMlQxMDowMDowMFoiLCJ1dWlkIjoiYWJjMTIzIn19"
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
-					"default": [],
+					"type": "array",
 					"items": {
 						"properties": {
 							"field": {
 								"description": "Event field to search on. Allowed: attacker, attackerCountry, category, createdAt, date, event, indicator, indicatorType, killChain, mitreAttack, tags, targetCountry, targetIndustry, tlp, uuid.",
-								"example": "attackerCountry",
-								"type": "string"
+								"type": "string",
+								"example": "attackerCountry"
 							},
 							"op": {
 								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'tags', op:'in', value:['malware','apt']}.",
+								"type": "string",
+								"example": "equals",
 								"enum": [
 									"equals",
 									"not",
@@ -496,11 +499,10 @@
 									"endsWith",
 									"in",
 									"find"
-								],
-								"example": "equals",
-								"type": "string"
+								]
 							},
 							"value": {
+								"description": "Search value. String or number for most operators. Array for 'in' operator (max 100 items).",
 								"anyOf": [
 									{
 										"example": "usa",
@@ -523,152 +525,153 @@
 										},
 										"type": "array"
 									}
-								],
-								"description": "Search value. String or number for most operators. Array for 'in' operator (max 100 items)."
+								]
 							}
 						},
 						"type": "object"
 					},
-					"type": "array"
+					"default": []
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"description": "Page number (1-indexed) for offset-based pagination. Limited to offset of 100,000 records. For deep pagination, use cursor-based pagination instead.",
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pageSize",
+				"in": "query",
 				"schema": {
 					"description": "Number of results per page. Maximum 25,000.",
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "orderBy",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "datasetId",
+				"in": "query",
 				"schema": {
 					"description": "Dataset IDs to query events from (array of UUIDs), or special value 'all' or '*' to query all event datasets for the account. If not provided, uses the default dataset.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "forceRefresh",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "format",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"json",
 						"stix2",
 						"taxii"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "source",
+				"in": "query",
 				"schema": {
 					"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields — no 'tags').",
+					"type": "string",
 					"enum": [
 						"do",
 						"r2catalog"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "cache",
+				"in": "query",
 				"schema": {
 					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+					"type": "string",
 					"enum": [
 						"from-graph"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of events.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"attacker": {
-										"example": "Flying Yeti",
-										"type": "string"
+										"type": "string",
+										"example": "Flying Yeti"
 									},
 									"attackerCountry": {
-										"example": "CN",
-										"type": "string"
+										"type": "string",
+										"example": "CN"
 									},
 									"attackerCountryAlpha3": {
-										"example": "CHN",
-										"type": "string"
+										"type": "string",
+										"example": "CHN"
 									},
 									"category": {
-										"example": "Domain Resolution",
-										"type": "string"
+										"type": "string",
+										"example": "Domain Resolution"
 									},
 									"datasetId": {
-										"example": "dataset-example-id",
-										"type": "string"
+										"type": "string",
+										"example": "dataset-example-id"
 									},
 									"date": {
-										"example": "2022-04-01T00:00:00Z",
-										"type": "string"
+										"type": "string",
+										"example": "2022-04-01T00:00:00Z"
 									},
 									"event": {
-										"example": "An attacker registered the domain domain.com",
-										"type": "string"
+										"type": "string",
+										"example": "An attacker registered the domain domain.com"
 									},
 									"hasChildren": {
 										"type": "boolean"
 									},
 									"indicator": {
-										"example": "domain.com",
-										"type": "string"
+										"type": "string",
+										"example": "domain.com"
 									},
 									"indicatorType": {
-										"example": "domain",
-										"type": "string"
+										"type": "string",
+										"example": "domain"
 									},
 									"indicatorTypeId": {
-										"example": 5,
-										"type": "number"
+										"type": "number",
+										"example": 5
 									},
 									"insight": {
 										"type": "string"
@@ -677,18 +680,18 @@
 										"type": "number"
 									},
 									"mitreAttack": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"mitreCapec": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"numReferenced": {
 										"type": "number"
@@ -697,64 +700,64 @@
 										"type": "number"
 									},
 									"rawId": {
-										"example": "453gw34w3",
-										"type": "string"
+										"type": "string",
+										"example": "453gw34w3"
 									},
 									"referenced": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"referencedIds": {
+										"type": "array",
 										"items": {
 											"type": "number"
-										},
-										"type": "array"
+										}
 									},
 									"references": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"referencesIds": {
+										"type": "array",
 										"items": {
 											"type": "number"
-										},
-										"type": "array"
+										}
 									},
 									"releasabilityId": {
 										"type": "string"
 									},
 									"tags": {
+										"type": "array",
 										"items": {
 											"example": "malware",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"targetCountry": {
-										"example": "US",
-										"type": "string"
+										"type": "string",
+										"example": "US"
 									},
 									"targetCountryAlpha3": {
-										"example": "USA",
-										"type": "string"
+										"type": "string",
+										"example": "USA"
 									},
 									"targetIndustry": {
-										"example": "Agriculture",
-										"type": "string"
+										"type": "string",
+										"example": "Agriculture"
 									},
 									"tlp": {
-										"example": "amber",
-										"type": "string"
+										"type": "string",
+										"example": "amber"
 									},
 									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
 									}
 								},
 								"required": [
@@ -787,32 +790,32 @@
 									"datasetId"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns a list of events."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -825,12 +828,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -838,7 +839,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Filter and list events",
 		"tags": [
 			"Event"
 		],
@@ -848,14 +848,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}": {
-		"deprecated": true,
-		"description": "This Method is deprecated. Please use /events/dataset/:dataset_id/events/:event_id instead.",
 		"operationId": "get_EventReadDeprecated",
+		"summary": "Reads an event",
+		"description": "This Method is deprecated. Please use /events/dataset/:dataset_id/events/:event_id instead.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -863,9 +863,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -875,52 +875,54 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns an event.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"attacker": {
-									"example": "Flying Yeti",
-									"type": "string"
+									"type": "string",
+									"example": "Flying Yeti"
 								},
 								"attackerCountry": {
-									"example": "CN",
-									"type": "string"
+									"type": "string",
+									"example": "CN"
 								},
 								"attackerCountryAlpha3": {
-									"example": "CHN",
-									"type": "string"
+									"type": "string",
+									"example": "CHN"
 								},
 								"category": {
-									"example": "Domain Resolution",
-									"type": "string"
+									"type": "string",
+									"example": "Domain Resolution"
 								},
 								"datasetId": {
-									"example": "dataset-example-id",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-example-id"
 								},
 								"date": {
-									"example": "2022-04-01T00:00:00Z",
-									"type": "string"
+									"type": "string",
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"event": {
-									"example": "An attacker registered the domain domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "An attacker registered the domain domain.com"
 								},
 								"hasChildren": {
 									"type": "boolean"
 								},
 								"indicator": {
-									"example": "domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "domain.com"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"insight": {
 									"type": "string"
@@ -929,18 +931,18 @@
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"numReferenced": {
 									"type": "number"
@@ -949,64 +951,64 @@
 									"type": "number"
 								},
 								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
+									"type": "string",
+									"example": "453gw34w3"
 								},
 								"referenced": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencedIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"references": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencesIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"releasabilityId": {
 									"type": "string"
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"example": "malware",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"targetCountry": {
-									"example": "US",
-									"type": "string"
+									"type": "string",
+									"example": "US"
 								},
 								"targetCountryAlpha3": {
-									"example": "USA",
-									"type": "string"
+									"type": "string",
+									"example": "USA"
 								},
 								"targetIndustry": {
-									"example": "Agriculture",
-									"type": "string"
+									"type": "string",
+									"example": "Agriculture"
 								},
 								"tlp": {
-									"example": "amber",
-									"type": "string"
+									"type": "string",
+									"example": "amber"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
@@ -1037,32 +1039,32 @@
 								"referencesIds",
 								"hasChildren",
 								"datasetId"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns an event."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1075,20 +1077,18 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
 			}
 		],
-		"summary": "Reads an event",
 		"tags": [
 			"Event"
 		],
@@ -1098,13 +1098,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
-		"description": "Retrieve raw data for a specific event.",
 		"operationId": "get_EventRawRead",
+		"summary": "Reads data for a raw event",
+		"description": "Retrieve raw data for a specific event.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1112,9 +1113,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -1122,9 +1123,9 @@
 				}
 			},
 			{
-				"description": "Raw Event UUID.",
-				"in": "path",
 				"name": "raw_id",
+				"in": "path",
+				"description": "Raw Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Raw Event UUID.",
@@ -1134,32 +1135,34 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the raw event.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"accountId": {
-									"example": 1234,
-									"type": "number"
+									"type": "number",
+									"example": 1234
 								},
 								"created": {
-									"example": "1970-01-01",
-									"type": "string"
+									"type": "string",
+									"example": "1970-01-01"
 								},
 								"data": {
 									"type": "object"
 								},
 								"id": {
-									"example": "1234",
-									"type": "string"
+									"type": "string",
+									"example": "1234"
 								},
 								"source": {
-									"example": "https://example.com",
-									"type": "string"
+									"type": "string",
+									"example": "https://example.com"
 								},
 								"tlp": {
-									"example": "amber",
-									"type": "string"
+									"type": "string",
+									"example": "amber"
 								}
 							},
 							"required": [
@@ -1169,32 +1172,32 @@
 								"id",
 								"source",
 								"tlp"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the raw event."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1207,12 +1210,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1220,7 +1221,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Reads data for a raw event",
 		"tags": [
 			"Event"
 		],
@@ -1230,13 +1230,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/relationships": {
-		"description": "The `event_id` must be defined (to list existing events (and their IDs), use the [`Filter and List Events`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/) endpoint). Also, must provide query parameters.",
 		"operationId": "get_EventRelationships",
+		"summary": "Filter and list events related to specific event",
+		"description": "The `event_id` must be defined (to list existing events (and their IDs), use the [`Filter and List Events`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/) endpoint). Also, must provide query parameters.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1244,9 +1245,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -1254,34 +1255,35 @@
 				}
 			},
 			{
-				"description": "The direction to traverse the graph. Defaults to 'both' to search all.",
-				"in": "query",
 				"name": "direction",
+				"in": "query",
+				"description": "The direction to traverse the graph. Defaults to 'both' to search all.",
 				"schema": {
-					"default": "both",
 					"description": "The direction to traverse the graph. Defaults to 'both' to search all.",
+					"type": "string",
+					"default": "both",
 					"enum": [
 						"ancestors",
 						"descendants",
 						"both"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "The maximum depth to traverse. Defaults to 5.",
-				"in": "query",
 				"name": "maxDepth",
+				"in": "query",
+				"description": "The maximum depth to traverse. Defaults to 5.",
 				"schema": {
 					"description": "The maximum depth to traverse. Defaults to 5.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "An optional array of relationship types to filter by.",
-				"in": "query",
 				"name": "relationshipTypes",
+				"in": "query",
+				"description": "An optional array of relationship types to filter by.",
 				"schema": {
+					"description": "An optional array of relationship types to filter by.",
 					"anyOf": [
 						{
 							"type": "string"
@@ -1292,26 +1294,25 @@
 							},
 							"type": "array"
 						}
-					],
-					"description": "An optional array of relationship types to filter by."
+					]
 				}
 			},
 			{
-				"description": "An optional array of indicator type IDs to filter the results by.",
-				"in": "query",
 				"name": "indicatorTypeIds",
+				"in": "query",
+				"description": "An optional array of indicator type IDs to filter the results by.",
 				"schema": {
 					"description": "An optional array of indicator type IDs to filter the results by.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "The dataset ID to search within.",
-				"in": "query",
 				"name": "datasetId",
+				"in": "query",
+				"description": "The dataset ID to search within.",
 				"required": true,
 				"schema": {
 					"description": "The dataset ID to search within.",
@@ -1319,25 +1320,25 @@
 				}
 			},
 			{
-				"description": "Whether to include the starting event in the results. Defaults to true.",
-				"in": "query",
 				"name": "includeParent",
+				"in": "query",
+				"description": "Whether to include the starting event in the results. Defaults to true.",
 				"schema": {
-					"default": true,
 					"description": "Whether to include the starting event in the results. Defaults to true.",
-					"type": "boolean"
+					"type": "boolean",
+					"default": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pageSize",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
@@ -1345,53 +1346,55 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of events related to the specified starting event.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"attacker": {
-										"example": "Flying Yeti",
-										"type": "string"
+										"type": "string",
+										"example": "Flying Yeti"
 									},
 									"attackerCountry": {
-										"example": "CN",
-										"type": "string"
+										"type": "string",
+										"example": "CN"
 									},
 									"attackerCountryAlpha3": {
-										"example": "CHN",
-										"type": "string"
+										"type": "string",
+										"example": "CHN"
 									},
 									"category": {
-										"example": "Domain Resolution",
-										"type": "string"
+										"type": "string",
+										"example": "Domain Resolution"
 									},
 									"datasetId": {
-										"example": "dataset-example-id",
-										"type": "string"
+										"type": "string",
+										"example": "dataset-example-id"
 									},
 									"date": {
-										"example": "2022-04-01T00:00:00Z",
-										"type": "string"
+										"type": "string",
+										"example": "2022-04-01T00:00:00Z"
 									},
 									"event": {
-										"example": "An attacker registered the domain domain.com",
-										"type": "string"
+										"type": "string",
+										"example": "An attacker registered the domain domain.com"
 									},
 									"hasChildren": {
 										"type": "boolean"
 									},
 									"indicator": {
-										"example": "domain.com",
-										"type": "string"
+										"type": "string",
+										"example": "domain.com"
 									},
 									"indicatorType": {
-										"example": "domain",
-										"type": "string"
+										"type": "string",
+										"example": "domain"
 									},
 									"indicatorTypeId": {
-										"example": 5,
-										"type": "number"
+										"type": "number",
+										"example": 5
 									},
 									"insight": {
 										"type": "string"
@@ -1400,18 +1403,18 @@
 										"type": "number"
 									},
 									"mitreAttack": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"mitreCapec": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"numReferenced": {
 										"type": "number"
@@ -1420,64 +1423,64 @@
 										"type": "number"
 									},
 									"rawId": {
-										"example": "453gw34w3",
-										"type": "string"
+										"type": "string",
+										"example": "453gw34w3"
 									},
 									"referenced": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"referencedIds": {
+										"type": "array",
 										"items": {
 											"type": "number"
-										},
-										"type": "array"
+										}
 									},
 									"references": {
+										"type": "array",
 										"items": {
 											"example": " ",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"referencesIds": {
+										"type": "array",
 										"items": {
 											"type": "number"
-										},
-										"type": "array"
+										}
 									},
 									"releasabilityId": {
 										"type": "string"
 									},
 									"tags": {
+										"type": "array",
 										"items": {
 											"example": "malware",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"targetCountry": {
-										"example": "US",
-										"type": "string"
+										"type": "string",
+										"example": "US"
 									},
 									"targetCountryAlpha3": {
-										"example": "USA",
-										"type": "string"
+										"type": "string",
+										"example": "USA"
 									},
 									"targetIndustry": {
-										"example": "Agriculture",
-										"type": "string"
+										"type": "string",
+										"example": "Agriculture"
 									},
 									"tlp": {
-										"example": "amber",
-										"type": "string"
+										"type": "string",
+										"example": "amber"
 									},
 									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
 									}
 								},
 								"required": [
@@ -1510,32 +1513,32 @@
 									"datasetId"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns a list of events related to the specified starting event."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1548,12 +1551,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1561,7 +1562,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Filter and list events related to specific event",
 		"tags": [
 			"Event"
 		],
@@ -1571,13 +1571,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/aggregate": {
-		"description": "Aggregate threat events by one or more columns (e.g., attacker, targetIndustry) with optional date filtering and daily grouping. Supports multi-dimensional aggregation for cross-analysis.",
 		"operationId": "get_EventAggregate",
+		"summary": "Aggregate events by single or multiple columns with optional date filtering",
+		"description": "Aggregate threat events by one or more columns (e.g., attacker, targetIndustry) with optional date filtering and daily grouping. Supports multi-dimensional aggregation for cross-analysis.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1585,9 +1586,9 @@
 				}
 			},
 			{
-				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
-				"in": "query",
 				"name": "aggregateBy",
+				"in": "query",
+				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
 				"required": true,
 				"schema": {
 					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry')",
@@ -1595,60 +1596,62 @@
 				}
 			},
 			{
-				"description": "Dataset ID(s) to filter by. Can be a single dataset ID, comma-separated list, or array. If not provided, uses default dataset",
-				"in": "query",
 				"name": "datasetId",
+				"in": "query",
+				"description": "Dataset ID(s) to filter by. Can be a single dataset ID, comma-separated list, or array. If not provided, uses default dataset",
 				"schema": {
 					"description": "Dataset ID(s) to filter by. Can be a single dataset ID, comma-separated list, or array. If not provided, uses default dataset",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
-				"in": "query",
 				"name": "startDate",
+				"in": "query",
+				"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
 				"schema": {
 					"description": "Start date for filtering (ISO 8601 format, e.g., '2024-01-01')",
 					"type": "string"
 				}
 			},
 			{
-				"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
-				"in": "query",
 				"name": "endDate",
+				"in": "query",
+				"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
 				"schema": {
 					"description": "End date for filtering (ISO 8601 format, e.g., '2024-12-31')",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Whether to group results by date (daily aggregation)",
-				"in": "query",
 				"name": "groupByDate",
+				"in": "query",
+				"description": "Whether to group results by date (daily aggregation)",
 				"schema": {
 					"description": "Whether to group results by date (daily aggregation)",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Maximum number of results to return",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of results to return",
 				"schema": {
-					"default": 100,
 					"description": "Maximum number of results to return",
-					"type": "number"
+					"type": "number",
+					"default": 100
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns aggregated event data.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"aggregateBy": {
 									"description": "Column(s) that were aggregated by",
@@ -1656,6 +1659,7 @@
 								},
 								"aggregations": {
 									"description": "Array of aggregation results with dynamic fields based on aggregateBy columns",
+									"type": "array",
 									"items": {
 										"allOf": [
 											{
@@ -1682,11 +1686,11 @@
 												"type": "object"
 											}
 										]
-									},
-									"type": "array"
+									}
 								},
 								"dateRange": {
 									"description": "Date range used for filtering",
+									"type": "object",
 									"properties": {
 										"endDate": {
 											"type": "string"
@@ -1694,8 +1698,7 @@
 										"startDate": {
 											"type": "string"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"total": {
 									"description": "Total number of events in the aggregation",
@@ -1706,32 +1709,32 @@
 								"aggregations",
 								"total",
 								"aggregateBy"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns aggregated event data."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1744,12 +1747,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1757,7 +1758,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Aggregate events by single or multiple columns with optional date filtering",
 		"tags": [
 			"Event"
 		],
@@ -1767,13 +1767,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/events/{event_id}": {
-		"description": "Retrieves a specific event by its UUID.",
 		"operationId": "get_EventRead",
+		"summary": "Reads an event",
+		"description": "Retrieves a specific event by its UUID.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1781,9 +1782,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
@@ -1791,9 +1792,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -1803,52 +1804,54 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the event.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"attacker": {
-									"example": "Flying Yeti",
-									"type": "string"
+									"type": "string",
+									"example": "Flying Yeti"
 								},
 								"attackerCountry": {
-									"example": "CN",
-									"type": "string"
+									"type": "string",
+									"example": "CN"
 								},
 								"attackerCountryAlpha3": {
-									"example": "CHN",
-									"type": "string"
+									"type": "string",
+									"example": "CHN"
 								},
 								"category": {
-									"example": "Domain Resolution",
-									"type": "string"
+									"type": "string",
+									"example": "Domain Resolution"
 								},
 								"datasetId": {
-									"example": "dataset-example-id",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-example-id"
 								},
 								"date": {
-									"example": "2022-04-01T00:00:00Z",
-									"type": "string"
+									"type": "string",
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"event": {
-									"example": "An attacker registered the domain domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "An attacker registered the domain domain.com"
 								},
 								"hasChildren": {
 									"type": "boolean"
 								},
 								"indicator": {
-									"example": "domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "domain.com"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"insight": {
 									"type": "string"
@@ -1857,18 +1860,18 @@
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"numReferenced": {
 									"type": "number"
@@ -1877,64 +1880,64 @@
 									"type": "number"
 								},
 								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
+									"type": "string",
+									"example": "453gw34w3"
 								},
 								"referenced": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencedIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"references": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencesIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"releasabilityId": {
 									"type": "string"
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"example": "malware",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"targetCountry": {
-									"example": "US",
-									"type": "string"
+									"type": "string",
+									"example": "US"
 								},
 								"targetCountryAlpha3": {
-									"example": "USA",
-									"type": "string"
+									"type": "string",
+									"example": "USA"
 								},
 								"targetIndustry": {
-									"example": "Agriculture",
-									"type": "string"
+									"type": "string",
+									"example": "Agriculture"
 								},
 								"tlp": {
-									"example": "amber",
-									"type": "string"
+									"type": "string",
+									"example": "amber"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
@@ -1965,32 +1968,32 @@
 								"referencesIds",
 								"hasChildren",
 								"datasetId"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the event."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2003,12 +2006,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2016,7 +2017,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Reads an event",
 		"tags": [
 			"Event"
 		],
@@ -2026,13 +2026,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries": {
-		"description": "Retrieve all saved event queries for the account",
 		"operationId": "get_EventQueryList",
+		"summary": "List all saved event queries",
+		"description": "Retrieve all saved event queries for the account",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2042,9 +2043,11 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of event queries.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"account_id": {
@@ -2065,8 +2068,8 @@
 									},
 									"custom_threat_feed_id": {
 										"description": "Intel Indicator Feed ID (numeric)",
-										"nullable": true,
-										"type": "integer"
+										"type": "integer",
+										"nullable": true
 									},
 									"id": {
 										"description": "Unique identifier for the saved query",
@@ -2114,32 +2117,32 @@
 									"updated_at"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns a list of event queries."
+				}
 			},
 			"500": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2152,12 +2155,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2165,7 +2166,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List all saved event queries",
 		"tags": [
 			"Event"
 		],
@@ -2175,13 +2175,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
-		"description": "Retrieve a saved event query by its ID",
 		"operationId": "get_EventQueryRead",
+		"summary": "Read a saved event query",
+		"description": "Retrieve a saved event query by its ID",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2189,9 +2190,9 @@
 				}
 			},
 			{
-				"description": "Event query ID",
-				"in": "path",
 				"name": "query_id",
+				"in": "path",
+				"description": "Event query ID",
 				"required": true,
 				"schema": {
 					"description": "Event query ID",
@@ -2201,9 +2202,11 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the event query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account_id": {
 									"description": "Account ID",
@@ -2223,8 +2226,8 @@
 								},
 								"custom_threat_feed_id": {
 									"description": "Intel Indicator Feed ID (numeric)",
-									"nullable": true,
-									"type": "integer"
+									"type": "integer",
+									"nullable": true
 								},
 								"id": {
 									"description": "Unique identifier for the saved query",
@@ -2270,32 +2273,32 @@
 								"rule_enabled",
 								"created_at",
 								"updated_at"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the event query."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2308,12 +2311,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2321,7 +2322,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read a saved event query",
 		"tags": [
 			"Event"
 		],
@@ -2331,13 +2331,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}": {
-		"description": "Retrieves the raw data associated with an event. Searches across all shards in the dataset.",
 		"operationId": "get_EventRawReadDS",
+		"summary": "Reads raw data for an event by UUID",
+		"description": "Retrieves the raw data associated with an event. Searches across all shards in the dataset.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2345,9 +2346,9 @@
 				}
 			},
 			{
-				"description": "Event ID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event ID.",
 				"required": true,
 				"schema": {
 					"description": "Event ID.",
@@ -2355,9 +2356,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
@@ -2367,33 +2368,35 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the raw event data.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"accountId": {
-									"example": 1234,
-									"type": "number"
+									"type": "number",
+									"example": 1234
 								},
 								"created": {
-									"example": "1970-01-01T00:00:00.000Z",
-									"type": "string"
+									"type": "string",
+									"example": "1970-01-01T00:00:00.000Z"
 								},
 								"data": {
-									"example": "{\"foo\": \"bar\"}",
-									"type": "string"
+									"type": "string",
+									"example": "{\"foo\": \"bar\"}"
 								},
 								"id": {
-									"example": 1,
-									"type": "number"
+									"type": "number",
+									"example": 1
 								},
 								"source": {
-									"example": "https://example.com",
-									"type": "string"
+									"type": "string",
+									"example": "https://example.com"
 								},
 								"tlp": {
-									"example": "amber",
-									"type": "string"
+									"type": "string",
+									"example": "amber"
 								}
 							},
 							"required": [
@@ -2403,32 +2406,32 @@
 								"data",
 								"source",
 								"tlp"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the raw event data."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2441,32 +2444,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"500": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2479,12 +2482,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2492,7 +2493,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Reads raw data for an event by UUID",
 		"tags": [
 			"Event"
 		],
@@ -2502,13 +2502,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}": {
-		"description": "Update an existing event by its identifier.",
 		"operationId": "patch_EventUpdate",
+		"summary": "Updates an event",
+		"description": "Update an existing event by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2516,9 +2517,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -2530,138 +2531,140 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"attacker": {
+								"type": "string",
 								"example": "Flying Yeti",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"attackerCountry": {
-								"example": "CN",
-								"type": "string"
+								"type": "string",
+								"example": "CN"
 							},
 							"category": {
-								"example": "Domain Resolution",
-								"type": "string"
+								"type": "string",
+								"example": "Domain Resolution"
 							},
 							"createdAt": {
-								"example": "2025-12-19T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2025-12-19T00:00:00Z"
 							},
 							"datasetId": {
 								"description": "Dataset ID containing the event to update.",
-								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
-								"type": "string"
+								"type": "string",
+								"example": "9b769969-a211-466c-8ac3-cb91266a066a"
 							},
 							"date": {
-								"example": "2022-04-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2022-04-01T00:00:00Z"
 							},
 							"event": {
-								"example": "An attacker registered the domain domain.com",
-								"type": "string"
+								"type": "string",
+								"example": "An attacker registered the domain domain.com"
 							},
 							"indicator": {
-								"example": "domain2.com",
-								"type": "string"
+								"type": "string",
+								"example": "domain2.com"
 							},
 							"indicatorType": {
-								"example": "domain",
-								"type": "string"
+								"type": "string",
+								"example": "domain"
 							},
 							"insight": {
-								"example": "new insight",
-								"type": "string"
+								"type": "string",
+								"example": "new insight"
 							},
 							"raw": {
+								"type": "object",
 								"properties": {
 									"data": {
+										"type": "object",
 										"additionalProperties": true,
-										"nullable": true,
-										"type": "object"
+										"nullable": true
 									},
 									"source": {
-										"example": "example.com",
-										"type": "string"
+										"type": "string",
+										"example": "example.com"
 									},
 									"tlp": {
-										"example": "amber",
-										"type": "string"
+										"type": "string",
+										"example": "amber"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"targetCountry": {
-								"example": "US",
-								"type": "string"
+								"type": "string",
+								"example": "US"
 							},
 							"targetIndustry": {
-								"example": "Insurance",
-								"type": "string"
+								"type": "string",
+								"example": "Insurance"
 							},
 							"tlp": {
-								"example": "amber",
-								"type": "string"
+								"type": "string",
+								"example": "amber"
 							}
 						},
 						"required": [
 							"datasetId"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated event.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"attacker": {
-									"example": "Flying Yeti",
-									"type": "string"
+									"type": "string",
+									"example": "Flying Yeti"
 								},
 								"attackerCountry": {
-									"example": "CN",
-									"type": "string"
+									"type": "string",
+									"example": "CN"
 								},
 								"attackerCountryAlpha3": {
-									"example": "CHN",
-									"type": "string"
+									"type": "string",
+									"example": "CHN"
 								},
 								"category": {
-									"example": "Domain Resolution",
-									"type": "string"
+									"type": "string",
+									"example": "Domain Resolution"
 								},
 								"datasetId": {
-									"example": "dataset-example-id",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-example-id"
 								},
 								"date": {
-									"example": "2022-04-01T00:00:00Z",
-									"type": "string"
+									"type": "string",
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"event": {
-									"example": "An attacker registered the domain domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "An attacker registered the domain domain.com"
 								},
 								"hasChildren": {
 									"type": "boolean"
 								},
 								"indicator": {
-									"example": "domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "domain.com"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"insight": {
 									"type": "string"
@@ -2670,18 +2673,18 @@
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"numReferenced": {
 									"type": "number"
@@ -2690,64 +2693,64 @@
 									"type": "number"
 								},
 								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
+									"type": "string",
+									"example": "453gw34w3"
 								},
 								"referenced": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencedIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"references": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencesIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"releasabilityId": {
 									"type": "string"
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"example": "malware",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"targetCountry": {
-									"example": "US",
-									"type": "string"
+									"type": "string",
+									"example": "US"
 								},
 								"targetCountryAlpha3": {
-									"example": "USA",
-									"type": "string"
+									"type": "string",
+									"example": "USA"
 								},
 								"targetIndustry": {
-									"example": "Agriculture",
-									"type": "string"
+									"type": "string",
+									"example": "Agriculture"
 								},
 								"tlp": {
-									"example": "amber",
-									"type": "string"
+									"type": "string",
+									"example": "amber"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
@@ -2778,32 +2781,32 @@
 								"referencesIds",
 								"hasChildren",
 								"datasetId"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated event."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2816,12 +2819,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2829,7 +2830,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates an event",
 		"tags": [
 			"Event"
 		],
@@ -2838,13 +2838,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
-		"description": "Update raw data for a specific event.",
 		"operationId": "patch_EventRawUpdate",
+		"summary": "Updates a raw event",
+		"description": "Update raw data for a specific event.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2852,9 +2853,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -2862,9 +2863,9 @@
 				}
 			},
 			{
-				"description": "Raw Event UUID.",
-				"in": "path",
 				"name": "raw_id",
+				"in": "path",
+				"description": "Raw Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Raw Event UUID.",
@@ -2876,67 +2877,69 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"data": {
 								"type": "object"
 							},
 							"source": {
-								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"example": "example.com"
 							},
 							"tlp": {
-								"example": "amber",
-								"type": "string"
+								"type": "string",
+								"example": "amber"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the uuid of the updated raw event and its data.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
 									"type": "object"
 								},
 								"id": {
-									"example": "1234",
-									"type": "string"
+									"type": "string",
+									"example": "1234"
 								}
 							},
 							"required": [
 								"id",
 								"data"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the uuid of the updated raw event and its data."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2949,12 +2952,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2962,7 +2963,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates a raw event",
 		"tags": [
 			"Event"
 		],
@@ -2971,13 +2971,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
-		"description": "Update an existing saved event query by its ID",
 		"operationId": "patch_EventQueryUpdate",
+		"summary": "Update a saved event query",
+		"description": "Update an existing saved event query by its ID",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2985,9 +2986,9 @@
 				}
 			},
 			{
-				"description": "Event query ID",
-				"in": "path",
 				"name": "query_id",
+				"in": "path",
+				"description": "Event query ID",
 				"required": true,
 				"schema": {
 					"description": "Event query ID",
@@ -2999,6 +3000,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"alert_enabled": {
 								"description": "Enable alerts for this query",
@@ -3024,17 +3026,18 @@
 								"description": "Scope for the rule",
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated event query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account_id": {
 									"description": "Account ID",
@@ -3054,8 +3057,8 @@
 								},
 								"custom_threat_feed_id": {
 									"description": "Intel Indicator Feed ID (numeric)",
-									"nullable": true,
-									"type": "integer"
+									"type": "integer",
+									"nullable": true
 								},
 								"id": {
 									"description": "Unique identifier for the saved query",
@@ -3101,32 +3104,32 @@
 								"rule_enabled",
 								"created_at",
 								"updated_at"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated event query."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -3139,32 +3142,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -3177,12 +3180,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -3190,7 +3191,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a saved event query",
 		"tags": [
 			"Event"
 		],
@@ -3199,13 +3199,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/update/bulk": {
-		"description": "Updates multiple events with the same field values. Maximum 100 events per request.",
 		"operationId": "patch_EventUpdateBulk",
+		"summary": "Bulk update events",
+		"description": "Updates multiple events with the same field values. Maximum 100 events per request.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -3217,129 +3218,132 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"datasetId": {
 								"description": "Dataset ID containing the events to update. Required to prevent cross-account modifications.",
-								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
-								"type": "string"
+								"type": "string",
+								"example": "9b769969-a211-466c-8ac3-cb91266a066a"
 							},
 							"eventIds": {
 								"description": "List of event UUIDs to update (1-100)",
+								"type": "array",
+								"items": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								},
 								"example": [
 									"uuid-1",
 									"uuid-2",
 									"uuid-3"
 								],
-								"items": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
-								},
 								"maxItems": 100,
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							},
 							"updates": {
 								"description": "Fields to update on all specified events. All fields including 'insight' are supported, except 'date' which requires shard migration.",
+								"type": "object",
 								"properties": {
 									"attacker": {
+										"type": "string",
 										"example": "Flying Yeti",
-										"nullable": true,
-										"type": "string"
+										"nullable": true
 									},
 									"attackerCountry": {
-										"example": "CN",
-										"type": "string"
+										"type": "string",
+										"example": "CN"
 									},
 									"category": {
-										"example": "Domain Resolution",
-										"type": "string"
+										"type": "string",
+										"example": "Domain Resolution"
 									},
 									"createdAt": {
-										"example": "2025-12-19T00:00:00Z",
+										"type": "string",
 										"format": "date-time",
-										"type": "string"
+										"example": "2025-12-19T00:00:00Z"
 									},
 									"event": {
-										"example": "An attacker registered the domain domain.com",
-										"type": "string"
+										"type": "string",
+										"example": "An attacker registered the domain domain.com"
 									},
 									"indicator": {
-										"example": "domain2.com",
-										"type": "string"
+										"type": "string",
+										"example": "domain2.com"
 									},
 									"indicatorType": {
-										"example": "domain",
-										"type": "string"
+										"type": "string",
+										"example": "domain"
 									},
 									"insight": {
-										"example": "This event indicates a potential phishing campaign",
-										"type": "string"
+										"type": "string",
+										"example": "This event indicates a potential phishing campaign"
 									},
 									"raw": {
+										"type": "object",
 										"properties": {
 											"data": {
+												"type": "object",
 												"additionalProperties": true,
-												"nullable": true,
-												"type": "object"
+												"nullable": true
 											},
 											"source": {
-												"example": "example.com",
-												"type": "string"
+												"type": "string",
+												"example": "example.com"
 											},
 											"tlp": {
-												"example": "amber",
-												"type": "string"
+												"type": "string",
+												"example": "amber"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"targetCountry": {
-										"example": "US",
-										"type": "string"
+										"type": "string",
+										"example": "US"
 									},
 									"targetIndustry": {
-										"example": "Insurance",
-										"type": "string"
+										"type": "string",
+										"example": "Insurance"
 									},
 									"tlp": {
-										"example": "amber",
-										"type": "string"
+										"type": "string",
+										"example": "amber"
 									}
-								},
-								"type": "object"
+								}
 							}
 						},
 						"required": [
 							"eventIds",
 							"datasetId",
 							"updates"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the count of updated events and any failures.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"failedCount": {
-									"example": 1,
-									"type": "number"
+									"type": "number",
+									"example": 1
 								},
 								"failures": {
 									"description": "List of events that failed to update with error messages",
+									"type": "array",
 									"items": {
 										"properties": {
 											"error": {
-												"example": "Event not found",
-												"type": "string"
+												"type": "string",
+												"example": "Event not found"
 											},
 											"eventId": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
 											}
 										},
 										"required": [
@@ -3347,43 +3351,42 @@
 											"error"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"updatedCount": {
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								}
 							},
 							"required": [
 								"updatedCount",
 								"failedCount"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the count of updated events and any failures."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -3396,12 +3399,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -3409,7 +3410,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Bulk update events",
 		"tags": [
 			"Event"
 		],
@@ -3418,13 +3418,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
-		"description": "Update an existing event by its identifier.",
 		"operationId": "post_EventUpdate",
+		"summary": "Updates an event",
+		"description": "Update an existing event by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -3432,9 +3433,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -3446,138 +3447,140 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"attacker": {
+								"type": "string",
 								"example": "Flying Yeti",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"attackerCountry": {
-								"example": "CN",
-								"type": "string"
+								"type": "string",
+								"example": "CN"
 							},
 							"category": {
-								"example": "Domain Resolution",
-								"type": "string"
+								"type": "string",
+								"example": "Domain Resolution"
 							},
 							"createdAt": {
-								"example": "2025-12-19T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2025-12-19T00:00:00Z"
 							},
 							"datasetId": {
 								"description": "Dataset ID containing the event to update.",
-								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
-								"type": "string"
+								"type": "string",
+								"example": "9b769969-a211-466c-8ac3-cb91266a066a"
 							},
 							"date": {
-								"example": "2022-04-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2022-04-01T00:00:00Z"
 							},
 							"event": {
-								"example": "An attacker registered the domain domain.com",
-								"type": "string"
+								"type": "string",
+								"example": "An attacker registered the domain domain.com"
 							},
 							"indicator": {
-								"example": "domain2.com",
-								"type": "string"
+								"type": "string",
+								"example": "domain2.com"
 							},
 							"indicatorType": {
-								"example": "domain",
-								"type": "string"
+								"type": "string",
+								"example": "domain"
 							},
 							"insight": {
-								"example": "new insight",
-								"type": "string"
+								"type": "string",
+								"example": "new insight"
 							},
 							"raw": {
+								"type": "object",
 								"properties": {
 									"data": {
+										"type": "object",
 										"additionalProperties": true,
-										"nullable": true,
-										"type": "object"
+										"nullable": true
 									},
 									"source": {
-										"example": "example.com",
-										"type": "string"
+										"type": "string",
+										"example": "example.com"
 									},
 									"tlp": {
-										"example": "amber",
-										"type": "string"
+										"type": "string",
+										"example": "amber"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"targetCountry": {
-								"example": "US",
-								"type": "string"
+								"type": "string",
+								"example": "US"
 							},
 							"targetIndustry": {
-								"example": "Insurance",
-								"type": "string"
+								"type": "string",
+								"example": "Insurance"
 							},
 							"tlp": {
-								"example": "amber",
-								"type": "string"
+								"type": "string",
+								"example": "amber"
 							}
 						},
 						"required": [
 							"datasetId"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated event.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"attacker": {
-									"example": "Flying Yeti",
-									"type": "string"
+									"type": "string",
+									"example": "Flying Yeti"
 								},
 								"attackerCountry": {
-									"example": "CN",
-									"type": "string"
+									"type": "string",
+									"example": "CN"
 								},
 								"attackerCountryAlpha3": {
-									"example": "CHN",
-									"type": "string"
+									"type": "string",
+									"example": "CHN"
 								},
 								"category": {
-									"example": "Domain Resolution",
-									"type": "string"
+									"type": "string",
+									"example": "Domain Resolution"
 								},
 								"datasetId": {
-									"example": "dataset-example-id",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-example-id"
 								},
 								"date": {
-									"example": "2022-04-01T00:00:00Z",
-									"type": "string"
+									"type": "string",
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"event": {
-									"example": "An attacker registered the domain domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "An attacker registered the domain domain.com"
 								},
 								"hasChildren": {
 									"type": "boolean"
 								},
 								"indicator": {
-									"example": "domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "domain.com"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"insight": {
 									"type": "string"
@@ -3586,18 +3589,18 @@
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"numReferenced": {
 									"type": "number"
@@ -3606,64 +3609,64 @@
 									"type": "number"
 								},
 								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
+									"type": "string",
+									"example": "453gw34w3"
 								},
 								"referenced": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencedIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"references": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencesIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"releasabilityId": {
 									"type": "string"
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"example": "malware",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"targetCountry": {
-									"example": "US",
-									"type": "string"
+									"type": "string",
+									"example": "US"
 								},
 								"targetCountryAlpha3": {
-									"example": "USA",
-									"type": "string"
+									"type": "string",
+									"example": "USA"
 								},
 								"targetIndustry": {
-									"example": "Agriculture",
-									"type": "string"
+									"type": "string",
+									"example": "Agriculture"
 								},
 								"tlp": {
-									"example": "amber",
-									"type": "string"
+									"type": "string",
+									"example": "amber"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
@@ -3694,32 +3697,32 @@
 								"referencesIds",
 								"hasChildren",
 								"datasetId"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated event."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -3732,12 +3735,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -3745,7 +3746,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates an event",
 		"tags": [
 			"Event"
 		],
@@ -3755,13 +3755,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
-		"description": "Update raw data for a specific event.",
 		"operationId": "post_EventRawUpdate",
+		"summary": "Updates a raw event",
+		"description": "Update raw data for a specific event.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -3769,9 +3770,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -3779,9 +3780,9 @@
 				}
 			},
 			{
-				"description": "Raw Event UUID.",
-				"in": "path",
 				"name": "raw_id",
+				"in": "path",
+				"description": "Raw Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Raw Event UUID.",
@@ -3793,67 +3794,69 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"data": {
 								"type": "object"
 							},
 							"source": {
-								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"example": "example.com"
 							},
 							"tlp": {
-								"example": "amber",
-								"type": "string"
+								"type": "string",
+								"example": "amber"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the uuid of the updated raw event and its data.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
 									"type": "object"
 								},
 								"id": {
-									"example": "1234",
-									"type": "string"
+									"type": "string",
+									"example": "1234"
 								}
 							},
 							"required": [
 								"id",
 								"data"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the uuid of the updated raw event and its data."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -3866,12 +3869,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -3879,7 +3880,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates a raw event",
 		"tags": [
 			"Event"
 		],
@@ -3889,13 +3889,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create": {
-		"description": "To create a dataset, see the [`Create Dataset`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/create/) endpoint. When `datasetId` parameter is unspecified, it will be created in a default dataset named `Cloudforce One Threat Events`.",
 		"operationId": "post_EventCreate",
+		"summary": "Creates a new event",
+		"description": "To create a dataset, see the [`Create Dataset`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/create/) endpoint. When `datasetId` parameter is unspecified, it will be created in a default dataset named `Cloudforce One Threat Events`.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -3907,58 +3908,60 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"accountId": {
-								"example": 123456,
-								"type": "number"
+								"type": "number",
+								"example": 123456
 							},
 							"attacker": {
+								"type": "string",
 								"example": "Flying Yeti",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"attackerCountry": {
-								"example": "CN",
-								"type": "string"
+								"type": "string",
+								"example": "CN"
 							},
 							"category": {
-								"example": "Domain Resolution",
-								"type": "string"
+								"type": "string",
+								"example": "Domain Resolution"
 							},
 							"datasetId": {
-								"example": "durableObjectName",
-								"type": "string"
+								"type": "string",
+								"example": "durableObjectName"
 							},
 							"date": {
-								"example": "2022-04-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2022-04-01T00:00:00Z"
 							},
 							"event": {
-								"example": "An attacker registered the domain domain.com",
-								"type": "string"
+								"type": "string",
+								"example": "An attacker registered the domain domain.com"
 							},
 							"indicator": {
-								"example": "domain.com",
-								"type": "string"
+								"type": "string",
+								"example": "domain.com"
 							},
 							"indicatorType": {
-								"example": "domain",
-								"type": "string"
+								"type": "string",
+								"example": "domain"
 							},
 							"indicators": {
 								"description": "Array of indicators for this event. Supports multiple indicators per event for complex scenarios.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"indicatorType": {
 											"description": "The type of indicator (e.g., DOMAIN, IP, JA3, HASH)",
-											"example": "domain",
-											"type": "string"
+											"type": "string",
+											"example": "domain"
 										},
 										"value": {
 											"description": "The indicator value (e.g., domain name, IP address, hash)",
-											"example": "malicious.com",
-											"type": "string"
+											"type": "string",
+											"example": "malicious.com"
 										}
 									},
 									"required": [
@@ -3966,52 +3969,51 @@
 										"indicatorType"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"insight": {
-								"example": "This domain was likely registered for phishing purposes",
-								"type": "string"
+								"type": "string",
+								"example": "This domain was likely registered for phishing purposes"
 							},
 							"raw": {
+								"type": "object",
 								"properties": {
 									"data": {
+										"type": "object",
 										"additionalProperties": true,
-										"nullable": true,
-										"type": "object"
+										"nullable": true
 									},
 									"source": {
-										"example": "example.com",
-										"type": "string"
+										"type": "string",
+										"example": "example.com"
 									},
 									"tlp": {
-										"example": "amber",
-										"type": "string"
+										"type": "string",
+										"example": "amber"
 									}
 								},
 								"required": [
 									"data"
-								],
-								"type": "object"
+								]
 							},
 							"tags": {
+								"type": "array",
 								"items": {
 									"example": "malware",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"targetCountry": {
-								"example": "US",
-								"type": "string"
+								"type": "string",
+								"example": "US"
 							},
 							"targetIndustry": {
-								"example": "Agriculture",
-								"type": "string"
+								"type": "string",
+								"example": "Agriculture"
 							},
 							"tlp": {
-								"example": "amber",
-								"type": "string"
+								"type": "string",
+								"example": "amber"
 							}
 						},
 						"required": [
@@ -4020,60 +4022,61 @@
 							"event",
 							"tlp",
 							"raw"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created event.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"attacker": {
-									"example": "Flying Yeti",
-									"type": "string"
+									"type": "string",
+									"example": "Flying Yeti"
 								},
 								"attackerCountry": {
-									"example": "CN",
-									"type": "string"
+									"type": "string",
+									"example": "CN"
 								},
 								"attackerCountryAlpha3": {
-									"example": "CHN",
-									"type": "string"
+									"type": "string",
+									"example": "CHN"
 								},
 								"category": {
-									"example": "Domain Resolution",
-									"type": "string"
+									"type": "string",
+									"example": "Domain Resolution"
 								},
 								"datasetId": {
-									"example": "dataset-example-id",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-example-id"
 								},
 								"date": {
-									"example": "2022-04-01T00:00:00Z",
-									"type": "string"
+									"type": "string",
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"event": {
-									"example": "An attacker registered the domain domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "An attacker registered the domain domain.com"
 								},
 								"hasChildren": {
 									"type": "boolean"
 								},
 								"indicator": {
-									"example": "domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "domain.com"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"indicatorTypeId": {
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"insight": {
 									"type": "string"
@@ -4082,18 +4085,18 @@
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"numReferenced": {
 									"type": "number"
@@ -4102,64 +4105,64 @@
 									"type": "number"
 								},
 								"rawId": {
-									"example": "453gw34w3",
-									"type": "string"
+									"type": "string",
+									"example": "453gw34w3"
 								},
 								"referenced": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencedIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"references": {
+									"type": "array",
 									"items": {
 										"example": " ",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"referencesIds": {
+									"type": "array",
 									"items": {
 										"type": "number"
-									},
-									"type": "array"
+									}
 								},
 								"releasabilityId": {
 									"type": "string"
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"example": "malware",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"targetCountry": {
-									"example": "US",
-									"type": "string"
+									"type": "string",
+									"example": "US"
 								},
 								"targetCountryAlpha3": {
-									"example": "USA",
-									"type": "string"
+									"type": "string",
+									"example": "USA"
 								},
 								"targetIndustry": {
-									"example": "Agriculture",
-									"type": "string"
+									"type": "string",
+									"example": "Agriculture"
 								},
 								"tlp": {
-									"example": "amber",
-									"type": "string"
+									"type": "string",
+									"example": "amber"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
@@ -4190,32 +4193,32 @@
 								"referencesIds",
 								"hasChildren",
 								"datasetId"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created event."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -4228,12 +4231,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -4241,7 +4242,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates a new event",
 		"tags": [
 			"Event"
 		],
@@ -4251,13 +4251,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk": {
-		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"operationId": "post_EventCreateBulk",
+		"summary": "Creates bulk events",
+		"description": "The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -4269,61 +4270,64 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"data": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"accountId": {
-											"example": 123456,
-											"type": "number"
+											"type": "number",
+											"example": 123456
 										},
 										"attacker": {
+											"type": "string",
 											"example": "Flying Yeti",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"attackerCountry": {
-											"example": "CN",
-											"type": "string"
+											"type": "string",
+											"example": "CN"
 										},
 										"category": {
-											"example": "Domain Resolution",
-											"type": "string"
+											"type": "string",
+											"example": "Domain Resolution"
 										},
 										"datasetId": {
-											"example": "durableObjectName",
-											"type": "string"
+											"type": "string",
+											"example": "durableObjectName"
 										},
 										"date": {
-											"example": "2022-04-01T00:00:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2022-04-01T00:00:00Z"
 										},
 										"event": {
-											"example": "An attacker registered the domain domain.com",
-											"type": "string"
+											"type": "string",
+											"example": "An attacker registered the domain domain.com"
 										},
 										"indicator": {
-											"example": "domain.com",
-											"type": "string"
+											"type": "string",
+											"example": "domain.com"
 										},
 										"indicatorType": {
-											"example": "domain",
-											"type": "string"
+											"type": "string",
+											"example": "domain"
 										},
 										"indicators": {
 											"description": "Array of indicators for this event. Supports multiple indicators per event for complex scenarios.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"indicatorType": {
 														"description": "The type of indicator (e.g., DOMAIN, IP, JA3, HASH)",
-														"example": "domain",
-														"type": "string"
+														"type": "string",
+														"example": "domain"
 													},
 													"value": {
 														"description": "The indicator value (e.g., domain name, IP address, hash)",
-														"example": "malicious.com",
-														"type": "string"
+														"type": "string",
+														"example": "malicious.com"
 													}
 												},
 												"required": [
@@ -4331,52 +4335,51 @@
 													"indicatorType"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"insight": {
-											"example": "This domain was likely registered for phishing purposes",
-											"type": "string"
+											"type": "string",
+											"example": "This domain was likely registered for phishing purposes"
 										},
 										"raw": {
+											"type": "object",
 											"properties": {
 												"data": {
+													"type": "object",
 													"additionalProperties": true,
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												},
 												"source": {
-													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"example": "example.com"
 												},
 												"tlp": {
-													"example": "amber",
-													"type": "string"
+													"type": "string",
+													"example": "amber"
 												}
 											},
 											"required": [
 												"data"
-											],
-											"type": "object"
+											]
 										},
 										"tags": {
+											"type": "array",
 											"items": {
 												"example": "malware",
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"targetCountry": {
-											"example": "US",
-											"type": "string"
+											"type": "string",
+											"example": "US"
 										},
 										"targetIndustry": {
-											"example": "Agriculture",
-											"type": "string"
+											"type": "string",
+											"example": "Agriculture"
 										},
 										"tlp": {
-											"example": "amber",
-											"type": "string"
+											"type": "string",
+											"example": "amber"
 										}
 									},
 									"required": [
@@ -4387,12 +4390,11 @@
 										"raw"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"datasetId": {
-								"example": "durableObjectName",
-								"type": "string"
+								"type": "string",
+								"example": "durableObjectName"
 							},
 							"includeCreatedEvents": {
 								"description": "When true, response includes array of created event UUIDs and shard IDs. Useful for tracking which events were created and where.",
@@ -4402,26 +4404,28 @@
 						"required": [
 							"data",
 							"datasetId"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"202": {
+				"description": "Accepted. Events created; indicators queued for async processing.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Detailed result of bulk event creation with auto-tag management",
+							"type": "object",
 							"properties": {
 								"createBulkEventsRequestId": {
 									"description": "Correlation ID for async indicator processing",
-									"format": "uuid",
-									"type": "string"
+									"type": "string",
+									"format": "uuid"
 								},
 								"createdEvents": {
 									"description": "Array of created events with UUIDs and shard locations. Only present when includeCreatedEvents=true",
+									"type": "array",
 									"items": {
 										"properties": {
 											"eventIndex": {
@@ -4434,8 +4438,8 @@
 											},
 											"uuid": {
 												"description": "UUID of the created event",
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											}
 										},
 										"required": [
@@ -4444,8 +4448,7 @@
 											"shardId"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"createdEventsCount": {
 									"description": "Number of events created",
@@ -4461,6 +4464,7 @@
 								},
 								"errors": {
 									"description": "Array of error details",
+									"type": "array",
 									"items": {
 										"properties": {
 											"error": {
@@ -4477,8 +4481,7 @@
 											"error"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"queuedIndicatorsCount": {
 									"description": "Number of indicators queued for async processing",
@@ -4490,32 +4493,32 @@
 								"queuedIndicatorsCount",
 								"createdTagsCount",
 								"errorCount"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Accepted. Events created; indicators queued for async processing."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -4528,12 +4531,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -4541,7 +4542,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates bulk events",
 		"tags": [
 			"Event"
 		],
@@ -4551,14 +4551,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
-		"deprecated": true,
-		"description": "This method is deprecated. Please use `event_create_bulk` instead",
 		"operationId": "post_DOSEventCreateBulkWithRelationships",
+		"summary": "Creates bulk DOS event with relationships and indicators",
+		"description": "This method is deprecated. Please use `event_create_bulk` instead",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -4570,61 +4570,64 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"data": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"accountId": {
-											"example": 123456,
-											"type": "number"
+											"type": "number",
+											"example": 123456
 										},
 										"attacker": {
+											"type": "string",
 											"example": "Flying Yeti",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"attackerCountry": {
-											"example": "CN",
-											"type": "string"
+											"type": "string",
+											"example": "CN"
 										},
 										"category": {
-											"example": "Domain Resolution",
-											"type": "string"
+											"type": "string",
+											"example": "Domain Resolution"
 										},
 										"datasetId": {
-											"example": "durableObjectName",
-											"type": "string"
+											"type": "string",
+											"example": "durableObjectName"
 										},
 										"date": {
-											"example": "2022-04-01T00:00:00Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2022-04-01T00:00:00Z"
 										},
 										"event": {
-											"example": "An attacker registered the domain domain.com",
-											"type": "string"
+											"type": "string",
+											"example": "An attacker registered the domain domain.com"
 										},
 										"indicator": {
-											"example": "domain.com",
-											"type": "string"
+											"type": "string",
+											"example": "domain.com"
 										},
 										"indicatorType": {
-											"example": "domain",
-											"type": "string"
+											"type": "string",
+											"example": "domain"
 										},
 										"indicators": {
 											"description": "Array of indicators for this event. Supports multiple indicators per event for complex scenarios.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"indicatorType": {
 														"description": "The type of indicator (e.g., DOMAIN, IP, JA3, HASH)",
-														"example": "domain",
-														"type": "string"
+														"type": "string",
+														"example": "domain"
 													},
 													"value": {
 														"description": "The indicator value (e.g., domain name, IP address, hash)",
-														"example": "malicious.com",
-														"type": "string"
+														"type": "string",
+														"example": "malicious.com"
 													}
 												},
 												"required": [
@@ -4632,52 +4635,51 @@
 													"indicatorType"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"insight": {
-											"example": "This domain was likely registered for phishing purposes",
-											"type": "string"
+											"type": "string",
+											"example": "This domain was likely registered for phishing purposes"
 										},
 										"raw": {
+											"type": "object",
 											"properties": {
 												"data": {
+													"type": "object",
 													"additionalProperties": true,
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												},
 												"source": {
-													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"example": "example.com"
 												},
 												"tlp": {
-													"example": "amber",
-													"type": "string"
+													"type": "string",
+													"example": "amber"
 												}
 											},
 											"required": [
 												"data"
-											],
-											"type": "object"
+											]
 										},
 										"tags": {
+											"type": "array",
 											"items": {
 												"example": "malware",
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"targetCountry": {
-											"example": "US",
-											"type": "string"
+											"type": "string",
+											"example": "US"
 										},
 										"targetIndustry": {
-											"example": "Agriculture",
-											"type": "string"
+											"type": "string",
+											"example": "Agriculture"
 										},
 										"tlp": {
-											"example": "amber",
-											"type": "string"
+											"type": "string",
+											"example": "amber"
 										}
 									},
 									"required": [
@@ -4688,29 +4690,29 @@
 										"raw"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"datasetId": {
-								"example": "durableObjectName",
-								"type": "string"
+								"type": "string",
+								"example": "durableObjectName"
 							}
 						},
 						"required": [
 							"data",
 							"datasetId"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the number of created bulk events with relationships.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Result of bulk relationship creation operation",
+							"type": "object",
 							"properties": {
 								"createdEventsCount": {
 									"description": "Number of events created",
@@ -4730,6 +4732,7 @@
 								},
 								"errors": {
 									"description": "Array of error details",
+									"type": "array",
 									"items": {
 										"properties": {
 											"error": {
@@ -4746,8 +4749,7 @@
 											"error"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
@@ -4755,32 +4757,32 @@
 								"createdIndicatorsCount",
 								"createdRelationshipsCount",
 								"errorCount"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the number of created bulk events with relationships."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -4793,20 +4795,18 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
 			}
 		],
-		"summary": "Creates bulk DOS event with relationships and indicators",
 		"tags": [
 			"Event"
 		],
@@ -4816,13 +4816,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/copy": {
-		"description": "Copy one or more events from a source dataset to a destination dataset.",
 		"operationId": "post_EventCopyToNewDS",
+		"summary": "Copies specified events from one dataset to another dataset",
+		"description": "Copy one or more events from a source dataset to a destination dataset.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -4830,20 +4831,20 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied).",
-				"in": "query",
 				"name": "keepRawData",
+				"in": "query",
+				"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied).",
 				"schema": {
 					"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied).",
 					"type": "boolean"
@@ -4854,46 +4855,49 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"destDatasetId": {
-								"example": "12345678-1234-1234-1234-1234567890ab",
-								"type": "string"
+								"type": "string",
+								"example": "12345678-1234-1234-1234-1234567890ab"
 							},
 							"eventIds": {
+								"type": "array",
 								"items": {
 									"example": "7632a037-fdef-4899-9b12-148470aae772",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"destDatasetId",
 							"eventIds"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the number of copied events",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"copied": {
 									"description": "Number of events successfully copied",
-									"example": 2,
-									"type": "number"
+									"type": "number",
+									"example": 2
 								},
 								"indicatorsCopied": {
 									"description": "Number of indicators successfully copied",
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"insertFailures": {
 									"description": "Array of events that failed to insert into destination",
+									"type": "array",
 									"items": {
 										"properties": {
 											"index": {
@@ -4910,45 +4914,44 @@
 											"reason"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"relationshipsCopied": {
 									"description": "Number of relationships successfully copied",
-									"example": 3,
-									"type": "number"
+									"type": "number",
+									"example": 3
 								}
 							},
 							"required": [
 								"copied",
 								"indicatorsCopied",
 								"relationshipsCopied"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the number of copied events"
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -4961,12 +4964,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -4974,7 +4975,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Copies specified events from one dataset to another dataset",
 		"tags": [
 			"Event"
 		],
@@ -4984,13 +4984,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
-		"description": "Move one or more events from a source dataset to a destination dataset.",
 		"operationId": "post_EventMoveToNewDS",
+		"summary": "Moves specified events from one dataset to another dataset",
+		"description": "Move one or more events from a source dataset to a destination dataset.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -4998,20 +4999,20 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied). Raw data is always deleted from the source.",
-				"in": "query",
 				"name": "keepRawData",
+				"in": "query",
+				"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied). Raw data is always deleted from the source.",
 				"schema": {
 					"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied). Raw data is always deleted from the source.",
 					"type": "boolean"
@@ -5022,36 +5023,39 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"destDatasetId": {
-								"example": "12345678-1234-1234-1234-1234567890ab",
-								"type": "string"
+								"type": "string",
+								"example": "12345678-1234-1234-1234-1234567890ab"
 							},
 							"eventIds": {
+								"type": "array",
 								"items": {
 									"example": "7632a037-fdef-4899-9b12-148470aae772",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"destDatasetId",
 							"eventIds"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the number of moved events ",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"deletionFailures": {
 									"description": "Array of source datasets where deletion failed",
+									"type": "array",
 									"items": {
 										"properties": {
 											"datasetId": {
@@ -5068,16 +5072,16 @@
 											"reason"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"indicatorsCopied": {
 									"description": "Number of indicators successfully copied",
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"insertFailures": {
 									"description": "Array of events that failed to insert into destination",
+									"type": "array",
 									"items": {
 										"properties": {
 											"index": {
@@ -5094,50 +5098,49 @@
 											"reason"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"moved": {
 									"description": "Number of events successfully moved",
-									"example": 2,
-									"type": "number"
+									"type": "number",
+									"example": 2
 								},
 								"relationshipsCopied": {
 									"description": "Number of relationships successfully copied",
-									"example": 3,
-									"type": "number"
+									"type": "number",
+									"example": 3
 								}
 							},
 							"required": [
 								"moved",
 								"indicatorsCopied",
 								"relationshipsCopied"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the number of moved events "
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -5150,12 +5153,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5163,7 +5164,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Moves specified events from one dataset to another dataset",
 		"tags": [
 			"Event"
 		],
@@ -5173,13 +5173,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create": {
-		"description": "Add one or more tags to an event.",
 		"operationId": "post_EventTagCreate",
+		"summary": "Adds a tag to an event",
+		"description": "Add one or more tags to an event.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5187,9 +5188,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -5201,75 +5202,77 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"tags": {
+								"type": "array",
 								"items": {
 									"example": "botnet",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"tags"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns success if operation succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns success if operation succeeded."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -5282,12 +5285,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5295,7 +5296,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Adds a tag to an event",
 		"tags": [
 			"Event"
 		],
@@ -5305,13 +5305,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/graphql": {
-		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
 		"operationId": "post_EventGraphQL",
+		"summary": "GraphQL endpoint for event aggregation",
+		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5321,47 +5322,49 @@
 		],
 		"responses": {
 			"200": {
+				"description": "GraphQL response payload (data and errors).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "GraphQL response payload (data and errors)."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -5374,12 +5377,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5387,7 +5388,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "GraphQL endpoint for event aggregation",
 		"tags": [
 			"Event"
 		],
@@ -5397,13 +5397,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
-		"description": "Update an existing saved event query by its ID",
 		"operationId": "post_EventQueryUpdate",
+		"summary": "Update a saved event query",
+		"description": "Update an existing saved event query by its ID",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5411,9 +5412,9 @@
 				}
 			},
 			{
-				"description": "Event query ID",
-				"in": "path",
 				"name": "query_id",
+				"in": "path",
+				"description": "Event query ID",
 				"required": true,
 				"schema": {
 					"description": "Event query ID",
@@ -5425,6 +5426,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"alert_enabled": {
 								"description": "Enable alerts for this query",
@@ -5450,17 +5452,18 @@
 								"description": "Scope for the rule",
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated event query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account_id": {
 									"description": "Account ID",
@@ -5480,8 +5483,8 @@
 								},
 								"custom_threat_feed_id": {
 									"description": "Intel Indicator Feed ID (numeric)",
-									"nullable": true,
-									"type": "integer"
+									"type": "integer",
+									"nullable": true
 								},
 								"id": {
 									"description": "Unique identifier for the saved query",
@@ -5527,32 +5530,32 @@
 								"rule_enabled",
 								"created_at",
 								"updated_at"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated event query."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -5565,32 +5568,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -5603,12 +5606,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5616,7 +5617,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a saved event query",
 		"tags": [
 			"Event"
 		],
@@ -5626,13 +5626,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/create": {
-		"description": "Create a new saved event query for the account",
 		"operationId": "post_EventQueryCreate",
+		"summary": "Create a saved event query",
+		"description": "Create a new saved event query for the account",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5644,6 +5645,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"alert_enabled": {
 								"description": "Enable alerts for this query",
@@ -5676,17 +5678,18 @@
 							"alert_enabled",
 							"alert_rollup_enabled",
 							"rule_enabled"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created event query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account_id": {
 									"description": "Account ID",
@@ -5706,8 +5709,8 @@
 								},
 								"custom_threat_feed_id": {
 									"description": "Intel Indicator Feed ID (numeric)",
-									"nullable": true,
-									"type": "integer"
+									"type": "integer",
+									"nullable": true
 								},
 								"id": {
 									"description": "Unique identifier for the saved query",
@@ -5753,32 +5756,32 @@
 								"rule_enabled",
 								"created_at",
 								"updated_at"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created event query."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -5791,12 +5794,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5804,7 +5805,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a saved event query",
 		"tags": [
 			"Event"
 		],
@@ -5814,13 +5814,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relate/{event_id}/create": {
-		"description": "Create one or more references between events.",
 		"operationId": "post_EventReferenceCreate",
+		"summary": "Creates event references for a event",
+		"description": "Create one or more references between events.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5828,9 +5829,9 @@
 				}
 			},
 			{
-				"description": "Event UUID.",
-				"in": "path",
 				"name": "event_id",
+				"in": "path",
+				"description": "Event UUID.",
 				"required": true,
 				"schema": {
 					"description": "Event UUID.",
@@ -5842,75 +5843,77 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"events": {
+								"type": "array",
 								"items": {
 									"example": "88888888-4444-4444-4444-121212121212",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"events"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns success if operation succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns success if operation succeeded."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -5923,12 +5926,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -5936,7 +5937,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates event references for a event",
 		"tags": [
 			"Event"
 		],
@@ -5946,13 +5946,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relationships/create": {
-		"description": "Creates a directed relationship between two events. The relationship is from parent to child with a specified type.",
 		"operationId": "post_CreateEventRelationship",
+		"summary": "Create a relationship between two events",
+		"description": "Creates a directed relationship between two events. The relationship is from parent to child with a specified type.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5964,15 +5965,16 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"childIds": {
 								"description": "Array of UUIDs for child events. Single child = 1:1 relationship, multiple = 1:many relationships",
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							},
 							"datasetId": {
 								"description": "Dataset identifier where the events are stored",
@@ -5980,17 +5982,17 @@
 							},
 							"parentId": {
 								"description": "UUID of the parent event that will be the source of the relationship",
-								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"format": "uuid"
 							},
 							"relationshipType": {
 								"description": "Type of relationship to create between parent and child events",
+								"type": "string",
 								"enum": [
 									"related_to",
 									"caused_by",
 									"attributed_to"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
@@ -5998,34 +6000,36 @@
 							"childIds",
 							"relationshipType",
 							"datasetId"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Relationship created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"childIds": {
 									"description": "Array of child event UUIDs that were processed",
+									"type": "array",
 									"items": {
 										"format": "uuid",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"errors": {
 									"description": "Array of errors for relationships that failed to be created (only present if some relationships failed)",
+									"type": "array",
 									"items": {
 										"properties": {
 											"childId": {
 												"description": "UUID of the child event that failed to create a relationship",
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"error": {
 												"description": "Error message describing why the relationship creation failed",
@@ -6041,8 +6045,7 @@
 											"error"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"description": "Human-readable message describing the operation result",
@@ -6050,6 +6053,7 @@
 								},
 								"relationships": {
 									"description": "Array of successfully created relationship objects",
+									"type": "array",
 									"items": {
 										"properties": {
 											"childDatasetId": {
@@ -6058,8 +6062,8 @@
 											},
 											"childId": {
 												"description": "UUID of the child event in the relationship",
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"parentDatasetId": {
 												"description": "Dataset ID where the parent event resides",
@@ -6067,17 +6071,17 @@
 											},
 											"parentId": {
 												"description": "UUID of the parent event in the relationship",
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"relationshipType": {
 												"description": "Type of relationship between the events",
+												"type": "string",
 												"enum": [
 													"related_to",
 													"caused_by",
 													"attributed_to"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -6088,8 +6092,7 @@
 											"childDatasetId"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"relationshipsCreated": {
 									"description": "Number of relationships that were successfully created",
@@ -6104,32 +6107,32 @@
 								"success",
 								"message",
 								"relationships"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Relationship created successfully"
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -6142,12 +6145,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -6155,7 +6156,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a relationship between two events",
 		"tags": [
 			"Event"
 		],
@@ -6165,13 +6165,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/events/graphql": {
-		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
 		"operationId": "post_EventGraphQLV2",
+		"summary": "GraphQL endpoint for event aggregation",
+		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -6181,47 +6182,49 @@
 		],
 		"responses": {
 			"200": {
+				"description": "GraphQL response payload (data and errors).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "GraphQL response payload (data and errors)."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -6234,12 +6237,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -6247,7 +6248,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "GraphQL endpoint for event aggregation",
 		"tags": [
 			"Event"
 		],

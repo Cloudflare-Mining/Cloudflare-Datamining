@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/flagship/apps/{app_id}": {
-		"description": "Deletes an app and all its flags and changelog history. Returns 409 if any Worker still references this app via a Flagship binding.",
 		"operationId": "flagship_delete_app",
+		"summary": "Delete app",
+		"description": "Deletes an app and all its flags and changelog history. Returns 409 if any Worker still references this app via a Flagship binding.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -26,11 +27,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "App deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -41,10 +45,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -55,10 +59,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"type": "string"
@@ -66,8 +70,7 @@
 									},
 									"required": [
 										"id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -78,20 +81,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "App deleted."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -99,13 +104,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -113,17 +118,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -134,20 +137,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -155,13 +160,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -169,17 +174,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -190,20 +193,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -211,13 +216,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -225,17 +230,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -246,20 +249,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -267,13 +272,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -281,17 +286,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -302,20 +305,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"409": {
+				"description": "Conflict — app is bound to Worker scripts.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -323,13 +328,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -337,17 +342,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -358,20 +361,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Conflict — app is bound to Worker scripts."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -379,13 +384,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -393,17 +398,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -414,20 +417,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -435,13 +440,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -449,17 +454,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -470,12 +473,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -487,7 +488,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete app",
 		"tags": [
 			"Apps"
 		],
@@ -511,13 +511,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps": {
-		"description": "Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included.",
 		"operationId": "flagship_list_apps",
+		"summary": "List apps",
+		"description": "Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -527,11 +528,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of apps.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -542,10 +546,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -556,11 +560,12 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"created_at": {
 												"type": "string"
@@ -585,10 +590,8 @@
 											"created_at",
 											"updated_at",
 											"updated_by"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -599,20 +602,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of apps."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -620,13 +625,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -634,17 +639,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -655,20 +658,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -676,13 +681,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -690,17 +695,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -711,20 +714,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -732,13 +737,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -746,17 +751,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -767,20 +770,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -788,13 +793,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -802,17 +807,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -823,20 +826,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -844,13 +849,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -858,17 +863,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -879,20 +882,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -900,13 +905,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -914,17 +919,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -935,12 +938,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -952,7 +953,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List apps",
 		"tags": [
 			"Apps"
 		],
@@ -977,13 +977,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}": {
-		"description": "Returns an app's name and audit fields. Flag definitions are not included.",
 		"operationId": "flagship_get_app",
+		"summary": "Get app",
+		"description": "Returns an app's name and audit fields. Flag definitions are not included.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -991,9 +992,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -1003,11 +1004,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "App details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1018,10 +1022,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1032,10 +1036,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"type": "string"
@@ -1060,8 +1064,7 @@
 										"created_at",
 										"updated_at",
 										"updated_by"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1072,20 +1075,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "App details."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1093,13 +1098,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1107,17 +1112,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1128,20 +1131,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1149,13 +1154,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1163,17 +1168,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1184,20 +1187,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1205,13 +1210,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1219,17 +1224,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1240,20 +1243,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1261,13 +1266,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1275,17 +1280,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1296,20 +1299,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1317,13 +1322,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1331,17 +1336,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1352,20 +1355,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1373,13 +1378,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1387,17 +1392,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1408,12 +1411,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -1425,7 +1426,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get app",
 		"tags": [
 			"Apps"
 		],
@@ -1450,54 +1450,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/realtime/kit/apps": {
-		"description": "Fetch all apps for your account",
 		"operationId": "get_apps",
+		"summary": "Fetch all apps",
+		"description": "Fetch all apps for your account",
 		"parameters": [
 			{
-				"description": "The page number from which you want your page search results to be displayed.",
-				"in": "query",
 				"name": "page_no",
+				"in": "query",
+				"description": "The page number from which you want your page search results to be displayed.",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Number of results per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
 				"schema": {
+					"type": "integer",
 					"default": 20,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Search string that matches apps by name.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Search string that matches apps by name.",
 				"schema": {
-					"maxLength": 125,
-					"type": "string"
+					"type": "string",
+					"maxLength": 125
 				}
 			},
 			{
-				"description": "Sort order for apps by creation time.",
-				"in": "query",
 				"name": "sort_order",
+				"in": "query",
+				"description": "Sort order for apps by creation time.",
 				"schema": {
+					"type": "string",
 					"default": "DESC",
 					"enum": [
 						"ASC",
 						"DESC"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1520,27 +1522,29 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"name": {
 												"type": "string"
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"paging": {
+									"type": "object",
 									"properties": {
 										"end_offset": {
 											"type": "number"
@@ -1551,18 +1555,15 @@
 										"total_count": {
 											"type": "number"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			}
 		},
 		"security": [
@@ -1570,7 +1571,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch all apps",
 		"tags": [
 			"Apps"
 		],
@@ -1580,35 +1580,37 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/apps/{app_id}": {
-		"description": "Fetch details for an app in your account.",
 		"operationId": "get_app",
+		"summary": "Fetch app details",
+		"description": "Fetch details for an app in your account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1624,33 +1626,32 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"name": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			}
 		},
 		"security": [
@@ -1658,7 +1659,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch app details",
 		"tags": [
 			"Apps"
 		],
@@ -1668,13 +1668,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/flagship/apps": {
-		"description": "Creates an app. The returned `id` is used in all subsequent flag, changelog, and evaluation requests.",
 		"operationId": "flagship_create_app",
+		"summary": "Create app",
+		"description": "Creates an app. The returned `id` is used in all subsequent flag, changelog, and evaluation requests.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -1683,34 +1684,37 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"name": {
+								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
-								"pattern": "^[a-zA-Z0-9_-]+$",
-								"type": "string"
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "App created.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1721,10 +1725,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1735,10 +1739,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"type": "string"
@@ -1763,8 +1767,7 @@
 										"created_at",
 										"updated_at",
 										"updated_by"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1775,20 +1778,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "App created."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1796,13 +1801,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1810,17 +1815,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1831,20 +1834,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1852,13 +1857,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1866,17 +1871,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1887,20 +1890,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1908,13 +1913,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1922,17 +1927,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1943,20 +1946,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1964,13 +1969,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1978,17 +1983,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1999,20 +2002,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2020,13 +2025,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2034,17 +2039,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2055,20 +2058,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2076,13 +2081,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2090,17 +2095,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2111,12 +2114,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -2128,7 +2129,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create app",
 		"tags": [
 			"Apps"
 		],
@@ -2152,22 +2152,23 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/realtime/kit/apps": {
-		"description": "Create new app for your account",
 		"operationId": "create_app",
+		"summary": "Create App",
+		"description": "Create new app for your account",
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
 			},
@@ -2175,6 +2176,7 @@
 		},
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -2192,37 +2194,36 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"app": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"name": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			}
 		},
 		"security": [
@@ -2230,7 +2231,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create App",
 		"tags": [
 			"Apps"
 		],
@@ -2240,13 +2240,14 @@
 		]
 	},
 	"PUT /accounts/{account_id}/flagship/apps/{app_id}": {
-		"description": "Updates an app. Only `name` is mutable.",
 		"operationId": "flagship_update_app",
+		"summary": "Update app",
+		"description": "Updates an app. Only `name` is mutable.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -2254,9 +2255,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -2265,31 +2266,34 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"name": {
+								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
-								"pattern": "^[a-zA-Z0-9_-]+$",
-								"type": "string"
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							}
 						},
-						"type": "object"
+						"additionalProperties": false
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Updated app.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2300,10 +2304,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2314,10 +2318,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"type": "string"
@@ -2342,8 +2346,7 @@
 										"created_at",
 										"updated_at",
 										"updated_by"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2354,20 +2357,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Updated app."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2375,13 +2380,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2389,17 +2394,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2410,20 +2413,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2431,13 +2436,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2445,17 +2450,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2466,20 +2469,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2487,13 +2492,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2501,17 +2506,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2522,20 +2525,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2543,13 +2548,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2557,17 +2562,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2578,20 +2581,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2599,13 +2604,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2613,17 +2618,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2634,20 +2637,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2655,13 +2660,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2669,17 +2674,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2690,12 +2693,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -2707,7 +2708,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update app",
 		"tags": [
 			"Apps"
 		],

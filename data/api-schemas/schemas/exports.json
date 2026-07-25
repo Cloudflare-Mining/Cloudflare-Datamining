@@ -1,7 +1,8 @@
 {
 	"GET /accounts/{account_id}/data-security/posture/exports": {
-		"description": "List all export jobs for a given requestor's organization",
 		"operationId": "ListExportJobs",
+		"summary": "List all export jobs",
+		"description": "List all export jobs for a given requestor's organization",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -30,62 +31,65 @@
 				}
 			},
 			{
-				"description": "Filter on export job's status",
-				"in": "query",
 				"name": "status",
+				"in": "query",
+				"description": "Filter on export job's status",
 				"schema": {
 					"description": "Status of an export job.",
+					"type": "string",
+					"example": "Success",
 					"enum": [
 						"Pending",
 						"Success",
 						"Failure",
 						"Rescheduled",
 						"In-Progress"
-					],
-					"example": "Success",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Response structure for paginated collections.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -94,39 +98,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -135,57 +139,57 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"result_info": {
 											"description": "Pagination and result information.",
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results for the requested service.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"cursor": {
 													"description": "Cursor for cursor-based pagination.",
+													"type": "string",
 													"example": "eyJpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImFmZmxpY3Rpb25fZGF0ZSI6IjE5NzAtMDEtMDFUMDA6MDA6MDAuMDAwMDAwWiJ9",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"next": {
 													"description": "URL to the next page of results.",
+													"type": "string",
 													"format": "uri",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"page": {
 													"description": "Current page within paginated list of results.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page of results.",
-													"example": 20,
-													"type": "integer"
+													"type": "integer",
+													"example": 20
 												},
 												"previous": {
 													"description": "URL to the previous page of results.",
+													"type": "string",
 													"format": "uri",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters.",
-													"example": 2000,
-													"type": "integer"
+													"type": "integer",
+													"example": 2000
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -193,15 +197,80 @@
 										"errors",
 										"messages",
 										"result_info"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Array of export job objects.",
+											"type": "array",
 											"items": {
 												"description": "Information about an export job.",
+												"type": "object",
+												"properties": {
+													"download_url": {
+														"description": "The URL by which the successfully created export can be downloaded by the end users.",
+														"type": "string",
+														"format": "uri",
+														"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
+														"maxLength": 1024,
+														"nullable": true
+													},
+													"errors": {
+														"description": "Contains information on errors which may have occurred during export creation.",
+														"type": "string",
+														"nullable": true
+													},
+													"file_name": {
+														"description": "The base name of the file that is/was generated by the export job.",
+														"type": "string",
+														"example": "Finding_Instances_2024-02-27T04:05:26Z",
+														"maxLength": 256,
+														"nullable": true
+													},
+													"file_path": {
+														"description": "The full path of the file that is stored within external storage (currently R2).",
+														"type": "string",
+														"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
+														"maxLength": 512,
+														"nullable": true
+													},
+													"id": {
+														"description": "Unique identifier for the export job.",
+														"type": "string",
+														"format": "uuid",
+														"example": "45ce02c2-e797-4a71-98cb-937244352fd4"
+													},
+													"status": {
+														"description": "Status of an export job.",
+														"type": "string",
+														"example": "Success",
+														"enum": [
+															"Pending",
+															"Success",
+															"Failure",
+															"Rescheduled",
+															"In-Progress"
+														]
+													},
+													"type": {
+														"description": "Type of export job.",
+														"type": "string",
+														"example": "finding",
+														"enum": [
+															"finding",
+															"findingInstance",
+															"content",
+															"remediationJob"
+														]
+													},
+													"user_id": {
+														"description": "ID of the export-requesting user.",
+														"type": "string",
+														"example": "e7712d506b1ee4c5ede0802815f55a75",
+														"maxLength": 128
+													}
+												},
 												"example": {
 													"download_url": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
 													"errors": null,
@@ -211,89 +280,21 @@
 													"type": "finding",
 													"user_id": "e7712d506b1ee4c5ede0802815f55a75"
 												},
-												"properties": {
-													"download_url": {
-														"description": "The URL by which the successfully created export can be downloaded by the end users.",
-														"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
-														"format": "uri",
-														"maxLength": 1024,
-														"nullable": true,
-														"type": "string"
-													},
-													"errors": {
-														"description": "Contains information on errors which may have occurred during export creation.",
-														"nullable": true,
-														"type": "string"
-													},
-													"file_name": {
-														"description": "The base name of the file that is/was generated by the export job.",
-														"example": "Finding_Instances_2024-02-27T04:05:26Z",
-														"maxLength": 256,
-														"nullable": true,
-														"type": "string"
-													},
-													"file_path": {
-														"description": "The full path of the file that is stored within external storage (currently R2).",
-														"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
-														"maxLength": 512,
-														"nullable": true,
-														"type": "string"
-													},
-													"id": {
-														"description": "Unique identifier for the export job.",
-														"example": "45ce02c2-e797-4a71-98cb-937244352fd4",
-														"format": "uuid",
-														"type": "string"
-													},
-													"status": {
-														"description": "Status of an export job.",
-														"enum": [
-															"Pending",
-															"Success",
-															"Failure",
-															"Rescheduled",
-															"In-Progress"
-														],
-														"example": "Success",
-														"type": "string"
-													},
-													"type": {
-														"description": "Type of export job.",
-														"enum": [
-															"finding",
-															"findingInstance",
-															"content",
-															"remediationJob"
-														],
-														"example": "finding",
-														"type": "string"
-													},
-													"user_id": {
-														"description": "ID of the export-requesting user.",
-														"example": "e7712d506b1ee4c5ede0802815f55a75",
-														"maxLength": 128,
-														"type": "string"
-													}
-												},
 												"required": [
 													"id",
 													"status",
 													"type",
 													"user_id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -304,7 +305,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List all export jobs",
 		"tags": [
 			"exports"
 		],
@@ -318,8 +318,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/exports/{id}": {
-		"description": "Retrieves a single export job by its unique identifier",
 		"operationId": "GetExportJob",
+		"summary": "Get a single export job",
+		"description": "Retrieves a single export job by its unique identifier",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -332,55 +333,58 @@
 				}
 			},
 			{
-				"description": "Unique identifier for the export job",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Unique identifier for the export job",
 				"required": true,
 				"schema": {
-					"pattern": "^[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}$",
-					"type": "string"
+					"type": "string",
+					"pattern": "^[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -389,39 +393,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -430,26 +434,90 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Information about an export job.",
+											"type": "object",
+											"properties": {
+												"download_url": {
+													"description": "The URL by which the successfully created export can be downloaded by the end users.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"errors": {
+													"description": "Contains information on errors which may have occurred during export creation.",
+													"type": "string",
+													"nullable": true
+												},
+												"file_name": {
+													"description": "The base name of the file that is/was generated by the export job.",
+													"type": "string",
+													"example": "Finding_Instances_2024-02-27T04:05:26Z",
+													"maxLength": 256,
+													"nullable": true
+												},
+												"file_path": {
+													"description": "The full path of the file that is stored within external storage (currently R2).",
+													"type": "string",
+													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
+													"maxLength": 512,
+													"nullable": true
+												},
+												"id": {
+													"description": "Unique identifier for the export job.",
+													"type": "string",
+													"format": "uuid",
+													"example": "45ce02c2-e797-4a71-98cb-937244352fd4"
+												},
+												"status": {
+													"description": "Status of an export job.",
+													"type": "string",
+													"example": "Success",
+													"enum": [
+														"Pending",
+														"Success",
+														"Failure",
+														"Rescheduled",
+														"In-Progress"
+													]
+												},
+												"type": {
+													"description": "Type of export job.",
+													"type": "string",
+													"example": "finding",
+													"enum": [
+														"finding",
+														"findingInstance",
+														"content",
+														"remediationJob"
+													]
+												},
+												"user_id": {
+													"description": "ID of the export-requesting user.",
+													"type": "string",
+													"example": "e7712d506b1ee4c5ede0802815f55a75",
+													"maxLength": 128
+												}
+											},
 											"example": {
 												"download_url": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
 												"errors": null,
@@ -459,87 +527,20 @@
 												"type": "finding",
 												"user_id": "e7712d506b1ee4c5ede0802815f55a75"
 											},
-											"properties": {
-												"download_url": {
-													"description": "The URL by which the successfully created export can be downloaded by the end users.",
-													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uri",
-													"maxLength": 1024,
-													"nullable": true,
-													"type": "string"
-												},
-												"errors": {
-													"description": "Contains information on errors which may have occurred during export creation.",
-													"nullable": true,
-													"type": "string"
-												},
-												"file_name": {
-													"description": "The base name of the file that is/was generated by the export job.",
-													"example": "Finding_Instances_2024-02-27T04:05:26Z",
-													"maxLength": 256,
-													"nullable": true,
-													"type": "string"
-												},
-												"file_path": {
-													"description": "The full path of the file that is stored within external storage (currently R2).",
-													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
-													"maxLength": 512,
-													"nullable": true,
-													"type": "string"
-												},
-												"id": {
-													"description": "Unique identifier for the export job.",
-													"example": "45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uuid",
-													"type": "string"
-												},
-												"status": {
-													"description": "Status of an export job.",
-													"enum": [
-														"Pending",
-														"Success",
-														"Failure",
-														"Rescheduled",
-														"In-Progress"
-													],
-													"example": "Success",
-													"type": "string"
-												},
-												"type": {
-													"description": "Type of export job.",
-													"enum": [
-														"finding",
-														"findingInstance",
-														"content",
-														"remediationJob"
-													],
-													"example": "finding",
-													"type": "string"
-												},
-												"user_id": {
-													"description": "ID of the export-requesting user.",
-													"example": "e7712d506b1ee4c5ede0802815f55a75",
-													"maxLength": 128,
-													"type": "string"
-												}
-											},
 											"required": [
 												"id",
 												"status",
 												"type",
 												"user_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -553,7 +554,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a single export job",
 		"tags": [
 			"exports"
 		],
@@ -567,8 +567,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/content/export": {
-		"description": "Creates a CSV export for content and accepts optional filters in the payload.",
 		"operationId": "CreateContentExport",
+		"summary": "Create a content export",
+		"description": "Creates a CSV export for content and accepts optional filters in the payload.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -586,139 +587,142 @@
 				"application/json": {
 					"schema": {
 						"description": "Request body for creating content exports.",
+						"type": "object",
 						"properties": {
 							"dlp_profile_id": {
 								"description": "Filter by DLP profile IDs.",
-								"example": [
-									"e91a2360-da51-4fdf-9711-bcdecd462614"
-								],
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"e91a2360-da51-4fdf-9711-bcdecd462614"
+								]
 							},
 							"dlp_profile_information": {
 								"description": "DLP profile metadata for the export.",
+								"type": "array",
 								"items": {
 									"description": "DLP profile configuration.",
+									"type": "object",
 									"properties": {
 										"entries": {
 											"description": "Entries contained within this DLP profile.",
+											"type": "array",
 											"items": {
 												"description": "Entry within a DLP profile.",
+												"type": "object",
 												"properties": {
 													"id": {
 														"description": "Unique identifier for the DLP profile entry.",
-														"example": "55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1",
+														"type": "string",
 														"format": "uuid",
-														"type": "string"
+														"example": "55ba2c6c-8ef4-4b2e-9148-e75e8b6ccac1"
 													},
 													"name": {
 														"description": "Name of the DLP profile entry.",
-														"example": "Credit Card Numbers",
-														"type": "string"
+														"type": "string",
+														"example": "Credit Card Numbers"
 													},
 													"profile_id": {
 														"description": "ID of the parent DLP profile.",
-														"example": "e91a2360-da51-4fdf-9711-bcdecd462614",
+														"type": "string",
 														"format": "uuid",
-														"type": "string"
+														"example": "e91a2360-da51-4fdf-9711-bcdecd462614"
 													}
 												},
 												"required": [
 													"id",
 													"name",
 													"profile_id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"id": {
 											"description": "Unique identifier for the DLP profile.",
-											"example": "e91a2360-da51-4fdf-9711-bcdecd462614",
+											"type": "string",
 											"format": "uuid",
-											"type": "string"
+											"example": "e91a2360-da51-4fdf-9711-bcdecd462614"
 										},
 										"name": {
 											"description": "Name of the DLP profile.",
-											"example": "Financial Information",
-											"type": "string"
+											"type": "string",
+											"example": "Financial Information"
 										}
 									},
 									"required": [
 										"id",
 										"name",
 										"entries"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"integration_id": {
 								"description": "Filter by integration IDs.",
-								"example": [
-									"c416bc38-75dc-425f-ae25-c37b5df5c37f"
-								],
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"c416bc38-75dc-425f-ae25-c37b5df5c37f"
+								]
 							},
 							"max_affliction_date": {
 								"description": "Filter to view content flagged on or before this date.",
-								"example": "2024-01-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-01-01T00:00:00Z"
 							},
 							"min_affliction_date": {
 								"description": "Filter to view content flagged on or after this date.",
-								"example": "2023-01-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2023-01-01T00:00:00Z"
 							},
 							"orders": {
 								"description": "Ordering specifications for the export.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"allOf": [
 										{
 											"description": "Generic ordering specification.",
+											"type": "object",
 											"properties": {
 												"direction": {
 													"description": "Sort direction.",
+													"type": "string",
+													"example": "asc",
 													"enum": [
 														"asc",
 														"desc"
-													],
-													"example": "asc",
-													"type": "string"
+													]
 												},
 												"name": {
 													"description": "Field name to order by.",
-													"example": "instance_count",
-													"type": "string"
+													"type": "string",
+													"example": "instance_count"
 												}
 											},
 											"required": [
 												"direction",
 												"name"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"name": {
 													"description": "Content-specific field names for ordering.",
+													"type": "string",
+													"example": "asset_name",
 													"enum": [
 														"asset_name",
 														"dlp_profile_count",
 														"integration_name",
 														"latest_affliction_date"
-													],
-													"example": "asset_name",
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -726,23 +730,21 @@
 											],
 											"type": "object"
 										}
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"search": {
 								"description": "Search term to filter content.",
-								"example": "sensitive",
-								"type": "string"
+								"type": "string",
+								"example": "sensitive"
 							},
 							"vendors": {
 								"description": "Filter by vendor types.",
-								"example": [
-									"GOOGLE_WORKSPACE"
-								],
+								"type": "array",
 								"items": {
 									"description": "Supported vendor types for integrations.",
+									"type": "string",
+									"example": "GOOGLE_WORKSPACE",
 									"enum": [
 										"ANTHROPIC",
 										"AWS",
@@ -760,60 +762,62 @@
 										"SALESFORCE",
 										"SERVICENOW",
 										"SLACK"
-									],
-									"example": "GOOGLE_WORKSPACE",
-									"type": "string"
+									]
 								},
-								"type": "array"
+								"example": [
+									"GOOGLE_WORKSPACE"
+								]
 							}
 						},
 						"required": [
 							"dlp_profile_information"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -822,39 +826,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -863,26 +867,90 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Information about an export job.",
+											"type": "object",
+											"properties": {
+												"download_url": {
+													"description": "The URL by which the successfully created export can be downloaded by the end users.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"errors": {
+													"description": "Contains information on errors which may have occurred during export creation.",
+													"type": "string",
+													"nullable": true
+												},
+												"file_name": {
+													"description": "The base name of the file that is/was generated by the export job.",
+													"type": "string",
+													"example": "Finding_Instances_2024-02-27T04:05:26Z",
+													"maxLength": 256,
+													"nullable": true
+												},
+												"file_path": {
+													"description": "The full path of the file that is stored within external storage (currently R2).",
+													"type": "string",
+													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
+													"maxLength": 512,
+													"nullable": true
+												},
+												"id": {
+													"description": "Unique identifier for the export job.",
+													"type": "string",
+													"format": "uuid",
+													"example": "45ce02c2-e797-4a71-98cb-937244352fd4"
+												},
+												"status": {
+													"description": "Status of an export job.",
+													"type": "string",
+													"example": "Success",
+													"enum": [
+														"Pending",
+														"Success",
+														"Failure",
+														"Rescheduled",
+														"In-Progress"
+													]
+												},
+												"type": {
+													"description": "Type of export job.",
+													"type": "string",
+													"example": "finding",
+													"enum": [
+														"finding",
+														"findingInstance",
+														"content",
+														"remediationJob"
+													]
+												},
+												"user_id": {
+													"description": "ID of the export-requesting user.",
+													"type": "string",
+													"example": "e7712d506b1ee4c5ede0802815f55a75",
+													"maxLength": 128
+												}
+											},
 											"example": {
 												"download_url": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
 												"errors": null,
@@ -892,87 +960,20 @@
 												"type": "finding",
 												"user_id": "e7712d506b1ee4c5ede0802815f55a75"
 											},
-											"properties": {
-												"download_url": {
-													"description": "The URL by which the successfully created export can be downloaded by the end users.",
-													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uri",
-													"maxLength": 1024,
-													"nullable": true,
-													"type": "string"
-												},
-												"errors": {
-													"description": "Contains information on errors which may have occurred during export creation.",
-													"nullable": true,
-													"type": "string"
-												},
-												"file_name": {
-													"description": "The base name of the file that is/was generated by the export job.",
-													"example": "Finding_Instances_2024-02-27T04:05:26Z",
-													"maxLength": 256,
-													"nullable": true,
-													"type": "string"
-												},
-												"file_path": {
-													"description": "The full path of the file that is stored within external storage (currently R2).",
-													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
-													"maxLength": 512,
-													"nullable": true,
-													"type": "string"
-												},
-												"id": {
-													"description": "Unique identifier for the export job.",
-													"example": "45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uuid",
-													"type": "string"
-												},
-												"status": {
-													"description": "Status of an export job.",
-													"enum": [
-														"Pending",
-														"Success",
-														"Failure",
-														"Rescheduled",
-														"In-Progress"
-													],
-													"example": "Success",
-													"type": "string"
-												},
-												"type": {
-													"description": "Type of export job.",
-													"enum": [
-														"finding",
-														"findingInstance",
-														"content",
-														"remediationJob"
-													],
-													"example": "finding",
-													"type": "string"
-												},
-												"user_id": {
-													"description": "ID of the export-requesting user.",
-													"example": "e7712d506b1ee4c5ede0802815f55a75",
-													"maxLength": 128,
-													"type": "string"
-												}
-											},
 											"required": [
 												"id",
 												"status",
 												"type",
 												"user_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -983,7 +984,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a content export",
 		"tags": [
 			"exports"
 		],
@@ -997,8 +997,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{storage_namespace_id}/instances/export": {
-		"description": "Creates a CSV export for Finding instances and accepts optional filters in the payload.\n\nThe `storage_namespace_id` path parameter is derived from the finding ID by base64-decoding it\n(which yields `integration_id:finding_type_id`) and replacing the colon with a hyphen.\n",
 		"operationId": "CreateFindingInstancesExportCSV",
+		"summary": "Create a finding instances export",
+		"description": "Creates a CSV export for Finding instances and accepts optional filters in the payload.\n\nThe `storage_namespace_id` path parameter is derived from the finding ID by base64-decoding it\n(which yields `integration_id:finding_type_id`) and replacing the colon with a hyphen.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -1017,8 +1018,8 @@
 				"name": "storage_namespace_id",
 				"required": true,
 				"schema": {
-					"pattern": "^[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}-[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}$",
-					"type": "string"
+					"type": "string",
+					"pattern": "^[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}-[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}$"
 				}
 			}
 		],
@@ -1027,107 +1028,110 @@
 				"application/json": {
 					"schema": {
 						"description": "Filter specification for finding instance exports.",
+						"type": "object",
 						"properties": {
 							"archived": {
 								"description": "Filter for archived status.",
-								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"example": false
 							},
 							"max_affliction_date": {
 								"description": "Filter to view findings that occurred on or before the affliction date. Can be a date-time in ISO 8601 format or an epoch timestamp.",
-								"example": "2024-01-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-01-01T00:00:00Z"
 							},
 							"min_affliction_date": {
 								"description": "Filter to view findings that occurred on or after the affliction date. Can be a date-time in ISO 8601 format or an epoch timestamp.",
-								"example": "2023-01-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2023-01-01T00:00:00Z"
 							},
 							"orders": {
-								"default": [],
 								"description": "Ordering specifications for the export.",
+								"type": "array",
 								"items": {
 									"description": "Order specification for finding instance exports.",
+									"type": "object",
 									"properties": {
 										"direction": {
 											"description": "Sort direction.",
+											"type": "string",
+											"example": "asc",
 											"enum": [
 												"asc",
 												"desc"
-											],
-											"example": "asc",
-											"type": "string"
+											]
 										},
 										"name": {
 											"description": "Which field to use when ordering the finding instances.",
+											"type": "string",
+											"example": "asset.name",
 											"enum": [
 												"asset.name",
 												"affliction_date"
-											],
-											"example": "asset.name",
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"direction",
 										"name"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array"
+								"default": []
 							},
 							"search": {
 								"description": "A search term.",
-								"example": "sensitive data",
-								"type": "string"
+								"type": "string",
+								"example": "sensitive data"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1136,39 +1140,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1177,26 +1181,90 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Information about an export job.",
+											"type": "object",
+											"properties": {
+												"download_url": {
+													"description": "The URL by which the successfully created export can be downloaded by the end users.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"errors": {
+													"description": "Contains information on errors which may have occurred during export creation.",
+													"type": "string",
+													"nullable": true
+												},
+												"file_name": {
+													"description": "The base name of the file that is/was generated by the export job.",
+													"type": "string",
+													"example": "Finding_Instances_2024-02-27T04:05:26Z",
+													"maxLength": 256,
+													"nullable": true
+												},
+												"file_path": {
+													"description": "The full path of the file that is stored within external storage (currently R2).",
+													"type": "string",
+													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
+													"maxLength": 512,
+													"nullable": true
+												},
+												"id": {
+													"description": "Unique identifier for the export job.",
+													"type": "string",
+													"format": "uuid",
+													"example": "45ce02c2-e797-4a71-98cb-937244352fd4"
+												},
+												"status": {
+													"description": "Status of an export job.",
+													"type": "string",
+													"example": "Success",
+													"enum": [
+														"Pending",
+														"Success",
+														"Failure",
+														"Rescheduled",
+														"In-Progress"
+													]
+												},
+												"type": {
+													"description": "Type of export job.",
+													"type": "string",
+													"example": "finding",
+													"enum": [
+														"finding",
+														"findingInstance",
+														"content",
+														"remediationJob"
+													]
+												},
+												"user_id": {
+													"description": "ID of the export-requesting user.",
+													"type": "string",
+													"example": "e7712d506b1ee4c5ede0802815f55a75",
+													"maxLength": 128
+												}
+											},
 											"example": {
 												"download_url": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
 												"errors": null,
@@ -1206,87 +1274,20 @@
 												"type": "finding",
 												"user_id": "e7712d506b1ee4c5ede0802815f55a75"
 											},
-											"properties": {
-												"download_url": {
-													"description": "The URL by which the successfully created export can be downloaded by the end users.",
-													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uri",
-													"maxLength": 1024,
-													"nullable": true,
-													"type": "string"
-												},
-												"errors": {
-													"description": "Contains information on errors which may have occurred during export creation.",
-													"nullable": true,
-													"type": "string"
-												},
-												"file_name": {
-													"description": "The base name of the file that is/was generated by the export job.",
-													"example": "Finding_Instances_2024-02-27T04:05:26Z",
-													"maxLength": 256,
-													"nullable": true,
-													"type": "string"
-												},
-												"file_path": {
-													"description": "The full path of the file that is stored within external storage (currently R2).",
-													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
-													"maxLength": 512,
-													"nullable": true,
-													"type": "string"
-												},
-												"id": {
-													"description": "Unique identifier for the export job.",
-													"example": "45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uuid",
-													"type": "string"
-												},
-												"status": {
-													"description": "Status of an export job.",
-													"enum": [
-														"Pending",
-														"Success",
-														"Failure",
-														"Rescheduled",
-														"In-Progress"
-													],
-													"example": "Success",
-													"type": "string"
-												},
-												"type": {
-													"description": "Type of export job.",
-													"enum": [
-														"finding",
-														"findingInstance",
-														"content",
-														"remediationJob"
-													],
-													"example": "finding",
-													"type": "string"
-												},
-												"user_id": {
-													"description": "ID of the export-requesting user.",
-													"example": "e7712d506b1ee4c5ede0802815f55a75",
-													"maxLength": 128,
-													"type": "string"
-												}
-											},
 											"required": [
 												"id",
 												"status",
 												"type",
 												"user_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -1300,7 +1301,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a finding instances export",
 		"tags": [
 			"exports"
 		],
@@ -1314,8 +1314,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/export": {
-		"description": "Creates a CSV export for findings and accepts optional filters in the payload.",
 		"operationId": "CreateFindingExportCSV",
+		"summary": "Create new findings export request",
+		"description": "Creates a CSV export for findings and accepts optional filters in the payload.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -1333,124 +1334,125 @@
 				"application/json": {
 					"schema": {
 						"description": "Filter specification for findings export jobs.",
+						"type": "object",
 						"properties": {
 							"ignored": {
 								"description": "Filter for only the ignored findings. Set to false to only see active items.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							},
 							"integration_id": {
 								"description": "Filter by multiple integration IDs.",
-								"example": [
-									"55d7337e-1d0a-49fc-9826-925ba40df035"
-								],
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"55d7337e-1d0a-49fc-9826-925ba40df035"
+								]
 							},
 							"max_affliction_date": {
 								"description": "Filter to view findings that occurred on or before the affliction date. Can be a date-time in ISO 8601 format or an epoch timestamp.",
-								"example": "2019-08-24T14:15:22Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2019-08-24T14:15:22Z"
 							},
 							"min_affliction_date": {
 								"description": "Filter to view findings that occurred on or after the affliction date. Can be a date-time in ISO 8601 format or an epoch timestamp.",
-								"example": "2018-08-24T14:15:22Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2018-08-24T14:15:22Z"
 							},
 							"orders": {
 								"description": "Which fields to use when ordering the findings.",
+								"type": "array",
 								"items": {
 									"description": "Order specification for finding exports.",
+									"type": "object",
 									"properties": {
 										"direction": {
 											"description": "Sort direction.",
+											"type": "string",
+											"example": "asc",
 											"enum": [
 												"asc",
 												"desc"
-											],
-											"example": "asc",
-											"type": "string"
+											]
 										},
 										"name": {
 											"description": "Which field to use when ordering the findings.",
+											"type": "string",
+											"example": "instance_count",
 											"enum": [
 												"instance_count",
 												"finding.name",
 												"integration.name",
 												"latest_affliction_date",
 												"severity"
-											],
-											"example": "instance_count",
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"direction",
 										"name"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"product": {
 								"description": "Filter by finding's category product.",
+								"type": "string",
 								"example": "SaaS",
 								"nullable": true,
 								"oneOf": [
 									{
 										"description": "The product category.",
+										"type": "string",
+										"example": "SaaS",
 										"enum": [
 											"SaaS",
 											"Cloud"
-										],
-										"example": "SaaS",
-										"type": "string"
+										]
 									},
 									{
+										"type": "string",
 										"enum": [
 											null
 										],
-										"nullable": true,
-										"type": "string"
+										"nullable": true
 									}
-								],
-								"type": "string"
+								]
 							},
 							"search": {
 								"description": "A search term.",
-								"example": "public access",
-								"type": "string"
+								"type": "string",
+								"example": "public access"
 							},
 							"severities": {
 								"description": "Filter by severity levels.",
-								"example": [
-									"CRITICAL"
-								],
+								"type": "array",
 								"items": {
 									"description": "The severity level for export filters.",
+									"type": "string",
+									"example": "HIGH",
 									"enum": [
 										"CRITICAL",
 										"HIGH",
 										"MEDIUM",
 										"LOW"
-									],
-									"example": "HIGH",
-									"type": "string"
+									]
 								},
-								"type": "array"
+								"example": [
+									"CRITICAL"
+								]
 							},
 							"vendors": {
 								"description": "Filter by vendor types.",
-								"example": [
-									"AWS"
-								],
+								"type": "array",
 								"items": {
 									"description": "Supported vendor types for integrations.",
+									"type": "string",
+									"example": "GOOGLE_WORKSPACE",
 									"enum": [
 										"ANTHROPIC",
 										"AWS",
@@ -1468,57 +1470,59 @@
 										"SALESFORCE",
 										"SERVICENOW",
 										"SLACK"
-									],
-									"example": "GOOGLE_WORKSPACE",
-									"type": "string"
+									]
 								},
-								"type": "array"
+								"example": [
+									"AWS"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1527,39 +1531,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1568,26 +1572,90 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Information about an export job.",
+											"type": "object",
+											"properties": {
+												"download_url": {
+													"description": "The URL by which the successfully created export can be downloaded by the end users.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"errors": {
+													"description": "Contains information on errors which may have occurred during export creation.",
+													"type": "string",
+													"nullable": true
+												},
+												"file_name": {
+													"description": "The base name of the file that is/was generated by the export job.",
+													"type": "string",
+													"example": "Finding_Instances_2024-02-27T04:05:26Z",
+													"maxLength": 256,
+													"nullable": true
+												},
+												"file_path": {
+													"description": "The full path of the file that is stored within external storage (currently R2).",
+													"type": "string",
+													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
+													"maxLength": 512,
+													"nullable": true
+												},
+												"id": {
+													"description": "Unique identifier for the export job.",
+													"type": "string",
+													"format": "uuid",
+													"example": "45ce02c2-e797-4a71-98cb-937244352fd4"
+												},
+												"status": {
+													"description": "Status of an export job.",
+													"type": "string",
+													"example": "Success",
+													"enum": [
+														"Pending",
+														"Success",
+														"Failure",
+														"Rescheduled",
+														"In-Progress"
+													]
+												},
+												"type": {
+													"description": "Type of export job.",
+													"type": "string",
+													"example": "finding",
+													"enum": [
+														"finding",
+														"findingInstance",
+														"content",
+														"remediationJob"
+													]
+												},
+												"user_id": {
+													"description": "ID of the export-requesting user.",
+													"type": "string",
+													"example": "e7712d506b1ee4c5ede0802815f55a75",
+													"maxLength": 128
+												}
+											},
 											"example": {
 												"download_url": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
 												"errors": null,
@@ -1597,87 +1665,20 @@
 												"type": "finding",
 												"user_id": "e7712d506b1ee4c5ede0802815f55a75"
 											},
-											"properties": {
-												"download_url": {
-													"description": "The URL by which the successfully created export can be downloaded by the end users.",
-													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uri",
-													"maxLength": 1024,
-													"nullable": true,
-													"type": "string"
-												},
-												"errors": {
-													"description": "Contains information on errors which may have occurred during export creation.",
-													"nullable": true,
-													"type": "string"
-												},
-												"file_name": {
-													"description": "The base name of the file that is/was generated by the export job.",
-													"example": "Finding_Instances_2024-02-27T04:05:26Z",
-													"maxLength": 256,
-													"nullable": true,
-													"type": "string"
-												},
-												"file_path": {
-													"description": "The full path of the file that is stored within external storage (currently R2).",
-													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
-													"maxLength": 512,
-													"nullable": true,
-													"type": "string"
-												},
-												"id": {
-													"description": "Unique identifier for the export job.",
-													"example": "45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uuid",
-													"type": "string"
-												},
-												"status": {
-													"description": "Status of an export job.",
-													"enum": [
-														"Pending",
-														"Success",
-														"Failure",
-														"Rescheduled",
-														"In-Progress"
-													],
-													"example": "Success",
-													"type": "string"
-												},
-												"type": {
-													"description": "Type of export job.",
-													"enum": [
-														"finding",
-														"findingInstance",
-														"content",
-														"remediationJob"
-													],
-													"example": "finding",
-													"type": "string"
-												},
-												"user_id": {
-													"description": "ID of the export-requesting user.",
-													"example": "e7712d506b1ee4c5ede0802815f55a75",
-													"maxLength": 128,
-													"type": "string"
-												}
-											},
 											"required": [
 												"id",
 												"status",
 												"type",
 												"user_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -1688,7 +1689,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new findings export request",
 		"tags": [
 			"exports"
 		],
@@ -1702,8 +1702,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/remediations/jobs/export": {
-		"description": "Creates a CSV export for remediation jobs and accepts optional filters in the payload.",
 		"operationId": "CreateRemediationJobsExportCSV",
+		"summary": "Create a remediation jobs export",
+		"description": "Creates a CSV export for remediation jobs and accepts optional filters in the payload.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -1721,47 +1722,51 @@
 				"application/json": {
 					"schema": {
 						"description": "Filter specification for remediation jobs export.",
+						"type": "object",
 						"properties": {
 							"integration_id": {
 								"description": "Filter by multiple integration IDs.",
-								"example": [
-									"55d7337e-1d0a-49fc-9826-925ba40df035"
-								],
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"55d7337e-1d0a-49fc-9826-925ba40df035"
+								]
 							},
 							"max_updated_at": {
 								"description": "Filter to view remediation jobs updated on or before this datetime. Can be a date-time in ISO 8601 format or an epoch timestamp.",
-								"example": "2025-01-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2025-01-01T00:00:00Z"
 							},
 							"min_updated_at": {
 								"description": "Filter to view remediation jobs updated on or after this datetime. Can be a date-time in ISO 8601 format or an epoch timestamp.",
-								"example": "2024-01-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-01-01T00:00:00Z"
 							},
 							"orders": {
-								"default": [],
 								"description": "Ordering specifications for the export.",
+								"type": "array",
 								"items": {
 									"description": "Order specification for remediation jobs exports.",
+									"type": "object",
 									"properties": {
 										"direction": {
 											"description": "Sort direction.",
+											"type": "string",
+											"example": "asc",
 											"enum": [
 												"asc",
 												"desc"
-											],
-											"example": "asc",
-											"type": "string"
+											]
 										},
 										"name": {
 											"description": "Which field to use when ordering the remediation jobs.",
+											"type": "string",
+											"example": "last_updated_at",
 											"enum": [
 												"asset_name",
 												"finding_type_name",
@@ -1769,89 +1774,88 @@
 												"status",
 												"last_updated_at",
 												"affliction_date"
-											],
-											"example": "last_updated_at",
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"direction",
 										"name"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array"
+								"default": []
 							},
 							"search": {
 								"description": "A search term.",
-								"example": "public access",
-								"type": "string"
+								"type": "string",
+								"example": "public access"
 							},
 							"status": {
 								"description": "Filter by remediation job status.",
-								"example": [
-									"pending",
-									"completed"
-								],
+								"type": "array",
 								"items": {
 									"description": "Status of a remediation job.",
+									"type": "string",
+									"example": "pending",
 									"enum": [
 										"pending",
 										"processing",
 										"completed",
 										"failed",
 										"validating"
-									],
-									"example": "pending",
-									"type": "string"
+									]
 								},
-								"type": "array"
+								"example": [
+									"pending",
+									"completed"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1860,39 +1864,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1901,26 +1905,90 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Information about an export job.",
+											"type": "object",
+											"properties": {
+												"download_url": {
+													"description": "The URL by which the successfully created export can be downloaded by the end users.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
+													"maxLength": 1024,
+													"nullable": true
+												},
+												"errors": {
+													"description": "Contains information on errors which may have occurred during export creation.",
+													"type": "string",
+													"nullable": true
+												},
+												"file_name": {
+													"description": "The base name of the file that is/was generated by the export job.",
+													"type": "string",
+													"example": "Finding_Instances_2024-02-27T04:05:26Z",
+													"maxLength": 256,
+													"nullable": true
+												},
+												"file_path": {
+													"description": "The full path of the file that is stored within external storage (currently R2).",
+													"type": "string",
+													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
+													"maxLength": 512,
+													"nullable": true
+												},
+												"id": {
+													"description": "Unique identifier for the export job.",
+													"type": "string",
+													"format": "uuid",
+													"example": "45ce02c2-e797-4a71-98cb-937244352fd4"
+												},
+												"status": {
+													"description": "Status of an export job.",
+													"type": "string",
+													"example": "Success",
+													"enum": [
+														"Pending",
+														"Success",
+														"Failure",
+														"Rescheduled",
+														"In-Progress"
+													]
+												},
+												"type": {
+													"description": "Type of export job.",
+													"type": "string",
+													"example": "finding",
+													"enum": [
+														"finding",
+														"findingInstance",
+														"content",
+														"remediationJob"
+													]
+												},
+												"user_id": {
+													"description": "ID of the export-requesting user.",
+													"type": "string",
+													"example": "e7712d506b1ee4c5ede0802815f55a75",
+													"maxLength": 128
+												}
+											},
 											"example": {
 												"download_url": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
 												"errors": null,
@@ -1930,87 +1998,20 @@
 												"type": "finding",
 												"user_id": "e7712d506b1ee4c5ede0802815f55a75"
 											},
-											"properties": {
-												"download_url": {
-													"description": "The URL by which the successfully created export can be downloaded by the end users.",
-													"example": "https://example.com/45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uri",
-													"maxLength": 1024,
-													"nullable": true,
-													"type": "string"
-												},
-												"errors": {
-													"description": "Contains information on errors which may have occurred during export creation.",
-													"nullable": true,
-													"type": "string"
-												},
-												"file_name": {
-													"description": "The base name of the file that is/was generated by the export job.",
-													"example": "Finding_Instances_2024-02-27T04:05:26Z",
-													"maxLength": 256,
-													"nullable": true,
-													"type": "string"
-												},
-												"file_path": {
-													"description": "The full path of the file that is stored within external storage (currently R2).",
-													"example": "/exports/finding-instances/2024/02/27/Finding_Instances_2024-02-27T04:05:26Z.csv",
-													"maxLength": 512,
-													"nullable": true,
-													"type": "string"
-												},
-												"id": {
-													"description": "Unique identifier for the export job.",
-													"example": "45ce02c2-e797-4a71-98cb-937244352fd4",
-													"format": "uuid",
-													"type": "string"
-												},
-												"status": {
-													"description": "Status of an export job.",
-													"enum": [
-														"Pending",
-														"Success",
-														"Failure",
-														"Rescheduled",
-														"In-Progress"
-													],
-													"example": "Success",
-													"type": "string"
-												},
-												"type": {
-													"description": "Type of export job.",
-													"enum": [
-														"finding",
-														"findingInstance",
-														"content",
-														"remediationJob"
-													],
-													"example": "finding",
-													"type": "string"
-												},
-												"user_id": {
-													"description": "ID of the export-requesting user.",
-													"example": "e7712d506b1ee4c5ede0802815f55a75",
-													"maxLength": 128,
-													"type": "string"
-												}
-											},
 											"required": [
 												"id",
 												"status",
 												"type",
 												"user_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -2021,7 +2022,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a remediation jobs export",
 		"tags": [
 			"exports"
 		],

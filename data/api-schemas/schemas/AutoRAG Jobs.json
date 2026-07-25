@@ -1,57 +1,61 @@
 {
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs": {
 		"operationId": "autorag-config-list-jobs",
+		"summary": "List Jobs",
 		"parameters": [
 			{
-				"description": "rag id",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "rag id",
 				"required": true,
 				"schema": {
 					"description": "rag id",
+					"type": "string",
 					"example": "my-rag",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of AutoRAG Jobs",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"end_reason": {
@@ -67,11 +71,11 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "string",
 												"enum": [
 													"user",
 													"schedule"
-												],
-												"type": "string"
+												]
 											},
 											"started_at": {
 												"type": "string"
@@ -82,10 +86,10 @@
 											"source"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -105,8 +109,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -116,28 +119,29 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of AutoRAG Jobs"
+				}
 			},
 			"404": {
+				"description": "autorag_not_found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "autorag_not_found",
-												"type": "string"
+												"type": "string",
+												"example": "autorag_not_found"
 											}
 										},
 										"required": [
@@ -145,41 +149,41 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "autorag_not_found"
+				}
 			},
 			"503": {
+				"description": "unable_to_connect_to_autorag",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7017,
-												"type": "number"
+												"type": "number",
+												"example": 7017
 											},
 											"message": {
-												"example": "unable_to_connect_to_autorag",
-												"type": "string"
+												"type": "string",
+												"example": "unable_to_connect_to_autorag"
 											}
 										},
 										"required": [
@@ -187,25 +191,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "unable_to_connect_to_autorag"
+				}
 			}
 		},
 		"security": [
@@ -217,7 +218,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Jobs",
 		"tags": [
 			"AutoRAG Jobs"
 		],
@@ -239,46 +239,50 @@
 	},
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs/{job_id}": {
 		"operationId": "autorag-config-get-job",
+		"summary": "Get a Job Details",
 		"parameters": [
 			{
-				"description": "rag id",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "rag id",
 				"required": true,
 				"schema": {
 					"description": "rag id",
+					"type": "string",
 					"example": "my-rag",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a AutoRAG Job Details",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"end_reason": {
 											"type": "string"
@@ -293,11 +297,11 @@
 											"type": "string"
 										},
 										"source": {
+											"type": "string",
 											"enum": [
 												"user",
 												"schedule"
-											],
-											"type": "string"
+											]
 										},
 										"started_at": {
 											"type": "string"
@@ -306,8 +310,7 @@
 									"required": [
 										"id",
 										"source"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -316,28 +319,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a AutoRAG Job Details"
+				}
 			},
 			"404": {
+				"description": "job_not_found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7021,
-												"type": "number"
+												"type": "number",
+												"example": 7021
 											},
 											"message": {
-												"example": "job_not_found",
-												"type": "string"
+												"type": "string",
+												"example": "job_not_found"
 											}
 										},
 										"required": [
@@ -345,41 +349,41 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "job_not_found"
+				}
 			},
 			"503": {
+				"description": "unable_to_connect_to_autorag",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7017,
-												"type": "number"
+												"type": "number",
+												"example": 7017
 											},
 											"message": {
-												"example": "unable_to_connect_to_autorag",
-												"type": "string"
+												"type": "string",
+												"example": "unable_to_connect_to_autorag"
 											}
 										},
 										"required": [
@@ -387,25 +391,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "unable_to_connect_to_autorag"
+				}
 			}
 		},
 		"security": [
@@ -417,7 +418,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a Job Details",
 		"tags": [
 			"AutoRAG Jobs"
 		],
@@ -439,65 +439,69 @@
 	},
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs/{job_id}/logs": {
 		"operationId": "autorag-config-list-job-logs",
+		"summary": "List Job Logs",
 		"parameters": [
 			{
-				"description": "rag id",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "rag id",
 				"required": true,
 				"schema": {
 					"description": "rag id",
+					"type": "string",
 					"example": "my-rag",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
-				"name": "page",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
 				"schema": {
-					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
+				"name": "page",
 				"in": "query",
-				"name": "per_page",
 				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 500,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of AutoRAG Job Logs",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
@@ -520,10 +524,10 @@
 											"created_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -543,8 +547,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -554,28 +557,29 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of AutoRAG Job Logs"
+				}
 			},
 			"404": {
+				"description": "autorag_not_found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "autorag_not_found",
-												"type": "string"
+												"type": "string",
+												"example": "autorag_not_found"
 											}
 										},
 										"required": [
@@ -583,41 +587,41 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "autorag_not_found"
+				}
 			},
 			"503": {
+				"description": "unable_to_connect_to_autorag",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7017,
-												"type": "number"
+												"type": "number",
+												"example": 7017
 											},
 											"message": {
-												"example": "unable_to_connect_to_autorag",
-												"type": "string"
+												"type": "string",
+												"example": "unable_to_connect_to_autorag"
 											}
 										},
 										"required": [
@@ -625,25 +629,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "unable_to_connect_to_autorag"
+				}
 			}
 		},
 		"security": [
@@ -655,7 +656,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Job Logs",
 		"tags": [
 			"AutoRAG Jobs"
 		],

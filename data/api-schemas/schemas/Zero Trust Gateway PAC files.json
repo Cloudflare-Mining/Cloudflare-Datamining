@@ -1,46 +1,51 @@
 {
 	"DELETE /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
-		"description": "Delete a configured Zero Trust Gateway PAC file.",
 		"operationId": "zero-trust-gateway-pacfiles-delete",
+		"summary": "Delete a PAC file",
+		"description": "Delete a configured Zero Trust Gateway PAC file.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "pacfile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a deleted PAC file response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -53,15 +58,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -74,26 +79,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -103,31 +106,34 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a deleted PAC file response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a deleted PAC file response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -140,15 +146,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -161,26 +167,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -190,53 +194,27 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -249,26 +227,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -276,15 +280,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a deleted PAC file response failure."
+				}
 			}
 		},
 		"security": [
@@ -294,7 +295,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
 		],
@@ -307,37 +307,42 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles": {
-		"description": "List all Zero Trust Gateway PAC files for an account.",
 		"operationId": "zero-trust-gateway-pacfiles-list",
+		"summary": "List PAC files",
+		"description": "List all Zero Trust Gateway PAC files for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of PAC files response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -350,15 +355,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -371,137 +376,138 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"description": {
 														"description": "Detailed description of the PAC file.",
-														"example": "PAC file for Devops team",
 														"type": "string",
+														"example": "PAC file for Devops team",
 														"x-auditable": true
 													},
 													"id": {
-														"example": "ed35569b41ce4d1facfe683550f54086",
 														"type": "string",
+														"example": "ed35569b41ce4d1facfe683550f54086",
 														"x-auditable": true
 													},
 													"name": {
 														"description": "Name of the PAC file.",
-														"example": "Devops team",
 														"type": "string",
+														"example": "Devops team",
 														"x-auditable": true
 													},
 													"slug": {
 														"description": "URL-friendly version of the PAC file name.",
-														"example": "pac_devops",
 														"type": "string",
+														"example": "pac_devops",
 														"x-auditable": true
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"url": {
 														"description": "Unique URL to download the PAC file.",
+														"type": "string",
 														"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of PAC files response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a list of PAC files response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -514,15 +520,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -535,159 +541,131 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "Detailed description of the PAC file.",
-																"example": "PAC file for Devops team",
 																"type": "string",
+																"example": "PAC file for Devops team",
 																"x-auditable": true
 															},
 															"id": {
-																"example": "ed35569b41ce4d1facfe683550f54086",
 																"type": "string",
+																"example": "ed35569b41ce4d1facfe683550f54086",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "Name of the PAC file.",
-																"example": "Devops team",
 																"type": "string",
+																"example": "Devops team",
 																"x-auditable": true
 															},
 															"slug": {
 																"description": "URL-friendly version of the PAC file name.",
-																"example": "pac_devops",
 																"type": "string",
+																"example": "pac_devops",
 																"x-auditable": true
 															},
 															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"url": {
 																"description": "Unique URL to download the PAC file.",
+																"type": "string",
 																"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -700,26 +678,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -727,15 +731,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of PAC files response failure."
+				}
 			}
 		},
 		"security": [
@@ -745,7 +746,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List PAC files",
 		"tags": [
 			"Zero Trust Gateway PAC files"
 		],
@@ -759,47 +759,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
-		"description": "Get a single Zero Trust Gateway PAC file.",
 		"operationId": "zero-trust-gateway-pacfiles-details",
+		"summary": "Get a PAC file",
+		"description": "Get a single Zero Trust Gateway PAC file.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "pacfile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a PAC file response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -812,15 +817,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -833,110 +838,111 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"contents": {
 													"description": "Actual contents of the PAC file",
-													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 													"type": "string",
+													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "Detailed description of the PAC file.",
-													"example": "PAC file for Devops team",
 													"type": "string",
+													"example": "PAC file for Devops team",
 													"x-auditable": true
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
 													"type": "string",
+													"example": "ed35569b41ce4d1facfe683550f54086",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the PAC file.",
-													"example": "Devops team",
 													"type": "string",
+													"example": "Devops team",
 													"x-auditable": true
 												},
 												"slug": {
 													"description": "URL-friendly version of the PAC file name.",
-													"example": "pac_devops",
 													"type": "string",
+													"example": "pac_devops",
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"url": {
 													"description": "Unique URL to download the PAC file.",
+													"type": "string",
 													"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a PAC file response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a PAC file response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -949,15 +955,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -970,132 +976,104 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"contents": {
 															"description": "Actual contents of the PAC file",
-															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 															"type": "string",
+															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "Detailed description of the PAC file.",
-															"example": "PAC file for Devops team",
 															"type": "string",
+															"example": "PAC file for Devops team",
 															"x-auditable": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Name of the PAC file.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"slug": {
 															"description": "URL-friendly version of the PAC file name.",
-															"example": "pac_devops",
 															"type": "string",
+															"example": "pac_devops",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"url": {
 															"description": "Unique URL to download the PAC file.",
+															"type": "string",
 															"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1108,26 +1086,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1135,15 +1139,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a PAC file response failure."
+				}
 			}
 		},
 		"security": [
@@ -1153,7 +1154,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
 		],
@@ -1167,77 +1167,82 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/gateway/pacfiles": {
-		"description": "Create a new Zero Trust Gateway PAC file.",
 		"operationId": "zero-trust-gateway-pacfiles-create-pacfile",
+		"summary": "Create a PAC file",
+		"description": "Create a new Zero Trust Gateway PAC file.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"contents": {
 								"description": "Actual contents of the PAC file",
-								"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 								"type": "string",
+								"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 								"x-auditable": true
 							},
 							"description": {
 								"description": "Detailed description of the PAC file.",
-								"example": "PAC file for Devops team",
 								"type": "string",
+								"example": "PAC file for Devops team",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Name of the PAC file.",
-								"example": "Devops team",
 								"type": "string",
+								"example": "Devops team",
 								"x-auditable": true
 							},
 							"slug": {
 								"description": "URL-friendly version of the PAC file name. If not provided, it will be auto-generated",
-								"example": "pac_devops",
 								"type": "string",
+								"example": "pac_devops",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"name",
 							"contents"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns a created PAC file response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1250,15 +1255,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1271,110 +1276,111 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"contents": {
 													"description": "Actual contents of the PAC file",
-													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 													"type": "string",
+													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "Detailed description of the PAC file.",
-													"example": "PAC file for Devops team",
 													"type": "string",
+													"example": "PAC file for Devops team",
 													"x-auditable": true
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
 													"type": "string",
+													"example": "ed35569b41ce4d1facfe683550f54086",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the PAC file.",
-													"example": "Devops team",
 													"type": "string",
+													"example": "Devops team",
 													"x-auditable": true
 												},
 												"slug": {
 													"description": "URL-friendly version of the PAC file name.",
-													"example": "pac_devops",
 													"type": "string",
+													"example": "pac_devops",
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"url": {
 													"description": "Unique URL to download the PAC file.",
+													"type": "string",
 													"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a created PAC file response."
+				}
 			},
 			"4XX": {
+				"description": "Returns a created PAC file response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1387,15 +1393,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1408,132 +1414,104 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"contents": {
 															"description": "Actual contents of the PAC file",
-															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 															"type": "string",
+															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "Detailed description of the PAC file.",
-															"example": "PAC file for Devops team",
 															"type": "string",
+															"example": "PAC file for Devops team",
 															"x-auditable": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Name of the PAC file.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"slug": {
 															"description": "URL-friendly version of the PAC file name.",
-															"example": "pac_devops",
 															"type": "string",
+															"example": "pac_devops",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"url": {
 															"description": "Unique URL to download the PAC file.",
+															"type": "string",
 															"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1546,26 +1524,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1573,15 +1577,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a created PAC file response failure."
+				}
 			}
 		},
 		"security": [
@@ -1591,7 +1592,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
 		],
@@ -1604,51 +1604,54 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
-		"description": "Update a configured Zero Trust Gateway PAC file.",
 		"operationId": "zero-trust-gateway-pacfiles-update",
+		"summary": "Update a Zero Trust Gateway PAC file",
+		"description": "Update a configured Zero Trust Gateway PAC file.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "pacfile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"contents": {
 								"description": "Actual contents of the PAC file",
-								"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 								"type": "string",
+								"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 								"x-auditable": true
 							},
 							"description": {
 								"description": "Detailed description of the PAC file.",
-								"example": "PAC file for Devops team",
 								"type": "string",
+								"example": "PAC file for Devops team",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Name of the PAC file.",
-								"example": "Devops team",
 								"type": "string",
+								"example": "Devops team",
 								"x-auditable": true
 							}
 						},
@@ -1656,30 +1659,32 @@
 							"name",
 							"description",
 							"contents"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a Zero Trust Gateway PAC file response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1692,15 +1697,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1713,110 +1718,111 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"contents": {
 													"description": "Actual contents of the PAC file",
-													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 													"type": "string",
+													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "Detailed description of the PAC file.",
-													"example": "PAC file for Devops team",
 													"type": "string",
+													"example": "PAC file for Devops team",
 													"x-auditable": true
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
 													"type": "string",
+													"example": "ed35569b41ce4d1facfe683550f54086",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the PAC file.",
-													"example": "Devops team",
 													"type": "string",
+													"example": "Devops team",
 													"x-auditable": true
 												},
 												"slug": {
 													"description": "URL-friendly version of the PAC file name.",
-													"example": "pac_devops",
 													"type": "string",
+													"example": "pac_devops",
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"url": {
 													"description": "Unique URL to download the PAC file.",
+													"type": "string",
 													"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update a Zero Trust Gateway PAC file response."
+				}
 			},
 			"4XX": {
+				"description": "Update a Zero Trust Gateway PAC file response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1829,15 +1835,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1850,132 +1856,104 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"contents": {
 															"description": "Actual contents of the PAC file",
-															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 															"type": "string",
+															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "Detailed description of the PAC file.",
-															"example": "PAC file for Devops team",
 															"type": "string",
+															"example": "PAC file for Devops team",
 															"x-auditable": true
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Name of the PAC file.",
-															"example": "Devops team",
 															"type": "string",
+															"example": "Devops team",
 															"x-auditable": true
 														},
 														"slug": {
 															"description": "URL-friendly version of the PAC file name.",
-															"example": "pac_devops",
 															"type": "string",
+															"example": "pac_devops",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"url": {
 															"description": "Unique URL to download the PAC file.",
+															"type": "string",
 															"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1988,26 +1966,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2015,15 +2019,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update a Zero Trust Gateway PAC file response failure."
+				}
 			}
 		},
 		"security": [
@@ -2033,7 +2034,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a Zero Trust Gateway PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
 		],

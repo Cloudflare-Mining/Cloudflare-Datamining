@@ -1,12 +1,13 @@
 {
 	"POST /accounts/{account_id}/cloudforce-one/events/datasets/populate": {
-		"description": "Populate dataset-specific lookup tables by scanning existing event data with batch processing.",
 		"operationId": "post_DatasetPopulate",
+		"summary": "Populate dataset-specific lookup tables from existing Events data with batch processing",
+		"description": "Populate dataset-specific lookup tables by scanning existing event data with batch processing.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -16,17 +17,20 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns population results with counts and any errors",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"properties": {
+									"type": "object",
 									"properties": {
 										"accountId": {
 											"properties": {
 												"type": {
-													"example": "string",
-													"type": "string"
+													"type": "string",
+													"example": "string"
 												}
 											},
 											"required": [
@@ -37,18 +41,21 @@
 										"datasets": {
 											"properties": {
 												"items": {
+													"type": "object",
 													"properties": {
 														"properties": {
+															"type": "object",
 															"properties": {
 																"attackers": {
 																	"properties": {
 																		"properties": {
+																			"type": "object",
 																			"properties": {
 																				"created": {
 																					"properties": {
 																						"type": {
-																							"example": "number",
-																							"type": "string"
+																							"type": "string",
+																							"example": "number"
 																						}
 																					},
 																					"required": [
@@ -59,20 +66,20 @@
 																				"errors": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -84,20 +91,20 @@
 																				"found": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -111,12 +118,11 @@
 																				"found",
 																				"created",
 																				"errors"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"type": {
-																			"example": "object",
-																			"type": "string"
+																			"type": "string",
+																			"example": "object"
 																		}
 																	},
 																	"required": [
@@ -128,12 +134,13 @@
 																"categories": {
 																	"properties": {
 																		"properties": {
+																			"type": "object",
 																			"properties": {
 																				"created": {
 																					"properties": {
 																						"type": {
-																							"example": "number",
-																							"type": "string"
+																							"type": "string",
+																							"example": "number"
 																						}
 																					},
 																					"required": [
@@ -144,20 +151,20 @@
 																				"errors": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -169,20 +176,20 @@
 																				"found": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -196,12 +203,11 @@
 																				"found",
 																				"created",
 																				"errors"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"type": {
-																			"example": "object",
-																			"type": "string"
+																			"type": "string",
+																			"example": "object"
 																		}
 																	},
 																	"required": [
@@ -213,8 +219,8 @@
 																"datasetId": {
 																	"properties": {
 																		"type": {
-																			"example": "string",
-																			"type": "string"
+																			"type": "string",
+																			"example": "string"
 																		}
 																	},
 																	"required": [
@@ -225,12 +231,13 @@
 																"indicatorTypes": {
 																	"properties": {
 																		"properties": {
+																			"type": "object",
 																			"properties": {
 																				"created": {
 																					"properties": {
 																						"type": {
-																							"example": "number",
-																							"type": "string"
+																							"type": "string",
+																							"example": "number"
 																						}
 																					},
 																					"required": [
@@ -241,20 +248,20 @@
 																				"errors": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -266,20 +273,20 @@
 																				"found": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -293,12 +300,11 @@
 																				"found",
 																				"created",
 																				"errors"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"type": {
-																			"example": "object",
-																			"type": "string"
+																			"type": "string",
+																			"example": "object"
 																		}
 																	},
 																	"required": [
@@ -310,8 +316,8 @@
 																"processingTimeMs": {
 																	"properties": {
 																		"type": {
-																			"example": "number",
-																			"type": "string"
+																			"type": "string",
+																			"example": "number"
 																		}
 																	},
 																	"required": [
@@ -322,12 +328,13 @@
 																"targetIndustries": {
 																	"properties": {
 																		"properties": {
+																			"type": "object",
 																			"properties": {
 																				"created": {
 																					"properties": {
 																						"type": {
-																							"example": "number",
-																							"type": "string"
+																							"type": "string",
+																							"example": "number"
 																						}
 																					},
 																					"required": [
@@ -338,20 +345,20 @@
 																				"errors": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -363,20 +370,20 @@
 																				"found": {
 																					"properties": {
 																						"items": {
+																							"type": "object",
 																							"properties": {
 																								"type": {
-																									"example": "string",
-																									"type": "string"
+																									"type": "string",
+																									"example": "string"
 																								}
 																							},
 																							"required": [
 																								"type"
-																							],
-																							"type": "object"
+																							]
 																						},
 																						"type": {
-																							"example": "array",
-																							"type": "string"
+																							"type": "string",
+																							"example": "array"
 																						}
 																					},
 																					"required": [
@@ -390,12 +397,11 @@
 																				"found",
 																				"created",
 																				"errors"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"type": {
-																			"example": "object",
-																			"type": "string"
+																			"type": "string",
+																			"example": "object"
 																		}
 																	},
 																	"required": [
@@ -407,8 +413,8 @@
 																"totalProcessed": {
 																	"properties": {
 																		"type": {
-																			"example": "number",
-																			"type": "string"
+																			"type": "string",
+																			"example": "number"
 																		}
 																	},
 																	"required": [
@@ -425,23 +431,21 @@
 																"attackers",
 																"totalProcessed",
 																"processingTimeMs"
-															],
-															"type": "object"
+															]
 														},
 														"type": {
-															"example": "object",
-															"type": "string"
+															"type": "string",
+															"example": "object"
 														}
 													},
 													"required": [
 														"type",
 														"properties"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
-													"example": "array",
-													"type": "string"
+													"type": "string",
+													"example": "array"
 												}
 											},
 											"required": [
@@ -453,20 +457,20 @@
 										"errors": {
 											"properties": {
 												"items": {
+													"type": "object",
 													"properties": {
 														"type": {
-															"example": "string",
-															"type": "string"
+															"type": "string",
+															"example": "string"
 														}
 													},
 													"required": [
 														"type"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
-													"example": "array",
-													"type": "string"
+													"type": "string",
+													"example": "array"
 												}
 											},
 											"required": [
@@ -478,12 +482,13 @@
 										"summary": {
 											"properties": {
 												"properties": {
+													"type": "object",
 													"properties": {
 														"failedDatasets": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -494,8 +499,8 @@
 														"successfulDatasets": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -506,8 +511,8 @@
 														"totalDatasets": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -518,8 +523,8 @@
 														"totalIndicatorTypes": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -530,8 +535,8 @@
 														"totalProcessingTimeMs": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -546,12 +551,11 @@
 														"failedDatasets",
 														"totalIndicatorTypes",
 														"totalProcessingTimeMs"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
-													"example": "object",
-													"type": "string"
+													"type": "string",
+													"example": "object"
 												}
 											},
 											"required": [
@@ -566,43 +570,42 @@
 										"datasets",
 										"summary",
 										"errors"
-									],
-									"type": "object"
+									]
 								},
 								"type": {
-									"example": "object",
-									"type": "string"
+									"type": "string",
+									"example": "object"
 								}
 							},
 							"required": [
 								"type",
 								"properties"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns population results with counts and any errors"
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -615,12 +618,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -628,7 +629,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Populate dataset-specific lookup tables from existing Events data with batch processing",
 		"tags": [
 			"Datasets"
 		],

@@ -1,11 +1,12 @@
 {
 	"GET /tenants/{tenant_id}": {
-		"description": "Retrieves a Tenant by Tenant ID.",
 		"operationId": "Tenants_retrieveTenant",
+		"summary": "Get tenant",
+		"description": "Retrieves a Tenant by Tenant ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "tenant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -14,19 +15,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -38,25 +43,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"cdate": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"customer_id": {
 											"type": "string"
 										},
 										"edate": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"tenant_contacts": {
+											"type": "object",
 											"properties": {
 												"email": {
 													"type": "string"
@@ -64,20 +69,22 @@
 												"website": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"tenant_labels": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"tenant_metadata": {
+											"type": "object",
 											"properties": {
 												"dns": {
+													"type": "object",
 													"properties": {
 														"ns_pool": {
+															"type": "object",
 															"properties": {
 																"primary": {
 																	"type": "string"
@@ -85,17 +92,14 @@
 																"secondary": {
 																	"type": "string"
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"required": [
 														"ns_pool"
-													],
-													"type": "object"
+													]
 												}
-											},
-											"type": "object"
+											}
 										},
 										"tenant_name": {
 											"type": "string"
@@ -113,13 +117,15 @@
 											"type": "string"
 										},
 										"tenant_units": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"unit_memberships": {
+														"type": "array",
 														"items": {
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"unit_metadata": {
 														"type": "object"
@@ -140,10 +146,8 @@
 													"unit_status",
 													"unit_metadata",
 													"unit_memberships"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -158,14 +162,13 @@
 										"edate",
 										"tenant_network",
 										"tenant_units"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -173,20 +176,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -198,13 +203,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -216,31 +221,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -249,7 +250,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get tenant",
 		"tags": [
 			"Tenants"
 		],
@@ -259,12 +259,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/account_types": {
-		"description": "List of account types available for the Tenant to provision accounts.",
 		"operationId": "Tenants_validAccountTypes",
+		"summary": "Get tenant account types",
+		"description": "List of account types available for the Tenant to provision accounts.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "tenant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -273,19 +274,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -297,22 +302,20 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -320,20 +323,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -345,13 +350,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -363,31 +368,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -396,7 +397,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get tenant account types",
 		"tags": [
 			"Tenants"
 		],
@@ -406,12 +406,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/accounts": {
-		"description": "List of accounts for the Tenant.",
 		"operationId": "Tenants_listAccounts",
+		"summary": "List tenant accounts",
+		"description": "List of accounts for the Tenant.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "tenant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -420,19 +421,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -444,55 +449,56 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"created_on": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"id": {
 												"type": "string"
 											},
 											"name": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"settings": {
+												"type": "object",
 												"properties": {
 													"abuse_contact_email": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"access_approval_expiry": {
+														"type": "string",
 														"format": "date-time",
-														"nullable": true,
-														"type": "string"
+														"nullable": true
 													},
 													"api_access_enabled": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"default_nameservers": {
-														"deprecated": true,
 														"description": "Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated.",
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"deprecated": true,
+														"nullable": true
 													},
 													"enforce_twofactor": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"use_account_custom_ns_by_default": {
-														"deprecated": true,
 														"description": "Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated.",
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"deprecated": true,
+														"nullable": true
 													}
 												},
 												"required": [
@@ -502,15 +508,14 @@
 													"abuse_contact_email",
 													"use_account_custom_ns_by_default",
 													"default_nameservers"
-												],
-												"type": "object"
+												]
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"standard",
 													"enterprise"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -519,16 +524,14 @@
 											"type",
 											"settings",
 											"created_on"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -536,20 +539,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -561,13 +566,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -579,31 +584,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -612,7 +613,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List tenant accounts",
 		"tags": [
 			"Tenants"
 		],
@@ -622,12 +622,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/entitlements": {
-		"description": "List of innate entitlements available for the Tenant.",
 		"operationId": "Tenants_listEntitlements",
+		"summary": "List tenant entitlements",
+		"description": "List of innate entitlements available for the Tenant.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "tenant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -636,19 +637,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -660,20 +665,20 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"allow_add_subdomain": {
+											"type": "object",
 											"properties": {
 												"type": {
+													"type": "string",
 													"enum": [
 														"bool"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "boolean"
@@ -682,16 +687,16 @@
 											"required": [
 												"type",
 												"value"
-											],
-											"type": "object"
+											]
 										},
 										"allow_auto_accept_invites": {
+											"type": "object",
 											"properties": {
 												"type": {
+													"type": "string",
 													"enum": [
 														"bool"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "boolean"
@@ -700,16 +705,16 @@
 											"required": [
 												"type",
 												"value"
-											],
-											"type": "object"
+											]
 										},
 										"cname_setup_allowed": {
+											"type": "object",
 											"properties": {
 												"type": {
+													"type": "string",
 													"enum": [
 														"bool"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "boolean"
@@ -718,21 +723,23 @@
 											"required": [
 												"type",
 												"value"
-											],
-											"type": "object"
+											]
 										},
 										"custom_entitlements": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"allocation": {
 														"anyOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"max_count"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"type": "integer"
@@ -741,16 +748,16 @@
 																"required": [
 																	"type",
 																	"value"
-																],
-																"type": "object"
+																]
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"bool"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"type": "boolean"
@@ -759,16 +766,16 @@
 																"required": [
 																	"type",
 																	"value"
-																],
-																"type": "object"
+																]
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			""
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"type": "object"
@@ -776,12 +783,12 @@
 																},
 																"required": [
 																	"type"
-																],
-																"type": "object"
+																]
 															}
 														]
 													},
 													"feature": {
+														"type": "object",
 														"properties": {
 															"key": {
 																"type": "string"
@@ -789,26 +796,24 @@
 														},
 														"required": [
 															"key"
-														],
-														"type": "object"
+														]
 													}
 												},
 												"required": [
 													"feature",
 													"allocation"
-												],
-												"type": "object"
+												]
 											},
-											"nullable": true,
-											"type": "array"
+											"nullable": true
 										},
 										"mhs_certificate_count": {
+											"type": "object",
 											"properties": {
 												"type": {
+													"type": "string",
 													"enum": [
 														"max_count"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "integer"
@@ -817,16 +822,16 @@
 											"required": [
 												"type",
 												"value"
-											],
-											"type": "object"
+											]
 										},
 										"partial_setup_allowed": {
+											"type": "object",
 											"properties": {
 												"type": {
+													"type": "string",
 													"enum": [
 														"bool"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"type": "boolean"
@@ -835,8 +840,7 @@
 											"required": [
 												"type",
 												"value"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -846,14 +850,13 @@
 										"allow_auto_accept_invites",
 										"mhs_certificate_count",
 										"custom_entitlements"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -861,20 +864,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -886,13 +891,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -904,31 +909,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -937,7 +938,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List tenant entitlements",
 		"tags": [
 			"Tenants"
 		],
@@ -947,12 +947,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/memberships": {
-		"description": "List of active members (Cloudflare users) for the Tenant.",
 		"operationId": "Tenants_listMemberships",
+		"summary": "List tenant memberships",
+		"description": "List of active members (Cloudflare users) for the Tenant.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "tenant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -961,19 +962,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -985,13 +990,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"user_email": {
 												"type": "string"
@@ -1007,16 +1012,14 @@
 											"user_tag",
 											"user_email",
 											"user_name"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1024,20 +1027,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1049,13 +1054,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1067,31 +1072,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -1100,7 +1101,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List tenant memberships",
 		"tags": [
 			"Tenants"
 		],

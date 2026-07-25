@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
-		"description": "Soft-deletes a dataset given a datasetId.",
 		"operationId": "delete_DatasetDelete",
+		"summary": "Delete a dataset",
+		"description": "Soft-deletes a dataset given a datasetId.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID to delete",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID to delete",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID to delete",
@@ -26,48 +27,50 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the uuid and name of the deleted dataset.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"name": {
-									"example": "friendly dataset name",
-									"type": "string"
+									"type": "string",
+									"example": "friendly dataset name"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the uuid and name of the deleted dataset."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -80,32 +83,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -118,12 +121,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -131,7 +132,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a dataset",
 		"tags": [
 			"Dataset"
 		],
@@ -140,13 +140,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
-		"description": "List all datasets accessible to the account.",
 		"operationId": "get_DatasetList",
+		"summary": "Lists all datasets in an account",
+		"description": "List all datasets accessible to the account.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -154,9 +155,9 @@
 				}
 			},
 			{
-				"description": "When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.",
-				"in": "query",
 				"name": "includeDeleted",
+				"in": "query",
+				"description": "When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.",
 				"schema": {
 					"description": "When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.",
 					"type": "boolean"
@@ -165,25 +166,27 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of dataset in an account.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"deletedAt": {
 										"type": "string"
 									},
 									"isPublic": {
-										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"example": true
 									},
 									"name": {
-										"example": "friendly dataset name",
-										"type": "string"
+										"type": "string",
+										"example": "friendly dataset name"
 									},
 									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
 									}
 								},
 								"required": [
@@ -192,32 +195,32 @@
 									"isPublic"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns a list of dataset in an account."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -230,12 +233,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -243,7 +244,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists all datasets in an account",
 		"tags": [
 			"Dataset"
 		],
@@ -253,13 +253,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
-		"description": "Retrieve metadata for a specific dataset.",
 		"operationId": "get_DatasetRead",
+		"summary": "Reads a dataset",
+		"description": "Retrieve metadata for a specific dataset.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -267,69 +268,71 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a dataset.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"deletedAt": {
 									"type": "string"
 								},
 								"isPublic": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"name": {
-									"example": "friendly dataset name",
-									"type": "string"
+									"type": "string",
+									"example": "friendly dataset name"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"isPublic"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a dataset."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -342,12 +345,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -355,7 +356,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Reads a dataset",
 		"tags": [
 			"Dataset"
 		],
@@ -365,13 +365,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
-		"description": "Update an existing dataset by its identifier.",
 		"operationId": "patch_DatasetUpdate",
+		"summary": "Updates an existing dataset",
+		"description": "Update an existing dataset by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -379,14 +380,14 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -394,6 +395,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"isPublic": {
 								"description": "If true, then anyone can search the dataset. If false, then its limited to the account.",
@@ -401,71 +403,72 @@
 							},
 							"name": {
 								"description": "Used to describe the dataset within the account context.",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"name",
 							"isPublic"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns dataset information.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"deletedAt": {
 									"type": "string"
 								},
 								"isPublic": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"name": {
-									"example": "friendly dataset name",
-									"type": "string"
+									"type": "string",
+									"example": "friendly dataset name"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"isPublic"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns dataset information."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -478,12 +481,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -491,7 +492,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates an existing dataset",
 		"tags": [
 			"Dataset"
 		],
@@ -500,13 +500,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
-		"description": "Update an existing dataset by its identifier.",
 		"operationId": "post_DatasetUpdate",
+		"summary": "Updates an existing dataset",
+		"description": "Update an existing dataset by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -514,14 +515,14 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -529,6 +530,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"isPublic": {
 								"description": "If true, then anyone can search the dataset. If false, then its limited to the account.",
@@ -536,71 +538,72 @@
 							},
 							"name": {
 								"description": "Used to describe the dataset within the account context.",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"name",
 							"isPublic"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns dataset information.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"deletedAt": {
 									"type": "string"
 								},
 								"isPublic": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"name": {
-									"example": "friendly dataset name",
-									"type": "string"
+									"type": "string",
+									"example": "friendly dataset name"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"isPublic"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns dataset information."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -613,12 +616,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -626,7 +627,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates an existing dataset",
 		"tags": [
 			"Dataset"
 		],
@@ -636,13 +636,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/create": {
-		"description": "Create a new dataset in the account.",
 		"operationId": "post_DatasetCreate",
+		"summary": "Creates a dataset",
+		"description": "Create a new dataset in the account.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -654,6 +655,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"isPublic": {
 								"description": "If true, then anyone can search the dataset. If false, then its limited to the account.",
@@ -661,71 +663,72 @@
 							},
 							"name": {
 								"description": "Used to describe the dataset within the account context.",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"name",
 							"isPublic"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns dataset information.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"deletedAt": {
 									"type": "string"
 								},
 								"isPublic": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"name": {
-									"example": "friendly dataset name",
-									"type": "string"
+									"type": "string",
+									"example": "friendly dataset name"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"isPublic"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns dataset information."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -738,12 +741,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -751,7 +752,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates a dataset",
 		"tags": [
 			"Dataset"
 		],

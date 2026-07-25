@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
-		"description": "Deletes a Source-of-Truth tag by UUID.",
 		"operationId": "delete_TagDelete",
+		"summary": "Deletes a tag (SoT)",
+		"description": "Deletes a Source-of-Truth tag by UUID.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "Tag UUID.",
-				"in": "path",
 				"name": "tag_uuid",
+				"in": "path",
+				"description": "Tag UUID.",
 				"required": true,
 				"schema": {
 					"description": "Tag UUID.",
@@ -26,43 +27,45 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the uuid of the deleted tag.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the uuid of the deleted tag."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -75,32 +78,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -113,12 +116,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -126,7 +127,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Deletes a tag (SoT)",
 		"tags": [
 			"Tag"
 		],
@@ -135,14 +135,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
-		"deprecated": true,
-		"description": "This endpoint is deprecated. Use GET /:account_id/events/tags/:tag_uuid/indicators with the optional datasetIds query parameter instead. Returns indicators associated with the provided tag UUID within a single dataset's indicator shards, with pagination.",
 		"operationId": "get_DatasetTagIndicatorsList",
+		"summary": "List indicators related to a tag within a dataset (deprecated)",
+		"description": "This endpoint is deprecated. Use GET /:account_id/events/tags/:tag_uuid/indicators with the optional datasetIds query parameter instead. Returns indicators associated with the provided tag UUID within a single dataset's indicator shards, with pagination.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -150,9 +150,9 @@
 				}
 			},
 			{
-				"description": "Tag UUID.",
-				"in": "path",
 				"name": "tag_uuid",
+				"in": "path",
+				"description": "Tag UUID.",
 				"required": true,
 				"schema": {
 					"description": "Tag UUID.",
@@ -160,69 +160,72 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pageSize",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "indicatorType",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
-				"in": "query",
 				"name": "relatedEvent",
+				"in": "query",
+				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
 				"schema": {
 					"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
 				"schema": {
 					"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
+					"type": "array",
 					"items": {
 						"properties": {
 							"field": {
 								"description": "The indicator field to search on. Allowed: value, indicatorType, uuid.",
+								"type": "string",
+								"example": "value",
 								"enum": [
 									"value",
 									"indicatorType",
 									"uuid"
-								],
-								"example": "value",
-								"type": "string"
+								]
 							},
 							"op": {
 								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'value', op:'in', value:['evil.com','bad.org']}.",
+								"type": "string",
+								"example": "contains",
 								"enum": [
 									"equals",
 									"not",
@@ -236,11 +239,10 @@
 									"endsWith",
 									"in",
 									"find"
-								],
-								"example": "contains",
-								"type": "string"
+								]
 							},
 							"value": {
+								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items).",
 								"anyOf": [
 									{
 										"example": "malicious",
@@ -252,8 +254,7 @@
 										},
 										"type": "array"
 									}
-								],
-								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items)."
+								]
 							}
 						},
 						"required": [
@@ -262,44 +263,47 @@
 							"value"
 						],
 						"type": "object"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a paginated list of indicators.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"indicators": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"createdAt": {
-												"example": "2022-04-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2022-04-01T00:00:00Z"
 											},
 											"datasetId": {
 												"description": "The dataset ID this indicator belongs to. Included in list responses.",
-												"example": "dataset-uuid-123",
-												"type": "string"
+												"type": "string",
+												"example": "dataset-uuid-123"
 											},
 											"indicatorType": {
-												"example": "domain",
-												"type": "string"
+												"type": "string",
+												"example": "domain"
 											},
 											"relatedEvents": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"datasetId": {
-															"example": "dataset-uuid-123",
-															"type": "string"
+															"type": "string",
+															"example": "dataset-uuid-123"
 														},
 														"eventId": {
-															"example": "event-uuid-456",
-															"type": "string"
+															"type": "string",
+															"example": "event-uuid-456"
 														}
 													},
 													"required": [
@@ -307,10 +311,10 @@
 														"eventId"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"tags": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"categoryName": {
@@ -324,21 +328,20 @@
 														}
 													},
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"updatedAt": {
-												"example": "2022-04-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2022-04-01T00:00:00Z"
 											},
 											"uuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
 											},
 											"value": {
-												"example": "malicious-domain.com",
-												"type": "string"
+												"type": "string",
+												"example": "malicious-domain.com"
 											}
 										},
 										"required": [
@@ -349,10 +352,10 @@
 											"updatedAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"pagination": {
+									"type": "object",
 									"properties": {
 										"page": {
 											"type": "number"
@@ -372,39 +375,38 @@
 										"pageSize",
 										"totalCount",
 										"totalPages"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"indicators",
 								"pagination"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a paginated list of indicators."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -417,32 +419,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -455,32 +457,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"500": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -493,20 +495,18 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
 			}
 		],
-		"summary": "List indicators related to a tag within a dataset (deprecated)",
 		"tags": [
 			"Tag"
 		],
@@ -516,13 +516,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
-		"description": "Returns all Source-of-Truth tags for an account. Supports legacy free-text `search` on tag value and `categoryUuid` exact match, plus a structured `filters` JSON array for filtering by metadata fields (originCountryISO, actorCategory, motive, priority, etc.). Country values may be passed as alpha-2, alpha-3, name, or common alias.",
 		"operationId": "get_TagList",
+		"summary": "Lists all tags (SoT)",
+		"description": "Returns all Source-of-Truth tags for an account. Supports legacy free-text `search` on tag value and `categoryUuid` exact match, plus a structured `filters` JSON array for filtering by metadata fields (originCountryISO, actorCategory, motive, priority, etc.). Country values may be passed as alpha-2, alpha-3, name, or common alias.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -530,45 +531,48 @@
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pageSize",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"description": "Legacy free-text substring match on tag value.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Legacy free-text substring match on tag value.",
 				"schema": {
 					"description": "Legacy free-text substring match on tag value.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "categoryUuid",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, actorCategoryConfidence, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, motiveConfidence, opsecLevel, originCountryISO, originCountryConfidence, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
-				"in": "query",
 				"name": "filters",
+				"in": "query",
+				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, actorCategoryConfidence, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, motiveConfidence, opsecLevel, originCountryISO, originCountryConfidence, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
 				"schema": {
 					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, actorCategoryConfidence, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, motiveConfidence, opsecLevel, originCountryISO, originCountryConfidence, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+					"type": "array",
 					"items": {
 						"properties": {
 							"field": {
 								"description": "Tag field to search on. Allowed: uuid, value, actorCategory, actorCategoryConfidence, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, motiveConfidence, opsecLevel, originCountryISO, originCountryConfidence, sophisticationLevel, priority, analyticPriority.",
+								"type": "string",
+								"example": "originCountryISO",
 								"enum": [
 									"uuid",
 									"value",
@@ -587,12 +591,12 @@
 									"sophisticationLevel",
 									"priority",
 									"analyticPriority"
-								],
-								"example": "originCountryISO",
-								"type": "string"
+								]
 							},
 							"op": {
 								"description": "Search operator. Use 'in' for bulk OR within a single field, e.g. {field:\"originCountryISO\", op:\"in\", value:[\"IR\",\"CN\"]}.",
+								"type": "string",
+								"example": "in",
 								"enum": [
 									"equals",
 									"not",
@@ -606,11 +610,10 @@
 									"endsWith",
 									"in",
 									"find"
-								],
-								"example": "in",
-								"type": "string"
+								]
 							},
 							"value": {
+								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items). Country values may be passed as alpha-2, alpha-3, name, or common alias (e.g. 'iran', 'IR', 'IRN') and are normalized to alpha-2 server-side.",
 								"anyOf": [
 									{
 										"example": "IR",
@@ -633,8 +636,7 @@
 										},
 										"type": "array"
 									}
-								],
-								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items). Country values may be passed as alpha-2, alpha-3, name, or common alias (e.g. 'iran', 'IR', 'IRN') and are normalized to alpha-2 server-side."
+								]
 							}
 						},
 						"required": [
@@ -642,30 +644,32 @@
 							"op"
 						],
 						"type": "object"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
-				"in": "query",
 				"name": "cache",
+				"in": "query",
+				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
 				"schema": {
 					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+					"type": "string",
 					"enum": [
 						"from-graph"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a paginated list of tags.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"pagination": {
+									"type": "object",
 									"properties": {
 										"page": {
 											"type": "number"
@@ -685,10 +689,10 @@
 										"pageSize",
 										"totalCount",
 										"totalPages"
-									],
-									"type": "object"
+									]
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"activeDuration": {
@@ -699,56 +703,56 @@
 											},
 											"actorCategoryConfidence": {
 												"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+												"type": "integer",
 												"example": 7,
 												"maximum": 10,
-												"minimum": 1,
-												"type": "integer"
+												"minimum": 1
 											},
 											"aliasGroupNames": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"aliasGroupNamesInternal": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"aliases": {
 												"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+												"type": "array",
 												"items": {
 													"properties": {
 														"confidence": {
+															"type": "integer",
 															"example": 8,
 															"maximum": 10,
 															"minimum": 1,
-															"nullable": true,
-															"type": "integer"
+															"nullable": true
 														},
 														"tlp": {
+															"type": "string",
+															"example": "amber",
 															"enum": [
 																"red",
 																"amber",
 																"green",
 																"white"
 															],
-															"example": "amber",
-															"nullable": true,
-															"type": "string"
+															"nullable": true
 														},
 														"value": {
-															"example": "Fancy Bear",
-															"type": "string"
+															"type": "string",
+															"example": "Fancy Bear"
 														}
 													},
 													"required": [
 														"value"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"analyticPriority": {
 												"type": "number"
@@ -757,86 +761,86 @@
 												"type": "string"
 											},
 											"attributionConfidenceScore": {
+												"type": "integer",
 												"example": 7,
 												"maximum": 10,
-												"minimum": 1,
-												"type": "integer"
+												"minimum": 1
 											},
 											"attributionOrganization": {
 												"type": "string"
 											},
 											"categoryName": {
-												"example": "Nation State",
-												"type": "string"
+												"type": "string",
+												"example": "Nation State"
 											},
 											"categoryUuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
 											},
 											"dateOfDiscovery": {
-												"example": "2024-01-15",
-												"type": "string"
+												"type": "string",
+												"example": "2024-01-15"
 											},
 											"externalReferenceLinks": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"externalReferences": {
 												"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+												"type": "array",
 												"items": {
 													"properties": {
 														"description": {
+															"type": "string",
 															"example": "Vendor threat report",
-															"nullable": true,
-															"type": "string"
+															"nullable": true
 														},
 														"url": {
-															"example": "https://example.com/report",
-															"type": "string"
+															"type": "string",
+															"example": "https://example.com/report"
 														}
 													},
 													"required": [
 														"url"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"internalAliases": {
 												"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+												"type": "array",
 												"items": {
 													"properties": {
 														"confidence": {
+															"type": "integer",
 															"example": 8,
 															"maximum": 10,
 															"minimum": 1,
-															"nullable": true,
-															"type": "integer"
+															"nullable": true
 														},
 														"tlp": {
+															"type": "string",
+															"example": "amber",
 															"enum": [
 																"red",
 																"amber",
 																"green",
 																"white"
 															],
-															"example": "amber",
-															"nullable": true,
-															"type": "string"
+															"nullable": true
 														},
 														"value": {
-															"example": "Fancy Bear",
-															"type": "string"
+															"type": "string",
+															"example": "Fancy Bear"
 														}
 													},
 													"required": [
 														"value"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"internalDescription": {
 												"type": "string"
@@ -846,38 +850,38 @@
 											},
 											"motiveConfidence": {
 												"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+												"type": "integer",
 												"example": 7,
 												"maximum": 10,
-												"minimum": 1,
-												"type": "integer"
+												"minimum": 1
 											},
 											"opsecLevel": {
 												"type": "string"
 											},
 											"originCountryConfidence": {
 												"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+												"type": "integer",
 												"example": 7,
 												"maximum": 10,
-												"minimum": 1,
-												"type": "integer"
+												"minimum": 1
 											},
 											"originCountryISO": {
 												"type": "string"
 											},
 											"originCountryISOAlpha3": {
-												"example": "IRN",
-												"type": "string"
+												"type": "string",
+												"example": "IRN"
 											},
 											"originCountryTlp": {
 												"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+												"type": "string",
+												"example": "amber",
 												"enum": [
 													"red",
 													"amber",
 													"green",
 													"white"
-												],
-												"example": "amber",
-												"type": "string"
+												]
 											},
 											"priority": {
 												"type": "number"
@@ -886,12 +890,12 @@
 												"type": "string"
 											},
 											"uuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
 											},
 											"value": {
-												"example": "APT28",
-												"type": "string"
+												"type": "string",
+												"example": "APT28"
 											}
 										},
 										"required": [
@@ -899,39 +903,38 @@
 											"value"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"tags",
 								"pagination"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a paginated list of tags."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -944,12 +947,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -957,7 +958,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists all tags (SoT)",
 		"tags": [
 			"Tag"
 		],
@@ -967,13 +967,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
-		"description": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every indicator dataset the account can read; pass datasetIds to scope to specific datasets.",
 		"operationId": "get_TagIndicatorsList",
+		"summary": "List indicators related to a tag",
+		"description": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every indicator dataset the account can read; pass datasetIds to scope to specific datasets.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -981,9 +982,9 @@
 				}
 			},
 			{
-				"description": "Tag UUID.",
-				"in": "path",
 				"name": "tag_uuid",
+				"in": "path",
+				"description": "Tag UUID.",
 				"required": true,
 				"schema": {
 					"description": "Tag UUID.",
@@ -991,70 +992,73 @@
 				}
 			},
 			{
-				"description": "Dataset UUIDs to scope to (repeat the param for multiple), or 'all' / '*' for every readable indicator dataset. Omit to search all readable datasets.",
-				"in": "query",
 				"name": "datasetIds",
+				"in": "query",
+				"description": "Dataset UUIDs to scope to (repeat the param for multiple), or 'all' / '*' for every readable indicator dataset. Omit to search all readable datasets.",
 				"schema": {
 					"description": "Dataset UUIDs to scope to (repeat the param for multiple), or 'all' / '*' for every readable indicator dataset. Omit to search all readable datasets.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pageSize",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "indicatorType",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
-				"in": "query",
 				"name": "relatedEvent",
+				"in": "query",
+				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
 				"schema": {
 					"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
 				"schema": {
 					"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
+					"type": "array",
 					"items": {
 						"properties": {
 							"field": {
 								"description": "The indicator field to search on. Allowed: value, indicatorType, uuid.",
+								"type": "string",
+								"example": "value",
 								"enum": [
 									"value",
 									"indicatorType",
 									"uuid"
-								],
-								"example": "value",
-								"type": "string"
+								]
 							},
 							"op": {
 								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'value', op:'in', value:['evil.com','bad.org']}.",
+								"type": "string",
+								"example": "contains",
 								"enum": [
 									"equals",
 									"not",
@@ -1068,11 +1072,10 @@
 									"endsWith",
 									"in",
 									"find"
-								],
-								"example": "contains",
-								"type": "string"
+								]
 							},
 							"value": {
+								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items).",
 								"anyOf": [
 									{
 										"example": "malicious",
@@ -1084,8 +1087,7 @@
 										},
 										"type": "array"
 									}
-								],
-								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items)."
+								]
 							}
 						},
 						"required": [
@@ -1094,44 +1096,47 @@
 							"value"
 						],
 						"type": "object"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a paginated list of indicators.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"indicators": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"createdAt": {
-												"example": "2022-04-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2022-04-01T00:00:00Z"
 											},
 											"datasetId": {
 												"description": "The dataset ID this indicator belongs to. Included in list responses.",
-												"example": "dataset-uuid-123",
-												"type": "string"
+												"type": "string",
+												"example": "dataset-uuid-123"
 											},
 											"indicatorType": {
-												"example": "domain",
-												"type": "string"
+												"type": "string",
+												"example": "domain"
 											},
 											"relatedEvents": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"datasetId": {
-															"example": "dataset-uuid-123",
-															"type": "string"
+															"type": "string",
+															"example": "dataset-uuid-123"
 														},
 														"eventId": {
-															"example": "event-uuid-456",
-															"type": "string"
+															"type": "string",
+															"example": "event-uuid-456"
 														}
 													},
 													"required": [
@@ -1139,10 +1144,10 @@
 														"eventId"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"tags": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"categoryName": {
@@ -1156,21 +1161,20 @@
 														}
 													},
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"updatedAt": {
-												"example": "2022-04-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2022-04-01T00:00:00Z"
 											},
 											"uuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
 											},
 											"value": {
-												"example": "malicious-domain.com",
-												"type": "string"
+												"type": "string",
+												"example": "malicious-domain.com"
 											}
 										},
 										"required": [
@@ -1181,10 +1185,10 @@
 											"updatedAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"pagination": {
+									"type": "object",
 									"properties": {
 										"page": {
 											"type": "number"
@@ -1204,39 +1208,38 @@
 										"pageSize",
 										"totalCount",
 										"totalPages"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"indicators",
 								"pagination"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a paginated list of indicators."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1249,32 +1252,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1287,32 +1290,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"500": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1325,12 +1328,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1338,7 +1339,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List indicators related to a tag",
 		"tags": [
 			"Tag"
 		],
@@ -1348,13 +1348,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
-		"description": "Updates a Source-of-Truth tag by UUID.",
 		"operationId": "patch_TagUpdate",
+		"summary": "Updates a tag (SoT)",
+		"description": "Updates a Source-of-Truth tag by UUID.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1362,9 +1363,9 @@
 				}
 			},
 			{
-				"description": "Tag UUID.",
-				"in": "path",
 				"name": "tag_uuid",
+				"in": "path",
+				"description": "Tag UUID.",
 				"required": true,
 				"schema": {
 					"description": "Tag UUID.",
@@ -1376,67 +1377,68 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"activeDuration": {
 								"type": "string"
 							},
 							"actorCategory": {
 								"description": "Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated.",
-								"example": "Nation State",
-								"type": "string"
+								"type": "string",
+								"example": "Nation State"
 							},
 							"actorCategoryConfidence": {
 								"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"aliasGroupNames": {
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"aliasGroupNamesInternal": {
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"aliases": {
 								"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"confidence": {
+											"type": "integer",
 											"example": 8,
 											"maximum": 10,
 											"minimum": 1,
-											"nullable": true,
-											"type": "integer"
+											"nullable": true
 										},
 										"tlp": {
+											"type": "string",
+											"example": "amber",
 											"enum": [
 												"red",
 												"amber",
 												"green",
 												"white"
 											],
-											"example": "amber",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"value": {
-											"example": "Fancy Bear",
-											"type": "string"
+											"type": "string",
+											"example": "Fancy Bear"
 										}
 									},
 									"required": [
 										"value"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"analyticPriority": {
 								"type": "number"
@@ -1445,123 +1447,123 @@
 								"type": "string"
 							},
 							"attributionConfidenceScore": {
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"attributionOrganization": {
 								"type": "string"
 							},
 							"categoryUuid": {
-								"example": "12345678-1234-1234-1234-1234567890ab",
-								"type": "string"
+								"type": "string",
+								"example": "12345678-1234-1234-1234-1234567890ab"
 							},
 							"dateOfDiscovery": {
 								"description": "Date the actor was discovered (ISO YYYY-MM-DD).",
+								"type": "string",
 								"example": "2024-01-15",
-								"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-								"type": "string"
+								"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 							},
 							"externalReferenceLinks": {
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"externalReferences": {
 								"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"description": {
+											"type": "string",
 											"example": "Vendor threat report",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"url": {
-											"example": "https://example.com/report",
-											"type": "string"
+											"type": "string",
+											"example": "https://example.com/report"
 										}
 									},
 									"required": [
 										"url"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"internalAliases": {
 								"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"confidence": {
+											"type": "integer",
 											"example": 8,
 											"maximum": 10,
 											"minimum": 1,
-											"nullable": true,
-											"type": "integer"
+											"nullable": true
 										},
 										"tlp": {
+											"type": "string",
+											"example": "amber",
 											"enum": [
 												"red",
 												"amber",
 												"green",
 												"white"
 											],
-											"example": "amber",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"value": {
-											"example": "Fancy Bear",
-											"type": "string"
+											"type": "string",
+											"example": "Fancy Bear"
 										}
 									},
 									"required": [
 										"value"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"internalDescription": {
 								"type": "string"
 							},
 							"motive": {
 								"description": "Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage.",
-								"example": "Espionage",
-								"type": "string"
+								"type": "string",
+								"example": "Espionage"
 							},
 							"motiveConfidence": {
 								"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"opsecLevel": {
 								"type": "string"
 							},
 							"originCountryConfidence": {
 								"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"originCountryISO": {
 								"type": "string"
 							},
 							"originCountryTlp": {
 								"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "string",
+								"example": "amber",
 								"enum": [
 									"red",
 									"amber",
 									"green",
 									"white"
-								],
-								"example": "amber",
-								"type": "string"
+								]
 							},
 							"priority": {
 								"type": "number"
@@ -1570,20 +1572,21 @@
 								"type": "string"
 							},
 							"value": {
-								"example": "APT28",
-								"type": "string"
+								"type": "string",
+								"example": "APT28"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated tag.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"activeDuration": {
 									"type": "string"
@@ -1593,56 +1596,56 @@
 								},
 								"actorCategoryConfidence": {
 									"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"aliasGroupNames": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"aliasGroupNamesInternal": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"aliases": {
 									"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "array",
 									"items": {
 										"properties": {
 											"confidence": {
+												"type": "integer",
 												"example": 8,
 												"maximum": 10,
 												"minimum": 1,
-												"nullable": true,
-												"type": "integer"
+												"nullable": true
 											},
 											"tlp": {
+												"type": "string",
+												"example": "amber",
 												"enum": [
 													"red",
 													"amber",
 													"green",
 													"white"
 												],
-												"example": "amber",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"value": {
-												"example": "Fancy Bear",
-												"type": "string"
+												"type": "string",
+												"example": "Fancy Bear"
 											}
 										},
 										"required": [
 											"value"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"analyticPriority": {
 									"type": "number"
@@ -1651,86 +1654,86 @@
 									"type": "string"
 								},
 								"attributionConfidenceScore": {
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"attributionOrganization": {
 									"type": "string"
 								},
 								"categoryName": {
-									"example": "Nation State",
-									"type": "string"
+									"type": "string",
+									"example": "Nation State"
 								},
 								"categoryUuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								},
 								"dateOfDiscovery": {
-									"example": "2024-01-15",
-									"type": "string"
+									"type": "string",
+									"example": "2024-01-15"
 								},
 								"externalReferenceLinks": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"externalReferences": {
 									"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+									"type": "array",
 									"items": {
 										"properties": {
 											"description": {
+												"type": "string",
 												"example": "Vendor threat report",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"url": {
-												"example": "https://example.com/report",
-												"type": "string"
+												"type": "string",
+												"example": "https://example.com/report"
 											}
 										},
 										"required": [
 											"url"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"internalAliases": {
 									"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+									"type": "array",
 									"items": {
 										"properties": {
 											"confidence": {
+												"type": "integer",
 												"example": 8,
 												"maximum": 10,
 												"minimum": 1,
-												"nullable": true,
-												"type": "integer"
+												"nullable": true
 											},
 											"tlp": {
+												"type": "string",
+												"example": "amber",
 												"enum": [
 													"red",
 													"amber",
 													"green",
 													"white"
 												],
-												"example": "amber",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"value": {
-												"example": "Fancy Bear",
-												"type": "string"
+												"type": "string",
+												"example": "Fancy Bear"
 											}
 										},
 										"required": [
 											"value"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"internalDescription": {
 									"type": "string"
@@ -1740,38 +1743,38 @@
 								},
 								"motiveConfidence": {
 									"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"opsecLevel": {
 									"type": "string"
 								},
 								"originCountryConfidence": {
 									"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"originCountryISO": {
 									"type": "string"
 								},
 								"originCountryISOAlpha3": {
-									"example": "IRN",
-									"type": "string"
+									"type": "string",
+									"example": "IRN"
 								},
 								"originCountryTlp": {
 									"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "string",
+									"example": "amber",
 									"enum": [
 										"red",
 										"amber",
 										"green",
 										"white"
-									],
-									"example": "amber",
-									"type": "string"
+									]
 								},
 								"priority": {
 									"type": "number"
@@ -1780,43 +1783,43 @@
 									"type": "string"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								},
 								"value": {
-									"example": "APT28",
-									"type": "string"
+									"type": "string",
+									"example": "APT28"
 								}
 							},
 							"required": [
 								"uuid",
 								"value"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated tag."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1829,32 +1832,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1867,12 +1870,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1880,7 +1881,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates a tag (SoT)",
 		"tags": [
 			"Tag"
 		],
@@ -1889,13 +1889,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
-		"description": "Creates a new tag to be used accross threat events.",
 		"operationId": "post_TagCreate",
+		"summary": "Creates a new tag",
+		"description": "Creates a new tag to be used accross threat events.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1907,67 +1908,68 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"activeDuration": {
 								"type": "string"
 							},
 							"actorCategory": {
 								"description": "Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated.",
-								"example": "Nation State",
-								"type": "string"
+								"type": "string",
+								"example": "Nation State"
 							},
 							"actorCategoryConfidence": {
 								"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"aliasGroupNames": {
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"aliasGroupNamesInternal": {
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"aliases": {
 								"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"confidence": {
+											"type": "integer",
 											"example": 8,
 											"maximum": 10,
 											"minimum": 1,
-											"nullable": true,
-											"type": "integer"
+											"nullable": true
 										},
 										"tlp": {
+											"type": "string",
+											"example": "amber",
 											"enum": [
 												"red",
 												"amber",
 												"green",
 												"white"
 											],
-											"example": "amber",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"value": {
-											"example": "Fancy Bear",
-											"type": "string"
+											"type": "string",
+											"example": "Fancy Bear"
 										}
 									},
 									"required": [
 										"value"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"analyticPriority": {
 								"type": "number"
@@ -1976,123 +1978,123 @@
 								"type": "string"
 							},
 							"attributionConfidenceScore": {
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"attributionOrganization": {
 								"type": "string"
 							},
 							"categoryUuid": {
-								"example": "12345678-1234-1234-1234-1234567890ab",
-								"type": "string"
+								"type": "string",
+								"example": "12345678-1234-1234-1234-1234567890ab"
 							},
 							"dateOfDiscovery": {
 								"description": "Date the actor was discovered (ISO YYYY-MM-DD).",
+								"type": "string",
 								"example": "2024-01-15",
-								"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-								"type": "string"
+								"pattern": "^\\d{4}-\\d{2}-\\d{2}$"
 							},
 							"externalReferenceLinks": {
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"externalReferences": {
 								"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"description": {
+											"type": "string",
 											"example": "Vendor threat report",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"url": {
-											"example": "https://example.com/report",
-											"type": "string"
+											"type": "string",
+											"example": "https://example.com/report"
 										}
 									},
 									"required": [
 										"url"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"internalAliases": {
 								"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"confidence": {
+											"type": "integer",
 											"example": 8,
 											"maximum": 10,
 											"minimum": 1,
-											"nullable": true,
-											"type": "integer"
+											"nullable": true
 										},
 										"tlp": {
+											"type": "string",
+											"example": "amber",
 											"enum": [
 												"red",
 												"amber",
 												"green",
 												"white"
 											],
-											"example": "amber",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"value": {
-											"example": "Fancy Bear",
-											"type": "string"
+											"type": "string",
+											"example": "Fancy Bear"
 										}
 									},
 									"required": [
 										"value"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"internalDescription": {
 								"type": "string"
 							},
 							"motive": {
 								"description": "Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage.",
-								"example": "Espionage",
-								"type": "string"
+								"type": "string",
+								"example": "Espionage"
 							},
 							"motiveConfidence": {
 								"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"opsecLevel": {
 								"type": "string"
 							},
 							"originCountryConfidence": {
 								"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "integer",
 								"example": 7,
 								"maximum": 10,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"originCountryISO": {
 								"type": "string"
 							},
 							"originCountryTlp": {
 								"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"type": "string",
+								"example": "amber",
 								"enum": [
 									"red",
 									"amber",
 									"green",
 									"white"
-								],
-								"example": "amber",
-								"type": "string"
+								]
 							},
 							"priority": {
 								"type": "number"
@@ -2101,23 +2103,24 @@
 								"type": "string"
 							},
 							"value": {
-								"example": "APT28",
-								"type": "string"
+								"type": "string",
+								"example": "APT28"
 							}
 						},
 						"required": [
 							"value"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created tag.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"activeDuration": {
 									"type": "string"
@@ -2127,56 +2130,56 @@
 								},
 								"actorCategoryConfidence": {
 									"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"aliasGroupNames": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"aliasGroupNamesInternal": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"aliases": {
 									"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "array",
 									"items": {
 										"properties": {
 											"confidence": {
+												"type": "integer",
 												"example": 8,
 												"maximum": 10,
 												"minimum": 1,
-												"nullable": true,
-												"type": "integer"
+												"nullable": true
 											},
 											"tlp": {
+												"type": "string",
+												"example": "amber",
 												"enum": [
 													"red",
 													"amber",
 													"green",
 													"white"
 												],
-												"example": "amber",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"value": {
-												"example": "Fancy Bear",
-												"type": "string"
+												"type": "string",
+												"example": "Fancy Bear"
 											}
 										},
 										"required": [
 											"value"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"analyticPriority": {
 									"type": "number"
@@ -2185,86 +2188,86 @@
 									"type": "string"
 								},
 								"attributionConfidenceScore": {
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"attributionOrganization": {
 									"type": "string"
 								},
 								"categoryName": {
-									"example": "Nation State",
-									"type": "string"
+									"type": "string",
+									"example": "Nation State"
 								},
 								"categoryUuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								},
 								"dateOfDiscovery": {
-									"example": "2024-01-15",
-									"type": "string"
+									"type": "string",
+									"example": "2024-01-15"
 								},
 								"externalReferenceLinks": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"externalReferences": {
 									"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+									"type": "array",
 									"items": {
 										"properties": {
 											"description": {
+												"type": "string",
 												"example": "Vendor threat report",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"url": {
-												"example": "https://example.com/report",
-												"type": "string"
+												"type": "string",
+												"example": "https://example.com/report"
 											}
 										},
 										"required": [
 											"url"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"internalAliases": {
 									"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+									"type": "array",
 									"items": {
 										"properties": {
 											"confidence": {
+												"type": "integer",
 												"example": 8,
 												"maximum": 10,
 												"minimum": 1,
-												"nullable": true,
-												"type": "integer"
+												"nullable": true
 											},
 											"tlp": {
+												"type": "string",
+												"example": "amber",
 												"enum": [
 													"red",
 													"amber",
 													"green",
 													"white"
 												],
-												"example": "amber",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"value": {
-												"example": "Fancy Bear",
-												"type": "string"
+												"type": "string",
+												"example": "Fancy Bear"
 											}
 										},
 										"required": [
 											"value"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"internalDescription": {
 									"type": "string"
@@ -2274,38 +2277,38 @@
 								},
 								"motiveConfidence": {
 									"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"opsecLevel": {
 									"type": "string"
 								},
 								"originCountryConfidence": {
 									"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "integer",
 									"example": 7,
 									"maximum": 10,
-									"minimum": 1,
-									"type": "integer"
+									"minimum": 1
 								},
 								"originCountryISO": {
 									"type": "string"
 								},
 								"originCountryISOAlpha3": {
-									"example": "IRN",
-									"type": "string"
+									"type": "string",
+									"example": "IRN"
 								},
 								"originCountryTlp": {
 									"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"type": "string",
+									"example": "amber",
 									"enum": [
 										"red",
 										"amber",
 										"green",
 										"white"
-									],
-									"example": "amber",
-									"type": "string"
+									]
 								},
 								"priority": {
 									"type": "number"
@@ -2314,43 +2317,43 @@
 									"type": "string"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								},
 								"value": {
-									"example": "APT28",
-									"type": "string"
+									"type": "string",
+									"example": "APT28"
 								}
 							},
 							"required": [
 								"uuid",
 								"value"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created tag."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2363,32 +2366,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2401,12 +2404,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2414,7 +2415,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates a new tag",
 		"tags": [
 			"Tag"
 		],

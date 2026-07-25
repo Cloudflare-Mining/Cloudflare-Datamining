@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
-		"description": "Deletes a specific indicator by its UUID.",
 		"operationId": "delete_IndicatorDelete",
+		"summary": "Deletes an indicator",
+		"description": "Deletes a specific indicator by its UUID.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
@@ -24,9 +25,9 @@
 				}
 			},
 			{
-				"description": "Indicator UUID.",
-				"in": "path",
 				"name": "indicator_id",
+				"in": "path",
+				"description": "Indicator UUID.",
 				"required": true,
 				"schema": {
 					"description": "Indicator UUID.",
@@ -36,9 +37,11 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Indicator deleted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"message": {
 									"type": "string"
@@ -46,32 +49,32 @@
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Indicator deleted successfully."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -84,12 +87,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -97,7 +98,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Deletes an indicator",
 		"tags": [
 			"Indicator"
 		],
@@ -106,14 +106,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
-		"deprecated": true,
-		"description": "This method is deprecated. Please use /events/indicators to retrieve a paginated list of indicators.",
 		"operationId": "get_IndicatorListLegacy",
+		"summary": "Lists indicators",
+		"description": "This method is deprecated. Please use /events/indicators to retrieve a paginated list of indicators.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -121,92 +121,96 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pageSize",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"description": "Filter by indicator value (substring match)",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Filter by indicator value (substring match)",
 				"schema": {
 					"description": "Filter by indicator value (substring match)",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "indicatorType",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
-				"in": "query",
 				"name": "relatedEvent",
+				"in": "query",
+				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
 				"schema": {
 					"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of indicators.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"indicators": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"createdAt": {
-												"example": "2022-04-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2022-04-01T00:00:00Z"
 											},
 											"datasetId": {
 												"description": "The dataset ID this indicator belongs to. Included in list responses.",
-												"example": "dataset-uuid-123",
-												"type": "string"
+												"type": "string",
+												"example": "dataset-uuid-123"
 											},
 											"indicatorType": {
-												"example": "domain",
-												"type": "string"
+												"type": "string",
+												"example": "domain"
 											},
 											"relatedEvents": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"datasetId": {
-															"example": "dataset-uuid-123",
-															"type": "string"
+															"type": "string",
+															"example": "dataset-uuid-123"
 														},
 														"eventId": {
-															"example": "event-uuid-456",
-															"type": "string"
+															"type": "string",
+															"example": "event-uuid-456"
 														}
 													},
 													"required": [
@@ -214,10 +218,10 @@
 														"eventId"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"tags": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"categoryName": {
@@ -231,21 +235,20 @@
 														}
 													},
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"updatedAt": {
-												"example": "2022-04-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2022-04-01T00:00:00Z"
 											},
 											"uuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
+												"type": "string",
+												"example": "12345678-1234-1234-1234-1234567890ab"
 											},
 											"value": {
-												"example": "malicious-domain.com",
-												"type": "string"
+												"type": "string",
+												"example": "malicious-domain.com"
 											}
 										},
 										"required": [
@@ -256,10 +259,10 @@
 											"updatedAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"pagination": {
+									"type": "object",
 									"properties": {
 										"page": {
 											"type": "number"
@@ -279,27 +282,24 @@
 										"pageSize",
 										"totalCount",
 										"totalPages"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"indicators",
 								"pagination"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of indicators."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
 			}
 		],
-		"summary": "Lists indicators",
 		"tags": [
 			"Indicator"
 		],
@@ -309,13 +309,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
-		"description": "Retrieves a specific indicator by its UUID.",
 		"operationId": "get_IndicatorRead",
+		"summary": "Reads an indicator",
+		"description": "Retrieves a specific indicator by its UUID.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -323,9 +324,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
@@ -333,9 +334,9 @@
 				}
 			},
 			{
-				"description": "Indicator UUID.",
-				"in": "path",
 				"name": "indicator_id",
+				"in": "path",
+				"description": "Indicator UUID.",
 				"required": true,
 				"schema": {
 					"description": "Indicator UUID.",
@@ -345,34 +346,37 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the indicator.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"example": "2022-04-01T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"datasetId": {
 									"description": "The dataset ID this indicator belongs to. Included in list responses.",
-									"example": "dataset-uuid-123",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-uuid-123"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"relatedEvents": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"datasetId": {
-												"example": "dataset-uuid-123",
-												"type": "string"
+												"type": "string",
+												"example": "dataset-uuid-123"
 											},
 											"eventId": {
-												"example": "event-uuid-456",
-												"type": "string"
+												"type": "string",
+												"example": "event-uuid-456"
 											}
 										},
 										"required": [
@@ -380,10 +384,10 @@
 											"eventId"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"categoryName": {
@@ -397,21 +401,20 @@
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"updatedAt": {
-									"example": "2022-04-01T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								},
 								"value": {
-									"example": "malicious-domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "malicious-domain.com"
 								}
 							},
 							"required": [
@@ -420,32 +423,32 @@
 								"value",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the indicator."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -458,12 +461,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -471,7 +472,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Reads an indicator",
 		"tags": [
 			"Indicator"
 		],
@@ -481,13 +481,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
-		"description": "Returns all mirrored tags from the indicator dataset (DO mirror table). No pagination.",
 		"operationId": "get_IndicatorTagsList",
+		"summary": "List mirrored tags for an indicator dataset",
+		"description": "Returns all mirrored tags from the indicator dataset (DO mirror table). No pagination.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -495,9 +496,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
@@ -507,38 +508,40 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns an array of mirrored tags.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Array of mirror tag rows",
+							"type": "array",
 							"items": {
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns an array of mirrored tags."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -551,32 +554,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -589,32 +592,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"500": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -627,12 +630,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -640,7 +641,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List mirrored tags for an indicator dataset",
 		"tags": [
 			"Indicator"
 		],
@@ -650,13 +650,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
-		"description": "Retrieves a paginated list of indicators across specified datasets. Use datasetIds=all or datasetIds=* to query all datasets for the account. If no datasetIds provided, uses the default dataset.",
 		"operationId": "get_IndicatorList",
+		"summary": "Lists indicators across multiple datasets",
+		"description": "Retrieves a paginated list of indicators across specified datasets. Use datasetIds=all or datasetIds=* to query all datasets for the account. If no datasetIds provided, uses the default dataset.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -664,51 +665,54 @@
 				}
 			},
 			{
-				"description": "Dataset IDs to query indicators from (array of UUIDs), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
-				"in": "query",
 				"name": "datasetIds",
+				"in": "query",
+				"description": "Dataset IDs to query indicators from (array of UUIDs), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
 				"schema": {
 					"description": "Dataset IDs to query indicators from (array of UUIDs), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"in": "query",
 				"name": "pageSize",
+				"in": "query",
 				"schema": {
 					"type": "number"
 				}
 			},
 			{
-				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType, uuid. Supports operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use the 'in' operator with an array value to bulk-check up to 100 indicators in a single request, e.g. search=[{\"field\":\"value\",\"op\":\"in\",\"value\":[\"evil.com\",\"bad.org\"]}]. Multiple conditions are AND'd together. Max 10 conditions per request.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType, uuid. Supports operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use the 'in' operator with an array value to bulk-check up to 100 indicators in a single request, e.g. search=[{\"field\":\"value\",\"op\":\"in\",\"value\":[\"evil.com\",\"bad.org\"]}]. Multiple conditions are AND'd together. Max 10 conditions per request.",
 				"schema": {
 					"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType, uuid. Supports operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use the 'in' operator with an array value to bulk-check up to 100 indicators in a single request, e.g. search=[{\"field\":\"value\",\"op\":\"in\",\"value\":[\"evil.com\",\"bad.org\"]}]. Multiple conditions are AND'd together. Max 10 conditions per request.",
+					"type": "array",
 					"items": {
 						"properties": {
 							"field": {
 								"description": "The indicator field to search on. Allowed: value, indicatorType, uuid.",
+								"type": "string",
+								"example": "value",
 								"enum": [
 									"value",
 									"indicatorType",
 									"uuid"
-								],
-								"example": "value",
-								"type": "string"
+								]
 							},
 							"op": {
 								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'value', op:'in', value:['evil.com','bad.org']}.",
+								"type": "string",
+								"example": "contains",
 								"enum": [
 									"equals",
 									"not",
@@ -722,11 +726,10 @@
 									"endsWith",
 									"in",
 									"find"
-								],
-								"example": "contains",
-								"type": "string"
+								]
 							},
 							"value": {
+								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items).",
 								"anyOf": [
 									{
 										"example": "malicious",
@@ -738,8 +741,7 @@
 										},
 										"type": "array"
 									}
-								],
-								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items)."
+								]
 							}
 						},
 						"required": [
@@ -748,60 +750,62 @@
 							"value"
 						],
 						"type": "object"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filter indicators by value using substring match (LIKE). Legacy alternative to structured search.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Filter indicators by value using substring match (LIKE). Legacy alternative to structured search.",
 				"schema": {
 					"description": "Filter indicators by value using substring match (LIKE). Legacy alternative to structured search.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "indicatorType",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter by related event IDs",
-				"in": "query",
 				"name": "relatedEvents",
+				"in": "query",
+				"description": "Filter by related event IDs",
 				"schema": {
 					"description": "Filter by related event IDs",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filter by tag values or UUIDs. Indicators must have at least one of the specified tags (OR logic). Supports both tag UUID and tag value.",
-				"in": "query",
 				"name": "tags",
+				"in": "query",
+				"description": "Filter by tag values or UUIDs. Indicators must have at least one of the specified tags (OR logic). Supports both tag UUID and tag value.",
 				"schema": {
 					"description": "Filter by tag values or UUIDs. Indicators must have at least one of the specified tags (OR logic). Supports both tag UUID and tag value.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Structured tag-metadata filter as a JSON array of {field, op, value} objects. Operates against the per-dataset IndicatorTag mirror so you can find indicators by tag attributes (origin country, motive, sophistication, priority, etc.) without a separate Tags lookup. Common dashboard usage: drill from a country into indicators, e.g. tagSearch=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Country values may be passed as alpha-2, alpha-3, name, or alias (e.g. \"iran\"). Operators: equals, not, gt/gte/lt/lte (numeric only), contains/like/find/startsWith/endsWith (string only), in. AND-joined across entries; combined with `tags`, a matching tag must satisfy both. Max 10 entries per request, max 100 values per 'in'. Performance notes: `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (\"apt28\" also matches \"apt280\" when both appear in the same tag's alias list).",
-				"in": "query",
 				"name": "tagSearch",
+				"in": "query",
+				"description": "Structured tag-metadata filter as a JSON array of {field, op, value} objects. Operates against the per-dataset IndicatorTag mirror so you can find indicators by tag attributes (origin country, motive, sophistication, priority, etc.) without a separate Tags lookup. Common dashboard usage: drill from a country into indicators, e.g. tagSearch=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Country values may be passed as alpha-2, alpha-3, name, or alias (e.g. \"iran\"). Operators: equals, not, gt/gte/lt/lte (numeric only), contains/like/find/startsWith/endsWith (string only), in. AND-joined across entries; combined with `tags`, a matching tag must satisfy both. Max 10 entries per request, max 100 values per 'in'. Performance notes: `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (\"apt28\" also matches \"apt280\" when both appear in the same tag's alias list).",
 				"schema": {
 					"description": "Structured tag-metadata filter as a JSON array of {field, op, value} objects. Operates against the per-dataset IndicatorTag mirror so you can find indicators by tag attributes (origin country, motive, sophistication, priority, etc.) without a separate Tags lookup. Common dashboard usage: drill from a country into indicators, e.g. tagSearch=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Country values may be passed as alpha-2, alpha-3, name, or alias (e.g. \"iran\"). Operators: equals, not, gt/gte/lt/lte (numeric only), contains/like/find/startsWith/endsWith (string only), in. AND-joined across entries; combined with `tags`, a matching tag must satisfy both. Max 10 entries per request, max 100 values per 'in'. Performance notes: `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (\"apt28\" also matches \"apt280\" when both appear in the same tag's alias list).",
+					"type": "array",
 					"items": {
 						"properties": {
 							"field": {
 								"description": "Tag mirror field to filter on. Allowed: value, categoryId, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Filters operate against the per-dataset IndicatorTag mirror (which is kept in sync with the Tags SoT by the tag-propagation workflow).",
+								"type": "string",
+								"example": "originCountryISO",
 								"enum": [
 									"value",
 									"categoryId",
@@ -815,12 +819,12 @@
 									"sophisticationLevel",
 									"priority",
 									"analyticPriority"
-								],
-								"example": "originCountryISO",
-								"type": "string"
+								]
 							},
 							"op": {
 								"description": "Search operator. Use 'in' for bulk OR within a single field, e.g. {field:\"originCountryISO\", op:\"in\", value:[\"IR\",\"CN\"]}.",
+								"type": "string",
+								"example": "in",
 								"enum": [
 									"equals",
 									"not",
@@ -834,11 +838,10 @@
 									"endsWith",
 									"in",
 									"find"
-								],
-								"example": "in",
-								"type": "string"
+								]
 							},
 							"value": {
+								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items). Country values may be passed as alpha-2, alpha-3, name, or common alias (e.g. \"iran\", \"IR\", \"IRN\") and are normalized to alpha-2 server-side.",
 								"anyOf": [
 									{
 										"example": "IR",
@@ -861,8 +864,7 @@
 										},
 										"type": "array"
 									}
-								],
-								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items). Country values may be passed as alpha-2, alpha-3, name, or common alias (e.g. \"iran\", \"IR\", \"IRN\") and are normalized to alpha-2 server-side."
+								]
 							}
 						},
 						"required": [
@@ -870,135 +872,139 @@
 							"op"
 						],
 						"type": "object"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filter indicators created on or after this date. Must use ISO 8601 format (e.g., '2024-01-15T00:00:00Z').",
-				"in": "query",
 				"name": "createdAfter",
+				"in": "query",
+				"description": "Filter indicators created on or after this date. Must use ISO 8601 format (e.g., '2024-01-15T00:00:00Z').",
 				"schema": {
 					"description": "Filter indicators created on or after this date. Must use ISO 8601 format (e.g., '2024-01-15T00:00:00Z').",
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
-				"description": "Filter indicators created on or before this date. Must use ISO 8601 format (e.g., '2024-12-31T23:59:59Z').",
-				"in": "query",
 				"name": "createdBefore",
+				"in": "query",
+				"description": "Filter indicators created on or before this date. Must use ISO 8601 format (e.g., '2024-12-31T23:59:59Z').",
 				"schema": {
 					"description": "Filter indicators created on or before this date. Must use ISO 8601 format (e.g., '2024-12-31T23:59:59Z').",
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
-				"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events.",
-				"in": "query",
 				"name": "relatedEventsLimit",
+				"in": "query",
+				"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events.",
 				"schema": {
 					"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events.",
-					"example": 2,
-					"type": "number"
+					"type": "number",
+					"example": 2
 				}
 			},
 			{
-				"description": "Whether to include full tag details for each indicator. Defaults to true.",
-				"in": "query",
 				"name": "includeTags",
+				"in": "query",
+				"description": "Whether to include full tag details for each indicator. Defaults to true.",
 				"schema": {
 					"description": "Whether to include full tag details for each indicator. Defaults to true.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
-				"in": "query",
 				"name": "includeTotalCount",
+				"in": "query",
+				"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
 				"schema": {
 					"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Output format for indicator data. 'json' returns the default format, 'stix2' returns STIX 2.1 Indicator SDOs, 'taxii' returns a TAXII 2.1 Envelope with Content-Type application/taxii+json;version=2.1.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Output format for indicator data. 'json' returns the default format, 'stix2' returns STIX 2.1 Indicator SDOs, 'taxii' returns a TAXII 2.1 Envelope with Content-Type application/taxii+json;version=2.1.",
 				"schema": {
 					"description": "Output format for indicator data. 'json' returns the default format, 'stix2' returns STIX 2.1 Indicator SDOs, 'taxii' returns a TAXII 2.1 Envelope with Content-Type application/taxii+json;version=2.1.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"json",
 						"stix2",
 						"taxii"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields).",
-				"in": "query",
 				"name": "source",
+				"in": "query",
+				"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields).",
 				"schema": {
 					"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields).",
+					"type": "string",
 					"enum": [
 						"do",
 						"r2catalog"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
-				"in": "query",
 				"name": "cache",
+				"in": "query",
+				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
 				"schema": {
 					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+					"type": "string",
 					"enum": [
 						"from-graph"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a paginated list of indicators.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"properties": {
+									"type": "object",
 									"properties": {
 										"indicators": {
 											"properties": {
 												"items": {
+													"type": "object",
 													"properties": {
 														"createdAt": {
-															"example": "2022-04-01T00:00:00Z",
+															"type": "string",
 															"format": "date-time",
-															"type": "string"
+															"example": "2022-04-01T00:00:00Z"
 														},
 														"datasetId": {
 															"description": "The dataset ID this indicator belongs to. Included in list responses.",
-															"example": "dataset-uuid-123",
-															"type": "string"
+															"type": "string",
+															"example": "dataset-uuid-123"
 														},
 														"indicatorType": {
-															"example": "domain",
-															"type": "string"
+															"type": "string",
+															"example": "domain"
 														},
 														"relatedEvents": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"datasetId": {
-																		"example": "dataset-uuid-123",
-																		"type": "string"
+																		"type": "string",
+																		"example": "dataset-uuid-123"
 																	},
 																	"eventId": {
-																		"example": "event-uuid-456",
-																		"type": "string"
+																		"type": "string",
+																		"example": "event-uuid-456"
 																	}
 																},
 																"required": [
@@ -1006,10 +1012,10 @@
 																	"eventId"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"tags": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"categoryName": {
@@ -1023,21 +1029,20 @@
 																	}
 																},
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"updatedAt": {
-															"example": "2022-04-01T00:00:00Z",
+															"type": "string",
 															"format": "date-time",
-															"type": "string"
+															"example": "2022-04-01T00:00:00Z"
 														},
 														"uuid": {
-															"example": "12345678-1234-1234-1234-1234567890ab",
-															"type": "string"
+															"type": "string",
+															"example": "12345678-1234-1234-1234-1234567890ab"
 														},
 														"value": {
-															"example": "malicious-domain.com",
-															"type": "string"
+															"type": "string",
+															"example": "malicious-domain.com"
 														}
 													},
 													"required": [
@@ -1046,12 +1051,11 @@
 														"value",
 														"createdAt",
 														"updatedAt"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
-													"example": "array",
-													"type": "string"
+													"type": "string",
+													"example": "array"
 												}
 											},
 											"required": [
@@ -1063,12 +1067,13 @@
 										"pagination": {
 											"properties": {
 												"properties": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -1079,8 +1084,8 @@
 														"page": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -1091,8 +1096,8 @@
 														"per_page": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -1103,8 +1108,8 @@
 														"total_count": {
 															"properties": {
 																"type": {
-																	"example": "number",
-																	"type": "string"
+																	"type": "string",
+																	"example": "number"
 																}
 															},
 															"required": [
@@ -1118,12 +1123,11 @@
 														"page",
 														"per_page",
 														"total_count"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
-													"example": "object",
-													"type": "string"
+													"type": "string",
+													"example": "object"
 												}
 											},
 											"required": [
@@ -1136,43 +1140,42 @@
 									"required": [
 										"indicators",
 										"pagination"
-									],
-									"type": "object"
+									]
 								},
 								"type": {
-									"example": "object",
-									"type": "string"
+									"type": "string",
+									"example": "object"
 								}
 							},
 							"required": [
 								"type",
 								"properties"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a paginated list of indicators."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1185,12 +1188,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1198,7 +1199,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists indicators across multiple datasets",
 		"tags": [
 			"Indicator"
 		],
@@ -1208,13 +1208,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators/aggregate": {
-		"description": "Aggregate threat indicators by one or more columns (e.g., indicatorType, value) across datasets. Returns top-N groups ordered by count.",
 		"operationId": "get_IndicatorAggregate",
+		"summary": "Aggregate indicators by column(s)",
+		"description": "Aggregate threat indicators by one or more columns (e.g., indicatorType, value) across datasets. Returns top-N groups ordered by count.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1222,9 +1223,9 @@
 				}
 			},
 			{
-				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'indicatorType', 'value', 'indicatorType,value')",
-				"in": "query",
 				"name": "aggregateBy",
+				"in": "query",
+				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'indicatorType', 'value', 'indicatorType,value')",
 				"required": true,
 				"schema": {
 					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'indicatorType', 'value', 'indicatorType,value')",
@@ -1232,94 +1233,96 @@
 				}
 			},
 			{
-				"description": "What to count per group: 'indicators' (catalog rows, default) or 'relationships' (linked events per indicator). Use 'relationships' for 'top indicator by event activity'.",
-				"in": "query",
 				"name": "measure",
+				"in": "query",
+				"description": "What to count per group: 'indicators' (catalog rows, default) or 'relationships' (linked events per indicator). Use 'relationships' for 'top indicator by event activity'.",
 				"schema": {
-					"default": "indicators",
 					"description": "What to count per group: 'indicators' (catalog rows, default) or 'relationships' (linked events per indicator). Use 'relationships' for 'top indicator by event activity'.",
+					"type": "string",
+					"default": "indicators",
 					"enum": [
 						"indicators",
 						"relationships"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Scope to indicators associated with this tag/actor UUID. Combine with measure=relationships for 'top indicator for an actor'.",
-				"in": "query",
 				"name": "tagUuid",
+				"in": "query",
+				"description": "Scope to indicators associated with this tag/actor UUID. Combine with measure=relationships for 'top indicator for an actor'.",
 				"schema": {
 					"description": "Scope to indicators associated with this tag/actor UUID. Combine with measure=relationships for 'top indicator for an actor'.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Dataset ID(s) to filter by. Can be a single dataset ID or comma-separated list. If not provided, aggregates across all accessible datasets",
-				"in": "query",
 				"name": "datasetIds",
+				"in": "query",
+				"description": "Dataset ID(s) to filter by. Can be a single dataset ID or comma-separated list. If not provided, aggregates across all accessible datasets",
 				"schema": {
 					"description": "Dataset ID(s) to filter by. Can be a single dataset ID or comma-separated list. If not provided, aggregates across all accessible datasets",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filter indicators created after this date (ISO 8601 format, e.g., '2024-01-01')",
-				"in": "query",
 				"name": "createdAfter",
+				"in": "query",
+				"description": "Filter indicators created after this date (ISO 8601 format, e.g., '2024-01-01')",
 				"schema": {
 					"description": "Filter indicators created after this date (ISO 8601 format, e.g., '2024-01-01')",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter indicators created before this date (ISO 8601 format, e.g., '2024-12-31')",
-				"in": "query",
 				"name": "createdBefore",
+				"in": "query",
+				"description": "Filter indicators created before this date (ISO 8601 format, e.g., '2024-12-31')",
 				"schema": {
 					"description": "Filter indicators created before this date (ISO 8601 format, e.g., '2024-12-31')",
 					"type": "string"
 				}
 			},
 			{
-				"description": "For measure=relationships: only count event links whose eventDate is on/after this date (ISO 8601). Use to bound 'top indicator' to recent activity.",
-				"in": "query",
 				"name": "eventDateAfter",
+				"in": "query",
+				"description": "For measure=relationships: only count event links whose eventDate is on/after this date (ISO 8601). Use to bound 'top indicator' to recent activity.",
 				"schema": {
 					"description": "For measure=relationships: only count event links whose eventDate is on/after this date (ISO 8601). Use to bound 'top indicator' to recent activity.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "For measure=relationships: only count event links whose eventDate is on/before this date (ISO 8601).",
-				"in": "query",
 				"name": "eventDateBefore",
+				"in": "query",
+				"description": "For measure=relationships: only count event links whose eventDate is on/before this date (ISO 8601).",
 				"schema": {
 					"description": "For measure=relationships: only count event links whose eventDate is on/before this date (ISO 8601).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Maximum number of aggregation results to return (1-100)",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of aggregation results to return (1-100)",
 				"schema": {
-					"default": 10,
 					"description": "Maximum number of aggregation results to return (1-100)",
+					"type": "number",
+					"default": 10,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns aggregated indicator data.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"aggregateBy": {
 									"description": "Column(s) that were aggregated by",
@@ -1327,6 +1330,7 @@
 								},
 								"aggregations": {
 									"description": "Array of aggregation results with dynamic fields based on aggregateBy columns",
+									"type": "array",
 									"items": {
 										"allOf": [
 											{
@@ -1349,8 +1353,7 @@
 												"type": "object"
 											}
 										]
-									},
-									"type": "array"
+									}
 								},
 								"failedDatasets": {
 									"description": "Number of datasets whose aggregation failed and were excluded from the result",
@@ -1366,32 +1369,32 @@
 								"total",
 								"aggregateBy",
 								"failedDatasets"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns aggregated indicator data."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1404,12 +1407,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1417,7 +1418,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Aggregate indicators by column(s)",
 		"tags": [
 			"Indicator"
 		],
@@ -1427,13 +1427,14 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
-		"description": "Updates an existing indicator's properties.",
 		"operationId": "patch_IndicatorUpdate",
+		"summary": "Updates an indicator",
+		"description": "Updates an existing indicator's properties.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1441,9 +1442,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
@@ -1451,9 +1452,9 @@
 				}
 			},
 			{
-				"description": "Indicator UUID.",
-				"in": "path",
 				"name": "indicator_id",
+				"in": "path",
+				"description": "Indicator UUID.",
 				"required": true,
 				"schema": {
 					"description": "Indicator UUID.",
@@ -1465,21 +1466,23 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"indicatorType": {
-								"example": "domain",
-								"type": "string"
+								"type": "string",
+								"example": "domain"
 							},
 							"relatedEvents": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"datasetId": {
-											"example": "dataset-uuid-123",
-											"type": "string"
+											"type": "string",
+											"example": "dataset-uuid-123"
 										},
 										"eventId": {
-											"example": "event-uuid-456",
-											"type": "string"
+											"type": "string",
+											"example": "event-uuid-456"
 										}
 									},
 									"required": [
@@ -1487,10 +1490,10 @@
 										"eventId"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"tags": {
+								"type": "array",
 								"items": {
 									"anyOf": [
 										{
@@ -1511,49 +1514,50 @@
 											"type": "object"
 										}
 									]
-								},
-								"type": "array"
+								}
 							},
 							"value": {
-								"example": "updated-domain.com",
-								"type": "string"
+								"type": "string",
+								"example": "updated-domain.com"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated indicator.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"example": "2022-04-01T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"datasetId": {
 									"description": "The dataset ID this indicator belongs to. Included in list responses.",
-									"example": "dataset-uuid-123",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-uuid-123"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"relatedEvents": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"datasetId": {
-												"example": "dataset-uuid-123",
-												"type": "string"
+												"type": "string",
+												"example": "dataset-uuid-123"
 											},
 											"eventId": {
-												"example": "event-uuid-456",
-												"type": "string"
+												"type": "string",
+												"example": "event-uuid-456"
 											}
 										},
 										"required": [
@@ -1561,10 +1565,10 @@
 											"eventId"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"categoryName": {
@@ -1578,21 +1582,20 @@
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"updatedAt": {
-									"example": "2022-04-01T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								},
 								"value": {
-									"example": "malicious-domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "malicious-domain.com"
 								}
 							},
 							"required": [
@@ -1601,32 +1604,32 @@
 								"value",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated indicator."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1639,32 +1642,32 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"404": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1677,12 +1680,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1690,7 +1691,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates an indicator",
 		"tags": [
 			"Indicator"
 		],
@@ -1699,13 +1699,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
-		"description": "Creates multiple indicators at once with their respective types and related datasets.",
 		"operationId": "post_IndicatorCreateBulk",
+		"summary": "Creates multiple indicators in bulk",
+		"description": "Creates multiple indicators at once with their respective types and related datasets.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1713,14 +1714,14 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -1728,12 +1729,14 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"autoCreateType": {
 								"description": "Global flag to automatically create indicator types if they don't exist. Individual indicators can override this with their own autoCreateType flag.",
 								"type": "boolean"
 							},
 							"indicators": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"autoCreateType": {
@@ -1741,19 +1744,20 @@
 											"type": "boolean"
 										},
 										"indicatorType": {
-											"example": "domain",
-											"type": "string"
+											"type": "string",
+											"example": "domain"
 										},
 										"relatedEvents": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"datasetId": {
-														"example": "dataset-uuid-123",
-														"type": "string"
+														"type": "string",
+														"example": "dataset-uuid-123"
 													},
 													"eventId": {
-														"example": "event-uuid-456",
-														"type": "string"
+														"type": "string",
+														"example": "event-uuid-456"
 													}
 												},
 												"required": [
@@ -1761,10 +1765,10 @@
 													"eventId"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"tags": {
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
@@ -1785,12 +1789,11 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"value": {
-											"example": "malicious-domain.com",
-											"type": "string"
+											"type": "string",
+											"example": "malicious-domain.com"
 										}
 									},
 									"required": [
@@ -1798,20 +1801,19 @@
 										"value"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"indicators"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the number of created indicators.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1819,28 +1821,29 @@
 							"type": "number"
 						}
 					}
-				},
-				"description": "Returns the number of created indicators."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1853,12 +1856,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1866,7 +1867,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates multiple indicators in bulk",
 		"tags": [
 			"Indicator"
 		],
@@ -1876,13 +1876,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/create": {
-		"description": "Creates a new indicator with the specified type and related datasets.",
 		"operationId": "post_IndicatorCreate",
+		"summary": "Creates a new indicator",
+		"description": "Creates a new indicator with the specified type and related datasets.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1890,14 +1891,14 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -1905,25 +1906,27 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"autoCreateType": {
 								"description": "If true, automatically create the indicator type if it doesn't exist. If false (default), throw an error when the indicator type doesn't exist.",
 								"type": "boolean"
 							},
 							"indicatorType": {
-								"example": "domain",
-								"type": "string"
+								"type": "string",
+								"example": "domain"
 							},
 							"relatedEvents": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"datasetId": {
-											"example": "dataset-uuid-123",
-											"type": "string"
+											"type": "string",
+											"example": "dataset-uuid-123"
 										},
 										"eventId": {
-											"example": "event-uuid-456",
-											"type": "string"
+											"type": "string",
+											"example": "event-uuid-456"
 										}
 									},
 									"required": [
@@ -1931,10 +1934,10 @@
 										"eventId"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"tags": {
+								"type": "array",
 								"items": {
 									"anyOf": [
 										{
@@ -1955,53 +1958,54 @@
 											"type": "object"
 										}
 									]
-								},
-								"type": "array"
+								}
 							},
 							"value": {
-								"example": "malicious-domain.com",
-								"type": "string"
+								"type": "string",
+								"example": "malicious-domain.com"
 							}
 						},
 						"required": [
 							"indicatorType",
 							"value"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created indicator.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"createdAt": {
-									"example": "2022-04-01T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"datasetId": {
 									"description": "The dataset ID this indicator belongs to. Included in list responses.",
-									"example": "dataset-uuid-123",
-									"type": "string"
+									"type": "string",
+									"example": "dataset-uuid-123"
 								},
 								"indicatorType": {
-									"example": "domain",
-									"type": "string"
+									"type": "string",
+									"example": "domain"
 								},
 								"relatedEvents": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"datasetId": {
-												"example": "dataset-uuid-123",
-												"type": "string"
+												"type": "string",
+												"example": "dataset-uuid-123"
 											},
 											"eventId": {
-												"example": "event-uuid-456",
-												"type": "string"
+												"type": "string",
+												"example": "event-uuid-456"
 											}
 										},
 										"required": [
@@ -2009,10 +2013,10 @@
 											"eventId"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"tags": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"categoryName": {
@@ -2026,21 +2030,20 @@
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"updatedAt": {
-									"example": "2022-04-01T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2022-04-01T00:00:00Z"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								},
 								"value": {
-									"example": "malicious-domain.com",
-									"type": "string"
+									"type": "string",
+									"example": "malicious-domain.com"
 								}
 							},
 							"required": [
@@ -2049,32 +2052,32 @@
 								"value",
 								"createdAt",
 								"updatedAt"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created indicator."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -2087,12 +2090,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -2100,7 +2101,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates a new indicator",
 		"tags": [
 			"Indicator"
 		],

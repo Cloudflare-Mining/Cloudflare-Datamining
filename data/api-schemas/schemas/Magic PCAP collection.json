@@ -1,30 +1,31 @@
 {
 	"DELETE /accounts/{account_id}/pcaps/ownership/{ownership_id}": {
-		"description": "Deletes buckets added to the packet captures API.",
 		"operationId": "magic-pcap-collection-delete-buckets-for-full-packet-captures",
+		"summary": "Delete buckets for full packet captures",
+		"description": "Deletes buckets added to the packet captures API.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "ownership_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
@@ -33,10 +34,10 @@
 				"description": "Delete buckets for full packet captures response."
 			},
 			"default": {
+				"description": "Delete buckets for full packet captures response failure.",
 				"content": {
 					"application/json": {}
-				},
-				"description": "Delete buckets for full packet captures response failure."
+				}
 			}
 		},
 		"security": [
@@ -48,7 +49,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete buckets for full packet captures",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -63,39 +63,43 @@
 		}
 	},
 	"GET /accounts/{account_id}/pcaps": {
-		"description": "Lists all packet capture requests for an account.",
 		"operationId": "magic-pcap-collection-list-packet-capture-requests",
+		"summary": "List packet capture requests",
+		"description": "Lists all packet capture requests for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List packet capture requests response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -108,15 +112,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -129,7 +133,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -147,11 +151,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -159,107 +163,109 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
+														"type": "object",
 														"properties": {
 															"filter_v1": {
 																"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																"type": "object",
 																"properties": {
 																	"destination_address": {
 																		"description": "The destination IP address of the packet.",
-																		"example": "1.2.3.4",
 																		"type": "string",
+																		"example": "1.2.3.4",
 																		"x-auditable": true
 																	},
 																	"destination_port": {
 																		"description": "The destination port of the packet.",
-																		"example": 80,
 																		"type": "number",
+																		"example": 80,
 																		"x-auditable": true
 																	},
 																	"protocol": {
 																		"description": "The protocol number of the packet.",
-																		"example": 6,
 																		"type": "number",
+																		"example": 6,
 																		"x-auditable": true
 																	},
 																	"source_address": {
 																		"description": "The source IP address of the packet.",
-																		"example": "1.2.3.4",
 																		"type": "string",
+																		"example": "1.2.3.4",
 																		"x-auditable": true
 																	},
 																	"source_port": {
 																		"description": "The source port of the packet.",
-																		"example": 123,
 																		"type": "number",
+																		"example": 123,
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"id": {
 																"description": "The ID for the packet capture.",
+																"type": "string",
 																"example": "66802ca5668e47a2b82c2e6746e45037",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"offset_time": {
 																"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
-																"example": "2020-01-01T08:00:00Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2020-01-01T08:00:00Z",
 																"x-auditable": true
 															},
 															"status": {
 																"description": "The status of the packet capture request.",
+																"type": "string",
+																"example": "success",
 																"enum": [
 																	"unknown",
 																	"success",
@@ -269,113 +275,111 @@
 																	"conversion_running",
 																	"complete",
 																	"failed"
-																],
-																"example": "success",
-																"type": "string"
+																]
 															},
 															"submitted": {
 																"description": "The RFC 3339 timestamp when the packet capture was created.",
-																"example": "2020-01-01T08:00:00Z",
-																"type": "string"
+																"type": "string",
+																"example": "2020-01-01T08:00:00Z"
 															},
 															"system": {
 																"description": "The system used to collect packet captures.",
+																"type": "string",
+																"example": "magic-transit",
 																"enum": [
 																	"magic-transit"
 																],
-																"example": "magic-transit",
-																"type": "string",
 																"x-auditable": true
 															},
 															"time_limit": {
 																"description": "The packet capture duration in seconds.",
+																"type": "number",
 																"example": 300,
 																"maximum": 300,
 																"minimum": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																"type": "string",
+																"example": "simple",
 																"enum": [
 																	"simple",
 																	"full"
 																],
-																"example": "simple",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													{
+														"type": "object",
 														"properties": {
 															"byte_limit": {
 																"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+																"type": "number",
 																"example": 500000,
 																"maximum": 1000000000,
 																"minimum": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"colo_name": {
 																"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-																"example": "ord02",
 																"type": "string",
+																"example": "ord02",
 																"x-auditable": true
 															},
 															"destination_conf": {
 																"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-																"example": "s3://pcaps-bucket?region=us-east-1",
-																"type": "string"
+																"type": "string",
+																"example": "s3://pcaps-bucket?region=us-east-1"
 															},
 															"error_message": {
 																"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
-																"example": "No packets matched the filter in the time limit given. Please modify the filter or try again.",
-																"type": "string"
+																"type": "string",
+																"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
 															},
 															"filter_v1": {
 																"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																"type": "object",
 																"properties": {
 																	"destination_address": {
 																		"description": "The destination IP address of the packet.",
-																		"example": "1.2.3.4",
 																		"type": "string",
+																		"example": "1.2.3.4",
 																		"x-auditable": true
 																	},
 																	"destination_port": {
 																		"description": "The destination port of the packet.",
-																		"example": 80,
 																		"type": "number",
+																		"example": 80,
 																		"x-auditable": true
 																	},
 																	"protocol": {
 																		"description": "The protocol number of the packet.",
-																		"example": 6,
 																		"type": "number",
+																		"example": 6,
 																		"x-auditable": true
 																	},
 																	"source_address": {
 																		"description": "The source IP address of the packet.",
-																		"example": "1.2.3.4",
 																		"type": "string",
+																		"example": "1.2.3.4",
 																		"x-auditable": true
 																	},
 																	"source_port": {
 																		"description": "The source port of the packet.",
-																		"example": 123,
 																		"type": "number",
+																		"example": 123,
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"id": {
 																"description": "The ID for the packet capture.",
+																"type": "string",
 																"example": "66802ca5668e47a2b82c2e6746e45037",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"packets_captured": {
@@ -384,6 +388,8 @@
 															},
 															"status": {
 																"description": "The status of the packet capture request.",
+																"type": "string",
+																"example": "success",
 																"enum": [
 																	"unknown",
 																	"success",
@@ -393,53 +399,49 @@
 																	"conversion_running",
 																	"complete",
 																	"failed"
-																],
-																"example": "success",
-																"type": "string"
+																]
 															},
 															"stop_requested": {
 																"description": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures.",
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"submitted": {
 																"description": "The RFC 3339 timestamp when the packet capture was created.",
-																"example": "2020-01-01T08:00:00Z",
-																"type": "string"
+																"type": "string",
+																"example": "2020-01-01T08:00:00Z"
 															},
 															"system": {
 																"description": "The system used to collect packet captures.",
+																"type": "string",
+																"example": "magic-transit",
 																"enum": [
 																	"magic-transit"
 																],
-																"example": "magic-transit",
-																"type": "string",
 																"x-auditable": true
 															},
 															"time_limit": {
 																"description": "The packet capture duration in seconds.",
+																"type": "number",
 																"example": 86400,
 																"maximum": 86400,
 																"minimum": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																"type": "string",
+																"example": "simple",
 																"enum": [
 																	"simple",
 																	"full"
 																],
-																"example": "simple",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												]
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
@@ -447,10 +449,10 @@
 							]
 						}
 					}
-				},
-				"description": "List packet capture requests response."
+				}
 			},
 			"default": {
+				"description": "List packet capture requests response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -458,16 +460,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -480,15 +484,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -501,7 +505,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -519,11 +523,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -531,107 +535,109 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"anyOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"filter_v1": {
 																		"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																		"type": "object",
 																		"properties": {
 																			"destination_address": {
 																				"description": "The destination IP address of the packet.",
-																				"example": "1.2.3.4",
 																				"type": "string",
+																				"example": "1.2.3.4",
 																				"x-auditable": true
 																			},
 																			"destination_port": {
 																				"description": "The destination port of the packet.",
-																				"example": 80,
 																				"type": "number",
+																				"example": 80,
 																				"x-auditable": true
 																			},
 																			"protocol": {
 																				"description": "The protocol number of the packet.",
-																				"example": 6,
 																				"type": "number",
+																				"example": 6,
 																				"x-auditable": true
 																			},
 																			"source_address": {
 																				"description": "The source IP address of the packet.",
-																				"example": "1.2.3.4",
 																				"type": "string",
+																				"example": "1.2.3.4",
 																				"x-auditable": true
 																			},
 																			"source_port": {
 																				"description": "The source port of the packet.",
-																				"example": 123,
 																				"type": "number",
+																				"example": 123,
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"id": {
 																		"description": "The ID for the packet capture.",
+																		"type": "string",
 																		"example": "66802ca5668e47a2b82c2e6746e45037",
 																		"maxLength": 32,
 																		"minLength": 32,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"offset_time": {
 																		"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
-																		"example": "2020-01-01T08:00:00Z",
-																		"format": "date-time",
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2020-01-01T08:00:00Z",
 																		"x-auditable": true
 																	},
 																	"status": {
 																		"description": "The status of the packet capture request.",
+																		"type": "string",
+																		"example": "success",
 																		"enum": [
 																			"unknown",
 																			"success",
@@ -641,113 +647,111 @@
 																			"conversion_running",
 																			"complete",
 																			"failed"
-																		],
-																		"example": "success",
-																		"type": "string"
+																		]
 																	},
 																	"submitted": {
 																		"description": "The RFC 3339 timestamp when the packet capture was created.",
-																		"example": "2020-01-01T08:00:00Z",
-																		"type": "string"
+																		"type": "string",
+																		"example": "2020-01-01T08:00:00Z"
 																	},
 																	"system": {
 																		"description": "The system used to collect packet captures.",
+																		"type": "string",
+																		"example": "magic-transit",
 																		"enum": [
 																			"magic-transit"
 																		],
-																		"example": "magic-transit",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"time_limit": {
 																		"description": "The packet capture duration in seconds.",
+																		"type": "number",
 																		"example": 300,
 																		"maximum": 300,
 																		"minimum": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																		"type": "string",
+																		"example": "simple",
 																		"enum": [
 																			"simple",
 																			"full"
 																		],
-																		"example": "simple",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"byte_limit": {
 																		"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+																		"type": "number",
 																		"example": 500000,
 																		"maximum": 1000000000,
 																		"minimum": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"colo_name": {
 																		"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-																		"example": "ord02",
 																		"type": "string",
+																		"example": "ord02",
 																		"x-auditable": true
 																	},
 																	"destination_conf": {
 																		"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-																		"example": "s3://pcaps-bucket?region=us-east-1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "s3://pcaps-bucket?region=us-east-1"
 																	},
 																	"error_message": {
 																		"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
-																		"example": "No packets matched the filter in the time limit given. Please modify the filter or try again.",
-																		"type": "string"
+																		"type": "string",
+																		"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
 																	},
 																	"filter_v1": {
 																		"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																		"type": "object",
 																		"properties": {
 																			"destination_address": {
 																				"description": "The destination IP address of the packet.",
-																				"example": "1.2.3.4",
 																				"type": "string",
+																				"example": "1.2.3.4",
 																				"x-auditable": true
 																			},
 																			"destination_port": {
 																				"description": "The destination port of the packet.",
-																				"example": 80,
 																				"type": "number",
+																				"example": 80,
 																				"x-auditable": true
 																			},
 																			"protocol": {
 																				"description": "The protocol number of the packet.",
-																				"example": 6,
 																				"type": "number",
+																				"example": 6,
 																				"x-auditable": true
 																			},
 																			"source_address": {
 																				"description": "The source IP address of the packet.",
-																				"example": "1.2.3.4",
 																				"type": "string",
+																				"example": "1.2.3.4",
 																				"x-auditable": true
 																			},
 																			"source_port": {
 																				"description": "The source port of the packet.",
-																				"example": 123,
 																				"type": "number",
+																				"example": 123,
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"id": {
 																		"description": "The ID for the packet capture.",
+																		"type": "string",
 																		"example": "66802ca5668e47a2b82c2e6746e45037",
 																		"maxLength": 32,
 																		"minLength": 32,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"packets_captured": {
@@ -756,6 +760,8 @@
 																	},
 																	"status": {
 																		"description": "The status of the packet capture request.",
+																		"type": "string",
+																		"example": "success",
 																		"enum": [
 																			"unknown",
 																			"success",
@@ -765,53 +771,49 @@
 																			"conversion_running",
 																			"complete",
 																			"failed"
-																		],
-																		"example": "success",
-																		"type": "string"
+																		]
 																	},
 																	"stop_requested": {
 																		"description": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures.",
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"submitted": {
 																		"description": "The RFC 3339 timestamp when the packet capture was created.",
-																		"example": "2020-01-01T08:00:00Z",
-																		"type": "string"
+																		"type": "string",
+																		"example": "2020-01-01T08:00:00Z"
 																	},
 																	"system": {
 																		"description": "The system used to collect packet captures.",
+																		"type": "string",
+																		"example": "magic-transit",
 																		"enum": [
 																			"magic-transit"
 																		],
-																		"example": "magic-transit",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"time_limit": {
 																		"description": "The packet capture duration in seconds.",
+																		"type": "number",
 																		"example": 86400,
 																		"maximum": 86400,
 																		"minimum": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																		"type": "string",
+																		"example": "simple",
 																		"enum": [
 																			"simple",
 																			"full"
 																		],
-																		"example": "simple",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														]
-													},
-													"type": "array"
+													}
 												}
 											},
 											"type": "object"
@@ -819,48 +821,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -873,25 +850,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -899,14 +902,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List packet capture requests response failure."
+				}
 			}
 		},
 		"security": [
@@ -918,7 +919,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List packet capture requests",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -934,51 +934,55 @@
 		}
 	},
 	"GET /accounts/{account_id}/pcaps/{pcap_id}": {
-		"description": "Get information for a PCAP request by id.",
 		"operationId": "magic-pcap-collection-get-pcap-request",
+		"summary": "Get PCAP request",
+		"description": "Get information for a PCAP request by id.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "pcap_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get PCAP request response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -991,15 +995,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1012,7 +1016,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1030,11 +1034,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1042,8 +1046,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1060,68 +1063,70 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"anyOf": [
 												{
+													"type": "object",
 													"properties": {
 														"filter_v1": {
 															"description": "The packet capture filter. When this field is empty, all packets are captured.",
+															"type": "object",
 															"properties": {
 																"destination_address": {
 																	"description": "The destination IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"destination_port": {
 																	"description": "The destination port of the packet.",
-																	"example": 80,
 																	"type": "number",
+																	"example": 80,
 																	"x-auditable": true
 																},
 																"protocol": {
 																	"description": "The protocol number of the packet.",
-																	"example": 6,
 																	"type": "number",
+																	"example": 6,
 																	"x-auditable": true
 																},
 																"source_address": {
 																	"description": "The source IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"source_port": {
 																	"description": "The source port of the packet.",
-																	"example": 123,
 																	"type": "number",
+																	"example": 123,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "The ID for the packet capture.",
+															"type": "string",
 															"example": "66802ca5668e47a2b82c2e6746e45037",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"offset_time": {
 															"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
-															"example": "2020-01-01T08:00:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2020-01-01T08:00:00Z",
 															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the packet capture request.",
+															"type": "string",
+															"example": "success",
 															"enum": [
 																"unknown",
 																"success",
@@ -1131,113 +1136,111 @@
 																"conversion_running",
 																"complete",
 																"failed"
-															],
-															"example": "success",
-															"type": "string"
+															]
 														},
 														"submitted": {
 															"description": "The RFC 3339 timestamp when the packet capture was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														},
 														"system": {
 															"description": "The system used to collect packet captures.",
+															"type": "string",
+															"example": "magic-transit",
 															"enum": [
 																"magic-transit"
 															],
-															"example": "magic-transit",
-															"type": "string",
 															"x-auditable": true
 														},
 														"time_limit": {
 															"description": "The packet capture duration in seconds.",
+															"type": "number",
 															"example": 300,
 															"maximum": 300,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+															"type": "string",
+															"example": "simple",
 															"enum": [
 																"simple",
 																"full"
 															],
-															"example": "simple",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
+													"type": "object",
 													"properties": {
 														"byte_limit": {
 															"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+															"type": "number",
 															"example": 500000,
 															"maximum": 1000000000,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														},
 														"colo_name": {
 															"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-															"example": "ord02",
 															"type": "string",
+															"example": "ord02",
 															"x-auditable": true
 														},
 														"destination_conf": {
 															"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-															"example": "s3://pcaps-bucket?region=us-east-1",
-															"type": "string"
+															"type": "string",
+															"example": "s3://pcaps-bucket?region=us-east-1"
 														},
 														"error_message": {
 															"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
-															"example": "No packets matched the filter in the time limit given. Please modify the filter or try again.",
-															"type": "string"
+															"type": "string",
+															"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
 														},
 														"filter_v1": {
 															"description": "The packet capture filter. When this field is empty, all packets are captured.",
+															"type": "object",
 															"properties": {
 																"destination_address": {
 																	"description": "The destination IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"destination_port": {
 																	"description": "The destination port of the packet.",
-																	"example": 80,
 																	"type": "number",
+																	"example": 80,
 																	"x-auditable": true
 																},
 																"protocol": {
 																	"description": "The protocol number of the packet.",
-																	"example": 6,
 																	"type": "number",
+																	"example": 6,
 																	"x-auditable": true
 																},
 																"source_address": {
 																	"description": "The source IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"source_port": {
 																	"description": "The source port of the packet.",
-																	"example": 123,
 																	"type": "number",
+																	"example": 123,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "The ID for the packet capture.",
+															"type": "string",
 															"example": "66802ca5668e47a2b82c2e6746e45037",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"packets_captured": {
@@ -1246,6 +1249,8 @@
 														},
 														"status": {
 															"description": "The status of the packet capture request.",
+															"type": "string",
+															"example": "success",
 															"enum": [
 																"unknown",
 																"success",
@@ -1255,49 +1260,46 @@
 																"conversion_running",
 																"complete",
 																"failed"
-															],
-															"example": "success",
-															"type": "string"
+															]
 														},
 														"stop_requested": {
 															"description": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures.",
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"submitted": {
 															"description": "The RFC 3339 timestamp when the packet capture was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														},
 														"system": {
 															"description": "The system used to collect packet captures.",
+															"type": "string",
+															"example": "magic-transit",
 															"enum": [
 																"magic-transit"
 															],
-															"example": "magic-transit",
-															"type": "string",
 															"x-auditable": true
 														},
 														"time_limit": {
 															"description": "The packet capture duration in seconds.",
+															"type": "number",
 															"example": 86400,
 															"maximum": 86400,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+															"type": "string",
+															"example": "simple",
 															"enum": [
 																"simple",
 																"full"
 															],
-															"example": "simple",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											]
 										}
@@ -1307,10 +1309,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get PCAP request response."
+				}
 			},
 			"default": {
+				"description": "Get PCAP request response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1318,16 +1320,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1340,15 +1344,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1361,7 +1365,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1379,11 +1383,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1391,8 +1395,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1409,68 +1412,70 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"anyOf": [
 														{
+															"type": "object",
 															"properties": {
 																"filter_v1": {
 																	"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																	"type": "object",
 																	"properties": {
 																		"destination_address": {
 																			"description": "The destination IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"destination_port": {
 																			"description": "The destination port of the packet.",
-																			"example": 80,
 																			"type": "number",
+																			"example": 80,
 																			"x-auditable": true
 																		},
 																		"protocol": {
 																			"description": "The protocol number of the packet.",
-																			"example": 6,
 																			"type": "number",
+																			"example": 6,
 																			"x-auditable": true
 																		},
 																		"source_address": {
 																			"description": "The source IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"source_port": {
 																			"description": "The source port of the packet.",
-																			"example": 123,
 																			"type": "number",
+																			"example": 123,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"id": {
 																	"description": "The ID for the packet capture.",
+																	"type": "string",
 																	"example": "66802ca5668e47a2b82c2e6746e45037",
 																	"maxLength": 32,
 																	"minLength": 32,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"offset_time": {
 																	"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
-																	"example": "2020-01-01T08:00:00Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2020-01-01T08:00:00Z",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the packet capture request.",
+																	"type": "string",
+																	"example": "success",
 																	"enum": [
 																		"unknown",
 																		"success",
@@ -1480,113 +1485,111 @@
 																		"conversion_running",
 																		"complete",
 																		"failed"
-																	],
-																	"example": "success",
-																	"type": "string"
+																	]
 																},
 																"submitted": {
 																	"description": "The RFC 3339 timestamp when the packet capture was created.",
-																	"example": "2020-01-01T08:00:00Z",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2020-01-01T08:00:00Z"
 																},
 																"system": {
 																	"description": "The system used to collect packet captures.",
+																	"type": "string",
+																	"example": "magic-transit",
 																	"enum": [
 																		"magic-transit"
 																	],
-																	"example": "magic-transit",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"time_limit": {
 																	"description": "The packet capture duration in seconds.",
+																	"type": "number",
 																	"example": 300,
 																	"maximum": 300,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"type": {
 																	"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																	"type": "string",
+																	"example": "simple",
 																	"enum": [
 																		"simple",
 																		"full"
 																	],
-																	"example": "simple",
-																	"type": "string",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
+															"type": "object",
 															"properties": {
 																"byte_limit": {
 																	"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+																	"type": "number",
 																	"example": 500000,
 																	"maximum": 1000000000,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"colo_name": {
 																	"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-																	"example": "ord02",
 																	"type": "string",
+																	"example": "ord02",
 																	"x-auditable": true
 																},
 																"destination_conf": {
 																	"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-																	"example": "s3://pcaps-bucket?region=us-east-1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "s3://pcaps-bucket?region=us-east-1"
 																},
 																"error_message": {
 																	"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
-																	"example": "No packets matched the filter in the time limit given. Please modify the filter or try again.",
-																	"type": "string"
+																	"type": "string",
+																	"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
 																},
 																"filter_v1": {
 																	"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																	"type": "object",
 																	"properties": {
 																		"destination_address": {
 																			"description": "The destination IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"destination_port": {
 																			"description": "The destination port of the packet.",
-																			"example": 80,
 																			"type": "number",
+																			"example": 80,
 																			"x-auditable": true
 																		},
 																		"protocol": {
 																			"description": "The protocol number of the packet.",
-																			"example": 6,
 																			"type": "number",
+																			"example": 6,
 																			"x-auditable": true
 																		},
 																		"source_address": {
 																			"description": "The source IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"source_port": {
 																			"description": "The source port of the packet.",
-																			"example": 123,
 																			"type": "number",
+																			"example": 123,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"id": {
 																	"description": "The ID for the packet capture.",
+																	"type": "string",
 																	"example": "66802ca5668e47a2b82c2e6746e45037",
 																	"maxLength": 32,
 																	"minLength": 32,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"packets_captured": {
@@ -1595,6 +1598,8 @@
 																},
 																"status": {
 																	"description": "The status of the packet capture request.",
+																	"type": "string",
+																	"example": "success",
 																	"enum": [
 																		"unknown",
 																		"success",
@@ -1604,49 +1609,46 @@
 																		"conversion_running",
 																		"complete",
 																		"failed"
-																	],
-																	"example": "success",
-																	"type": "string"
+																	]
 																},
 																"stop_requested": {
 																	"description": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures.",
-																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																},
 																"submitted": {
 																	"description": "The RFC 3339 timestamp when the packet capture was created.",
-																	"example": "2020-01-01T08:00:00Z",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2020-01-01T08:00:00Z"
 																},
 																"system": {
 																	"description": "The system used to collect packet captures.",
+																	"type": "string",
+																	"example": "magic-transit",
 																	"enum": [
 																		"magic-transit"
 																	],
-																	"example": "magic-transit",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"time_limit": {
 																	"description": "The packet capture duration in seconds.",
+																	"type": "number",
 																	"example": 86400,
 																	"maximum": 86400,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"type": {
 																	"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																	"type": "string",
+																	"example": "simple",
 																	"enum": [
 																		"simple",
 																		"full"
 																	],
-																	"example": "simple",
-																	"type": "string",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														}
 													]
 												}
@@ -1656,48 +1658,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1710,25 +1687,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1736,14 +1739,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get PCAP request response failure."
+				}
 			}
 		},
 		"security": [
@@ -1755,7 +1756,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get PCAP request",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -1771,46 +1771,47 @@
 		}
 	},
 	"GET /accounts/{account_id}/pcaps/{pcap_id}/download": {
-		"description": "Download PCAP information into a file. Response is a binary PCAP file.",
 		"operationId": "magic-pcap-collection-download-simple-pcap",
+		"summary": "Download Simple PCAP",
+		"description": "Download PCAP information into a file. Response is a binary PCAP file.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "pcap_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Download Simple PCAP response.",
 				"content": {
 					"application/vnd.tcpdump.pcap": {}
-				},
-				"description": "Download Simple PCAP response."
+				}
 			},
 			"default": {
+				"description": "Download Simple PCAP response failure.",
 				"content": {
 					"application/json": {}
-				},
-				"description": "Download Simple PCAP response failure."
+				}
 			}
 		},
 		"security": [
@@ -1822,7 +1823,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Download Simple PCAP",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -1838,39 +1838,43 @@
 		}
 	},
 	"GET /accounts/{account_id}/pcaps/ownership": {
-		"description": "List all buckets configured for use with PCAPs API.",
 		"operationId": "magic-pcap-collection-list-pca-ps-bucket-ownership",
+		"summary": "List PCAPs Bucket Ownership",
+		"description": "List all buckets configured for use with PCAPs API.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List PCAPs Bucket Ownership response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1883,15 +1887,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1904,7 +1908,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1922,11 +1926,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1934,88 +1938,88 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"destination_conf": {
 														"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-														"example": "s3://pcaps-bucket?region=us-east-1",
-														"type": "string"
+														"type": "string",
+														"example": "s3://pcaps-bucket?region=us-east-1"
 													},
 													"filename": {
 														"description": "The ownership challenge filename stored in the bucket.",
-														"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-														"type": "string"
+														"type": "string",
+														"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
 													},
 													"id": {
 														"description": "The bucket ID associated with the packet captures API.",
+														"type": "string",
 														"example": "9883874ecac311ec8475433579a6bf5f",
 														"maxLength": 32,
-														"minLength": 32,
-														"type": "string"
+														"minLength": 32
 													},
 													"status": {
 														"description": "The status of the ownership challenge. Can be pending, success or failed.",
+														"type": "string",
+														"example": "success",
 														"enum": [
 															"pending",
 															"success",
 															"failed"
-														],
-														"example": "success",
-														"type": "string"
+														]
 													},
 													"submitted": {
 														"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
-														"example": "2020-01-01T08:00:00Z",
-														"type": "string"
+														"type": "string",
+														"example": "2020-01-01T08:00:00Z"
 													},
 													"validated": {
 														"description": "The RFC 3339 timestamp when the bucket was validated.",
-														"example": "2020-01-01T08:00:00Z",
-														"type": "string"
+														"type": "string",
+														"example": "2020-01-01T08:00:00Z"
 													}
 												},
 												"required": [
@@ -2024,11 +2028,9 @@
 													"submitted",
 													"destination_conf",
 													"filename"
-												],
-												"type": "object"
+												]
 											},
-											"nullable": true,
-											"type": "array"
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -2036,10 +2038,10 @@
 							]
 						}
 					}
-				},
-				"description": "List PCAPs Bucket Ownership response."
+				}
 			},
 			"default": {
+				"description": "List PCAPs Bucket Ownership response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2047,16 +2049,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2069,15 +2073,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2090,7 +2094,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2108,11 +2112,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2120,88 +2124,88 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"destination_conf": {
 																"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-																"example": "s3://pcaps-bucket?region=us-east-1",
-																"type": "string"
+																"type": "string",
+																"example": "s3://pcaps-bucket?region=us-east-1"
 															},
 															"filename": {
 																"description": "The ownership challenge filename stored in the bucket.",
-																"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-																"type": "string"
+																"type": "string",
+																"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
 															},
 															"id": {
 																"description": "The bucket ID associated with the packet captures API.",
+																"type": "string",
 																"example": "9883874ecac311ec8475433579a6bf5f",
 																"maxLength": 32,
-																"minLength": 32,
-																"type": "string"
+																"minLength": 32
 															},
 															"status": {
 																"description": "The status of the ownership challenge. Can be pending, success or failed.",
+																"type": "string",
+																"example": "success",
 																"enum": [
 																	"pending",
 																	"success",
 																	"failed"
-																],
-																"example": "success",
-																"type": "string"
+																]
 															},
 															"submitted": {
 																"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
-																"example": "2020-01-01T08:00:00Z",
-																"type": "string"
+																"type": "string",
+																"example": "2020-01-01T08:00:00Z"
 															},
 															"validated": {
 																"description": "The RFC 3339 timestamp when the bucket was validated.",
-																"example": "2020-01-01T08:00:00Z",
-																"type": "string"
+																"type": "string",
+																"example": "2020-01-01T08:00:00Z"
 															}
 														},
 														"required": [
@@ -2210,11 +2214,9 @@
 															"submitted",
 															"destination_conf",
 															"filename"
-														],
-														"type": "object"
+														]
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -2222,48 +2224,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2276,25 +2253,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2302,14 +2305,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List PCAPs Bucket Ownership response failure."
+				}
 			}
 		},
 		"security": [
@@ -2321,7 +2322,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List PCAPs Bucket Ownership",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -2337,105 +2337,108 @@
 		}
 	},
 	"POST /accounts/{account_id}/pcaps": {
-		"description": "Create new PCAP request for account.",
 		"operationId": "magic-pcap-collection-create-pcap-request",
+		"summary": "Create PCAP request",
+		"description": "Create new PCAP request for account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"anyOf": [
 							{
+								"type": "object",
 								"properties": {
 									"filter_v1": {
 										"description": "The packet capture filter. When this field is empty, all packets are captured.",
+										"type": "object",
 										"properties": {
 											"destination_address": {
 												"description": "The destination IP address of the packet.",
-												"example": "1.2.3.4",
 												"type": "string",
+												"example": "1.2.3.4",
 												"x-auditable": true
 											},
 											"destination_port": {
 												"description": "The destination port of the packet.",
-												"example": 80,
 												"type": "number",
+												"example": 80,
 												"x-auditable": true
 											},
 											"protocol": {
 												"description": "The protocol number of the packet.",
-												"example": 6,
 												"type": "number",
+												"example": 6,
 												"x-auditable": true
 											},
 											"source_address": {
 												"description": "The source IP address of the packet.",
-												"example": "1.2.3.4",
 												"type": "string",
+												"example": "1.2.3.4",
 												"x-auditable": true
 											},
 											"source_port": {
 												"description": "The source port of the packet.",
-												"example": 123,
 												"type": "number",
+												"example": 123,
 												"x-auditable": true
 											}
-										},
-										"type": "object"
+										}
 									},
 									"offset_time": {
 										"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
-										"example": "2020-01-01T08:00:00Z",
-										"format": "date-time",
 										"type": "string",
+										"format": "date-time",
+										"example": "2020-01-01T08:00:00Z",
 										"x-auditable": true
 									},
 									"packet_limit": {
 										"description": "The limit of packets contained in a packet capture.",
+										"type": "number",
 										"example": 10000,
 										"maximum": 10000,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									},
 									"system": {
 										"description": "The system used to collect packet captures.",
+										"type": "string",
+										"example": "magic-transit",
 										"enum": [
 											"magic-transit"
 										],
-										"example": "magic-transit",
-										"type": "string",
 										"x-auditable": true
 									},
 									"time_limit": {
 										"description": "The packet capture duration in seconds.",
+										"type": "number",
 										"example": 300,
 										"maximum": 300,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									},
 									"type": {
 										"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+										"type": "string",
+										"example": "simple",
 										"enum": [
 											"simple",
 											"full"
 										],
-										"example": "simple",
-										"type": "string",
 										"x-auditable": true
 									}
 								},
@@ -2444,99 +2447,99 @@
 									"packet_limit",
 									"type",
 									"system"
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"properties": {
 									"byte_limit": {
 										"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+										"type": "number",
 										"example": 500000,
 										"maximum": 1000000000,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									},
 									"colo_name": {
 										"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-										"example": "ord02",
 										"type": "string",
+										"example": "ord02",
 										"x-auditable": true
 									},
 									"destination_conf": {
 										"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-										"example": "s3://pcaps-bucket?region=us-east-1",
-										"type": "string"
+										"type": "string",
+										"example": "s3://pcaps-bucket?region=us-east-1"
 									},
 									"filter_v1": {
 										"description": "The packet capture filter. When this field is empty, all packets are captured.",
+										"type": "object",
 										"properties": {
 											"destination_address": {
 												"description": "The destination IP address of the packet.",
-												"example": "1.2.3.4",
 												"type": "string",
+												"example": "1.2.3.4",
 												"x-auditable": true
 											},
 											"destination_port": {
 												"description": "The destination port of the packet.",
-												"example": 80,
 												"type": "number",
+												"example": 80,
 												"x-auditable": true
 											},
 											"protocol": {
 												"description": "The protocol number of the packet.",
-												"example": 6,
 												"type": "number",
+												"example": 6,
 												"x-auditable": true
 											},
 											"source_address": {
 												"description": "The source IP address of the packet.",
-												"example": "1.2.3.4",
 												"type": "string",
+												"example": "1.2.3.4",
 												"x-auditable": true
 											},
 											"source_port": {
 												"description": "The source port of the packet.",
-												"example": 123,
 												"type": "number",
+												"example": 123,
 												"x-auditable": true
 											}
-										},
-										"type": "object"
+										}
 									},
 									"packet_limit": {
 										"description": "The limit of packets contained in a packet capture.",
+										"type": "number",
 										"example": 10000,
 										"maximum": 10000,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									},
 									"system": {
 										"description": "The system used to collect packet captures.",
+										"type": "string",
+										"example": "magic-transit",
 										"enum": [
 											"magic-transit"
 										],
-										"example": "magic-transit",
-										"type": "string",
 										"x-auditable": true
 									},
 									"time_limit": {
 										"description": "The packet capture duration in seconds.",
+										"type": "number",
 										"example": 86400,
 										"maximum": 86400,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									},
 									"type": {
 										"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+										"type": "string",
+										"example": "simple",
 										"enum": [
 											"simple",
 											"full"
 										],
-										"example": "simple",
-										"type": "string",
 										"x-auditable": true
 									}
 								},
@@ -2546,32 +2549,33 @@
 									"system",
 									"colo_name",
 									"destination_conf"
-								],
-								"type": "object"
+								]
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create PCAP request response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2584,15 +2588,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2605,7 +2609,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2623,11 +2627,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2635,8 +2639,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2653,68 +2656,70 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"anyOf": [
 												{
+													"type": "object",
 													"properties": {
 														"filter_v1": {
 															"description": "The packet capture filter. When this field is empty, all packets are captured.",
+															"type": "object",
 															"properties": {
 																"destination_address": {
 																	"description": "The destination IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"destination_port": {
 																	"description": "The destination port of the packet.",
-																	"example": 80,
 																	"type": "number",
+																	"example": 80,
 																	"x-auditable": true
 																},
 																"protocol": {
 																	"description": "The protocol number of the packet.",
-																	"example": 6,
 																	"type": "number",
+																	"example": 6,
 																	"x-auditable": true
 																},
 																"source_address": {
 																	"description": "The source IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"source_port": {
 																	"description": "The source port of the packet.",
-																	"example": 123,
 																	"type": "number",
+																	"example": 123,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "The ID for the packet capture.",
+															"type": "string",
 															"example": "66802ca5668e47a2b82c2e6746e45037",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"offset_time": {
 															"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
-															"example": "2020-01-01T08:00:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2020-01-01T08:00:00Z",
 															"x-auditable": true
 														},
 														"status": {
 															"description": "The status of the packet capture request.",
+															"type": "string",
+															"example": "success",
 															"enum": [
 																"unknown",
 																"success",
@@ -2724,113 +2729,111 @@
 																"conversion_running",
 																"complete",
 																"failed"
-															],
-															"example": "success",
-															"type": "string"
+															]
 														},
 														"submitted": {
 															"description": "The RFC 3339 timestamp when the packet capture was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														},
 														"system": {
 															"description": "The system used to collect packet captures.",
+															"type": "string",
+															"example": "magic-transit",
 															"enum": [
 																"magic-transit"
 															],
-															"example": "magic-transit",
-															"type": "string",
 															"x-auditable": true
 														},
 														"time_limit": {
 															"description": "The packet capture duration in seconds.",
+															"type": "number",
 															"example": 300,
 															"maximum": 300,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+															"type": "string",
+															"example": "simple",
 															"enum": [
 																"simple",
 																"full"
 															],
-															"example": "simple",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
+													"type": "object",
 													"properties": {
 														"byte_limit": {
 															"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+															"type": "number",
 															"example": 500000,
 															"maximum": 1000000000,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														},
 														"colo_name": {
 															"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-															"example": "ord02",
 															"type": "string",
+															"example": "ord02",
 															"x-auditable": true
 														},
 														"destination_conf": {
 															"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-															"example": "s3://pcaps-bucket?region=us-east-1",
-															"type": "string"
+															"type": "string",
+															"example": "s3://pcaps-bucket?region=us-east-1"
 														},
 														"error_message": {
 															"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
-															"example": "No packets matched the filter in the time limit given. Please modify the filter or try again.",
-															"type": "string"
+															"type": "string",
+															"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
 														},
 														"filter_v1": {
 															"description": "The packet capture filter. When this field is empty, all packets are captured.",
+															"type": "object",
 															"properties": {
 																"destination_address": {
 																	"description": "The destination IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"destination_port": {
 																	"description": "The destination port of the packet.",
-																	"example": 80,
 																	"type": "number",
+																	"example": 80,
 																	"x-auditable": true
 																},
 																"protocol": {
 																	"description": "The protocol number of the packet.",
-																	"example": 6,
 																	"type": "number",
+																	"example": 6,
 																	"x-auditable": true
 																},
 																"source_address": {
 																	"description": "The source IP address of the packet.",
-																	"example": "1.2.3.4",
 																	"type": "string",
+																	"example": "1.2.3.4",
 																	"x-auditable": true
 																},
 																"source_port": {
 																	"description": "The source port of the packet.",
-																	"example": 123,
 																	"type": "number",
+																	"example": 123,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "The ID for the packet capture.",
+															"type": "string",
 															"example": "66802ca5668e47a2b82c2e6746e45037",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"packets_captured": {
@@ -2839,6 +2842,8 @@
 														},
 														"status": {
 															"description": "The status of the packet capture request.",
+															"type": "string",
+															"example": "success",
 															"enum": [
 																"unknown",
 																"success",
@@ -2848,49 +2853,46 @@
 																"conversion_running",
 																"complete",
 																"failed"
-															],
-															"example": "success",
-															"type": "string"
+															]
 														},
 														"stop_requested": {
 															"description": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures.",
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"submitted": {
 															"description": "The RFC 3339 timestamp when the packet capture was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														},
 														"system": {
 															"description": "The system used to collect packet captures.",
+															"type": "string",
+															"example": "magic-transit",
 															"enum": [
 																"magic-transit"
 															],
-															"example": "magic-transit",
-															"type": "string",
 															"x-auditable": true
 														},
 														"time_limit": {
 															"description": "The packet capture duration in seconds.",
+															"type": "number",
 															"example": 86400,
 															"maximum": 86400,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+															"type": "string",
+															"example": "simple",
 															"enum": [
 																"simple",
 																"full"
 															],
-															"example": "simple",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											]
 										}
@@ -2900,10 +2902,10 @@
 							]
 						}
 					}
-				},
-				"description": "Create PCAP request response."
+				}
 			},
 			"default": {
+				"description": "Create PCAP request response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2911,16 +2913,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2933,15 +2937,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2954,7 +2958,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2972,11 +2976,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2984,8 +2988,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -3002,68 +3005,70 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"anyOf": [
 														{
+															"type": "object",
 															"properties": {
 																"filter_v1": {
 																	"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																	"type": "object",
 																	"properties": {
 																		"destination_address": {
 																			"description": "The destination IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"destination_port": {
 																			"description": "The destination port of the packet.",
-																			"example": 80,
 																			"type": "number",
+																			"example": 80,
 																			"x-auditable": true
 																		},
 																		"protocol": {
 																			"description": "The protocol number of the packet.",
-																			"example": 6,
 																			"type": "number",
+																			"example": 6,
 																			"x-auditable": true
 																		},
 																		"source_address": {
 																			"description": "The source IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"source_port": {
 																			"description": "The source port of the packet.",
-																			"example": 123,
 																			"type": "number",
+																			"example": 123,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"id": {
 																	"description": "The ID for the packet capture.",
+																	"type": "string",
 																	"example": "66802ca5668e47a2b82c2e6746e45037",
 																	"maxLength": 32,
 																	"minLength": 32,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"offset_time": {
 																	"description": "The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request.",
-																	"example": "2020-01-01T08:00:00Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2020-01-01T08:00:00Z",
 																	"x-auditable": true
 																},
 																"status": {
 																	"description": "The status of the packet capture request.",
+																	"type": "string",
+																	"example": "success",
 																	"enum": [
 																		"unknown",
 																		"success",
@@ -3073,113 +3078,111 @@
 																		"conversion_running",
 																		"complete",
 																		"failed"
-																	],
-																	"example": "success",
-																	"type": "string"
+																	]
 																},
 																"submitted": {
 																	"description": "The RFC 3339 timestamp when the packet capture was created.",
-																	"example": "2020-01-01T08:00:00Z",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2020-01-01T08:00:00Z"
 																},
 																"system": {
 																	"description": "The system used to collect packet captures.",
+																	"type": "string",
+																	"example": "magic-transit",
 																	"enum": [
 																		"magic-transit"
 																	],
-																	"example": "magic-transit",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"time_limit": {
 																	"description": "The packet capture duration in seconds.",
+																	"type": "number",
 																	"example": 300,
 																	"maximum": 300,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"type": {
 																	"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																	"type": "string",
+																	"example": "simple",
 																	"enum": [
 																		"simple",
 																		"full"
 																	],
-																	"example": "simple",
-																	"type": "string",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
+															"type": "object",
 															"properties": {
 																"byte_limit": {
 																	"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+																	"type": "number",
 																	"example": 500000,
 																	"maximum": 1000000000,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"colo_name": {
 																	"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-																	"example": "ord02",
 																	"type": "string",
+																	"example": "ord02",
 																	"x-auditable": true
 																},
 																"destination_conf": {
 																	"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-																	"example": "s3://pcaps-bucket?region=us-east-1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "s3://pcaps-bucket?region=us-east-1"
 																},
 																"error_message": {
 																	"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
-																	"example": "No packets matched the filter in the time limit given. Please modify the filter or try again.",
-																	"type": "string"
+																	"type": "string",
+																	"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
 																},
 																"filter_v1": {
 																	"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																	"type": "object",
 																	"properties": {
 																		"destination_address": {
 																			"description": "The destination IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"destination_port": {
 																			"description": "The destination port of the packet.",
-																			"example": 80,
 																			"type": "number",
+																			"example": 80,
 																			"x-auditable": true
 																		},
 																		"protocol": {
 																			"description": "The protocol number of the packet.",
-																			"example": 6,
 																			"type": "number",
+																			"example": 6,
 																			"x-auditable": true
 																		},
 																		"source_address": {
 																			"description": "The source IP address of the packet.",
-																			"example": "1.2.3.4",
 																			"type": "string",
+																			"example": "1.2.3.4",
 																			"x-auditable": true
 																		},
 																		"source_port": {
 																			"description": "The source port of the packet.",
-																			"example": 123,
 																			"type": "number",
+																			"example": 123,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"id": {
 																	"description": "The ID for the packet capture.",
+																	"type": "string",
 																	"example": "66802ca5668e47a2b82c2e6746e45037",
 																	"maxLength": 32,
 																	"minLength": 32,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"packets_captured": {
@@ -3188,6 +3191,8 @@
 																},
 																"status": {
 																	"description": "The status of the packet capture request.",
+																	"type": "string",
+																	"example": "success",
 																	"enum": [
 																		"unknown",
 																		"success",
@@ -3197,49 +3202,46 @@
 																		"conversion_running",
 																		"complete",
 																		"failed"
-																	],
-																	"example": "success",
-																	"type": "string"
+																	]
 																},
 																"stop_requested": {
 																	"description": "The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures.",
-																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																},
 																"submitted": {
 																	"description": "The RFC 3339 timestamp when the packet capture was created.",
-																	"example": "2020-01-01T08:00:00Z",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2020-01-01T08:00:00Z"
 																},
 																"system": {
 																	"description": "The system used to collect packet captures.",
+																	"type": "string",
+																	"example": "magic-transit",
 																	"enum": [
 																		"magic-transit"
 																	],
-																	"example": "magic-transit",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"time_limit": {
 																	"description": "The packet capture duration in seconds.",
+																	"type": "number",
 																	"example": 86400,
 																	"maximum": 86400,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"type": {
 																	"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																	"type": "string",
+																	"example": "simple",
 																	"enum": [
 																		"simple",
 																		"full"
 																	],
-																	"example": "simple",
-																	"type": "string",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														}
 													]
 												}
@@ -3249,48 +3251,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3303,25 +3280,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3329,14 +3332,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create PCAP request response failure."
+				}
 			}
 		},
 		"security": [
@@ -3348,7 +3349,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create PCAP request",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -3363,57 +3363,60 @@
 		}
 	},
 	"POST /accounts/{account_id}/pcaps/ownership": {
-		"description": "Adds an AWS or GCP bucket to use with full packet captures.",
 		"operationId": "magic-pcap-collection-add-buckets-for-full-packet-captures",
+		"summary": "Add buckets for full packet captures",
+		"description": "Adds an AWS or GCP bucket to use with full packet captures.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"destination_conf": {
 								"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-								"example": "s3://pcaps-bucket?region=us-east-1",
-								"type": "string"
+								"type": "string",
+								"example": "s3://pcaps-bucket?region=us-east-1"
 							}
 						},
 						"required": [
 							"destination_conf"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add buckets for full packet captures response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3426,15 +3429,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3447,7 +3450,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -3465,11 +3468,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3477,49 +3480,49 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"destination_conf": {
 													"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-													"example": "s3://pcaps-bucket?region=us-east-1",
-													"type": "string"
+													"type": "string",
+													"example": "s3://pcaps-bucket?region=us-east-1"
 												},
 												"filename": {
 													"description": "The ownership challenge filename stored in the bucket.",
-													"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-													"type": "string"
+													"type": "string",
+													"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
 												},
 												"id": {
 													"description": "The bucket ID associated with the packet captures API.",
+													"type": "string",
 													"example": "9883874ecac311ec8475433579a6bf5f",
 													"maxLength": 32,
-													"minLength": 32,
-													"type": "string"
+													"minLength": 32
 												},
 												"status": {
 													"description": "The status of the ownership challenge. Can be pending, success or failed.",
+													"type": "string",
+													"example": "success",
 													"enum": [
 														"pending",
 														"success",
 														"failed"
-													],
-													"example": "success",
-													"type": "string"
+													]
 												},
 												"submitted": {
 													"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
-													"example": "2020-01-01T08:00:00Z",
-													"type": "string"
+													"type": "string",
+													"example": "2020-01-01T08:00:00Z"
 												},
 												"validated": {
 													"description": "The RFC 3339 timestamp when the bucket was validated.",
-													"example": "2020-01-01T08:00:00Z",
-													"type": "string"
+													"type": "string",
+													"example": "2020-01-01T08:00:00Z"
 												}
 											},
 											"required": [
@@ -3528,8 +3531,7 @@
 												"submitted",
 												"destination_conf",
 												"filename"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -3537,10 +3539,10 @@
 							]
 						}
 					}
-				},
-				"description": "Add buckets for full packet captures response."
+				}
 			},
 			"default": {
+				"description": "Add buckets for full packet captures response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3548,14 +3550,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3568,15 +3571,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3589,7 +3592,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3607,11 +3610,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3619,49 +3622,49 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"destination_conf": {
 															"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-															"example": "s3://pcaps-bucket?region=us-east-1",
-															"type": "string"
+															"type": "string",
+															"example": "s3://pcaps-bucket?region=us-east-1"
 														},
 														"filename": {
 															"description": "The ownership challenge filename stored in the bucket.",
-															"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-															"type": "string"
+															"type": "string",
+															"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
 														},
 														"id": {
 															"description": "The bucket ID associated with the packet captures API.",
+															"type": "string",
 															"example": "9883874ecac311ec8475433579a6bf5f",
 															"maxLength": 32,
-															"minLength": 32,
-															"type": "string"
+															"minLength": 32
 														},
 														"status": {
 															"description": "The status of the ownership challenge. Can be pending, success or failed.",
+															"type": "string",
+															"example": "success",
 															"enum": [
 																"pending",
 																"success",
 																"failed"
-															],
-															"example": "success",
-															"type": "string"
+															]
 														},
 														"submitted": {
 															"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														},
 														"validated": {
 															"description": "The RFC 3339 timestamp when the bucket was validated.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														}
 													},
 													"required": [
@@ -3670,8 +3673,7 @@
 														"submitted",
 														"destination_conf",
 														"filename"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -3679,48 +3681,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3733,25 +3710,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3759,14 +3762,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Add buckets for full packet captures response failure."
+				}
 			}
 		},
 		"security": [
@@ -3778,7 +3779,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Add buckets for full packet captures",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -3793,63 +3793,66 @@
 		}
 	},
 	"POST /accounts/{account_id}/pcaps/ownership/validate": {
-		"description": "Validates buckets added to the packet captures API.",
 		"operationId": "magic-pcap-collection-validate-buckets-for-full-packet-captures",
+		"summary": "Validate buckets for full packet captures",
+		"description": "Validates buckets added to the packet captures API.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"destination_conf": {
 								"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-								"example": "s3://pcaps-bucket?region=us-east-1",
-								"type": "string"
+								"type": "string",
+								"example": "s3://pcaps-bucket?region=us-east-1"
 							},
 							"ownership_challenge": {
 								"description": "The ownership challenge filename stored in the bucket.",
-								"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-								"type": "string"
+								"type": "string",
+								"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
 							}
 						},
 						"required": [
 							"destination_conf",
 							"ownership_challenge"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Validate buckets for full packet captures response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3862,15 +3865,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3883,7 +3886,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -3901,11 +3904,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3913,49 +3916,49 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"destination_conf": {
 													"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-													"example": "s3://pcaps-bucket?region=us-east-1",
-													"type": "string"
+													"type": "string",
+													"example": "s3://pcaps-bucket?region=us-east-1"
 												},
 												"filename": {
 													"description": "The ownership challenge filename stored in the bucket.",
-													"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-													"type": "string"
+													"type": "string",
+													"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
 												},
 												"id": {
 													"description": "The bucket ID associated with the packet captures API.",
+													"type": "string",
 													"example": "9883874ecac311ec8475433579a6bf5f",
 													"maxLength": 32,
-													"minLength": 32,
-													"type": "string"
+													"minLength": 32
 												},
 												"status": {
 													"description": "The status of the ownership challenge. Can be pending, success or failed.",
+													"type": "string",
+													"example": "success",
 													"enum": [
 														"pending",
 														"success",
 														"failed"
-													],
-													"example": "success",
-													"type": "string"
+													]
 												},
 												"submitted": {
 													"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
-													"example": "2020-01-01T08:00:00Z",
-													"type": "string"
+													"type": "string",
+													"example": "2020-01-01T08:00:00Z"
 												},
 												"validated": {
 													"description": "The RFC 3339 timestamp when the bucket was validated.",
-													"example": "2020-01-01T08:00:00Z",
-													"type": "string"
+													"type": "string",
+													"example": "2020-01-01T08:00:00Z"
 												}
 											},
 											"required": [
@@ -3964,8 +3967,7 @@
 												"submitted",
 												"destination_conf",
 												"filename"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -3973,10 +3975,10 @@
 							]
 						}
 					}
-				},
-				"description": "Validate buckets for full packet captures response."
+				}
 			},
 			"default": {
+				"description": "Validate buckets for full packet captures response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3984,14 +3986,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4004,15 +4007,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4025,7 +4028,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -4043,11 +4046,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -4055,49 +4058,49 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"destination_conf": {
 															"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-															"example": "s3://pcaps-bucket?region=us-east-1",
-															"type": "string"
+															"type": "string",
+															"example": "s3://pcaps-bucket?region=us-east-1"
 														},
 														"filename": {
 															"description": "The ownership challenge filename stored in the bucket.",
-															"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
-															"type": "string"
+															"type": "string",
+															"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
 														},
 														"id": {
 															"description": "The bucket ID associated with the packet captures API.",
+															"type": "string",
 															"example": "9883874ecac311ec8475433579a6bf5f",
 															"maxLength": 32,
-															"minLength": 32,
-															"type": "string"
+															"minLength": 32
 														},
 														"status": {
 															"description": "The status of the ownership challenge. Can be pending, success or failed.",
+															"type": "string",
+															"example": "success",
 															"enum": [
 																"pending",
 																"success",
 																"failed"
-															],
-															"example": "success",
-															"type": "string"
+															]
 														},
 														"submitted": {
 															"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														},
 														"validated": {
 															"description": "The RFC 3339 timestamp when the bucket was validated.",
-															"example": "2020-01-01T08:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2020-01-01T08:00:00Z"
 														}
 													},
 													"required": [
@@ -4106,8 +4109,7 @@
 														"submitted",
 														"destination_conf",
 														"filename"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -4115,48 +4117,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4169,25 +4146,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4195,14 +4198,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Validate buckets for full packet captures response failure."
+				}
 			}
 		},
 		"security": [
@@ -4214,7 +4215,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Validate buckets for full packet captures",
 		"tags": [
 			"Magic PCAP collection"
 		],
@@ -4229,31 +4229,32 @@
 		}
 	},
 	"PUT /accounts/{account_id}/pcaps/{pcap_id}/stop": {
-		"description": "Stop full PCAP.",
 		"operationId": "magic-pcap-collection-stop-full-pcap",
+		"summary": "Stop full PCAP",
+		"description": "Stop full PCAP.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "pcap_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
@@ -4262,51 +4263,27 @@
 				"description": "Stop full PCAP response."
 			},
 			"default": {
+				"description": "Stop full PCAP response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4319,25 +4296,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4345,12 +4348,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Stop full PCAP response failure."
+				}
 			}
 		},
 		"security": [
@@ -4362,7 +4363,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Stop full PCAP",
 		"tags": [
 			"Magic PCAP collection"
 		],

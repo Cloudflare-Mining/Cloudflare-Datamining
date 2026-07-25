@@ -1,56 +1,60 @@
 {
 	"DELETE /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
-		"description": "Remove NetFlow configuration for a site.",
 		"operationId": "magic-site-netflow-config-delete-netflow-config",
+		"summary": "Delete NetFlow Configuration",
+		"description": "Remove NetFlow configuration for a site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete NetFlow Configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -63,15 +67,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -84,7 +88,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -102,11 +106,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -114,8 +118,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -133,107 +136,81 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "NetFlow configuration for a site.",
+											"type": "object",
 											"properties": {
 												"active_timeout": {
 													"description": "Timeout in seconds for active flows (defaults to 30).",
+													"type": "integer",
 													"example": 30,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"collector_ip": {
 													"description": "IPv4 address of the NetFlow collector.",
-													"example": "162.159.65.1",
-													"type": "string"
+													"type": "string",
+													"example": "162.159.65.1"
 												},
 												"collector_port": {
 													"description": "UDP port of the NetFlow collector (defaults to 2055).",
+													"type": "integer",
 													"example": 2055,
 													"maximum": 65535,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"inactive_timeout": {
 													"description": "Timeout in seconds for inactive flows (defaults to 15).",
+													"type": "integer",
 													"example": 15,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"sampling_rate": {
 													"description": "Sampling rate for NetFlow records (1 = every packet, 1000 = 1 in 1000 packets). Defaults to 1.",
+													"type": "integer",
 													"example": 100,
 													"maximum": 10000,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												}
 											},
 											"required": [
 												"collector_ip"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete NetFlow Configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Delete NetFlow Configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -246,25 +223,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -272,12 +275,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete NetFlow Configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -287,7 +288,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete NetFlow Configuration",
 		"tags": [
 			"Magic Site NetFlow Config"
 		],
@@ -307,51 +307,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
-		"description": "Get NetFlow configuration for a site.",
 		"operationId": "magic-site-netflow-config-details",
+		"summary": "NetFlow Configuration Details",
+		"description": "Get NetFlow configuration for a site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get NetFlow Configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -364,15 +368,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -385,7 +389,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -403,11 +407,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -415,8 +419,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -434,107 +437,81 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "NetFlow configuration for a site.",
+											"type": "object",
 											"properties": {
 												"active_timeout": {
 													"description": "Timeout in seconds for active flows (defaults to 30).",
+													"type": "integer",
 													"example": 30,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"collector_ip": {
 													"description": "IPv4 address of the NetFlow collector.",
-													"example": "162.159.65.1",
-													"type": "string"
+													"type": "string",
+													"example": "162.159.65.1"
 												},
 												"collector_port": {
 													"description": "UDP port of the NetFlow collector (defaults to 2055).",
+													"type": "integer",
 													"example": 2055,
 													"maximum": 65535,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"inactive_timeout": {
 													"description": "Timeout in seconds for inactive flows (defaults to 15).",
+													"type": "integer",
 													"example": 15,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"sampling_rate": {
 													"description": "Sampling rate for NetFlow records (1 = every packet, 1000 = 1 in 1000 packets). Defaults to 1.",
+													"type": "integer",
 													"example": 100,
 													"maximum": 10000,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												}
 											},
 											"required": [
 												"collector_ip"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get NetFlow Configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Get NetFlow Configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -547,25 +524,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -573,12 +576,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get NetFlow Configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -588,7 +589,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "NetFlow Configuration Details",
 		"tags": [
 			"Magic Site NetFlow Config"
 		],
@@ -610,96 +610,100 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
-		"description": "Updates NetFlow configuration for a site.",
 		"operationId": "magic-site-netflow-config-patch-netflow-config",
+		"summary": "Update NetFlow Configuration",
+		"description": "Updates NetFlow configuration for a site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"active_timeout": {
 								"description": "Timeout in seconds for active flows.",
+								"type": "integer",
 								"example": 30,
 								"maximum": 5400,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"collector_ip": {
 								"description": "IPv4 address of the NetFlow collector.",
-								"example": "162.159.65.1",
-								"type": "string"
+								"type": "string",
+								"example": "162.159.65.1"
 							},
 							"collector_port": {
 								"description": "UDP port of the NetFlow collector.",
+								"type": "integer",
 								"example": 2055,
 								"maximum": 65535,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"inactive_timeout": {
 								"description": "Timeout in seconds for inactive flows.",
+								"type": "integer",
 								"example": 15,
 								"maximum": 5400,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"sampling_rate": {
 								"description": "Sampling rate for NetFlow records (1 = every packet).",
+								"type": "integer",
 								"example": 100,
 								"maximum": 10000,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update NetFlow Configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -712,15 +716,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -733,7 +737,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -751,11 +755,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -763,8 +767,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -782,107 +785,81 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "NetFlow configuration for a site.",
+											"type": "object",
 											"properties": {
 												"active_timeout": {
 													"description": "Timeout in seconds for active flows (defaults to 30).",
+													"type": "integer",
 													"example": 30,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"collector_ip": {
 													"description": "IPv4 address of the NetFlow collector.",
-													"example": "162.159.65.1",
-													"type": "string"
+													"type": "string",
+													"example": "162.159.65.1"
 												},
 												"collector_port": {
 													"description": "UDP port of the NetFlow collector (defaults to 2055).",
+													"type": "integer",
 													"example": 2055,
 													"maximum": 65535,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"inactive_timeout": {
 													"description": "Timeout in seconds for inactive flows (defaults to 15).",
+													"type": "integer",
 													"example": 15,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"sampling_rate": {
 													"description": "Sampling rate for NetFlow records (1 = every packet, 1000 = 1 in 1000 packets). Defaults to 1.",
+													"type": "integer",
 													"example": 100,
 													"maximum": 10000,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												}
 											},
 											"required": [
 												"collector_ip"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update NetFlow Configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Update NetFlow Configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -895,25 +872,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -921,12 +924,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update NetFlow Configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -936,7 +937,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update NetFlow Configuration",
 		"tags": [
 			"Magic Site NetFlow Config"
 		],
@@ -956,96 +956,100 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
-		"description": "Creates a NetFlow configuration for a site.",
 		"operationId": "magic-site-netflow-config-create-netflow-config",
+		"summary": "Create NetFlow Configuration",
+		"description": "Creates a NetFlow configuration for a site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"active_timeout": {
 								"description": "Timeout in seconds for active flows.",
+								"type": "integer",
 								"example": 30,
 								"maximum": 5400,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"collector_ip": {
 								"description": "IPv4 address of the NetFlow collector.",
-								"example": "162.159.65.1",
-								"type": "string"
+								"type": "string",
+								"example": "162.159.65.1"
 							},
 							"collector_port": {
 								"description": "UDP port of the NetFlow collector.",
+								"type": "integer",
 								"example": 2055,
 								"maximum": 65535,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"inactive_timeout": {
 								"description": "Timeout in seconds for inactive flows.",
+								"type": "integer",
 								"example": 15,
 								"maximum": 5400,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"sampling_rate": {
 								"description": "Sampling rate for NetFlow records (1 = every packet).",
+								"type": "integer",
 								"example": 100,
 								"maximum": 10000,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Create NetFlow Configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1058,15 +1062,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1079,7 +1083,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1097,11 +1101,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1109,8 +1113,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1128,107 +1131,81 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "NetFlow configuration for a site.",
+											"type": "object",
 											"properties": {
 												"active_timeout": {
 													"description": "Timeout in seconds for active flows (defaults to 30).",
+													"type": "integer",
 													"example": 30,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"collector_ip": {
 													"description": "IPv4 address of the NetFlow collector.",
-													"example": "162.159.65.1",
-													"type": "string"
+													"type": "string",
+													"example": "162.159.65.1"
 												},
 												"collector_port": {
 													"description": "UDP port of the NetFlow collector (defaults to 2055).",
+													"type": "integer",
 													"example": 2055,
 													"maximum": 65535,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"inactive_timeout": {
 													"description": "Timeout in seconds for inactive flows (defaults to 15).",
+													"type": "integer",
 													"example": 15,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"sampling_rate": {
 													"description": "Sampling rate for NetFlow records (1 = every packet, 1000 = 1 in 1000 packets). Defaults to 1.",
+													"type": "integer",
 													"example": 100,
 													"maximum": 10000,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												}
 											},
 											"required": [
 												"collector_ip"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create NetFlow Configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Create NetFlow Configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1241,25 +1218,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1267,12 +1270,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create NetFlow Configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -1282,7 +1283,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create NetFlow Configuration",
 		"tags": [
 			"Magic Site NetFlow Config"
 		],
@@ -1298,96 +1298,100 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
-		"description": "Updates NetFlow configuration for a site (partial update).",
 		"operationId": "magic-site-netflow-config-update-netflow-config",
+		"summary": "Update NetFlow Configuration",
+		"description": "Updates NetFlow configuration for a site (partial update).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"active_timeout": {
 								"description": "Timeout in seconds for active flows.",
+								"type": "integer",
 								"example": 30,
 								"maximum": 5400,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"collector_ip": {
 								"description": "IPv4 address of the NetFlow collector.",
-								"example": "162.159.65.1",
-								"type": "string"
+								"type": "string",
+								"example": "162.159.65.1"
 							},
 							"collector_port": {
 								"description": "UDP port of the NetFlow collector.",
+								"type": "integer",
 								"example": 2055,
 								"maximum": 65535,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"inactive_timeout": {
 								"description": "Timeout in seconds for inactive flows.",
+								"type": "integer",
 								"example": 15,
 								"maximum": 5400,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"sampling_rate": {
 								"description": "Sampling rate for NetFlow records (1 = every packet).",
+								"type": "integer",
 								"example": 100,
 								"maximum": 10000,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update NetFlow Configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1400,15 +1404,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1421,7 +1425,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1439,11 +1443,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1451,8 +1455,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1470,107 +1473,81 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "NetFlow configuration for a site.",
+											"type": "object",
 											"properties": {
 												"active_timeout": {
 													"description": "Timeout in seconds for active flows (defaults to 30).",
+													"type": "integer",
 													"example": 30,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"collector_ip": {
 													"description": "IPv4 address of the NetFlow collector.",
-													"example": "162.159.65.1",
-													"type": "string"
+													"type": "string",
+													"example": "162.159.65.1"
 												},
 												"collector_port": {
 													"description": "UDP port of the NetFlow collector (defaults to 2055).",
+													"type": "integer",
 													"example": 2055,
 													"maximum": 65535,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"inactive_timeout": {
 													"description": "Timeout in seconds for inactive flows (defaults to 15).",
+													"type": "integer",
 													"example": 15,
 													"maximum": 5400,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												},
 												"sampling_rate": {
 													"description": "Sampling rate for NetFlow records (1 = every packet, 1000 = 1 in 1000 packets). Defaults to 1.",
+													"type": "integer",
 													"example": 100,
 													"maximum": 10000,
-													"minimum": 1,
-													"type": "integer"
+													"minimum": 1
 												}
 											},
 											"required": [
 												"collector_ip"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update NetFlow Configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Update NetFlow Configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1583,25 +1560,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1609,12 +1612,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update NetFlow Configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -1624,7 +1625,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update NetFlow Configuration",
 		"tags": [
 			"Magic Site NetFlow Config"
 		],

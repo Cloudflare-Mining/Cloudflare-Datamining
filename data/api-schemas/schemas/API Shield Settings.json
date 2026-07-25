@@ -1,22 +1,25 @@
 {
 	"GET /zones/{zone_id}/api_gateway/configuration": {
-		"description": "Gets the current API Shield configuration settings for a zone, including validation behavior and enforcement mode.",
 		"operationId": "api-shield-settings-retrieve-information-about-specific-configuration-properties",
+		"summary": "Retrieve information about specific configuration properties",
+		"description": "Gets the current API Shield configuration settings for a zone, including validation behavior and enforcement mode.",
 		"responses": {
 			"200": {
+				"description": "Retrieve information about specific configuration properties response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -25,12 +28,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -40,15 +43,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -57,12 +60,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -72,29 +75,30 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"auth_id_characteristics": {
+													"type": "array",
 													"items": {
 														"anyOf": [
 															{
@@ -102,19 +106,19 @@
 																"properties": {
 																	"name": {
 																		"description": "The name of the characteristic field, i.e., the header or cookie name.",
+																		"type": "string",
 																		"example": "authorization",
 																		"maxLength": 128,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of characteristic.",
+																		"type": "string",
+																		"example": "header",
 																		"enum": [
 																			"header",
 																			"cookie"
 																		],
-																		"example": "header",
-																		"type": "string",
 																		"x-auditable": true
 																	}
 																},
@@ -125,42 +129,40 @@
 															},
 															{
 																"description": "Auth ID Characteristic extracted from JWT Token Claims",
+																"type": "object",
 																"properties": {
 																	"name": {
 																		"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+																		"type": "string",
 																		"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
 																		"maxLength": 128,
 																		"pattern": "^(?<token_config_id>[a-z0-9\\-]{32,36}):\\$(?<json_path>.*?)$",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of characteristic.",
+																		"type": "string",
+																		"example": "jwt",
 																		"enum": [
 																			"jwt"
 																		],
-																		"example": "jwt",
-																		"type": "string",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"type",
 																	"name"
-																],
-																"type": "object"
+																]
 															}
 														]
 													},
 													"maxItems": 10,
-													"type": "array",
 													"uniqueItems": true
 												}
 											},
 											"required": [
 												"auth_id_characteristics"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -171,66 +173,30 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve information about specific configuration properties response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve information about specific configuration properties response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -239,12 +205,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -254,25 +220,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -280,12 +283,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve information about specific configuration properties response failure"
+				}
 			}
 		},
 		"security": [
@@ -297,7 +298,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Retrieve information about specific configuration properties",
 		"tags": [
 			"API Shield Settings"
 		],
@@ -313,14 +313,17 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/api_gateway/configuration": {
-		"description": "Updates API Shield configuration settings for a zone. Can modify validation strictness, enforcement mode, and other global settings.",
 		"operationId": "api-shield-settings-set-configuration-properties",
+		"summary": "Update configuration properties",
+		"description": "Updates API Shield configuration settings for a zone. Can modify validation strictness, enforcement mode, and other global settings.",
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"auth_id_characteristics": {
+								"type": "array",
 								"items": {
 									"anyOf": [
 										{
@@ -328,19 +331,19 @@
 											"properties": {
 												"name": {
 													"description": "The name of the characteristic field, i.e., the header or cookie name.",
+													"type": "string",
 													"example": "authorization",
 													"maxLength": 128,
-													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of characteristic.",
+													"type": "string",
+													"example": "header",
 													"enum": [
 														"header",
 														"cookie"
 													],
-													"example": "header",
-													"type": "string",
 													"x-auditable": true
 												}
 											},
@@ -351,42 +354,40 @@
 										},
 										{
 											"description": "Auth ID Characteristic extracted from JWT Token Claims",
+											"type": "object",
 											"properties": {
 												"name": {
 													"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+													"type": "string",
 													"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
 													"maxLength": 128,
 													"pattern": "^(?<token_config_id>[a-z0-9\\-]{32,36}):\\$(?<json_path>.*?)$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of characteristic.",
+													"type": "string",
+													"example": "jwt",
 													"enum": [
 														"jwt"
 													],
-													"example": "jwt",
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"type",
 												"name"
-											],
-											"type": "object"
+											]
 										}
 									]
 								},
 								"maxItems": 10,
-								"type": "array",
 								"uniqueItems": true
 							}
 						},
 						"required": [
 							"auth_id_characteristics"
-						],
-						"type": "object"
+						]
 					}
 				}
 			},
@@ -394,19 +395,21 @@
 		},
 		"responses": {
 			"200": {
+				"description": "Set configuration properties response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -415,12 +418,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -430,15 +433,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -447,12 +450,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -462,29 +465,30 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"auth_id_characteristics": {
+													"type": "array",
 													"items": {
 														"anyOf": [
 															{
@@ -492,19 +496,19 @@
 																"properties": {
 																	"name": {
 																		"description": "The name of the characteristic field, i.e., the header or cookie name.",
+																		"type": "string",
 																		"example": "authorization",
 																		"maxLength": 128,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of characteristic.",
+																		"type": "string",
+																		"example": "header",
 																		"enum": [
 																			"header",
 																			"cookie"
 																		],
-																		"example": "header",
-																		"type": "string",
 																		"x-auditable": true
 																	}
 																},
@@ -515,42 +519,40 @@
 															},
 															{
 																"description": "Auth ID Characteristic extracted from JWT Token Claims",
+																"type": "object",
 																"properties": {
 																	"name": {
 																		"description": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` \nis the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 \nJSONPath (https://goessner.net/articles/JsonPath/, https://www.rfc-editor.org/rfc/rfc9535.html).\nThe JSONPath expression may be in dot or bracket notation, may only specify literal keys\nor array indexes, and must return a singleton value, which will be interpreted as a string.\n",
+																		"type": "string",
 																		"example": "e0de1a3a-8c2c-4f90-98d8-cbdf0a3f2cb5:$.foo.bar[0].baz",
 																		"maxLength": 128,
 																		"pattern": "^(?<token_config_id>[a-z0-9\\-]{32,36}):\\$(?<json_path>.*?)$",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "The type of characteristic.",
+																		"type": "string",
+																		"example": "jwt",
 																		"enum": [
 																			"jwt"
 																		],
-																		"example": "jwt",
-																		"type": "string",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"type",
 																	"name"
-																],
-																"type": "object"
+																]
 															}
 														]
 													},
 													"maxItems": 10,
-													"type": "array",
 													"uniqueItems": true
 												}
 											},
 											"required": [
 												"auth_id_characteristics"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -561,66 +563,30 @@
 							]
 						}
 					}
-				},
-				"description": "Set configuration properties response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve information about specific configuration properties response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -629,12 +595,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -644,25 +610,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -670,12 +673,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve information about specific configuration properties response failure"
+				}
 			}
 		},
 		"security": [
@@ -687,7 +688,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update configuration properties",
 		"tags": [
 			"API Shield Settings"
 		],

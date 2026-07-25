@@ -1,48 +1,54 @@
 {
 	"POST /accounts/{account_id}/workers/observability/telemetry/keys": {
-		"description": "List all the keys in your telemetry events.",
 		"operationId": "telemetry.keys.list",
+		"summary": "List keys",
+		"description": "List all the keys in your telemetry events.",
 		"requestBody": {
+			"description": "Find keys in your telemetry events matching a specific filter or needle.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"datasets": {
-								"default": [],
 								"description": "Leave this empty to use the default datasets",
+								"type": "array",
 								"items": {
 									"type": "string"
 								},
-								"type": "array"
+								"default": []
 							},
 							"filters": {
-								"default": [],
 								"description": "Apply filters to narrow key discovery. Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
+											"description": "Supports nested groups via kind: 'group'.",
+											"type": "object",
 											"anyOf": [
 												{
 													"properties": {
 														"filterCombination": {
+															"type": "string",
 															"enum": [
 																"and",
 																"or",
 																"AND",
 																"OR"
-															],
-															"type": "string"
+															]
 														},
 														"filters": {
+															"type": "array",
 															"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/keys.requestBody.content.application/json.schema.properties.filters.items.allOf.0]",
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"kind": {
+															"type": "string",
 															"enum": [
 																"group"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -54,6 +60,7 @@
 												},
 												{
 													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -61,13 +68,14 @@
 														},
 														"kind": {
 															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"operation": {
 															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"type": "string",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -99,19 +107,19 @@
 																"NOT_IN",
 																"STARTS_WITH",
 																"ENDS_WITH"
-															],
-															"type": "string"
+															]
 														},
 														"type": {
 															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+															"type": "string",
 															"enum": [
 																"string",
 																"number",
 																"boolean"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 															"anyOf": [
 																{
 																	"type": "string"
@@ -122,20 +130,16 @@
 																{
 																	"type": "boolean"
 																}
-															],
-															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+															]
 														}
 													},
 													"required": [
 														"key",
 														"operation",
 														"type"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"description": "Supports nested groups via kind: 'group'.",
-											"type": "object"
+											]
 										},
 										{
 											"anyOf": [
@@ -144,39 +148,42 @@
 													"properties": {
 														"filterCombination": {
 															"description": "Logical operator for combining child filters: 'and' (all must match) or 'or' (any must match).",
+															"type": "string",
 															"enum": [
 																"and",
 																"or",
 																"AND",
 																"OR"
-															],
-															"type": "string"
+															]
 														},
 														"filters": {
 															"description": "Child filter nodes. Each can be a leaf filter or another nested group.",
+															"type": "array",
 															"items": {
+																"description": "Supports nested groups via kind: 'group'.",
+																"type": "object",
 																"anyOf": [
 																	{
 																		"properties": {
 																			"filterCombination": {
+																				"type": "string",
 																				"enum": [
 																					"and",
 																					"or",
 																					"AND",
 																					"OR"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"filters": {
+																				"type": "array",
 																				"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/keys.requestBody.content.application/json.schema.properties.filters.items.allOf.1.anyOf.0.properties.filters.items]",
-																				"minItems": 1,
-																				"type": "array"
+																				"minItems": 1
 																			},
 																			"kind": {
+																				"type": "string",
 																				"enum": [
 																					"group"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -188,6 +195,7 @@
 																	},
 																	{
 																		"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																		"type": "object",
 																		"properties": {
 																			"key": {
 																				"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -195,13 +203,14 @@
 																			},
 																			"kind": {
 																				"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																				"type": "string",
 																				"enum": [
 																					"filter"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"operation": {
 																				"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																				"type": "string",
 																				"enum": [
 																					"includes",
 																					"not_includes",
@@ -233,19 +242,19 @@
 																					"NOT_IN",
 																					"STARTS_WITH",
 																					"ENDS_WITH"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"type": {
 																				"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																				"type": "string",
 																				"enum": [
 																					"string",
 																					"number",
 																					"boolean"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"value": {
+																				"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																				"anyOf": [
 																					{
 																						"type": "string"
@@ -256,30 +265,25 @@
 																					{
 																						"type": "boolean"
 																					}
-																				],
-																				"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																				]
 																			}
 																		},
 																		"required": [
 																			"key",
 																			"operation",
 																			"type"
-																		],
-																		"type": "object"
+																		]
 																	}
-																],
-																"description": "Supports nested groups via kind: 'group'.",
-																"type": "object"
+																]
 															},
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"kind": {
 															"description": "Discriminator indicating this is a nested filter group.",
+															"type": "string",
 															"enum": [
 																"group"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -291,6 +295,7 @@
 												},
 												{
 													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -298,13 +303,14 @@
 														},
 														"kind": {
 															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"operation": {
 															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"type": "string",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -336,19 +342,19 @@
 																"NOT_IN",
 																"STARTS_WITH",
 																"ENDS_WITH"
-															],
-															"type": "string"
+															]
 														},
 														"type": {
 															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+															"type": "string",
 															"enum": [
 																"string",
 																"number",
 																"boolean"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 															"anyOf": [
 																{
 																	"type": "string"
@@ -359,29 +365,28 @@
 																{
 																	"type": "boolean"
 																}
-															],
-															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+															]
 														}
 													},
 													"required": [
 														"key",
 														"operation",
 														"type"
-													],
-													"type": "object"
+													]
 												}
 											],
 											"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4."
 										}
 									]
 								},
-								"type": "array"
+								"default": []
 							},
 							"from": {
 								"type": "number"
 							},
 							"keyNeedle": {
 								"description": "If the user suggests a key, use this to narrow down the list of keys returned. Make sure matchCase is false to avoid case sensitivity issues.",
+								"type": "object",
 								"properties": {
 									"isRegex": {
 										"description": "When true, treats the value as a regular expression (RE2 syntax).",
@@ -392,6 +397,7 @@
 										"type": "boolean"
 									},
 									"value": {
+										"description": "The text or pattern to search for.",
 										"allOf": [
 											{
 												"anyOf": [
@@ -410,14 +416,12 @@
 												"maxLength": 1000,
 												"type": "string"
 											}
-										],
-										"description": "The text or pattern to search for."
+										]
 									}
 								},
 								"required": [
 									"value"
-								],
-								"type": "object"
+								]
 							},
 							"limit": {
 								"description": "Advanced usage: set limit=1000+ to retrieve comprehensive key options without needing additional filtering.",
@@ -425,6 +429,7 @@
 							},
 							"needle": {
 								"description": "Search for a specific substring in any of the events",
+								"type": "object",
 								"properties": {
 									"isRegex": {
 										"description": "When true, treats the value as a regular expression (RE2 syntax).",
@@ -435,6 +440,7 @@
 										"type": "boolean"
 									},
 									"value": {
+										"description": "The text or pattern to search for.",
 										"allOf": [
 											{
 												"anyOf": [
@@ -453,33 +459,31 @@
 												"maxLength": 1000,
 												"type": "string"
 											}
-										],
-										"description": "The text or pattern to search for."
+										]
 									}
 								},
 								"required": [
 									"value"
-								],
-								"type": "object"
+								]
 							},
 							"to": {
 								"type": "number"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "Find keys in your telemetry events matching a specific filter or needle.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -490,27 +494,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"key": {
@@ -520,12 +524,12 @@
 												"type": "number"
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"string",
 													"boolean",
 													"number"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -534,14 +538,13 @@
 											"lastSeenAt"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -549,39 +552,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Bad Request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -592,53 +596,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -649,53 +653,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"403": {
+				"description": "Forbidden",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Forbidden"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -706,53 +710,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden"
+				}
 			},
 			"429": {
+				"description": "Too many requests",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Too many requests"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -763,53 +767,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -820,29 +824,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "List keys",
 		"tags": [
 			"Keys"
 		],

@@ -1,43 +1,47 @@
 {
 	"DELETE /accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}": {
-		"description": "Deletes a DLP custom prompt topic entry.",
 		"operationId": "dlp-custom-prompt-topics-delete",
+		"summary": "Delete custom prompt topic",
+		"description": "Deletes a DLP custom prompt topic entry.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "entry_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete custom prompt topic response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -46,12 +50,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -61,15 +65,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -78,12 +82,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -93,32 +97,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -126,66 +128,30 @@
 							]
 						}
 					}
-				},
-				"description": "Delete custom prompt topic response."
+				}
 			},
 			"4XX": {
+				"description": "Delete custom prompt topic failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -194,12 +160,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -209,25 +175,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -235,12 +238,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete custom prompt topic failure response."
+				}
 			}
 		},
 		"security": [
@@ -250,7 +251,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete custom prompt topic",
 		"tags": [
 			"DLP Custom Prompt Topics"
 		],
@@ -262,12 +262,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/custom_prompt_topics": {
-		"description": "Lists all DLP custom prompt topic entries in an account.",
 		"operationId": "dlp-custom-prompt-topics-list",
+		"summary": "List custom prompt topics",
+		"description": "Lists all DLP custom prompt topic entries in an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -276,21 +277,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List custom prompt topics response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -299,12 +303,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -314,15 +318,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -331,12 +335,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -346,65 +350,65 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"description": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"enabled": {
-														"deprecated": true,
-														"type": "boolean"
+														"type": "boolean",
+														"deprecated": true
 													},
 													"id": {
-														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"format": "uuid"
 													},
 													"name": {
 														"type": "string"
 													},
 													"profile_id": {
-														"deprecated": true,
+														"type": "string",
 														"format": "uuid",
-														"nullable": true,
-														"type": "string"
+														"deprecated": true,
+														"nullable": true
 													},
 													"topic": {
+														"type": "string",
 														"maxLength": 50,
-														"minLength": 2,
-														"type": "string"
+														"minLength": 2
 													},
 													"updated_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													}
 												},
 												"required": [
@@ -414,10 +418,8 @@
 													"updated_at",
 													"enabled",
 													"topic"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -425,66 +427,30 @@
 							]
 						}
 					}
-				},
-				"description": "List custom prompt topics response."
+				}
 			},
 			"4XX": {
+				"description": "List custom prompt topics failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -493,12 +459,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -508,25 +474,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -534,12 +537,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List custom prompt topics failure response."
+				}
 			}
 		},
 		"security": [
@@ -549,7 +550,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List custom prompt topics",
 		"tags": [
 			"DLP Custom Prompt Topics"
 		],
@@ -559,44 +559,48 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}": {
-		"description": "Fetches a DLP custom prompt topic entry by ID.",
 		"operationId": "dlp-custom-prompt-topics-get",
+		"summary": "Get custom prompt topic",
+		"description": "Fetches a DLP custom prompt topic entry by ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "entry_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get custom prompt topic response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -605,12 +609,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -620,15 +624,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -637,12 +641,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -652,64 +656,63 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"enabled": {
-													"deprecated": true,
-													"type": "boolean"
+													"type": "boolean",
+													"deprecated": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"name": {
 													"type": "string"
 												},
 												"profile_id": {
-													"deprecated": true,
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"deprecated": true,
+													"nullable": true
 												},
 												"topic": {
+													"type": "string",
 													"maxLength": 50,
-													"minLength": 2,
-													"type": "string"
+													"minLength": 2
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
@@ -719,8 +722,7 @@
 												"updated_at",
 												"enabled",
 												"topic"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -728,66 +730,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get custom prompt topic response."
+				}
 			},
 			"4XX": {
+				"description": "Get custom prompt topic failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -796,12 +762,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -811,25 +777,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -837,12 +840,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get custom prompt topic failure response."
+				}
 			}
 		},
 		"security": [
@@ -852,7 +853,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get custom prompt topic",
 		"tags": [
 			"DLP Custom Prompt Topics"
 		],
@@ -862,12 +862,13 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/custom_prompt_topics": {
-		"description": "Creates a DLP custom prompt topic entry.",
 		"operationId": "dlp-custom-prompt-topics-create",
+		"summary": "Create custom prompt topic",
+		"description": "Creates a DLP custom prompt topic entry.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -875,13 +876,16 @@
 			}
 		],
 		"requestBody": {
+			"description": "A new custom prompt topic to create.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							},
 							"enabled": {
 								"type": "boolean"
@@ -890,44 +894,44 @@
 								"type": "string"
 							},
 							"profile_id": {
-								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"format": "uuid"
 							},
 							"topic": {
+								"type": "string",
 								"maxLength": 50,
-								"minLength": 2,
-								"type": "string"
+								"minLength": 2
 							}
 						},
 						"required": [
 							"name",
 							"enabled",
 							"topic"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "A new custom prompt topic to create.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create custom prompt topic response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -936,12 +940,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -951,15 +955,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -968,12 +972,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -983,64 +987,63 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"enabled": {
-													"deprecated": true,
-													"type": "boolean"
+													"type": "boolean",
+													"deprecated": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"name": {
 													"type": "string"
 												},
 												"profile_id": {
-													"deprecated": true,
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"deprecated": true,
+													"nullable": true
 												},
 												"topic": {
+													"type": "string",
 													"maxLength": 50,
-													"minLength": 2,
-													"type": "string"
+													"minLength": 2
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
@@ -1050,8 +1053,7 @@
 												"updated_at",
 												"enabled",
 												"topic"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1059,66 +1061,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create custom prompt topic response."
+				}
 			},
 			"4XX": {
+				"description": "Create custom prompt topic failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1127,12 +1093,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1142,25 +1108,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1168,12 +1171,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create custom prompt topic failure response."
+				}
 			}
 		},
 		"security": [
@@ -1183,7 +1184,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create custom prompt topic",
 		"tags": [
 			"DLP Custom Prompt Topics"
 		],
@@ -1195,35 +1195,39 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/custom_prompt_topics/{entry_id}": {
-		"description": "Updates a DLP custom prompt topic entry.",
 		"operationId": "dlp-custom-prompt-topics-update",
+		"summary": "Update custom prompt topic",
+		"description": "Updates a DLP custom prompt topic entry.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "entry_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"requestBody": {
+			"description": "Update to be applied to the custom prompt topic.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							},
 							"enabled": {
 								"type": "boolean"
@@ -1232,40 +1236,40 @@
 								"type": "string"
 							},
 							"topic": {
+								"type": "string",
 								"maxLength": 50,
-								"minLength": 2,
-								"type": "string"
+								"minLength": 2
 							}
 						},
 						"required": [
 							"name",
 							"enabled",
 							"topic"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Update to be applied to the custom prompt topic.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update custom prompt topic response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1274,12 +1278,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1289,15 +1293,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1306,12 +1310,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1321,64 +1325,63 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"enabled": {
-													"deprecated": true,
-													"type": "boolean"
+													"type": "boolean",
+													"deprecated": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"name": {
 													"type": "string"
 												},
 												"profile_id": {
-													"deprecated": true,
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"deprecated": true,
+													"nullable": true
 												},
 												"topic": {
+													"type": "string",
 													"maxLength": 50,
-													"minLength": 2,
-													"type": "string"
+													"minLength": 2
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
@@ -1388,8 +1391,7 @@
 												"updated_at",
 												"enabled",
 												"topic"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1397,66 +1399,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update custom prompt topic response."
+				}
 			},
 			"4XX": {
+				"description": "Update custom prompt topic failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1465,12 +1431,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1480,25 +1446,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1506,12 +1509,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update custom prompt topic failure response."
+				}
 			}
 		},
 		"security": [
@@ -1521,7 +1522,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update custom prompt topic",
 		"tags": [
 			"DLP Custom Prompt Topics"
 		],

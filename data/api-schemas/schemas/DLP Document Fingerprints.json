@@ -1,23 +1,24 @@
 {
 	"DELETE /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
-		"description": "Removes a document fingerprint from DLP configuration. Documents matching this fingerprint will no longer be detected.",
 		"operationId": "dlp-document-fingerprints-delete",
+		"summary": "Delete a single document fingerprint.",
+		"description": "Removes a document fingerprint from DLP configuration. Documents matching this fingerprint will no longer be detected.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "document_fingerprint_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -26,62 +27,27 @@
 				"description": "Document fingerprint delete was successful."
 			},
 			"4XX": {
+				"description": "Document fingerprint delete failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -90,12 +56,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -105,25 +71,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -131,12 +134,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Document fingerprint delete failed."
+				}
 			}
 		},
 		"security": [
@@ -146,7 +147,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a single document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
 		],
@@ -155,12 +155,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints": {
-		"description": "Lists all document fingerprints configured for DLP scanning in the account.",
 		"operationId": "dlp-document-fingerprints-read-all",
+		"summary": "Retrieve data about all document fingerprints.",
+		"description": "Lists all document fingerprints configured for DLP scanning in the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -169,21 +170,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Document fingerprint read was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -192,12 +196,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -207,15 +211,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -224,12 +228,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -239,60 +243,61 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"description": {
-														"default": "",
-														"type": "string"
+														"type": "string",
+														"default": ""
 													},
 													"entry_id": {
-														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"format": "uuid"
 													},
 													"file_name": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"id": {
-														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"format": "uuid"
 													},
 													"match_percent": {
-														"format": "int32",
-														"type": "integer"
+														"type": "integer",
+														"format": "int32"
 													},
 													"name": {
 														"type": "string"
 													},
 													"status": {
+														"type": "string",
 														"enum": [
 															"empty",
 															"uploading",
@@ -300,17 +305,16 @@
 															"processing",
 															"failed",
 															"complete"
-														],
-														"type": "string"
+														]
 													},
 													"updated_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"version": {
+														"type": "integer",
 														"format": "int64",
-														"nullable": true,
-														"type": "integer"
+														"nullable": true
 													}
 												},
 												"required": [
@@ -322,10 +326,8 @@
 													"status",
 													"created_at",
 													"updated_at"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -333,66 +335,30 @@
 							]
 						}
 					}
-				},
-				"description": "Document fingerprint read was successful."
+				}
 			},
 			"4XX": {
+				"description": "Document fingerprint read failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -401,12 +367,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -416,25 +382,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -442,12 +445,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Document fingerprint read failed."
+				}
 			}
 		},
 		"security": [
@@ -457,7 +458,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve data about all document fingerprints.",
 		"tags": [
 			"DLP Document Fingerprints"
 		],
@@ -467,44 +467,48 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
-		"description": "Gets a document fingerprint and its latest upload status.",
 		"operationId": "dlp-document-fingerprints-read",
+		"summary": "Retrieve data about a specific document fingerprint.",
+		"description": "Gets a document fingerprint and its latest upload status.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "document_fingerprint_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Document fingerprint read was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -513,12 +517,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -528,15 +532,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -545,12 +549,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -560,59 +564,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"default": "",
-													"type": "string"
+													"type": "string",
+													"default": ""
 												},
 												"entry_id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"file_name": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"match_percent": {
-													"format": "int32",
-													"type": "integer"
+													"type": "integer",
+													"format": "int32"
 												},
 												"name": {
 													"type": "string"
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"empty",
 														"uploading",
@@ -620,17 +624,16 @@
 														"processing",
 														"failed",
 														"complete"
-													],
-													"type": "string"
+													]
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"version": {
+													"type": "integer",
 													"format": "int64",
-													"nullable": true,
-													"type": "integer"
+													"nullable": true
 												}
 											},
 											"required": [
@@ -642,8 +645,7 @@
 												"status",
 												"created_at",
 												"updated_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -651,66 +653,30 @@
 							]
 						}
 					}
-				},
-				"description": "Document fingerprint read was successful."
+				}
 			},
 			"4XX": {
+				"description": "Document fingerprint read failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -719,12 +685,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -734,25 +700,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -760,12 +763,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Document fingerprint read failed."
+				}
 			}
 		},
 		"security": [
@@ -775,7 +776,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve data about a specific document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
 		],
@@ -785,12 +785,13 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints": {
-		"description": "Creates a new document fingerprint for DLP scanning. Document fingerprints detect documents that are structurally similar to the uploaded sample.",
 		"operationId": "dlp-document-fingerprints-create",
+		"summary": "Creates a new document fingerprint.",
+		"description": "Creates a new document fingerprint for DLP scanning. Document fingerprints detect documents that are structurally similar to the uploaded sample.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -798,17 +799,20 @@
 			}
 		],
 		"requestBody": {
+			"description": "Attributes of the new document fingerprint.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"default": "",
-								"type": "string"
+								"type": "string",
+								"default": ""
 							},
 							"match_percent": {
-								"format": "int32",
-								"type": "integer"
+								"type": "integer",
+								"format": "int32"
 							},
 							"name": {
 								"type": "string"
@@ -817,31 +821,31 @@
 						"required": [
 							"name",
 							"match_percent"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Attributes of the new document fingerprint.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Document fingerprint created successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -850,12 +854,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -865,15 +869,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -882,12 +886,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -897,59 +901,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"default": "",
-													"type": "string"
+													"type": "string",
+													"default": ""
 												},
 												"entry_id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"file_name": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"match_percent": {
-													"format": "int32",
-													"type": "integer"
+													"type": "integer",
+													"format": "int32"
 												},
 												"name": {
 													"type": "string"
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"empty",
 														"uploading",
@@ -957,17 +961,16 @@
 														"processing",
 														"failed",
 														"complete"
-													],
-													"type": "string"
+													]
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"version": {
+													"type": "integer",
 													"format": "int64",
-													"nullable": true,
-													"type": "integer"
+													"nullable": true
 												}
 											},
 											"required": [
@@ -979,8 +982,7 @@
 												"status",
 												"created_at",
 												"updated_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -988,66 +990,30 @@
 							]
 						}
 					}
-				},
-				"description": "Document fingerprint created successfully."
+				}
 			},
 			"4XX": {
+				"description": "Document fingerprint creation failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1056,12 +1022,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1071,25 +1037,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1097,12 +1100,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Document fingerprint creation failed."
+				}
 			}
 		},
 		"security": [
@@ -1112,7 +1113,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates a new document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
 		],
@@ -1121,70 +1121,74 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
-		"description": "Updates metadata for an existing document fingerprint, such as its name or description.",
 		"operationId": "dlp-document-fingerprints-update",
+		"summary": "Update the attributes of a single document fingerprint.",
+		"description": "Updates metadata for an existing document fingerprint, such as its name or description.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "document_fingerprint_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"requestBody": {
+			"description": "Attributes of the document fingerprint to update.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							},
 							"match_percent": {
+								"type": "integer",
 								"format": "int32",
-								"nullable": true,
-								"type": "integer"
+								"nullable": true
 							},
 							"name": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "Attributes of the document fingerprint to update.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Document fingerprint read was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1193,12 +1197,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1208,15 +1212,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1225,12 +1229,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1240,59 +1244,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"default": "",
-													"type": "string"
+													"type": "string",
+													"default": ""
 												},
 												"entry_id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"file_name": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"match_percent": {
-													"format": "int32",
-													"type": "integer"
+													"type": "integer",
+													"format": "int32"
 												},
 												"name": {
 													"type": "string"
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"empty",
 														"uploading",
@@ -1300,17 +1304,16 @@
 														"processing",
 														"failed",
 														"complete"
-													],
-													"type": "string"
+													]
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"version": {
+													"type": "integer",
 													"format": "int64",
-													"nullable": true,
-													"type": "integer"
+													"nullable": true
 												}
 											},
 											"required": [
@@ -1322,8 +1325,7 @@
 												"status",
 												"created_at",
 												"updated_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1331,66 +1333,30 @@
 							]
 						}
 					}
-				},
-				"description": "Document fingerprint read was successful."
+				}
 			},
 			"4XX": {
+				"description": "Document fingerprint read failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1399,12 +1365,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1414,25 +1380,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1440,12 +1443,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Document fingerprint read failed."
+				}
 			}
 		},
 		"security": [
@@ -1455,7 +1456,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update the attributes of a single document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
 		],
@@ -1464,64 +1464,68 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
-		"description": "Uploads a new document to create or update a fingerprint. The document structure is analyzed to enable detection of similar documents.",
 		"operationId": "dlp-document-fingerprints-upload",
+		"summary": "Uploads a new version for a document fingerprint.",
+		"description": "Uploads a new document to create or update a fingerprint. The document structure is analyzed to enable detection of similar documents.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "document_fingerprint_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"requestBody": {
+			"description": "File used for document fingerprinting.",
+			"required": true,
 			"content": {
 				"multipart/form-data": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"file": {
-								"format": "binary",
-								"type": "string"
+								"type": "string",
+								"format": "binary"
 							}
 						},
 						"required": [
 							"file"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "File used for document fingerprinting.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "File uploaded successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1530,12 +1534,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1545,15 +1549,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1562,12 +1566,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1577,57 +1581,57 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
 													"type": "string"
 												},
 												"entry_id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"file_name": {
 													"type": "string"
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"match_percent": {
-													"format": "int32",
-													"type": "integer"
+													"type": "integer",
+													"format": "int32"
 												},
 												"name": {
 													"type": "string"
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"empty",
 														"uploading",
@@ -1635,16 +1639,15 @@
 														"processing",
 														"failed",
 														"complete"
-													],
-													"type": "string"
+													]
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"version": {
-													"format": "int64",
-													"type": "integer"
+													"type": "integer",
+													"format": "int64"
 												}
 											},
 											"required": [
@@ -1658,8 +1661,7 @@
 												"status",
 												"created_at",
 												"updated_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1667,66 +1669,30 @@
 							]
 						}
 					}
-				},
-				"description": "File uploaded successfully."
+				}
 			},
 			"4XX": {
+				"description": "Failed to upload file.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1735,12 +1701,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1750,25 +1716,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1776,12 +1779,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to upload file."
+				}
 			}
 		},
 		"security": [
@@ -1791,7 +1792,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Uploads a new version for a document fingerprint.",
 		"tags": [
 			"DLP Document Fingerprints"
 		],

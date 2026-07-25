@@ -1,12 +1,13 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/attackers": {
-		"description": "List attacker names referenced in events across one or more datasets.",
 		"operationId": "get_AttackerList",
+		"summary": "Lists attackers across multiple datasets",
+		"description": "List attacker names referenced in events across one or more datasets.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,70 +15,72 @@
 				}
 			},
 			{
-				"description": "Array of dataset IDs to query attackers from. If not provided, uses the default dataset.",
-				"in": "query",
 				"name": "datasetIds",
+				"in": "query",
+				"description": "Array of dataset IDs to query attackers from. If not provided, uses the default dataset.",
 				"schema": {
 					"description": "Array of dataset IDs to query attackers from. If not provided, uses the default dataset.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of attackers.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"items": {
+									"type": "object",
 									"properties": {
 										"type": {
-											"example": "string",
-											"type": "string"
+											"type": "string",
+											"example": "string"
 										}
 									},
 									"required": [
 										"type"
-									],
-									"type": "object"
+									]
 								},
 								"type": {
-									"example": "array",
-									"type": "string"
+									"type": "string",
+									"example": "array"
 								}
 							},
 							"required": [
 								"type",
 								"items"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of attackers."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -90,12 +93,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -103,7 +104,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists attackers across multiple datasets",
 		"tags": [
 			"Attacker"
 		],

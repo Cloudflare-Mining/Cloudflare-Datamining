@@ -1,57 +1,61 @@
 {
 	"GET /zones/{zone_id}/spectrum/analytics/aggregate/current": {
-		"description": "Retrieves analytics aggregated from the last minute of usage on Spectrum applications underneath a given zone.",
 		"operationId": "spectrum-aggregate-analytics-get-current-aggregated-analytics",
+		"summary": "Get current aggregated analytics",
+		"description": "Retrieves analytics aggregated from the last minute of usage on Spectrum applications underneath a given zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "appID",
+				"in": "query",
 				"schema": {
 					"description": "Comma-delimited list of Spectrum Application Id(s). If provided, the response will be limited to Spectrum Application Id(s) that match.",
-					"example": "ea95132c15732412d22c1476fa83f27a,d122c5f4bb71e25cc9e86ab43b142e2f",
-					"type": "string"
+					"type": "string",
+					"example": "ea95132c15732412d22c1476fa83f27a,d122c5f4bb71e25cc9e86ab43b142e2f"
 				}
 			},
 			{
-				"in": "query",
 				"name": "colo_name",
+				"in": "query",
 				"schema": {
 					"description": "Co-location identifier.",
+					"type": "string",
 					"example": "PDX",
-					"maxLength": 3,
-					"type": "string"
+					"maxLength": 3
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get current aggregated analytics response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -60,12 +64,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -75,15 +79,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -92,12 +96,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -107,30 +111,29 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"appID": {
@@ -140,9 +143,9 @@
 															},
 															{
 																"description": "Identifier.",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															}
 														]
@@ -172,74 +175,37 @@
 													"durationAvg"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get current aggregated analytics response."
+				}
 			},
 			"4xx": {
+				"description": "Get current aggregated analytics response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -248,12 +214,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -263,25 +229,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -289,12 +292,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get current aggregated analytics response failure."
+				}
 			}
 		},
 		"security": [
@@ -306,7 +307,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get current aggregated analytics",
 		"tags": [
 			"Spectrum Analytics"
 		],
@@ -315,30 +315,28 @@
 		]
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/bytime": {
-		"description": "Retrieves a list of aggregate metrics grouped by time interval.",
 		"operationId": "spectrum-analytics-(-by-time)-get-analytics-by-time",
+		"summary": "Get analytics by time",
+		"description": "Retrieves a list of aggregate metrics grouped by time interval.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "dimensions",
+				"in": "query",
 				"schema": {
 					"description": "Can be used to break down the data by given attributes. Options are:\n\nDimension                 | Name                            | Example\n--------------------------|---------------------------------|--------------------------\nevent                     | Connection Event                | connect, progress, disconnect, originError, clientFiltered\nappID                     | Application ID                  | 40d67c87c6cd4b889a4fd57805225e85\ncoloName                  | Colo Name                       | SFO\nipVersion                 | IP version used by the client   | 4, 6.",
-					"example": [
-						"event",
-						"appID"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"event",
@@ -348,50 +346,50 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"event",
+						"appID"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "sort",
+				"in": "query",
 				"schema": {
 					"description": "The sort order for the result set; sort fields must be included in `metrics` or `dimensions`.",
-					"example": [
-						"+count",
-						"-bytesIngress"
-					],
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"+count",
+						"-bytesIngress"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "until",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 						},
 						{
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
 							"type": "string",
+							"format": "date-time",
+							"example": "2014-01-01T05:20:00.12345Z",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "metrics",
+				"in": "query",
 				"schema": {
 					"description": "One or more metrics to compute. Options are:\n\nMetric                    | Name                                | Example                  | Unit\n--------------------------|-------------------------------------|--------------------------|--------------------------\ncount                     | Count of total events               | 1000                     | Count\nbytesIngress              | Sum of ingress bytes                | 1000                     | Sum\nbytesEgress               | Sum of egress bytes                 | 1000                     | Sum\ndurationAvg               | Average connection duration         | 1.0                      | Time in milliseconds\ndurationMedian            | Median connection duration          | 1.0                      | Time in milliseconds\nduration90th              | 90th percentile connection duration | 1.0                      | Time in milliseconds\nduration99th              | 99th percentile connection duration | 1.0                      | Time in milliseconds.",
-					"example": [
-						"count",
-						"bytesIngress"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"count",
@@ -404,41 +402,46 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"count",
+						"bytesIngress"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "filters",
+				"in": "query",
 				"schema": {
 					"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are:\n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n\\>                        | Greater Than                    | %3E\n\\<                        | Less Than                       | %3C\n\\>=                       | Greater than or equal to        | %3E%3D\n\\<=                       | Less than or equal to           | %3C%3D\n\nUse the above to construct filters.",
-					"example": "event==disconnect%20AND%20coloName!=SFO",
-					"type": "string"
+					"type": "string",
+					"example": "event==disconnect%20AND%20coloName!=SFO"
 				}
 			},
 			{
-				"in": "query",
 				"name": "since",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 						},
 						{
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
 							"type": "string",
+							"format": "date-time",
+							"example": "2014-01-01T05:20:00.12345Z",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "time_delta",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "Used to select time series resolution.",
+					"type": "string",
+					"example": "minute",
 					"enum": [
 						"year",
 						"quarter",
@@ -448,29 +451,30 @@
 						"hour",
 						"dekaminute",
 						"minute"
-					],
-					"example": "minute",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get analytics by time response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -479,12 +483,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -494,15 +498,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -511,12 +515,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -526,40 +530,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"data": {
 													"description": "List of columns returned by the analytics query.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"dimensions": {
+																"type": "array",
 																"items": {
 																	"type": "string"
-																},
-																"type": "array"
+																}
 															},
 															"metrics": {
 																"oneOf": [
@@ -580,16 +585,14 @@
 																	}
 																]
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"data_lag": {
 													"description": "Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing.",
+													"type": "number",
 													"example": 3,
-													"minimum": 0,
-													"type": "number"
+													"minimum": 0
 												},
 												"max": {
 													"allOf": [
@@ -597,14 +600,14 @@
 															"description": "Maximum result for each selected metrics across all data."
 														},
 														{
-															"additionalProperties": {
-																"type": "number"
-															},
+															"type": "object",
 															"example": {
 																"bytesEgress": 100,
 																"bytesIngress": 50
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "number"
+															}
 														}
 													]
 												},
@@ -614,25 +617,23 @@
 															"description": "Minimum result for each selected metrics across all data."
 														},
 														{
-															"additionalProperties": {
-																"type": "number"
-															},
+															"type": "object",
 															"example": {
 																"bytesEgress": 100,
 																"bytesIngress": 50
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "number"
+															}
 														}
 													]
 												},
 												"query": {
+													"type": "object",
 													"properties": {
 														"dimensions": {
 															"description": "Can be used to break down the data by given attributes. Options are:\n\nDimension                 | Name                            | Example\n--------------------------|---------------------------------|--------------------------\nevent                     | Connection Event                | connect, progress, disconnect, originError, clientFiltered\nappID                     | Application ID                  | 40d67c87c6cd4b889a4fd57805225e85\ncoloName                  | Colo Name                       | SFO\nipVersion                 | IP version used by the client   | 4, 6.",
-															"example": [
-																"event",
-																"appID"
-															],
+															"type": "array",
 															"items": {
 																"enum": [
 																	"event",
@@ -642,12 +643,15 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"event",
+																"appID"
+															]
 														},
 														"filters": {
 															"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are:\n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n\\>                        | Greater Than                    | %3E\n\\<                        | Less Than                       | %3C\n\\>=                       | Greater than or equal to        | %3E%3D\n\\<=                       | Less than or equal to           | %3C%3D\n\nUse the above to construct filters.",
-															"example": "event==disconnect%20AND%20coloName!=SFO",
-															"type": "string"
+															"type": "string",
+															"example": "event==disconnect%20AND%20coloName!=SFO"
 														},
 														"limit": {
 															"description": "Limit number of returned metrics.",
@@ -655,10 +659,7 @@
 														},
 														"metrics": {
 															"description": "One or more metrics to compute. Options are:\n\nMetric                    | Name                                | Example                  | Unit\n--------------------------|-------------------------------------|--------------------------|--------------------------\ncount                     | Count of total events               | 1000                     | Count\nbytesIngress              | Sum of ingress bytes                | 1000                     | Sum\nbytesEgress               | Sum of egress bytes                 | 1000                     | Sum\ndurationAvg               | Average connection duration         | 1.0                      | Time in milliseconds\ndurationMedian            | Median connection duration          | 1.0                      | Time in milliseconds\nduration90th              | 90th percentile connection duration | 1.0                      | Time in milliseconds\nduration99th              | 99th percentile connection duration | 1.0                      | Time in milliseconds.",
-															"example": [
-																"count",
-																"bytesIngress"
-															],
+															"type": "array",
 															"items": {
 																"enum": [
 																	"count",
@@ -671,7 +672,10 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"count",
+																"bytesIngress"
+															]
 														},
 														"since": {
 															"allOf": [
@@ -679,23 +683,23 @@
 																	"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 																},
 																{
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																}
 															]
 														},
 														"sort": {
 															"description": "The sort order for the result set; sort fields must be included in `metrics` or `dimensions`.",
-															"example": [
-																"+count",
-																"-bytesIngress"
-															],
+															"type": "array",
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"+count",
+																"-bytesIngress"
+															]
 														},
 														"until": {
 															"allOf": [
@@ -703,34 +707,33 @@
 																	"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 																},
 																{
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																}
 															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rows": {
 													"description": "Total number of rows in the result.",
+													"type": "number",
 													"example": 5,
-													"minimum": 0,
-													"type": "number"
+													"minimum": 0
 												},
 												"time_intervals": {
 													"description": "List of time interval buckets: [start, end].",
+													"type": "array",
 													"items": {
 														"items": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"type": "array"
-													},
-													"type": "array"
+													}
 												},
 												"totals": {
 													"allOf": [
@@ -738,14 +741,14 @@
 															"description": "Total result for each selected metrics across all data."
 														},
 														{
-															"additionalProperties": {
-																"type": "number"
-															},
+															"type": "object",
 															"example": {
 																"bytesEgress": 100,
 																"bytesIngress": 50
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "number"
+															}
 														}
 													]
 												}
@@ -758,74 +761,37 @@
 												"max",
 												"totals",
 												"query"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get analytics by time response."
+				}
 			},
 			"4xx": {
+				"description": "Get analytics by time response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -834,12 +800,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -849,25 +815,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -875,12 +878,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get analytics by time response failure."
+				}
 			}
 		},
 		"security": [
@@ -892,7 +893,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get analytics by time",
 		"tags": [
 			"Spectrum Analytics"
 		],
@@ -901,30 +901,28 @@
 		]
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/summary": {
-		"description": "Retrieves a list of summarised aggregate metrics over a given time period.",
 		"operationId": "spectrum-analytics-(-summary)-get-analytics-summary",
+		"summary": "Get analytics summary",
+		"description": "Retrieves a list of summarised aggregate metrics over a given time period.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "dimensions",
+				"in": "query",
 				"schema": {
 					"description": "Can be used to break down the data by given attributes. Options are:\n\nDimension                 | Name                            | Example\n--------------------------|---------------------------------|--------------------------\nevent                     | Connection Event                | connect, progress, disconnect, originError, clientFiltered\nappID                     | Application ID                  | 40d67c87c6cd4b889a4fd57805225e85\ncoloName                  | Colo Name                       | SFO\nipVersion                 | IP version used by the client   | 4, 6.",
-					"example": [
-						"event",
-						"appID"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"event",
@@ -934,50 +932,50 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"event",
+						"appID"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "sort",
+				"in": "query",
 				"schema": {
 					"description": "The sort order for the result set; sort fields must be included in `metrics` or `dimensions`.",
-					"example": [
-						"+count",
-						"-bytesIngress"
-					],
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"+count",
+						"-bytesIngress"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "until",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 						},
 						{
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
 							"type": "string",
+							"format": "date-time",
+							"example": "2014-01-01T05:20:00.12345Z",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "metrics",
+				"in": "query",
 				"schema": {
 					"description": "One or more metrics to compute. Options are:\n\nMetric                    | Name                                | Example                  | Unit\n--------------------------|-------------------------------------|--------------------------|--------------------------\ncount                     | Count of total events               | 1000                     | Count\nbytesIngress              | Sum of ingress bytes                | 1000                     | Sum\nbytesEgress               | Sum of egress bytes                 | 1000                     | Sum\ndurationAvg               | Average connection duration         | 1.0                      | Time in milliseconds\ndurationMedian            | Median connection duration          | 1.0                      | Time in milliseconds\nduration90th              | 90th percentile connection duration | 1.0                      | Time in milliseconds\nduration99th              | 99th percentile connection duration | 1.0                      | Time in milliseconds.",
-					"example": [
-						"count",
-						"bytesIngress"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"count",
@@ -990,30 +988,33 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"count",
+						"bytesIngress"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "filters",
+				"in": "query",
 				"schema": {
 					"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are:\n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n\\>                        | Greater Than                    | %3E\n\\<                        | Less Than                       | %3C\n\\>=                       | Greater than or equal to        | %3E%3D\n\\<=                       | Less than or equal to           | %3C%3D\n\nUse the above to construct filters.",
-					"example": "event==disconnect%20AND%20coloName!=SFO",
-					"type": "string"
+					"type": "string",
+					"example": "event==disconnect%20AND%20coloName!=SFO"
 				}
 			},
 			{
-				"in": "query",
 				"name": "since",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 						},
 						{
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
 							"type": "string",
+							"format": "date-time",
+							"example": "2014-01-01T05:20:00.12345Z",
 							"x-auditable": true
 						}
 					]
@@ -1022,21 +1023,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get analytics summary response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1045,12 +1049,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1060,15 +1064,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1077,12 +1081,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1092,40 +1096,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"data": {
 													"description": "List of columns returned by the analytics query.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"dimensions": {
+																"type": "array",
 																"items": {
 																	"type": "string"
-																},
-																"type": "array"
+																}
 															},
 															"metrics": {
 																"oneOf": [
@@ -1146,16 +1151,14 @@
 																	}
 																]
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"data_lag": {
 													"description": "Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing.",
+													"type": "number",
 													"example": 3,
-													"minimum": 0,
-													"type": "number"
+													"minimum": 0
 												},
 												"max": {
 													"allOf": [
@@ -1163,14 +1166,14 @@
 															"description": "Maximum result for each selected metrics across all data."
 														},
 														{
-															"additionalProperties": {
-																"type": "number"
-															},
+															"type": "object",
 															"example": {
 																"bytesEgress": 100,
 																"bytesIngress": 50
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "number"
+															}
 														}
 													]
 												},
@@ -1180,25 +1183,23 @@
 															"description": "Minimum result for each selected metrics across all data."
 														},
 														{
-															"additionalProperties": {
-																"type": "number"
-															},
+															"type": "object",
 															"example": {
 																"bytesEgress": 100,
 																"bytesIngress": 50
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "number"
+															}
 														}
 													]
 												},
 												"query": {
+													"type": "object",
 													"properties": {
 														"dimensions": {
 															"description": "Can be used to break down the data by given attributes. Options are:\n\nDimension                 | Name                            | Example\n--------------------------|---------------------------------|--------------------------\nevent                     | Connection Event                | connect, progress, disconnect, originError, clientFiltered\nappID                     | Application ID                  | 40d67c87c6cd4b889a4fd57805225e85\ncoloName                  | Colo Name                       | SFO\nipVersion                 | IP version used by the client   | 4, 6.",
-															"example": [
-																"event",
-																"appID"
-															],
+															"type": "array",
 															"items": {
 																"enum": [
 																	"event",
@@ -1208,12 +1209,15 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"event",
+																"appID"
+															]
 														},
 														"filters": {
 															"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are:\n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n\\>                        | Greater Than                    | %3E\n\\<                        | Less Than                       | %3C\n\\>=                       | Greater than or equal to        | %3E%3D\n\\<=                       | Less than or equal to           | %3C%3D\n\nUse the above to construct filters.",
-															"example": "event==disconnect%20AND%20coloName!=SFO",
-															"type": "string"
+															"type": "string",
+															"example": "event==disconnect%20AND%20coloName!=SFO"
 														},
 														"limit": {
 															"description": "Limit number of returned metrics.",
@@ -1221,10 +1225,7 @@
 														},
 														"metrics": {
 															"description": "One or more metrics to compute. Options are:\n\nMetric                    | Name                                | Example                  | Unit\n--------------------------|-------------------------------------|--------------------------|--------------------------\ncount                     | Count of total events               | 1000                     | Count\nbytesIngress              | Sum of ingress bytes                | 1000                     | Sum\nbytesEgress               | Sum of egress bytes                 | 1000                     | Sum\ndurationAvg               | Average connection duration         | 1.0                      | Time in milliseconds\ndurationMedian            | Median connection duration          | 1.0                      | Time in milliseconds\nduration90th              | 90th percentile connection duration | 1.0                      | Time in milliseconds\nduration99th              | 99th percentile connection duration | 1.0                      | Time in milliseconds.",
-															"example": [
-																"count",
-																"bytesIngress"
-															],
+															"type": "array",
 															"items": {
 																"enum": [
 																	"count",
@@ -1237,7 +1238,10 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"count",
+																"bytesIngress"
+															]
 														},
 														"since": {
 															"allOf": [
@@ -1245,23 +1249,23 @@
 																	"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 																},
 																{
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																}
 															]
 														},
 														"sort": {
 															"description": "The sort order for the result set; sort fields must be included in `metrics` or `dimensions`.",
-															"example": [
-																"+count",
-																"-bytesIngress"
-															],
+															"type": "array",
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"+count",
+																"-bytesIngress"
+															]
 														},
 														"until": {
 															"allOf": [
@@ -1269,34 +1273,33 @@
 																	"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified."
 																},
 																{
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																}
 															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rows": {
 													"description": "Total number of rows in the result.",
+													"type": "number",
 													"example": 5,
-													"minimum": 0,
-													"type": "number"
+													"minimum": 0
 												},
 												"time_intervals": {
 													"description": "List of time interval buckets: [start, end].",
+													"type": "array",
 													"items": {
 														"items": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"type": "array"
-													},
-													"type": "array"
+													}
 												},
 												"totals": {
 													"allOf": [
@@ -1304,14 +1307,14 @@
 															"description": "Total result for each selected metrics across all data."
 														},
 														{
-															"additionalProperties": {
-																"type": "number"
-															},
+															"type": "object",
 															"example": {
 																"bytesEgress": 100,
 																"bytesIngress": 50
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "number"
+															}
 														}
 													]
 												}
@@ -1324,74 +1327,37 @@
 												"max",
 												"totals",
 												"query"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get analytics summary response."
+				}
 			},
 			"4xx": {
+				"description": "Get analytics summary response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1400,12 +1366,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1415,25 +1381,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1441,12 +1444,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get analytics summary response failure."
+				}
 			}
 		},
 		"security": [
@@ -1458,7 +1459,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get analytics summary",
 		"tags": [
 			"Spectrum Analytics"
 		],

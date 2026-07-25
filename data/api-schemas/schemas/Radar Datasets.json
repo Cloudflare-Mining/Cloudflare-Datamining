@@ -1,108 +1,113 @@
 {
 	"GET /radar/datasets": {
-		"description": "Retrieves a list of datasets.",
 		"operationId": "radar-get-reports-datasets",
+		"summary": "List datasets",
+		"description": "Retrieves a list of datasets.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by dataset type.",
-				"in": "query",
 				"name": "datasetType",
+				"in": "query",
+				"description": "Filters results by dataset type.",
 				"schema": {
-					"default": "RANKING_BUCKET",
 					"description": "Filters results by dataset type.",
+					"type": "string",
+					"example": "RANKING_BUCKET",
+					"default": "RANKING_BUCKET",
 					"enum": [
 						"RANKING_BUCKET",
 						"REPORT"
-					],
-					"example": "RANKING_BUCKET",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filters results by the specified date.",
-				"in": "query",
 				"name": "date",
+				"in": "query",
+				"description": "Filters results by the specified date.",
 				"schema": {
 					"description": "Filters results by the specified date.",
-					"example": "2024-09-19",
+					"type": "string",
 					"format": "date",
-					"type": "string"
+					"example": "2024-09-19"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"datasets": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"description": {
-														"example": "This dataset contains a list of the op 20000 domains globally",
-														"type": "string"
+														"type": "string",
+														"example": "This dataset contains a list of the op 20000 domains globally"
 													},
 													"id": {
-														"example": 3,
-														"type": "integer"
+														"type": "integer",
+														"example": 3
 													},
 													"meta": {
 														"type": "object"
 													},
 													"tags": {
+														"type": "array",
 														"items": {
 															"example": "global",
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"title": {
-														"example": "Top bucket 20000 domains",
-														"type": "string"
+														"type": "string",
+														"example": "Top bucket 20000 domains"
 													},
 													"type": {
-														"example": "RANKING_BUCKET",
-														"type": "string"
+														"type": "string",
+														"example": "RANKING_BUCKET"
 													}
 												},
 												"required": [
@@ -114,36 +119,35 @@
 													"meta"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"datasets"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -154,27 +158,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -184,7 +185,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List datasets",
 		"tags": [
 			"Radar Datasets"
 		],
@@ -204,38 +204,42 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/datasets/{alias}": {
-		"description": "Retrieves the CSV content of a given dataset by alias or ID. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
 		"operationId": "radar-get-reports-dataset-download",
+		"summary": "Get dataset CSV stream",
+		"description": "Retrieves the CSV content of a given dataset by alias or ID. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
 		"parameters": [
 			{
-				"description": "Dataset alias or ID.",
-				"in": "path",
 				"name": "alias",
+				"in": "path",
+				"description": "Dataset alias or ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset alias or ID.",
-					"example": "ranking_top_1000",
-					"type": "string"
+					"type": "string",
+					"example": "ranking_top_1000"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"text/csv": {
 						"schema": {
 							"type": "string"
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -246,27 +250,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -276,7 +277,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get dataset CSV stream",
 		"tags": [
 			"Radar Datasets"
 		],
@@ -296,21 +296,22 @@
 		"x-forge-hidden": true
 	},
 	"POST /radar/datasets/download": {
-		"description": "Retrieves an URL to download a single dataset.",
 		"operationId": "radar-post-reports-dataset-download-url",
+		"summary": "Get dataset download URL",
+		"description": "Retrieves an URL to download a single dataset.",
 		"parameters": [
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
@@ -318,63 +319,66 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"datasetId": {
-								"example": 3,
 								"type": "integer",
+								"example": 3,
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"datasetId"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"dataset": {
+											"type": "object",
 											"properties": {
 												"url": {
-													"example": "https://example.com/download",
-													"type": "string"
+													"type": "string",
+													"example": "https://example.com/download"
 												}
 											},
 											"required": [
 												"url"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"dataset"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -385,27 +389,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -415,7 +416,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get dataset download URL",
 		"tags": [
 			"Radar Datasets"
 		],

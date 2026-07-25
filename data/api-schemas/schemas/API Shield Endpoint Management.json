@@ -1,20 +1,16 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/operations": {
-		"description": "Bulk removes multiple API operations from API Shield endpoint management in a single request. Efficient for cleaning up unused endpoints.",
 		"operationId": "api-shield-endpoint-management-delete-multiple-operations",
+		"summary": "Delete multiple operations",
+		"description": "Bulk removes multiple API operations from API Shield endpoint management in a single request. Efficient for cleaning up unused endpoints.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": [
-							{
-								"operation_id": "b17c8043-99a0-4202-b7d9-8f7cdbee02cd"
-							},
-							{
-								"operation_id": "3818d821-5901-4147-a474-f5f5aec1d54e"
-							}
-						],
+						"type": "array",
 						"items": {
+							"type": "object",
 							"properties": {
 								"operation_id": {
 									"allOf": [
@@ -32,9 +28,9 @@
 												},
 												{
 													"description": "UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												}
 											]
@@ -44,29 +40,36 @@
 							},
 							"required": [
 								"operation_id"
-							],
-							"type": "object"
+							]
 						},
-						"type": "array",
+						"example": [
+							{
+								"operation_id": "b17c8043-99a0-4202-b7d9-8f7cdbee02cd"
+							},
+							{
+								"operation_id": "3818d821-5901-4147-a474-f5f5aec1d54e"
+							}
+						],
 						"uniqueItems": true
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete multiple operations response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -75,12 +78,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -90,15 +93,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -107,12 +110,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -122,85 +125,48 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete multiple operations response"
+				}
 			},
 			"4XX": {
+				"description": "Delete multiple operations response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -209,12 +175,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -224,25 +190,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -250,12 +253,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete multiple operations response failure"
+				}
 			}
 		},
 		"security": [
@@ -265,7 +266,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete multiple operations",
 		"tags": [
 			"API Shield Endpoint Management"
 		],
@@ -279,21 +279,24 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}": {
-		"description": "Removes a single API operation from API Shield endpoint management. The operation will no longer be tracked or protected by API Shield rules.",
 		"operationId": "api-shield-endpoint-management-delete-an-operation",
+		"summary": "Delete an operation",
+		"description": "Removes a single API operation from API Shield endpoint management. The operation will no longer be tracked or protected by API Shield rules.",
 		"responses": {
 			"200": {
+				"description": "Delete an operation response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -302,12 +305,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -317,15 +320,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -334,12 +337,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -349,85 +352,48 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete an operation response"
+				}
 			},
 			"4XX": {
+				"description": "Delete an operation response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -436,12 +402,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -451,25 +417,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -477,12 +480,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete an operation response failure"
+				}
 			}
 		},
 		"security": [
@@ -492,7 +493,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete an operation",
 		"tags": [
 			"API Shield Endpoint Management"
 		],
@@ -506,17 +506,18 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/operations": {
-		"description": "Lists all API operations tracked by API Shield for a zone with pagination. Returns operation details including method, path, and feature configurations.",
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone",
+		"summary": "Retrieve information about all operations on a zone",
+		"description": "Lists all API operations tracked by API Shield for a zone with pagination. Returns operation details including method, path, and feature configurations.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -524,25 +525,25 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "integer"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
 					"description": "Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.",
+					"type": "string",
+					"example": "method",
 					"enum": [
 						"method",
 						"host",
 						"endpoint",
 						"thresholds.$key"
-					],
-					"example": "method",
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -550,12 +551,12 @@
 				"name": "direction",
 				"schema": {
 					"description": "Direction to order results.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -563,11 +564,11 @@
 				"name": "host",
 				"schema": {
 					"description": "Filter results to only include the specified hosts.",
+					"type": "array",
 					"items": {
 						"example": "api.cloudflare.com",
 						"type": "string"
 					},
-					"type": "array",
 					"uniqueItems": true
 				}
 			},
@@ -576,11 +577,11 @@
 				"name": "method",
 				"schema": {
 					"description": "Filter results to only include the specified HTTP methods.",
+					"type": "array",
 					"items": {
 						"example": "GET",
 						"type": "string"
 					},
-					"type": "array",
 					"uniqueItems": true
 				}
 			},
@@ -589,8 +590,8 @@
 				"name": "endpoint",
 				"schema": {
 					"description": "Filter results to only include endpoints containing this pattern.",
-					"example": "/api/v1",
-					"type": "string"
+					"type": "string",
+					"example": "/api/v1"
 				}
 			},
 			{
@@ -598,9 +599,7 @@
 				"in": "query",
 				"name": "feature",
 				"schema": {
-					"example": [
-						"thresholds"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"thresholds",
@@ -610,28 +609,33 @@
 						"example": "thresholds",
 						"type": "string"
 					},
-					"type": "array",
+					"example": [
+						"thresholds"
+					],
 					"uniqueItems": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve information about all operations on a zone response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -640,12 +644,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -655,15 +659,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -672,12 +676,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -687,65 +691,64 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"allOf": [
 													{
@@ -753,26 +756,29 @@
 															{
 																"allOf": [
 																	{
+																		"type": "object",
 																		"properties": {
 																			"endpoint": {
 																				"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																				"example": "/api/v1/users/{var1}",
+																				"type": "string",
 																				"format": "uri-template",
+																				"example": "/api/v1/users/{var1}",
 																				"maxLength": 4096,
 																				"pattern": "^/.*$",
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"host": {
 																				"description": "RFC3986-compliant host.",
-																				"example": "www.example.com",
-																				"format": "hostname",
-																				"maxLength": 255,
 																				"type": "string",
+																				"format": "hostname",
+																				"example": "www.example.com",
+																				"maxLength": 255,
 																				"x-auditable": true
 																			},
 																			"method": {
 																				"description": "The HTTP method used to access the endpoint.",
+																				"type": "string",
+																				"example": "GET",
 																				"enum": [
 																					"GET",
 																					"POST",
@@ -784,8 +790,6 @@
 																					"PATCH",
 																					"TRACE"
 																				],
-																				"example": "GET",
-																				"type": "string",
 																				"x-auditable": true
 																			}
 																		},
@@ -793,17 +797,16 @@
 																			"method",
 																			"host",
 																			"endpoint"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	{
 																		"properties": {
 																			"last_updated": {
 																				"allOf": [
 																					{
-																						"example": "2014-01-01T05:20:00.12345Z",
-																						"format": "date-time",
 																						"type": "string",
+																						"format": "date-time",
+																						"example": "2014-01-01T05:20:00.12345Z",
 																						"x-auditable": true
 																					},
 																					{
@@ -822,9 +825,9 @@
 																					},
 																					{
 																						"description": "UUID.",
+																						"type": "string",
 																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																						"maxLength": 36,
-																						"type": "string",
 																						"x-auditable": true
 																					}
 																				]
@@ -843,67 +846,69 @@
 																"nullable": true,
 																"properties": {
 																	"features": {
+																		"type": "object",
 																		"anyOf": [
 																			{
+																				"type": "object",
 																				"properties": {
 																					"thresholds": {
+																						"type": "object",
 																						"properties": {
 																							"auth_id_tokens": {
 																								"description": "The total number of auth-ids seen across this calculation.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"data_points": {
 																								"description": "The number of data points used for the threshold suggestion calculation.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
 																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
 																								"x-auditable": true
 																							},
 																							"p50": {
 																								"description": "The p50 quantile of requests (in period_seconds).",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"p90": {
 																								"description": "The p90 quantile of requests (in period_seconds).",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"p99": {
 																								"description": "The p99 quantile of requests (in period_seconds).",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"period_seconds": {
 																								"description": "The period over which this threshold is suggested.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"requests": {
 																								"description": "The estimated number of requests covered by these calculations.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"suggested_threshold": {
 																								"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					}
 																				},
 																				"readOnly": true,
@@ -917,37 +922,23 @@
 																					"auth_id_tokens",
 																					"data_points",
 																					"last_updated"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			{
+																				"type": "object",
 																				"properties": {
 																					"parameter_schemas": {
+																						"type": "object",
 																						"properties": {
 																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
 																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
 																								"x-auditable": true
 																							},
 																							"parameter_schemas": {
 																								"description": "An operation schema object containing a response.",
-																								"example": {
-																									"parameters": [
-																										{
-																											"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
-																											"in": "path",
-																											"name": "var1",
-																											"required": true,
-																											"schema": {
-																												"maximum": 10,
-																												"minimum": 1,
-																												"type": "integer"
-																											}
-																										}
-																									],
-																									"responses": null
-																								},
+																								"type": "object",
 																								"properties": {
 																									"parameters": {
 																										"description": "An array containing the learned parameter schemas.",
@@ -958,9 +949,9 @@
 																												"name": "var1",
 																												"required": true,
 																												"schema": {
+																													"type": "integer",
 																													"maximum": 10,
-																													"minimum": 1,
-																													"type": "integer"
+																													"minimum": 1
 																												}
 																											}
 																										],
@@ -977,51 +968,151 @@
 																										"type": "object"
 																									}
 																								},
-																								"readOnly": true,
-																								"type": "object"
+																								"example": {
+																									"parameters": [
+																										{
+																											"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+																											"in": "path",
+																											"name": "var1",
+																											"required": true,
+																											"schema": {
+																												"type": "integer",
+																												"maximum": 10,
+																												"minimum": 1
+																											}
+																										}
+																									],
+																									"responses": null
+																								},
+																								"readOnly": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					}
 																				},
 																				"readOnly": true,
 																				"required": [
 																					"parameter_schemas",
 																					"last_updated"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			{
+																				"type": "object",
+																				"properties": {
+																					"api_routing": {
+																						"description": "API Routing settings on endpoint.",
+																						"type": "object",
+																						"properties": {
+																							"last_updated": {
+																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
+																								"x-auditable": true
+																							},
+																							"route": {
+																								"description": "Target route.",
+																								"type": "string",
+																								"example": "https://api.example.com/api/service",
+																								"x-auditable": true
+																							}
+																						}
+																					}
+																				},
 																				"example": {
 																					"api_routing": {
 																						"last_updated": "2014-01-01T05:20:00.12345Z",
 																						"route": "https://api.example.com/api/service"
 																					}
 																				},
-																				"properties": {
-																					"api_routing": {
-																						"description": "API Routing settings on endpoint.",
-																						"properties": {
-																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
-																								"type": "string",
-																								"x-auditable": true
-																							},
-																							"route": {
-																								"description": "Target route.",
-																								"example": "https://api.example.com/api/service",
-																								"type": "string",
-																								"x-auditable": true
-																							}
-																						},
-																						"type": "object"
-																					}
-																				},
-																				"readOnly": true,
-																				"type": "object"
+																				"readOnly": true
 																			},
 																			{
+																				"type": "object",
+																				"properties": {
+																					"confidence_intervals": {
+																						"type": "object",
+																						"properties": {
+																							"last_updated": {
+																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
+																								"x-auditable": true
+																							},
+																							"suggested_threshold": {
+																								"type": "object",
+																								"properties": {
+																									"confidence_intervals": {
+																										"type": "object",
+																										"properties": {
+																											"p90": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"type": "object",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"type": "number",
+																														"example": 20.5,
+																														"x-auditable": true
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"type": "number",
+																														"example": 30.4,
+																														"x-auditable": true
+																													}
+																												},
+																												"readOnly": true
+																											},
+																											"p95": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"type": "object",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"type": "number",
+																														"example": 20.5,
+																														"x-auditable": true
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"type": "number",
+																														"example": 30.4,
+																														"x-auditable": true
+																													}
+																												},
+																												"readOnly": true
+																											},
+																											"p99": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"type": "object",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"type": "number",
+																														"example": 20.5,
+																														"x-auditable": true
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"type": "number",
+																														"example": 30.4,
+																														"x-auditable": true
+																													}
+																												},
+																												"readOnly": true
+																											}
+																										}
+																									},
+																									"mean": {
+																										"description": "Suggested threshold.",
+																										"type": "number",
+																										"example": 25.5,
+																										"x-auditable": true
+																									}
+																								}
+																							}
+																						}
+																					}
+																				},
 																				"example": {
 																					"confidence_intervals": {
 																						"last_updated": "2014-01-01T05:20:00.12345Z",
@@ -1044,106 +1135,22 @@
 																						}
 																					}
 																				},
-																				"properties": {
-																					"confidence_intervals": {
-																						"properties": {
-																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
-																								"type": "string",
-																								"x-auditable": true
-																							},
-																							"suggested_threshold": {
-																								"properties": {
-																									"confidence_intervals": {
-																										"properties": {
-																											"p90": {
-																												"description": "Upper and lower bound for percentile estimate",
-																												"properties": {
-																													"lower": {
-																														"description": "Lower bound for percentile estimate",
-																														"example": 20.5,
-																														"type": "number",
-																														"x-auditable": true
-																													},
-																													"upper": {
-																														"description": "Upper bound for percentile estimate",
-																														"example": 30.4,
-																														"type": "number",
-																														"x-auditable": true
-																													}
-																												},
-																												"readOnly": true,
-																												"type": "object"
-																											},
-																											"p95": {
-																												"description": "Upper and lower bound for percentile estimate",
-																												"properties": {
-																													"lower": {
-																														"description": "Lower bound for percentile estimate",
-																														"example": 20.5,
-																														"type": "number",
-																														"x-auditable": true
-																													},
-																													"upper": {
-																														"description": "Upper bound for percentile estimate",
-																														"example": 30.4,
-																														"type": "number",
-																														"x-auditable": true
-																													}
-																												},
-																												"readOnly": true,
-																												"type": "object"
-																											},
-																											"p99": {
-																												"description": "Upper and lower bound for percentile estimate",
-																												"properties": {
-																													"lower": {
-																														"description": "Lower bound for percentile estimate",
-																														"example": 20.5,
-																														"type": "number",
-																														"x-auditable": true
-																													},
-																													"upper": {
-																														"description": "Upper bound for percentile estimate",
-																														"example": 30.4,
-																														"type": "number",
-																														"x-auditable": true
-																													}
-																												},
-																												"readOnly": true,
-																												"type": "object"
-																											}
-																										},
-																										"type": "object"
-																									},
-																									"mean": {
-																										"description": "Suggested threshold.",
-																										"example": 25.5,
-																										"type": "number",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
-																							}
-																						},
-																						"type": "object"
-																					}
-																				},
-																				"readOnly": true,
-																				"type": "object"
+																				"readOnly": true
 																			},
 																			{
+																				"type": "object",
 																				"properties": {
 																					"schema_info": {
+																						"type": "object",
 																						"properties": {
 																							"active_schema": {
 																								"description": "Schema active on endpoint.",
+																								"type": "object",
 																								"properties": {
 																									"created_at": {
-																										"example": "2014-01-01T05:20:00.12345Z",
-																										"format": "date-time",
 																										"type": "string",
+																										"format": "date-time",
+																										"example": "2014-01-01T05:20:00.12345Z",
 																										"x-auditable": true
 																									},
 																									"id": {
@@ -1155,56 +1162,52 @@
 																											},
 																											{
 																												"description": "UUID.",
+																												"type": "string",
 																												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																												"maxLength": 36,
-																												"type": "string",
 																												"x-auditable": true
 																											}
 																										]
 																									},
 																									"is_learned": {
 																										"description": "True if schema is Cloudflare-provided.",
-																										"example": true,
 																										"type": "boolean",
+																										"example": true,
 																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "Schema file name.",
-																										"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																										"type": "string",
+																										"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																										"x-auditable": true
 																									}
-																								},
-																								"type": "object"
+																								}
 																							},
 																							"learned_available": {
 																								"description": "Deprecated. Always false.",
-																								"example": false,
 																								"type": "boolean",
+																								"example": false,
 																								"x-auditable": true
 																							},
 																							"mitigation_action": {
 																								"description": "Action taken on requests failing validation.",
+																								"type": "string",
+																								"example": "block",
 																								"enum": [
 																									"none",
 																									"log",
 																									"block"
 																								],
-																								"example": "block",
 																								"nullable": true,
-																								"type": "string",
 																								"x-auditable": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					}
 																				},
-																				"readOnly": true,
-																				"type": "object"
+																				"readOnly": true
 																			}
 																		],
-																		"readOnly": true,
-																		"type": "object"
+																		"readOnly": true
 																	}
 																},
 																"type": "object"
@@ -1212,8 +1215,7 @@
 														]
 													}
 												]
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -1224,66 +1226,30 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve information about all operations on a zone response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve information about all operations on a zone response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1292,12 +1258,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1307,25 +1273,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1333,12 +1336,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve information about all operations on a zone response failure"
+				}
 			}
 		},
 		"security": [
@@ -1348,7 +1349,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve information about all operations on a zone",
 		"tags": [
 			"API Shield Endpoint Management"
 		],
@@ -1364,17 +1364,16 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
-		"description": "Gets detailed information about a specific API operation in API Shield, including its schema validation settings and traffic statistics.",
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-an-operation",
+		"summary": "Retrieve information about an operation",
+		"description": "Gets detailed information about a specific API operation in API Shield, including its schema validation settings and traffic statistics.",
 		"parameters": [
 			{
 				"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.",
 				"in": "query",
 				"name": "feature",
 				"schema": {
-					"example": [
-						"thresholds"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"thresholds",
@@ -1384,7 +1383,9 @@
 						"example": "thresholds",
 						"type": "string"
 					},
-					"type": "array",
+					"example": [
+						"thresholds"
+					],
 					"uniqueItems": true
 				}
 			},
@@ -1393,26 +1394,28 @@
 				"in": "query",
 				"name": "with_schemas",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve information about an operation response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1421,12 +1424,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1436,15 +1439,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1453,12 +1456,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1468,23 +1471,22 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1495,26 +1497,29 @@
 														{
 															"allOf": [
 																{
+																	"type": "object",
 																	"properties": {
 																		"endpoint": {
 																			"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																			"example": "/api/v1/users/{var1}",
+																			"type": "string",
 																			"format": "uri-template",
+																			"example": "/api/v1/users/{var1}",
 																			"maxLength": 4096,
 																			"pattern": "^/.*$",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"host": {
 																			"description": "RFC3986-compliant host.",
-																			"example": "www.example.com",
-																			"format": "hostname",
-																			"maxLength": 255,
 																			"type": "string",
+																			"format": "hostname",
+																			"example": "www.example.com",
+																			"maxLength": 255,
 																			"x-auditable": true
 																		},
 																		"method": {
 																			"description": "The HTTP method used to access the endpoint.",
+																			"type": "string",
+																			"example": "GET",
 																			"enum": [
 																				"GET",
 																				"POST",
@@ -1526,8 +1531,6 @@
 																				"PATCH",
 																				"TRACE"
 																			],
-																			"example": "GET",
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	},
@@ -1535,17 +1538,16 @@
 																		"method",
 																		"host",
 																		"endpoint"
-																	],
-																	"type": "object"
+																	]
 																},
 																{
 																	"properties": {
 																		"last_updated": {
 																			"allOf": [
 																				{
-																					"example": "2014-01-01T05:20:00.12345Z",
-																					"format": "date-time",
 																					"type": "string",
+																					"format": "date-time",
+																					"example": "2014-01-01T05:20:00.12345Z",
 																					"x-auditable": true
 																				},
 																				{
@@ -1564,9 +1566,9 @@
 																				},
 																				{
 																					"description": "UUID.",
+																					"type": "string",
 																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																					"maxLength": 36,
-																					"type": "string",
 																					"x-auditable": true
 																				}
 																			]
@@ -1585,67 +1587,69 @@
 															"nullable": true,
 															"properties": {
 																"features": {
+																	"type": "object",
 																	"anyOf": [
 																		{
+																			"type": "object",
 																			"properties": {
 																				"thresholds": {
+																					"type": "object",
 																					"properties": {
 																						"auth_id_tokens": {
 																							"description": "The total number of auth-ids seen across this calculation.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"data_points": {
 																							"description": "The number of data points used for the threshold suggestion calculation.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
 																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
 																							"x-auditable": true
 																						},
 																						"p50": {
 																							"description": "The p50 quantile of requests (in period_seconds).",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"p90": {
 																							"description": "The p90 quantile of requests (in period_seconds).",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"p99": {
 																							"description": "The p99 quantile of requests (in period_seconds).",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"period_seconds": {
 																							"description": "The period over which this threshold is suggested.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"requests": {
 																							"description": "The estimated number of requests covered by these calculations.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"suggested_threshold": {
 																							"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				}
 																			},
 																			"readOnly": true,
@@ -1659,37 +1663,23 @@
 																				"auth_id_tokens",
 																				"data_points",
 																				"last_updated"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		{
+																			"type": "object",
 																			"properties": {
 																				"parameter_schemas": {
+																					"type": "object",
 																					"properties": {
 																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
 																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
 																							"x-auditable": true
 																						},
 																						"parameter_schemas": {
 																							"description": "An operation schema object containing a response.",
-																							"example": {
-																								"parameters": [
-																									{
-																										"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
-																										"in": "path",
-																										"name": "var1",
-																										"required": true,
-																										"schema": {
-																											"maximum": 10,
-																											"minimum": 1,
-																											"type": "integer"
-																										}
-																									}
-																								],
-																								"responses": null
-																							},
+																							"type": "object",
 																							"properties": {
 																								"parameters": {
 																									"description": "An array containing the learned parameter schemas.",
@@ -1700,9 +1690,9 @@
 																											"name": "var1",
 																											"required": true,
 																											"schema": {
+																												"type": "integer",
 																												"maximum": 10,
-																												"minimum": 1,
-																												"type": "integer"
+																												"minimum": 1
 																											}
 																										}
 																									],
@@ -1719,51 +1709,151 @@
 																									"type": "object"
 																								}
 																							},
-																							"readOnly": true,
-																							"type": "object"
+																							"example": {
+																								"parameters": [
+																									{
+																										"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+																										"in": "path",
+																										"name": "var1",
+																										"required": true,
+																										"schema": {
+																											"type": "integer",
+																											"maximum": 10,
+																											"minimum": 1
+																										}
+																									}
+																								],
+																								"responses": null
+																							},
+																							"readOnly": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				}
 																			},
 																			"readOnly": true,
 																			"required": [
 																				"parameter_schemas",
 																				"last_updated"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		{
+																			"type": "object",
+																			"properties": {
+																				"api_routing": {
+																					"description": "API Routing settings on endpoint.",
+																					"type": "object",
+																					"properties": {
+																						"last_updated": {
+																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"x-auditable": true
+																						},
+																						"route": {
+																							"description": "Target route.",
+																							"type": "string",
+																							"example": "https://api.example.com/api/service",
+																							"x-auditable": true
+																						}
+																					}
+																				}
+																			},
 																			"example": {
 																				"api_routing": {
 																					"last_updated": "2014-01-01T05:20:00.12345Z",
 																					"route": "https://api.example.com/api/service"
 																				}
 																			},
-																			"properties": {
-																				"api_routing": {
-																					"description": "API Routing settings on endpoint.",
-																					"properties": {
-																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
-																							"type": "string",
-																							"x-auditable": true
-																						},
-																						"route": {
-																							"description": "Target route.",
-																							"example": "https://api.example.com/api/service",
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"type": "object"
-																				}
-																			},
-																			"readOnly": true,
-																			"type": "object"
+																			"readOnly": true
 																		},
 																		{
+																			"type": "object",
+																			"properties": {
+																				"confidence_intervals": {
+																					"type": "object",
+																					"properties": {
+																						"last_updated": {
+																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"x-auditable": true
+																						},
+																						"suggested_threshold": {
+																							"type": "object",
+																							"properties": {
+																								"confidence_intervals": {
+																									"type": "object",
+																									"properties": {
+																										"p90": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"type": "object",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"type": "number",
+																													"example": 20.5,
+																													"x-auditable": true
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"type": "number",
+																													"example": 30.4,
+																													"x-auditable": true
+																												}
+																											},
+																											"readOnly": true
+																										},
+																										"p95": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"type": "object",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"type": "number",
+																													"example": 20.5,
+																													"x-auditable": true
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"type": "number",
+																													"example": 30.4,
+																													"x-auditable": true
+																												}
+																											},
+																											"readOnly": true
+																										},
+																										"p99": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"type": "object",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"type": "number",
+																													"example": 20.5,
+																													"x-auditable": true
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"type": "number",
+																													"example": 30.4,
+																													"x-auditable": true
+																												}
+																											},
+																											"readOnly": true
+																										}
+																									}
+																								},
+																								"mean": {
+																									"description": "Suggested threshold.",
+																									"type": "number",
+																									"example": 25.5,
+																									"x-auditable": true
+																								}
+																							}
+																						}
+																					}
+																				}
+																			},
 																			"example": {
 																				"confidence_intervals": {
 																					"last_updated": "2014-01-01T05:20:00.12345Z",
@@ -1786,106 +1876,22 @@
 																					}
 																				}
 																			},
-																			"properties": {
-																				"confidence_intervals": {
-																					"properties": {
-																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
-																							"type": "string",
-																							"x-auditable": true
-																						},
-																						"suggested_threshold": {
-																							"properties": {
-																								"confidence_intervals": {
-																									"properties": {
-																										"p90": {
-																											"description": "Upper and lower bound for percentile estimate",
-																											"properties": {
-																												"lower": {
-																													"description": "Lower bound for percentile estimate",
-																													"example": 20.5,
-																													"type": "number",
-																													"x-auditable": true
-																												},
-																												"upper": {
-																													"description": "Upper bound for percentile estimate",
-																													"example": 30.4,
-																													"type": "number",
-																													"x-auditable": true
-																												}
-																											},
-																											"readOnly": true,
-																											"type": "object"
-																										},
-																										"p95": {
-																											"description": "Upper and lower bound for percentile estimate",
-																											"properties": {
-																												"lower": {
-																													"description": "Lower bound for percentile estimate",
-																													"example": 20.5,
-																													"type": "number",
-																													"x-auditable": true
-																												},
-																												"upper": {
-																													"description": "Upper bound for percentile estimate",
-																													"example": 30.4,
-																													"type": "number",
-																													"x-auditable": true
-																												}
-																											},
-																											"readOnly": true,
-																											"type": "object"
-																										},
-																										"p99": {
-																											"description": "Upper and lower bound for percentile estimate",
-																											"properties": {
-																												"lower": {
-																													"description": "Lower bound for percentile estimate",
-																													"example": 20.5,
-																													"type": "number",
-																													"x-auditable": true
-																												},
-																												"upper": {
-																													"description": "Upper bound for percentile estimate",
-																													"example": 30.4,
-																													"type": "number",
-																													"x-auditable": true
-																												}
-																											},
-																											"readOnly": true,
-																											"type": "object"
-																										}
-																									},
-																									"type": "object"
-																								},
-																								"mean": {
-																									"description": "Suggested threshold.",
-																									"example": 25.5,
-																									"type": "number",
-																									"x-auditable": true
-																								}
-																							},
-																							"type": "object"
-																						}
-																					},
-																					"type": "object"
-																				}
-																			},
-																			"readOnly": true,
-																			"type": "object"
+																			"readOnly": true
 																		},
 																		{
+																			"type": "object",
 																			"properties": {
 																				"schema_info": {
+																					"type": "object",
 																					"properties": {
 																						"active_schema": {
 																							"description": "Schema active on endpoint.",
+																							"type": "object",
 																							"properties": {
 																								"created_at": {
-																									"example": "2014-01-01T05:20:00.12345Z",
-																									"format": "date-time",
 																									"type": "string",
+																									"format": "date-time",
+																									"example": "2014-01-01T05:20:00.12345Z",
 																									"x-auditable": true
 																								},
 																								"id": {
@@ -1897,56 +1903,52 @@
 																										},
 																										{
 																											"description": "UUID.",
+																											"type": "string",
 																											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																											"maxLength": 36,
-																											"type": "string",
 																											"x-auditable": true
 																										}
 																									]
 																								},
 																								"is_learned": {
 																									"description": "True if schema is Cloudflare-provided.",
-																									"example": true,
 																									"type": "boolean",
+																									"example": true,
 																									"x-auditable": true
 																								},
 																								"name": {
 																									"description": "Schema file name.",
-																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																									"type": "string",
+																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																									"x-auditable": true
 																								}
-																							},
-																							"type": "object"
+																							}
 																						},
 																						"learned_available": {
 																							"description": "Deprecated. Always false.",
-																							"example": false,
 																							"type": "boolean",
+																							"example": false,
 																							"x-auditable": true
 																						},
 																						"mitigation_action": {
 																							"description": "Action taken on requests failing validation.",
+																							"type": "string",
+																							"example": "block",
 																							"enum": [
 																								"none",
 																								"log",
 																								"block"
 																							],
-																							"example": "block",
 																							"nullable": true,
-																							"type": "string",
 																							"x-auditable": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				}
 																			},
-																			"readOnly": true,
-																			"type": "object"
+																			"readOnly": true
 																		}
 																	],
-																	"readOnly": true,
-																	"type": "object"
+																	"readOnly": true
 																}
 															},
 															"type": "object"
@@ -1957,10 +1959,11 @@
 													"properties": {
 														"schemas": {
 															"description": "OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.",
+															"type": "object",
 															"properties": {
 																"learned": {
 																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
-																	"nullable": true,
+																	"type": "object",
 																	"properties": {
 																		"parameters": {
 																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
@@ -1971,16 +1974,16 @@
 																			"type": "array"
 																		},
 																		"requestBody": {
-																			"additionalProperties": true,
 																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"additionalProperties": true,
 																			"type": "object"
 																		}
 																	},
-																	"type": "object"
+																	"nullable": true
 																},
 																"uploaded": {
 																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
-																	"nullable": true,
+																	"type": "object",
 																	"properties": {
 																		"parameters": {
 																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
@@ -1991,16 +1994,15 @@
 																			"type": "array"
 																		},
 																		"requestBody": {
-																			"additionalProperties": true,
 																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"additionalProperties": true,
 																			"type": "object"
 																		}
 																	},
-																	"type": "object"
+																	"nullable": true
 																}
 															},
-															"readOnly": true,
-															"type": "object"
+															"readOnly": true
 														}
 													},
 													"type": "object"
@@ -2016,66 +2018,30 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve information about an operation response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve information about an operation response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2084,12 +2050,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2099,25 +2065,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2125,12 +2128,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve information about an operation response failure"
+				}
 			}
 		},
 		"security": [
@@ -2140,7 +2141,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve information about an operation",
 		"tags": [
 			"API Shield Endpoint Management"
 		],
@@ -2156,19 +2156,20 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/api_gateway/schemas": {
-		"description": "Retrieves API operations and their features exported as OpenAPI schemas.",
 		"operationId": "api-shield-endpoint-management-retrieve-operations-and-features-as-open-api-schemas",
+		"summary": "Retrieve operations and features as OpenAPI schemas",
+		"description": "Retrieves API operations and their features exported as OpenAPI schemas.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "host",
+				"in": "query",
 				"schema": {
 					"description": "Receive schema only for the given host(s).",
+					"type": "array",
 					"items": {
 						"example": "www.example.com",
 						"type": "string"
 					},
-					"type": "array",
 					"uniqueItems": true
 				}
 			},
@@ -2177,9 +2178,7 @@
 				"in": "query",
 				"name": "feature",
 				"schema": {
-					"example": [
-						"thresholds"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"thresholds",
@@ -2189,43 +2188,47 @@
 						"example": "thresholds",
 						"type": "string"
 					},
-					"type": "array",
+					"example": [
+						"thresholds"
+					],
 					"uniqueItems": true
 				}
 			},
 			{
-				"description": "Schema kinds to include in exported OpenAPI schemas.",
-				"explode": true,
-				"in": "query",
 				"name": "include_schema_kind",
+				"in": "query",
+				"description": "Schema kinds to include in exported OpenAPI schemas.",
 				"schema": {
+					"type": "array",
 					"items": {
 						"enum": [
 							"learned"
 						],
 						"type": "string"
 					},
-					"type": "array",
 					"uniqueItems": true
 				},
+				"explode": true,
 				"style": "form"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve operations and features as OpenAPI schemas response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2234,12 +2237,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2249,15 +2252,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2266,12 +2269,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2281,31 +2284,33 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"schemas": {
+													"type": "array",
 													"items": {
 														"description": "A OpenAPI 3.0.0 compliant schema.",
+														"type": "object",
 														"example": {
 															"info": {
 																"title": "OpenAPI JSON schema for www.example.com",
@@ -2318,8 +2323,8 @@
 																	"get": {
 																		"parameters": [
 																			{
-																				"in": "path",
 																				"name": "var1",
+																				"in": "path",
 																				"required": true,
 																				"schema": {
 																					"type": "string"
@@ -2334,17 +2339,14 @@
 																	"url": "www.example.com"
 																}
 															]
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"timestamp": {
 													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"required": [
@@ -2355,66 +2357,30 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve operations and features as OpenAPI schemas response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve operations and features as OpenAPI schemas response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2423,12 +2389,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2438,25 +2404,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2464,12 +2467,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve operations and features as OpenAPI schemas response failure"
+				}
 			}
 		},
 		"security": [
@@ -2479,7 +2480,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve operations and features as OpenAPI schemas",
 		"tags": [
 			"API Shield Endpoint Management"
 		],
@@ -2495,33 +2495,39 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations": {
-		"description": "Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
 		"operationId": "api-shield-endpoint-management-add-operations-to-a-zone",
+		"summary": "Add operations to a zone",
+		"description": "Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "array",
 						"items": {
+							"type": "object",
 							"properties": {
 								"endpoint": {
 									"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-									"example": "/api/v1/users/{var1}",
+									"type": "string",
 									"format": "uri-template",
+									"example": "/api/v1/users/{var1}",
 									"maxLength": 4096,
 									"pattern": "^/.*$",
-									"type": "string",
 									"x-auditable": true
 								},
 								"host": {
 									"description": "RFC3986-compliant host.",
-									"example": "www.example.com",
-									"format": "hostname",
-									"maxLength": 255,
 									"type": "string",
+									"format": "hostname",
+									"example": "www.example.com",
+									"maxLength": 255,
 									"x-auditable": true
 								},
 								"method": {
 									"description": "The HTTP method used to access the endpoint.",
+									"type": "string",
+									"example": "GET",
 									"enum": [
 										"GET",
 										"POST",
@@ -2533,8 +2539,6 @@
 										"PATCH",
 										"TRACE"
 									],
-									"example": "GET",
-									"type": "string",
 									"x-auditable": true
 								}
 							},
@@ -2542,30 +2546,29 @@
 								"method",
 								"host",
 								"endpoint"
-							],
-							"type": "object"
-						},
-						"type": "array"
+							]
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add operations to a zone response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2574,12 +2577,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2589,15 +2592,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2606,12 +2609,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2621,52 +2624,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"allOf": [
 													{
 														"allOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"endpoint": {
 																		"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																		"example": "/api/v1/users/{var1}",
+																		"type": "string",
 																		"format": "uri-template",
+																		"example": "/api/v1/users/{var1}",
 																		"maxLength": 4096,
 																		"pattern": "^/.*$",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"host": {
 																		"description": "RFC3986-compliant host.",
-																		"example": "www.example.com",
-																		"format": "hostname",
-																		"maxLength": 255,
 																		"type": "string",
+																		"format": "hostname",
+																		"example": "www.example.com",
+																		"maxLength": 255,
 																		"x-auditable": true
 																	},
 																	"method": {
 																		"description": "The HTTP method used to access the endpoint.",
+																		"type": "string",
+																		"example": "GET",
 																		"enum": [
 																			"GET",
 																			"POST",
@@ -2678,8 +2684,6 @@
 																			"PATCH",
 																			"TRACE"
 																		],
-																		"example": "GET",
-																		"type": "string",
 																		"x-auditable": true
 																	}
 																},
@@ -2687,17 +2691,16 @@
 																	"method",
 																	"host",
 																	"endpoint"
-																],
-																"type": "object"
+																]
 															},
 															{
 																"properties": {
 																	"last_updated": {
 																		"allOf": [
 																			{
-																				"example": "2014-01-01T05:20:00.12345Z",
-																				"format": "date-time",
 																				"type": "string",
+																				"format": "date-time",
+																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			},
 																			{
@@ -2716,9 +2719,9 @@
 																			},
 																			{
 																				"description": "UUID.",
+																				"type": "string",
 																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																				"maxLength": 36,
-																				"type": "string",
 																				"x-auditable": true
 																			}
 																		]
@@ -2737,67 +2740,69 @@
 														"nullable": true,
 														"properties": {
 															"features": {
+																"type": "object",
 																"anyOf": [
 																	{
+																		"type": "object",
 																		"properties": {
 																			"thresholds": {
+																				"type": "object",
 																				"properties": {
 																					"auth_id_tokens": {
 																						"description": "The total number of auth-ids seen across this calculation.",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					},
 																					"data_points": {
 																						"description": "The number of data points used for the threshold suggestion calculation.",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					},
 																					"last_updated": {
-																						"example": "2014-01-01T05:20:00.12345Z",
-																						"format": "date-time",
 																						"type": "string",
+																						"format": "date-time",
+																						"example": "2014-01-01T05:20:00.12345Z",
 																						"x-auditable": true
 																					},
 																					"p50": {
 																						"description": "The p50 quantile of requests (in period_seconds).",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					},
 																					"p90": {
 																						"description": "The p90 quantile of requests (in period_seconds).",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					},
 																					"p99": {
 																						"description": "The p99 quantile of requests (in period_seconds).",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					},
 																					"period_seconds": {
 																						"description": "The period over which this threshold is suggested.",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					},
 																					"requests": {
 																						"description": "The estimated number of requests covered by these calculations.",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					},
 																					"suggested_threshold": {
 																						"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
-																						"readOnly": true,
 																						"type": "integer",
+																						"readOnly": true,
 																						"x-auditable": true
 																					}
-																				},
-																				"type": "object"
+																				}
 																			}
 																		},
 																		"readOnly": true,
@@ -2811,37 +2816,23 @@
 																			"auth_id_tokens",
 																			"data_points",
 																			"last_updated"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	{
+																		"type": "object",
 																		"properties": {
 																			"parameter_schemas": {
+																				"type": "object",
 																				"properties": {
 																					"last_updated": {
-																						"example": "2014-01-01T05:20:00.12345Z",
-																						"format": "date-time",
 																						"type": "string",
+																						"format": "date-time",
+																						"example": "2014-01-01T05:20:00.12345Z",
 																						"x-auditable": true
 																					},
 																					"parameter_schemas": {
 																						"description": "An operation schema object containing a response.",
-																						"example": {
-																							"parameters": [
-																								{
-																									"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
-																									"in": "path",
-																									"name": "var1",
-																									"required": true,
-																									"schema": {
-																										"maximum": 10,
-																										"minimum": 1,
-																										"type": "integer"
-																									}
-																								}
-																							],
-																							"responses": null
-																						},
+																						"type": "object",
 																						"properties": {
 																							"parameters": {
 																								"description": "An array containing the learned parameter schemas.",
@@ -2852,9 +2843,9 @@
 																										"name": "var1",
 																										"required": true,
 																										"schema": {
+																											"type": "integer",
 																											"maximum": 10,
-																											"minimum": 1,
-																											"type": "integer"
+																											"minimum": 1
 																										}
 																									}
 																								],
@@ -2871,51 +2862,151 @@
 																								"type": "object"
 																							}
 																						},
-																						"readOnly": true,
-																						"type": "object"
+																						"example": {
+																							"parameters": [
+																								{
+																									"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+																									"in": "path",
+																									"name": "var1",
+																									"required": true,
+																									"schema": {
+																										"type": "integer",
+																										"maximum": 10,
+																										"minimum": 1
+																									}
+																								}
+																							],
+																							"responses": null
+																						},
+																						"readOnly": true
 																					}
-																				},
-																				"type": "object"
+																				}
 																			}
 																		},
 																		"readOnly": true,
 																		"required": [
 																			"parameter_schemas",
 																			"last_updated"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	{
+																		"type": "object",
+																		"properties": {
+																			"api_routing": {
+																				"description": "API Routing settings on endpoint.",
+																				"type": "object",
+																				"properties": {
+																					"last_updated": {
+																						"type": "string",
+																						"format": "date-time",
+																						"example": "2014-01-01T05:20:00.12345Z",
+																						"x-auditable": true
+																					},
+																					"route": {
+																						"description": "Target route.",
+																						"type": "string",
+																						"example": "https://api.example.com/api/service",
+																						"x-auditable": true
+																					}
+																				}
+																			}
+																		},
 																		"example": {
 																			"api_routing": {
 																				"last_updated": "2014-01-01T05:20:00.12345Z",
 																				"route": "https://api.example.com/api/service"
 																			}
 																		},
-																		"properties": {
-																			"api_routing": {
-																				"description": "API Routing settings on endpoint.",
-																				"properties": {
-																					"last_updated": {
-																						"example": "2014-01-01T05:20:00.12345Z",
-																						"format": "date-time",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"route": {
-																						"description": "Target route.",
-																						"example": "https://api.example.com/api/service",
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"readOnly": true,
-																		"type": "object"
+																		"readOnly": true
 																	},
 																	{
+																		"type": "object",
+																		"properties": {
+																			"confidence_intervals": {
+																				"type": "object",
+																				"properties": {
+																					"last_updated": {
+																						"type": "string",
+																						"format": "date-time",
+																						"example": "2014-01-01T05:20:00.12345Z",
+																						"x-auditable": true
+																					},
+																					"suggested_threshold": {
+																						"type": "object",
+																						"properties": {
+																							"confidence_intervals": {
+																								"type": "object",
+																								"properties": {
+																									"p90": {
+																										"description": "Upper and lower bound for percentile estimate",
+																										"type": "object",
+																										"properties": {
+																											"lower": {
+																												"description": "Lower bound for percentile estimate",
+																												"type": "number",
+																												"example": 20.5,
+																												"x-auditable": true
+																											},
+																											"upper": {
+																												"description": "Upper bound for percentile estimate",
+																												"type": "number",
+																												"example": 30.4,
+																												"x-auditable": true
+																											}
+																										},
+																										"readOnly": true
+																									},
+																									"p95": {
+																										"description": "Upper and lower bound for percentile estimate",
+																										"type": "object",
+																										"properties": {
+																											"lower": {
+																												"description": "Lower bound for percentile estimate",
+																												"type": "number",
+																												"example": 20.5,
+																												"x-auditable": true
+																											},
+																											"upper": {
+																												"description": "Upper bound for percentile estimate",
+																												"type": "number",
+																												"example": 30.4,
+																												"x-auditable": true
+																											}
+																										},
+																										"readOnly": true
+																									},
+																									"p99": {
+																										"description": "Upper and lower bound for percentile estimate",
+																										"type": "object",
+																										"properties": {
+																											"lower": {
+																												"description": "Lower bound for percentile estimate",
+																												"type": "number",
+																												"example": 20.5,
+																												"x-auditable": true
+																											},
+																											"upper": {
+																												"description": "Upper bound for percentile estimate",
+																												"type": "number",
+																												"example": 30.4,
+																												"x-auditable": true
+																											}
+																										},
+																										"readOnly": true
+																									}
+																								}
+																							},
+																							"mean": {
+																								"description": "Suggested threshold.",
+																								"type": "number",
+																								"example": 25.5,
+																								"x-auditable": true
+																							}
+																						}
+																					}
+																				}
+																			}
+																		},
 																		"example": {
 																			"confidence_intervals": {
 																				"last_updated": "2014-01-01T05:20:00.12345Z",
@@ -2938,106 +3029,22 @@
 																				}
 																			}
 																		},
-																		"properties": {
-																			"confidence_intervals": {
-																				"properties": {
-																					"last_updated": {
-																						"example": "2014-01-01T05:20:00.12345Z",
-																						"format": "date-time",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"suggested_threshold": {
-																						"properties": {
-																							"confidence_intervals": {
-																								"properties": {
-																									"p90": {
-																										"description": "Upper and lower bound for percentile estimate",
-																										"properties": {
-																											"lower": {
-																												"description": "Lower bound for percentile estimate",
-																												"example": 20.5,
-																												"type": "number",
-																												"x-auditable": true
-																											},
-																											"upper": {
-																												"description": "Upper bound for percentile estimate",
-																												"example": 30.4,
-																												"type": "number",
-																												"x-auditable": true
-																											}
-																										},
-																										"readOnly": true,
-																										"type": "object"
-																									},
-																									"p95": {
-																										"description": "Upper and lower bound for percentile estimate",
-																										"properties": {
-																											"lower": {
-																												"description": "Lower bound for percentile estimate",
-																												"example": 20.5,
-																												"type": "number",
-																												"x-auditable": true
-																											},
-																											"upper": {
-																												"description": "Upper bound for percentile estimate",
-																												"example": 30.4,
-																												"type": "number",
-																												"x-auditable": true
-																											}
-																										},
-																										"readOnly": true,
-																										"type": "object"
-																									},
-																									"p99": {
-																										"description": "Upper and lower bound for percentile estimate",
-																										"properties": {
-																											"lower": {
-																												"description": "Lower bound for percentile estimate",
-																												"example": 20.5,
-																												"type": "number",
-																												"x-auditable": true
-																											},
-																											"upper": {
-																												"description": "Upper bound for percentile estimate",
-																												"example": 30.4,
-																												"type": "number",
-																												"x-auditable": true
-																											}
-																										},
-																										"readOnly": true,
-																										"type": "object"
-																									}
-																								},
-																								"type": "object"
-																							},
-																							"mean": {
-																								"description": "Suggested threshold.",
-																								"example": 25.5,
-																								"type": "number",
-																								"x-auditable": true
-																							}
-																						},
-																						"type": "object"
-																					}
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"readOnly": true,
-																		"type": "object"
+																		"readOnly": true
 																	},
 																	{
+																		"type": "object",
 																		"properties": {
 																			"schema_info": {
+																				"type": "object",
 																				"properties": {
 																					"active_schema": {
 																						"description": "Schema active on endpoint.",
+																						"type": "object",
 																						"properties": {
 																							"created_at": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
 																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
 																								"x-auditable": true
 																							},
 																							"id": {
@@ -3049,63 +3056,58 @@
 																									},
 																									{
 																										"description": "UUID.",
+																										"type": "string",
 																										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																										"maxLength": 36,
-																										"type": "string",
 																										"x-auditable": true
 																									}
 																								]
 																							},
 																							"is_learned": {
 																								"description": "True if schema is Cloudflare-provided.",
-																								"example": true,
 																								"type": "boolean",
+																								"example": true,
 																								"x-auditable": true
 																							},
 																							"name": {
 																								"description": "Schema file name.",
-																								"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																								"type": "string",
+																								"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																								"x-auditable": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					},
 																					"learned_available": {
 																						"description": "Deprecated. Always false.",
-																						"example": false,
 																						"type": "boolean",
+																						"example": false,
 																						"x-auditable": true
 																					},
 																					"mitigation_action": {
 																						"description": "Action taken on requests failing validation.",
+																						"type": "string",
+																						"example": "block",
 																						"enum": [
 																							"none",
 																							"log",
 																							"block"
 																						],
-																						"example": "block",
 																						"nullable": true,
-																						"type": "string",
 																						"x-auditable": true
 																					}
-																				},
-																				"type": "object"
+																				}
 																			}
 																		},
-																		"readOnly": true,
-																		"type": "object"
+																		"readOnly": true
 																	}
 																],
-																"readOnly": true,
-																"type": "object"
+																"readOnly": true
 															}
 														},
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -3116,66 +3118,30 @@
 							]
 						}
 					}
-				},
-				"description": "Add operations to a zone response"
+				}
 			},
 			"4XX": {
+				"description": "Add operations to a zone response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3184,12 +3150,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3199,25 +3165,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3225,12 +3228,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add operations to a zone response failure"
+				}
 			}
 		},
 		"security": [
@@ -3240,7 +3241,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Add operations to a zone",
 		"tags": [
 			"API Shield Endpoint Management"
 		],
@@ -3254,32 +3254,37 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/item": {
-		"description": "Add one operation to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
 		"operationId": "api-shield-endpoint-management-add-operation-to-a-zone",
+		"summary": "Add one operation to a zone",
+		"description": "Add one operation to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"endpoint": {
 								"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-								"example": "/api/v1/users/{var1}",
+								"type": "string",
 								"format": "uri-template",
+								"example": "/api/v1/users/{var1}",
 								"maxLength": 4096,
 								"pattern": "^/.*$",
-								"type": "string",
 								"x-auditable": true
 							},
 							"host": {
 								"description": "RFC3986-compliant host.",
-								"example": "www.example.com",
-								"format": "hostname",
-								"maxLength": 255,
 								"type": "string",
+								"format": "hostname",
+								"example": "www.example.com",
+								"maxLength": 255,
 								"x-auditable": true
 							},
 							"method": {
 								"description": "The HTTP method used to access the endpoint.",
+								"type": "string",
+								"example": "GET",
 								"enum": [
 									"GET",
 									"POST",
@@ -3291,8 +3296,6 @@
 									"PATCH",
 									"TRACE"
 								],
-								"example": "GET",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -3300,28 +3303,28 @@
 							"method",
 							"host",
 							"endpoint"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add one operation to a zone response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3330,12 +3333,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3345,15 +3348,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3362,12 +3365,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3377,23 +3380,22 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -3404,26 +3406,29 @@
 														{
 															"allOf": [
 																{
+																	"type": "object",
 																	"properties": {
 																		"endpoint": {
 																			"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																			"example": "/api/v1/users/{var1}",
+																			"type": "string",
 																			"format": "uri-template",
+																			"example": "/api/v1/users/{var1}",
 																			"maxLength": 4096,
 																			"pattern": "^/.*$",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"host": {
 																			"description": "RFC3986-compliant host.",
-																			"example": "www.example.com",
-																			"format": "hostname",
-																			"maxLength": 255,
 																			"type": "string",
+																			"format": "hostname",
+																			"example": "www.example.com",
+																			"maxLength": 255,
 																			"x-auditable": true
 																		},
 																		"method": {
 																			"description": "The HTTP method used to access the endpoint.",
+																			"type": "string",
+																			"example": "GET",
 																			"enum": [
 																				"GET",
 																				"POST",
@@ -3435,8 +3440,6 @@
 																				"PATCH",
 																				"TRACE"
 																			],
-																			"example": "GET",
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	},
@@ -3444,17 +3447,16 @@
 																		"method",
 																		"host",
 																		"endpoint"
-																	],
-																	"type": "object"
+																	]
 																},
 																{
 																	"properties": {
 																		"last_updated": {
 																			"allOf": [
 																				{
-																					"example": "2014-01-01T05:20:00.12345Z",
-																					"format": "date-time",
 																					"type": "string",
+																					"format": "date-time",
+																					"example": "2014-01-01T05:20:00.12345Z",
 																					"x-auditable": true
 																				},
 																				{
@@ -3473,9 +3475,9 @@
 																				},
 																				{
 																					"description": "UUID.",
+																					"type": "string",
 																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																					"maxLength": 36,
-																					"type": "string",
 																					"x-auditable": true
 																				}
 																			]
@@ -3494,67 +3496,69 @@
 															"nullable": true,
 															"properties": {
 																"features": {
+																	"type": "object",
 																	"anyOf": [
 																		{
+																			"type": "object",
 																			"properties": {
 																				"thresholds": {
+																					"type": "object",
 																					"properties": {
 																						"auth_id_tokens": {
 																							"description": "The total number of auth-ids seen across this calculation.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"data_points": {
 																							"description": "The number of data points used for the threshold suggestion calculation.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
 																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
 																							"x-auditable": true
 																						},
 																						"p50": {
 																							"description": "The p50 quantile of requests (in period_seconds).",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"p90": {
 																							"description": "The p90 quantile of requests (in period_seconds).",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"p99": {
 																							"description": "The p99 quantile of requests (in period_seconds).",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"period_seconds": {
 																							"description": "The period over which this threshold is suggested.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"requests": {
 																							"description": "The estimated number of requests covered by these calculations.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						},
 																						"suggested_threshold": {
 																							"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
-																							"readOnly": true,
 																							"type": "integer",
+																							"readOnly": true,
 																							"x-auditable": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				}
 																			},
 																			"readOnly": true,
@@ -3568,37 +3572,23 @@
 																				"auth_id_tokens",
 																				"data_points",
 																				"last_updated"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		{
+																			"type": "object",
 																			"properties": {
 																				"parameter_schemas": {
+																					"type": "object",
 																					"properties": {
 																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
 																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
 																							"x-auditable": true
 																						},
 																						"parameter_schemas": {
 																							"description": "An operation schema object containing a response.",
-																							"example": {
-																								"parameters": [
-																									{
-																										"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
-																										"in": "path",
-																										"name": "var1",
-																										"required": true,
-																										"schema": {
-																											"maximum": 10,
-																											"minimum": 1,
-																											"type": "integer"
-																										}
-																									}
-																								],
-																								"responses": null
-																							},
+																							"type": "object",
 																							"properties": {
 																								"parameters": {
 																									"description": "An array containing the learned parameter schemas.",
@@ -3609,9 +3599,9 @@
 																											"name": "var1",
 																											"required": true,
 																											"schema": {
+																												"type": "integer",
 																												"maximum": 10,
-																												"minimum": 1,
-																												"type": "integer"
+																												"minimum": 1
 																											}
 																										}
 																									],
@@ -3628,51 +3618,151 @@
 																									"type": "object"
 																								}
 																							},
-																							"readOnly": true,
-																							"type": "object"
+																							"example": {
+																								"parameters": [
+																									{
+																										"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+																										"in": "path",
+																										"name": "var1",
+																										"required": true,
+																										"schema": {
+																											"type": "integer",
+																											"maximum": 10,
+																											"minimum": 1
+																										}
+																									}
+																								],
+																								"responses": null
+																							},
+																							"readOnly": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				}
 																			},
 																			"readOnly": true,
 																			"required": [
 																				"parameter_schemas",
 																				"last_updated"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		{
+																			"type": "object",
+																			"properties": {
+																				"api_routing": {
+																					"description": "API Routing settings on endpoint.",
+																					"type": "object",
+																					"properties": {
+																						"last_updated": {
+																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"x-auditable": true
+																						},
+																						"route": {
+																							"description": "Target route.",
+																							"type": "string",
+																							"example": "https://api.example.com/api/service",
+																							"x-auditable": true
+																						}
+																					}
+																				}
+																			},
 																			"example": {
 																				"api_routing": {
 																					"last_updated": "2014-01-01T05:20:00.12345Z",
 																					"route": "https://api.example.com/api/service"
 																				}
 																			},
-																			"properties": {
-																				"api_routing": {
-																					"description": "API Routing settings on endpoint.",
-																					"properties": {
-																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
-																							"type": "string",
-																							"x-auditable": true
-																						},
-																						"route": {
-																							"description": "Target route.",
-																							"example": "https://api.example.com/api/service",
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"type": "object"
-																				}
-																			},
-																			"readOnly": true,
-																			"type": "object"
+																			"readOnly": true
 																		},
 																		{
+																			"type": "object",
+																			"properties": {
+																				"confidence_intervals": {
+																					"type": "object",
+																					"properties": {
+																						"last_updated": {
+																							"type": "string",
+																							"format": "date-time",
+																							"example": "2014-01-01T05:20:00.12345Z",
+																							"x-auditable": true
+																						},
+																						"suggested_threshold": {
+																							"type": "object",
+																							"properties": {
+																								"confidence_intervals": {
+																									"type": "object",
+																									"properties": {
+																										"p90": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"type": "object",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"type": "number",
+																													"example": 20.5,
+																													"x-auditable": true
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"type": "number",
+																													"example": 30.4,
+																													"x-auditable": true
+																												}
+																											},
+																											"readOnly": true
+																										},
+																										"p95": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"type": "object",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"type": "number",
+																													"example": 20.5,
+																													"x-auditable": true
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"type": "number",
+																													"example": 30.4,
+																													"x-auditable": true
+																												}
+																											},
+																											"readOnly": true
+																										},
+																										"p99": {
+																											"description": "Upper and lower bound for percentile estimate",
+																											"type": "object",
+																											"properties": {
+																												"lower": {
+																													"description": "Lower bound for percentile estimate",
+																													"type": "number",
+																													"example": 20.5,
+																													"x-auditable": true
+																												},
+																												"upper": {
+																													"description": "Upper bound for percentile estimate",
+																													"type": "number",
+																													"example": 30.4,
+																													"x-auditable": true
+																												}
+																											},
+																											"readOnly": true
+																										}
+																									}
+																								},
+																								"mean": {
+																									"description": "Suggested threshold.",
+																									"type": "number",
+																									"example": 25.5,
+																									"x-auditable": true
+																								}
+																							}
+																						}
+																					}
+																				}
+																			},
 																			"example": {
 																				"confidence_intervals": {
 																					"last_updated": "2014-01-01T05:20:00.12345Z",
@@ -3695,106 +3785,22 @@
 																					}
 																				}
 																			},
-																			"properties": {
-																				"confidence_intervals": {
-																					"properties": {
-																						"last_updated": {
-																							"example": "2014-01-01T05:20:00.12345Z",
-																							"format": "date-time",
-																							"type": "string",
-																							"x-auditable": true
-																						},
-																						"suggested_threshold": {
-																							"properties": {
-																								"confidence_intervals": {
-																									"properties": {
-																										"p90": {
-																											"description": "Upper and lower bound for percentile estimate",
-																											"properties": {
-																												"lower": {
-																													"description": "Lower bound for percentile estimate",
-																													"example": 20.5,
-																													"type": "number",
-																													"x-auditable": true
-																												},
-																												"upper": {
-																													"description": "Upper bound for percentile estimate",
-																													"example": 30.4,
-																													"type": "number",
-																													"x-auditable": true
-																												}
-																											},
-																											"readOnly": true,
-																											"type": "object"
-																										},
-																										"p95": {
-																											"description": "Upper and lower bound for percentile estimate",
-																											"properties": {
-																												"lower": {
-																													"description": "Lower bound for percentile estimate",
-																													"example": 20.5,
-																													"type": "number",
-																													"x-auditable": true
-																												},
-																												"upper": {
-																													"description": "Upper bound for percentile estimate",
-																													"example": 30.4,
-																													"type": "number",
-																													"x-auditable": true
-																												}
-																											},
-																											"readOnly": true,
-																											"type": "object"
-																										},
-																										"p99": {
-																											"description": "Upper and lower bound for percentile estimate",
-																											"properties": {
-																												"lower": {
-																													"description": "Lower bound for percentile estimate",
-																													"example": 20.5,
-																													"type": "number",
-																													"x-auditable": true
-																												},
-																												"upper": {
-																													"description": "Upper bound for percentile estimate",
-																													"example": 30.4,
-																													"type": "number",
-																													"x-auditable": true
-																												}
-																											},
-																											"readOnly": true,
-																											"type": "object"
-																										}
-																									},
-																									"type": "object"
-																								},
-																								"mean": {
-																									"description": "Suggested threshold.",
-																									"example": 25.5,
-																									"type": "number",
-																									"x-auditable": true
-																								}
-																							},
-																							"type": "object"
-																						}
-																					},
-																					"type": "object"
-																				}
-																			},
-																			"readOnly": true,
-																			"type": "object"
+																			"readOnly": true
 																		},
 																		{
+																			"type": "object",
 																			"properties": {
 																				"schema_info": {
+																					"type": "object",
 																					"properties": {
 																						"active_schema": {
 																							"description": "Schema active on endpoint.",
+																							"type": "object",
 																							"properties": {
 																								"created_at": {
-																									"example": "2014-01-01T05:20:00.12345Z",
-																									"format": "date-time",
 																									"type": "string",
+																									"format": "date-time",
+																									"example": "2014-01-01T05:20:00.12345Z",
 																									"x-auditable": true
 																								},
 																								"id": {
@@ -3806,56 +3812,52 @@
 																										},
 																										{
 																											"description": "UUID.",
+																											"type": "string",
 																											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																											"maxLength": 36,
-																											"type": "string",
 																											"x-auditable": true
 																										}
 																									]
 																								},
 																								"is_learned": {
 																									"description": "True if schema is Cloudflare-provided.",
-																									"example": true,
 																									"type": "boolean",
+																									"example": true,
 																									"x-auditable": true
 																								},
 																								"name": {
 																									"description": "Schema file name.",
-																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																									"type": "string",
+																									"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																									"x-auditable": true
 																								}
-																							},
-																							"type": "object"
+																							}
 																						},
 																						"learned_available": {
 																							"description": "Deprecated. Always false.",
-																							"example": false,
 																							"type": "boolean",
+																							"example": false,
 																							"x-auditable": true
 																						},
 																						"mitigation_action": {
 																							"description": "Action taken on requests failing validation.",
+																							"type": "string",
+																							"example": "block",
 																							"enum": [
 																								"none",
 																								"log",
 																								"block"
 																							],
-																							"example": "block",
 																							"nullable": true,
-																							"type": "string",
 																							"x-auditable": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				}
 																			},
-																			"readOnly": true,
-																			"type": "object"
+																			"readOnly": true
 																		}
 																	],
-																	"readOnly": true,
-																	"type": "object"
+																	"readOnly": true
 																}
 															},
 															"type": "object"
@@ -3866,10 +3868,11 @@
 													"properties": {
 														"schemas": {
 															"description": "OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.",
+															"type": "object",
 															"properties": {
 																"learned": {
 																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
-																	"nullable": true,
+																	"type": "object",
 																	"properties": {
 																		"parameters": {
 																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
@@ -3880,16 +3883,16 @@
 																			"type": "array"
 																		},
 																		"requestBody": {
-																			"additionalProperties": true,
 																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"additionalProperties": true,
 																			"type": "object"
 																		}
 																	},
-																	"type": "object"
+																	"nullable": true
 																},
 																"uploaded": {
 																	"description": "An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.",
-																	"nullable": true,
+																	"type": "object",
 																	"properties": {
 																		"parameters": {
 																			"description": "OpenAPI parameter objects describing path, query, header, or cookie parameters.",
@@ -3900,16 +3903,15 @@
 																			"type": "array"
 																		},
 																		"requestBody": {
-																			"additionalProperties": true,
 																			"description": "OpenAPI request body object describing the expected request payload.",
+																			"additionalProperties": true,
 																			"type": "object"
 																		}
 																	},
-																	"type": "object"
+																	"nullable": true
 																}
 															},
-															"readOnly": true,
-															"type": "object"
+															"readOnly": true
 														}
 													},
 													"type": "object"
@@ -3925,66 +3927,30 @@
 							]
 						}
 					}
-				},
-				"description": "Add one operation to a zone response"
+				}
 			},
 			"4XX": {
+				"description": "Add one operation to a zone response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3993,12 +3959,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4008,25 +3974,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4034,12 +4037,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add one operation to a zone response failure"
+				}
 			}
 		},
 		"security": [
@@ -4049,7 +4050,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Add one operation to a zone",
 		"tags": [
 			"API Shield Endpoint Management"
 		],

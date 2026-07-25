@@ -1,23 +1,24 @@
 {
 	"GET /accounts/{account_id}/security-center/insights/{issue_id}/audit-log": {
-		"description": "Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time.",
 		"operationId": "get-security-center-issue-audit-log",
+		"summary": "Retrieves Issue Audit Log",
+		"description": "Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "issue_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -28,10 +29,10 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 25,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -47,11 +48,11 @@
 				"in": "query",
 				"name": "field_changed",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"status",
 						"user_classification"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -67,8 +68,8 @@
 				"in": "query",
 				"name": "since",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -76,8 +77,8 @@
 				"in": "query",
 				"name": "before",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -85,30 +86,32 @@
 				"in": "query",
 				"name": "order",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The request was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -117,12 +120,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -132,15 +135,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -149,12 +152,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -164,61 +167,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"changed_at": {
 														"description": "The timestamp when the change occurred.",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
 														"x-auditable": true
 													},
 													"changed_by": {
 														"description": "The actor that made the change. 'system' for automated changes, or a user identifier.",
-														"example": "system",
 														"type": "string",
+														"example": "system",
 														"x-auditable": true
 													},
 													"current_value": {
 														"description": "The value of the field after the change. Null if the field was cleared.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"field_changed": {
 														"description": "The field that was changed.",
+														"type": "string",
 														"enum": [
 															"status",
 															"user_classification"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "UUIDv7 identifier for the audit log entry, time-ordered.",
-														"example": "019b0000-0000-7000-8000-000000000001",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
+														"example": "019b0000-0000-7000-8000-000000000001",
 														"x-auditable": true
 													},
 													"issue_id": {
@@ -228,33 +232,32 @@
 													},
 													"previous_value": {
 														"description": "The value of the field before the change. Null if the field was not previously set.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"rationale": {
 														"description": "Optional rationale provided for the change.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"zone_id": {
 														"description": "The zone ID associated with the insight. Only present for zone-level insights.",
-														"format": "int64",
 														"type": "integer",
+														"format": "int64",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "The number of items in the current result set.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"cursor": {
 													"description": "Opaque cursor for the next page of results. Absent when there are no more results.",
@@ -262,11 +265,10 @@
 												},
 												"per_page": {
 													"description": "The requested number of items per page.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -274,66 +276,30 @@
 							]
 						}
 					}
-				},
-				"description": "The request was successful."
+				}
 			},
 			"4XX": {
+				"description": "A client error occurred.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -342,12 +308,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -357,25 +323,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -383,12 +386,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "A client error occurred."
+				}
 			}
 		},
 		"security": [
@@ -400,24 +401,24 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieves Issue Audit Log",
 		"tags": [
 			"Security Center Audit Log"
 		]
 	},
 	"GET /accounts/{account_id}/security-center/insights/audit-log": {
-		"description": "Lists audit log entries for all Security Center insights in the account, showing changes to insight status and classification.",
 		"operationId": "get-security-center-account-audit-log",
+		"summary": "Retrieves Account Audit Log",
+		"description": "Lists audit log entries for all Security Center insights in the account, showing changes to insight status and classification.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
@@ -426,10 +427,10 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 25,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -445,11 +446,11 @@
 				"in": "query",
 				"name": "field_changed",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"status",
 						"user_classification"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -465,8 +466,8 @@
 				"in": "query",
 				"name": "since",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -474,8 +475,8 @@
 				"in": "query",
 				"name": "before",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -483,30 +484,32 @@
 				"in": "query",
 				"name": "order",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The request was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -515,12 +518,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -530,15 +533,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -547,12 +550,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -562,61 +565,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"changed_at": {
 														"description": "The timestamp when the change occurred.",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
 														"x-auditable": true
 													},
 													"changed_by": {
 														"description": "The actor that made the change. 'system' for automated changes, or a user identifier.",
-														"example": "system",
 														"type": "string",
+														"example": "system",
 														"x-auditable": true
 													},
 													"current_value": {
 														"description": "The value of the field after the change. Null if the field was cleared.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"field_changed": {
 														"description": "The field that was changed.",
+														"type": "string",
 														"enum": [
 															"status",
 															"user_classification"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "UUIDv7 identifier for the audit log entry, time-ordered.",
-														"example": "019b0000-0000-7000-8000-000000000001",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
+														"example": "019b0000-0000-7000-8000-000000000001",
 														"x-auditable": true
 													},
 													"issue_id": {
@@ -626,33 +630,32 @@
 													},
 													"previous_value": {
 														"description": "The value of the field before the change. Null if the field was not previously set.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"rationale": {
 														"description": "Optional rationale provided for the change.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"zone_id": {
 														"description": "The zone ID associated with the insight. Only present for zone-level insights.",
-														"format": "int64",
 														"type": "integer",
+														"format": "int64",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "The number of items in the current result set.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"cursor": {
 													"description": "Opaque cursor for the next page of results. Absent when there are no more results.",
@@ -660,11 +663,10 @@
 												},
 												"per_page": {
 													"description": "The requested number of items per page.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -672,66 +674,30 @@
 							]
 						}
 					}
-				},
-				"description": "The request was successful."
+				}
 			},
 			"4XX": {
+				"description": "A client error occurred.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -740,12 +706,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -755,25 +721,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -781,12 +784,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "A client error occurred."
+				}
 			}
 		},
 		"security": [
@@ -798,30 +799,30 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieves Account Audit Log",
 		"tags": [
 			"Security Center Audit Log"
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/{issue_id}/audit-log": {
-		"description": "Lists audit log entries for a specific Security Center insight within a zone, showing changes to its status and classification over time.",
 		"operationId": "get-zone-security-center-issue-audit-log",
+		"summary": "Retrieves Zone Issue Audit Log",
+		"description": "Lists audit log entries for a specific Security Center insight within a zone, showing changes to its status and classification over time.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "issue_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -832,10 +833,10 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 25,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -851,11 +852,11 @@
 				"in": "query",
 				"name": "field_changed",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"status",
 						"user_classification"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -871,8 +872,8 @@
 				"in": "query",
 				"name": "since",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -880,8 +881,8 @@
 				"in": "query",
 				"name": "before",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -889,30 +890,32 @@
 				"in": "query",
 				"name": "order",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The request was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -921,12 +924,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -936,15 +939,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -953,12 +956,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -968,61 +971,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"changed_at": {
 														"description": "The timestamp when the change occurred.",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
 														"x-auditable": true
 													},
 													"changed_by": {
 														"description": "The actor that made the change. 'system' for automated changes, or a user identifier.",
-														"example": "system",
 														"type": "string",
+														"example": "system",
 														"x-auditable": true
 													},
 													"current_value": {
 														"description": "The value of the field after the change. Null if the field was cleared.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"field_changed": {
 														"description": "The field that was changed.",
+														"type": "string",
 														"enum": [
 															"status",
 															"user_classification"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "UUIDv7 identifier for the audit log entry, time-ordered.",
-														"example": "019b0000-0000-7000-8000-000000000001",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
+														"example": "019b0000-0000-7000-8000-000000000001",
 														"x-auditable": true
 													},
 													"issue_id": {
@@ -1032,33 +1036,32 @@
 													},
 													"previous_value": {
 														"description": "The value of the field before the change. Null if the field was not previously set.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"rationale": {
 														"description": "Optional rationale provided for the change.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"zone_id": {
 														"description": "The zone ID associated with the insight. Only present for zone-level insights.",
-														"format": "int64",
 														"type": "integer",
+														"format": "int64",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "The number of items in the current result set.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"cursor": {
 													"description": "Opaque cursor for the next page of results. Absent when there are no more results.",
@@ -1066,11 +1069,10 @@
 												},
 												"per_page": {
 													"description": "The requested number of items per page.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1078,66 +1080,30 @@
 							]
 						}
 					}
-				},
-				"description": "The request was successful."
+				}
 			},
 			"4XX": {
+				"description": "A client error occurred.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1146,12 +1112,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1161,25 +1127,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1187,12 +1190,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "A client error occurred."
+				}
 			}
 		},
 		"security": [
@@ -1204,7 +1205,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieves Zone Issue Audit Log",
 		"tags": [
 			"Security Center Audit Log"
 		],
@@ -1214,18 +1214,19 @@
 		]
 	},
 	"GET /zones/{zone_id}/security-center/insights/audit-log": {
-		"description": "Lists audit log entries for all Security Center insights in a specific zone, showing changes to insight status and classification.",
 		"operationId": "get-zone-security-center-audit-log",
+		"summary": "Retrieves Zone Audit Log",
+		"description": "Lists audit log entries for all Security Center insights in a specific zone, showing changes to insight status and classification.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
@@ -1234,10 +1235,10 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 25,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -1253,11 +1254,11 @@
 				"in": "query",
 				"name": "field_changed",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"status",
 						"user_classification"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -1273,8 +1274,8 @@
 				"in": "query",
 				"name": "since",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -1282,8 +1283,8 @@
 				"in": "query",
 				"name": "before",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -1291,30 +1292,32 @@
 				"in": "query",
 				"name": "order",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The request was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1323,12 +1326,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1338,15 +1341,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1355,12 +1358,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1370,61 +1373,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"changed_at": {
 														"description": "The timestamp when the change occurred.",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
 														"x-auditable": true
 													},
 													"changed_by": {
 														"description": "The actor that made the change. 'system' for automated changes, or a user identifier.",
-														"example": "system",
 														"type": "string",
+														"example": "system",
 														"x-auditable": true
 													},
 													"current_value": {
 														"description": "The value of the field after the change. Null if the field was cleared.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"field_changed": {
 														"description": "The field that was changed.",
+														"type": "string",
 														"enum": [
 															"status",
 															"user_classification"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "UUIDv7 identifier for the audit log entry, time-ordered.",
-														"example": "019b0000-0000-7000-8000-000000000001",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
+														"example": "019b0000-0000-7000-8000-000000000001",
 														"x-auditable": true
 													},
 													"issue_id": {
@@ -1434,33 +1438,32 @@
 													},
 													"previous_value": {
 														"description": "The value of the field before the change. Null if the field was not previously set.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"rationale": {
 														"description": "Optional rationale provided for the change.",
-														"nullable": true,
 														"type": "string",
+														"nullable": true,
 														"x-auditable": true
 													},
 													"zone_id": {
 														"description": "The zone ID associated with the insight. Only present for zone-level insights.",
-														"format": "int64",
 														"type": "integer",
+														"format": "int64",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "The number of items in the current result set.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"cursor": {
 													"description": "Opaque cursor for the next page of results. Absent when there are no more results.",
@@ -1468,11 +1471,10 @@
 												},
 												"per_page": {
 													"description": "The requested number of items per page.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1480,66 +1482,30 @@
 							]
 						}
 					}
-				},
-				"description": "The request was successful."
+				}
 			},
 			"4XX": {
+				"description": "A client error occurred.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1548,12 +1514,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1563,25 +1529,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1589,12 +1592,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "A client error occurred."
+				}
 			}
 		},
 		"security": [
@@ -1606,7 +1607,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieves Zone Audit Log",
 		"tags": [
 			"Security Center Audit Log"
 		],

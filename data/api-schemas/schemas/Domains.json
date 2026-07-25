@@ -1,44 +1,47 @@
 {
 	"DELETE /accounts/{account_id}/workers/domains/{domain_id}": {
-		"description": "Detaches a domain from a Worker. Both the Worker and all of its previews are no longer routable using this domain.",
 		"operationId": "workers.domains.delete",
+		"summary": "Detach Domain",
+		"description": "Detaches a domain from a Worker. Both the Worker and all of its previews are no longer routable using this domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "domain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "ID of the domain.",
-					"example": "dbe10b4bc17c295377eabd600e1787fd",
-					"type": "string"
+					"type": "string",
+					"example": "dbe10b4bc17c295377eabd600e1787fd"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Detach domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -47,12 +50,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -62,15 +65,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -79,12 +82,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -94,85 +97,48 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Detach domain response."
+				}
 			},
 			"4XX": {
+				"description": "Detach domain failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -181,12 +147,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -196,25 +162,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -222,12 +225,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Detach domain failure."
+				}
 			}
 		},
 		"security": [
@@ -239,7 +240,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Detach Domain",
 		"tags": [
 			"Domains"
 		],
@@ -252,85 +252,89 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/domains": {
-		"description": "Lists all domains for an account.",
 		"operationId": "workers.domains.list",
+		"summary": "List Domains",
+		"description": "Lists all domains for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "zone_id",
+				"in": "query",
 				"schema": {
 					"description": "ID of the zone containing the domain hostname.",
-					"example": "593c9c94de529bbbfaac7c53ced0447d",
-					"type": "string"
+					"type": "string",
+					"example": "593c9c94de529bbbfaac7c53ced0447d"
 				}
 			},
 			{
-				"in": "query",
 				"name": "zone_name",
+				"in": "query",
 				"schema": {
 					"description": "Name of the zone containing the domain hostname.",
-					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"example": "example.com"
 				}
 			},
 			{
-				"in": "query",
 				"name": "service",
+				"in": "query",
 				"schema": {
 					"description": "Name of the Worker associated with the domain.",
-					"example": "my-worker",
-					"type": "string"
+					"type": "string",
+					"example": "my-worker"
 				}
 			},
 			{
-				"in": "query",
 				"name": "hostname",
+				"in": "query",
 				"schema": {
 					"description": "Hostname of the domain.",
-					"example": "app.example.com",
-					"type": "string"
+					"type": "string",
+					"example": "app.example.com"
 				}
 			},
 			{
-				"deprecated": true,
-				"in": "query",
 				"name": "environment",
+				"in": "query",
 				"schema": {
 					"description": "Worker environment associated with the domain.",
-					"example": "production",
-					"type": "string"
-				}
+					"type": "string",
+					"example": "production"
+				},
+				"deprecated": true
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List domains response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -339,12 +343,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -354,15 +358,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -371,12 +375,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -386,113 +390,113 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"cert_id": {
 														"description": "ID of the TLS certificate issued for the domain.",
-														"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
-														"format": "uuid",
-														"readOnly": true,
 														"type": "string",
+														"format": "uuid",
+														"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"environment": {
-														"deprecated": true,
 														"description": "Worker environment associated with the domain.",
-														"example": "production",
-														"readOnly": true,
 														"type": "string",
+														"example": "production",
+														"deprecated": true,
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"hostname": {
 														"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
-														"example": "app.example.com",
 														"type": "string",
+														"example": "app.example.com",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Immutable ID of the domain.",
+														"type": "string",
 														"example": "dbe10b4bc17c295377eabd600e1787fd",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"service": {
 														"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
-														"example": "my-worker",
 														"type": "string",
+														"example": "my-worker",
 														"x-auditable": true
 													},
 													"zone_id": {
 														"description": "ID of the zone containing the domain hostname.",
-														"example": "593c9c94de529bbbfaac7c53ced0447d",
 														"type": "string",
+														"example": "593c9c94de529bbbfaac7c53ced0447d",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"zone_name": {
 														"description": "Name of the zone containing the domain hostname.",
-														"example": "example.com",
 														"type": "string",
+														"example": "example.com",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													}
@@ -504,10 +508,8 @@
 													"zone_name",
 													"hostname",
 													"service"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -518,66 +520,30 @@
 							]
 						}
 					}
-				},
-				"description": "List domains response."
+				}
 			},
 			"4XX": {
+				"description": "List domains failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -586,12 +552,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -601,25 +567,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -627,12 +630,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List domains failure."
+				}
 			}
 		},
 		"security": [
@@ -644,7 +645,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Domains",
 		"tags": [
 			"Domains"
 		],
@@ -658,47 +658,50 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
-		"description": "Gets information about a domain.",
 		"operationId": "workers.domains.get",
+		"summary": "Get Domain",
+		"description": "Gets information about a domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "domain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "ID of the domain.",
-					"example": "dbe10b4bc17c295377eabd600e1787fd",
-					"type": "string"
+					"type": "string",
+					"example": "dbe10b4bc17c295377eabd600e1787fd"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -707,12 +710,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -722,15 +725,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -739,12 +742,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -754,74 +757,74 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cert_id": {
 													"description": "ID of the TLS certificate issued for the domain.",
-													"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
-													"format": "uuid",
-													"readOnly": true,
 													"type": "string",
+													"format": "uuid",
+													"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"environment": {
-													"deprecated": true,
 													"description": "Worker environment associated with the domain.",
-													"example": "production",
-													"readOnly": true,
 													"type": "string",
+													"example": "production",
+													"deprecated": true,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"hostname": {
 													"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
-													"example": "app.example.com",
 													"type": "string",
+													"example": "app.example.com",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Immutable ID of the domain.",
+													"type": "string",
 													"example": "dbe10b4bc17c295377eabd600e1787fd",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"service": {
 													"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
-													"example": "my-worker",
 													"type": "string",
+													"example": "my-worker",
 													"x-auditable": true
 												},
 												"zone_id": {
 													"description": "ID of the zone containing the domain hostname.",
-													"example": "593c9c94de529bbbfaac7c53ced0447d",
 													"type": "string",
+													"example": "593c9c94de529bbbfaac7c53ced0447d",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"zone_name": {
 													"description": "Name of the zone containing the domain hostname.",
-													"example": "example.com",
 													"type": "string",
+													"example": "example.com",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -833,8 +836,7 @@
 												"zone_name",
 												"hostname",
 												"service"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -845,66 +847,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get domain response."
+				}
 			},
 			"4XX": {
+				"description": "Get domain failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -913,12 +879,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -928,25 +894,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -954,12 +957,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get domain failure."
+				}
 			}
 		},
 		"security": [
@@ -971,7 +972,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Domain",
 		"tags": [
 			"Domains"
 		],
@@ -985,75 +985,78 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/domains": {
-		"description": "Attaches a domain that routes traffic to a Worker.",
 		"operationId": "workers.domains.update",
+		"summary": "Attach Domain",
+		"description": "Attaches a domain that routes traffic to a Worker.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"cert_id": {
 										"description": "ID of the TLS certificate issued for the domain.",
-										"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
-										"format": "uuid",
-										"readOnly": true,
 										"type": "string",
+										"format": "uuid",
+										"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
+										"readOnly": true,
 										"x-auditable": true
 									},
 									"environment": {
-										"deprecated": true,
 										"description": "Worker environment associated with the domain.",
-										"example": "production",
-										"readOnly": true,
 										"type": "string",
+										"example": "production",
+										"deprecated": true,
+										"readOnly": true,
 										"x-auditable": true
 									},
 									"hostname": {
 										"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
-										"example": "app.example.com",
 										"type": "string",
+										"example": "app.example.com",
 										"x-auditable": true
 									},
 									"id": {
 										"description": "Immutable ID of the domain.",
+										"type": "string",
 										"example": "dbe10b4bc17c295377eabd600e1787fd",
 										"readOnly": true,
-										"type": "string",
 										"x-auditable": true
 									},
 									"service": {
 										"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
-										"example": "my-worker",
 										"type": "string",
+										"example": "my-worker",
 										"x-auditable": true
 									},
 									"zone_id": {
 										"description": "ID of the zone containing the domain hostname.",
-										"example": "593c9c94de529bbbfaac7c53ced0447d",
 										"type": "string",
+										"example": "593c9c94de529bbbfaac7c53ced0447d",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"zone_name": {
 										"description": "Name of the zone containing the domain hostname.",
-										"example": "example.com",
 										"type": "string",
+										"example": "example.com",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									}
@@ -1065,8 +1068,7 @@
 									"zone_name",
 									"hostname",
 									"service"
-								],
-								"type": "object"
+								]
 							},
 							{
 								"required": [
@@ -1078,24 +1080,25 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Attach domain response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1104,12 +1107,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1119,15 +1122,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1136,12 +1139,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1151,74 +1154,74 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cert_id": {
 													"description": "ID of the TLS certificate issued for the domain.",
-													"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
-													"format": "uuid",
-													"readOnly": true,
 													"type": "string",
+													"format": "uuid",
+													"example": "9fdf92c8-64c2-4a3d-b1af-e15304961145",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"environment": {
-													"deprecated": true,
 													"description": "Worker environment associated with the domain.",
-													"example": "production",
-													"readOnly": true,
 													"type": "string",
+													"example": "production",
+													"deprecated": true,
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"hostname": {
 													"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
-													"example": "app.example.com",
 													"type": "string",
+													"example": "app.example.com",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Immutable ID of the domain.",
+													"type": "string",
 													"example": "dbe10b4bc17c295377eabd600e1787fd",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"service": {
 													"description": "Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.",
-													"example": "my-worker",
 													"type": "string",
+													"example": "my-worker",
 													"x-auditable": true
 												},
 												"zone_id": {
 													"description": "ID of the zone containing the domain hostname.",
-													"example": "593c9c94de529bbbfaac7c53ced0447d",
 													"type": "string",
+													"example": "593c9c94de529bbbfaac7c53ced0447d",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"zone_name": {
 													"description": "Name of the zone containing the domain hostname.",
-													"example": "example.com",
 													"type": "string",
+													"example": "example.com",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -1230,8 +1233,7 @@
 												"zone_name",
 												"hostname",
 												"service"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1242,66 +1244,30 @@
 							]
 						}
 					}
-				},
-				"description": "Attach domain response."
+				}
 			},
 			"4XX": {
+				"description": "Attach domain failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1310,12 +1276,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1325,25 +1291,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1351,12 +1354,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Attach domain failure."
+				}
 			}
 		},
 		"security": [
@@ -1368,7 +1369,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Attach Domain",
 		"tags": [
 			"Domains"
 		],

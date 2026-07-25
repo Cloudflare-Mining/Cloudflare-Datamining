@@ -1,68 +1,72 @@
 {
 	"DELETE /accounts/{account_id}/iam/resource_groups/{resource_group_id}": {
-		"description": "Remove a resource group from an account.",
 		"operationId": "account-resource-group-delete",
+		"summary": "Remove Resource Group",
+		"description": "Remove a resource group from an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "resource_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Resource Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Resource Group identifier tag.",
 					"title": "Resource Group Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Remove Resource Group response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -71,12 +75,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -86,15 +90,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -103,12 +107,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -118,109 +122,71 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Remove Resource Group response"
+				}
 			},
 			"4XX": {
+				"description": "Remove Member response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -229,12 +195,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -244,25 +210,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -270,12 +273,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Remove Member response failure"
+				}
 			}
 		},
 		"security": [
@@ -287,7 +288,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Remove Resource Group",
 		"tags": [
 			"Account Resource Groups"
 		],
@@ -308,76 +308,79 @@
 		}
 	},
 	"GET /accounts/{account_id}/iam/resource_groups": {
-		"description": "List all the resource groups for an account.",
 		"operationId": "account-resource-group-list",
+		"summary": "List Resource Groups",
+		"description": "List all the resource groups for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "query",
 				"name": "id",
+				"in": "query",
 				"schema": {
+					"description": "ID of the resource group to be fetched.",
 					"allOf": [
 						{
+							"description": "Resource Group identifier tag.",
 							"allOf": [
 								{
 									"description": "Identifier",
+									"type": "string",
 									"example": "023e105f4ecef8ad9ca31a8372d0c353",
 									"maxLength": 32,
 									"minLength": 32,
-									"type": "string",
 									"x-auditable": true
 								}
 							],
-							"description": "Resource Group identifier tag.",
 							"title": "Resource Group Identifier"
 						}
-					],
-					"description": "ID of the resource group to be fetched."
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "name",
+				"in": "query",
 				"schema": {
 					"description": "Name of the resource group to be fetched.",
-					"example": "NameOfTheResourceGroup",
-					"type": "string"
+					"type": "string",
+					"example": "NameOfTheResourceGroup"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Resource Groups response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -386,12 +389,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -401,15 +404,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -418,12 +421,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -433,39 +436,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "A group of scoped resources.",
+												"type": "object",
 												"properties": {
 													"id": {
 														"description": "Identifier of the resource group.",
+														"type": "string",
 														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"meta": {
 														"description": "Attributes associated to the resource group.",
+														"type": "object",
 														"example": {
 															"editable": "false"
 														},
@@ -476,18 +481,18 @@
 															"value": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"name": {
 														"description": "Name of the resource group.",
+														"type": "string",
 														"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"scope": {
 														"description": "A scope is a combination of scope objects which provides additional context.",
+														"type": "object",
 														"properties": {
 															"key": {
 																"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -497,8 +502,10 @@
 															},
 															"objects": {
 																"description": "A list of scope objects for additional context.",
+																"type": "array",
 																"items": {
 																	"description": "A scope object represents any resource that can have actions applied against invite.",
+																	"type": "object",
 																	"properties": {
 																		"key": {
 																			"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -509,26 +516,21 @@
 																	},
 																	"required": [
 																		"key"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																	]
+																}
 															}
 														},
 														"required": [
 															"key",
 															"objects"
-														],
-														"type": "object"
+														]
 													}
 												},
 												"required": [
 													"id",
 													"scope"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -537,66 +539,30 @@
 							"title": "List of resource groups in the account."
 						}
 					}
-				},
-				"description": "List Resource Groups response"
+				}
 			},
 			"4XX": {
+				"description": "List Resource Groups response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -605,12 +571,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -620,25 +586,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -646,12 +649,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Resource Groups response failure"
+				}
 			}
 		},
 		"security": [
@@ -663,7 +664,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Resource Groups",
 		"tags": [
 			"Account Resource Groups"
 		],
@@ -685,65 +685,69 @@
 		}
 	},
 	"GET /accounts/{account_id}/iam/resource_groups/{resource_group_id}": {
-		"description": "Get information about a specific resource group in an account.",
 		"operationId": "account-resource-group-details",
+		"summary": "Resource Group Details",
+		"description": "Get information about a specific resource group in an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "resource_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Resource Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Resource Group identifier tag.",
 					"title": "Resource Group Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Resource Group Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -752,12 +756,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -767,15 +771,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -784,12 +788,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -799,41 +803,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A group of scoped resources.",
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier of the resource group.",
+													"type": "string",
 													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "Attributes associated to the resource group.",
+													"type": "object",
 													"example": {
 														"editable": "false"
 													},
@@ -844,18 +848,18 @@
 														"value": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "Name of the resource group.",
+													"type": "string",
 													"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"scope": {
 													"description": "A scope is a combination of scope objects which provides additional context.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -865,8 +869,10 @@
 														},
 														"objects": {
 															"description": "A list of scope objects for additional context.",
+															"type": "array",
 															"items": {
 																"description": "A scope object represents any resource that can have actions applied against invite.",
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -877,24 +883,20 @@
 																},
 																"required": [
 																	"key"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
 													},
 													"required": [
 														"key",
 														"objects"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"id",
 												"scope"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -902,66 +904,30 @@
 							]
 						}
 					}
-				},
-				"description": "Resource Group Details response"
+				}
 			},
 			"4XX": {
+				"description": "Resource Group Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -970,12 +936,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -985,25 +951,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1011,12 +1014,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource Group Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1028,7 +1029,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Resource Group Details",
 		"tags": [
 			"Account Resource Groups"
 		],
@@ -1050,41 +1050,45 @@
 		}
 	},
 	"POST /accounts/{account_id}/iam/resource_groups": {
-		"description": "Create a new Resource Group under the specified account.",
 		"operationId": "account-resource-group-create",
+		"summary": "Create Resource Group",
+		"description": "Create a new Resource Group under the specified account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Name of the resource group",
-								"example": "NewResourceGroup",
-								"type": "string"
+								"type": "string",
+								"example": "NewResourceGroup"
 							},
 							"scope": {
 								"description": "A scope is a combination of scope objects which provides additional context.",
+								"type": "object",
 								"properties": {
 									"key": {
 										"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -1092,8 +1096,10 @@
 									},
 									"objects": {
 										"description": "A list of scope objects for additional context. The number of Scope objects should not be zero.",
+										"type": "array",
 										"items": {
 											"description": "A scope object represents any resource that can have actions applied against invite.",
+											"type": "object",
 											"properties": {
 												"key": {
 													"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -1102,47 +1108,45 @@
 											},
 											"required": [
 												"key"
-											],
-											"type": "object"
-										},
-										"type": "array"
+											]
+										}
 									}
 								},
 								"required": [
 									"key",
 									"objects"
-								],
-								"type": "object"
+								]
 							}
 						},
 						"required": [
 							"name",
 							"scope"
 						],
-						"title": "Create resource group",
-						"type": "object"
+						"title": "Create resource group"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add Resource Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1151,12 +1155,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1166,15 +1170,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1183,12 +1187,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1198,41 +1202,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A group of scoped resources.",
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier of the resource group.",
+													"type": "string",
 													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "Attributes associated to the resource group.",
+													"type": "object",
 													"example": {
 														"editable": "false"
 													},
@@ -1243,18 +1247,18 @@
 														"value": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "Name of the resource group.",
+													"type": "string",
 													"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"scope": {
 													"description": "A scope is a combination of scope objects which provides additional context.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -1264,8 +1268,10 @@
 														},
 														"objects": {
 															"description": "A list of scope objects for additional context.",
+															"type": "array",
 															"items": {
 																"description": "A scope object represents any resource that can have actions applied against invite.",
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -1276,24 +1282,20 @@
 																},
 																"required": [
 																	"key"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
 													},
 													"required": [
 														"key",
 														"objects"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"id",
 												"scope"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1301,66 +1303,30 @@
 							]
 						}
 					}
-				},
-				"description": "Add Resource Group response"
+				}
 			},
 			"4XX": {
+				"description": "Add Resource Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1369,12 +1335,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1384,25 +1350,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1410,12 +1413,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add Resource Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -1427,7 +1428,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Resource Group",
 		"tags": [
 			"Account Resource Groups"
 		],
@@ -1448,60 +1448,64 @@
 		}
 	},
 	"PUT /accounts/{account_id}/iam/resource_groups/{resource_group_id}": {
-		"description": "Modify an existing resource group.",
 		"operationId": "account-resource-group-update",
+		"summary": "Update Resource Group",
+		"description": "Modify an existing resource group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "resource_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Resource Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Resource Group identifier tag.",
 					"title": "Resource Group Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Name of the resource group",
-								"example": "UpdatedResourceGroup",
-								"type": "string"
+								"type": "string",
+								"example": "UpdatedResourceGroup"
 							},
 							"scope": {
 								"description": "A scope is a combination of scope objects which provides additional context.",
+								"type": "object",
 								"properties": {
 									"key": {
 										"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -1509,8 +1513,10 @@
 									},
 									"objects": {
 										"description": "A list of scope objects for additional context. The number of Scope objects should not be zero.",
+										"type": "array",
 										"items": {
 											"description": "A scope object represents any resource that can have actions applied against invite.",
+											"type": "object",
 											"properties": {
 												"key": {
 													"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -1519,43 +1525,41 @@
 											},
 											"required": [
 												"key"
-											],
-											"type": "object"
-										},
-										"type": "array"
+											]
+										}
 									}
 								},
 								"required": [
 									"key",
 									"objects"
-								],
-								"type": "object"
+								]
 							}
 						},
-						"title": "Update resource group",
-						"type": "object"
+						"title": "Update resource group"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Resource Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1564,12 +1568,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1579,15 +1583,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1596,12 +1600,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1611,41 +1615,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A group of scoped resources.",
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier of the resource group.",
+													"type": "string",
 													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "Attributes associated to the resource group.",
+													"type": "object",
 													"example": {
 														"editable": "false"
 													},
@@ -1656,18 +1660,18 @@
 														"value": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "Name of the resource group.",
+													"type": "string",
 													"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"scope": {
 													"description": "A scope is a combination of scope objects which provides additional context.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -1677,8 +1681,10 @@
 														},
 														"objects": {
 															"description": "A list of scope objects for additional context.",
+															"type": "array",
 															"items": {
 																"description": "A scope object represents any resource that can have actions applied against invite.",
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -1689,24 +1695,20 @@
 																},
 																"required": [
 																	"key"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
 													},
 													"required": [
 														"key",
 														"objects"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"id",
 												"scope"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1714,66 +1716,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update Resource Group response"
+				}
 			},
 			"4XX": {
+				"description": "Update Resource Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1782,12 +1748,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1797,25 +1763,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1823,12 +1826,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Resource Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -1840,7 +1841,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Resource Group",
 		"tags": [
 			"Account Resource Groups"
 		],

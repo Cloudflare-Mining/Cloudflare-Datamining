@@ -1,43 +1,47 @@
 {
 	"DELETE /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
-		"description": "Deletes a sensitivity group and its levels.",
 		"operationId": "dlp-sensitivity-groups-delete",
+		"summary": "Delete a single sensitivity group.",
+		"description": "Deletes a sensitivity group and its levels.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sensitivity_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Sensitivity group delete was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -46,12 +50,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -61,15 +65,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -78,12 +82,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -93,32 +97,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -126,66 +128,30 @@
 							]
 						}
 					}
-				},
-				"description": "Sensitivity group delete was successful."
+				}
 			},
 			"4XX": {
+				"description": "Sensitivity group delete failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -194,12 +160,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -209,25 +175,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -235,12 +238,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sensitivity group delete failed."
+				}
 			}
 		},
 		"security": [
@@ -250,7 +251,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a single sensitivity group.",
 		"tags": [
 			"DLP Sensitivity Groups"
 		],
@@ -259,12 +259,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups": {
-		"description": "Lists sensitivity groups configured for the account.",
 		"operationId": "dlp-sensitivity-groups-list",
+		"summary": "Retrieve all sensitivity groups in an account",
+		"description": "Lists sensitivity groups configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -273,21 +274,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Sensitivity group read was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -296,12 +300,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -311,15 +315,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -328,12 +332,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -343,65 +347,67 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"description": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"id": {
-														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"format": "uuid"
 													},
 													"levels": {
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"created_at": {
-																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																},
 																"description": {
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"id": {
-																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"format": "uuid"
 																},
 																"name": {
 																	"type": "string"
 																},
 																"updated_at": {
-																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																}
 															},
 															"required": [
@@ -409,22 +415,20 @@
 																"name",
 																"created_at",
 																"updated_at"
-															],
-															"type": "object"
-														},
-														"type": "array"
+															]
+														}
 													},
 													"name": {
 														"type": "string"
 													},
 													"template_id": {
+														"type": "string",
 														"format": "uuid",
-														"nullable": true,
-														"type": "string"
+														"nullable": true
 													},
 													"updated_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													}
 												},
 												"required": [
@@ -433,10 +437,8 @@
 													"created_at",
 													"updated_at",
 													"levels"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -444,66 +446,30 @@
 							]
 						}
 					}
-				},
-				"description": "Sensitivity group read was successful."
+				}
 			},
 			"4XX": {
+				"description": "Sensitivity group read failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -512,12 +478,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -527,25 +493,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -553,12 +556,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sensitivity group read failed."
+				}
 			}
 		},
 		"security": [
@@ -568,7 +569,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve all sensitivity groups in an account",
 		"tags": [
 			"DLP Sensitivity Groups"
 		],
@@ -578,44 +578,48 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
-		"description": "Gets a sensitivity group and its levels.",
 		"operationId": "dlp-sensitivity-groups-read",
+		"summary": "Retrieve a specific sensitivity group.",
+		"description": "Gets a sensitivity group and its levels.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sensitivity_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Sensitivity group read was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -624,12 +628,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -639,15 +643,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -656,12 +660,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -671,64 +675,65 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"levels": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"description": {
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"id": {
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"name": {
 																"type": "string"
 															},
 															"updated_at": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															}
 														},
 														"required": [
@@ -736,22 +741,20 @@
 															"name",
 															"created_at",
 															"updated_at"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"name": {
 													"type": "string"
 												},
 												"template_id": {
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
@@ -760,8 +763,7 @@
 												"created_at",
 												"updated_at",
 												"levels"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -769,66 +771,30 @@
 							]
 						}
 					}
-				},
-				"description": "Sensitivity group read was successful."
+				}
 			},
 			"4XX": {
+				"description": "Sensitivity group read failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -837,12 +803,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -852,25 +818,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -878,12 +881,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sensitivity group read failed."
+				}
 			}
 		},
 		"security": [
@@ -893,7 +894,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve a specific sensitivity group.",
 		"tags": [
 			"DLP Sensitivity Groups"
 		],
@@ -903,44 +903,48 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order": {
-		"description": "Gets the current order of sensitivity levels in a group.",
 		"operationId": "dlp-sensitivity-groups-get-level-order",
+		"summary": "Retrieve the ordered list of level IDs for a sensitivity group.",
+		"description": "Gets the current order of sensitivity levels in a group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sensitivity_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Level order read was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -949,12 +953,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -964,15 +968,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -981,12 +985,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -996,44 +1000,42 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The ordered list of level IDs for a sensitivity group.\nUsed to get and set the ordering of levels independently of level attributes.",
+											"type": "object",
 											"properties": {
 												"level_ids": {
+													"type": "array",
 													"items": {
 														"format": "uuid",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"level_ids"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1041,66 +1043,30 @@
 							]
 						}
 					}
-				},
-				"description": "Level order read was successful."
+				}
 			},
 			"4XX": {
+				"description": "Level order read failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1109,12 +1075,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1124,25 +1090,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1150,12 +1153,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Level order read failed."
+				}
 			}
 		},
 		"security": [
@@ -1165,7 +1166,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve the ordered list of level IDs for a sensitivity group.",
 		"tags": [
 			"DLP Sensitivity Groups"
 		],
@@ -1175,12 +1175,13 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/sensitivity_groups": {
-		"description": "Creates a sensitivity group, optionally from a template.",
 		"operationId": "dlp-sensitivity-groups-create",
+		"summary": "Creates a new sensitivity group.",
+		"description": "Creates a sensitivity group, optionally from a template.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1188,21 +1189,26 @@
 			}
 		],
 		"requestBody": {
+			"description": "Attributes of the new sensitivity group.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							},
 							"levels": {
 								"description": "Levels to create with the group. Mutually exclusive with `template_id`.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"description": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"name": {
 											"type": "string"
@@ -1210,10 +1216,8 @@
 									},
 									"required": [
 										"name"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array",
 								"x-stainless-skip": [
 									"terraform"
 								]
@@ -1222,9 +1226,9 @@
 								"type": "string"
 							},
 							"template_id": {
+								"type": "string",
 								"format": "uuid",
 								"nullable": true,
-								"type": "string",
 								"x-stainless-skip": [
 									"terraform"
 								]
@@ -1232,31 +1236,31 @@
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Attributes of the new sensitivity group.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Sensitivity group created successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1265,12 +1269,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1280,15 +1284,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1297,12 +1301,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1312,64 +1316,65 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"levels": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"description": {
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"id": {
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"name": {
 																"type": "string"
 															},
 															"updated_at": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															}
 														},
 														"required": [
@@ -1377,22 +1382,20 @@
 															"name",
 															"created_at",
 															"updated_at"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"name": {
 													"type": "string"
 												},
 												"template_id": {
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
@@ -1401,8 +1404,7 @@
 												"created_at",
 												"updated_at",
 												"levels"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1410,66 +1412,30 @@
 							]
 						}
 					}
-				},
-				"description": "Sensitivity group created successfully."
+				}
 			},
 			"4XX": {
+				"description": "Sensitivity group creation failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1478,12 +1444,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1493,25 +1459,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1519,12 +1522,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sensitivity group creation failed."
+				}
 			}
 		},
 		"security": [
@@ -1534,7 +1535,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates a new sensitivity group.",
 		"tags": [
 			"DLP Sensitivity Groups"
 		],
@@ -1543,60 +1543,65 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
-		"description": "Updates a sensitivity group and its levels.",
 		"operationId": "dlp-sensitivity-groups-update",
+		"summary": "Update the attributes of a single sensitivity group.",
+		"description": "Updates a sensitivity group and its levels.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sensitivity_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"requestBody": {
+			"description": "Attributes of the sensitivity group to update.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							},
 							"levels": {
 								"description": "The desired final state of levels.\n- `None` (omitted): no level changes.\n- `Some([])`: delete all levels.\n- `Some([...])`: desired final set + order.",
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"description": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"name": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												}
-											},
-											"type": "object"
+											}
 										},
 										{
 											"properties": {
 												"id": {
 													"description": "If `None` (omitted), a new level will be created. Otherwise, an existing level will\nbe updated.",
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -1604,40 +1609,39 @@
 									]
 								},
 								"nullable": true,
-								"type": "array",
 								"x-stainless-skip": [
 									"terraform"
 								]
 							},
 							"name": {
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "Attributes of the sensitivity group to update.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Sensitivity group update was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1646,12 +1650,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1661,15 +1665,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1678,12 +1682,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1693,64 +1697,65 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"description": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"levels": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"description": {
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"id": {
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"name": {
 																"type": "string"
 															},
 															"updated_at": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															}
 														},
 														"required": [
@@ -1758,22 +1763,20 @@
 															"name",
 															"created_at",
 															"updated_at"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"name": {
 													"type": "string"
 												},
 												"template_id": {
+													"type": "string",
 													"format": "uuid",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
@@ -1782,8 +1785,7 @@
 												"created_at",
 												"updated_at",
 												"levels"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1791,66 +1793,30 @@
 							]
 						}
 					}
-				},
-				"description": "Sensitivity group update was successful."
+				}
 			},
 			"4XX": {
+				"description": "Sensitivity group update failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1859,12 +1825,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1874,25 +1840,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1900,12 +1903,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sensitivity group update failed."
+				}
 			}
 		},
 		"security": [
@@ -1915,7 +1916,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update the attributes of a single sensitivity group.",
 		"tags": [
 			"DLP Sensitivity Groups"
 		],
@@ -1924,68 +1924,72 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order": {
-		"description": "Updates the order of sensitivity levels in a group.",
 		"operationId": "dlp-sensitivity-groups-put-level-order",
+		"summary": "Set the ordering of levels within a sensitivity group.",
+		"description": "Updates the order of sensitivity levels in a group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sensitivity_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"requestBody": {
+			"description": "Desired ordered list of level IDs.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "The ordered list of level IDs for a sensitivity group.\nUsed to get and set the ordering of levels independently of level attributes.",
+						"type": "object",
 						"properties": {
 							"level_ids": {
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"level_ids"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Desired ordered list of level IDs.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Level order update was successful.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1994,12 +1998,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2009,15 +2013,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2026,12 +2030,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2041,44 +2045,42 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The ordered list of level IDs for a sensitivity group.\nUsed to get and set the ordering of levels independently of level attributes.",
+											"type": "object",
 											"properties": {
 												"level_ids": {
+													"type": "array",
 													"items": {
 														"format": "uuid",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"level_ids"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2086,66 +2088,30 @@
 							]
 						}
 					}
-				},
-				"description": "Level order update was successful."
+				}
 			},
 			"4XX": {
+				"description": "Level order update failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2154,12 +2120,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2169,25 +2135,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2195,12 +2198,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Level order update failed."
+				}
 			}
 		},
 		"security": [
@@ -2210,7 +2211,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Set the ordering of levels within a sensitivity group.",
 		"tags": [
 			"DLP Sensitivity Groups"
 		],

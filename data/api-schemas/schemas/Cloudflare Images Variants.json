@@ -1,57 +1,61 @@
 {
 	"DELETE /accounts/{account_id}/images/v1/variants/{variant_id}": {
-		"description": "Delete a CF Images variant. This will purge the cache for all images associated with the variant.",
 		"operationId": "cloudflare-images-variants-delete-a-variant",
+		"summary": "Delete a variant",
+		"description": "Delete a CF Images variant. This will purge the cache for all images associated with the variant.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "variant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete a variant response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -66,15 +70,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -89,7 +93,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -107,11 +111,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -120,8 +124,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -137,24 +140,23 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"example": {},
-											"type": "object"
+											"type": "object",
+											"example": {}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete a variant response"
+				}
 			},
 			"4XX": {
+				"description": "Delete a variant response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -162,16 +164,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -186,15 +190,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -209,7 +213,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -227,11 +231,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
 															],
-															"example": true,
-															"type": "boolean",
 															"x-auditable": true
 														}
 													},
@@ -240,8 +244,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -257,64 +260,36 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"example": {},
-													"type": "object"
+													"type": "object",
+													"example": {}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -329,25 +304,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -356,14 +359,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete a variant response failure"
+				}
 			}
 		},
 		"security": [
@@ -375,7 +376,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a variant",
 		"tags": [
 			"Cloudflare Images Variants"
 		],
@@ -389,38 +389,41 @@
 		"x-forge-require-confirmation": "This operation will delete this variant."
 	},
 	"GET /accounts/{account_id}/images/v1/variants": {
-		"description": "List existing CF Images variants.",
 		"operationId": "cloudflare-images-variants-list-variants",
+		"summary": "List variants",
+		"description": "List existing CF Images variants.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List variants response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -435,15 +438,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -458,7 +461,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -476,11 +479,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
 											],
-											"example": true,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -489,36 +492,41 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"variants": {
+													"type": "object",
 													"properties": {
 														"hero": {
+															"type": "object",
 															"properties": {
 																"id": {
+																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
-																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": false,
 																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
+																	"type": "object",
 																	"properties": {
 																		"fit": {
 																			"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																			"type": "string",
+																			"example": "scale-down",
 																			"enum": [
 																				"scale-down",
 																				"contain",
@@ -526,33 +534,31 @@
 																				"crop",
 																				"pad"
 																			],
-																			"example": "scale-down",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
+																			"type": "number",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
+																			"type": "string",
+																			"example": "none",
 																			"enum": [
 																				"keep",
 																				"copyright",
 																				"none"
 																			],
-																			"example": "none",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
+																			"type": "number",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		}
 																	},
@@ -561,31 +567,27 @@
 																		"metadata",
 																		"width",
 																		"height"
-																	],
-																	"type": "object"
+																	]
 																}
 															},
 															"required": [
 																"id",
 																"options"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List variants response"
+				}
 			},
 			"4XX": {
+				"description": "List variants response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -593,14 +595,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -615,15 +618,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -638,7 +641,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -656,11 +659,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -669,36 +672,41 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"variants": {
+															"type": "object",
 															"properties": {
 																"hero": {
+																	"type": "object",
 																	"properties": {
 																		"id": {
+																			"type": "string",
 																			"example": "hero",
 																			"maxLength": 99,
 																			"pattern": "^[a-zA-Z0-9]$",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"neverRequireSignedURLs": {
-																			"default": false,
 																			"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
+																			"default": false,
 																			"x-auditable": true
 																		},
 																		"options": {
 																			"description": "Allows you to define image resizing sizes for different use cases.",
+																			"type": "object",
 																			"properties": {
 																				"fit": {
 																					"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																					"type": "string",
+																					"example": "scale-down",
 																					"enum": [
 																						"scale-down",
 																						"contain",
@@ -706,33 +714,31 @@
 																						"crop",
 																						"pad"
 																					],
-																					"example": "scale-down",
-																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"height": {
 																					"description": "Maximum height in image pixels.",
+																					"type": "number",
 																					"example": 768,
 																					"minimum": 1,
-																					"type": "number",
 																					"x-auditable": true
 																				},
 																				"metadata": {
 																					"description": "What EXIF data should be preserved in the output image.",
+																					"type": "string",
+																					"example": "none",
 																					"enum": [
 																						"keep",
 																						"copyright",
 																						"none"
 																					],
-																					"example": "none",
-																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"width": {
 																					"description": "Maximum width in image pixels.",
+																					"type": "number",
 																					"example": 1366,
 																					"minimum": 1,
-																					"type": "number",
 																					"x-auditable": true
 																				}
 																			},
@@ -741,71 +747,40 @@
 																				"metadata",
 																				"width",
 																				"height"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
 																		"id",
 																		"options"
-																	],
-																	"type": "object"
+																	]
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -820,25 +795,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -847,14 +850,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List variants response failure"
+				}
 			}
 		},
 		"security": [
@@ -866,7 +867,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List variants",
 		"tags": [
 			"Cloudflare Images Variants"
 		],
@@ -880,52 +880,56 @@
 		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
-		"description": "Fetch details for a CF Images variant.",
 		"operationId": "cloudflare-images-variants-variant-details",
+		"summary": "Variant details",
+		"description": "Fetch details for a CF Images variant.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "variant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Variant details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -940,15 +944,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -963,7 +967,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -981,11 +985,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -994,8 +998,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1011,34 +1014,38 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"variant": {
+													"type": "object",
 													"properties": {
 														"id": {
+															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
 															"pattern": "^[a-zA-Z0-9]$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
-															"default": false,
 															"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"options": {
 															"description": "Allows you to define image resizing sizes for different use cases.",
+															"type": "object",
 															"properties": {
 																"fit": {
 																	"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																	"type": "string",
+																	"example": "scale-down",
 																	"enum": [
 																		"scale-down",
 																		"contain",
@@ -1046,33 +1053,31 @@
 																		"crop",
 																		"pad"
 																	],
-																	"example": "scale-down",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"height": {
 																	"description": "Maximum height in image pixels.",
+																	"type": "number",
 																	"example": 768,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "What EXIF data should be preserved in the output image.",
+																	"type": "string",
+																	"example": "none",
 																	"enum": [
 																		"keep",
 																		"copyright",
 																		"none"
 																	],
-																	"example": "none",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"width": {
 																	"description": "Maximum width in image pixels.",
+																	"type": "number",
 																	"example": 1366,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																}
 															},
@@ -1081,28 +1086,25 @@
 																"metadata",
 																"width",
 																"height"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"id",
 														"options"
-													],
-													"type": "object"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Variant details response"
+				}
 			},
 			"4XX": {
+				"description": "Variant details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1110,16 +1112,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -1134,15 +1138,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -1157,7 +1161,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1175,11 +1179,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
 															],
-															"example": true,
-															"type": "boolean",
 															"x-auditable": true
 														}
 													},
@@ -1188,8 +1192,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1205,34 +1208,38 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"variant": {
+															"type": "object",
 															"properties": {
 																"id": {
+																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
-																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": false,
 																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
+																	"type": "object",
 																	"properties": {
 																		"fit": {
 																			"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																			"type": "string",
+																			"example": "scale-down",
 																			"enum": [
 																				"scale-down",
 																				"contain",
@@ -1240,33 +1247,31 @@
 																				"crop",
 																				"pad"
 																			],
-																			"example": "scale-down",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
+																			"type": "number",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
+																			"type": "string",
+																			"example": "none",
 																			"enum": [
 																				"keep",
 																				"copyright",
 																				"none"
 																			],
-																			"example": "none",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
+																			"type": "number",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		}
 																	},
@@ -1275,68 +1280,38 @@
 																		"metadata",
 																		"width",
 																		"height"
-																	],
-																	"type": "object"
+																	]
 																}
 															},
 															"required": [
 																"id",
 																"options"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1351,25 +1326,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -1378,14 +1381,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Variant details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1397,7 +1398,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Variant details",
 		"tags": [
 			"Cloudflare Images Variants"
 		],
@@ -1411,52 +1411,56 @@
 		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}/flat": {
-		"description": "Fetch details for a single variant with properties at the top level of the result.",
 		"operationId": "cloudflare-images-variants-variant-details-flat",
+		"summary": "Variant details (flat)",
+		"description": "Fetch details for a single variant with properties at the top level of the result.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "variant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Variant details flat response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1471,15 +1475,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1494,7 +1498,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1512,11 +1516,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -1525,8 +1529,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1542,32 +1545,35 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
+													"type": "string",
 													"example": "hero",
 													"maxLength": 99,
 													"pattern": "^[a-zA-Z0-9]$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"neverRequireSignedURLs": {
-													"default": false,
 													"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"options": {
 													"description": "Allows you to define image resizing sizes for different use cases.",
+													"type": "object",
 													"properties": {
 														"fit": {
 															"description": "The fit property describes how the width and height dimensions should be interpreted.",
+															"type": "string",
+															"example": "scale-down",
 															"enum": [
 																"scale-down",
 																"contain",
@@ -1575,33 +1581,31 @@
 																"crop",
 																"pad"
 															],
-															"example": "scale-down",
-															"type": "string",
 															"x-auditable": true
 														},
 														"height": {
 															"description": "Maximum height in image pixels.",
+															"type": "number",
 															"example": 768,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														},
 														"metadata": {
 															"description": "What EXIF data should be preserved in the output image.",
+															"type": "string",
+															"example": "none",
 															"enum": [
 																"keep",
 																"copyright",
 																"none"
 															],
-															"example": "none",
-															"type": "string",
 															"x-auditable": true
 														},
 														"width": {
 															"description": "Maximum width in image pixels.",
+															"type": "number",
 															"example": 1366,
 															"minimum": 1,
-															"type": "number",
 															"x-auditable": true
 														}
 													},
@@ -1610,25 +1614,23 @@
 														"metadata",
 														"width",
 														"height"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"id",
 												"options"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Variant details flat response"
+				}
 			},
 			"4XX": {
+				"description": "Variant details flat response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1636,16 +1638,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -1660,15 +1664,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -1683,7 +1687,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1701,11 +1705,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
 															],
-															"example": true,
-															"type": "boolean",
 															"x-auditable": true
 														}
 													},
@@ -1714,8 +1718,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1731,32 +1734,35 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"id": {
+															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
 															"pattern": "^[a-zA-Z0-9]$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
-															"default": false,
 															"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"options": {
 															"description": "Allows you to define image resizing sizes for different use cases.",
+															"type": "object",
 															"properties": {
 																"fit": {
 																	"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																	"type": "string",
+																	"example": "scale-down",
 																	"enum": [
 																		"scale-down",
 																		"contain",
@@ -1764,33 +1770,31 @@
 																		"crop",
 																		"pad"
 																	],
-																	"example": "scale-down",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"height": {
 																	"description": "Maximum height in image pixels.",
+																	"type": "number",
 																	"example": 768,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "What EXIF data should be preserved in the output image.",
+																	"type": "string",
+																	"example": "none",
 																	"enum": [
 																		"keep",
 																		"copyright",
 																		"none"
 																	],
-																	"example": "none",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"width": {
 																	"description": "Maximum width in image pixels.",
+																	"type": "number",
 																	"example": 1366,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																}
 															},
@@ -1799,65 +1803,36 @@
 																"metadata",
 																"width",
 																"height"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"id",
 														"options"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1872,25 +1847,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -1899,14 +1902,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Variant details flat response failure"
+				}
 			}
 		},
 		"security": [
@@ -1918,7 +1919,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Variant details (flat)",
 		"tags": [
 			"Cloudflare Images Variants"
 		],
@@ -1932,52 +1932,58 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/images/v1/variants/{variant_id}": {
-		"description": "Update a CF Images variant. This will purge the cache for all images associated with the variant.",
 		"operationId": "cloudflare-images-variants-update-a-variant",
+		"summary": "Update a variant",
+		"description": "Update a CF Images variant. This will purge the cache for all images associated with the variant.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "variant_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "hero",
 					"maxLength": 99,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"neverRequireSignedURLs": {
-								"default": false,
 								"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"options": {
 								"description": "Allows you to define image resizing sizes for different use cases.",
+								"type": "object",
 								"properties": {
 									"fit": {
 										"description": "The fit property describes how the width and height dimensions should be interpreted.",
+										"type": "string",
+										"example": "scale-down",
 										"enum": [
 											"scale-down",
 											"contain",
@@ -1985,33 +1991,31 @@
 											"crop",
 											"pad"
 										],
-										"example": "scale-down",
-										"type": "string",
 										"x-auditable": true
 									},
 									"height": {
 										"description": "Maximum height in image pixels.",
+										"type": "number",
 										"example": 768,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									},
 									"metadata": {
 										"description": "What EXIF data should be preserved in the output image.",
+										"type": "string",
+										"example": "none",
 										"enum": [
 											"keep",
 											"copyright",
 											"none"
 										],
-										"example": "none",
-										"type": "string",
 										"x-auditable": true
 									},
 									"width": {
 										"description": "Maximum width in image pixels.",
+										"type": "number",
 										"example": 1366,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									}
 								},
@@ -2020,36 +2024,36 @@
 									"metadata",
 									"width",
 									"height"
-								],
-								"type": "object"
+								]
 							}
 						},
 						"required": [
 							"options"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a variant response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -2064,15 +2068,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -2087,7 +2091,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2105,11 +2109,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -2118,8 +2122,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2135,34 +2138,38 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"variant": {
+													"type": "object",
 													"properties": {
 														"id": {
+															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
 															"pattern": "^[a-zA-Z0-9]$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
-															"default": false,
 															"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"options": {
 															"description": "Allows you to define image resizing sizes for different use cases.",
+															"type": "object",
 															"properties": {
 																"fit": {
 																	"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																	"type": "string",
+																	"example": "scale-down",
 																	"enum": [
 																		"scale-down",
 																		"contain",
@@ -2170,33 +2177,31 @@
 																		"crop",
 																		"pad"
 																	],
-																	"example": "scale-down",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"height": {
 																	"description": "Maximum height in image pixels.",
+																	"type": "number",
 																	"example": 768,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "What EXIF data should be preserved in the output image.",
+																	"type": "string",
+																	"example": "none",
 																	"enum": [
 																		"keep",
 																		"copyright",
 																		"none"
 																	],
-																	"example": "none",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"width": {
 																	"description": "Maximum width in image pixels.",
+																	"type": "number",
 																	"example": 1366,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																}
 															},
@@ -2205,28 +2210,25 @@
 																"metadata",
 																"width",
 																"height"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"id",
 														"options"
-													],
-													"type": "object"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a variant response"
+				}
 			},
 			"4XX": {
+				"description": "Update a variant response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2234,16 +2236,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -2258,15 +2262,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -2281,7 +2285,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2299,11 +2303,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
 															],
-															"example": true,
-															"type": "boolean",
 															"x-auditable": true
 														}
 													},
@@ -2312,8 +2316,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2329,34 +2332,38 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"variant": {
+															"type": "object",
 															"properties": {
 																"id": {
+																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
-																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": false,
 																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
+																	"type": "object",
 																	"properties": {
 																		"fit": {
 																			"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																			"type": "string",
+																			"example": "scale-down",
 																			"enum": [
 																				"scale-down",
 																				"contain",
@@ -2364,33 +2371,31 @@
 																				"crop",
 																				"pad"
 																			],
-																			"example": "scale-down",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
+																			"type": "number",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
+																			"type": "string",
+																			"example": "none",
 																			"enum": [
 																				"keep",
 																				"copyright",
 																				"none"
 																			],
-																			"example": "none",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
+																			"type": "number",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		}
 																	},
@@ -2399,68 +2404,38 @@
 																		"metadata",
 																		"width",
 																		"height"
-																	],
-																	"type": "object"
+																	]
 																}
 															},
 															"required": [
 																"id",
 																"options"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -2475,25 +2450,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -2502,14 +2505,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a variant response failure"
+				}
 			}
 		},
 		"security": [
@@ -2521,7 +2522,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a variant",
 		"tags": [
 			"Cloudflare Images Variants"
 		],
@@ -2534,47 +2534,53 @@
 		"x-forge-hidden": false
 	},
 	"POST /accounts/{account_id}/images/v1/variants": {
-		"description": "Create a CF Images variant that allows you to resize images for different use cases.",
 		"operationId": "cloudflare-images-variants-create-a-variant",
+		"summary": "Create a variant",
+		"description": "Create a CF Images variant that allows you to resize images for different use cases.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"id": {
+								"type": "string",
 								"example": "hero",
 								"maxLength": 99,
 								"pattern": "^[a-zA-Z0-9]$",
-								"type": "string",
 								"x-auditable": true
 							},
 							"neverRequireSignedURLs": {
-								"default": false,
 								"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"options": {
 								"description": "Allows you to define image resizing sizes for different use cases.",
+								"type": "object",
 								"properties": {
 									"fit": {
 										"description": "The fit property describes how the width and height dimensions should be interpreted.",
+										"type": "string",
+										"example": "scale-down",
 										"enum": [
 											"scale-down",
 											"contain",
@@ -2582,33 +2588,31 @@
 											"crop",
 											"pad"
 										],
-										"example": "scale-down",
-										"type": "string",
 										"x-auditable": true
 									},
 									"height": {
 										"description": "Maximum height in image pixels.",
+										"type": "number",
 										"example": 768,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									},
 									"metadata": {
 										"description": "What EXIF data should be preserved in the output image.",
+										"type": "string",
+										"example": "none",
 										"enum": [
 											"keep",
 											"copyright",
 											"none"
 										],
-										"example": "none",
-										"type": "string",
 										"x-auditable": true
 									},
 									"width": {
 										"description": "Maximum width in image pixels.",
+										"type": "number",
 										"example": 1366,
 										"minimum": 1,
-										"type": "number",
 										"x-auditable": true
 									}
 								},
@@ -2617,37 +2621,37 @@
 									"metadata",
 									"width",
 									"height"
-								],
-								"type": "object"
+								]
 							}
 						},
 						"required": [
 							"id",
 							"options"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a variant response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -2662,15 +2666,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -2685,7 +2689,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2703,11 +2707,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -2716,8 +2720,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2733,34 +2736,38 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"variant": {
+													"type": "object",
 													"properties": {
 														"id": {
+															"type": "string",
 															"example": "hero",
 															"maxLength": 99,
 															"pattern": "^[a-zA-Z0-9]$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"neverRequireSignedURLs": {
-															"default": false,
 															"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"options": {
 															"description": "Allows you to define image resizing sizes for different use cases.",
+															"type": "object",
 															"properties": {
 																"fit": {
 																	"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																	"type": "string",
+																	"example": "scale-down",
 																	"enum": [
 																		"scale-down",
 																		"contain",
@@ -2768,33 +2775,31 @@
 																		"crop",
 																		"pad"
 																	],
-																	"example": "scale-down",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"height": {
 																	"description": "Maximum height in image pixels.",
+																	"type": "number",
 																	"example": 768,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"metadata": {
 																	"description": "What EXIF data should be preserved in the output image.",
+																	"type": "string",
+																	"example": "none",
 																	"enum": [
 																		"keep",
 																		"copyright",
 																		"none"
 																	],
-																	"example": "none",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"width": {
 																	"description": "Maximum width in image pixels.",
+																	"type": "number",
 																	"example": 1366,
 																	"minimum": 1,
-																	"type": "number",
 																	"x-auditable": true
 																}
 															},
@@ -2803,28 +2808,25 @@
 																"metadata",
 																"width",
 																"height"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"id",
 														"options"
-													],
-													"type": "object"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a variant response"
+				}
 			},
 			"4XX": {
+				"description": "Create a variant response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2832,16 +2834,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -2856,15 +2860,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
 																		"type": "integer",
+																		"minimum": 1000,
 																		"x-auditable": true
 																	},
 																	"message": {
@@ -2879,7 +2883,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2897,11 +2901,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
 															],
-															"example": true,
-															"type": "boolean",
 															"x-auditable": true
 														}
 													},
@@ -2910,8 +2914,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2927,34 +2930,38 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"variant": {
+															"type": "object",
 															"properties": {
 																"id": {
+																	"type": "string",
 																	"example": "hero",
 																	"maxLength": 99,
 																	"pattern": "^[a-zA-Z0-9]$",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"neverRequireSignedURLs": {
-																	"default": false,
 																	"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": false,
 																	"x-auditable": true
 																},
 																"options": {
 																	"description": "Allows you to define image resizing sizes for different use cases.",
+																	"type": "object",
 																	"properties": {
 																		"fit": {
 																			"description": "The fit property describes how the width and height dimensions should be interpreted.",
+																			"type": "string",
+																			"example": "scale-down",
 																			"enum": [
 																				"scale-down",
 																				"contain",
@@ -2962,33 +2969,31 @@
 																				"crop",
 																				"pad"
 																			],
-																			"example": "scale-down",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"height": {
 																			"description": "Maximum height in image pixels.",
+																			"type": "number",
 																			"example": 768,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"description": "What EXIF data should be preserved in the output image.",
+																			"type": "string",
+																			"example": "none",
 																			"enum": [
 																				"keep",
 																				"copyright",
 																				"none"
 																			],
-																			"example": "none",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"width": {
 																			"description": "Maximum width in image pixels.",
+																			"type": "number",
 																			"example": 1366,
 																			"minimum": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		}
 																	},
@@ -2997,68 +3002,38 @@
 																		"metadata",
 																		"width",
 																		"height"
-																	],
-																	"type": "object"
+																	]
 																}
 															},
 															"required": [
 																"id",
 																"options"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -3073,25 +3048,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -3100,14 +3103,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a variant response failure"
+				}
 			}
 		},
 		"security": [
@@ -3119,7 +3120,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a variant",
 		"tags": [
 			"Cloudflare Images Variants"
 		],

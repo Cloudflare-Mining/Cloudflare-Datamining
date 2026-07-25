@@ -1,44 +1,47 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
-		"description": "Deletes a priority intelligence request from Cloudforce One.",
 		"operationId": "cloudforce-one-priority-delete",
+		"summary": "Delete a Priority Intelligence Requirement",
+		"description": "Deletes a priority intelligence request from Cloudforce One.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "priority_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"type": "string"
+					"maxLength": 36
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete priority response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -47,12 +50,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -62,15 +65,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -79,12 +82,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -94,42 +97,42 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete priority response."
+				}
 			},
 			"4XX": {
+				"description": "Delete priority response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -138,12 +141,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -153,15 +156,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -170,12 +173,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -185,42 +188,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"properties": {
 												"code": {
-													"example": 10433,
-													"type": "integer"
+													"type": "integer",
+													"example": 10433
 												},
 												"message": {
-													"example": "request error",
-													"type": "string"
+													"type": "string",
+													"example": "request error"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"type": "object"
@@ -228,8 +230,7 @@
 							]
 						}
 					}
-				},
-				"description": "Delete priority response failure."
+				}
 			}
 		},
 		"security": [
@@ -238,7 +239,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
 		],
@@ -247,47 +247,50 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
-		"description": "Retrieves a specific priority intelligence request from Cloudforce One.",
 		"operationId": "cloudforce-one-priority-get",
+		"summary": "Get a Priority Intelligence Requirement",
+		"description": "Retrieves a specific priority intelligence request from Cloudforce One.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "priority_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"type": "string"
+					"maxLength": 36
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get priority response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -296,12 +299,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -311,15 +314,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -328,12 +331,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -343,80 +346,81 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"completed": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														},
 														"content": {
 															"description": "Request content.",
-															"example": "What regions were most effected by the recent DoS?",
-															"type": "string"
+															"type": "string",
+															"example": "What regions were most effected by the recent DoS?"
 														},
 														"created": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"type": "string"
+															"maxLength": 36
 														},
 														"message_tokens": {
 															"description": "Tokens for the request messages.",
-															"example": 1,
 															"type": "integer",
+															"example": 1,
 															"x-auditable": true
 														},
 														"priority": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														},
 														"readable_id": {
 															"description": "Readable Request ID.",
+															"type": "string",
 															"example": "RFI-2022-000001",
 															"title": "Request Readable ID",
-															"type": "string",
 															"x-auditable": true
 														},
 														"request": {
 															"description": "Requested information from request.",
-															"example": "Victomology",
 															"type": "string",
+															"example": "Victomology",
 															"x-auditable": true
 														},
 														"status": {
 															"description": "Request Status.",
+															"type": "string",
 															"enum": [
 																"open",
 																"accepted",
@@ -426,17 +430,17 @@
 																"declined"
 															],
 															"title": "Request Status",
-															"type": "string",
 															"x-auditable": true
 														},
 														"summary": {
 															"description": "Brief description of the request.",
-															"example": "DoS attack",
 															"type": "string",
+															"example": "DoS attack",
 															"x-auditable": true
 														},
 														"tlp": {
 															"description": "The CISA defined Traffic Light Protocol (TLP).",
+															"type": "string",
 															"enum": [
 																"clear",
 																"amber",
@@ -445,19 +449,18 @@
 																"red"
 															],
 															"title": "TLP",
-															"type": "string",
 															"x-auditable": true
 														},
 														"tokens": {
 															"description": "Tokens for the request.",
-															"example": 16,
 															"type": "integer",
+															"example": 16,
 															"x-auditable": true
 														},
 														"updated": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														}
 													},
@@ -471,8 +474,7 @@
 														"summary",
 														"tlp"
 													],
-													"title": "Request Item",
-													"type": "object"
+													"title": "Request Item"
 												}
 											]
 										}
@@ -482,23 +484,24 @@
 							]
 						}
 					}
-				},
-				"description": "Get priority response."
+				}
 			},
 			"4XX": {
+				"description": "Get priority response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -507,12 +510,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -522,15 +525,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -539,12 +542,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -554,42 +557,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"properties": {
 												"code": {
-													"example": 10433,
-													"type": "integer"
+													"type": "integer",
+													"example": 10433
 												},
 												"message": {
-													"example": "request error",
-													"type": "string"
+													"type": "string",
+													"example": "request error"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"type": "object"
@@ -597,8 +599,7 @@
 							]
 						}
 					}
-				},
-				"description": "Get priority response failure."
+				}
 			}
 		},
 		"security": [
@@ -607,7 +608,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
 		],
@@ -617,36 +617,39 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/priority/quota": {
-		"description": "Retrieves quota usage for Cloudforce One priority requests.",
 		"operationId": "cloudforce-one-priority-quota",
+		"summary": "Get Priority Intelligence Requirement Quota",
+		"description": "Retrieves quota usage for Cloudforce One priority requests.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get priority quota response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -655,12 +658,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -670,15 +673,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -687,12 +690,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -702,69 +705,68 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"anniversary_date": {
+															"description": "Anniversary date is when annual quota limit is refreshed.",
+															"example": "2022-04-01T00:00:00Z",
 															"allOf": [
 																{
-																	"example": "2022-04-01T05:20:00Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-04-01T05:20:00Z",
 																	"x-auditable": true
 																}
-															],
-															"description": "Anniversary date is when annual quota limit is refreshed.",
-															"example": "2022-04-01T00:00:00Z"
+															]
 														},
 														"quarter_anniversary_date": {
+															"description": "Quarter anniversary date is when quota limit is refreshed each quarter.",
+															"example": "2022-04-01T00:00:00Z",
 															"allOf": [
 																{
-																	"example": "2022-04-01T05:20:00Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-04-01T05:20:00Z",
 																	"x-auditable": true
 																}
-															],
-															"description": "Quarter anniversary date is when quota limit is refreshed each quarter.",
-															"example": "2022-04-01T00:00:00Z"
+															]
 														},
 														"quota": {
 															"description": "Tokens for the quarter.",
-															"example": 120,
 															"type": "integer",
+															"example": 120,
 															"x-auditable": true
 														},
 														"remaining": {
 															"description": "Tokens remaining for the quarter.",
-															"example": 64,
 															"type": "integer",
+															"example": 64,
 															"x-auditable": true
 														}
 													},
-													"title": "Quota",
-													"type": "object"
+													"title": "Quota"
 												}
 											]
 										}
@@ -774,23 +776,24 @@
 							]
 						}
 					}
-				},
-				"description": "Get priority quota response."
+				}
 			},
 			"4XX": {
+				"description": "Get priority quota response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -799,12 +802,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -814,15 +817,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -831,12 +834,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -846,42 +849,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"properties": {
 												"code": {
-													"example": 10433,
-													"type": "integer"
+													"type": "integer",
+													"example": 10433
 												},
 												"message": {
-													"example": "request error",
-													"type": "string"
+													"type": "string",
+													"example": "request error"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"type": "object"
@@ -889,8 +891,7 @@
 							]
 						}
 					}
-				},
-				"description": "Get priority quota response failure."
+				}
 			}
 		},
 		"security": [
@@ -899,7 +900,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Priority Intelligence Requirement Quota",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
 		],
@@ -909,25 +909,28 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/priority": {
-		"description": "Lists priority intelligence requests in Cloudforce One.",
 		"operationId": "cloudforce-one-priority-list",
+		"summary": "List Priority Intelligence Requirements",
+		"description": "Lists priority intelligence requests in Cloudforce One.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"page": {
 								"description": "Page number of results.",
@@ -935,36 +938,36 @@
 							},
 							"per_page": {
 								"description": "Number of results per page.",
-								"example": 10,
-								"type": "integer"
+								"type": "integer",
+								"example": 10
 							}
 						},
 						"required": [
 							"page",
 							"per_page"
 						],
-						"title": "Priority List Parameters",
-						"type": "object"
+						"title": "Priority List Parameters"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "List priorities response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -973,12 +976,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -988,15 +991,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1005,12 +1008,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1020,73 +1023,75 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created": {
+														"description": "Priority creation time.",
 														"allOf": [
 															{
-																"example": "2022-04-01T05:20:00Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2022-04-01T05:20:00Z",
 																"x-auditable": true
 															}
-														],
-														"description": "Priority creation time."
+														]
 													},
 													"id": {
 														"description": "UUID.",
+														"type": "string",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"maxLength": 36,
-														"type": "string"
+														"maxLength": 36
 													},
 													"labels": {
 														"description": "List of labels.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
 														"example": [
 															"DoS",
 															"CVE"
 														],
-														"items": {
-															"type": "string"
-														},
 														"title": "Labels",
-														"type": "array",
 														"x-auditable": true
 													},
 													"priority": {
 														"description": "Priority.",
-														"example": 1,
 														"type": "integer",
+														"example": 1,
 														"x-auditable": true
 													},
 													"requirement": {
 														"description": "Requirement.",
-														"example": "DoS attacks carried out by CVEs",
 														"type": "string",
+														"example": "DoS attacks carried out by CVEs",
 														"x-auditable": true
 													},
 													"tlp": {
 														"description": "The CISA defined Traffic Light Protocol (TLP).",
+														"type": "string",
 														"enum": [
 															"clear",
 															"amber",
@@ -1095,19 +1100,18 @@
 															"red"
 														],
 														"title": "TLP",
-														"type": "string",
 														"x-auditable": true
 													},
 													"updated": {
+														"description": "Priority last updated time.",
 														"allOf": [
 															{
-																"example": "2022-04-01T05:20:00Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2022-04-01T05:20:00Z",
 																"x-auditable": true
 															}
-														],
-														"description": "Priority last updated time."
+														]
 													}
 												},
 												"required": [
@@ -1119,10 +1123,8 @@
 													"requirement",
 													"tlp"
 												],
-												"title": "Priority Item",
-												"type": "object"
-											},
-											"type": "array"
+												"title": "Priority Item"
+											}
 										}
 									},
 									"type": "object"
@@ -1130,23 +1132,24 @@
 							]
 						}
 					}
-				},
-				"description": "List priorities response."
+				}
 			},
 			"4XX": {
+				"description": "List priorities response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1155,12 +1158,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1170,15 +1173,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1187,12 +1190,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1202,42 +1205,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"properties": {
 												"code": {
-													"example": 10433,
-													"type": "integer"
+													"type": "integer",
+													"example": 10433
 												},
 												"message": {
-													"example": "request error",
-													"type": "string"
+													"type": "string",
+													"example": "request error"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"type": "object"
@@ -1245,8 +1247,7 @@
 							]
 						}
 					}
-				},
-				"description": "List priorities response failure."
+				}
 			}
 		},
 		"security": [
@@ -1255,7 +1256,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Priority Intelligence Requirements",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
 		],
@@ -1264,53 +1264,57 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/priority/new": {
-		"description": "Creates a new priority intelligence request in Cloudforce One.",
 		"operationId": "cloudforce-one-priority-new",
+		"summary": "Create a New Priority Intelligence Requirement",
+		"description": "Creates a new priority intelligence request in Cloudforce One.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"labels": {
 								"description": "List of labels.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
 								"example": [
 									"DoS",
 									"CVE"
 								],
-								"items": {
-									"type": "string"
-								},
 								"title": "Labels",
-								"type": "array",
 								"x-auditable": true
 							},
 							"priority": {
 								"description": "Priority.",
-								"example": 1,
 								"type": "integer",
+								"example": 1,
 								"x-auditable": true
 							},
 							"requirement": {
 								"description": "Requirement.",
-								"example": "DoS attacks carried out by CVEs",
 								"type": "string",
+								"example": "DoS attacks carried out by CVEs",
 								"x-auditable": true
 							},
 							"tlp": {
 								"description": "The CISA defined Traffic Light Protocol (TLP).",
+								"type": "string",
 								"enum": [
 									"clear",
 									"amber",
@@ -1319,7 +1323,6 @@
 									"red"
 								],
 								"title": "TLP",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1329,28 +1332,28 @@
 							"requirement",
 							"tlp"
 						],
-						"title": "Priority Editable Attributes",
-						"type": "object"
+						"title": "Priority Editable Attributes"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create priority response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1359,12 +1362,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1374,15 +1377,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1391,12 +1394,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1406,72 +1409,73 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
+													"description": "Priority creation time.",
 													"allOf": [
 														{
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														}
-													],
-													"description": "Priority creation time."
+													]
 												},
 												"id": {
 													"description": "UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"maxLength": 36,
-													"type": "string"
+													"maxLength": 36
 												},
 												"labels": {
 													"description": "List of labels.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													},
 													"example": [
 														"DoS",
 														"CVE"
 													],
-													"items": {
-														"type": "string"
-													},
 													"title": "Labels",
-													"type": "array",
 													"x-auditable": true
 												},
 												"priority": {
 													"description": "Priority.",
-													"example": 1,
 													"type": "integer",
+													"example": 1,
 													"x-auditable": true
 												},
 												"requirement": {
 													"description": "Requirement.",
-													"example": "DoS attacks carried out by CVEs",
 													"type": "string",
+													"example": "DoS attacks carried out by CVEs",
 													"x-auditable": true
 												},
 												"tlp": {
 													"description": "The CISA defined Traffic Light Protocol (TLP).",
+													"type": "string",
 													"enum": [
 														"clear",
 														"amber",
@@ -1480,19 +1484,18 @@
 														"red"
 													],
 													"title": "TLP",
-													"type": "string",
 													"x-auditable": true
 												},
 												"updated": {
+													"description": "Priority last updated time.",
 													"allOf": [
 														{
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														}
-													],
-													"description": "Priority last updated time."
+													]
 												}
 											},
 											"required": [
@@ -1504,8 +1507,7 @@
 												"requirement",
 												"tlp"
 											],
-											"title": "Priority Item",
-											"type": "object"
+											"title": "Priority Item"
 										}
 									},
 									"type": "object"
@@ -1513,23 +1515,24 @@
 							]
 						}
 					}
-				},
-				"description": "Create priority response."
+				}
 			},
 			"4XX": {
+				"description": "Create priority response  failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1538,12 +1541,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1553,15 +1556,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1570,12 +1573,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1585,42 +1588,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"properties": {
 												"code": {
-													"example": 10433,
-													"type": "integer"
+													"type": "integer",
+													"example": 10433
 												},
 												"message": {
-													"example": "request error",
-													"type": "string"
+													"type": "string",
+													"example": "request error"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"type": "object"
@@ -1628,8 +1630,7 @@
 							]
 						}
 					}
-				},
-				"description": "Create priority response  failure."
+				}
 			}
 		},
 		"security": [
@@ -1638,7 +1639,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a New Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
 		],
@@ -1647,64 +1647,68 @@
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}": {
-		"description": "Updates a priority intelligence request in Cloudforce One.",
 		"operationId": "cloudforce-one-priority-update",
+		"summary": "Update a Priority Intelligence Requirement",
+		"description": "Updates a priority intelligence request in Cloudforce One.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "priority_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
-					"type": "string"
+					"maxLength": 36
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"labels": {
 								"description": "List of labels.",
+								"type": "array",
+								"items": {
+									"type": "string"
+								},
 								"example": [
 									"DoS",
 									"CVE"
 								],
-								"items": {
-									"type": "string"
-								},
 								"title": "Labels",
-								"type": "array",
 								"x-auditable": true
 							},
 							"priority": {
 								"description": "Priority.",
-								"example": 1,
 								"type": "integer",
+								"example": 1,
 								"x-auditable": true
 							},
 							"requirement": {
 								"description": "Requirement.",
-								"example": "DoS attacks carried out by CVEs",
 								"type": "string",
+								"example": "DoS attacks carried out by CVEs",
 								"x-auditable": true
 							},
 							"tlp": {
 								"description": "The CISA defined Traffic Light Protocol (TLP).",
+								"type": "string",
 								"enum": [
 									"clear",
 									"amber",
@@ -1713,7 +1717,6 @@
 									"red"
 								],
 								"title": "TLP",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1723,28 +1726,28 @@
 							"requirement",
 							"tlp"
 						],
-						"title": "Priority Editable Attributes",
-						"type": "object"
+						"title": "Priority Editable Attributes"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update priority response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1753,12 +1756,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1768,15 +1771,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1785,12 +1788,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1800,80 +1803,81 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"completed": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														},
 														"content": {
 															"description": "Request content.",
-															"example": "What regions were most effected by the recent DoS?",
-															"type": "string"
+															"type": "string",
+															"example": "What regions were most effected by the recent DoS?"
 														},
 														"created": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"type": "string"
+															"maxLength": 36
 														},
 														"message_tokens": {
 															"description": "Tokens for the request messages.",
-															"example": 1,
 															"type": "integer",
+															"example": 1,
 															"x-auditable": true
 														},
 														"priority": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														},
 														"readable_id": {
 															"description": "Readable Request ID.",
+															"type": "string",
 															"example": "RFI-2022-000001",
 															"title": "Request Readable ID",
-															"type": "string",
 															"x-auditable": true
 														},
 														"request": {
 															"description": "Requested information from request.",
-															"example": "Victomology",
 															"type": "string",
+															"example": "Victomology",
 															"x-auditable": true
 														},
 														"status": {
 															"description": "Request Status.",
+															"type": "string",
 															"enum": [
 																"open",
 																"accepted",
@@ -1883,17 +1887,17 @@
 																"declined"
 															],
 															"title": "Request Status",
-															"type": "string",
 															"x-auditable": true
 														},
 														"summary": {
 															"description": "Brief description of the request.",
-															"example": "DoS attack",
 															"type": "string",
+															"example": "DoS attack",
 															"x-auditable": true
 														},
 														"tlp": {
 															"description": "The CISA defined Traffic Light Protocol (TLP).",
+															"type": "string",
 															"enum": [
 																"clear",
 																"amber",
@@ -1902,19 +1906,18 @@
 																"red"
 															],
 															"title": "TLP",
-															"type": "string",
 															"x-auditable": true
 														},
 														"tokens": {
 															"description": "Tokens for the request.",
-															"example": 16,
 															"type": "integer",
+															"example": 16,
 															"x-auditable": true
 														},
 														"updated": {
-															"example": "2022-04-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2022-04-01T05:20:00Z",
 															"x-auditable": true
 														}
 													},
@@ -1928,8 +1931,7 @@
 														"summary",
 														"tlp"
 													],
-													"title": "Request Item",
-													"type": "object"
+													"title": "Request Item"
 												}
 											]
 										}
@@ -1939,23 +1941,24 @@
 							]
 						}
 					}
-				},
-				"description": "Update priority response."
+				}
 			},
 			"4XX": {
+				"description": "Update priority response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1964,12 +1967,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1979,15 +1982,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1996,12 +1999,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2011,42 +2014,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"properties": {
 												"code": {
-													"example": 10433,
-													"type": "integer"
+													"type": "integer",
+													"example": 10433
 												},
 												"message": {
-													"example": "request error",
-													"type": "string"
+													"type": "string",
+													"example": "request error"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"type": "object"
@@ -2054,8 +2056,7 @@
 							]
 						}
 					}
-				},
-				"description": "Update priority response failure."
+				}
 			}
 		},
 		"security": [
@@ -2064,7 +2065,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a Priority Intelligence Requirement",
 		"tags": [
 			"Priority Intelligence Requirements (PIR)"
 		],

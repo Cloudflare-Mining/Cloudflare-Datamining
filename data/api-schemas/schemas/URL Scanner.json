@@ -1,23 +1,24 @@
 {
 	"GET /accounts/{account_id}/urlscanner/v2/dom/{scan_id}": {
-		"description": "Returns a plain text response, with the scan's DOM content as rendered by Chrome.",
 		"operationId": "urlscanner-get-scan-dom-v2",
+		"summary": "Get URL scan's DOM",
+		"description": "Returns a plain text response, with the scan's DOM content as rendered by Chrome.",
 		"parameters": [
 			{
-				"description": "Scan UUID.",
-				"in": "path",
 				"name": "scan_id",
+				"in": "path",
+				"description": "Scan UUID.",
 				"required": true,
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -27,6 +28,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a plain text response, with the scan's DOM content as rendered by Chrome.",
 				"content": {
 					"text/plain": {
 						"schema": {
@@ -34,15 +36,17 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Returns a plain text response, with the scan's DOM content as rendered by Chrome."
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -50,12 +54,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -64,49 +68,49 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			},
 			"404": {
+				"description": "Scan not found or in progress.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
-												"example": "Queued",
-												"type": "string"
+												"type": "string",
+												"example": "Queued"
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 404,
-												"type": "integer"
+												"type": "integer",
+												"example": 404
 											},
 											"title": {
-												"example": "Scan is not finished yet.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan is not finished yet."
 											}
 										},
 										"required": [
@@ -115,24 +119,24 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"description": "Scan not found or in progress.",
-									"example": "Scan is not finished yet.",
-									"type": "string"
+									"type": "string",
+									"example": "Scan is not finished yet."
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 404,
-									"type": "integer"
+									"type": "integer",
+									"example": 404
 								},
 								"task": {
+									"type": "object",
 									"properties": {
 										"status": {
-											"example": "Queued",
-											"type": "string"
+											"type": "string",
+											"example": "Queued"
 										},
 										"time": {
 											"type": "string"
@@ -144,8 +148,8 @@
 											"type": "string"
 										},
 										"visibility": {
-											"example": "public",
-											"type": "string"
+											"type": "string",
+											"example": "public"
 										}
 									},
 									"required": [
@@ -154,8 +158,7 @@
 										"time",
 										"status",
 										"visibility"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
@@ -163,12 +166,10 @@
 								"status",
 								"errors",
 								"task"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found or in progress."
+				}
 			}
 		},
 		"security": [
@@ -180,7 +181,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get URL scan's DOM",
 		"tags": [
 			"URL Scanner"
 		],
@@ -200,24 +200,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/har/{scan_id}": {
-		"description": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
 		"operationId": "urlscanner-get-scan-har-v2",
+		"summary": "Get URL scan's HAR",
+		"description": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
 		"parameters": [
 			{
-				"description": "Scan UUID.",
-				"in": "path",
 				"name": "scan_id",
+				"in": "path",
+				"description": "Scan UUID.",
 				"required": true,
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -227,87 +228,93 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the scan's har.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"log": {
+									"type": "object",
 									"properties": {
 										"creator": {
+											"type": "object",
 											"properties": {
 												"comment": {
-													"example": "https://github.com/sitespeedio/chrome-har",
-													"type": "string"
+													"type": "string",
+													"example": "https://github.com/sitespeedio/chrome-har"
 												},
 												"name": {
-													"example": "chrome-har",
-													"type": "string"
+													"type": "string",
+													"example": "chrome-har"
 												},
 												"version": {
-													"example": "0.13.1",
-													"type": "string"
+													"type": "string",
+													"example": "0.13.1"
 												}
 											},
 											"required": [
 												"name",
 												"version",
 												"comment"
-											],
-											"type": "object"
+											]
 										},
 										"entries": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"_initialPriority": {
-														"example": "VeryHigh",
-														"type": "string"
+														"type": "string",
+														"example": "VeryHigh"
 													},
 													"_initiator_type": {
-														"example": "other",
-														"type": "string"
+														"type": "string",
+														"example": "other"
 													},
 													"_priority": {
-														"example": "VeryHigh",
-														"type": "string"
+														"type": "string",
+														"example": "VeryHigh"
 													},
 													"_requestId": {
-														"example": "DDC779F0CB3746BAF283EC1A51B0F2F8",
-														"type": "string"
+														"type": "string",
+														"example": "DDC779F0CB3746BAF283EC1A51B0F2F8"
 													},
 													"_requestTime": {
-														"example": 114135.331081,
-														"type": "number"
+														"type": "number",
+														"example": 114135.331081
 													},
 													"_resourceType": {
-														"example": "document",
-														"type": "string"
+														"type": "string",
+														"example": "document"
 													},
 													"cache": {
 														"type": "object"
 													},
 													"connection": {
-														"example": "33",
-														"type": "string"
+														"type": "string",
+														"example": "33"
 													},
 													"pageref": {
-														"example": "page_1",
-														"type": "string"
+														"type": "string",
+														"example": "page_1"
 													},
 													"request": {
+														"type": "object",
 														"properties": {
 															"bodySize": {
 																"type": "number"
 															},
 															"headers": {
+																"type": "array",
 																"items": {
 																	"properties": {
 																		"name": {
-																			"example": "Upgrade-Insecure-Requests",
-																			"type": "string"
+																			"type": "string",
+																			"example": "Upgrade-Insecure-Requests"
 																		},
 																		"value": {
-																			"example": "1",
-																			"type": "string"
+																			"type": "string",
+																			"example": "1"
 																		}
 																	},
 																	"required": [
@@ -315,24 +322,23 @@
 																		"value"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															},
 															"headersSize": {
-																"example": 197,
-																"type": "number"
+																"type": "number",
+																"example": 197
 															},
 															"httpVersion": {
-																"example": "http/1.1",
-																"type": "string"
+																"type": "string",
+																"example": "http/1.1"
 															},
 															"method": {
-																"example": "GET",
-																"type": "string"
+																"type": "string",
+																"example": "GET"
 															},
 															"url": {
-																"example": "http://example.com/",
-																"type": "string"
+																"type": "string",
+																"example": "http://example.com/"
 															}
 														},
 														"required": [
@@ -342,32 +348,32 @@
 															"bodySize",
 															"headers",
 															"httpVersion"
-														],
-														"type": "object"
+														]
 													},
 													"response": {
+														"type": "object",
 														"properties": {
 															"_transferSize": {
-																"example": 1071,
-																"type": "number"
+																"type": "number",
+																"example": 1071
 															},
 															"bodySize": {
-																"example": 648,
-																"type": "number"
+																"type": "number",
+																"example": 648
 															},
 															"content": {
 																"properties": {
 																	"compression": {
-																		"example": 608,
-																		"type": "integer"
+																		"type": "integer",
+																		"example": 608
 																	},
 																	"mimeType": {
-																		"example": "text/html",
-																		"type": "string"
+																		"type": "string",
+																		"example": "text/html"
 																	},
 																	"size": {
-																		"example": 1256,
-																		"type": "number"
+																		"type": "number",
+																		"example": 1256
 																	}
 																},
 																"required": [
@@ -377,15 +383,16 @@
 																"type": "object"
 															},
 															"headers": {
+																"type": "array",
 																"items": {
 																	"properties": {
 																		"name": {
-																			"example": "Content-Encoding",
-																			"type": "string"
+																			"type": "string",
+																			"example": "Content-Encoding"
 																		},
 																		"value": {
-																			"example": "gzip",
-																			"type": "string"
+																			"type": "string",
+																			"example": "gzip"
 																		}
 																	},
 																	"required": [
@@ -393,27 +400,26 @@
 																		"value"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															},
 															"headersSize": {
-																"example": 423,
-																"type": "number"
+																"type": "number",
+																"example": 423
 															},
 															"httpVersion": {
-																"example": "http/1.1",
-																"type": "string"
+																"type": "string",
+																"example": "http/1.1"
 															},
 															"redirectURL": {
 																"type": "string"
 															},
 															"status": {
-																"example": 200,
-																"type": "number"
+																"type": "number",
+																"example": 200
 															},
 															"statusText": {
-																"example": "OK",
-																"type": "string"
+																"type": "string",
+																"example": "OK"
 															}
 														},
 														"required": [
@@ -426,20 +432,19 @@
 															"bodySize",
 															"headers",
 															"_transferSize"
-														],
-														"type": "object"
+														]
 													},
 													"serverIPAddress": {
-														"example": "2606:2800:220:1:248:1893:25c8:1946",
-														"type": "string"
+														"type": "string",
+														"example": "2606:2800:220:1:248:1893:25c8:1946"
 													},
 													"startedDateTime": {
-														"example": "2023-05-03T17:05:13.196Z",
-														"type": "string"
+														"type": "string",
+														"example": "2023-05-03T17:05:13.196Z"
 													},
 													"time": {
-														"example": 268.64,
-														"type": "number"
+														"type": "number",
+														"example": 268.64
 													}
 												},
 												"required": [
@@ -459,40 +464,40 @@
 													"_requestTime"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"pages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"id": {
-														"example": "page_1",
-														"type": "string"
+														"type": "string",
+														"example": "page_1"
 													},
 													"pageTimings": {
+														"type": "object",
 														"properties": {
 															"onContentLoad": {
-																"example": 305.408,
-																"type": "number"
+																"type": "number",
+																"example": 305.408
 															},
 															"onLoad": {
-																"example": 305.169,
-																"type": "number"
+																"type": "number",
+																"example": 305.169
 															}
 														},
 														"required": [
 															"onLoad",
 															"onContentLoad"
-														],
-														"type": "object"
+														]
 													},
 													"startedDateTime": {
-														"example": "2023-05-03T17:05:13.195Z",
-														"type": "string"
+														"type": "string",
+														"example": "2023-05-03T17:05:13.195Z"
 													},
 													"title": {
-														"example": "http://example.com/",
-														"type": "string"
+														"type": "string",
+														"example": "http://example.com/"
 													}
 												},
 												"required": [
@@ -502,12 +507,11 @@
 													"pageTimings"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"version": {
-											"example": "1.2",
-											"type": "string"
+											"type": "string",
+											"example": "1.2"
 										}
 									},
 									"required": [
@@ -515,25 +519,25 @@
 										"creator",
 										"pages",
 										"entries"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
 								"log"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the scan's har."
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -541,12 +545,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -555,49 +559,49 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			},
 			"404": {
+				"description": "Scan not found or in progress.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
-												"example": "Queued",
-												"type": "string"
+												"type": "string",
+												"example": "Queued"
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 404,
-												"type": "integer"
+												"type": "integer",
+												"example": 404
 											},
 											"title": {
-												"example": "Scan is not finished yet.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan is not finished yet."
 											}
 										},
 										"required": [
@@ -606,24 +610,24 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"description": "Scan not found or in progress.",
-									"example": "Scan is not finished yet.",
-									"type": "string"
+									"type": "string",
+									"example": "Scan is not finished yet."
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 404,
-									"type": "integer"
+									"type": "integer",
+									"example": 404
 								},
 								"task": {
+									"type": "object",
 									"properties": {
 										"status": {
-											"example": "Queued",
-											"type": "string"
+											"type": "string",
+											"example": "Queued"
 										},
 										"time": {
 											"type": "string"
@@ -635,8 +639,8 @@
 											"type": "string"
 										},
 										"visibility": {
-											"example": "public",
-											"type": "string"
+											"type": "string",
+											"example": "public"
 										}
 									},
 									"required": [
@@ -645,8 +649,7 @@
 										"time",
 										"status",
 										"visibility"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
@@ -654,12 +657,10 @@
 								"status",
 								"errors",
 								"task"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found or in progress."
+				}
 			}
 		},
 		"security": [
@@ -671,7 +672,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get URL scan's HAR",
 		"tags": [
 			"URL Scanner"
 		],
@@ -691,13 +691,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/responses/{response_id}": {
-		"description": "Returns the raw response of the network request. Find the `response_id` in the `data.requests.response.hash`.",
 		"operationId": "urlscanner-get-response-v2",
+		"summary": "Get raw response",
+		"description": "Returns the raw response of the network request. Find the `response_id` in the `data.requests.response.hash`.",
 		"parameters": [
 			{
-				"description": "Response hash.",
-				"in": "path",
 				"name": "response_id",
+				"in": "path",
+				"description": "Response hash.",
 				"required": true,
 				"schema": {
 					"description": "Response hash.",
@@ -705,9 +706,9 @@
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -717,6 +718,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get the raw response by its hash.",
 				"content": {
 					"text/plain": {
 						"schema": {
@@ -724,15 +726,17 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Get the raw response by its hash."
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -740,12 +744,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -754,28 +758,25 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			}
 		},
 		"security": [
@@ -787,7 +788,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get raw response",
 		"tags": [
 			"URL Scanner"
 		],
@@ -807,24 +807,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/result/{scan_id}": {
-		"description": "Get URL scan by uuid",
 		"operationId": "urlscanner-get-scan-v2",
+		"summary": "Get URL scan",
+		"description": "Get URL scan by uuid",
 		"parameters": [
 			{
-				"description": "Scan UUID.",
-				"in": "path",
 				"name": "scan_id",
+				"in": "path",
+				"description": "Scan UUID.",
 				"required": true,
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -834,16 +835,21 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Scan has finished. It may or may not have been successful.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"console": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"message": {
+														"type": "object",
 														"properties": {
 															"level": {
 																"type": "string"
@@ -863,18 +869,17 @@
 															"level",
 															"text",
 															"url"
-														],
-														"type": "object"
+														]
 													}
 												},
 												"required": [
 													"message"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"cookies": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"domain": {
@@ -933,10 +938,10 @@
 													"sourcePort"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"globals": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"prop": {
@@ -951,10 +956,10 @@
 													"type"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"links": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"href": {
@@ -969,10 +974,10 @@
 													"text"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"performance": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"duration": {
@@ -995,13 +1000,14 @@
 													"duration"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"requests": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"request": {
+														"type": "object",
 														"properties": {
 															"documentURL": {
 																"type": "string"
@@ -1013,6 +1019,7 @@
 																"type": "boolean"
 															},
 															"initiator": {
+																"type": "object",
 																"properties": {
 																	"host": {
 																		"type": "string"
@@ -1028,8 +1035,7 @@
 																	"type",
 																	"url",
 																	"host"
-																],
-																"type": "object"
+																]
 															},
 															"loaderId": {
 																"type": "string"
@@ -1041,6 +1047,7 @@
 																"type": "boolean"
 															},
 															"redirectResponse": {
+																"type": "object",
 																"properties": {
 																	"charset": {
 																		"type": "string"
@@ -1061,6 +1068,7 @@
 																		"type": "number"
 																	},
 																	"securityHeaders": {
+																		"type": "array",
 																		"items": {
 																			"properties": {
 																				"name": {
@@ -1075,8 +1083,7 @@
 																				"value"
 																			],
 																			"type": "object"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"securityState": {
 																		"type": "string"
@@ -1102,10 +1109,10 @@
 																	"protocol",
 																	"securityState",
 																	"securityHeaders"
-																],
-																"type": "object"
+																]
 															},
 															"request": {
+																"type": "object",
 																"properties": {
 																	"headers": {
 																		"type": "object"
@@ -1136,8 +1143,7 @@
 																	"initialPriority",
 																	"referrerPolicy",
 																	"isSameSite"
-																],
-																"type": "object"
+																]
 															},
 															"requestId": {
 																"type": "string"
@@ -1158,10 +1164,10 @@
 															"redirectHasExtraInfo",
 															"type",
 															"hasUserGesture"
-														],
-														"type": "object"
+														]
 													},
 													"requests": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"documentURL": {
@@ -1174,6 +1180,7 @@
 																	"type": "boolean"
 																},
 																"initiator": {
+																	"type": "object",
 																	"properties": {
 																		"type": {
 																			"type": "string"
@@ -1181,8 +1188,7 @@
 																	},
 																	"required": [
 																		"type"
-																	],
-																	"type": "object"
+																	]
 																},
 																"loaderId": {
 																	"type": "string"
@@ -1191,8 +1197,10 @@
 																	"type": "boolean"
 																},
 																"request": {
+																	"type": "object",
 																	"properties": {
 																		"headers": {
+																			"type": "object",
 																			"properties": {
 																				"name": {
 																					"type": "string"
@@ -1200,8 +1208,7 @@
 																			},
 																			"required": [
 																				"name"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"initialPriority": {
 																			"type": "string"
@@ -1230,8 +1237,7 @@
 																		"initialPriority",
 																		"referrerPolicy",
 																		"isSameSite"
-																	],
-																	"type": "object"
+																	]
 																},
 																"requestId": {
 																	"type": "string"
@@ -1256,12 +1262,13 @@
 																"redirectHasExtraInfo"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"response": {
+														"type": "object",
 														"properties": {
 															"asn": {
+																"type": "object",
 																"properties": {
 																	"asn": {
 																		"type": "string"
@@ -1289,8 +1296,7 @@
 																	"description",
 																	"name",
 																	"org"
-																],
-																"type": "object"
+																]
 															},
 															"contentAvailable": {
 																"type": "boolean"
@@ -1302,6 +1308,7 @@
 																"type": "number"
 															},
 															"geoip": {
+																"type": "object",
 																"properties": {
 																	"city": {
 																		"type": "string"
@@ -1316,10 +1323,10 @@
 																		"type": "string"
 																	},
 																	"ll": {
+																		"type": "array",
 																		"items": {
 																			"type": "number"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"region": {
 																		"type": "string"
@@ -1332,8 +1339,7 @@
 																	"ll",
 																	"country_name",
 																	"geonameId"
-																],
-																"type": "object"
+																]
 															},
 															"hasExtraInfo": {
 																"type": "boolean"
@@ -1345,6 +1351,7 @@
 																"type": "string"
 															},
 															"response": {
+																"type": "object",
 																"properties": {
 																	"charset": {
 																		"type": "string"
@@ -1365,6 +1372,7 @@
 																		"type": "number"
 																	},
 																	"securityDetails": {
+																		"type": "object",
 																		"properties": {
 																			"certificateId": {
 																				"type": "number"
@@ -1391,10 +1399,10 @@
 																				"type": "string"
 																			},
 																			"sanList": {
+																				"type": "array",
 																				"items": {
 																					"type": "string"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"serverSignatureAlgorithm": {
 																				"type": "number"
@@ -1423,10 +1431,10 @@
 																			"certificateTransparencyCompliance",
 																			"serverSignatureAlgorithm",
 																			"encryptedClientHello"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"securityHeaders": {
+																		"type": "array",
 																		"items": {
 																			"properties": {
 																				"name": {
@@ -1441,8 +1449,7 @@
 																				"value"
 																			],
 																			"type": "object"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"securityState": {
 																		"type": "string"
@@ -1469,8 +1476,7 @@
 																	"securityState",
 																	"securityDetails",
 																	"securityHeaders"
-																],
-																"type": "object"
+																]
 															},
 															"size": {
 																"type": "number"
@@ -1489,8 +1495,7 @@
 															"size",
 															"asn",
 															"geoip"
-														],
-														"type": "object"
+														]
 													}
 												},
 												"required": [
@@ -1498,8 +1503,7 @@
 													"response"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -1509,18 +1513,19 @@
 										"links",
 										"globals",
 										"performance"
-									],
-									"type": "object"
+									]
 								},
 								"lists": {
+									"type": "object",
 									"properties": {
 										"asns": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"certificates": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"issuer": {
@@ -1543,56 +1548,55 @@
 													"validTo"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"continents": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"countries": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"domains": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"hashes": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"ips": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"linkDomains": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"servers": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"urls": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -1606,20 +1610,25 @@
 										"linkDomains",
 										"certificates",
 										"hashes"
-									],
-									"type": "object"
+									]
 								},
 								"meta": {
+									"type": "object",
 									"properties": {
 										"processors": {
+											"type": "object",
 											"properties": {
 												"agentReadiness": {
+													"type": "object",
 													"properties": {
 														"checks": {
+															"type": "object",
 															"properties": {
 																"botAccessControl": {
+																	"type": "object",
 																	"properties": {
 																		"contentSignals": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -1628,54 +1637,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -1690,19 +1701,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -1710,23 +1720,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "pass",
-																					"type": "string"
+																					"type": "string",
+																					"example": "pass"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"robotsTxtAiRules": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -1735,54 +1744,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -1797,19 +1808,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -1817,23 +1827,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "pass",
-																					"type": "string"
+																					"type": "string",
+																					"example": "pass"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"webBotAuth": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -1842,54 +1851,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -1904,19 +1915,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -1924,33 +1934,32 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
 																		"robotsTxtAiRules",
 																		"contentSignals",
 																		"webBotAuth"
-																	],
-																	"type": "object"
+																	]
 																},
 																"commerce": {
+																	"type": "object",
 																	"properties": {
 																		"acp": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -1959,54 +1968,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2021,19 +2032,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2041,23 +2051,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"ap2": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2066,54 +2075,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2128,19 +2139,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2148,23 +2158,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"mpp": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2173,54 +2182,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2235,19 +2246,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2255,23 +2265,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"ucp": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2280,54 +2289,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2342,19 +2353,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2362,23 +2372,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"x402": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2387,54 +2396,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2449,19 +2460,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2469,21 +2479,19 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
@@ -2492,12 +2500,13 @@
 																		"mpp",
 																		"acp",
 																		"ap2"
-																	],
-																	"type": "object"
+																	]
 																},
 																"contentAccessibility": {
+																	"type": "object",
 																	"properties": {
 																		"markdownNegotiation": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2506,54 +2515,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2568,19 +2579,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2588,31 +2598,30 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
 																		"markdownNegotiation"
-																	],
-																	"type": "object"
+																	]
 																},
 																"discoverability": {
+																	"type": "object",
 																	"properties": {
 																		"linkHeaders": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2621,54 +2630,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2683,19 +2694,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2703,23 +2713,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"robotsTxt": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2728,54 +2737,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2790,19 +2801,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2810,23 +2820,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "pass",
-																					"type": "string"
+																					"type": "string",
+																					"example": "pass"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"sitemap": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2835,54 +2844,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -2897,19 +2908,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2917,33 +2927,32 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "pass",
-																					"type": "string"
+																					"type": "string",
+																					"example": "pass"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
 																		"robotsTxt",
 																		"sitemap",
 																		"linkHeaders"
-																	],
-																	"type": "object"
+																	]
 																},
 																"discovery": {
+																	"type": "object",
 																	"properties": {
 																		"a2aAgentCard": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -2952,54 +2961,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -3014,19 +3025,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3034,23 +3044,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"agentSkills": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -3059,54 +3068,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -3121,19 +3132,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3141,23 +3151,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"apiCatalog": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -3166,54 +3175,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -3228,19 +3239,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3248,23 +3258,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"mcpServerCard": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -3273,54 +3282,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -3335,19 +3346,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3355,23 +3365,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"oauthDiscovery": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -3380,54 +3389,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -3442,19 +3453,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3462,23 +3472,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"oauthProtectedResource": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -3487,54 +3496,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -3549,19 +3560,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3569,23 +3579,22 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "fail",
-																					"type": "string"
+																					"type": "string",
+																					"example": "fail"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"webMcp": {
+																			"type": "object",
 																			"properties": {
 																				"details": {
 																					"type": "object"
@@ -3594,54 +3603,56 @@
 																					"type": "number"
 																				},
 																				"evidence": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"action": {
-																								"example": "fetch",
-																								"type": "string"
+																								"type": "string",
+																								"example": "fetch"
 																							},
 																							"finding": {
+																								"type": "object",
 																								"properties": {
 																									"outcome": {
-																										"example": "positive",
-																										"type": "string"
+																										"type": "string",
+																										"example": "positive"
 																									},
 																									"summary": {
-																										"example": "Found valid robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "Found valid robots.txt"
 																									}
 																								},
 																								"required": [
 																									"outcome",
 																									"summary"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"label": {
-																								"example": "GET /robots.txt",
-																								"type": "string"
+																								"type": "string",
+																								"example": "GET /robots.txt"
 																							},
 																							"request": {
+																								"type": "object",
 																								"properties": {
 																									"headers": {
 																										"type": "object"
 																									},
 																									"method": {
-																										"example": "GET",
-																										"type": "string"
+																										"type": "string",
+																										"example": "GET"
 																									},
 																									"url": {
-																										"example": "https://example.com/robots.txt",
-																										"type": "string"
+																										"type": "string",
+																										"example": "https://example.com/robots.txt"
 																									}
 																								},
 																								"required": [
 																									"url",
 																									"method"
-																								],
-																								"type": "object"
+																								]
 																							},
 																							"response": {
+																								"type": "object",
 																								"properties": {
 																									"bodyPreview": {
 																										"type": "string"
@@ -3656,19 +3667,18 @@
 																										"type": "string"
 																									},
 																									"status": {
-																										"example": 200,
-																										"type": "integer"
+																										"type": "integer",
+																										"example": 200
 																									},
 																									"statusText": {
-																										"example": "OK",
-																										"type": "string"
+																										"type": "string",
+																										"example": "OK"
 																									}
 																								},
 																								"required": [
 																									"status",
 																									"statusText"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3676,21 +3686,19 @@
 																							"label"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				},
 																				"message": {
 																					"type": "string"
 																				},
 																				"status": {
-																					"example": "neutral",
-																					"type": "string"
+																					"type": "string",
+																					"example": "neutral"
 																				}
 																			},
 																			"required": [
 																				"status"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
@@ -3701,8 +3709,7 @@
 																		"a2aAgentCard",
 																		"agentSkills",
 																		"webMcp"
-																	],
-																	"type": "object"
+																	]
 																}
 															},
 															"required": [
@@ -3711,57 +3718,58 @@
 																"botAccessControl",
 																"discovery",
 																"commerce"
-															],
-															"type": "object"
+															]
 														},
 														"commerceSignals": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"isCommerce": {
 															"type": "boolean"
 														},
 														"level": {
-															"example": 2,
-															"type": "integer"
+															"type": "integer",
+															"example": 2
 														},
 														"levelName": {
-															"example": "Bot-Aware",
-															"type": "string"
+															"type": "string",
+															"example": "Bot-Aware"
 														},
 														"nextLevel": {
+															"type": "object",
 															"properties": {
 																"name": {
-																	"example": "Agent-Readable",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Agent-Readable"
 																},
 																"requirements": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"check": {
-																				"example": "markdownNegotiation",
-																				"type": "string"
+																				"type": "string",
+																				"example": "markdownNegotiation"
 																			},
 																			"description": {
-																				"example": "Support content negotiation with Accept: text/markdown",
-																				"type": "string"
+																				"type": "string",
+																				"example": "Support content negotiation with Accept: text/markdown"
 																			},
 																			"prompt": {
-																				"example": "Add markdown content negotiation support",
-																				"type": "string"
+																				"type": "string",
+																				"example": "Add markdown content negotiation support"
 																			},
 																			"skillUrl": {
-																				"example": "https://agentready.cloudflare.com/.well-known/skills/markdown-negotiation",
-																				"type": "string"
+																				"type": "string",
+																				"example": "https://agentready.cloudflare.com/.well-known/skills/markdown-negotiation"
 																			},
 																			"specUrls": {
+																				"type": "array",
 																				"items": {
 																					"example": "https://markdownforagents.org",
 																					"type": "string"
-																				},
-																				"type": "array"
+																				}
 																			}
 																		},
 																		"required": [
@@ -3772,32 +3780,31 @@
 																			"skillUrl"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"target": {
-																	"example": 3,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 3
 																}
 															},
 															"required": [
 																"target",
 																"name",
 																"requirements"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"level",
 														"levelName",
 														"checks"
-													],
-													"type": "object"
+													]
 												},
 												"asn": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"asn": {
@@ -3824,18 +3831,18 @@
 																	"name"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"dns": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"address": {
@@ -3858,18 +3865,18 @@
 																	"dnssec_valid"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"domainCategories": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"inherited": {
@@ -3888,21 +3895,22 @@
 																	"inherited"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"geoip": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"geoip": {
+																		"type": "object",
 																		"properties": {
 																			"city": {
 																				"type": "string"
@@ -3914,10 +3922,10 @@
 																				"type": "string"
 																			},
 																			"ll": {
+																				"type": "array",
 																				"items": {
 																					"type": "number"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"region": {
 																				"type": "string"
@@ -3929,8 +3937,7 @@
 																			"city",
 																			"ll",
 																			"country_name"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"ip": {
 																		"type": "string"
@@ -3941,46 +3948,46 @@
 																	"geoip"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"phishing": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"phishing_v2": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"radarRank": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"bucket": {
@@ -3998,77 +4005,77 @@
 																	"bucket"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"robotsTxt": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"hash": {
 																		"type": "string"
 																	},
 																	"rules": {
+																		"type": "object",
 																		"properties": {
 																			"*": {
+																				"type": "object",
 																				"properties": {
 																					"allow": {
+																						"type": "array",
 																						"items": {
 																							"type": "string"
-																						},
-																						"type": "array"
+																						}
 																					},
 																					"contentSignal": {
+																						"type": "object",
 																						"properties": {
 																							"ai-input": {
-																								"example": "no",
-																								"type": "string"
+																								"type": "string",
+																								"example": "no"
 																							},
 																							"ai-train": {
-																								"example": "yes",
-																								"type": "string"
+																								"type": "string",
+																								"example": "yes"
 																							},
 																							"search": {
-																								"example": "yes",
-																								"type": "string"
+																								"type": "string",
+																								"example": "yes"
 																							}
-																						},
-																						"type": "object"
+																						}
 																					},
 																					"crawlDelay": {
 																						"type": "number"
 																					},
 																					"disallow": {
+																						"type": "array",
 																						"items": {
 																							"type": "string"
-																						},
-																						"type": "array"
+																						}
 																					}
 																				},
 																				"required": [
 																					"allow",
 																					"disallow"
-																				],
-																				"type": "object"
+																				]
 																			}
 																		},
 																		"required": [
 																			"*"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"sitemaps": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -4076,18 +4083,18 @@
 																	"sitemaps"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"urlCategories": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"content": {
@@ -4113,6 +4120,7 @@
 																		"type": "array"
 																	},
 																	"inherited": {
+																		"type": "object",
 																		"properties": {
 																			"content": {
 																				"items": {
@@ -4140,6 +4148,7 @@
 																				"type": "string"
 																			},
 																			"risks": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"id": {
@@ -4158,21 +4167,20 @@
 																						"super_category_id"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			}
 																		},
 																		"required": [
 																			"from",
 																			"content",
 																			"risks"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"name": {
 																		"type": "string"
 																	},
 																	"risks": {
+																		"type": "array",
 																		"items": {
 																			"properties": {
 																				"id": {
@@ -4191,8 +4199,7 @@
 																				"super_category_id"
 																			],
 																			"type": "object"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -4202,24 +4209,25 @@
 																	"inherited"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												"wappa": {
+													"type": "object",
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"app": {
 																		"type": "string"
 																	},
 																	"categories": {
+																		"type": "array",
 																		"items": {
 																			"properties": {
 																				"name": {
@@ -4234,10 +4242,10 @@
 																				"priority"
 																			],
 																			"type": "object"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"confidence": {
+																		"type": "array",
 																		"items": {
 																			"properties": {
 																				"confidence": {
@@ -4260,8 +4268,7 @@
 																				"name"
 																			],
 																			"type": "object"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"confidenceTotal": {
 																		"type": "number"
@@ -4282,14 +4289,12 @@
 																	"categories"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"data"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
@@ -4300,16 +4305,15 @@
 												"dns",
 												"radarRank",
 												"phishing"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"processors"
-									],
-									"type": "object"
+									]
 								},
 								"page": {
+									"type": "object",
 									"properties": {
 										"apexDomain": {
 											"type": "string"
@@ -4336,6 +4340,7 @@
 											"type": "string"
 										},
 										"screenshot": {
+											"type": "object",
 											"properties": {
 												"dhash": {
 													"type": "string"
@@ -4355,15 +4360,14 @@
 												"dhash",
 												"mm3Hash",
 												"name"
-											],
-											"type": "object"
+											]
 										},
 										"server": {
 											"type": "string"
 										},
 										"status": {
-											"example": "200",
-											"type": "string"
+											"type": "string",
+											"example": "200"
 										},
 										"title": {
 											"type": "string"
@@ -4401,10 +4405,10 @@
 										"tlsValidFrom",
 										"tlsAgeDays",
 										"tlsValidDays"
-									],
-									"type": "object"
+									]
 								},
 								"scanner": {
+									"type": "object",
 									"properties": {
 										"colo": {
 											"type": "string"
@@ -4416,25 +4420,26 @@
 									"required": [
 										"country",
 										"colo"
-									],
-									"type": "object"
+									]
 								},
 								"stats": {
+									"type": "object",
 									"properties": {
 										"IPv6Percentage": {
 											"type": "number"
 										},
 										"domainStats": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"count": {
 														"type": "number"
 													},
 													"countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"domain": {
 														"type": "string"
@@ -4446,16 +4451,16 @@
 														"type": "number"
 													},
 													"initiators": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"ips": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"redirects": {
 														"type": "number"
@@ -4476,13 +4481,14 @@
 													"redirects"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"ipStats": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn": {
+														"type": "object",
 														"properties": {
 															"asn": {
 																"type": "string"
@@ -4510,28 +4516,28 @@
 															"description",
 															"name",
 															"org"
-														],
-														"type": "object"
+														]
 													},
 													"count": {
 														"type": "number"
 													},
 													"countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"domains": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"encodedSize": {
 														"type": "number"
 													},
 													"geoip": {
+														"type": "object",
 														"properties": {
 															"city": {
 																"type": "string"
@@ -4543,10 +4549,10 @@
 																"type": "string"
 															},
 															"ll": {
+																"type": "array",
 																"items": {
 																	"type": "number"
-																},
-																"type": "array"
+																}
 															},
 															"region": {
 																"type": "string"
@@ -4558,8 +4564,7 @@
 															"city",
 															"ll",
 															"country_name"
-														],
-														"type": "object"
+														]
 													},
 													"index": {
 														"type": "number"
@@ -4594,32 +4599,32 @@
 													"asn"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"malicious": {
 											"type": "number"
 										},
 										"protocolStats": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"count": {
 														"type": "number"
 													},
 													"countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"encodedSize": {
 														"type": "number"
 													},
 													"ips": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"protocol": {
 														"type": "string"
@@ -4637,10 +4642,10 @@
 													"protocol"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"resourceStats": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"compression": {
@@ -4650,19 +4655,19 @@
 														"type": "number"
 													},
 													"countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"encodedSize": {
 														"type": "number"
 													},
 													"ips": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"percentage": {
 														"type": "number"
@@ -4685,8 +4690,7 @@
 													"type"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"securePercentage": {
 											"type": "number"
@@ -4695,25 +4699,26 @@
 											"type": "number"
 										},
 										"serverStats": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"count": {
 														"type": "number"
 													},
 													"countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"encodedSize": {
 														"type": "number"
 													},
 													"ips": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"server": {
 														"type": "string"
@@ -4731,31 +4736,32 @@
 													"server"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"tlsStats": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"count": {
 														"type": "number"
 													},
 													"countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"encodedSize": {
 														"type": "number"
 													},
 													"ips": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"protocols": {
+														"type": "object",
 														"properties": {
 															"TLS 1.3 / AES_128_GCM": {
 																"type": "number"
@@ -4763,8 +4769,7 @@
 														},
 														"required": [
 															"TLS 1.3 / AES_128_GCM"
-														],
-														"type": "object"
+														]
 													},
 													"securityState": {
 														"type": "string"
@@ -4783,8 +4788,7 @@
 													"securityState"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"totalLinks": {
 											"type": "number"
@@ -4810,10 +4814,10 @@
 										"totalLinks",
 										"uniqCountries",
 										"uniqASNs"
-									],
-									"type": "object"
+									]
 								},
 								"task": {
+									"type": "object",
 									"properties": {
 										"apexDomain": {
 											"type": "string"
@@ -4828,19 +4832,19 @@
 											"type": "string"
 										},
 										"options": {
+											"type": "object",
 											"properties": {
 												"customHeaders": {
 													"description": "Custom headers set.",
 													"type": "object"
 												},
 												"screenshotsResolutions": {
+													"type": "array",
 													"items": {
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
-											},
-											"type": "object"
+											}
 										},
 										"reportURL": {
 											"type": "string"
@@ -4881,18 +4885,19 @@
 										"domURL",
 										"options",
 										"success"
-									],
-									"type": "object"
+									]
 								},
 								"verdicts": {
+									"type": "object",
 									"properties": {
 										"overall": {
+											"type": "object",
 											"properties": {
 												"categories": {
+													"type": "array",
 													"items": {
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"hasVerdicts": {
 													"type": "boolean"
@@ -4901,10 +4906,10 @@
 													"type": "boolean"
 												},
 												"tags": {
+													"type": "array",
 													"items": {
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -4912,14 +4917,12 @@
 												"hasVerdicts",
 												"categories",
 												"tags"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"overall"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
@@ -4931,19 +4934,20 @@
 								"stats",
 								"task",
 								"verdicts"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan has finished. It may or may not have been successful."
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -4951,12 +4955,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -4965,49 +4969,49 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			},
 			"404": {
+				"description": "Scan not found or in progress.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
-												"example": "Queued",
-												"type": "string"
+												"type": "string",
+												"example": "Queued"
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 404,
-												"type": "integer"
+												"type": "integer",
+												"example": 404
 											},
 											"title": {
-												"example": "Scan is not finished yet.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan is not finished yet."
 											}
 										},
 										"required": [
@@ -5016,24 +5020,24 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"description": "Scan not found or in progress.",
-									"example": "Scan is not finished yet.",
-									"type": "string"
+									"type": "string",
+									"example": "Scan is not finished yet."
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 404,
-									"type": "integer"
+									"type": "integer",
+									"example": 404
 								},
 								"task": {
+									"type": "object",
 									"properties": {
 										"status": {
-											"example": "Queued",
-											"type": "string"
+											"type": "string",
+											"example": "Queued"
 										},
 										"time": {
 											"type": "string"
@@ -5045,8 +5049,8 @@
 											"type": "string"
 										},
 										"visibility": {
-											"example": "public",
-											"type": "string"
+											"type": "string",
+											"example": "public"
 										}
 									},
 									"required": [
@@ -5055,8 +5059,7 @@
 										"time",
 										"status",
 										"visibility"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
@@ -5064,12 +5067,10 @@
 								"status",
 								"errors",
 								"task"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found or in progress."
+				}
 			}
 		},
 		"security": [
@@ -5081,7 +5082,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get URL scan",
 		"tags": [
 			"URL Scanner"
 		],
@@ -5101,24 +5101,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/screenshots/{scan_id}.png": {
-		"description": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
 		"operationId": "urlscanner-get-scan-screenshot-v2",
+		"summary": "Get screenshot",
+		"description": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
 		"parameters": [
 			{
-				"description": "Scan UUID.",
-				"in": "path",
 				"name": "scan_id",
+				"in": "path",
+				"description": "Scan UUID.",
 				"required": true,
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5126,23 +5127,24 @@
 				}
 			},
 			{
-				"description": "Target device type.",
-				"in": "query",
 				"name": "resolution",
+				"in": "query",
+				"description": "Target device type.",
 				"schema": {
-					"default": "desktop",
 					"description": "Target device type.",
+					"type": "string",
+					"default": "desktop",
 					"enum": [
 						"desktop",
 						"mobile",
 						"tablet"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the scan's requested screenshot.",
 				"content": {
 					"image/png": {
 						"schema": {
@@ -5150,15 +5152,17 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Returns the scan's requested screenshot."
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -5166,12 +5170,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -5180,49 +5184,49 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			},
 			"404": {
+				"description": "Scan not found or in progress.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
-												"example": "Queued",
-												"type": "string"
+												"type": "string",
+												"example": "Queued"
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 404,
-												"type": "integer"
+												"type": "integer",
+												"example": 404
 											},
 											"title": {
-												"example": "Scan is not finished yet.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan is not finished yet."
 											}
 										},
 										"required": [
@@ -5231,24 +5235,24 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"description": "Scan not found or in progress.",
-									"example": "Scan is not finished yet.",
-									"type": "string"
+									"type": "string",
+									"example": "Scan is not finished yet."
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 404,
-									"type": "integer"
+									"type": "integer",
+									"example": 404
 								},
 								"task": {
+									"type": "object",
 									"properties": {
 										"status": {
-											"example": "Queued",
-											"type": "string"
+											"type": "string",
+											"example": "Queued"
 										},
 										"time": {
 											"type": "string"
@@ -5260,8 +5264,8 @@
 											"type": "string"
 										},
 										"visibility": {
-											"example": "public",
-											"type": "string"
+											"type": "string",
+											"example": "public"
 										}
 									},
 									"required": [
@@ -5270,8 +5274,7 @@
 										"time",
 										"status",
 										"visibility"
-									],
-									"type": "object"
+									]
 								}
 							},
 							"required": [
@@ -5279,12 +5282,10 @@
 								"status",
 								"errors",
 								"task"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found or in progress."
+				}
 			}
 		},
 		"security": [
@@ -5296,7 +5297,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get screenshot",
 		"tags": [
 			"URL Scanner"
 		],
@@ -5316,13 +5316,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/search": {
-		"description": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'path:\"/bundles/jquery.js\"': Searches for scans who requested resources with the given path.<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.<br/>- 'page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2025-01 TO 2025-02]': my scans from 2025 January to 2025 February.",
 		"operationId": "urlscanner-search-scans-v2",
+		"summary": "Search URL scans",
+		"description": "Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'path:\"/bundles/jquery.js\"': Searches for scans who requested resources with the given path.<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.<br/>- 'page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with \"microsoft\".<br/>- 'apikey:me AND date:[2025-01 TO 2025-02]': my scans from 2025 January to 2025 February.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5330,19 +5331,19 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects in the response.",
-				"in": "query",
 				"name": "size",
+				"in": "query",
+				"description": "Limit the number of objects in the response.",
 				"schema": {
 					"description": "Limit the number of objects in the response.",
-					"example": 100,
-					"type": "integer"
+					"type": "integer",
+					"example": 100
 				}
 			},
 			{
-				"description": "Filter scans",
-				"in": "query",
 				"name": "q",
+				"in": "query",
+				"description": "Filter scans",
 				"schema": {
 					"description": "Filter scans",
 					"type": "string"
@@ -5351,34 +5352,38 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Search results",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"results": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"_id": {
-												"example": "9626f773-9ffb-4cfb-89d3-30b120fc8011",
-												"type": "string"
+												"type": "string",
+												"example": "9626f773-9ffb-4cfb-89d3-30b120fc8011"
 											},
 											"page": {
+												"type": "object",
 												"properties": {
 													"asn": {
-														"example": "AS15133",
-														"type": "string"
+														"type": "string",
+														"example": "AS15133"
 													},
 													"country": {
-														"example": "US",
-														"type": "string"
+														"type": "string",
+														"example": "US"
 													},
 													"ip": {
-														"example": "93.184.215.14",
-														"type": "string"
+														"type": "string",
+														"example": "93.184.215.14"
 													},
 													"url": {
-														"example": "https://example.com",
-														"type": "string"
+														"type": "string",
+														"example": "https://example.com"
 													}
 												},
 												"required": [
@@ -5386,30 +5391,30 @@
 													"ip",
 													"url",
 													"asn"
-												],
-												"type": "object"
+												]
 											},
 											"result": {
-												"example": "https://radar.clouflare.com/scan/9626f773-9ffb-4cfb-89d3-30b120fc8011",
-												"type": "string"
+												"type": "string",
+												"example": "https://radar.clouflare.com/scan/9626f773-9ffb-4cfb-89d3-30b120fc8011"
 											},
 											"stats": {
+												"type": "object",
 												"properties": {
 													"dataLength": {
-														"example": 2512,
-														"type": "number"
+														"type": "number",
+														"example": 2512
 													},
 													"requests": {
-														"example": 2,
-														"type": "number"
+														"type": "number",
+														"example": 2
 													},
 													"uniqCountries": {
-														"example": 1,
-														"type": "number"
+														"type": "number",
+														"example": 1
 													},
 													"uniqIPs": {
-														"example": 1,
-														"type": "number"
+														"type": "number",
+														"example": 1
 													}
 												},
 												"required": [
@@ -5417,26 +5422,26 @@
 													"uniqCountries",
 													"dataLength",
 													"requests"
-												],
-												"type": "object"
+												]
 											},
 											"task": {
+												"type": "object",
 												"properties": {
 													"time": {
-														"example": "2024-09-30T23:54:02.881000+00:00",
-														"type": "string"
+														"type": "string",
+														"example": "2024-09-30T23:54:02.881000+00:00"
 													},
 													"url": {
-														"example": "https://example.com",
-														"type": "string"
+														"type": "string",
+														"example": "https://example.com"
 													},
 													"uuid": {
-														"example": "9626f773-9ffb-4cfb-89d3-30b120fc8011",
-														"type": "string"
+														"type": "string",
+														"example": "9626f773-9ffb-4cfb-89d3-30b120fc8011"
 													},
 													"visibility": {
-														"example": "public",
-														"type": "string"
+														"type": "string",
+														"example": "public"
 													}
 												},
 												"required": [
@@ -5444,10 +5449,10 @@
 													"time",
 													"uuid",
 													"url"
-												],
-												"type": "object"
+												]
 											},
 											"verdicts": {
+												"type": "object",
 												"properties": {
 													"malicious": {
 														"type": "boolean"
@@ -5455,8 +5460,7 @@
 												},
 												"required": [
 													"malicious"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"required": [
@@ -5468,25 +5472,25 @@
 											"result"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"results"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Search results"
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -5494,12 +5498,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -5508,28 +5512,25 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			}
 		},
 		"security": [
@@ -5541,7 +5542,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Search URL scans",
 		"tags": [
 			"URL Scanner"
 		],
@@ -5561,13 +5561,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/urlscanner/v2/bulk": {
-		"description": "Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish.",
 		"operationId": "urlscanner-create-scan-bulk-v2",
+		"summary": "Bulk create URL Scans",
+		"description": "Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5580,6 +5581,7 @@
 				"application/json": {
 					"schema": {
 						"description": "List of urls to scan (up to a 100).",
+						"type": "array",
 						"items": {
 							"properties": {
 								"agentReadiness": {
@@ -5587,25 +5589,23 @@
 									"type": "boolean"
 								},
 								"customHeaders": {
+									"description": "Set custom headers.",
+									"type": "object",
 									"additionalProperties": {
 										"type": "string"
-									},
-									"description": "Set custom headers.",
-									"type": "object"
+									}
 								},
 								"customagent": {
-									"maxLength": 4096,
-									"type": "string"
+									"type": "string",
+									"maxLength": 4096
 								},
 								"referer": {
-									"maxLength": 4096,
-									"type": "string"
+									"type": "string",
+									"maxLength": 4096
 								},
 								"screenshotsResolutions": {
-									"default": [
-										"desktop"
-									],
 									"description": "Take multiple screenshots targeting different device types.",
+									"type": "array",
 									"items": {
 										"default": "desktop",
 										"description": "Device resolutions.",
@@ -5616,37 +5616,40 @@
 										],
 										"type": "string"
 									},
-									"type": "array"
+									"default": [
+										"desktop"
+									]
 								},
 								"url": {
-									"example": "https://www.example.com",
-									"type": "string"
+									"type": "string",
+									"example": "https://www.example.com"
 								},
 								"visibility": {
-									"default": "Public",
 									"description": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material.",
+									"type": "string",
+									"default": "Public",
 									"enum": [
 										"Public",
 										"Unlisted"
-									],
-									"type": "string"
+									]
 								}
 							},
 							"required": [
 								"url"
 							],
 							"type": "object"
-						},
-						"type": "array"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Scan bulk request accepted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"api": {
@@ -5654,12 +5657,12 @@
 										"type": "string"
 									},
 									"options": {
+										"type": "object",
 										"properties": {
 											"useragent": {
 												"type": "string"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"result": {
 										"description": "URL to report.",
@@ -5671,17 +5674,17 @@
 									},
 									"uuid": {
 										"description": "Scan ID.",
-										"format": "uuid",
-										"type": "string"
+										"type": "string",
+										"format": "uuid"
 									},
 									"visibility": {
 										"description": "Submitted visibility status.",
+										"type": "string",
+										"example": "public",
 										"enum": [
 											"public",
 											"unlisted"
-										],
-										"example": "public",
-										"type": "string"
+										]
 									}
 								},
 								"required": [
@@ -5692,19 +5695,20 @@
 									"url"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Scan bulk request accepted successfully."
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -5712,12 +5716,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -5726,51 +5730,51 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			},
 			"429": {
+				"description": "Scan request denied: rate limited.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"description": {
 									"type": "string"
 								},
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
-												"example": "DNS Error - Could not resolve domain.",
-												"type": "string"
+												"type": "string",
+												"example": "DNS Error - Could not resolve domain."
 											},
 											"status": {
-												"example": 400,
-												"type": "number"
+												"type": "number",
+												"example": 400
 											},
 											"title": {
-												"example": "DNS Error - Could not resolve domain.",
-												"type": "string"
+												"type": "string",
+												"example": "DNS Error - Could not resolve domain."
 											}
 										},
 										"required": [
@@ -5779,27 +5783,24 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
-									"example": 429,
-									"type": "number"
+									"type": "number",
+									"example": 429
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan request denied: rate limited."
+				}
 			}
 		},
 		"security": [
@@ -5811,7 +5812,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Bulk create URL Scans",
 		"tags": [
 			"URL Scanner"
 		],
@@ -5831,13 +5831,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/urlscanner/v2/scan": {
-		"description": "Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
 		"operationId": "urlscanner-create-scan-v2",
+		"summary": "Create URL Scan",
+		"description": "Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -5849,6 +5850,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"agentReadiness": {
 								"description": "Enable agent readiness checks.",
@@ -5856,6 +5858,7 @@
 							},
 							"country": {
 								"description": "Country to geo egress from",
+								"type": "string",
 								"enum": [
 									"AF",
 									"AL",
@@ -6052,29 +6055,26 @@
 									"YE",
 									"ZM",
 									"ZW"
-								],
-								"type": "string"
+								]
 							},
 							"customHeaders": {
+								"description": "Set custom headers.",
+								"type": "object",
 								"additionalProperties": {
 									"type": "string"
-								},
-								"description": "Set custom headers.",
-								"type": "object"
+								}
 							},
 							"customagent": {
-								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"maxLength": 4096
 							},
 							"referer": {
-								"maxLength": 4096,
-								"type": "string"
+								"type": "string",
+								"maxLength": 4096
 							},
 							"screenshotsResolutions": {
-								"default": [
-									"desktop"
-								],
 								"description": "Take multiple screenshots targeting different device types.",
+								"type": "array",
 								"items": {
 									"default": "desktop",
 									"description": "Device resolutions.",
@@ -6085,51 +6085,54 @@
 									],
 									"type": "string"
 								},
-								"type": "array"
+								"default": [
+									"desktop"
+								]
 							},
 							"url": {
-								"example": "https://www.example.com",
-								"type": "string"
+								"type": "string",
+								"example": "https://www.example.com"
 							},
 							"visibility": {
-								"default": "Public",
 								"description": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material.",
+								"type": "string",
+								"default": "Public",
 								"enum": [
 									"Public",
 									"Unlisted"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"url"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Scan request accepted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"api": {
 									"description": "URL to api report.",
 									"type": "string"
 								},
 								"message": {
-									"example": "Submission successful",
-									"type": "string"
+									"type": "string",
+									"example": "Submission successful"
 								},
 								"options": {
+									"type": "object",
 									"properties": {
 										"useragent": {
 											"type": "string"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"result": {
 									"description": "Public URL to report.",
@@ -6142,18 +6145,18 @@
 								},
 								"uuid": {
 									"description": "Scan ID.",
-									"format": "uuid",
 									"type": "string",
+									"format": "uuid",
 									"x-auditable": true
 								},
 								"visibility": {
 									"description": "Submitted visibility status.",
+									"type": "string",
+									"example": "public",
 									"enum": [
 										"public",
 										"unlisted"
-									],
-									"example": "public",
-									"type": "string"
+									]
 								}
 							},
 							"required": [
@@ -6163,19 +6166,20 @@
 								"api",
 								"visibility",
 								"url"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan request accepted successfully."
+				}
 			},
 			"400": {
+				"description": "Invalid input.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
@@ -6183,12 +6187,12 @@
 											},
 											"status": {
 												"description": "Status code.",
-												"example": 400,
-												"type": "integer"
+												"type": "integer",
+												"example": 400
 											},
 											"title": {
-												"example": "Invalid url",
-												"type": "string"
+												"type": "string",
+												"example": "Invalid url"
 											}
 										},
 										"required": [
@@ -6197,52 +6201,52 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
 									"description": "Status code.",
-									"example": 400,
-									"type": "integer"
+									"type": "integer",
+									"example": 400
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid input."
+				}
 			},
 			"409": {
+				"description": "Scan request denied: hostname was recently scanned.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"description": {
-									"example": "Scan request denied: hostname was recently scanned",
-									"type": "string"
+									"type": "string",
+									"example": "Scan request denied: hostname was recently scanned"
 								},
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
-												"example": "DNS Error - Could not resolve domain.",
-												"type": "string"
+												"type": "string",
+												"example": "DNS Error - Could not resolve domain."
 											},
 											"status": {
-												"example": 400,
-												"type": "number"
+												"type": "number",
+												"example": 400
 											},
 											"title": {
-												"example": "DNS Error - Could not resolve domain.",
-												"type": "string"
+												"type": "string",
+												"example": "DNS Error - Could not resolve domain."
 											}
 										},
 										"required": [
@@ -6251,51 +6255,51 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
-									"example": "Scan prevented ...",
-									"type": "string"
+									"type": "string",
+									"example": "Scan prevented ..."
 								},
 								"status": {
-									"example": 409,
-									"type": "number"
+									"type": "number",
+									"example": 409
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan request denied: hostname was recently scanned."
+				}
 			},
 			"429": {
+				"description": "Scan request denied: rate limited.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"description": {
 									"type": "string"
 								},
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
-												"example": "DNS Error - Could not resolve domain.",
-												"type": "string"
+												"type": "string",
+												"example": "DNS Error - Could not resolve domain."
 											},
 											"status": {
-												"example": 400,
-												"type": "number"
+												"type": "number",
+												"example": 400
 											},
 											"title": {
-												"example": "DNS Error - Could not resolve domain.",
-												"type": "string"
+												"type": "string",
+												"example": "DNS Error - Could not resolve domain."
 											}
 										},
 										"required": [
@@ -6304,27 +6308,24 @@
 											"status"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"message": {
 									"type": "string"
 								},
 								"status": {
-									"example": 429,
-									"type": "number"
+									"type": "number",
+									"example": 429
 								}
 							},
 							"required": [
 								"message",
 								"status",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan request denied: rate limited."
+				}
 			}
 		},
 		"security": [
@@ -6336,7 +6337,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create URL Scan",
 		"tags": [
 			"URL Scanner"
 		],

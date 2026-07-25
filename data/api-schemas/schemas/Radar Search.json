@@ -1,47 +1,49 @@
 {
 	"GET /radar/search/global": {
-		"description": "Searches for locations, autonomous systems, reports, bots, certificate logs, certificate authorities, industries and verticals. Location names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"operationId": "radar-get-search-global",
+		"summary": "Search for locations, ASes, reports, and more",
+		"description": "Searches for locations, autonomous systems, reports, bots, certificate logs, certificate authorities, industries and verticals. Location names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Limits the number of objects per search category.",
-				"in": "query",
 				"name": "limitPerGroup",
+				"in": "query",
+				"description": "Limits the number of objects per search category.",
 				"schema": {
 					"description": "Limits the number of objects per search category.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "String used to perform the search operation.",
-				"in": "query",
 				"name": "query",
+				"in": "query",
+				"description": "String used to perform the search operation.",
 				"required": true,
 				"schema": {
 					"description": "String used to perform the search operation.",
-					"example": "United",
-					"type": "string"
+					"type": "string",
+					"example": "United"
 				}
 			},
 			{
-				"description": "Search types included in results.",
-				"in": "query",
 				"name": "include",
+				"in": "query",
+				"description": "Search types included in results.",
 				"schema": {
 					"description": "Search types included in results.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"ADM1S",
@@ -58,16 +60,16 @@
 							"VERTICALS"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Search types excluded from results.",
-				"in": "query",
 				"name": "exclude",
+				"in": "query",
+				"description": "Search types excluded from results.",
 				"schema": {
 					"description": "Search types excluded from results.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"ADM1S",
@@ -84,47 +86,50 @@
 							"VERTICALS"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"search": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": "13335",
-														"type": "string"
+														"type": "string",
+														"example": "13335"
 													},
 													"name": {
-														"example": "Cloudflare",
-														"type": "string"
+														"type": "string",
+														"example": "Cloudflare"
 													},
 													"type": {
-														"example": "asn",
-														"type": "string"
+														"type": "string",
+														"example": "asn"
 													}
 												},
 												"required": [
@@ -133,36 +138,35 @@
 													"type"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"search"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -173,27 +177,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -203,7 +204,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Search for locations, ASes, reports, and more",
 		"tags": [
 			"Radar Search"
 		],

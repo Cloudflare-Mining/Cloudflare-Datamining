@@ -1,49 +1,54 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
-		"description": "Delete an AI Gateway Dynamic Route.",
 		"operationId": "aig-config-delete-gateway-dynamic-route",
+		"summary": "Delete an AI Gateway Dynamic Route.",
+		"description": "Delete an AI Gateway Dynamic Route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -52,8 +57,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -61,20 +68,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -90,8 +95,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -99,10 +106,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -110,29 +117,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -149,6 +154,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -159,14 +165,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -182,8 +187,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -191,10 +198,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -202,17 +209,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -236,14 +242,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -260,8 +265,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -269,10 +276,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -280,17 +287,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -310,14 +316,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -334,6 +339,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -344,14 +350,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -362,8 +367,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -372,8 +376,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -386,8 +390,7 @@
 										"created_at",
 										"modified_at",
 										"gateway_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -396,19 +399,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -419,27 +423,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -451,7 +452,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete an AI Gateway Dynamic Route.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -475,55 +475,59 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
-		"description": "List all AI Gateway Dynamic Routes.",
 		"operationId": "aig-config-list-gateway-dynamic-routes",
+		"summary": "List all AI Gateway Dynamic Routes.",
+		"description": "List all AI Gateway Dynamic Routes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "gateway_id",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"description": "Page number",
-				"in": "query",
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "54442216"
+				}
+			},
+			{
 				"name": "page",
+				"in": "query",
+				"description": "Page number",
 				"schema": {
 					"description": "Page number",
-					"example": 1,
-					"type": "integer"
+					"type": "integer",
+					"example": 1
 				}
 			},
 			{
-				"description": "Number of routes per page",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of routes per page",
 				"schema": {
 					"description": "Number of routes per page",
-					"example": 20,
-					"type": "integer"
+					"type": "integer",
+					"example": 20
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"order_by": {
 											"type": "string"
@@ -538,16 +542,18 @@
 											"type": "number"
 										},
 										"routes": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"account_tag": {
 														"type": "string"
 													},
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"deployment": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"type": "string"
@@ -563,10 +569,10 @@
 															"deployment_id",
 															"version_id",
 															"created_at"
-														],
-														"type": "object"
+														]
 													},
 													"elements": {
+														"type": "array",
 														"items": {
 															"oneOf": [
 																{
@@ -575,8 +581,10 @@
 																			"type": "string"
 																		},
 																		"outputs": {
+																			"type": "object",
 																			"properties": {
 																				"next": {
+																					"type": "object",
 																					"properties": {
 																						"elementId": {
 																							"type": "string"
@@ -584,20 +592,18 @@
 																					},
 																					"required": [
 																						"elementId"
-																					],
-																					"type": "object"
+																					]
 																				}
 																			},
 																			"required": [
 																				"next"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"start"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -613,8 +619,10 @@
 																			"type": "string"
 																		},
 																		"outputs": {
+																			"type": "object",
 																			"properties": {
 																				"false": {
+																					"type": "object",
 																					"properties": {
 																						"elementId": {
 																							"type": "string"
@@ -622,10 +630,10 @@
 																					},
 																					"required": [
 																						"elementId"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				"true": {
+																					"type": "object",
 																					"properties": {
 																						"elementId": {
 																							"type": "string"
@@ -633,29 +641,27 @@
 																					},
 																					"required": [
 																						"elementId"
-																					],
-																					"type": "object"
+																					]
 																				}
 																			},
 																			"required": [
 																				"true",
 																				"false"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"properties": {
+																			"type": "object",
 																			"properties": {
 																				"conditions": {
 																					"type": "object"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"conditional"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -672,6 +678,7 @@
 																			"type": "string"
 																		},
 																		"outputs": {
+																			"type": "object",
 																			"additionalProperties": {
 																				"properties": {
 																					"elementId": {
@@ -682,14 +689,13 @@
 																					"elementId"
 																				],
 																				"type": "object"
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"percentage"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -705,8 +711,10 @@
 																			"type": "string"
 																		},
 																		"outputs": {
+																			"type": "object",
 																			"properties": {
 																				"fallback": {
+																					"type": "object",
 																					"properties": {
 																						"elementId": {
 																							"type": "string"
@@ -714,10 +722,10 @@
 																					},
 																					"required": [
 																						"elementId"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				"success": {
+																					"type": "object",
 																					"properties": {
 																						"elementId": {
 																							"type": "string"
@@ -725,17 +733,16 @@
 																					},
 																					"required": [
 																						"elementId"
-																					],
-																					"type": "object"
+																					]
 																				}
 																			},
 																			"required": [
 																				"success",
 																				"fallback"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"properties": {
+																			"type": "object",
 																			"properties": {
 																				"key": {
 																					"type": "string"
@@ -759,14 +766,13 @@
 																				"key",
 																				"limit",
 																				"window"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"rate"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -783,8 +789,10 @@
 																			"type": "string"
 																		},
 																		"outputs": {
+																			"type": "object",
 																			"properties": {
 																				"fallback": {
+																					"type": "object",
 																					"properties": {
 																						"elementId": {
 																							"type": "string"
@@ -792,10 +800,10 @@
 																					},
 																					"required": [
 																						"elementId"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				"success": {
+																					"type": "object",
 																					"properties": {
 																						"elementId": {
 																							"type": "string"
@@ -803,17 +811,16 @@
 																					},
 																					"required": [
 																						"elementId"
-																					],
-																					"type": "object"
+																					]
 																				}
 																			},
 																			"required": [
 																				"success",
 																				"fallback"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"properties": {
+																			"type": "object",
 																			"properties": {
 																				"model": {
 																					"type": "string"
@@ -833,14 +840,13 @@
 																				"model",
 																				"timeout",
 																				"retries"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"model"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -857,6 +863,7 @@
 																			"type": "string"
 																		},
 																		"outputs": {
+																			"type": "object",
 																			"additionalProperties": {
 																				"properties": {
 																					"elementId": {
@@ -867,14 +874,13 @@
 																					"elementId"
 																				],
 																				"type": "object"
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"type": {
+																			"type": "string",
 																			"enum": [
 																				"end"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -885,8 +891,7 @@
 																	"type": "object"
 																}
 															]
-														},
-														"type": "array"
+														}
 													},
 													"gateway_id": {
 														"type": "string"
@@ -895,20 +900,21 @@
 														"type": "string"
 													},
 													"modified_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"name": {
 														"type": "string"
 													},
 													"version": {
+														"type": "object",
 														"properties": {
 															"active": {
+																"type": "string",
 																"enum": [
 																	"true",
 																	"false"
-																],
-																"type": "string"
+																]
 															},
 															"created_at": {
 																"type": "string"
@@ -928,8 +934,7 @@
 															"data",
 															"active",
 															"created_at"
-														],
-														"type": "object"
+														]
 													}
 												},
 												"required": [
@@ -944,8 +949,7 @@
 													"deployment"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -954,8 +958,7 @@
 										"per_page",
 										"order_by",
 										"order_by_direction"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -964,19 +967,20 @@
 							"required": [
 								"success",
 								"data"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -987,27 +991,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1019,7 +1020,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List all AI Gateway Dynamic Routes.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -1044,50 +1044,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
-		"description": "Get an AI Gateway Dynamic Route.",
 		"operationId": "aig-config-get-gateway-dynamic-route",
+		"summary": "Get an AI Gateway Dynamic Route.",
+		"description": "Get an AI Gateway Dynamic Route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"deployment": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"type": "string"
@@ -1103,10 +1108,10 @@
 												"deployment_id",
 												"version_id",
 												"created_at"
-											],
-											"type": "object"
+											]
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -1115,8 +1120,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -1124,20 +1131,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -1153,8 +1158,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -1162,10 +1169,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -1173,29 +1180,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -1212,6 +1217,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -1222,14 +1228,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -1245,8 +1250,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -1254,10 +1261,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -1265,17 +1272,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -1299,14 +1305,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -1323,8 +1328,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -1332,10 +1339,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -1343,17 +1350,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -1373,14 +1379,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -1397,6 +1402,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -1407,14 +1413,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -1425,8 +1430,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -1435,20 +1439,21 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
 										},
 										"version": {
+											"type": "object",
 											"properties": {
 												"active": {
+													"type": "string",
 													"enum": [
 														"true",
 														"false"
-													],
-													"type": "string"
+													]
 												},
 												"created_at": {
 													"type": "string"
@@ -1468,8 +1473,7 @@
 												"data",
 												"active",
 												"created_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1481,8 +1485,7 @@
 										"gateway_id",
 										"version",
 										"deployment"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1491,19 +1494,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1514,27 +1518,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1546,7 +1547,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get an AI Gateway Dynamic Route.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -1571,46 +1571,51 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
-		"description": "List all AI Gateway Dynamic Route Deployments.",
 		"operationId": "aig-config-list-gateway-dynamic-route-deployments",
+		"summary": "List all AI Gateway Dynamic Route Deployments.",
+		"description": "List all AI Gateway Dynamic Route Deployments.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"deployments": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"created_at": {
@@ -1629,8 +1634,7 @@
 													"created_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"order_by": {
 											"type": "string"
@@ -1651,8 +1655,7 @@
 										"per_page",
 										"order_by",
 										"order_by_direction"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1661,19 +1664,20 @@
 							"required": [
 								"success",
 								"data"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1684,27 +1688,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1716,7 +1717,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List all AI Gateway Dynamic Route Deployments.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -1741,44 +1741,48 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
-		"description": "List all AI Gateway Dynamic Route Versions.",
 		"operationId": "aig-config-list-gateway-dynamic-route-versions",
+		"summary": "List all AI Gateway Dynamic Route Versions.",
+		"description": "List all AI Gateway Dynamic Route Versions.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"order_by": {
 											"type": "string"
@@ -1793,14 +1797,15 @@
 											"type": "number"
 										},
 										"versions": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"active": {
+														"type": "string",
 														"enum": [
 															"true",
 															"false"
-														],
-														"type": "string"
+														]
 													},
 													"created_at": {
 														"type": "string"
@@ -1822,8 +1827,7 @@
 													"created_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -1832,8 +1836,7 @@
 										"per_page",
 										"order_by",
 										"order_by_direction"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1842,19 +1845,20 @@
 							"required": [
 								"success",
 								"data"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1865,27 +1869,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1897,7 +1898,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List all AI Gateway Dynamic Route Versions.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -1922,60 +1922,64 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}": {
-		"description": "Get an AI Gateway Dynamic Route Version.",
 		"operationId": "aig-config-get-gateway-dynamic-route-version",
+		"summary": "Get an AI Gateway Dynamic Route Version.",
+		"description": "Get an AI Gateway Dynamic Route Version.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "version_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"active": {
+											"type": "string",
 											"enum": [
 												"true",
 												"false"
-											],
-											"type": "string"
+											]
 										},
 										"created_at": {
 											"type": "string"
@@ -1984,6 +1988,7 @@
 											"type": "string"
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -1992,8 +1997,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2001,20 +2008,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2030,8 +2035,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2039,10 +2046,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2050,29 +2057,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2089,6 +2094,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -2099,14 +2105,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2122,8 +2127,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2131,10 +2138,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2142,17 +2149,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -2176,14 +2182,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2200,8 +2205,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2209,10 +2216,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2220,17 +2227,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -2250,14 +2256,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2274,6 +2279,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -2284,14 +2290,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2302,8 +2307,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -2315,8 +2319,8 @@
 											"type": "boolean"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -2335,8 +2339,7 @@
 										"version_id",
 										"data",
 										"active"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2345,19 +2348,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2368,27 +2372,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -2400,7 +2401,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get an AI Gateway Dynamic Route Version.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -2425,34 +2425,35 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
-		"description": "Update an AI Gateway Dynamic Route.",
 		"operationId": "aig-config-update-gateway-dynamic-route",
+		"summary": "Update an AI Gateway Dynamic Route.",
+		"description": "Update an AI Gateway Dynamic Route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
@@ -2460,36 +2461,40 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
-								"example": "Route Name",
-								"type": "string"
+								"type": "string",
+								"example": "Route Name"
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"route": {
+									"type": "object",
 									"properties": {
 										"account_tag": {
 											"type": "string"
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"deployment": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"type": "string"
@@ -2505,10 +2510,10 @@
 												"deployment_id",
 												"version_id",
 												"created_at"
-											],
-											"type": "object"
+											]
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -2517,8 +2522,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2526,20 +2533,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2555,8 +2560,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2564,10 +2571,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2575,29 +2582,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2614,6 +2619,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -2624,14 +2630,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2647,8 +2652,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2656,10 +2663,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2667,17 +2674,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -2701,14 +2707,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2725,8 +2730,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2734,10 +2741,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2745,17 +2752,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -2775,14 +2781,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2799,6 +2804,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -2809,14 +2815,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2827,8 +2832,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -2837,20 +2841,21 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
 										},
 										"version": {
+											"type": "object",
 											"properties": {
 												"active": {
+													"type": "string",
 													"enum": [
 														"true",
 														"false"
-													],
-													"type": "string"
+													]
 												},
 												"created_at": {
 													"type": "string"
@@ -2870,8 +2875,7 @@
 												"data",
 												"active",
 												"created_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -2884,8 +2888,7 @@
 										"gateway_id",
 										"version",
 										"deployment"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2894,28 +2897,30 @@
 							"required": [
 								"success",
 								"route"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Input Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"route": {
+									"type": "object",
 									"properties": {
 										"account_tag": {
 											"type": "string"
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -2924,8 +2929,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2933,20 +2940,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -2962,8 +2967,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2971,10 +2978,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -2982,29 +2989,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3021,6 +3026,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -3031,14 +3037,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3054,8 +3059,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3063,10 +3070,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3074,17 +3081,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -3108,14 +3114,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3132,8 +3137,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3141,10 +3148,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3152,17 +3159,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -3182,14 +3188,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3206,6 +3211,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -3216,14 +3222,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3234,8 +3239,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -3244,8 +3248,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -3259,8 +3263,7 @@
 										"modified_at",
 										"account_tag",
 										"gateway_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -3269,12 +3272,10 @@
 							"required": [
 								"success",
 								"route"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Error"
+				}
 			}
 		},
 		"security": [
@@ -3286,7 +3287,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update an AI Gateway Dynamic Route.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -3310,25 +3310,26 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
-		"description": "Create a new AI Gateway Dynamic Route.",
 		"operationId": "aig-config-post-gateway-dynamic-route",
+		"summary": "Create a new AI Gateway Dynamic Route.",
+		"description": "Create a new AI Gateway Dynamic Route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
@@ -3336,8 +3337,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"elements": {
+								"type": "array",
 								"items": {
 									"oneOf": [
 										{
@@ -3346,8 +3349,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"next": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -3355,20 +3360,18 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"next"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"start"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -3384,8 +3387,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"false": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -3393,10 +3398,10 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														},
 														"true": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -3404,29 +3409,27 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"true",
 														"false"
-													],
-													"type": "object"
+													]
 												},
 												"properties": {
+													"type": "object",
 													"properties": {
 														"conditions": {
 															"type": "object"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"conditional"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -3443,6 +3446,7 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"additionalProperties": {
 														"properties": {
 															"elementId": {
@@ -3453,14 +3457,13 @@
 															"elementId"
 														],
 														"type": "object"
-													},
-													"type": "object"
+													}
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"percentage"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -3476,8 +3479,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"fallback": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -3485,10 +3490,10 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														},
 														"success": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -3496,17 +3501,16 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"fallback"
-													],
-													"type": "object"
+													]
 												},
 												"properties": {
+													"type": "object",
 													"properties": {
 														"key": {
 															"type": "string"
@@ -3530,14 +3534,13 @@
 														"key",
 														"limit",
 														"window"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"rate"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -3554,8 +3557,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"fallback": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -3563,10 +3568,10 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														},
 														"success": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -3574,17 +3579,16 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"fallback"
-													],
-													"type": "object"
+													]
 												},
 												"properties": {
+													"type": "object",
 													"properties": {
 														"model": {
 															"type": "string"
@@ -3604,14 +3608,13 @@
 														"model",
 														"timeout",
 														"retries"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"model"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -3628,6 +3631,7 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"additionalProperties": {
 														"properties": {
 															"elementId": {
@@ -3638,14 +3642,13 @@
 															"elementId"
 														],
 														"type": "object"
-													},
-													"type": "object"
+													}
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"end"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -3656,8 +3659,7 @@
 											"type": "object"
 										}
 									]
-								},
-								"type": "array"
+								}
 							},
 							"name": {
 								"type": "string"
@@ -3666,25 +3668,28 @@
 						"required": [
 							"name",
 							"elements"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"deployment": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"type": "string"
@@ -3700,10 +3705,10 @@
 												"deployment_id",
 												"version_id",
 												"created_at"
-											],
-											"type": "object"
+											]
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -3712,8 +3717,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3721,20 +3728,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3750,8 +3755,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3759,10 +3766,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3770,29 +3777,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3809,6 +3814,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -3819,14 +3825,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3842,8 +3847,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3851,10 +3858,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3862,17 +3869,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -3896,14 +3902,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3920,8 +3925,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3929,10 +3936,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -3940,17 +3947,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -3970,14 +3976,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3994,6 +3999,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -4004,14 +4010,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4022,8 +4027,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -4032,20 +4036,21 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
 										},
 										"version": {
+											"type": "object",
 											"properties": {
 												"active": {
+													"type": "string",
 													"enum": [
 														"true",
 														"false"
-													],
-													"type": "string"
+													]
 												},
 												"created_at": {
 													"type": "string"
@@ -4065,8 +4070,7 @@
 												"data",
 												"active",
 												"created_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -4078,8 +4082,7 @@
 										"gateway_id",
 										"version",
 										"deployment"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -4088,19 +4091,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -4111,27 +4115,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -4143,7 +4144,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new AI Gateway Dynamic Route.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -4167,34 +4167,35 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
-		"description": "Create a new AI Gateway Dynamic Route Deployment.",
 		"operationId": "aig-config-post-gateway-dynamic-route-deployment",
+		"summary": "Create a new AI Gateway Dynamic Route Deployment.",
+		"description": "Create a new AI Gateway Dynamic Route Deployment.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
@@ -4202,33 +4203,37 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"version_id": {
-								"example": "54442216",
-								"type": "string"
+								"type": "string",
+								"example": "54442216"
 							}
 						},
 						"required": [
 							"version_id"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -4237,8 +4242,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -4246,20 +4253,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4275,8 +4280,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -4284,10 +4291,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -4295,29 +4302,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4334,6 +4339,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -4344,14 +4350,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4367,8 +4372,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -4376,10 +4383,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -4387,17 +4394,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -4421,14 +4427,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4445,8 +4450,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -4454,10 +4461,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -4465,17 +4472,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -4495,14 +4501,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4519,6 +4524,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -4529,14 +4535,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4547,8 +4552,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -4557,8 +4561,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -4571,8 +4575,7 @@
 										"created_at",
 										"modified_at",
 										"gateway_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -4581,19 +4584,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -4604,27 +4608,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -4636,7 +4637,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new AI Gateway Dynamic Route Deployment.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],
@@ -4660,34 +4660,35 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
-		"description": "Create a new AI Gateway Dynamic Route Version.",
 		"operationId": "aig-config-post-gateway-dynamic-route-version",
+		"summary": "Create a new AI Gateway Dynamic Route Version.",
+		"description": "Create a new AI Gateway Dynamic Route Version.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "54442216",
-					"type": "string"
+					"type": "string",
+					"example": "54442216"
 				}
 			}
 		],
@@ -4695,8 +4696,10 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"elements": {
+								"type": "array",
 								"items": {
 									"oneOf": [
 										{
@@ -4705,8 +4708,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"next": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -4714,20 +4719,18 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"next"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"start"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -4743,8 +4746,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"false": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -4752,10 +4757,10 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														},
 														"true": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -4763,29 +4768,27 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"true",
 														"false"
-													],
-													"type": "object"
+													]
 												},
 												"properties": {
+													"type": "object",
 													"properties": {
 														"conditions": {
 															"type": "object"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"conditional"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -4802,6 +4805,7 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"additionalProperties": {
 														"properties": {
 															"elementId": {
@@ -4812,14 +4816,13 @@
 															"elementId"
 														],
 														"type": "object"
-													},
-													"type": "object"
+													}
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"percentage"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -4835,8 +4838,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"fallback": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -4844,10 +4849,10 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														},
 														"success": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -4855,17 +4860,16 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"fallback"
-													],
-													"type": "object"
+													]
 												},
 												"properties": {
+													"type": "object",
 													"properties": {
 														"key": {
 															"type": "string"
@@ -4889,14 +4893,13 @@
 														"key",
 														"limit",
 														"window"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"rate"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -4913,8 +4916,10 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"properties": {
 														"fallback": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -4922,10 +4927,10 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														},
 														"success": {
+															"type": "object",
 															"properties": {
 																"elementId": {
 																	"type": "string"
@@ -4933,17 +4938,16 @@
 															},
 															"required": [
 																"elementId"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"fallback"
-													],
-													"type": "object"
+													]
 												},
 												"properties": {
+													"type": "object",
 													"properties": {
 														"model": {
 															"type": "string"
@@ -4963,14 +4967,13 @@
 														"model",
 														"timeout",
 														"retries"
-													],
-													"type": "object"
+													]
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"model"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -4987,6 +4990,7 @@
 													"type": "string"
 												},
 												"outputs": {
+													"type": "object",
 													"additionalProperties": {
 														"properties": {
 															"elementId": {
@@ -4997,14 +5001,13 @@
 															"elementId"
 														],
 														"type": "object"
-													},
-													"type": "object"
+													}
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"end"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -5015,31 +5018,33 @@
 											"type": "object"
 										}
 									]
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"elements"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"elements": {
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -5048,8 +5053,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"next": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -5057,20 +5064,18 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"next"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"start"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -5086,8 +5091,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"false": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -5095,10 +5102,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"true": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -5106,29 +5113,27 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"true",
 																	"false"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"conditions": {
 																		"type": "object"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"conditional"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -5145,6 +5150,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -5155,14 +5161,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"percentage"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -5178,8 +5183,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -5187,10 +5194,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -5198,17 +5205,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"key": {
 																		"type": "string"
@@ -5232,14 +5238,13 @@
 																	"key",
 																	"limit",
 																	"window"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"rate"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -5256,8 +5261,10 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"properties": {
 																	"fallback": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -5265,10 +5272,10 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"success": {
+																		"type": "object",
 																		"properties": {
 																			"elementId": {
 																				"type": "string"
@@ -5276,17 +5283,16 @@
 																		},
 																		"required": [
 																			"elementId"
-																		],
-																		"type": "object"
+																		]
 																	}
 																},
 																"required": [
 																	"success",
 																	"fallback"
-																],
-																"type": "object"
+																]
 															},
 															"properties": {
+																"type": "object",
 																"properties": {
 																	"model": {
 																		"type": "string"
@@ -5306,14 +5312,13 @@
 																	"model",
 																	"timeout",
 																	"retries"
-																],
-																"type": "object"
+																]
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"model"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -5330,6 +5335,7 @@
 																"type": "string"
 															},
 															"outputs": {
+																"type": "object",
 																"additionalProperties": {
 																	"properties": {
 																		"elementId": {
@@ -5340,14 +5346,13 @@
 																		"elementId"
 																	],
 																	"type": "object"
-																},
-																"type": "object"
+																}
 															},
 															"type": {
+																"type": "string",
 																"enum": [
 																	"end"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -5358,8 +5363,7 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"type": "string"
@@ -5368,8 +5372,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -5382,8 +5386,7 @@
 										"created_at",
 										"modified_at",
 										"gateway_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -5392,19 +5395,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Success"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -5415,27 +5419,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -5447,7 +5448,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new AI Gateway Dynamic Route Version.",
 		"tags": [
 			"AI Gateway Dynamic Routes"
 		],

@@ -1,11 +1,12 @@
 {
 	"GET /accounts/{account_id}/workers/observability/shared/query/{id}": {
-		"description": "Shared queries store the results of a previously run query, allowing you to share the results with others.",
 		"operationId": "shared.query.get",
+		"summary": "View a query that has been shared",
+		"description": "Shared queries store the results of a previously run query, allowing you to share the results with others.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Specify the ID of the shared query.",
@@ -13,26 +14,29 @@
 				}
 			},
 			{
-				"in": "query",
 				"name": "view",
+				"in": "query",
 				"schema": {
 					"description": "Select the view of the query result to return, defaults to events.",
+					"type": "string",
 					"enum": [
 						"events",
 						"invocations",
 						"calculations"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -43,31 +47,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"description": "Complete results of a query run. The populated fields depend on the requested view type (events, calculations, invocations, traces, or agents).",
+									"type": "object",
 									"properties": {
 										"agents": {
 											"description": "Agent run summaries. Present when the query view is 'agents'. Each entry represents one trace containing at least one agent invocation.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"agentId": {
@@ -84,10 +89,10 @@
 													},
 													"errors": {
 														"description": "Distinct errors reported by spans in the run.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"id": {
 														"description": "Pagination cursor derived from the first agent invocation in the run.",
@@ -99,10 +104,10 @@
 													},
 													"models": {
 														"description": "Distinct models reported by chat spans across the run's trace.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"outputTokens": {
 														"description": "Output tokens summed across chat spans in the run's trace; informational, not billing data.",
@@ -110,17 +115,17 @@
 													},
 													"providers": {
 														"description": "Distinct GenAI providers reported by chat spans in the run.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"services": {
 														"description": "Worker services represented in the run's trace.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"spans": {
 														"description": "Number of spans in the run's trace.",
@@ -128,11 +133,11 @@
 													},
 													"status": {
 														"description": "Observed run status.",
+														"type": "string",
 														"enum": [
 															"completed",
 															"error"
-														],
-														"type": "string"
+														]
 													},
 													"traceDurationMs": {
 														"description": "Total trace duration in milliseconds.",
@@ -165,20 +170,22 @@
 													"providers"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"calculations": {
 											"description": "Aggregated calculation results. Present when the query view is 'calculations'. Contains computed metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series data.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"aggregates": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"count": {
 																	"type": "number"
 																},
 																"groups": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"key": {
@@ -203,8 +210,7 @@
 																			"value"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"interval": {
 																	"type": "number"
@@ -223,8 +229,7 @@
 																"sampleInterval"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"alias": {
 														"type": "string"
@@ -233,9 +238,11 @@
 														"type": "string"
 													},
 													"series": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"data": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"count": {
@@ -245,6 +252,7 @@
 																				"type": "string"
 																			},
 																			"groups": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"key": {
@@ -269,8 +277,7 @@
 																						"value"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"interval": {
 																				"type": "number"
@@ -292,8 +299,7 @@
 																			"sampleInterval"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"time": {
 																	"type": "string"
@@ -304,8 +310,7 @@
 																"data"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													}
 												},
 												"required": [
@@ -314,20 +319,22 @@
 													"series"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"compare": {
 											"description": "Comparison calculation results from the previous time period. Present when the compare option is enabled. Same structure as calculations.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"aggregates": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"count": {
 																	"type": "number"
 																},
 																"groups": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"key": {
@@ -352,8 +359,7 @@
 																			"value"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"interval": {
 																	"type": "number"
@@ -372,8 +378,7 @@
 																"sampleInterval"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"alias": {
 														"type": "string"
@@ -382,9 +387,11 @@
 														"type": "string"
 													},
 													"series": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"data": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"count": {
@@ -394,6 +401,7 @@
 																				"type": "string"
 																			},
 																			"groups": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"key": {
@@ -418,8 +426,7 @@
 																						"value"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"interval": {
 																				"type": "number"
@@ -441,8 +448,7 @@
 																			"sampleInterval"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"time": {
 																	"type": "string"
@@ -453,8 +459,7 @@
 																"data"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													}
 												},
 												"required": [
@@ -463,50 +468,50 @@
 													"series"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"distribution": {
 											"description": "Bucketed 2D histogram of a numeric field over time. Present when chartType is 'distribution'.",
+											"type": "object",
 											"properties": {
 												"bins": {
 													"description": "Time-bucket labels (ISO-8601 strings), one per matrix column.",
+													"type": "array",
 													"items": {
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"bucketBoundaries": {
 													"description": "Raw bucket edges in the value's native unit, length buckets.length + 1. Used for the colour scale and percentile mapping.",
+													"type": "array",
 													"items": {
 														"type": "number"
-													},
-													"type": "array"
+													}
 												},
 												"bucketMode": {
 													"description": "Bucketing scheme used to derive the boundaries. 'log' produces geometric edges; 'linear' produces fixed-width edges.",
+													"type": "string",
 													"enum": [
 														"log",
 														"linear"
-													],
-													"type": "string"
+													]
 												},
 												"buckets": {
 													"description": "Value-range labels, one per matrix row (e.g. '50–100ms').",
+													"type": "array",
 													"items": {
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"matrix": {
 													"description": "Sampling-corrected counts. matrix[bucketIdx][binIdx] is the estimated number of events in value-bucket 'bucketIdx' during time-bin 'binIdx'.",
+													"type": "array",
 													"items": {
 														"items": {
 															"type": "number"
 														},
 														"type": "array"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -515,11 +520,11 @@
 												"matrix",
 												"bucketBoundaries",
 												"bucketMode"
-											],
-											"type": "object"
+											]
 										},
 										"events": {
 											"description": "Individual event results. Present when the query view is 'events'. Contains the matching log lines and their metadata.",
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of events matching the query (may exceed the number returned due to limits).",
@@ -527,17 +532,19 @@
 												},
 												"events": {
 													"description": "List of individual telemetry events matching the query.",
+													"type": "array",
 													"items": {
-														"additionalProperties": false,
 														"description": "A single telemetry event representing a log line, span, or metric data point emitted by a Worker.",
+														"type": "object",
 														"properties": {
 															"$containers": {
-																"additionalProperties": true,
 																"description": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
-																"type": "object"
+																"type": "object",
+																"additionalProperties": true
 															},
 															"$metadata": {
 																"description": "Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.",
+																"type": "object",
 																"properties": {
 																	"account": {
 																		"description": "Cloudflare account identifier.",
@@ -548,26 +555,26 @@
 																		"type": "string"
 																	},
 																	"coldStart": {
+																		"type": "integer",
 																		"exclusiveMinimum": true,
-																		"minimum": 0,
-																		"type": "integer"
+																		"minimum": 0
 																	},
 																	"cost": {
 																		"description": "Estimated cost units for this invocation.",
+																		"type": "integer",
 																		"exclusiveMinimum": true,
-																		"minimum": 0,
-																		"type": "integer"
+																		"minimum": 0
 																	},
 																	"duration": {
 																		"description": "Span duration in milliseconds.",
+																		"type": "integer",
 																		"exclusiveMinimum": true,
-																		"minimum": 0,
-																		"type": "integer"
+																		"minimum": 0
 																	},
 																	"endTime": {
 																		"description": "Span end time as a Unix epoch in milliseconds.",
-																		"minimum": 0,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 0
 																	},
 																	"error": {
 																		"description": "Error message, present when the log represents an error.",
@@ -643,20 +650,20 @@
 																	},
 																	"startTime": {
 																		"description": "Span start time as a Unix epoch in milliseconds.",
-																		"minimum": 0,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 0
 																	},
 																	"statusCode": {
 																		"description": "HTTP response status code returned by the Worker.",
+																		"type": "integer",
 																		"exclusiveMinimum": true,
-																		"minimum": 0,
-																		"type": "integer"
+																		"minimum": 0
 																	},
 																	"traceDuration": {
 																		"description": "Total duration of the entire trace in milliseconds.",
+																		"type": "integer",
 																		"exclusiveMinimum": true,
-																		"minimum": 0,
-																		"type": "integer"
+																		"minimum": 0
 																	},
 																	"traceId": {
 																		"description": "Distributed trace ID linking spans across services.",
@@ -681,10 +688,10 @@
 																},
 																"required": [
 																	"id"
-																],
-																"type": "object"
+																]
 															},
 															"$workers": {
+																"description": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues.",
 																"anyOf": [
 																	{
 																		"properties": {
@@ -695,10 +702,11 @@
 																				"type": "string"
 																			},
 																			"event": {
-																				"additionalProperties": true,
-																				"type": "object"
+																				"type": "object",
+																				"additionalProperties": true
 																			},
 																			"eventType": {
+																				"type": "string",
 																				"enum": [
 																					"fetch",
 																					"scheduled",
@@ -712,20 +720,20 @@
 																					"websocket",
 																					"workflow",
 																					"unknown"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"executionModel": {
+																				"type": "string",
 																				"enum": [
 																					"durableObject",
 																					"stateless"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"outcome": {
 																				"type": "string"
 																			},
 																			"preview": {
+																				"type": "object",
 																				"properties": {
 																					"id": {
 																						"type": "string"
@@ -736,8 +744,7 @@
 																					"slug": {
 																						"type": "string"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"requestId": {
 																				"type": "string"
@@ -746,6 +753,7 @@
 																				"type": "string"
 																			},
 																			"scriptVersion": {
+																				"type": "object",
 																				"properties": {
 																					"id": {
 																						"type": "string"
@@ -756,8 +764,7 @@
 																					"tag": {
 																						"type": "string"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"spanId": {
 																				"type": "string"
@@ -782,6 +789,7 @@
 																				"type": "number"
 																			},
 																			"diagnosticsChannelEvents": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"channel": {
@@ -800,8 +808,7 @@
 																						"message"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"dispatchNamespace": {
 																				"type": "string"
@@ -813,10 +820,11 @@
 																				"type": "string"
 																			},
 																			"event": {
-																				"additionalProperties": true,
-																				"type": "object"
+																				"type": "object",
+																				"additionalProperties": true
 																			},
 																			"eventType": {
+																				"type": "string",
 																				"enum": [
 																					"fetch",
 																					"scheduled",
@@ -830,20 +838,20 @@
 																					"websocket",
 																					"workflow",
 																					"unknown"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"executionModel": {
+																				"type": "string",
 																				"enum": [
 																					"durableObject",
 																					"stateless"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"outcome": {
 																				"type": "string"
 																			},
 																			"preview": {
+																				"type": "object",
 																				"properties": {
 																					"id": {
 																						"type": "string"
@@ -854,8 +862,7 @@
 																					"slug": {
 																						"type": "string"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"requestId": {
 																				"type": "string"
@@ -864,6 +871,7 @@
 																				"type": "string"
 																			},
 																			"scriptVersion": {
+																				"type": "object",
 																				"properties": {
 																					"id": {
 																						"type": "string"
@@ -874,8 +882,7 @@
 																					"tag": {
 																						"type": "string"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"spanId": {
 																				"type": "string"
@@ -900,14 +907,14 @@
 																		],
 																		"type": "object"
 																	}
-																],
-																"description": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues."
+																]
 															},
 															"dataset": {
 																"description": "The dataset this event belongs to (e.g. cloudflare-workers).",
 																"type": "string"
 															},
 															"source": {
+																"description": "Raw log payload. May be a string or a structured object depending on how the log was emitted.",
 																"anyOf": [
 																	{
 																		"type": "string"
@@ -916,27 +923,26 @@
 																		"additionalProperties": true,
 																		"type": "object"
 																	}
-																],
-																"description": "Raw log payload. May be a string or a structured object depending on how the log was emitted."
+																]
 															},
 															"timestamp": {
 																"description": "Event timestamp as a Unix epoch in milliseconds.",
-																"minimum": 0,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 0
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"dataset",
 															"timestamp",
 															"source",
 															"$metadata"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"fields": {
 													"description": "List of fields discovered in the matched events. Useful for building dynamic UIs.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
@@ -953,48 +959,49 @@
 															"type"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"series": {
 													"description": "Time-series data for the matched events, bucketed by the query granularity.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"data": {
+																"type": "array",
 																"items": {
 																	"properties": {
 																		"aggregates": {
+																			"type": "object",
 																			"properties": {
 																				"_count": {
+																					"type": "integer",
 																					"deprecated": true,
 																					"exclusiveMinimum": true,
-																					"minimum": 0,
-																					"type": "integer"
+																					"minimum": 0
 																				},
 																				"_firstSeen": {
-																					"deprecated": true,
-																					"type": "string"
+																					"type": "string",
+																					"deprecated": true
 																				},
 																				"_interval": {
+																					"type": "number",
 																					"deprecated": true,
 																					"exclusiveMinimum": true,
-																					"minimum": 0,
-																					"type": "number"
+																					"minimum": 0
 																				},
 																				"_lastSeen": {
-																					"deprecated": true,
-																					"type": "string"
+																					"type": "string",
+																					"deprecated": true
 																				},
 																				"bin": {
-																					"deprecated": true,
-																					"type": "object"
+																					"type": "object",
+																					"deprecated": true
 																				}
 																			},
 																			"required": [
 																				"_count",
 																				"_interval"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"count": {
 																			"type": "number"
@@ -1003,6 +1010,8 @@
 																			"type": "number"
 																		},
 																		"groups": {
+																			"description": "Groups in the query results.",
+																			"type": "object",
 																			"additionalProperties": {
 																				"anyOf": [
 																					{
@@ -1015,9 +1024,7 @@
 																						"type": "boolean"
 																					}
 																				]
-																			},
-																			"description": "Groups in the query results.",
-																			"type": "object"
+																			}
 																		},
 																		"interval": {
 																			"type": "number"
@@ -1033,8 +1040,7 @@
 																		"sampleInterval"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															},
 															"time": {
 																"type": "string"
@@ -1045,25 +1051,26 @@
 															"data"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
-											},
-											"type": "object"
+											}
 										},
 										"invocations": {
+											"description": "Events grouped by invocation (request ID). Present when the query view is 'invocations'. Each key is a request ID mapping to all events from that invocation.",
+											"type": "object",
 											"additionalProperties": {
 												"items": {
-													"additionalProperties": false,
 													"description": "A single telemetry event representing a log line, span, or metric data point emitted by a Worker.",
+													"type": "object",
 													"properties": {
 														"$containers": {
-															"additionalProperties": true,
 															"description": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
-															"type": "object"
+															"type": "object",
+															"additionalProperties": true
 														},
 														"$metadata": {
 															"description": "Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.",
+															"type": "object",
 															"properties": {
 																"account": {
 																	"description": "Cloudflare account identifier.",
@@ -1074,26 +1081,26 @@
 																	"type": "string"
 																},
 																"coldStart": {
+																	"type": "integer",
 																	"exclusiveMinimum": true,
-																	"minimum": 0,
-																	"type": "integer"
+																	"minimum": 0
 																},
 																"cost": {
 																	"description": "Estimated cost units for this invocation.",
+																	"type": "integer",
 																	"exclusiveMinimum": true,
-																	"minimum": 0,
-																	"type": "integer"
+																	"minimum": 0
 																},
 																"duration": {
 																	"description": "Span duration in milliseconds.",
+																	"type": "integer",
 																	"exclusiveMinimum": true,
-																	"minimum": 0,
-																	"type": "integer"
+																	"minimum": 0
 																},
 																"endTime": {
 																	"description": "Span end time as a Unix epoch in milliseconds.",
-																	"minimum": 0,
-																	"type": "integer"
+																	"type": "integer",
+																	"minimum": 0
 																},
 																"error": {
 																	"description": "Error message, present when the log represents an error.",
@@ -1169,20 +1176,20 @@
 																},
 																"startTime": {
 																	"description": "Span start time as a Unix epoch in milliseconds.",
-																	"minimum": 0,
-																	"type": "integer"
+																	"type": "integer",
+																	"minimum": 0
 																},
 																"statusCode": {
 																	"description": "HTTP response status code returned by the Worker.",
+																	"type": "integer",
 																	"exclusiveMinimum": true,
-																	"minimum": 0,
-																	"type": "integer"
+																	"minimum": 0
 																},
 																"traceDuration": {
 																	"description": "Total duration of the entire trace in milliseconds.",
+																	"type": "integer",
 																	"exclusiveMinimum": true,
-																	"minimum": 0,
-																	"type": "integer"
+																	"minimum": 0
 																},
 																"traceId": {
 																	"description": "Distributed trace ID linking spans across services.",
@@ -1207,10 +1214,10 @@
 															},
 															"required": [
 																"id"
-															],
-															"type": "object"
+															]
 														},
 														"$workers": {
+															"description": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues.",
 															"anyOf": [
 																{
 																	"properties": {
@@ -1221,10 +1228,11 @@
 																			"type": "string"
 																		},
 																		"event": {
-																			"additionalProperties": true,
-																			"type": "object"
+																			"type": "object",
+																			"additionalProperties": true
 																		},
 																		"eventType": {
+																			"type": "string",
 																			"enum": [
 																				"fetch",
 																				"scheduled",
@@ -1238,20 +1246,20 @@
 																				"websocket",
 																				"workflow",
 																				"unknown"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"executionModel": {
+																			"type": "string",
 																			"enum": [
 																				"durableObject",
 																				"stateless"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"outcome": {
 																			"type": "string"
 																		},
 																		"preview": {
+																			"type": "object",
 																			"properties": {
 																				"id": {
 																					"type": "string"
@@ -1262,8 +1270,7 @@
 																				"slug": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"requestId": {
 																			"type": "string"
@@ -1272,6 +1279,7 @@
 																			"type": "string"
 																		},
 																		"scriptVersion": {
+																			"type": "object",
 																			"properties": {
 																				"id": {
 																					"type": "string"
@@ -1282,8 +1290,7 @@
 																				"tag": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"spanId": {
 																			"type": "string"
@@ -1308,6 +1315,7 @@
 																			"type": "number"
 																		},
 																		"diagnosticsChannelEvents": {
+																			"type": "array",
 																			"items": {
 																				"properties": {
 																					"channel": {
@@ -1326,8 +1334,7 @@
 																					"message"
 																				],
 																				"type": "object"
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"dispatchNamespace": {
 																			"type": "string"
@@ -1339,10 +1346,11 @@
 																			"type": "string"
 																		},
 																		"event": {
-																			"additionalProperties": true,
-																			"type": "object"
+																			"type": "object",
+																			"additionalProperties": true
 																		},
 																		"eventType": {
+																			"type": "string",
 																			"enum": [
 																				"fetch",
 																				"scheduled",
@@ -1356,20 +1364,20 @@
 																				"websocket",
 																				"workflow",
 																				"unknown"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"executionModel": {
+																			"type": "string",
 																			"enum": [
 																				"durableObject",
 																				"stateless"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"outcome": {
 																			"type": "string"
 																		},
 																		"preview": {
+																			"type": "object",
 																			"properties": {
 																				"id": {
 																					"type": "string"
@@ -1380,8 +1388,7 @@
 																				"slug": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"requestId": {
 																			"type": "string"
@@ -1390,6 +1397,7 @@
 																			"type": "string"
 																		},
 																		"scriptVersion": {
+																			"type": "object",
 																			"properties": {
 																				"id": {
 																					"type": "string"
@@ -1400,8 +1408,7 @@
 																				"tag": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"spanId": {
 																			"type": "string"
@@ -1426,14 +1433,14 @@
 																	],
 																	"type": "object"
 																}
-															],
-															"description": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues."
+															]
 														},
 														"dataset": {
 															"description": "The dataset this event belongs to (e.g. cloudflare-workers).",
 															"type": "string"
 														},
 														"source": {
+															"description": "Raw log payload. May be a string or a structured object depending on how the log was emitted.",
 															"anyOf": [
 																{
 																	"type": "string"
@@ -1442,30 +1449,28 @@
 																	"additionalProperties": true,
 																	"type": "object"
 																}
-															],
-															"description": "Raw log payload. May be a string or a structured object depending on how the log was emitted."
+															]
 														},
 														"timestamp": {
 															"description": "Event timestamp as a Unix epoch in milliseconds.",
-															"minimum": 0,
-															"type": "integer"
+															"type": "integer",
+															"minimum": 0
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"dataset",
 														"timestamp",
 														"source",
 														"$metadata"
-													],
-													"type": "object"
+													]
 												},
 												"type": "array"
-											},
-											"description": "Events grouped by invocation (request ID). Present when the query view is 'invocations'. Each key is a request ID mapping to all events from that invocation.",
-											"type": "object"
+											}
 										},
 										"run": {
 											"description": "Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics.",
+											"type": "object",
 											"properties": {
 												"accountId": {
 													"description": "Cloudflare account ID that owns this query run.",
@@ -1488,8 +1493,10 @@
 													"type": "string"
 												},
 												"query": {
+													"description": "A saved query definition with its parameters, metadata, and ownership information.",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"adhoc": {
 																	"description": "If the query wasn't explcitly saved",
@@ -1502,24 +1509,25 @@
 																	"type": "string"
 																},
 																"description": {
+																	"type": "string",
 																	"example": "Query description",
 																	"maxLength": 1000,
-																	"nullable": true,
-																	"type": "string"
+																	"nullable": true
 																},
 																"id": {
 																	"type": "string"
 																},
 																"name": {
 																	"description": "Query name",
+																	"type": "string",
 																	"maxLength": 250,
-																	"minLength": 1,
-																	"type": "string"
+																	"minLength": 1
 																},
 																"parameters": {
 																	"properties": {
 																		"calculations": {
 																			"description": "Create Calculations to compute as part of the query.",
+																			"type": "array",
 																			"items": {
 																				"properties": {
 																					"alias": {
@@ -1529,14 +1537,15 @@
 																						"type": "string"
 																					},
 																					"keyType": {
+																						"type": "string",
 																						"enum": [
 																							"string",
 																							"number",
 																							"boolean"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"operator": {
+																						"type": "string",
 																						"enum": [
 																							"uniq",
 																							"count",
@@ -1576,60 +1585,61 @@
 																							"P999",
 																							"STDDEV",
 																							"VARIANCE"
-																						],
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"required": [
 																					"operator"
 																				],
 																				"type": "object"
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"datasets": {
 																			"description": "Set the Datasets to query. Leave it empty to query all the datasets.",
-																			"example": [],
+																			"type": "array",
 																			"items": {
 																				"type": "string"
 																			},
-																			"type": "array"
+																			"example": []
 																		},
 																		"filterCombination": {
 																			"description": "Set a Flag to describe how to combine the filters on the query.",
+																			"type": "string",
 																			"enum": [
 																				"and",
 																				"or",
 																				"AND",
 																				"OR"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"filters": {
 																			"description": "Configure the Filters to apply to the query. Supports nested groups via kind: 'group'.",
+																			"type": "array",
 																			"items": {
+																				"description": "Supports nested groups via kind: 'group'.",
+																				"type": "object",
 																				"anyOf": [
 																					{
 																						"properties": {
 																							"filterCombination": {
+																								"type": "string",
 																								"enum": [
 																									"and",
 																									"or",
 																									"AND",
 																									"OR"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"filters": {
+																								"type": "array",
 																								"items": "[Circular ~.GET /accounts/{account_id}/workers/observability/shared/query/{id}.responses.200.content.application/json.schema.properties.result.properties.run.properties.query.allOf.0.properties.parameters.properties.filters.items]",
-																								"minItems": 1,
-																								"type": "array"
+																								"minItems": 1
 																							},
 																							"kind": {
+																								"type": "string",
 																								"enum": [
 																									"group"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -1641,6 +1651,7 @@
 																					},
 																					{
 																						"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																						"type": "object",
 																						"properties": {
 																							"key": {
 																								"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -1648,13 +1659,14 @@
 																							},
 																							"kind": {
 																								"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																								"type": "string",
 																								"enum": [
 																									"filter"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"operation": {
 																								"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																								"type": "string",
 																								"enum": [
 																									"includes",
 																									"not_includes",
@@ -1686,19 +1698,19 @@
 																									"NOT_IN",
 																									"STARTS_WITH",
 																									"ENDS_WITH"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"type": {
 																								"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																								"type": "string",
 																								"enum": [
 																									"string",
 																									"number",
 																									"boolean"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"value": {
+																								"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																								"anyOf": [
 																									{
 																										"type": "string"
@@ -1709,34 +1721,30 @@
 																									{
 																										"type": "boolean"
 																									}
-																								],
-																								"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																								]
 																							}
 																						},
 																						"required": [
 																							"key",
 																							"operation",
 																							"type"
-																						],
-																						"type": "object"
+																						]
 																					}
-																				],
-																				"description": "Supports nested groups via kind: 'group'.",
-																				"type": "object"
-																			},
-																			"type": "array"
+																				]
+																			}
 																		},
 																		"groupBys": {
 																			"description": "Define how to group the results of the query.",
+																			"type": "array",
 																			"items": {
 																				"properties": {
 																					"type": {
+																						"type": "string",
 																						"enum": [
 																							"string",
 																							"number",
 																							"boolean"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"value": {
 																						"type": "string"
@@ -1747,17 +1755,18 @@
 																					"value"
 																				],
 																				"type": "object"
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"havings": {
 																			"description": "Configure the Having clauses that filter on calculations in the query result.",
+																			"type": "array",
 																			"items": {
 																				"properties": {
 																					"key": {
 																						"type": "string"
 																					},
 																					"operation": {
+																						"type": "string",
 																						"enum": [
 																							"eq",
 																							"neq",
@@ -1765,8 +1774,7 @@
 																							"gte",
 																							"lt",
 																							"lte"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"value": {
 																						"type": "number"
@@ -1778,17 +1786,17 @@
 																					"value"
 																				],
 																				"type": "object"
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"limit": {
 																			"description": "Set a limit on the number of results / records returned by the query",
+																			"type": "integer",
 																			"maximum": 100,
-																			"minimum": 0,
-																			"type": "integer"
+																			"minimum": 0
 																		},
 																		"needle": {
 																			"description": "Define an expression to search using full-text search.",
+																			"type": "object",
 																			"properties": {
 																				"isRegex": {
 																					"type": "boolean"
@@ -1820,19 +1828,19 @@
 																			},
 																			"required": [
 																				"value"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"orderBy": {
 																			"description": "Configure the order of the results returned by the query.",
+																			"type": "object",
 																			"properties": {
 																				"order": {
 																					"description": "Set the order of the results",
+																					"type": "string",
 																					"enum": [
 																						"asc",
 																						"desc"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"value": {
 																					"description": "Configure which Calculation to order the results by.",
@@ -1841,8 +1849,7 @@
 																			},
 																			"required": [
 																				"value"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"type": "object"
@@ -1864,8 +1871,7 @@
 																"createdBy",
 																"updated",
 																"updatedBy"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
@@ -1892,11 +1898,11 @@
 															},
 															"type": "object"
 														}
-													],
-													"description": "A saved query definition with its parameters, metadata, and ownership information."
+													]
 												},
 												"statistics": {
 													"description": "Query performance statistics from the database (does not include network latency).",
+													"type": "object",
 													"properties": {
 														"abr_level": {
 															"description": "The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1",
@@ -1919,19 +1925,19 @@
 														"elapsed",
 														"rows_read",
 														"bytes_read"
-													],
-													"type": "object"
+													]
 												},
 												"status": {
 													"description": "Current execution status of the query run.",
+													"type": "string",
 													"enum": [
 														"STARTED",
 														"COMPLETED"
-													],
-													"type": "string"
+													]
 												},
 												"timeframe": {
 													"description": "Time range for the query execution",
+													"type": "object",
 													"properties": {
 														"from": {
 															"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
@@ -1945,8 +1951,7 @@
 													"required": [
 														"to",
 														"from"
-													],
-													"type": "object"
+													]
 												},
 												"updated": {
 													"description": "ISO-8601 timestamp when the query run was last updated.",
@@ -1966,11 +1971,11 @@
 												"status",
 												"granularity",
 												"dry"
-											],
-											"type": "object"
+											]
 										},
 										"statistics": {
 											"description": "Query performance statistics from the database. Includes execution time, rows scanned, and bytes read. Does not include network latency.",
+											"type": "object",
 											"properties": {
 												"abr_level": {
 													"description": "The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1",
@@ -1993,19 +1998,19 @@
 												"elapsed",
 												"rows_read",
 												"bytes_read"
-											],
-											"type": "object"
+											]
 										},
 										"traces": {
 											"description": "Trace summaries matching the query. Present when the query view is 'traces'. Each entry represents a distributed trace with its spans, duration, and services involved.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"errors": {
 														"description": "Error messages encountered during the trace, if any.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"rootSpanName": {
 														"description": "Name of the root span that initiated the trace.",
@@ -2017,10 +2022,10 @@
 													},
 													"service": {
 														"description": "List of Worker services involved in the trace.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"spans": {
 														"description": "Total number of spans in the trace.",
@@ -2054,21 +2059,19 @@
 													"rootTransactionName"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"run",
 										"statistics"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2076,39 +2079,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Bad Request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2119,53 +2123,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2176,53 +2180,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2233,29 +2237,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "View a query that has been shared",
 		"tags": [
 			"Shared",
 			"Query"
@@ -2266,12 +2266,16 @@
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/shared/query": {
-		"description": "Shared queries store the results of a previously run query, allowing you to share the results with others.",
 		"operationId": "shared.query.post",
+		"summary": "Create a sharable link to a query result",
+		"description": "Shared queries store the results of a previously run query, allowing you to share the results with others.",
 		"requestBody": {
+			"description": "Create a sharable link to a query result.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"chart": {
 								"description": "When true, includes time-series data in the response.",
@@ -2279,37 +2283,37 @@
 							},
 							"chartType": {
 								"description": "Controls the SQL shape and response payload for the 'calculations' view. Omitted or 'timeseries_and_aggregate': current behaviour — both the time-series and aggregate queries. 'timeseries': time-series only. 'aggregate': aggregate only. 'distribution': a bucketed 2D histogram (time × value buckets) returned in 'distribution' instead of 'calculations'. 'distribution' is not compatible with 'compare' — combining them returns a 400.",
+								"type": "string",
 								"enum": [
 									"timeseries_and_aggregate",
 									"timeseries",
 									"aggregate",
 									"distribution"
-								],
-								"type": "string"
+								]
 							},
 							"compare": {
 								"description": "When true, includes a comparison dataset from the previous time period of equal length.",
 								"type": "boolean"
 							},
 							"dry": {
-								"default": false,
 								"description": "When true, executes the query without persisting the results. Useful for validation or previewing.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"granularity": {
 								"description": "Number of time-series buckets. Only used when view is 'calculations'. Omit to let the system auto-detect an appropriate granularity.",
 								"type": "number"
 							},
 							"ignoreSeries": {
-								"default": false,
 								"description": "When true, omits time-series data from the response and returns only aggregated values. Reduces response size when series are not needed.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"limit": {
-								"default": 50,
 								"description": "Maximum number of events to return when view is 'events'. Also controls the number of group-by rows when view is 'calculations'.",
-								"maximum": 2000,
-								"type": "number"
+								"type": "number",
+								"default": 50,
+								"maximum": 2000
 							},
 							"offset": {
 								"description": "Cursor for pagination in event, trace, invocation, and agent views. Pass the $metadata.id of the last event, the trace cursor, or AgentRun.id to fetch the next page.",
@@ -2328,6 +2332,7 @@
 								"properties": {
 									"calculations": {
 										"description": "Aggregation calculations to compute (e.g. count, avg, p99). Each calculation produces aggregate values and optional time-series data.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"alias": {
@@ -2340,15 +2345,16 @@
 												},
 												"keyType": {
 													"description": "Data type of the key. Required when key is provided to ensure correct aggregation.",
+													"type": "string",
 													"enum": [
 														"string",
 														"number",
 														"boolean"
-													],
-													"type": "string"
+													]
 												},
 												"operator": {
 													"description": "Aggregation operator to apply. Examples: count, avg, sum, min, max, median, p90, p95, p99, uniq, stddev, variance.",
+													"type": "string",
 													"enum": [
 														"uniq",
 														"count",
@@ -2388,62 +2394,63 @@
 														"P999",
 														"STDDEV",
 														"VARIANCE"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
 												"operator"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"datasets": {
 										"description": "Datasets to query. Leave empty to query all available datasets.",
-										"example": [],
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"example": []
 									},
 									"filterCombination": {
 										"description": "Logical operator for combining top-level filters: 'and' (all must match) or 'or' (any must match). Defaults to 'and'.",
+										"type": "string",
 										"enum": [
 											"and",
 											"or",
 											"AND",
 											"OR"
-										],
-										"type": "string"
+										]
 									},
 									"filters": {
 										"description": "Filters to narrow query results. Use the keys and values endpoints to discover available fields before building filters. Supports nested groups via kind: 'group'. Maximum nesting depth is 4.",
+										"type": "array",
 										"items": {
 											"allOf": [
 												{
+													"description": "Supports nested groups via kind: 'group'.",
+													"type": "object",
 													"anyOf": [
 														{
 															"properties": {
 																"filterCombination": {
+																	"type": "string",
 																	"enum": [
 																		"and",
 																		"or",
 																		"AND",
 																		"OR"
-																	],
-																	"type": "string"
+																	]
 																},
 																"filters": {
+																	"type": "array",
 																	"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/shared/query.requestBody.content.application/json.schema.properties.parameters.properties.filters.items.allOf.0]",
-																	"minItems": 1,
-																	"type": "array"
+																	"minItems": 1
 																},
 																"kind": {
+																	"type": "string",
 																	"enum": [
 																		"group"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
@@ -2455,6 +2462,7 @@
 														},
 														{
 															"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+															"type": "object",
 															"properties": {
 																"key": {
 																	"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -2462,13 +2470,14 @@
 																},
 																"kind": {
 																	"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																	"type": "string",
 																	"enum": [
 																		"filter"
-																	],
-																	"type": "string"
+																	]
 																},
 																"operation": {
 																	"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																	"type": "string",
 																	"enum": [
 																		"includes",
 																		"not_includes",
@@ -2500,19 +2509,19 @@
 																		"NOT_IN",
 																		"STARTS_WITH",
 																		"ENDS_WITH"
-																	],
-																	"type": "string"
+																	]
 																},
 																"type": {
 																	"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																	"type": "string",
 																	"enum": [
 																		"string",
 																		"number",
 																		"boolean"
-																	],
-																	"type": "string"
+																	]
 																},
 																"value": {
+																	"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																	"anyOf": [
 																		{
 																			"type": "string"
@@ -2523,20 +2532,16 @@
 																		{
 																			"type": "boolean"
 																		}
-																	],
-																	"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																	]
 																}
 															},
 															"required": [
 																"key",
 																"operation",
 																"type"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"description": "Supports nested groups via kind: 'group'.",
-													"type": "object"
+													]
 												},
 												{
 													"anyOf": [
@@ -2545,39 +2550,42 @@
 															"properties": {
 																"filterCombination": {
 																	"description": "Logical operator for combining child filters: 'and' (all must match) or 'or' (any must match).",
+																	"type": "string",
 																	"enum": [
 																		"and",
 																		"or",
 																		"AND",
 																		"OR"
-																	],
-																	"type": "string"
+																	]
 																},
 																"filters": {
 																	"description": "Child filter nodes. Each can be a leaf filter or another nested group.",
+																	"type": "array",
 																	"items": {
+																		"description": "Supports nested groups via kind: 'group'.",
+																		"type": "object",
 																		"anyOf": [
 																			{
 																				"properties": {
 																					"filterCombination": {
+																						"type": "string",
 																						"enum": [
 																							"and",
 																							"or",
 																							"AND",
 																							"OR"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"filters": {
+																						"type": "array",
 																						"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/shared/query.requestBody.content.application/json.schema.properties.parameters.properties.filters.items.allOf.1.anyOf.0.properties.filters.items]",
-																						"minItems": 1,
-																						"type": "array"
+																						"minItems": 1
 																					},
 																					"kind": {
+																						"type": "string",
 																						"enum": [
 																							"group"
-																						],
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"required": [
@@ -2589,6 +2597,7 @@
 																			},
 																			{
 																				"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																				"type": "object",
 																				"properties": {
 																					"key": {
 																						"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -2596,13 +2605,14 @@
 																					},
 																					"kind": {
 																						"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																						"type": "string",
 																						"enum": [
 																							"filter"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"operation": {
 																						"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																						"type": "string",
 																						"enum": [
 																							"includes",
 																							"not_includes",
@@ -2634,19 +2644,19 @@
 																							"NOT_IN",
 																							"STARTS_WITH",
 																							"ENDS_WITH"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"type": {
 																						"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																						"type": "string",
 																						"enum": [
 																							"string",
 																							"number",
 																							"boolean"
-																						],
-																						"type": "string"
+																						]
 																					},
 																					"value": {
+																						"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																						"anyOf": [
 																							{
 																								"type": "string"
@@ -2657,30 +2667,25 @@
 																							{
 																								"type": "boolean"
 																							}
-																						],
-																						"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																						]
 																					}
 																				},
 																				"required": [
 																					"key",
 																					"operation",
 																					"type"
-																				],
-																				"type": "object"
+																				]
 																			}
-																		],
-																		"description": "Supports nested groups via kind: 'group'.",
-																		"type": "object"
+																		]
 																	},
-																	"minItems": 1,
-																	"type": "array"
+																	"minItems": 1
 																},
 																"kind": {
 																	"description": "Discriminator indicating this is a nested filter group.",
+																	"type": "string",
 																	"enum": [
 																		"group"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
@@ -2692,6 +2697,7 @@
 														},
 														{
 															"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+															"type": "object",
 															"properties": {
 																"key": {
 																	"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -2699,13 +2705,14 @@
 																},
 																"kind": {
 																	"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																	"type": "string",
 																	"enum": [
 																		"filter"
-																	],
-																	"type": "string"
+																	]
 																},
 																"operation": {
 																	"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																	"type": "string",
 																	"enum": [
 																		"includes",
 																		"not_includes",
@@ -2737,19 +2744,19 @@
 																		"NOT_IN",
 																		"STARTS_WITH",
 																		"ENDS_WITH"
-																	],
-																	"type": "string"
+																	]
 																},
 																"type": {
 																	"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																	"type": "string",
 																	"enum": [
 																		"string",
 																		"number",
 																		"boolean"
-																	],
-																	"type": "string"
+																	]
 																},
 																"value": {
+																	"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																	"anyOf": [
 																		{
 																			"type": "string"
@@ -2760,36 +2767,34 @@
 																		{
 																			"type": "boolean"
 																		}
-																	],
-																	"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																	]
 																}
 															},
 															"required": [
 																"key",
 																"operation",
 																"type"
-															],
-															"type": "object"
+															]
 														}
 													],
 													"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4."
 												}
 											]
-										},
-										"type": "array"
+										}
 									},
 									"groupBys": {
 										"description": "Fields to group calculation results by. Only applicable when the query view is 'calculations'. Produces per-group aggregate values.",
+										"type": "array",
 										"items": {
 											"properties": {
 												"type": {
 													"description": "Data type of the group-by field.",
+													"type": "string",
 													"enum": [
 														"string",
 														"number",
 														"boolean"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"description": "Field name to group results by (e.g. $metadata.service, $metadata.statusCode).",
@@ -2801,11 +2806,11 @@
 												"value"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"havings": {
 										"description": "Post-aggregation filters applied to calculation results. Use to filter groups after aggregation (e.g. only groups where count > 100).",
+										"type": "array",
 										"items": {
 											"properties": {
 												"key": {
@@ -2814,6 +2819,7 @@
 												},
 												"operation": {
 													"description": "Numeric comparison operator: eq, neq, gt, gte, lt, lte.",
+													"type": "string",
 													"enum": [
 														"eq",
 														"neq",
@@ -2821,8 +2827,7 @@
 														"gte",
 														"lt",
 														"lte"
-													],
-													"type": "string"
+													]
 												},
 												"value": {
 													"description": "Threshold value to compare the calculation result against.",
@@ -2835,17 +2840,17 @@
 												"value"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"limit": {
 										"description": "Maximum number of group-by rows to return in calculation results. A value of 10 is a sensible default for most use cases.",
+										"type": "integer",
 										"maximum": 2000,
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"needle": {
 										"description": "Full-text search expression applied across all event fields. Matches events containing the specified text.",
+										"type": "object",
 										"properties": {
 											"isRegex": {
 												"description": "When true, treats the value as a regular expression (RE2 syntax).",
@@ -2856,6 +2861,7 @@
 												"type": "boolean"
 											},
 											"value": {
+												"description": "The text or pattern to search for.",
 												"allOf": [
 													{
 														"anyOf": [
@@ -2874,25 +2880,24 @@
 														"maxLength": 1000,
 														"type": "string"
 													}
-												],
-												"description": "The text or pattern to search for."
+												]
 											}
 										},
 										"required": [
 											"value"
-										],
-										"type": "object"
+										]
 									},
 									"orderBy": {
 										"description": "Ordering for grouped calculation results. Only effective when a group-by is present.",
+										"type": "object",
 										"properties": {
 											"order": {
 												"description": "Sort direction: 'asc' for ascending, 'desc' for descending.",
+												"type": "string",
 												"enum": [
 													"asc",
 													"desc"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"description": "Alias of the calculation to order results by. Must match the alias (or operator) of a calculation in the query.",
@@ -2901,8 +2906,7 @@
 										},
 										"required": [
 											"value"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"type": "object"
@@ -2913,6 +2917,7 @@
 							},
 							"timeframe": {
 								"description": "Timeframe for the query using Unix timestamps in milliseconds. Narrower timeframes produce faster responses and more specific results.",
+								"type": "object",
 								"properties": {
 									"from": {
 										"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
@@ -2926,12 +2931,12 @@
 								"required": [
 									"to",
 									"from"
-								],
-								"type": "object"
+								]
 							},
 							"view": {
-								"default": "calculations",
 								"description": "Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': agent-specific trace summaries.",
+								"type": "string",
+								"default": "calculations",
 								"enum": [
 									"traces",
 									"events",
@@ -2939,28 +2944,27 @@
 									"invocations",
 									"requests",
 									"agents"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"queryId",
 							"timeframe"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Create a sharable link to a query result.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2971,27 +2975,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"description": "Specify the ID of the shared query.",
@@ -3000,14 +3004,13 @@
 									},
 									"required": [
 										"id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3015,39 +3018,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Bad Request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3058,53 +3062,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3115,53 +3119,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"429": {
+				"description": "Too many requests",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Too many requests"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3172,53 +3176,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3229,29 +3233,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "Create a sharable link to a query result",
 		"tags": [
 			"Shared",
 			"Query"

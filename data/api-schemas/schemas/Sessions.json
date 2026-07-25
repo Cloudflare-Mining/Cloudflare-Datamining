@@ -1,29 +1,30 @@
 {
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions": {
-		"description": "Returns details of all sessions of an App.",
 		"operationId": "GetSessions",
+		"summary": "Fetch all sessions of an App",
+		"description": "Returns details of all sessions of an App.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
@@ -32,8 +33,8 @@
 				"in": "query",
 				"name": "page_no",
 				"schema": {
-					"minimum": 0,
-					"type": "number"
+					"type": "number",
+					"minimum": 0
 				}
 			},
 			{
@@ -42,30 +43,30 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
-					"minimum": 0,
-					"type": "number"
+					"type": "number",
+					"minimum": 0
 				}
 			},
 			{
 				"in": "query",
 				"name": "sort_by",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"minutesConsumed",
 						"createdAt"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
 				"in": "query",
 				"name": "sort_order",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"ASC",
 						"DESC"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -73,8 +74,8 @@
 				"in": "query",
 				"name": "start_time",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -82,8 +83,8 @@
 				"in": "query",
 				"name": "end_time",
 				"schema": {
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
@@ -95,58 +96,63 @@
 				"in": "query",
 				"name": "participants",
 				"schema": {
-					"example": "1:10",
-					"type": "string"
+					"type": "string",
+					"example": "1:10"
 				}
 			},
 			{
 				"in": "query",
 				"name": "status",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"LIVE",
 						"ENDED"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Search string that matches sessions based on meeting title, meeting ID, and session ID",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Search string that matches sessions based on meeting title, meeting ID, and session ID",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "ID of the meeting that sessions should be associated with",
-				"in": "query",
 				"name": "associated_id",
+				"in": "query",
+				"description": "ID of the meeting that sessions should be associated with",
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get all sessions success response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"sessions": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"associated_id": {
 														"description": "ID of the meeting this session is associated with. In the case of V2 meetings, it is always a UUID. In V1 meetings, it is a room name of the form `abcdef-ghijkl`",
 														"type": "string"
 													},
 													"breakout_rooms": {
+														"type": "array",
 														"items": "[Circular ~.GET /accounts/{account_id}/realtime/kit/{app_id}/sessions.responses.200.content.application/json.schema.properties.data.properties.sessions.items]",
-														"readOnly": true,
-														"type": "array"
+														"readOnly": true
 													},
 													"created_at": {
 														"description": "timestamp when session created",
@@ -158,8 +164,8 @@
 													},
 													"id": {
 														"description": "ID of the session",
-														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"readOnly": true
 													},
 													"live_participants": {
 														"description": "number of participants currently in the session",
@@ -187,20 +193,20 @@
 													},
 													"status": {
 														"description": "current status of session",
+														"type": "string",
 														"enum": [
 															"LIVE",
 															"ENDED"
-														],
-														"type": "string"
+														]
 													},
 													"type": {
 														"description": "type of session",
+														"type": "string",
 														"enum": [
 															"meeting",
 															"livestream",
 															"participant"
-														],
-														"type": "string"
+														]
 													},
 													"updated_at": {
 														"description": "timestamp when session was last updated",
@@ -220,15 +226,13 @@
 													"started_at",
 													"created_at",
 													"updated_at"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"paging": {
+									"type": "object",
 									"properties": {
 										"end_offset": {
 											"type": "number"
@@ -237,21 +241,18 @@
 											"type": "number"
 										},
 										"total_count": {
-											"minimum": 0,
-											"type": "number"
+											"type": "number",
+											"minimum": 0
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Get all sessions success response"
+				}
 			}
 		},
 		"security": [
@@ -259,7 +260,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch all sessions of an App",
 		"tags": [
 			"Sessions"
 		],
@@ -269,68 +269,72 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}": {
-		"description": "Returns data of the given session ID including recording details.",
 		"operationId": "GetSessionDetails",
+		"summary": "Fetch details of a session",
+		"description": "Returns data of the given session ID including recording details.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "List all breakout rooms",
-				"in": "query",
 				"name": "include_breakout_rooms",
+				"in": "query",
+				"description": "List all breakout rooms",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			},
 			{
-				"description": "ID of the session",
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
+				"description": "ID of the session",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get details about a particular session",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"associated_id": {
 											"description": "ID of the meeting this session is associated with. In the case of V2 meetings, it is always a UUID. In V1 meetings, it is a room name of the form `abcdef-ghijkl`",
 											"type": "string"
 										},
 										"breakout_rooms": {
+											"type": "array",
 											"items": "[Circular ~.GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}.responses.200.content.application/json.schema.properties.data]",
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"created_at": {
 											"description": "timestamp when session created",
@@ -342,8 +346,8 @@
 										},
 										"id": {
 											"description": "ID of the session",
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"live_participants": {
 											"description": "number of participants currently in the session",
@@ -371,20 +375,20 @@
 										},
 										"status": {
 											"description": "current status of session",
+											"type": "string",
 											"enum": [
 												"LIVE",
 												"ENDED"
-											],
-											"type": "string"
+											]
 										},
 										"type": {
 											"description": "type of session",
+											"type": "string",
 											"enum": [
 												"meeting",
 												"livestream",
 												"participant"
-											],
-											"type": "string"
+											]
 										},
 										"updated_at": {
 											"description": "timestamp when session was last updated",
@@ -404,18 +408,15 @@
 										"started_at",
 										"created_at",
 										"updated_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Get details about a particular session"
+				}
 			}
 		},
 		"security": [
@@ -423,7 +424,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch details of a session",
 		"tags": [
 			"Sessions"
 		],
@@ -433,50 +433,54 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat": {
-		"description": "Returns a URL to download all chat messages of the session ID in CSV format.\n",
 		"operationId": "GetSessionChat",
+		"summary": "Fetch all chat messages of a session",
+		"description": "Returns a URL to download all chat messages of the session ID in CSV format.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "ID of the session",
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
+				"description": "ID of the session",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns all chat messages of a session.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"chat_download_url": {
 											"description": "URL where the chat logs can be downloaded",
@@ -490,18 +494,15 @@
 									"required": [
 										"chat_download_url",
 										"chat_download_url_expiry"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Returns all chat messages of a session."
+				}
 			}
 		},
 		"security": [
@@ -509,7 +510,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch all chat messages of a session",
 		"tags": [
 			"Sessions"
 		],
@@ -519,36 +519,37 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants": {
-		"description": "Returns a list of participants for the given session ID.",
 		"operationId": "GetSessionParticipants",
+		"summary": "Fetch participants list of a session",
+		"description": "Returns a list of participants for the given session ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "The search query string. You can search using participant ID, custom participant ID, or display name.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "The search query string. You can search using participant ID, custom participant ID, or display name.",
 				"schema": {
 					"type": "string"
 				}
@@ -559,8 +560,8 @@
 				"in": "query",
 				"name": "page_no",
 				"schema": {
-					"minimum": 0,
-					"type": "number"
+					"type": "number",
+					"minimum": 0
 				}
 			},
 			{
@@ -569,67 +570,68 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
-					"minimum": 0,
-					"type": "number"
+					"type": "number",
+					"minimum": 0
 				}
 			},
 			{
 				"in": "query",
 				"name": "sort_order",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"ASC",
 						"DESC"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
 				"in": "query",
 				"name": "sort_by",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"joinedAt",
 						"duration"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "if true, response includes all the peer events of participants.",
-				"in": "query",
 				"name": "include_peer_events",
+				"in": "query",
+				"description": "if true, response includes all the peer events of participants.",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			},
 			{
-				"description": "In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations.",
-				"in": "query",
 				"name": "view",
+				"in": "query",
+				"description": "In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations.",
 				"schema": {
+					"type": "string",
 					"default": "raw",
 					"enum": [
 						"raw",
 						"consolidated"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "ID of the session",
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
+				"description": "ID of the session",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get participants list of a particular session",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -745,11 +747,15 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"participants": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"description": "timestamp when this participant was created.",
@@ -781,8 +787,10 @@
 													},
 													"peer_events": {
 														"description": "Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true.",
+														"type": "array",
 														"items": {
 															"description": "A connection lifecycle event recorded for a participant's peer.",
+															"type": "object",
 															"properties": {
 																"created_at": {
 																	"description": "Timestamp when this peer event was created.",
@@ -790,12 +798,12 @@
 																},
 																"event_name": {
 																	"description": "Name of the peer event.",
+																	"type": "string",
 																	"enum": [
 																		"PEER_CREATED",
 																		"PEER_JOINING",
 																		"PEER_LEAVING"
-																	],
-																	"type": "string"
+																	]
 																},
 																"id": {
 																	"description": "ID of the peer event.",
@@ -807,8 +815,8 @@
 																},
 																"participant_id": {
 																	"description": "ID of the participant this event belongs to.",
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"peer_id": {
 																	"description": "Peer ID this event belongs to.",
@@ -816,6 +824,7 @@
 																},
 																"preset_view_type": {
 																	"description": "View type of the preset associated with the peer.",
+																	"type": "string",
 																	"enum": [
 																		"GROUP_CALL",
 																		"WEBINAR",
@@ -823,27 +832,24 @@
 																		"LIVESTREAM",
 																		"CHAT"
 																	],
-																	"nullable": true,
-																	"type": "string"
+																	"nullable": true
 																},
 																"session_id": {
 																	"description": "ID of the session this event belongs to.",
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"socket_session_id": {
 																	"description": "ID of the socket session associated with this event.",
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"updated_at": {
 																	"description": "Timestamp when this peer event was last updated.",
 																	"type": "string"
 																}
-															},
-															"type": "object"
-														},
-														"type": "array"
+															}
+														}
 													},
 													"preset_name": {
 														"description": "Name of the preset associated with the participant.",
@@ -857,23 +863,18 @@
 														"description": "User id for this participant.",
 														"type": "string"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Get participants list of a particular session"
+				}
 			}
 		},
 		"security": [
@@ -881,7 +882,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch participants list of a session",
 		"tags": [
 			"Sessions"
 		],
@@ -891,71 +891,76 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}": {
-		"description": "Returns details of the given participant ID along with call statistics for the given session ID.",
 		"operationId": "GetParticipantDetails",
+		"summary": "Fetch details of a participant",
+		"description": "Returns details of the given participant ID along with call statistics for the given session ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "if true, response includes all the peer events of participant.",
-				"in": "query",
 				"name": "include_peer_events",
+				"in": "query",
+				"description": "if true, response includes all the peer events of participant.",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			},
 			{
-				"description": "ID of the participant",
-				"in": "path",
 				"name": "participant_id",
+				"in": "path",
+				"description": "ID of the participant",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "ID of the session",
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
+				"description": "ID of the session",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns details of a participant.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"participant": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "timestamp when this participant was created.",
@@ -987,8 +992,10 @@
 												},
 												"peer_events": {
 													"description": "Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true.",
+													"type": "array",
 													"items": {
 														"description": "A connection lifecycle event recorded for a participant's peer.",
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "Timestamp when this peer event was created.",
@@ -996,12 +1003,12 @@
 															},
 															"event_name": {
 																"description": "Name of the peer event.",
+																"type": "string",
 																"enum": [
 																	"PEER_CREATED",
 																	"PEER_JOINING",
 																	"PEER_LEAVING"
-																],
-																"type": "string"
+																]
 															},
 															"id": {
 																"description": "ID of the peer event.",
@@ -1013,8 +1020,8 @@
 															},
 															"participant_id": {
 																"description": "ID of the participant this event belongs to.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"peer_id": {
 																"description": "Peer ID this event belongs to.",
@@ -1022,6 +1029,7 @@
 															},
 															"preset_view_type": {
 																"description": "View type of the preset associated with the peer.",
+																"type": "string",
 																"enum": [
 																	"GROUP_CALL",
 																	"WEBINAR",
@@ -1029,27 +1037,24 @@
 																	"LIVESTREAM",
 																	"CHAT"
 																],
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"session_id": {
 																"description": "ID of the session this event belongs to.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"socket_session_id": {
 																"description": "ID of the socket session associated with this event.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"updated_at": {
 																"description": "Timestamp when this peer event was last updated.",
 																"type": "string"
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"preset_name": {
 													"description": "Name of the preset associated with the participant.",
@@ -1063,21 +1068,17 @@
 													"description": "User id for this participant.",
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Returns details of a participant."
+				}
 			}
 		},
 		"security": [
@@ -1085,7 +1086,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch details of a participant",
 		"tags": [
 			"Sessions"
 		],
@@ -1095,49 +1095,53 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
-		"description": "Returns a Summary URL to download the Summary of Transcripts for the session ID as plain text.",
 		"operationId": "GetSessionSummary",
+		"summary": "Fetch summary of transcripts for a session",
+		"description": "Returns a Summary URL to download the Summary of Transcripts for the session ID as plain text.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a complete summary of transcripts of a session.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"sessionId": {
 											"type": "string"
@@ -1156,18 +1160,15 @@
 										"summaryDownloadUrl",
 										"summaryDownloadUrlExpiry"
 									],
-									"title": "TranscriptSummary",
-									"type": "object"
+									"title": "TranscriptSummary"
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Returns a complete summary of transcripts of a session."
+				}
 			}
 		},
 		"security": [
@@ -1175,7 +1176,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch summary of transcripts for a session",
 		"tags": [
 			"Sessions"
 		],
@@ -1185,65 +1185,69 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript": {
-		"description": "Returns a URL to download the transcript for the session ID in CSV format.",
 		"operationId": "GetSessionTranscript",
+		"summary": "Fetch the complete transcript for a session",
+		"description": "Returns a URL to download the transcript for the session ID in CSV format.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "ID of the session",
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
+				"description": "ID of the session",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Transcript file format to fetch.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Transcript file format to fetch.",
 				"schema": {
+					"type": "string",
 					"default": "CSV",
 					"enum": [
 						"SRT",
 						"VTT",
 						"JSON",
 						"CSV"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the complete transcript of a session.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"sessionId": {
 											"type": "string"
@@ -1261,18 +1265,15 @@
 										"sessionId",
 										"transcript_download_url",
 										"transcript_download_url_expiry"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Returns the complete transcript of a session."
+				}
 			}
 		},
 		"security": [
@@ -1280,7 +1281,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch the complete transcript for a session",
 		"tags": [
 			"Sessions"
 		],
@@ -1290,77 +1290,82 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}": {
-		"description": "Returns participant details for the given peer ID along with call statistics.",
 		"operationId": "GetParticipantDataFromPeerId",
+		"summary": "Fetch details of peer",
+		"description": "Returns participant details for the given peer ID along with call statistics.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "Filter to apply to the peer report.",
-				"in": "query",
 				"name": "filters",
+				"in": "query",
+				"description": "Filter to apply to the peer report.",
 				"schema": {
+					"type": "string",
+					"example": "device_info",
 					"enum": [
 						"device_info",
 						"ip_information",
 						"precall_network_information",
 						"events",
 						"quality_stats"
-					],
-					"example": "device_info",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "if true, response includes all the peer events of participant.",
-				"in": "query",
 				"name": "include_peer_events",
+				"in": "query",
+				"description": "if true, response includes all the peer events of participant.",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			},
 			{
-				"description": "ID of the peer",
-				"in": "path",
 				"name": "peer_id",
+				"in": "path",
+				"description": "ID of the peer",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns details of a participant using peer ID, including the peer report.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"participant": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "timestamp when this participant was created.",
@@ -1380,8 +1385,8 @@
 												},
 												"id": {
 													"description": "ID of the participant.",
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"joined_at": {
 													"description": "timestamp at which participant joined the session.",
@@ -1393,8 +1398,10 @@
 												},
 												"peer_events": {
 													"description": "Connection lifecycle events for the participant's peer.",
+													"type": "array",
 													"items": {
 														"description": "A connection lifecycle event recorded for a participant's peer.",
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "Timestamp when this peer event was created.",
@@ -1402,12 +1409,12 @@
 															},
 															"event_name": {
 																"description": "Name of the peer event.",
+																"type": "string",
 																"enum": [
 																	"PEER_CREATED",
 																	"PEER_JOINING",
 																	"PEER_LEAVING"
-																],
-																"type": "string"
+																]
 															},
 															"id": {
 																"description": "ID of the peer event.",
@@ -1419,8 +1426,8 @@
 															},
 															"participant_id": {
 																"description": "ID of the participant this event belongs to.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"peer_id": {
 																"description": "Peer ID this event belongs to.",
@@ -1428,6 +1435,7 @@
 															},
 															"preset_view_type": {
 																"description": "View type of the preset associated with the peer.",
+																"type": "string",
 																"enum": [
 																	"GROUP_CALL",
 																	"WEBINAR",
@@ -1435,42 +1443,45 @@
 																	"LIVESTREAM",
 																	"CHAT"
 																],
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"session_id": {
 																"description": "ID of the session this event belongs to.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"socket_session_id": {
 																"description": "ID of the socket session associated with this event.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"updated_at": {
 																"description": "Timestamp when this peer event was last updated.",
 																"type": "string"
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"peer_report": {
 													"description": "Peer call statistics report.",
+													"type": "object",
 													"properties": {
 														"metadata": {
 															"description": "Connection and device metadata for the participant.",
+															"type": "object",
 															"properties": {
 																"audio_devices_updates": {
+																	"type": "array",
 																	"items": {
 																		"description": "A change to the set of available devices at a point in time.",
+																		"type": "object",
 																		"properties": {
 																			"added": {
 																				"description": "Devices that became available.",
+																				"type": "array",
 																				"items": {
 																					"description": "A media device (camera, microphone, or speaker).",
+																					"type": "object",
 																					"properties": {
 																						"device_id": {
 																							"description": "ID of the device.",
@@ -1484,15 +1495,15 @@
 																							"description": "Human-readable label of the device.",
 																							"type": "string"
 																						}
-																					},
-																					"type": "object"
-																				},
-																				"type": "array"
+																					}
+																				}
 																			},
 																			"removed": {
 																				"description": "Devices that became unavailable.",
+																				"type": "array",
 																				"items": {
 																					"description": "A media device (camera, microphone, or speaker).",
+																					"type": "object",
 																					"properties": {
 																						"device_id": {
 																							"description": "ID of the device.",
@@ -1506,21 +1517,18 @@
 																							"description": "Human-readable label of the device.",
 																							"type": "string"
 																						}
-																					},
-																					"type": "object"
-																				},
-																				"type": "array"
+																					}
+																				}
 																			},
 																			"timestamp": {
 																				"description": "Timestamp of the device update.",
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"browser_metadata": {
+																	"type": "object",
 																	"properties": {
 																		"browser": {
 																			"type": "string"
@@ -1535,17 +1543,19 @@
 																			"type": "string"
 																		},
 																		"webgl_support": {
-																			"nullable": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"nullable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"candidate_pairs": {
+																	"type": "object",
 																	"properties": {
 																		"consuming_transport": {
+																			"type": "array",
 																			"items": {
 																				"description": "ICE candidate pair statistics for a transport.",
+																				"type": "object",
 																				"properties": {
 																					"available_incoming_bitrate": {
 																						"type": "number"
@@ -1633,14 +1643,14 @@
 																					"total_round_trip_time": {
 																						"type": "number"
 																					}
-																				},
-																				"type": "object"
-																			},
-																			"type": "array"
+																				}
+																			}
 																		},
 																		"producing_transport": {
+																			"type": "array",
 																			"items": {
 																				"description": "ICE candidate pair statistics for a transport.",
+																				"type": "object",
 																				"properties": {
 																					"available_incoming_bitrate": {
 																						"type": "number"
@@ -1728,15 +1738,13 @@
 																					"total_round_trip_time": {
 																						"type": "number"
 																					}
-																				},
-																				"type": "object"
-																			},
-																			"type": "array"
+																				}
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"device_info": {
+																	"type": "object",
 																	"properties": {
 																		"cpus": {
 																			"type": "number"
@@ -1750,14 +1758,17 @@
 																		"os_version": {
 																			"type": "string"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"events": {
+																	"type": "array",
 																	"items": {
 																		"description": "A timestamped event recorded during the participant's connection.",
+																		"type": "object",
 																		"properties": {
 																			"metadata": {
+																				"description": "Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null).",
+																				"type": "object",
 																				"additionalProperties": {
 																					"nullable": true,
 																					"oneOf": [
@@ -1771,9 +1782,7 @@
 																							"type": "boolean"
 																						}
 																					]
-																				},
-																				"description": "Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null).",
-																				"type": "object"
+																				}
 																			},
 																			"name": {
 																				"description": "Name of the event.",
@@ -1783,14 +1792,14 @@
 																				"description": "Timestamp when the event occurred.",
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"ip_information": {
+																	"type": "object",
 																	"properties": {
 																		"asn": {
+																			"type": "object",
 																			"properties": {
 																				"asn": {
 																					"type": "string"
@@ -1807,8 +1816,7 @@
 																				"type": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"city": {
 																			"type": "string"
@@ -1828,10 +1836,10 @@
 																		"timezone": {
 																			"type": "string"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"native_metadata": {
+																	"type": "object",
 																	"properties": {
 																		"audio_encoder": {
 																			"type": "string"
@@ -1839,10 +1847,10 @@
 																		"video_encoder": {
 																			"type": "string"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"pc_metadata": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"effective_network_type": {
@@ -1855,10 +1863,10 @@
 																				"type": "boolean"
 																			},
 																			"sdp": {
+																				"type": "array",
 																				"items": {
 																					"type": "string"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"timestamp": {
 																				"type": "string"
@@ -1868,8 +1876,7 @@
 																			}
 																		},
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"room_view_type": {
 																	"type": "string"
@@ -1884,10 +1891,12 @@
 																	"type": "string"
 																},
 																"selected_device_updates": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"device": {
 																				"description": "A media device (camera, microphone, or speaker).",
+																				"type": "object",
 																				"properties": {
 																					"device_id": {
 																						"description": "ID of the device.",
@@ -1901,25 +1910,27 @@
 																						"description": "Human-readable label of the device.",
 																						"type": "string"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"timestamp": {
 																				"type": "string"
 																			}
 																		},
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"speaker_devices_updates": {
+																	"type": "array",
 																	"items": {
 																		"description": "A change to the set of available devices at a point in time.",
+																		"type": "object",
 																		"properties": {
 																			"added": {
 																				"description": "Devices that became available.",
+																				"type": "array",
 																				"items": {
 																					"description": "A media device (camera, microphone, or speaker).",
+																					"type": "object",
 																					"properties": {
 																						"device_id": {
 																							"description": "ID of the device.",
@@ -1933,15 +1944,15 @@
 																							"description": "Human-readable label of the device.",
 																							"type": "string"
 																						}
-																					},
-																					"type": "object"
-																				},
-																				"type": "array"
+																					}
+																				}
 																			},
 																			"removed": {
 																				"description": "Devices that became unavailable.",
+																				"type": "array",
 																				"items": {
 																					"description": "A media device (camera, microphone, or speaker).",
+																					"type": "object",
 																					"properties": {
 																						"device_id": {
 																							"description": "ID of the device.",
@@ -1955,28 +1966,28 @@
 																							"description": "Human-readable label of the device.",
 																							"type": "string"
 																						}
-																					},
-																					"type": "object"
-																				},
-																				"type": "array"
+																					}
+																				}
 																			},
 																			"timestamp": {
 																				"description": "Timestamp of the device update.",
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"video_devices_updates": {
+																	"type": "array",
 																	"items": {
 																		"description": "A change to the set of available devices at a point in time.",
+																		"type": "object",
 																		"properties": {
 																			"added": {
 																				"description": "Devices that became available.",
+																				"type": "array",
 																				"items": {
 																					"description": "A media device (camera, microphone, or speaker).",
+																					"type": "object",
 																					"properties": {
 																						"device_id": {
 																							"description": "ID of the device.",
@@ -1990,15 +2001,15 @@
 																							"description": "Human-readable label of the device.",
 																							"type": "string"
 																						}
-																					},
-																					"type": "object"
-																				},
-																				"type": "array"
+																					}
+																				}
 																			},
 																			"removed": {
 																				"description": "Devices that became unavailable.",
+																				"type": "array",
 																				"items": {
 																					"description": "A media device (camera, microphone, or speaker).",
+																					"type": "object",
 																					"properties": {
 																						"device_id": {
 																							"description": "ID of the device.",
@@ -2012,29 +2023,27 @@
 																							"description": "Human-readable label of the device.",
 																							"type": "string"
 																						}
-																					},
-																					"type": "object"
-																				},
-																				"type": "array"
+																					}
+																				}
 																			},
 																			"timestamp": {
 																				"description": "Timestamp of the device update.",
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"quality": {
 															"description": "Media quality statistics for the participant.",
+															"type": "object",
 															"properties": {
 																"audio_consumer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample inbound (consumer) audio statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_received": {
 																				"type": "number"
@@ -2078,16 +2087,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"audio_consumer_cumulative": {
 																	"description": "Aggregated inbound (consumer) audio statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"jitter_buffer_delay": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -2101,11 +2110,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -2122,11 +2131,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2140,15 +2149,15 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"audio_producer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample outbound (producer) audio statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_sent": {
 																				"type": "number"
@@ -2180,16 +2189,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"audio_producer_cumulative": {
 																	"description": "Aggregated outbound (producer) audio statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -2206,11 +2215,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2224,11 +2233,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"rtt": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -2242,15 +2251,15 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"screenshare_audio_consumer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample inbound (consumer) audio statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_received": {
 																				"type": "number"
@@ -2294,16 +2303,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"screenshare_audio_consumer_cumulative": {
 																	"description": "Aggregated inbound (consumer) audio statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"jitter_buffer_delay": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -2317,11 +2326,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -2338,11 +2347,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2356,15 +2365,15 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"screenshare_audio_producer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample outbound (producer) audio statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_sent": {
 																				"type": "number"
@@ -2396,16 +2405,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"screenshare_audio_producer_cumulative": {
 																	"description": "Aggregated outbound (producer) audio statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -2422,11 +2431,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2440,11 +2449,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"rtt": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -2458,15 +2467,15 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"screenshare_video_consumer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample inbound (consumer) video statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_received": {
 																				"type": "number"
@@ -2528,16 +2537,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"screenshare_video_consumer_cumulative": {
 																	"description": "Aggregated inbound (consumer) video statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"frame_per_second": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2551,11 +2560,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"frame_width": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2569,10 +2578,10 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"issues": {
+																			"type": "object",
 																			"properties": {
 																				"lag_fraction": {
 																					"type": "number"
@@ -2583,11 +2592,11 @@
 																				"poor_resolution_fraction": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"jitter_buffer_delay": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -2601,14 +2610,14 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"key_frames_decoded_fraction": {
 																			"type": "number"
 																		},
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -2625,11 +2634,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2643,15 +2652,15 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"screenshare_video_producer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample outbound (producer) video statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_sent": {
 																				"type": "number"
@@ -2696,6 +2705,7 @@
 																				"type": "string"
 																			},
 																			"quality_limitation_durations": {
+																				"type": "object",
 																				"properties": {
 																					"bandwidth": {
 																						"type": "number"
@@ -2709,17 +2719,16 @@
 																					"other": {
 																						"type": "number"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"quality_limitation_reason": {
+																				"type": "string",
 																				"enum": [
 																					"cpu",
 																					"bandwidth",
 																					"none",
 																					"other"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"quality_limitation_resolution_changes": {
 																				"type": "number"
@@ -2733,16 +2742,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"screenshare_video_producer_cumulative": {
 																	"description": "Aggregated outbound (producer) video statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"frame_per_second": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2756,11 +2765,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"frame_width": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2774,13 +2783,13 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"high_negative_feedback_fraction": {
 																			"type": "number"
 																		},
 																		"issues": {
+																			"type": "object",
 																			"properties": {
 																				"bandwidth_quality_limitation_fraction": {
 																					"type": "number"
@@ -2797,14 +2806,14 @@
 																				"quality_limitation_fraction": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"key_frames_encoded_fraction": {
 																			"type": "number"
 																		},
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -2821,11 +2830,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2839,11 +2848,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"rtt": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -2857,15 +2866,15 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"video_consumer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample inbound (consumer) video statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_received": {
 																				"type": "number"
@@ -2927,16 +2936,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"video_consumer_cumulative": {
 																	"description": "Aggregated inbound (consumer) video statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"frame_per_second": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2950,11 +2959,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"frame_width": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -2968,10 +2977,10 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"issues": {
+																			"type": "object",
 																			"properties": {
 																				"lag_fraction": {
 																					"type": "number"
@@ -2982,11 +2991,11 @@
 																				"poor_resolution_fraction": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"jitter_buffer_delay": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -3000,14 +3009,14 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"key_frames_decoded_fraction": {
 																			"type": "number"
 																		},
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -3024,11 +3033,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -3042,15 +3051,15 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"video_producer": {
+																	"type": "array",
 																	"items": {
 																		"description": "Per-sample outbound (producer) video statistics.",
+																		"type": "object",
 																		"properties": {
 																			"bytes_sent": {
 																				"type": "number"
@@ -3095,6 +3104,7 @@
 																				"type": "string"
 																			},
 																			"quality_limitation_durations": {
+																				"type": "object",
 																				"properties": {
 																					"bandwidth": {
 																						"type": "number"
@@ -3108,17 +3118,16 @@
 																					"other": {
 																						"type": "number"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"quality_limitation_reason": {
+																				"type": "string",
 																				"enum": [
 																					"cpu",
 																					"bandwidth",
 																					"none",
 																					"other"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"quality_limitation_resolution_changes": {
 																				"type": "number"
@@ -3132,16 +3141,16 @@
 																			"timestamp": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"video_producer_cumulative": {
 																	"description": "Aggregated outbound (producer) video statistics for the session.",
+																	"type": "object",
 																	"properties": {
 																		"frame_per_second": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -3155,11 +3164,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"frame_width": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -3173,13 +3182,13 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"high_negative_feedback_fraction": {
 																			"type": "number"
 																		},
 																		"issues": {
+																			"type": "object",
 																			"properties": {
 																				"bandwidth_quality_limitation_fraction": {
 																					"type": "number"
@@ -3196,14 +3205,14 @@
 																				"quality_limitation_fraction": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"key_frames_encoded_fraction": {
 																			"type": "number"
 																		},
 																		"packet_loss": {
 																			"description": "Cumulative packet loss distribution.",
+																			"type": "object",
 																			"properties": {
 																				"10_or_greater_event_fraction": {
 																					"type": "number"
@@ -3220,11 +3229,11 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"quality_mos": {
 																			"description": "Distribution summary with average and percentiles.",
+																			"type": "object",
 																			"properties": {
 																				"avg": {
 																					"type": "number"
@@ -3238,11 +3247,11 @@
 																				"p90": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"rtt": {
 																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"type": "object",
 																			"properties": {
 																				"100ms_or_greater_event_fraction": {
 																					"type": "number"
@@ -3256,25 +3265,21 @@
 																				"avg": {
 																					"type": "number"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"role": {
 													"description": "Name of the preset associated with the participant.",
 													"type": "string"
 												},
 												"session_id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"updated_at": {
 													"description": "timestamp when this participant's data was last updated.",
@@ -3284,21 +3289,17 @@
 													"description": "User id for this participant.",
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Returns details of a participant using peer ID, including the peer report."
+				}
 			}
 		},
 		"security": [
@@ -3306,7 +3307,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch details of peer",
 		"tags": [
 			"Sessions"
 		],
@@ -3316,69 +3316,70 @@
 		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
-		"description": "Trigger Summary generation of Transcripts for the session ID.",
 		"operationId": "post-sessions-session_id-summary",
+		"summary": "Generate summary of Transcripts for the session",
+		"description": "Trigger Summary generation of Transcripts for the session ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "session_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Success",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"session_id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"status": {
 											"type": "string"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Success"
+				}
 			}
 		},
 		"security": [
@@ -3386,7 +3387,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Generate summary of Transcripts for the session",
 		"tags": [
 			"Sessions"
 		],

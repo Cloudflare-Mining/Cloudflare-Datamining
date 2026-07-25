@@ -1,54 +1,58 @@
 {
 	"DELETE /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
-		"description": "Delete an unapproved prefix owned by the account.",
 		"operationId": "ip-address-management-prefixes-delete-prefix",
+		"summary": "Delete Prefix",
+		"description": "Delete an unapproved prefix owned by the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Prefix response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -57,12 +61,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -72,15 +76,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -89,12 +93,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -104,47 +108,47 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Prefix response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Prefix response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -153,12 +157,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -168,15 +172,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -185,12 +189,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -200,116 +204,78 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -318,12 +284,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -333,25 +299,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -359,14 +362,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Prefix response failure"
+				}
 			}
 		},
 		"security": [
@@ -375,7 +376,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Prefix",
 		"tags": [
 			"IP Address Management Prefixes"
 		],
@@ -384,107 +384,73 @@
 		]
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
-		"description": "Download specified LOA document under the account.",
 		"operationId": "ip-address-management-prefixes-download-loa-document",
+		"summary": "Download LOA Document",
+		"description": "Download specified LOA document under the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "loa_document_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier for the uploaded LOA document.",
+					"type": "string",
 					"example": "d933b1530bc56c9953cf8ce166da8004",
 					"maxLength": 32,
 					"nullable": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Download LOA Document response",
 				"content": {
 					"application/pdf": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "string",
+							"format": "binary"
 						}
 					}
-				},
-				"description": "Download LOA Document response"
+				}
 			},
 			"4XX": {
+				"description": "Download LOA Document response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -493,12 +459,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -508,25 +474,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -534,14 +537,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Download LOA Document response failure"
+				}
 			}
 		},
 		"security": [
@@ -550,7 +551,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Download LOA Document",
 		"tags": [
 			"IP Address Management Prefixes"
 		],
@@ -560,39 +560,43 @@
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes": {
-		"description": "List all prefixes owned by the account.",
 		"operationId": "ip-address-management-prefixes-list-prefixes",
+		"summary": "List Prefixes",
+		"description": "List all prefixes owned by the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Prefixes response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -601,12 +605,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -616,15 +620,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -633,12 +637,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -648,171 +652,169 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"account_id": {
 														"description": "Identifier of a Cloudflare account.",
+														"type": "string",
 														"example": "258def64c72dae45f3e4c8516e2111f2",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"advertised": {
-														"deprecated": true,
 														"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-														"example": true,
-														"nullable": true,
 														"type": "boolean",
+														"example": true,
+														"deprecated": true,
+														"nullable": true,
 														"x-auditable": true,
 														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"advertised_modified_at": {
-														"deprecated": true,
 														"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"nullable": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
+														"deprecated": true,
+														"nullable": true,
 														"x-auditable": true,
 														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"approved": {
 														"description": "Approval state of the prefix (P = pending, V = active).",
-														"example": "P",
 														"type": "string",
+														"example": "P",
 														"x-auditable": true
 													},
 													"asn": {
 														"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-														"example": 13335,
 														"type": "integer",
+														"example": 13335,
 														"x-auditable": true
 													},
 													"cidr": {
 														"description": "IP Prefix in Classless Inter-Domain Routing format.",
-														"example": "192.0.2.0/24",
 														"type": "string",
+														"example": "192.0.2.0/24",
 														"x-auditable": true
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"delegate_loa_creation": {
-														"default": false,
 														"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
+														"default": false,
 														"x-auditable": true
 													},
 													"description": {
 														"description": "Description of the prefix.",
+														"type": "string",
 														"example": "Internal test prefix",
 														"maxLength": 1000,
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier of an IP Prefix.",
+														"type": "string",
 														"example": "2af39739cc4e3b5910c918468bb89828",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"irr_validation_state": {
 														"description": "State of one kind of validation for an IP prefix.",
-														"example": "pending",
 														"type": "string",
+														"example": "pending",
 														"x-auditable": true
 													},
 													"loa_document_id": {
 														"description": "Identifier for the uploaded LOA document.",
+														"type": "string",
 														"example": "d933b1530bc56c9953cf8ce166da8004",
 														"maxLength": 32,
 														"nullable": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"modified_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"on_demand_enabled": {
-														"deprecated": true,
 														"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
+														"deprecated": true,
 														"x-auditable": true,
 														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"on_demand_locked": {
-														"deprecated": true,
 														"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
+														"deprecated": true,
 														"x-auditable": true,
 														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"ownership_validation_state": {
 														"description": "State of one kind of validation for an IP prefix.",
-														"example": "pending",
 														"type": "string",
+														"example": "pending",
 														"x-auditable": true
 													},
 													"ownership_validation_token": {
 														"description": "Token provided to demonstrate ownership of the prefix.",
-														"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 														"type": "string",
+														"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 														"x-auditable": true
 													},
 													"rpki_validation_state": {
 														"description": "State of one kind of validation for an IP prefix.",
-														"example": "pending",
 														"type": "string",
+														"example": "pending",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Prefixes response"
+				}
 			},
 			"4XX": {
+				"description": "List Prefixes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -820,16 +822,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -838,12 +842,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -853,15 +857,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -870,12 +874,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -885,220 +889,182 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"account_id": {
 																"description": "Identifier of a Cloudflare account.",
+																"type": "string",
 																"example": "258def64c72dae45f3e4c8516e2111f2",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"advertised": {
-																"deprecated": true,
 																"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-																"example": true,
-																"nullable": true,
 																"type": "boolean",
+																"example": true,
+																"deprecated": true,
+																"nullable": true,
 																"x-auditable": true,
 																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"advertised_modified_at": {
-																"deprecated": true,
 																"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"nullable": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"deprecated": true,
+																"nullable": true,
 																"x-auditable": true,
 																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"approved": {
 																"description": "Approval state of the prefix (P = pending, V = active).",
-																"example": "P",
 																"type": "string",
+																"example": "P",
 																"x-auditable": true
 															},
 															"asn": {
 																"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-																"example": 13335,
 																"type": "integer",
+																"example": 13335,
 																"x-auditable": true
 															},
 															"cidr": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																"example": "192.0.2.0/24",
 																"type": "string",
+																"example": "192.0.2.0/24",
 																"x-auditable": true
 															},
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															"delegate_loa_creation": {
-																"default": false,
 																"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
+																"default": false,
 																"x-auditable": true
 															},
 															"description": {
 																"description": "Description of the prefix.",
+																"type": "string",
 																"example": "Internal test prefix",
 																"maxLength": 1000,
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier of an IP Prefix.",
+																"type": "string",
 																"example": "2af39739cc4e3b5910c918468bb89828",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"irr_validation_state": {
 																"description": "State of one kind of validation for an IP prefix.",
-																"example": "pending",
 																"type": "string",
+																"example": "pending",
 																"x-auditable": true
 															},
 															"loa_document_id": {
 																"description": "Identifier for the uploaded LOA document.",
+																"type": "string",
 																"example": "d933b1530bc56c9953cf8ce166da8004",
 																"maxLength": 32,
 																"nullable": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"modified_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															"on_demand_enabled": {
-																"deprecated": true,
 																"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
+																"deprecated": true,
 																"x-auditable": true,
 																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"on_demand_locked": {
-																"deprecated": true,
 																"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
+																"deprecated": true,
 																"x-auditable": true,
 																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"ownership_validation_state": {
 																"description": "State of one kind of validation for an IP prefix.",
-																"example": "pending",
 																"type": "string",
+																"example": "pending",
 																"x-auditable": true
 															},
 															"ownership_validation_token": {
 																"description": "Token provided to demonstrate ownership of the prefix.",
-																"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 																"type": "string",
+																"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 																"x-auditable": true
 															},
 															"rpki_validation_state": {
 																"description": "State of one kind of validation for an IP prefix.",
-																"example": "pending",
 																"type": "string",
+																"example": "pending",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1107,12 +1073,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1122,25 +1088,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1148,14 +1151,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Prefixes response failure"
+				}
 			}
 		},
 		"security": [
@@ -1164,7 +1165,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Prefixes",
 		"tags": [
 			"IP Address Management Prefixes"
 		],
@@ -1178,51 +1178,55 @@
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
-		"description": "List a particular prefix owned by the account.",
 		"operationId": "ip-address-management-prefixes-prefix-details",
+		"summary": "Prefix Details",
+		"description": "List a particular prefix owned by the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Prefix Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1231,12 +1235,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1246,15 +1250,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1263,12 +1267,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1278,168 +1282,166 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Identifier of a Cloudflare account.",
+													"type": "string",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"advertised": {
-													"deprecated": true,
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-													"example": true,
-													"nullable": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"advertised_modified_at": {
-													"deprecated": true,
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
-													"example": "P",
 													"type": "string",
+													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-													"example": 13335,
 													"type": "integer",
+													"example": 13335,
 													"x-auditable": true
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"delegate_loa_creation": {
-													"default": false,
 													"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "Description of the prefix.",
+													"type": "string",
 													"example": "Internal test prefix",
 													"maxLength": 1000,
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an IP Prefix.",
+													"type": "string",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"irr_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"loa_document_id": {
 													"description": "Identifier for the uploaded LOA document.",
+													"type": "string",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"on_demand_enabled": {
-													"deprecated": true,
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"on_demand_locked": {
-													"deprecated": true,
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"ownership_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
 													"description": "Token provided to demonstrate ownership of the prefix.",
-													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"type": "string",
+													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
 												},
 												"rpki_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Prefix Details response"
+				}
 			},
 			"4XX": {
+				"description": "Prefix Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1447,16 +1449,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1465,12 +1469,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1480,15 +1484,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1497,12 +1501,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1512,217 +1516,179 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"account_id": {
 															"description": "Identifier of a Cloudflare account.",
+															"type": "string",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"advertised": {
-															"deprecated": true,
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-															"example": true,
-															"nullable": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"advertised_modified_at": {
-															"deprecated": true,
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
-															"example": "P",
 															"type": "string",
+															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-															"example": 13335,
 															"type": "integer",
+															"example": 13335,
 															"x-auditable": true
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"delegate_loa_creation": {
-															"default": false,
 															"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "Description of the prefix.",
+															"type": "string",
 															"example": "Internal test prefix",
 															"maxLength": 1000,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an IP Prefix.",
+															"type": "string",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"irr_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"loa_document_id": {
 															"description": "Identifier for the uploaded LOA document.",
+															"type": "string",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
-															"deprecated": true,
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"on_demand_locked": {
-															"deprecated": true,
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"ownership_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
 															"description": "Token provided to demonstrate ownership of the prefix.",
-															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"type": "string",
+															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true
 														},
 														"rpki_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1731,12 +1697,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1746,25 +1712,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1772,14 +1775,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Prefix Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1788,7 +1789,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Prefix Details",
 		"tags": [
 			"IP Address Management Prefixes"
 		],
@@ -1802,44 +1802,46 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
-		"description": "Modify the description for a prefix owned by the account.",
 		"operationId": "ip-address-management-prefixes-update-prefix-description",
+		"summary": "Update Prefix Description",
+		"description": "Modify the description for a prefix owned by the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"description": {
 								"description": "Description of the prefix.",
+								"type": "string",
 								"example": "Internal test prefix",
 								"maxLength": 1000,
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1848,26 +1850,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Prefix Description response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1876,12 +1880,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1891,15 +1895,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1908,12 +1912,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1923,168 +1927,166 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Identifier of a Cloudflare account.",
+													"type": "string",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"advertised": {
-													"deprecated": true,
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-													"example": true,
-													"nullable": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"advertised_modified_at": {
-													"deprecated": true,
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
-													"example": "P",
 													"type": "string",
+													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-													"example": 13335,
 													"type": "integer",
+													"example": 13335,
 													"x-auditable": true
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"delegate_loa_creation": {
-													"default": false,
 													"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "Description of the prefix.",
+													"type": "string",
 													"example": "Internal test prefix",
 													"maxLength": 1000,
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an IP Prefix.",
+													"type": "string",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"irr_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"loa_document_id": {
 													"description": "Identifier for the uploaded LOA document.",
+													"type": "string",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"on_demand_enabled": {
-													"deprecated": true,
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"on_demand_locked": {
-													"deprecated": true,
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"ownership_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
 													"description": "Token provided to demonstrate ownership of the prefix.",
-													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"type": "string",
+													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
 												},
 												"rpki_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Prefix Description response"
+				}
 			},
 			"4XX": {
+				"description": "Update Prefix Description response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2092,16 +2094,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2110,12 +2114,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2125,15 +2129,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2142,12 +2146,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2157,217 +2161,179 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"account_id": {
 															"description": "Identifier of a Cloudflare account.",
+															"type": "string",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"advertised": {
-															"deprecated": true,
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-															"example": true,
-															"nullable": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"advertised_modified_at": {
-															"deprecated": true,
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
-															"example": "P",
 															"type": "string",
+															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-															"example": 13335,
 															"type": "integer",
+															"example": 13335,
 															"x-auditable": true
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"delegate_loa_creation": {
-															"default": false,
 															"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "Description of the prefix.",
+															"type": "string",
 															"example": "Internal test prefix",
 															"maxLength": 1000,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an IP Prefix.",
+															"type": "string",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"irr_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"loa_document_id": {
 															"description": "Identifier for the uploaded LOA document.",
+															"type": "string",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
-															"deprecated": true,
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"on_demand_locked": {
-															"deprecated": true,
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"ownership_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
 															"description": "Token provided to demonstrate ownership of the prefix.",
-															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"type": "string",
+															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true
 														},
 														"rpki_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2376,12 +2342,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2391,25 +2357,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2417,14 +2420,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Prefix Description response failure"
+				}
 			}
 		},
 		"security": [
@@ -2433,7 +2434,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Prefix Description",
 		"tags": [
 			"IP Address Management Prefixes"
 		],
@@ -2443,59 +2443,63 @@
 		]
 	},
 	"POST /accounts/{account_id}/addressing/loa_documents": {
-		"description": "Submit LOA document (pdf format) under the account.",
 		"operationId": "ip-address-management-prefixes-upload-loa-document",
+		"summary": "Upload LOA Document",
+		"description": "Submit LOA document (pdf format) under the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"multipart/form-data": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"loa_document": {
 								"description": "LOA document to upload.",
-								"example": "@document.pdf",
-								"type": "string"
+								"type": "string",
+								"example": "@document.pdf"
 							}
 						},
 						"required": [
 							"loa_document"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Upload LOA Document response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2504,12 +2508,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2519,15 +2523,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2536,12 +2540,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2551,95 +2555,93 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Identifier of a Cloudflare account.",
+													"type": "string",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"auto_generated": {
 													"description": "Whether the LOA has been auto-generated for the prefix owner by Cloudflare.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"created": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"filename": {
 													"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
-													"example": "site_loa_doc.pdf",
 													"type": "string",
+													"example": "site_loa_doc.pdf",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier for the uploaded LOA document.",
+													"type": "string",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"size_bytes": {
 													"description": "File size of the uploaded LOA document.",
-													"example": 444,
 													"type": "integer",
+													"example": 444,
 													"x-auditable": true
 												},
 												"verified": {
 													"description": "Whether the LOA has been verified by Cloudflare staff.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"verified_at": {
 													"description": "Timestamp of the moment the LOA was marked as validated.",
+													"type": "string",
 													"format": "date-time",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Upload LOA Document response"
+				}
 			},
 			"4XX": {
+				"description": "Upload LOA Document response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2647,16 +2649,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2665,12 +2669,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2680,15 +2684,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2697,12 +2701,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2712,144 +2716,106 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"account_id": {
 															"description": "Identifier of a Cloudflare account.",
+															"type": "string",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"auto_generated": {
 															"description": "Whether the LOA has been auto-generated for the prefix owner by Cloudflare.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"created": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"filename": {
 															"description": "Name of LOA document. Max file size 10MB, and supported filetype is pdf.",
-															"example": "site_loa_doc.pdf",
 															"type": "string",
+															"example": "site_loa_doc.pdf",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier for the uploaded LOA document.",
+															"type": "string",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"size_bytes": {
 															"description": "File size of the uploaded LOA document.",
-															"example": 444,
 															"type": "integer",
+															"example": 444,
 															"x-auditable": true
 														},
 														"verified": {
 															"description": "Whether the LOA has been verified by Cloudflare staff.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"verified_at": {
 															"description": "Timestamp of the moment the LOA was marked as validated.",
+															"type": "string",
 															"format": "date-time",
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2858,12 +2824,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2873,25 +2839,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2899,14 +2902,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Upload LOA Document response failure"
+				}
 			}
 		},
 		"security": [
@@ -2915,7 +2916,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Upload LOA Document",
 		"tags": [
 			"IP Address Management Prefixes"
 		],
@@ -2924,59 +2924,61 @@
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes": {
-		"description": "Add a new prefix under the account.",
 		"operationId": "ip-address-management-prefixes-add-prefix",
+		"summary": "Add Prefix",
+		"description": "Add a new prefix under the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"asn": {
 								"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-								"example": 13335,
 								"type": "integer",
+								"example": 13335,
 								"x-auditable": true
 							},
 							"cidr": {
 								"description": "IP Prefix in Classless Inter-Domain Routing format.",
-								"example": "192.0.2.0/24",
 								"type": "string",
+								"example": "192.0.2.0/24",
 								"x-auditable": true
 							},
 							"delegate_loa_creation": {
-								"default": false,
 								"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"description": {
 								"description": "Description of the prefix.",
+								"type": "string",
 								"example": "Internal test prefix",
 								"maxLength": 1000,
-								"type": "string",
 								"x-auditable": true
 							},
 							"loa_document_id": {
 								"description": "Identifier for the uploaded LOA document.",
+								"type": "string",
 								"example": "d933b1530bc56c9953cf8ce166da8004",
 								"maxLength": 32,
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -2986,26 +2988,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Add Prefix response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3014,12 +3018,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3029,15 +3033,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3046,12 +3050,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3061,168 +3065,166 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Identifier of a Cloudflare account.",
+													"type": "string",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"advertised": {
-													"deprecated": true,
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-													"example": true,
-													"nullable": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"advertised_modified_at": {
-													"deprecated": true,
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
-													"example": "P",
 													"type": "string",
+													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-													"example": 13335,
 													"type": "integer",
+													"example": 13335,
 													"x-auditable": true
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"delegate_loa_creation": {
-													"default": false,
 													"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "Description of the prefix.",
+													"type": "string",
 													"example": "Internal test prefix",
 													"maxLength": 1000,
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an IP Prefix.",
+													"type": "string",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"irr_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"loa_document_id": {
 													"description": "Identifier for the uploaded LOA document.",
+													"type": "string",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"on_demand_enabled": {
-													"deprecated": true,
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"on_demand_locked": {
-													"deprecated": true,
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"ownership_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
 													"description": "Token provided to demonstrate ownership of the prefix.",
-													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"type": "string",
+													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
 												},
 												"rpki_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Add Prefix response"
+				}
 			},
 			"4XX": {
+				"description": "Add Prefix response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3230,16 +3232,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3248,12 +3252,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3263,15 +3267,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3280,12 +3284,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3295,217 +3299,179 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"account_id": {
 															"description": "Identifier of a Cloudflare account.",
+															"type": "string",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"advertised": {
-															"deprecated": true,
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-															"example": true,
-															"nullable": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"advertised_modified_at": {
-															"deprecated": true,
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
-															"example": "P",
 															"type": "string",
+															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-															"example": 13335,
 															"type": "integer",
+															"example": 13335,
 															"x-auditable": true
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"delegate_loa_creation": {
-															"default": false,
 															"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "Description of the prefix.",
+															"type": "string",
 															"example": "Internal test prefix",
 															"maxLength": 1000,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an IP Prefix.",
+															"type": "string",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"irr_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"loa_document_id": {
 															"description": "Identifier for the uploaded LOA document.",
+															"type": "string",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
-															"deprecated": true,
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"on_demand_locked": {
-															"deprecated": true,
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"ownership_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
 															"description": "Token provided to demonstrate ownership of the prefix.",
-															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"type": "string",
+															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true
 														},
 														"rpki_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3514,12 +3480,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3529,25 +3495,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3555,14 +3558,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Add Prefix response failure"
+				}
 			}
 		},
 		"security": [
@@ -3571,58 +3572,61 @@
 				"api_key": []
 			}
 		],
-		"summary": "Add Prefix",
 		"tags": [
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/validate": {
-		"description": "Triggers a new prefix validation. The checks are run asynchronously and include IRR, RPKI, and prefix ownership.",
 		"operationId": "ip-address-management-prefixes-validate-prefix",
+		"summary": "Validate Prefix",
+		"description": "Triggers a new prefix validation. The checks are run asynchronously and include IRR, RPKI, and prefix ownership.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"202": {
+				"description": "Validate Prefix response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3631,12 +3635,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3646,15 +3650,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3663,12 +3667,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3678,168 +3682,166 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Identifier of a Cloudflare account.",
+													"type": "string",
 													"example": "258def64c72dae45f3e4c8516e2111f2",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"advertised": {
-													"deprecated": true,
 													"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-													"example": true,
-													"nullable": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"advertised_modified_at": {
-													"deprecated": true,
 													"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"deprecated": true,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
 													"description": "Approval state of the prefix (P = pending, V = active).",
-													"example": "P",
 													"type": "string",
+													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-													"example": 13335,
 													"type": "integer",
+													"example": 13335,
 													"x-auditable": true
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"delegate_loa_creation": {
-													"default": false,
 													"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "Description of the prefix.",
+													"type": "string",
 													"example": "Internal test prefix",
 													"maxLength": 1000,
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of an IP Prefix.",
+													"type": "string",
 													"example": "2af39739cc4e3b5910c918468bb89828",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"irr_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"loa_document_id": {
 													"description": "Identifier for the uploaded LOA document.",
+													"type": "string",
 													"example": "d933b1530bc56c9953cf8ce166da8004",
 													"maxLength": 32,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"on_demand_enabled": {
-													"deprecated": true,
 													"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"on_demand_locked": {
-													"deprecated": true,
 													"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"deprecated": true,
 													"x-auditable": true,
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"ownership_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
 													"description": "Token provided to demonstrate ownership of the prefix.",
-													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"type": "string",
+													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
 												},
 												"rpki_validation_state": {
 													"description": "State of one kind of validation for an IP prefix.",
-													"example": "pending",
 													"type": "string",
+													"example": "pending",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Validate Prefix response"
+				}
 			},
 			"4XX": {
+				"description": "Validate Prefix response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3847,16 +3849,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3865,12 +3869,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3880,15 +3884,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3897,12 +3901,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3912,217 +3916,179 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"account_id": {
 															"description": "Identifier of a Cloudflare account.",
+															"type": "string",
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"advertised": {
-															"deprecated": true,
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
-															"example": true,
-															"nullable": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"advertised_modified_at": {
-															"deprecated": true,
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"deprecated": true,
+															"nullable": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
 															"description": "Approval state of the prefix (P = pending, V = active).",
-															"example": "P",
 															"type": "string",
+															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-															"example": 13335,
 															"type": "integer",
+															"example": 13335,
 															"x-auditable": true
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"delegate_loa_creation": {
-															"default": false,
 															"description": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "Description of the prefix.",
+															"type": "string",
 															"example": "Internal test prefix",
 															"maxLength": 1000,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of an IP Prefix.",
+															"type": "string",
 															"example": "2af39739cc4e3b5910c918468bb89828",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"irr_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"loa_document_id": {
 															"description": "Identifier for the uploaded LOA document.",
+															"type": "string",
 															"example": "d933b1530bc56c9953cf8ce166da8004",
 															"maxLength": 32,
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
-															"deprecated": true,
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"on_demand_locked": {
-															"deprecated": true,
 															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"deprecated": true,
 															"x-auditable": true,
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"ownership_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
 															"description": "Token provided to demonstrate ownership of the prefix.",
-															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"type": "string",
+															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true
 														},
 														"rpki_validation_state": {
 															"description": "State of one kind of validation for an IP prefix.",
-															"example": "pending",
 															"type": "string",
+															"example": "pending",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -4131,12 +4097,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -4146,25 +4112,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4172,14 +4175,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Validate Prefix response failure"
+				}
 			}
 		},
 		"security": [
@@ -4188,7 +4189,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Validate Prefix",
 		"tags": [
 			"IP Address Management Prefixes"
 		],

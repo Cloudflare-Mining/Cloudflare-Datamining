@@ -1,7 +1,8 @@
 {
 	"GET /accounts/{account_id}/paygo-usage": {
-		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\n",
 		"operationId": "billable-usage-get-paygo-account-usage",
+		"summary": "Get PayGo Account Billable Usage (Version 1, Alpha)",
+		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account.",
@@ -10,10 +11,10 @@
 				"required": true,
 				"schema": {
 					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			},
 			{
@@ -21,9 +22,9 @@
 				"in": "query",
 				"name": "from",
 				"schema": {
-					"example": "2025-05-01",
+					"type": "string",
 					"format": "date",
-					"type": "string"
+					"example": "2025-05-01"
 				}
 			},
 			{
@@ -31,23 +32,27 @@
 				"in": "query",
 				"name": "to",
 				"schema": {
-					"example": "2025-05-31",
+					"type": "string",
 					"format": "date",
-					"type": "string"
+					"example": "2025-05-31"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Indicates PayGo account usage data was successfully retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Represents a successful response containing billable usage records.",
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Contains error details if the request failed.",
+									"type": "array",
 									"items": {
 										"description": "Represents an API notice or error detail.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"description": "Identifies the error or notice type.",
@@ -60,16 +65,16 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"messages": {
 									"description": "Contains informational notices about the response.",
+									"type": "array",
 									"items": {
 										"description": "Represents an API notice or error detail.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"description": "Identifies the error or notice type.",
@@ -82,97 +87,97 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"result": {
 									"description": "Contains the array of billable usage records.",
+									"type": "array",
 									"items": {
 										"description": "Represents a single billable usage record.",
+										"type": "object",
 										"properties": {
 											"BillingCurrency": {
 												"description": "Specifies the billing currency code (ISO 4217).",
-												"example": "USD",
-												"type": "string"
+												"type": "string",
+												"example": "USD"
 											},
 											"BillingPeriodStart": {
 												"description": "Indicates the start of the billing period.",
-												"example": "2025-02-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2025-02-01T00:00:00Z"
 											},
 											"ChargePeriodEnd": {
 												"description": "Indicates the end of the charge period.",
-												"example": "2025-02-02T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2025-02-02T00:00:00Z"
 											},
 											"ChargePeriodStart": {
 												"description": "Indicates the start of the charge period.",
-												"example": "2025-02-01T00:00:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2025-02-01T00:00:00Z"
 											},
 											"ConsumedQuantity": {
 												"description": "Specifies the quantity consumed during this charge period.",
-												"example": 150000,
-												"type": "number"
+												"type": "number",
+												"example": 150000
 											},
 											"ConsumedUnit": {
 												"description": "A display name for the unit of measurement used for the product (for example, \"GB-months\", \"GB-seconds\"). May be empty when the unit is implicit in the service name.",
-												"example": "GB-months",
-												"type": "string"
+												"type": "string",
+												"example": "GB-months"
 											},
 											"ContractedCost": {
 												"description": "Specifies the cost for this charge period in the billing currency.",
-												"example": 0.75,
-												"type": "number"
+												"type": "number",
+												"example": 0.75
 											},
 											"CumulatedContractedCost": {
 												"description": "Specifies the cumulated cost for the billing period in the billing currency.",
-												"example": 2.25,
-												"type": "number"
+												"type": "number",
+												"example": 2.25
 											},
 											"CumulatedPricingQuantity": {
 												"description": "Specifies the cumulated pricing quantity for the billing period.",
-												"example": 4500000,
-												"type": "integer"
+												"type": "integer",
+												"example": 4500000
 											},
 											"PricingQuantity": {
 												"description": "Specifies the pricing quantity for this charge period.",
-												"example": 150000,
-												"type": "integer"
+												"type": "integer",
+												"example": 150000
 											},
 											"ServiceFamilyName": {
 												"description": "Identifies the product family for the Cloudflare service.",
-												"example": "Workers",
-												"type": "string"
+												"type": "string",
+												"example": "Workers"
 											},
 											"ServiceName": {
 												"description": "Identifies the Cloudflare service.",
-												"example": "Workers Standard",
-												"type": "string"
+												"type": "string",
+												"example": "Workers Standard"
 											},
 											"SubscriptionId": {
 												"description": "The identifier for the Cloudflare subscription.",
+												"type": "string",
 												"example": "3F3CD4CQ6N7FXO7IK6NVFJBOYA",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"ZoneId": {
 												"description": "The identifier for the Cloudflare zone (zone tag).",
+												"type": "string",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"ZoneName": {
 												"description": "The display name of the Cloudflare zone.",
+												"type": "string",
 												"example": "example.com",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											}
 										},
 										"required": [
@@ -187,18 +192,16 @@
 											"ContractedCost",
 											"CumulatedContractedCost",
 											"BillingCurrency"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -206,51 +209,53 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Indicates PayGo account usage data was successfully retrieved."
+				}
 			},
 			"4XX": {
+				"description": "Indicates the request failed.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Represents a failed API response.",
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 1183,
 											"message": "Invalid request parameters: Please ensure all required parameters are included and correctly formatted."
 										}
 									],
-									"items": {
-										"description": "Represents an API notice or error detail.",
-										"properties": {
-											"code": {
-												"description": "Identifies the error or notice type.",
-												"type": "integer"
-											},
-											"message": {
-												"description": "Describes the error or notice.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
 									"description": "Contains informational notices about the response.",
+									"type": "array",
 									"items": {
 										"description": "Represents an API notice or error detail.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"description": "Identifies the error or notice type.",
@@ -263,24 +268,22 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"result": {
 									"description": "Contains the response payload (always null on failure).",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -288,12 +291,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Indicates the request failed."
+				}
 			}
 		},
 		"security": [
@@ -305,7 +306,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get PayGo Account Billable Usage (Version 1, Alpha)",
 		"tags": [
 			"Billable Usage"
 		],
@@ -329,8 +329,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/paygo-usage-info": {
-		"description": "Returns high-level usage information for the account, including coverage,\nand subscription metadata.\n",
 		"operationId": "billable-usage-get-paygo-account-usage-info",
+		"summary": "Get PayGo Account Billable Usage Info (Version 1, Alpha)",
+		"description": "Returns high-level usage information for the account, including coverage,\nand subscription metadata.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account.",
@@ -339,24 +340,28 @@
 				"required": true,
 				"schema": {
 					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Indicates PayGo account usage data was successfully retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Represents a successful response containing subscription info.",
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Contains error details if the request failed.",
+									"type": "array",
 									"items": {
 										"description": "Represents an API notice or error detail.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"description": "Identifies the error or notice type.",
@@ -369,16 +374,16 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"messages": {
 									"description": "Contains any informational messages from the API.",
+									"type": "array",
 									"items": {
 										"description": "Represents an API notice or error detail.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"description": "Identifies the error or notice type.",
@@ -391,46 +396,46 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"result": {
 									"description": "Contains the paygo usage info.",
+									"type": "object",
 									"properties": {
 										"covered": {
 											"description": "Indicates whether the account is covered.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"subscriptions": {
 											"description": "List of subscriptions for the account.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"billing_cycle_anchor_timestamp": {
 														"description": "The subscription billing cycle anchor timestamp.",
-														"example": "2023-01-01T00:00:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2023-01-01T00:00:00Z"
 													},
 													"end_timestamp": {
 														"description": "The subscription end timestamp. Omitted for active subscriptions; present only when the subscription has been cancelled.",
-														"example": "2023-12-31T23:59:59Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2023-12-31T23:59:59Z"
 													},
 													"id": {
 														"description": "The identifier for the Cloudflare subscription.",
-														"example": "3F3CD4CQ6N7FXO7IK6NVFJBOYA",
-														"type": "string"
+														"type": "string",
+														"example": "3F3CD4CQ6N7FXO7IK6NVFJBOYA"
 													},
 													"start_timestamp": {
 														"description": "The subscription start timestamp.",
-														"example": "2023-01-01T00:00:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2023-01-01T00:00:00Z"
 													}
 												},
 												"required": [
@@ -439,23 +444,21 @@
 													"billing_cycle_anchor_timestamp"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"covered",
 										"subscriptions"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -463,51 +466,53 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Indicates PayGo account usage data was successfully retrieved."
+				}
 			},
 			"4XX": {
+				"description": "Indicates the request failed.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Represents a failed API response.",
+							"type": "object",
 							"properties": {
 								"errors": {
 									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 1183,
 											"message": "Invalid request parameters: Please ensure all required parameters are included and correctly formatted."
 										}
 									],
-									"items": {
-										"description": "Represents an API notice or error detail.",
-										"properties": {
-											"code": {
-												"description": "Identifies the error or notice type.",
-												"type": "integer"
-											},
-											"message": {
-												"description": "Describes the error or notice.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
 									"description": "Contains informational notices about the response.",
+									"type": "array",
 									"items": {
 										"description": "Represents an API notice or error detail.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"description": "Identifies the error or notice type.",
@@ -520,24 +525,22 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"result": {
 									"description": "Contains the response payload (always null on failure).",
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -545,12 +548,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Indicates the request failed."
+				}
 			}
 		},
 		"security": [
@@ -562,7 +563,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get PayGo Account Billable Usage Info (Version 1, Alpha)",
 		"tags": [
 			"Billable Usage"
 		],

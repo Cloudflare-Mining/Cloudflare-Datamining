@@ -1,28 +1,29 @@
 {
 	"POST /accounts/{account_id}/autorag/rags/{id}/ai-search": {
 		"operationId": "autorag-config-ai-search",
+		"summary": "AI Search",
 		"parameters": [
 			{
-				"description": "rag id",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "rag id",
 				"required": true,
 				"schema": {
 					"description": "rag id",
+					"type": "string",
 					"example": "my-rag",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
@@ -30,6 +31,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"filters": {
 								"anyOf": [
@@ -39,6 +41,7 @@
 												"type": "string"
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"eq",
 													"ne",
@@ -46,8 +49,7 @@
 													"gte",
 													"lt",
 													"lte"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"anyOf": [
@@ -73,12 +75,14 @@
 									{
 										"properties": {
 											"filters": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"key": {
 															"type": "string"
 														},
 														"type": {
+															"type": "string",
 															"enum": [
 																"eq",
 																"ne",
@@ -86,8 +90,7 @@
 																"gte",
 																"lt",
 																"lte"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"anyOf": [
@@ -109,15 +112,14 @@
 														"value"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"and",
 													"or"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -129,10 +131,10 @@
 								]
 							},
 							"max_num_results": {
+								"type": "integer",
 								"default": 10,
 								"maximum": 50,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"model": {
 								"anyOf": [
@@ -178,25 +180,26 @@
 								"type": "string"
 							},
 							"ranking_options": {
+								"type": "object",
 								"default": {},
 								"properties": {
 									"ranker": {
 										"type": "string"
 									},
 									"score_threshold": {
+										"type": "number",
 										"default": 0.4,
 										"maximum": 1,
-										"minimum": 0,
-										"type": "number"
+										"minimum": 0
 									}
-								},
-								"type": "object"
+								}
 							},
 							"reranking": {
+								"type": "object",
 								"properties": {
 									"enabled": {
-										"default": false,
-										"type": "boolean"
+										"type": "boolean",
+										"default": false
 									},
 									"model": {
 										"anyOf": [
@@ -214,16 +217,15 @@
 											}
 										]
 									}
-								},
-								"type": "object"
+								}
 							},
 							"rewrite_query": {
-								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"stream": {
-								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"system_prompt": {
 								"type": "string"
@@ -231,21 +233,24 @@
 						},
 						"required": [
 							"query"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the log details",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"data": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"attributes": {
@@ -279,16 +284,15 @@
 													"score"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"has_more": {
-											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"default": false
 										},
 										"next_page": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"object": {
 											"type": "string"
@@ -303,8 +307,7 @@
 									"required": [
 										"search_query",
 										"response"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -313,28 +316,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the log details"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -342,25 +346,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -372,7 +373,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "AI Search",
 		"tags": [
 			"AutoRAG RAG Search"
 		],
@@ -393,28 +393,29 @@
 	},
 	"POST /accounts/{account_id}/autorag/rags/{id}/search": {
 		"operationId": "autorag-config-search",
+		"summary": "Search",
 		"parameters": [
 			{
-				"description": "rag id",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "rag id",
 				"required": true,
 				"schema": {
 					"description": "rag id",
+					"type": "string",
 					"example": "my-rag",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
@@ -422,6 +423,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"filters": {
 								"anyOf": [
@@ -431,6 +433,7 @@
 												"type": "string"
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"eq",
 													"ne",
@@ -438,8 +441,7 @@
 													"gte",
 													"lt",
 													"lte"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"anyOf": [
@@ -465,12 +467,14 @@
 									{
 										"properties": {
 											"filters": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"key": {
 															"type": "string"
 														},
 														"type": {
+															"type": "string",
 															"enum": [
 																"eq",
 																"ne",
@@ -478,8 +482,7 @@
 																"gte",
 																"lt",
 																"lte"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"anyOf": [
@@ -501,15 +504,14 @@
 														"value"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"and",
 													"or"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -521,34 +523,35 @@
 								]
 							},
 							"max_num_results": {
+								"type": "integer",
 								"default": 10,
 								"maximum": 50,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"query": {
 								"type": "string"
 							},
 							"ranking_options": {
+								"type": "object",
 								"default": {},
 								"properties": {
 									"ranker": {
 										"type": "string"
 									},
 									"score_threshold": {
+										"type": "number",
 										"default": 0.4,
 										"maximum": 1,
-										"minimum": 0,
-										"type": "number"
+										"minimum": 0
 									}
-								},
-								"type": "object"
+								}
 							},
 							"reranking": {
+								"type": "object",
 								"properties": {
 									"enabled": {
-										"default": false,
-										"type": "boolean"
+										"type": "boolean",
+										"default": false
 									},
 									"model": {
 										"anyOf": [
@@ -566,31 +569,33 @@
 											}
 										]
 									}
-								},
-								"type": "object"
+								}
 							},
 							"rewrite_query": {
-								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							}
 						},
 						"required": [
 							"query"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the log details",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"data": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"attributes": {
@@ -624,16 +629,15 @@
 													"score"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"has_more": {
-											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"default": false
 										},
 										"next_page": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"object": {
 											"type": "string"
@@ -644,8 +648,7 @@
 									},
 									"required": [
 										"search_query"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -654,28 +657,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the log details"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -683,25 +687,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -713,7 +714,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Search",
 		"tags": [
 			"AutoRAG RAG Search"
 		],

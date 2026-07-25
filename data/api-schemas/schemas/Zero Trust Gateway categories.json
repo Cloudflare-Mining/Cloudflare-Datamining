@@ -1,38 +1,43 @@
 {
 	"GET /accounts/{account_id}/gateway/categories": {
-		"description": "List all categories.",
 		"operationId": "zero-trust-gateway-categories-list-categories",
+		"summary": "List categories",
+		"description": "List all categories.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Provide the identifier string.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List categories response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -45,15 +50,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -66,70 +71,72 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"beta": {
 														"description": "Indicate whether the category is in beta and subject to change.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"class": {
 														"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
+														"type": "string",
+														"example": "premium",
 														"enum": [
 															"free",
 															"premium",
@@ -137,14 +144,12 @@
 															"removalPending",
 															"noBlock"
 														],
-														"example": "premium",
-														"type": "string",
 														"x-auditable": true
 													},
 													"description": {
 														"description": "Provide a short summary of domains in the category.",
-														"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 														"type": "string",
+														"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 														"x-auditable": true
 													},
 													"id": {
@@ -154,21 +159,25 @@
 													},
 													"name": {
 														"description": "Specify the category name.",
-														"example": "Education",
-														"type": "string"
+														"type": "string",
+														"example": "Education"
 													},
 													"subcategories": {
 														"description": "Provide all subcategories for this category.",
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"beta": {
 																	"description": "Indicate whether the category is in beta and subject to change.",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"class": {
 																	"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
+																	"type": "string",
+																	"example": "premium",
 																	"enum": [
 																		"free",
 																		"premium",
@@ -176,14 +185,12 @@
 																		"removalPending",
 																		"noBlock"
 																	],
-																	"example": "premium",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"description": {
 																	"description": "Provide a short summary of domains in the category.",
-																	"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																	"type": "string",
+																	"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																	"x-auditable": true
 																},
 																"id": {
@@ -193,48 +200,47 @@
 																},
 																"name": {
 																	"description": "Specify the category name.",
-																	"example": "Education",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Education"
 																}
-															},
-															"type": "object"
-														},
-														"type": "array"
+															}
+														}
 													}
 												},
-												"readOnly": true,
-												"type": "object"
-											},
-											"type": "array"
+												"readOnly": true
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List categories response."
+				}
 			},
 			"4XX": {
+				"description": "List categories response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -247,15 +253,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -268,70 +274,72 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"beta": {
 																"description": "Indicate whether the category is in beta and subject to change.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"class": {
 																"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
+																"type": "string",
+																"example": "premium",
 																"enum": [
 																	"free",
 																	"premium",
@@ -339,14 +347,12 @@
 																	"removalPending",
 																	"noBlock"
 																],
-																"example": "premium",
-																"type": "string",
 																"x-auditable": true
 															},
 															"description": {
 																"description": "Provide a short summary of domains in the category.",
-																"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																"type": "string",
+																"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																"x-auditable": true
 															},
 															"id": {
@@ -356,21 +362,25 @@
 															},
 															"name": {
 																"description": "Specify the category name.",
-																"example": "Education",
-																"type": "string"
+																"type": "string",
+																"example": "Education"
 															},
 															"subcategories": {
 																"description": "Provide all subcategories for this category.",
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"beta": {
 																			"description": "Indicate whether the category is in beta and subject to change.",
-																			"example": false,
 																			"type": "boolean",
+																			"example": false,
 																			"x-auditable": true
 																		},
 																		"class": {
 																			"description": "Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.",
+																			"type": "string",
+																			"example": "premium",
 																			"enum": [
 																				"free",
 																				"premium",
@@ -378,14 +388,12 @@
 																				"removalPending",
 																				"noBlock"
 																			],
-																			"example": "premium",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"description": {
 																			"description": "Provide a short summary of domains in the category.",
-																			"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																			"type": "string",
+																			"example": "Sites related to educational content that are not included in other categories such as Science, Technology or Educational institutions.",
 																			"x-auditable": true
 																		},
 																		"id": {
@@ -395,70 +403,40 @@
 																		},
 																		"name": {
 																			"description": "Specify the category name.",
-																			"example": "Education",
-																			"type": "string"
+																			"type": "string",
+																			"example": "Education"
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															}
 														},
-														"readOnly": true,
-														"type": "object"
-													},
-													"type": "array"
+														"readOnly": true
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -471,26 +449,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -498,15 +502,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List categories response failure."
+				}
 			}
 		},
 		"security": [
@@ -516,7 +517,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List categories",
 		"tags": [
 			"Zero Trust Gateway categories"
 		],

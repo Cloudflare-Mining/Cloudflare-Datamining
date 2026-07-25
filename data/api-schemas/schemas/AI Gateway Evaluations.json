@@ -1,34 +1,35 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
-		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-evaluations",
+		"summary": "Delete a Evaluation",
+		"description": "Deletes an AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -38,17 +39,21 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the Object if it was successfully deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"datasets": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"account_id": {
@@ -58,17 +63,19 @@
 														"type": "string"
 													},
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"enable": {
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"filters": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"key": {
+																	"type": "string",
 																	"enum": [
 																		"created_at",
 																		"request_content_type",
@@ -84,20 +91,20 @@
 																		"duration",
 																		"feedback"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"operator": {
+																	"type": "string",
 																	"enum": [
 																		"eq",
 																		"contains",
 																		"lt",
 																		"gt"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"value": {
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -111,7 +118,6 @@
 																			}
 																		]
 																	},
-																	"type": "array",
 																	"x-auditable": true
 																}
 															},
@@ -122,16 +128,15 @@
 															],
 															"type": "object"
 														},
-														"type": "array",
 														"x-auditable": true
 													},
 													"gateway_id": {
 														"description": "gateway id",
+														"type": "string",
 														"example": "my-gateway",
 														"maxLength": 64,
 														"minLength": 1,
 														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
@@ -139,8 +144,8 @@
 														"x-auditable": true
 													},
 													"modified_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"name": {
 														"type": "string",
@@ -159,16 +164,15 @@
 													"modified_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
@@ -176,8 +180,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -188,11 +192,12 @@
 											"x-auditable": true
 										},
 										"results": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"evaluation_id": {
 														"type": "string"
@@ -204,8 +209,8 @@
 														"type": "string"
 													},
 													"modified_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"result": {
 														"type": "string"
@@ -232,8 +237,7 @@
 													"modified_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"total_logs": {
 											"type": "number",
@@ -250,8 +254,7 @@
 										"results",
 										"processed",
 										"total_logs"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -260,28 +263,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the Object if it was successfully deleted"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -289,8 +293,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -299,12 +302,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -316,7 +317,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Evaluation",
 		"tags": [
 			"AI Gateway Evaluations"
 		],
@@ -336,70 +336,74 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/evaluation-types": {
-		"description": "Lists all available evaluator types for scoring AI gateway responses.",
 		"operationId": "aig-config-list-evaluators",
+		"summary": "List Evaluators",
+		"description": "Lists all available evaluator types for scoring AI gateway responses.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "integer"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "order_by",
+				"in": "query",
 				"schema": {
-					"default": "mandatory",
-					"type": "string"
+					"type": "string",
+					"default": "mandatory"
 				}
 			},
 			{
-				"in": "query",
 				"name": "order_by_direction",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of Evaluators",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"description": {
 												"type": "string"
@@ -414,8 +418,8 @@
 												"type": "boolean"
 											},
 											"modified_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"name": {
 												"type": "string"
@@ -435,10 +439,10 @@
 											"modified_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -458,8 +462,7 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -469,19 +472,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of Evaluators"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -492,27 +496,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -524,7 +525,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Evaluators",
 		"tags": [
 			"AI Gateway Evaluations"
 		],
@@ -549,70 +549,71 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-evaluations",
+		"summary": "List Evaluations",
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "name",
+				"in": "query",
 				"schema": {
 					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "processed",
+				"in": "query",
 				"schema": {
 					"type": "boolean",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
 					"description": "Search by id, name",
 					"type": "string"
@@ -621,18 +622,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"datasets": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"account_id": {
@@ -642,17 +647,19 @@
 															"type": "string"
 														},
 														"created_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"enable": {
 															"type": "boolean",
 															"x-auditable": true
 														},
 														"filters": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"key": {
+																		"type": "string",
 																		"enum": [
 																			"created_at",
 																			"request_content_type",
@@ -668,20 +675,20 @@
 																			"duration",
 																			"feedback"
 																		],
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"operator": {
+																		"type": "string",
 																		"enum": [
 																			"eq",
 																			"contains",
 																			"lt",
 																			"gt"
 																		],
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"value": {
+																		"type": "array",
 																		"items": {
 																			"anyOf": [
 																				{
@@ -695,7 +702,6 @@
 																				}
 																			]
 																		},
-																		"type": "array",
 																		"x-auditable": true
 																	}
 																},
@@ -706,16 +712,15 @@
 																],
 																"type": "object"
 															},
-															"type": "array",
 															"x-auditable": true
 														},
 														"gateway_id": {
 															"description": "gateway id",
+															"type": "string",
 															"example": "my-gateway",
 															"maxLength": 64,
 															"minLength": 1,
 															"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
@@ -723,8 +728,8 @@
 															"x-auditable": true
 														},
 														"modified_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"name": {
 															"type": "string",
@@ -743,16 +748,15 @@
 														"modified_at"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"gateway_id": {
 												"description": "gateway id",
+												"type": "string",
 												"example": "my-gateway",
 												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string",
 												"x-auditable": true
 											},
 											"id": {
@@ -760,8 +764,8 @@
 												"x-auditable": true
 											},
 											"modified_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"name": {
 												"type": "string",
@@ -772,11 +776,12 @@
 												"x-auditable": true
 											},
 											"results": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"created_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"evaluation_id": {
 															"type": "string"
@@ -788,8 +793,8 @@
 															"type": "string"
 														},
 														"modified_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"result": {
 															"type": "string"
@@ -816,8 +821,7 @@
 														"modified_at"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"total_logs": {
 												"type": "number",
@@ -836,8 +840,7 @@
 											"total_logs"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -846,19 +849,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List objects"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -869,27 +873,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -901,7 +902,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Evaluations",
 		"tags": [
 			"AI Gateway Evaluations"
 		],
@@ -922,35 +922,36 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
-		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"operationId": "aig-config-fetch-evaluations",
+		"summary": "Fetch a Evaluation",
+		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -960,17 +961,21 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a single object if found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"datasets": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"account_id": {
@@ -980,17 +985,19 @@
 														"type": "string"
 													},
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"enable": {
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"filters": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"key": {
+																	"type": "string",
 																	"enum": [
 																		"created_at",
 																		"request_content_type",
@@ -1006,20 +1013,20 @@
 																		"duration",
 																		"feedback"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"operator": {
+																	"type": "string",
 																	"enum": [
 																		"eq",
 																		"contains",
 																		"lt",
 																		"gt"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"value": {
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -1033,7 +1040,6 @@
 																			}
 																		]
 																	},
-																	"type": "array",
 																	"x-auditable": true
 																}
 															},
@@ -1044,16 +1050,15 @@
 															],
 															"type": "object"
 														},
-														"type": "array",
 														"x-auditable": true
 													},
 													"gateway_id": {
 														"description": "gateway id",
+														"type": "string",
 														"example": "my-gateway",
 														"maxLength": 64,
 														"minLength": 1,
 														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
@@ -1061,8 +1066,8 @@
 														"x-auditable": true
 													},
 													"modified_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"name": {
 														"type": "string",
@@ -1081,16 +1086,15 @@
 													"modified_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
@@ -1098,8 +1102,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -1110,11 +1114,12 @@
 											"x-auditable": true
 										},
 										"results": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"evaluation_id": {
 														"type": "string"
@@ -1126,8 +1131,8 @@
 														"type": "string"
 													},
 													"modified_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"result": {
 														"type": "string"
@@ -1154,8 +1159,7 @@
 													"modified_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"total_logs": {
 											"type": "number",
@@ -1172,8 +1176,7 @@
 										"results",
 										"processed",
 										"total_logs"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1182,28 +1185,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a single object if found"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -1211,8 +1215,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1221,12 +1224,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1238,7 +1239,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Fetch a Evaluation",
 		"tags": [
 			"AI Gateway Evaluations"
 		],
@@ -1259,30 +1259,31 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
-		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-evaluations",
+		"summary": "Create a new Evaluation",
+		"description": "Creates a new AI Gateway.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			}
 		],
@@ -1290,20 +1291,21 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"dataset_ids": {
+								"type": "array",
 								"items": {
 									"type": "string"
 								},
 								"maxItems": 5,
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							},
 							"evaluation_type_ids": {
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"name": {
 								"type": "string",
@@ -1314,25 +1316,28 @@
 							"name",
 							"dataset_ids",
 							"evaluation_type_ids"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"datasets": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"account_id": {
@@ -1342,17 +1347,19 @@
 														"type": "string"
 													},
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"enable": {
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"filters": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"key": {
+																	"type": "string",
 																	"enum": [
 																		"created_at",
 																		"request_content_type",
@@ -1368,20 +1375,20 @@
 																		"duration",
 																		"feedback"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"operator": {
+																	"type": "string",
 																	"enum": [
 																		"eq",
 																		"contains",
 																		"lt",
 																		"gt"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"value": {
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -1395,7 +1402,6 @@
 																			}
 																		]
 																	},
-																	"type": "array",
 																	"x-auditable": true
 																}
 															},
@@ -1406,16 +1412,15 @@
 															],
 															"type": "object"
 														},
-														"type": "array",
 														"x-auditable": true
 													},
 													"gateway_id": {
 														"description": "gateway id",
+														"type": "string",
 														"example": "my-gateway",
 														"maxLength": 64,
 														"minLength": 1,
 														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
@@ -1423,8 +1428,8 @@
 														"x-auditable": true
 													},
 													"modified_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"name": {
 														"type": "string",
@@ -1443,16 +1448,15 @@
 													"modified_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
@@ -1460,8 +1464,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -1472,11 +1476,12 @@
 											"x-auditable": true
 										},
 										"results": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"created_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"evaluation_id": {
 														"type": "string"
@@ -1488,8 +1493,8 @@
 														"type": "string"
 													},
 													"modified_at": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"result": {
 														"type": "string"
@@ -1516,8 +1521,7 @@
 													"modified_at"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"total_logs": {
 											"type": "number",
@@ -1534,8 +1538,7 @@
 										"results",
 										"processed",
 										"total_logs"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1544,35 +1547,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -1581,8 +1585,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1591,12 +1594,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -1608,7 +1609,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Evaluation",
 		"tags": [
 			"AI Gateway Evaluations"
 		],

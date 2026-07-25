@@ -1,44 +1,48 @@
 {
 	"DELETE /zones/{zone_id}/dnssec": {
-		"description": "Delete DNSSEC.",
 		"operationId": "dnssec-delete-dnssec-records",
+		"summary": "Delete DNSSEC records",
+		"description": "Delete DNSSEC.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete DNSSEC records response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -47,12 +51,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -62,15 +66,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -79,12 +83,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -94,32 +98,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"example": "",
-											"type": "string"
+											"type": "string",
+											"example": ""
 										}
 									},
 									"type": "object"
@@ -127,10 +129,10 @@
 							]
 						}
 					}
-				},
-				"description": "Delete DNSSEC records response."
+				}
 			},
 			"4XX": {
+				"description": "Delete DNSSEC records response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -138,16 +140,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -156,12 +160,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -171,15 +175,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -188,12 +192,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -203,32 +207,30 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"example": "",
-													"type": "string"
+													"type": "string",
+													"example": ""
 												}
 											},
 											"type": "object"
@@ -236,59 +238,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -297,12 +263,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -312,25 +278,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -338,14 +341,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete DNSSEC records response failure."
+				}
 			}
 		},
 		"security": [
@@ -357,7 +358,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete DNSSEC records",
 		"tags": [
 			"DNSSEC"
 		],
@@ -380,39 +380,43 @@
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/dnssec": {
-		"description": "Details about DNSSEC status and configuration.",
 		"operationId": "dnssec-dnssec-details",
+		"summary": "DNSSEC Details",
+		"description": "Details about DNSSEC status and configuration.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "DNSSEC Details response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -421,12 +425,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -436,15 +440,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -453,12 +457,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -468,132 +472,132 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"algorithm": {
 													"description": "Algorithm key code.",
+													"type": "string",
 													"example": "13",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"digest": {
 													"description": "Digest hash.",
+													"type": "string",
 													"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"digest_algorithm": {
 													"description": "Type of digest algorithm.",
+													"type": "string",
 													"example": "SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"digest_type": {
 													"description": "Coded type for digest algorithm.",
+													"type": "string",
 													"example": "2",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"dnssec_multi_signer": {
 													"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"dnssec_presigned": {
 													"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"dnssec_use_nsec3": {
 													"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"ds": {
 													"description": "Full DS record.",
+													"type": "string",
 													"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"flags": {
 													"description": "Flag for DNSSEC record.",
+													"type": "number",
 													"example": 257,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number",
 													"x-auditable": true
 												},
 												"key_tag": {
 													"description": "Code for key tag.",
+													"type": "number",
 													"example": 42,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number",
 													"x-auditable": true
 												},
 												"key_type": {
 													"description": "Algorithm key type.",
+													"type": "string",
 													"example": "ECDSAP256SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When DNSSEC was last modified.",
-													"example": "2014-01-01T05:20:00Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2014-01-01T05:20:00Z",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"public_key": {
 													"description": "Public key for DS record.",
+													"type": "string",
 													"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+													"example": "active",
 													"enum": [
 														"active",
 														"pending",
@@ -601,11 +605,9 @@
 														"pending-disabled",
 														"error"
 													],
-													"example": "active",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -613,10 +615,10 @@
 							]
 						}
 					}
-				},
-				"description": "DNSSEC Details response."
+				}
 			},
 			"4XX": {
+				"description": "DNSSEC Details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -624,16 +626,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -642,12 +646,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -657,15 +661,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -674,12 +678,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -689,132 +693,132 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"algorithm": {
 															"description": "Algorithm key code.",
+															"type": "string",
 															"example": "13",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"digest": {
 															"description": "Digest hash.",
+															"type": "string",
 															"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"digest_algorithm": {
 															"description": "Type of digest algorithm.",
+															"type": "string",
 															"example": "SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"digest_type": {
 															"description": "Coded type for digest algorithm.",
+															"type": "string",
 															"example": "2",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"dnssec_multi_signer": {
 															"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"dnssec_presigned": {
 															"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"dnssec_use_nsec3": {
 															"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"ds": {
 															"description": "Full DS record.",
+															"type": "string",
 															"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"flags": {
 															"description": "Flag for DNSSEC record.",
+															"type": "number",
 															"example": 257,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"key_tag": {
 															"description": "Code for key tag.",
+															"type": "number",
 															"example": 42,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"key_type": {
 															"description": "Algorithm key type.",
+															"type": "string",
 															"example": "ECDSAP256SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When DNSSEC was last modified.",
-															"example": "2014-01-01T05:20:00Z",
+															"type": "string",
 															"format": "date-time",
+															"example": "2014-01-01T05:20:00Z",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"public_key": {
 															"description": "Public key for DS record.",
+															"type": "string",
 															"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+															"example": "active",
 															"enum": [
 																"active",
 																"pending",
@@ -822,11 +826,9 @@
 																"pending-disabled",
 																"error"
 															],
-															"example": "active",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -834,59 +836,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -895,12 +861,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -910,25 +876,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -936,14 +939,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "DNSSEC Details response failure."
+				}
 			}
 		},
 		"security": [
@@ -955,7 +956,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "DNSSEC Details",
 		"tags": [
 			"DNSSEC"
 		],
@@ -979,39 +979,43 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/dnssec/zsk": {
-		"description": "List the Zone Signing Keys (ZSKs) that DNSSEC uses for the zone.",
 		"operationId": "dnssec-list-dnssec-zsks",
+		"summary": "List DNSSEC ZSKs",
+		"description": "List the Zone Signing Keys (ZSKs) that DNSSEC uses for the zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List DNSSEC ZSKs response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1020,12 +1024,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1035,15 +1039,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1052,12 +1056,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1067,141 +1071,143 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"DNSKEY": {
+														"type": "object",
 														"properties": {
 															"Algorithm": {
+																"type": "integer",
 																"example": 13,
 																"nullable": true,
-																"readOnly": true,
-																"type": "integer"
+																"readOnly": true
 															},
 															"Flags": {
+																"type": "integer",
 																"example": 256,
 																"nullable": true,
-																"readOnly": true,
-																"type": "integer"
+																"readOnly": true
 															},
 															"Hdr": {
+																"type": "object",
 																"properties": {
 																	"Class": {
+																		"type": "integer",
 																		"example": 1,
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "integer"
+																		"readOnly": true
 																	},
 																	"Name": {
+																		"type": "string",
 																		"example": "example.com.",
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"Rdlength": {
+																		"type": "integer",
 																		"example": 0,
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "integer"
+																		"readOnly": true
 																	},
 																	"Rrtype": {
+																		"type": "integer",
 																		"example": 48,
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "integer"
+																		"readOnly": true
 																	},
 																	"Ttl": {
+																		"type": "integer",
 																		"example": 3600,
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "integer"
+																		"readOnly": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"Protocol": {
+																"type": "integer",
 																"example": 3,
 																"nullable": true,
-																"readOnly": true,
-																"type": "integer"
+																"readOnly": true
 															},
 															"PublicKey": {
+																"type": "string",
 																"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 																"nullable": true,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"Location": {
 														"description": "Storage backend where the DNSSEC key material is stored.",
+														"type": "string",
+														"example": "database",
 														"enum": [
 															"database",
 															"vault"
 														],
-														"example": "database",
-														"type": "string",
 														"x-auditable": true
 													},
 													"Name": {
 														"description": "Internal key name for the ZSK.",
+														"type": "string",
 														"example": "zsk_default",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"SigningKey": {
+														"type": "object",
 														"properties": {
 															"kek": {
 																"description": "Key encryption key name used to encrypt the private key.",
+																"type": "string",
 																"example": "edge_kek_default",
 																"nullable": true,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"privkey": {
 																"description": "Encrypted private key material for the signing key.",
-																"example": "U3ZlbidzIHZlcnkgc2VjcmV0IGtleQ==",
+																"type": "string",
 																"format": "byte",
+																"example": "U3ZlbidzIHZlcnkgc2VjcmV0IGtleQ==",
 																"nullable": true,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"pubkey": {
 																"description": "Public key content associated with the signing key.",
+																"type": "string",
 																"example": "256 3 13 oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 																"nullable": true,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"Tag": {
 														"description": "Lifecycle state tag attached to the DNSSEC key.",
+														"type": "string",
+														"example": "active",
 														"enum": [
 															"active",
 															"publish",
@@ -1210,14 +1216,10 @@
 															"revoked",
 															"removed"
 														],
-														"example": "active",
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -1225,10 +1227,10 @@
 							]
 						}
 					}
-				},
-				"description": "List DNSSEC ZSKs response."
+				}
 			},
 			"4XX": {
+				"description": "List DNSSEC ZSKs response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1236,16 +1238,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1254,12 +1258,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1269,15 +1273,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1286,12 +1290,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1301,141 +1305,143 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"DNSKEY": {
+																"type": "object",
 																"properties": {
 																	"Algorithm": {
+																		"type": "integer",
 																		"example": 13,
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "integer"
+																		"readOnly": true
 																	},
 																	"Flags": {
+																		"type": "integer",
 																		"example": 256,
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "integer"
+																		"readOnly": true
 																	},
 																	"Hdr": {
+																		"type": "object",
 																		"properties": {
 																			"Class": {
+																				"type": "integer",
 																				"example": 1,
 																				"nullable": true,
-																				"readOnly": true,
-																				"type": "integer"
+																				"readOnly": true
 																			},
 																			"Name": {
+																				"type": "string",
 																				"example": "example.com.",
 																				"nullable": true,
-																				"readOnly": true,
-																				"type": "string"
+																				"readOnly": true
 																			},
 																			"Rdlength": {
+																				"type": "integer",
 																				"example": 0,
 																				"nullable": true,
-																				"readOnly": true,
-																				"type": "integer"
+																				"readOnly": true
 																			},
 																			"Rrtype": {
+																				"type": "integer",
 																				"example": 48,
 																				"nullable": true,
-																				"readOnly": true,
-																				"type": "integer"
+																				"readOnly": true
 																			},
 																			"Ttl": {
+																				"type": "integer",
 																				"example": 3600,
 																				"nullable": true,
-																				"readOnly": true,
-																				"type": "integer"
+																				"readOnly": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"Protocol": {
+																		"type": "integer",
 																		"example": 3,
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "integer"
+																		"readOnly": true
 																	},
 																	"PublicKey": {
+																		"type": "string",
 																		"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"Location": {
 																"description": "Storage backend where the DNSSEC key material is stored.",
+																"type": "string",
+																"example": "database",
 																"enum": [
 																	"database",
 																	"vault"
 																],
-																"example": "database",
-																"type": "string",
 																"x-auditable": true
 															},
 															"Name": {
 																"description": "Internal key name for the ZSK.",
+																"type": "string",
 																"example": "zsk_default",
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"SigningKey": {
+																"type": "object",
 																"properties": {
 																	"kek": {
 																		"description": "Key encryption key name used to encrypt the private key.",
+																		"type": "string",
 																		"example": "edge_kek_default",
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"privkey": {
 																		"description": "Encrypted private key material for the signing key.",
-																		"example": "U3ZlbidzIHZlcnkgc2VjcmV0IGtleQ==",
+																		"type": "string",
 																		"format": "byte",
+																		"example": "U3ZlbidzIHZlcnkgc2VjcmV0IGtleQ==",
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"pubkey": {
 																		"description": "Public key content associated with the signing key.",
+																		"type": "string",
 																		"example": "256 3 13 oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 																		"nullable": true,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"Tag": {
 																"description": "Lifecycle state tag attached to the DNSSEC key.",
+																"type": "string",
+																"example": "active",
 																"enum": [
 																	"active",
 																	"publish",
@@ -1444,14 +1450,10 @@
 																	"revoked",
 																	"removed"
 																],
-																"example": "active",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -1459,59 +1461,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1520,12 +1486,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1535,25 +1501,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1561,14 +1564,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List DNSSEC ZSKs response failure."
+				}
 			}
 		},
 		"security": [
@@ -1580,7 +1581,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List DNSSEC ZSKs",
 		"tags": [
 			"DNSSEC"
 		],
@@ -1599,78 +1599,82 @@
 		"x-fern-sdk-method-name": "zsks"
 	},
 	"PATCH /zones/{zone_id}/dnssec": {
-		"description": "Enable or disable DNSSEC.",
 		"operationId": "dnssec-edit-dnssec-status",
+		"summary": "Edit DNSSEC Status",
+		"description": "Enable or disable DNSSEC.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"dnssec_multi_signer": {
 								"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"dnssec_presigned": {
 								"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							},
 							"dnssec_use_nsec3": {
 								"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"status": {
 								"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+								"type": "string",
+								"example": "active",
 								"enum": [
 									"active",
 									"disabled"
-								],
-								"example": "active",
-								"type": "string"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Edit DNSSEC Status response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1679,12 +1683,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1694,15 +1698,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1711,12 +1715,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1726,132 +1730,132 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"algorithm": {
 													"description": "Algorithm key code.",
+													"type": "string",
 													"example": "13",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"digest": {
 													"description": "Digest hash.",
+													"type": "string",
 													"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"digest_algorithm": {
 													"description": "Type of digest algorithm.",
+													"type": "string",
 													"example": "SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"digest_type": {
 													"description": "Coded type for digest algorithm.",
+													"type": "string",
 													"example": "2",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"dnssec_multi_signer": {
 													"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"dnssec_presigned": {
 													"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"dnssec_use_nsec3": {
 													"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"ds": {
 													"description": "Full DS record.",
+													"type": "string",
 													"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"flags": {
 													"description": "Flag for DNSSEC record.",
+													"type": "number",
 													"example": 257,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number",
 													"x-auditable": true
 												},
 												"key_tag": {
 													"description": "Code for key tag.",
+													"type": "number",
 													"example": 42,
 													"nullable": true,
 													"readOnly": true,
-													"type": "number",
 													"x-auditable": true
 												},
 												"key_type": {
 													"description": "Algorithm key type.",
+													"type": "string",
 													"example": "ECDSAP256SHA256",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When DNSSEC was last modified.",
-													"example": "2014-01-01T05:20:00Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2014-01-01T05:20:00Z",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"public_key": {
 													"description": "Public key for DS record.",
+													"type": "string",
 													"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+													"example": "active",
 													"enum": [
 														"active",
 														"pending",
@@ -1859,11 +1863,9 @@
 														"pending-disabled",
 														"error"
 													],
-													"example": "active",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1871,10 +1873,10 @@
 							]
 						}
 					}
-				},
-				"description": "Edit DNSSEC Status response."
+				}
 			},
 			"4XX": {
+				"description": "Edit DNSSEC Status response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1882,16 +1884,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1900,12 +1904,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1915,15 +1919,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1932,12 +1936,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1947,132 +1951,132 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"algorithm": {
 															"description": "Algorithm key code.",
+															"type": "string",
 															"example": "13",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"digest": {
 															"description": "Digest hash.",
+															"type": "string",
 															"example": "48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"digest_algorithm": {
 															"description": "Type of digest algorithm.",
+															"type": "string",
 															"example": "SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"digest_type": {
 															"description": "Coded type for digest algorithm.",
+															"type": "string",
 															"example": "2",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"dnssec_multi_signer": {
 															"description": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple\nproviders to serve a DNSSEC-signed zone at the same time.\nThis is required for DNSKEY records (except those automatically\ngenerated by Cloudflare) to be added to the zone.\n\nSee [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/) for details.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"dnssec_presigned": {
 															"description": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone\nincluding signatures from an external provider, without requiring\nCloudflare to sign any records on the fly.\n\nNote that this feature has some limitations.\nSee [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"dnssec_use_nsec3": {
 															"description": "If true, enables the use of NSEC3 together with DNSSEC on the zone.\nCombined with setting dnssec_presigned to true, this enables the use of\nNSEC3 records when transferring in from an external provider.\nIf dnssec_presigned is instead set to false (default), NSEC3 records will be\ngenerated and signed at request time.\n\nSee [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"ds": {
 															"description": "Full DS record.",
+															"type": "string",
 															"example": "example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"flags": {
 															"description": "Flag for DNSSEC record.",
+															"type": "number",
 															"example": 257,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"key_tag": {
 															"description": "Code for key tag.",
+															"type": "number",
 															"example": 42,
 															"nullable": true,
 															"readOnly": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"key_type": {
 															"description": "Algorithm key type.",
+															"type": "string",
 															"example": "ECDSAP256SHA256",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "When DNSSEC was last modified.",
-															"example": "2014-01-01T05:20:00Z",
+															"type": "string",
 															"format": "date-time",
+															"example": "2014-01-01T05:20:00Z",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"public_key": {
 															"description": "Public key for DS record.",
+															"type": "string",
 															"example": "oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
 															"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+															"example": "active",
 															"enum": [
 																"active",
 																"pending",
@@ -2080,11 +2084,9 @@
 																"pending-disabled",
 																"error"
 															],
-															"example": "active",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -2092,59 +2094,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2153,12 +2119,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2168,25 +2134,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2194,14 +2197,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Edit DNSSEC Status response failure."
+				}
 			}
 		},
 		"security": [
@@ -2213,7 +2214,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Edit DNSSEC Status",
 		"tags": [
 			"DNSSEC"
 		],

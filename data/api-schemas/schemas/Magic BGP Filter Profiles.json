@@ -1,50 +1,54 @@
 {
 	"DELETE /accounts/{account_id}/magic/bgp/filter_profiles/{profile_id}": {
-		"description": "Deletes a BGP filter profile.",
 		"operationId": "magic-bgp-delete-filter-profile",
+		"summary": "Delete BGP Filter Profile",
+		"description": "Deletes a BGP filter profile.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete BGP Filter Profile response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -57,15 +61,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -78,7 +82,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -96,11 +100,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -108,8 +112,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -127,63 +130,63 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"description": {
-													"default": "",
 													"description": "Description of the filter profile",
+													"type": "string",
 													"example": "Allowed corporate subnets from on-premises",
-													"maxLength": 1024,
-													"type": "string"
+													"default": "",
+													"maxLength": 1024
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "c4a7362d577a6c3019a474fd6f485821",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"match_action": {
 													"description": "Action to take when a route matches one of the targets in this profile",
+													"type": "string",
+													"example": "allow",
 													"enum": [
 														"allow",
 														"deny"
-													],
-													"example": "allow",
-													"type": "string"
+													]
 												},
 												"modified_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"description": "Friendly name for the filter profile",
+													"type": "string",
 													"example": "Allowed On-Prem Imports",
 													"maxLength": 255,
-													"minLength": 1,
-													"type": "string"
+													"minLength": 1
 												},
 												"targets": {
 													"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+													"type": "array",
 													"items": {
 														"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 														"example": "10.0.0.0/8{8,32}",
 														"type": "string"
 													},
-													"maxItems": 1000,
-													"type": "array"
+													"maxItems": 1000
 												}
 											},
 											"required": [
@@ -192,18 +195,17 @@
 												"description",
 												"match_action",
 												"targets"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete BGP Filter Profile response"
+				}
 			},
 			"4XX": {
+				"description": "Delete BGP Filter Profile response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -211,16 +213,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -233,15 +237,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -254,7 +258,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -272,11 +276,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -284,8 +288,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -303,63 +306,63 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"description": {
-															"default": "",
 															"description": "Description of the filter profile",
+															"type": "string",
 															"example": "Allowed corporate subnets from on-premises",
-															"maxLength": 1024,
-															"type": "string"
+															"default": "",
+															"maxLength": 1024
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"match_action": {
 															"description": "Action to take when a route matches one of the targets in this profile",
+															"type": "string",
+															"example": "allow",
 															"enum": [
 																"allow",
 																"deny"
-															],
-															"example": "allow",
-															"type": "string"
+															]
 														},
 														"modified_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"name": {
 															"description": "Friendly name for the filter profile",
+															"type": "string",
 															"example": "Allowed On-Prem Imports",
 															"maxLength": 255,
-															"minLength": 1,
-															"type": "string"
+															"minLength": 1
 														},
 														"targets": {
 															"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+															"type": "array",
 															"items": {
 																"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 																"example": "10.0.0.0/8{8,32}",
 																"type": "string"
 															},
-															"maxItems": 1000,
-															"type": "array"
+															"maxItems": 1000
 														}
 													},
 													"required": [
@@ -368,56 +371,30 @@
 														"description",
 														"match_action",
 														"targets"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -430,25 +407,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -456,14 +459,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete BGP Filter Profile response failure"
+				}
 			}
 		},
 		"security": [
@@ -473,7 +474,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete BGP Filter Profile",
 		"tags": [
 			"Magic BGP Filter Profiles"
 		],
@@ -490,37 +490,40 @@
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/magic/bgp/filter_profiles": {
-		"description": "Lists all BGP filter profiles for an account.",
 		"operationId": "magic-bgp-list-filter-profiles",
+		"summary": "List BGP Filter Profiles",
+		"description": "Lists all BGP filter profiles for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List BGP Filter Profiles response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -533,15 +536,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -554,7 +557,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -572,11 +575,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -584,64 +587,65 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_on": {
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"description": {
-														"default": "",
 														"description": "Description of the filter profile",
+														"type": "string",
 														"example": "Allowed corporate subnets from on-premises",
-														"maxLength": 1024,
-														"type": "string"
+														"default": "",
+														"maxLength": 1024
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "c4a7362d577a6c3019a474fd6f485821",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"match_action": {
 														"description": "Action to take when a route matches one of the targets in this profile",
+														"type": "string",
+														"example": "allow",
 														"enum": [
 															"allow",
 															"deny"
-														],
-														"example": "allow",
-														"type": "string"
+														]
 													},
 													"modified_on": {
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"name": {
 														"description": "Friendly name for the filter profile",
+														"type": "string",
 														"example": "Allowed On-Prem Imports",
 														"maxLength": 255,
-														"minLength": 1,
-														"type": "string"
+														"minLength": 1
 													},
 													"targets": {
 														"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+														"type": "array",
 														"items": {
 															"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 															"example": "10.0.0.0/8{8,32}",
 															"type": "string"
 														},
-														"maxItems": 1000,
-														"type": "array"
+														"maxItems": 1000
 													}
 												},
 												"required": [
@@ -650,20 +654,18 @@
 													"description",
 													"match_action",
 													"targets"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List BGP Filter Profiles response"
+				}
 			},
 			"4XX": {
+				"description": "List BGP Filter Profiles response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -671,14 +673,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -691,15 +694,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -712,7 +715,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -730,11 +733,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -742,64 +745,65 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"description": {
-																"default": "",
 																"description": "Description of the filter profile",
+																"type": "string",
 																"example": "Allowed corporate subnets from on-premises",
-																"maxLength": 1024,
-																"type": "string"
+																"default": "",
+																"maxLength": 1024
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "c4a7362d577a6c3019a474fd6f485821",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"match_action": {
 																"description": "Action to take when a route matches one of the targets in this profile",
+																"type": "string",
+																"example": "allow",
 																"enum": [
 																	"allow",
 																	"deny"
-																],
-																"example": "allow",
-																"type": "string"
+																]
 															},
 															"modified_on": {
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"name": {
 																"description": "Friendly name for the filter profile",
+																"type": "string",
 																"example": "Allowed On-Prem Imports",
 																"maxLength": 255,
-																"minLength": 1,
-																"type": "string"
+																"minLength": 1
 															},
 															"targets": {
 																"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+																"type": "array",
 																"items": {
 																	"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 																	"example": "10.0.0.0/8{8,32}",
 																	"type": "string"
 																},
-																"maxItems": 1000,
-																"type": "array"
+																"maxItems": 1000
 															}
 														},
 														"required": [
@@ -808,58 +812,31 @@
 															"description",
 															"match_action",
 															"targets"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -872,25 +849,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -898,14 +901,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List BGP Filter Profiles response failure"
+				}
 			}
 		},
 		"security": [
@@ -915,7 +916,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List BGP Filter Profiles",
 		"tags": [
 			"Magic BGP Filter Profiles"
 		],
@@ -932,51 +932,55 @@
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/magic/bgp/filter_profiles/{profile_id}": {
-		"description": "Gets a specific BGP filter profile for an account.",
 		"operationId": "magic-bgp-get-filter-profile",
+		"summary": "Get BGP Filter Profile",
+		"description": "Gets a specific BGP filter profile for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get BGP Filter Profile response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -989,15 +993,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1010,7 +1014,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1028,11 +1032,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1040,8 +1044,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1059,63 +1062,63 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"description": {
-													"default": "",
 													"description": "Description of the filter profile",
+													"type": "string",
 													"example": "Allowed corporate subnets from on-premises",
-													"maxLength": 1024,
-													"type": "string"
+													"default": "",
+													"maxLength": 1024
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "c4a7362d577a6c3019a474fd6f485821",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"match_action": {
 													"description": "Action to take when a route matches one of the targets in this profile",
+													"type": "string",
+													"example": "allow",
 													"enum": [
 														"allow",
 														"deny"
-													],
-													"example": "allow",
-													"type": "string"
+													]
 												},
 												"modified_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"description": "Friendly name for the filter profile",
+													"type": "string",
 													"example": "Allowed On-Prem Imports",
 													"maxLength": 255,
-													"minLength": 1,
-													"type": "string"
+													"minLength": 1
 												},
 												"targets": {
 													"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+													"type": "array",
 													"items": {
 														"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 														"example": "10.0.0.0/8{8,32}",
 														"type": "string"
 													},
-													"maxItems": 1000,
-													"type": "array"
+													"maxItems": 1000
 												}
 											},
 											"required": [
@@ -1124,18 +1127,17 @@
 												"description",
 												"match_action",
 												"targets"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get BGP Filter Profile response"
+				}
 			},
 			"4XX": {
+				"description": "Get BGP Filter Profile response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1143,16 +1145,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1165,15 +1169,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1186,7 +1190,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1204,11 +1208,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1216,8 +1220,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1235,63 +1238,63 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"description": {
-															"default": "",
 															"description": "Description of the filter profile",
+															"type": "string",
 															"example": "Allowed corporate subnets from on-premises",
-															"maxLength": 1024,
-															"type": "string"
+															"default": "",
+															"maxLength": 1024
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"match_action": {
 															"description": "Action to take when a route matches one of the targets in this profile",
+															"type": "string",
+															"example": "allow",
 															"enum": [
 																"allow",
 																"deny"
-															],
-															"example": "allow",
-															"type": "string"
+															]
 														},
 														"modified_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"name": {
 															"description": "Friendly name for the filter profile",
+															"type": "string",
 															"example": "Allowed On-Prem Imports",
 															"maxLength": 255,
-															"minLength": 1,
-															"type": "string"
+															"minLength": 1
 														},
 														"targets": {
 															"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+															"type": "array",
 															"items": {
 																"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 																"example": "10.0.0.0/8{8,32}",
 																"type": "string"
 															},
-															"maxItems": 1000,
-															"type": "array"
+															"maxItems": 1000
 														}
 													},
 													"required": [
@@ -1300,56 +1303,30 @@
 														"description",
 														"match_action",
 														"targets"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1362,25 +1339,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1388,14 +1391,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get BGP Filter Profile response failure"
+				}
 			}
 		},
 		"security": [
@@ -1405,7 +1406,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get BGP Filter Profile",
 		"tags": [
 			"Magic BGP Filter Profiles"
 		],
@@ -1422,89 +1422,93 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/magic/bgp/filter_profiles": {
-		"description": "Creates a new BGP filter profile for an account.",
 		"operationId": "magic-bgp-create-filter-profile",
+		"summary": "Create BGP Filter Profile",
+		"description": "Creates a new BGP filter profile for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
-								"default": "",
 								"description": "Description of the filter profile",
+								"type": "string",
 								"example": "Allowed corporate subnets from on-premises",
-								"maxLength": 1024,
-								"type": "string"
+								"default": "",
+								"maxLength": 1024
 							},
 							"match_action": {
 								"description": "Action to take when a route matches one of the targets in this profile",
+								"type": "string",
+								"example": "allow",
 								"enum": [
 									"allow",
 									"deny"
-								],
-								"example": "allow",
-								"type": "string"
+								]
 							},
 							"name": {
 								"description": "Friendly name for the filter profile",
+								"type": "string",
 								"example": "Allowed On-Prem Imports",
 								"maxLength": 255,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"targets": {
 								"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+								"type": "array",
 								"items": {
 									"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 									"example": "10.0.0.0/8{8,32}",
 									"type": "string"
 								},
-								"maxItems": 1000,
-								"type": "array"
+								"maxItems": 1000
 							}
 						},
 						"required": [
 							"name",
 							"match_action",
 							"targets"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create BGP Filter Profile response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1517,15 +1521,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1538,7 +1542,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1556,11 +1560,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1568,8 +1572,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1587,63 +1590,63 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"description": {
-													"default": "",
 													"description": "Description of the filter profile",
+													"type": "string",
 													"example": "Allowed corporate subnets from on-premises",
-													"maxLength": 1024,
-													"type": "string"
+													"default": "",
+													"maxLength": 1024
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "c4a7362d577a6c3019a474fd6f485821",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"match_action": {
 													"description": "Action to take when a route matches one of the targets in this profile",
+													"type": "string",
+													"example": "allow",
 													"enum": [
 														"allow",
 														"deny"
-													],
-													"example": "allow",
-													"type": "string"
+													]
 												},
 												"modified_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"description": "Friendly name for the filter profile",
+													"type": "string",
 													"example": "Allowed On-Prem Imports",
 													"maxLength": 255,
-													"minLength": 1,
-													"type": "string"
+													"minLength": 1
 												},
 												"targets": {
 													"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+													"type": "array",
 													"items": {
 														"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 														"example": "10.0.0.0/8{8,32}",
 														"type": "string"
 													},
-													"maxItems": 1000,
-													"type": "array"
+													"maxItems": 1000
 												}
 											},
 											"required": [
@@ -1652,18 +1655,17 @@
 												"description",
 												"match_action",
 												"targets"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create BGP Filter Profile response"
+				}
 			},
 			"4XX": {
+				"description": "Create BGP Filter Profile response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1671,16 +1673,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1693,15 +1697,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1714,7 +1718,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1732,11 +1736,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1744,8 +1748,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1763,63 +1766,63 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"description": {
-															"default": "",
 															"description": "Description of the filter profile",
+															"type": "string",
 															"example": "Allowed corporate subnets from on-premises",
-															"maxLength": 1024,
-															"type": "string"
+															"default": "",
+															"maxLength": 1024
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"match_action": {
 															"description": "Action to take when a route matches one of the targets in this profile",
+															"type": "string",
+															"example": "allow",
 															"enum": [
 																"allow",
 																"deny"
-															],
-															"example": "allow",
-															"type": "string"
+															]
 														},
 														"modified_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"name": {
 															"description": "Friendly name for the filter profile",
+															"type": "string",
 															"example": "Allowed On-Prem Imports",
 															"maxLength": 255,
-															"minLength": 1,
-															"type": "string"
+															"minLength": 1
 														},
 														"targets": {
 															"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+															"type": "array",
 															"items": {
 																"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 																"example": "10.0.0.0/8{8,32}",
 																"type": "string"
 															},
-															"maxItems": 1000,
-															"type": "array"
+															"maxItems": 1000
 														}
 													},
 													"required": [
@@ -1828,56 +1831,30 @@
 														"description",
 														"match_action",
 														"targets"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1890,25 +1867,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1916,14 +1919,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create BGP Filter Profile response failure"
+				}
 			}
 		},
 		"security": [
@@ -1933,7 +1934,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create BGP Filter Profile",
 		"tags": [
 			"Magic BGP Filter Profiles"
 		],
@@ -1950,97 +1950,101 @@
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/magic/bgp/filter_profiles/{profile_id}": {
-		"description": "Updates a BGP filter profile. Omitted properties are left unchanged. To clear an existing description send `description: \"\"`.",
 		"operationId": "magic-bgp-update-filter-profile",
+		"summary": "Update BGP Filter Profile",
+		"description": "Updates a BGP filter profile. Omitted properties are left unchanged. To clear an existing description send `description: \"\"`.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Partial update for a BGP filter profile. At least one property must be provided; omitted properties are left unchanged. To clear an existing description send `description: \"\"`.",
-						"minProperties": 1,
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Description of the filter profile",
+								"type": "string",
 								"example": "Allowed corporate subnets from on-premises",
-								"maxLength": 1024,
-								"type": "string"
+								"maxLength": 1024
 							},
 							"match_action": {
 								"description": "Action to take when a route matches one of the targets in this profile",
+								"type": "string",
+								"example": "allow",
 								"enum": [
 									"allow",
 									"deny"
-								],
-								"example": "allow",
-								"type": "string"
+								]
 							},
 							"name": {
 								"description": "Friendly name for the filter profile",
+								"type": "string",
 								"example": "Allowed On-Prem Imports",
 								"maxLength": 255,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"targets": {
 								"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+								"type": "array",
 								"items": {
 									"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 									"example": "10.0.0.0/8{8,32}",
 									"type": "string"
 								},
-								"maxItems": 1000,
-								"type": "array"
+								"maxItems": 1000
 							}
 						},
-						"type": "object"
+						"minProperties": 1
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update BGP Filter Profile response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2053,15 +2057,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2074,7 +2078,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2092,11 +2096,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2104,8 +2108,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2123,63 +2126,63 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"description": {
-													"default": "",
 													"description": "Description of the filter profile",
+													"type": "string",
 													"example": "Allowed corporate subnets from on-premises",
-													"maxLength": 1024,
-													"type": "string"
+													"default": "",
+													"maxLength": 1024
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "c4a7362d577a6c3019a474fd6f485821",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"match_action": {
 													"description": "Action to take when a route matches one of the targets in this profile",
+													"type": "string",
+													"example": "allow",
 													"enum": [
 														"allow",
 														"deny"
-													],
-													"example": "allow",
-													"type": "string"
+													]
 												},
 												"modified_on": {
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"name": {
 													"description": "Friendly name for the filter profile",
+													"type": "string",
 													"example": "Allowed On-Prem Imports",
 													"maxLength": 255,
-													"minLength": 1,
-													"type": "string"
+													"minLength": 1
 												},
 												"targets": {
 													"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+													"type": "array",
 													"items": {
 														"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 														"example": "10.0.0.0/8{8,32}",
 														"type": "string"
 													},
-													"maxItems": 1000,
-													"type": "array"
+													"maxItems": 1000
 												}
 											},
 											"required": [
@@ -2188,18 +2191,17 @@
 												"description",
 												"match_action",
 												"targets"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update BGP Filter Profile response"
+				}
 			},
 			"4XX": {
+				"description": "Update BGP Filter Profile response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2207,16 +2209,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2229,15 +2233,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2250,7 +2254,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2268,11 +2272,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2280,8 +2284,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2299,63 +2302,63 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"description": {
-															"default": "",
 															"description": "Description of the filter profile",
+															"type": "string",
 															"example": "Allowed corporate subnets from on-premises",
-															"maxLength": 1024,
-															"type": "string"
+															"default": "",
+															"maxLength": 1024
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"match_action": {
 															"description": "Action to take when a route matches one of the targets in this profile",
+															"type": "string",
+															"example": "allow",
 															"enum": [
 																"allow",
 																"deny"
-															],
-															"example": "allow",
-															"type": "string"
+															]
 														},
 														"modified_on": {
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"name": {
 															"description": "Friendly name for the filter profile",
+															"type": "string",
 															"example": "Allowed On-Prem Imports",
 															"maxLength": 255,
-															"minLength": 1,
-															"type": "string"
+															"minLength": 1
 														},
 														"targets": {
 															"description": "List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.",
+															"type": "array",
 															"items": {
 																"description": "CIDR notation prefix with optional + or {X,Y} suffix",
 																"example": "10.0.0.0/8{8,32}",
 																"type": "string"
 															},
-															"maxItems": 1000,
-															"type": "array"
+															"maxItems": 1000
 														}
 													},
 													"required": [
@@ -2364,56 +2367,30 @@
 														"description",
 														"match_action",
 														"targets"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2426,25 +2403,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2452,14 +2455,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update BGP Filter Profile response failure"
+				}
 			}
 		},
 		"security": [
@@ -2469,7 +2470,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update BGP Filter Profile",
 		"tags": [
 			"Magic BGP Filter Profiles"
 		],

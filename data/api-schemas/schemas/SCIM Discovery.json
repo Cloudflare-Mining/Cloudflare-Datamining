@@ -1,85 +1,92 @@
 {
 	"GET /accounts/{account_id}/scim/v2/ResourceTypes": {
-		"description": "Returns the list of SCIM resource types supported by the Cloudflare SCIM service (RFC 7643 Section 6, RFC 7644 Section 4). Clients use this to discover available resource categories (e.g. Users, Groups) and their associated schemas. Query parameters are not supported on this endpoint.\n",
 		"operationId": "scim-resource-types-list",
+		"summary": "List SCIM Resource Types",
+		"description": "Returns the list of SCIM resource types supported by the Cloudflare SCIM service (RFC 7643 Section 6, RFC 7644 Section 4). Clients use this to discover available resource categories (e.g. Users, Groups) and their associated schemas. Query parameters are not supported on this endpoint.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List SCIM Resource Types response",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "SCIM ListResponse envelope for ResourceType resources (RFC 7644 Section 4).\n",
+							"type": "object",
 							"properties": {
 								"Resources": {
+									"type": "array",
 									"items": {
 										"description": "A SCIM ResourceType resource (RFC 7643 Section 6). Describes a category of SCIM resource (e.g. User, Group) and its associated schema.\n",
+										"type": "object",
 										"properties": {
 											"description": {
 												"description": "The resource type's human-readable description.",
-												"example": "User Account",
-												"type": "string"
+												"type": "string",
+												"example": "User Account"
 											},
 											"endpoint": {
 												"description": "The resource type's HTTP-addressable endpoint relative to the base URL.",
-												"example": "/Users",
-												"type": "string"
+												"type": "string",
+												"example": "/Users"
 											},
 											"id": {
 												"description": "The resource type's server unique id.",
-												"example": "User",
-												"type": "string"
+												"type": "string",
+												"example": "User"
 											},
 											"meta": {
 												"description": "Metadata for a SCIM ResourceType resource.",
+												"type": "object",
 												"properties": {
 													"location": {
 														"description": "The URI of the resource being returned.",
-														"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/ResourceTypes/User",
-														"type": "string"
+														"type": "string",
+														"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/ResourceTypes/User"
 													},
 													"resourceType": {
 														"description": "The name of the resource type of the resource.",
-														"example": "ResourceType",
-														"type": "string"
+														"type": "string",
+														"example": "ResourceType"
 													}
 												},
-												"title": "SCIM Resource Type Meta",
-												"type": "object"
+												"title": "SCIM Resource Type Meta"
 											},
 											"name": {
 												"description": "The resource type name.",
-												"example": "User",
-												"type": "string"
+												"type": "string",
+												"example": "User"
 											},
 											"schema": {
 												"description": "The resource type's primary/base schema URI.",
-												"example": "urn:ietf:params:scim:schemas:core:2.0:User",
-												"type": "string"
+												"type": "string",
+												"example": "urn:ietf:params:scim:schemas:core:2.0:User"
 											},
 											"schemaExtensions": {
 												"description": "A list of URIs of the resource type's schema extensions.",
+												"type": "array",
 												"items": {
 													"description": "An extension schema associated with a resource type.",
+													"type": "object",
 													"properties": {
 														"required": {
 															"description": "Whether the extension is required.",
@@ -94,19 +101,17 @@
 														"schema",
 														"required"
 													],
-													"title": "SCIM Schema Extension",
-													"type": "object"
-												},
-												"type": "array"
+													"title": "SCIM Schema Extension"
+												}
 											},
 											"schemas": {
-												"example": [
-													"urn:ietf:params:scim:schemas:core:2.0:ResourceType"
-												],
+												"type": "array",
 												"items": {
 													"type": "string"
 												},
-												"type": "array"
+												"example": [
+													"urn:ietf:params:scim:schemas:core:2.0:ResourceType"
+												]
 											}
 										},
 										"required": [
@@ -116,31 +121,29 @@
 											"endpoint",
 											"schema"
 										],
-										"title": "SCIM Resource Type",
-										"type": "object"
-									},
-									"type": "array"
+										"title": "SCIM Resource Type"
+									}
 								},
 								"itemsPerPage": {
-									"example": 2,
-									"type": "integer"
+									"type": "integer",
+									"example": 2
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:api:messages:2.0:ListResponse"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:ListResponse"
+									]
 								},
 								"startIndex": {
-									"example": 1,
-									"type": "integer"
+									"type": "integer",
+									"example": 1
 								},
 								"totalResults": {
-									"example": 2,
-									"type": "integer"
+									"type": "integer",
+									"example": 2
 								}
 							},
 							"required": [
@@ -148,54 +151,52 @@
 								"totalResults",
 								"Resources"
 							],
-							"title": "SCIM Resource Type List Response",
-							"type": "object"
+							"title": "SCIM Resource Type List Response"
 						}
 					}
-				},
-				"description": "List SCIM Resource Types response"
+				}
 			},
 			"4XX": {
+				"description": "List SCIM Resource Types response failure",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"type": "object",
 							"properties": {
 								"detail": {
 									"description": "A human-readable message describing the error.",
-									"example": "Invalid SCIM request: userName is required",
-									"type": "string"
+									"type": "string",
+									"example": "Invalid SCIM request: userName is required"
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:api:messages:2.0:Error"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									]
 								},
 								"scimType": {
 									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
-									"example": "uniqueness",
-									"type": "string"
+									"type": "string",
+									"example": "uniqueness"
 								},
 								"status": {
 									"description": "The HTTP status code as a string.",
-									"example": "400",
-									"type": "string"
+									"type": "string",
+									"example": "400"
 								}
 							},
 							"required": [
 								"schemas",
 								"status"
 							],
-							"title": "SCIM Error Response",
-							"type": "object"
+							"title": "SCIM Error Response"
 						}
 					}
-				},
-				"description": "List SCIM Resource Types response failure"
+				}
 			}
 		},
 		"security": [
@@ -203,7 +204,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List SCIM Resource Types",
 		"tags": [
 			"SCIM Discovery"
 		],
@@ -225,96 +225,101 @@
 		}
 	},
 	"GET /accounts/{account_id}/scim/v2/ResourceTypes/{resource_type_id}": {
-		"description": "Returns a single SCIM resource type by ID (RFC 7643 Section 6). Valid IDs are `User` and `Group`.\n",
 		"operationId": "scim-resource-types-get",
+		"summary": "Get SCIM Resource Type",
+		"description": "Returns a single SCIM resource type by ID (RFC 7643 Section 6). Valid IDs are `User` and `Group`.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "resource_type_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The resource type identifier.",
+					"type": "string",
+					"example": "User",
 					"enum": [
 						"User",
 						"Group"
-					],
-					"example": "User",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get SCIM Resource Type response",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "A SCIM ResourceType resource (RFC 7643 Section 6). Describes a category of SCIM resource (e.g. User, Group) and its associated schema.\n",
+							"type": "object",
 							"properties": {
 								"description": {
 									"description": "The resource type's human-readable description.",
-									"example": "User Account",
-									"type": "string"
+									"type": "string",
+									"example": "User Account"
 								},
 								"endpoint": {
 									"description": "The resource type's HTTP-addressable endpoint relative to the base URL.",
-									"example": "/Users",
-									"type": "string"
+									"type": "string",
+									"example": "/Users"
 								},
 								"id": {
 									"description": "The resource type's server unique id.",
-									"example": "User",
-									"type": "string"
+									"type": "string",
+									"example": "User"
 								},
 								"meta": {
 									"description": "Metadata for a SCIM ResourceType resource.",
+									"type": "object",
 									"properties": {
 										"location": {
 											"description": "The URI of the resource being returned.",
-											"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/ResourceTypes/User",
-											"type": "string"
+											"type": "string",
+											"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/ResourceTypes/User"
 										},
 										"resourceType": {
 											"description": "The name of the resource type of the resource.",
-											"example": "ResourceType",
-											"type": "string"
+											"type": "string",
+											"example": "ResourceType"
 										}
 									},
-									"title": "SCIM Resource Type Meta",
-									"type": "object"
+									"title": "SCIM Resource Type Meta"
 								},
 								"name": {
 									"description": "The resource type name.",
-									"example": "User",
-									"type": "string"
+									"type": "string",
+									"example": "User"
 								},
 								"schema": {
 									"description": "The resource type's primary/base schema URI.",
-									"example": "urn:ietf:params:scim:schemas:core:2.0:User",
-									"type": "string"
+									"type": "string",
+									"example": "urn:ietf:params:scim:schemas:core:2.0:User"
 								},
 								"schemaExtensions": {
 									"description": "A list of URIs of the resource type's schema extensions.",
+									"type": "array",
 									"items": {
 										"description": "An extension schema associated with a resource type.",
+										"type": "object",
 										"properties": {
 											"required": {
 												"description": "Whether the extension is required.",
@@ -329,19 +334,17 @@
 											"schema",
 											"required"
 										],
-										"title": "SCIM Schema Extension",
-										"type": "object"
-									},
-									"type": "array"
+										"title": "SCIM Schema Extension"
+									}
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:schemas:core:2.0:ResourceType"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:ResourceType"
+									]
 								}
 							},
 							"required": [
@@ -351,54 +354,52 @@
 								"endpoint",
 								"schema"
 							],
-							"title": "SCIM Resource Type",
-							"type": "object"
+							"title": "SCIM Resource Type"
 						}
 					}
-				},
-				"description": "Get SCIM Resource Type response"
+				}
 			},
 			"4XX": {
+				"description": "Get SCIM Resource Type response failure",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"type": "object",
 							"properties": {
 								"detail": {
 									"description": "A human-readable message describing the error.",
-									"example": "Invalid SCIM request: userName is required",
-									"type": "string"
+									"type": "string",
+									"example": "Invalid SCIM request: userName is required"
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:api:messages:2.0:Error"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									]
 								},
 								"scimType": {
 									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
-									"example": "uniqueness",
-									"type": "string"
+									"type": "string",
+									"example": "uniqueness"
 								},
 								"status": {
 									"description": "The HTTP status code as a string.",
-									"example": "400",
-									"type": "string"
+									"type": "string",
+									"example": "400"
 								}
 							},
 							"required": [
 								"schemas",
 								"status"
 							],
-							"title": "SCIM Error Response",
-							"type": "object"
+							"title": "SCIM Error Response"
 						}
 					}
-				},
-				"description": "Get SCIM Resource Type response failure"
+				}
 			}
 		},
 		"security": [
@@ -406,7 +407,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SCIM Resource Type",
 		"tags": [
 			"SCIM Discovery"
 		],
@@ -428,56 +428,63 @@
 		}
 	},
 	"GET /accounts/{account_id}/scim/v2/Schemas": {
-		"description": "Returns the list of SCIM schemas supported by the Cloudflare SCIM service (RFC 7643 Section 7, RFC 7644 Section 4). Clients use this to introspect the attributes of each resource type. Query parameters are not supported on this endpoint.\n",
 		"operationId": "scim-schemas-list",
+		"summary": "List SCIM Schemas",
+		"description": "Returns the list of SCIM schemas supported by the Cloudflare SCIM service (RFC 7643 Section 7, RFC 7644 Section 4). Clients use this to introspect the attributes of each resource type. Query parameters are not supported on this endpoint.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List SCIM Schemas response",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "SCIM ListResponse envelope for Schema resources (RFC 7644 Section 4).\n",
+							"type": "object",
 							"properties": {
 								"Resources": {
+									"type": "array",
 									"items": {
 										"description": "A SCIM Schema resource (RFC 7643 Section 7). Defines the attributes of a SCIM resource type (e.g. User or Group).\n",
+										"type": "object",
 										"properties": {
 											"attributes": {
 												"description": "A complex attribute that includes the attributes of a schema.",
+												"type": "array",
 												"items": {
 													"description": "An attribute definition within a SCIM schema (RFC 7643 Section 7).",
+													"type": "object",
 													"properties": {
 														"canonicalValues": {
 															"description": "A collection of canonical values for the attribute.",
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"caseExact": {
 															"description": "Indicates if the string attribute is case-sensitive.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"description": {
 															"description": "A human-readable description of the attribute.",
@@ -485,55 +492,57 @@
 														},
 														"multiValued": {
 															"description": "Indicates if the attribute is multi-valued.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"mutability": {
 															"description": "Indicates the circumstances under which the value of the attribute can be defined or redefined.",
+															"type": "string",
+															"example": "readWrite",
 															"enum": [
 																"readOnly",
 																"readWrite",
 																"immutable",
 																"writeOnly"
-															],
-															"example": "readWrite",
-															"type": "string"
+															]
 														},
 														"name": {
 															"description": "The attribute's name.",
-															"example": "userName",
-															"type": "string"
+															"type": "string",
+															"example": "userName"
 														},
 														"referenceTypes": {
 															"description": "A multi-valued attribute that indicates the SCIM resource types that may be referenced.",
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"required": {
 															"description": "Indicates if the attribute is required.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"returned": {
 															"description": "Indicates when an attribute and associated values are returned in response to a GET request or in response to a PUT, POST, or PATCH request.",
+															"type": "string",
+															"example": "default",
 															"enum": [
 																"always",
 																"never",
 																"default",
 																"request"
-															],
-															"example": "default",
-															"type": "string"
+															]
 														},
 														"subAttributes": {
 															"description": "Defines a set of sub-attributes when the attribute type is `complex`.",
-															"items": "[Circular ~.GET /accounts/{account_id}/scim/v2/Schemas.responses.200.content.application/scim+json.schema.properties.Resources.items.properties.attributes.items]",
-															"type": "array"
+															"type": "array",
+															"items": "[Circular ~.GET /accounts/{account_id}/scim/v2/Schemas.responses.200.content.application/scim+json.schema.properties.Resources.items.properties.attributes.items]"
 														},
 														"type": {
 															"description": "The attribute's data type.",
+															"type": "string",
+															"example": "string",
 															"enum": [
 																"string",
 																"boolean",
@@ -542,19 +551,17 @@
 																"dateTime",
 																"reference",
 																"complex"
-															],
-															"example": "string",
-															"type": "string"
+															]
 														},
 														"uniqueness": {
 															"description": "Indicates how the service provider enforces uniqueness of attribute values.",
+															"type": "string",
+															"example": "none",
 															"enum": [
 																"none",
 																"server",
 																"global"
-															],
-															"example": "none",
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -568,51 +575,49 @@
 														"returned",
 														"uniqueness"
 													],
-													"title": "SCIM Schema Attribute",
-													"type": "object"
-												},
-												"type": "array"
+													"title": "SCIM Schema Attribute"
+												}
 											},
 											"description": {
 												"description": "The schema's human-readable description.",
-												"example": "User Account",
-												"type": "string"
+												"type": "string",
+												"example": "User Account"
 											},
 											"id": {
 												"description": "The unique URI of the schema.",
-												"example": "urn:ietf:params:scim:schemas:core:2.0:User",
-												"type": "string"
+												"type": "string",
+												"example": "urn:ietf:params:scim:schemas:core:2.0:User"
 											},
 											"meta": {
 												"description": "Metadata for a SCIM Schema resource.",
+												"type": "object",
 												"properties": {
 													"location": {
 														"description": "The URI of the resource being returned.",
-														"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User",
-														"type": "string"
+														"type": "string",
+														"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
 													},
 													"resourceType": {
 														"description": "The name of the resource type of the resource.",
-														"example": "Schema",
-														"type": "string"
+														"type": "string",
+														"example": "Schema"
 													}
 												},
-												"title": "SCIM Schema Meta",
-												"type": "object"
+												"title": "SCIM Schema Meta"
 											},
 											"name": {
 												"description": "The schema's human-readable name.",
-												"example": "User",
-												"type": "string"
+												"type": "string",
+												"example": "User"
 											},
 											"schemas": {
-												"example": [
-													"urn:ietf:params:scim:schemas:core:2.0:Schema"
-												],
+												"type": "array",
 												"items": {
 													"type": "string"
 												},
-												"type": "array"
+												"example": [
+													"urn:ietf:params:scim:schemas:core:2.0:Schema"
+												]
 											}
 										},
 										"required": [
@@ -621,31 +626,29 @@
 											"name",
 											"attributes"
 										],
-										"title": "SCIM Schema",
-										"type": "object"
-									},
-									"type": "array"
+										"title": "SCIM Schema"
+									}
 								},
 								"itemsPerPage": {
-									"example": 2,
-									"type": "integer"
+									"type": "integer",
+									"example": 2
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:api:messages:2.0:ListResponse"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:ListResponse"
+									]
 								},
 								"startIndex": {
-									"example": 1,
-									"type": "integer"
+									"type": "integer",
+									"example": 1
 								},
 								"totalResults": {
-									"example": 2,
-									"type": "integer"
+									"type": "integer",
+									"example": 2
 								}
 							},
 							"required": [
@@ -653,54 +656,52 @@
 								"totalResults",
 								"Resources"
 							],
-							"title": "SCIM Schema List Response",
-							"type": "object"
+							"title": "SCIM Schema List Response"
 						}
 					}
-				},
-				"description": "List SCIM Schemas response"
+				}
 			},
 			"4XX": {
+				"description": "List SCIM Schemas response failure",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"type": "object",
 							"properties": {
 								"detail": {
 									"description": "A human-readable message describing the error.",
-									"example": "Invalid SCIM request: userName is required",
-									"type": "string"
+									"type": "string",
+									"example": "Invalid SCIM request: userName is required"
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:api:messages:2.0:Error"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									]
 								},
 								"scimType": {
 									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
-									"example": "uniqueness",
-									"type": "string"
+									"type": "string",
+									"example": "uniqueness"
 								},
 								"status": {
 									"description": "The HTTP status code as a string.",
-									"example": "400",
-									"type": "string"
+									"type": "string",
+									"example": "400"
 								}
 							},
 							"required": [
 								"schemas",
 								"status"
 							],
-							"title": "SCIM Error Response",
-							"type": "object"
+							"title": "SCIM Error Response"
 						}
 					}
-				},
-				"description": "List SCIM Schemas response failure"
+				}
 			}
 		},
 		"security": [
@@ -708,7 +709,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List SCIM Schemas",
 		"tags": [
 			"SCIM Discovery"
 		],
@@ -730,62 +730,67 @@
 		}
 	},
 	"GET /accounts/{account_id}/scim/v2/Schemas/{schema_id}": {
-		"description": "Returns a single SCIM schema definition by schema URI ID (RFC 7643 Section 7). Valid IDs are `urn:ietf:params:scim:schemas:core:2.0:User` and `urn:ietf:params:scim:schemas:core:2.0:Group`.\n",
 		"operationId": "scim-schemas-get",
+		"summary": "Get SCIM Schema",
+		"description": "Returns a single SCIM schema definition by schema URI ID (RFC 7643 Section 7). Valid IDs are `urn:ietf:params:scim:schemas:core:2.0:User` and `urn:ietf:params:scim:schemas:core:2.0:Group`.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "schema_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The schema URI identifier.",
-					"example": "urn:ietf:params:scim:schemas:core:2.0:User",
-					"type": "string"
+					"type": "string",
+					"example": "urn:ietf:params:scim:schemas:core:2.0:User"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get SCIM Schema response",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "A SCIM Schema resource (RFC 7643 Section 7). Defines the attributes of a SCIM resource type (e.g. User or Group).\n",
+							"type": "object",
 							"properties": {
 								"attributes": {
 									"description": "A complex attribute that includes the attributes of a schema.",
+									"type": "array",
 									"items": {
 										"description": "An attribute definition within a SCIM schema (RFC 7643 Section 7).",
+										"type": "object",
 										"properties": {
 											"canonicalValues": {
 												"description": "A collection of canonical values for the attribute.",
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"caseExact": {
 												"description": "Indicates if the string attribute is case-sensitive.",
-												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"example": false
 											},
 											"description": {
 												"description": "A human-readable description of the attribute.",
@@ -793,55 +798,57 @@
 											},
 											"multiValued": {
 												"description": "Indicates if the attribute is multi-valued.",
-												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"example": false
 											},
 											"mutability": {
 												"description": "Indicates the circumstances under which the value of the attribute can be defined or redefined.",
+												"type": "string",
+												"example": "readWrite",
 												"enum": [
 													"readOnly",
 													"readWrite",
 													"immutable",
 													"writeOnly"
-												],
-												"example": "readWrite",
-												"type": "string"
+												]
 											},
 											"name": {
 												"description": "The attribute's name.",
-												"example": "userName",
-												"type": "string"
+												"type": "string",
+												"example": "userName"
 											},
 											"referenceTypes": {
 												"description": "A multi-valued attribute that indicates the SCIM resource types that may be referenced.",
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"required": {
 												"description": "Indicates if the attribute is required.",
-												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"example": false
 											},
 											"returned": {
 												"description": "Indicates when an attribute and associated values are returned in response to a GET request or in response to a PUT, POST, or PATCH request.",
+												"type": "string",
+												"example": "default",
 												"enum": [
 													"always",
 													"never",
 													"default",
 													"request"
-												],
-												"example": "default",
-												"type": "string"
+												]
 											},
 											"subAttributes": {
 												"description": "Defines a set of sub-attributes when the attribute type is `complex`.",
-												"items": "[Circular ~.GET /accounts/{account_id}/scim/v2/Schemas/{schema_id}.responses.200.content.application/scim+json.schema.properties.attributes.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/scim/v2/Schemas/{schema_id}.responses.200.content.application/scim+json.schema.properties.attributes.items]"
 											},
 											"type": {
 												"description": "The attribute's data type.",
+												"type": "string",
+												"example": "string",
 												"enum": [
 													"string",
 													"boolean",
@@ -850,19 +857,17 @@
 													"dateTime",
 													"reference",
 													"complex"
-												],
-												"example": "string",
-												"type": "string"
+												]
 											},
 											"uniqueness": {
 												"description": "Indicates how the service provider enforces uniqueness of attribute values.",
+												"type": "string",
+												"example": "none",
 												"enum": [
 													"none",
 													"server",
 													"global"
-												],
-												"example": "none",
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -876,51 +881,49 @@
 											"returned",
 											"uniqueness"
 										],
-										"title": "SCIM Schema Attribute",
-										"type": "object"
-									},
-									"type": "array"
+										"title": "SCIM Schema Attribute"
+									}
 								},
 								"description": {
 									"description": "The schema's human-readable description.",
-									"example": "User Account",
-									"type": "string"
+									"type": "string",
+									"example": "User Account"
 								},
 								"id": {
 									"description": "The unique URI of the schema.",
-									"example": "urn:ietf:params:scim:schemas:core:2.0:User",
-									"type": "string"
+									"type": "string",
+									"example": "urn:ietf:params:scim:schemas:core:2.0:User"
 								},
 								"meta": {
 									"description": "Metadata for a SCIM Schema resource.",
+									"type": "object",
 									"properties": {
 										"location": {
 											"description": "The URI of the resource being returned.",
-											"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User",
-											"type": "string"
+											"type": "string",
+											"example": "https://api.cloudflare.com/accounts/023e105f4ecef8ad9ca31a8372d0c353/scim/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
 										},
 										"resourceType": {
 											"description": "The name of the resource type of the resource.",
-											"example": "Schema",
-											"type": "string"
+											"type": "string",
+											"example": "Schema"
 										}
 									},
-									"title": "SCIM Schema Meta",
-									"type": "object"
+									"title": "SCIM Schema Meta"
 								},
 								"name": {
 									"description": "The schema's human-readable name.",
-									"example": "User",
-									"type": "string"
+									"type": "string",
+									"example": "User"
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:schemas:core:2.0:Schema"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:Schema"
+									]
 								}
 							},
 							"required": [
@@ -929,54 +932,52 @@
 								"name",
 								"attributes"
 							],
-							"title": "SCIM Schema",
-							"type": "object"
+							"title": "SCIM Schema"
 						}
 					}
-				},
-				"description": "Get SCIM Schema response"
+				}
 			},
 			"4XX": {
+				"description": "Get SCIM Schema response failure",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"type": "object",
 							"properties": {
 								"detail": {
 									"description": "A human-readable message describing the error.",
-									"example": "Invalid SCIM request: userName is required",
-									"type": "string"
+									"type": "string",
+									"example": "Invalid SCIM request: userName is required"
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:api:messages:2.0:Error"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									]
 								},
 								"scimType": {
 									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
-									"example": "uniqueness",
-									"type": "string"
+									"type": "string",
+									"example": "uniqueness"
 								},
 								"status": {
 									"description": "The HTTP status code as a string.",
-									"example": "400",
-									"type": "string"
+									"type": "string",
+									"example": "400"
 								}
 							},
 							"required": [
 								"schemas",
 								"status"
 							],
-							"title": "SCIM Error Response",
-							"type": "object"
+							"title": "SCIM Error Response"
 						}
 					}
-				},
-				"description": "Get SCIM Schema response failure"
+				}
 			}
 		},
 		"security": [
@@ -984,7 +985,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SCIM Schema",
 		"tags": [
 			"SCIM Discovery"
 		],
@@ -1006,44 +1006,49 @@
 		}
 	},
 	"GET /accounts/{account_id}/scim/v2/ServiceProviderConfig": {
-		"description": "Returns the SCIM 2.0 Service Provider configuration (RFC 7643 Section 5). IdPs use this endpoint to auto-configure their SCIM integration with Cloudflare, discovering which optional features (patch, bulk, filter, etc.) are supported.\n",
 		"operationId": "scim-service-provider-config-get",
+		"summary": "Get SCIM Service Provider Config",
+		"description": "Returns the SCIM 2.0 Service Provider configuration (RFC 7643 Section 5). IdPs use this endpoint to auto-configure their SCIM integration with Cloudflare, discovering which optional features (patch, bulk, filter, etc.) are supported.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get SCIM Service Provider Config response",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "The SCIM 2.0 Service Provider configuration (RFC 7643 Section 5). Describes which optional SCIM features Cloudflare supports. IdPs use this to auto-configure their SCIM integration.\n",
+							"type": "object",
 							"properties": {
 								"authenticationSchemes": {
+									"type": "array",
 									"items": {
 										"description": "An authentication method supported by the SCIM service.",
+										"type": "object",
 										"properties": {
 											"description": {
 												"description": "A description of the authentication scheme.",
-												"example": "Authentication via OAuth 2.0 Bearer Token",
-												"type": "string"
+												"type": "string",
+												"example": "Authentication via OAuth 2.0 Bearer Token"
 											},
 											"documentationUri": {
 												"description": "An HTTP-addressable URL pointing to the authentication scheme documentation.",
@@ -1051,23 +1056,23 @@
 											},
 											"name": {
 												"description": "The common authentication scheme name.",
-												"example": "OAuth Bearer Token",
-												"type": "string"
+												"type": "string",
+												"example": "OAuth Bearer Token"
 											},
 											"primary": {
 												"description": "Indicates if this is the primary authentication scheme.",
-												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"example": true
 											},
 											"specUri": {
 												"description": "An HTTP-addressable URL pointing to the authentication scheme specification.",
-												"example": "http://www.rfc-editor.org/info/rfc6750",
-												"type": "string"
+												"type": "string",
+												"example": "http://www.rfc-editor.org/info/rfc6750"
 											},
 											"type": {
 												"description": "The authentication scheme type.",
-												"example": "oauthbearertoken",
-												"type": "string"
+												"type": "string",
+												"example": "oauthbearertoken"
 											}
 										},
 										"required": [
@@ -1075,28 +1080,27 @@
 											"name",
 											"description"
 										],
-										"title": "SCIM Authentication Scheme",
-										"type": "object"
-									},
-									"type": "array"
+										"title": "SCIM Authentication Scheme"
+									}
 								},
 								"bulk": {
 									"description": "Configuration for SCIM bulk operations.",
+									"type": "object",
 									"properties": {
 										"maxOperations": {
 											"description": "The maximum number of operations in a bulk request.",
-											"example": 0,
-											"type": "integer"
+											"type": "integer",
+											"example": 0
 										},
 										"maxPayloadSize": {
 											"description": "The maximum payload size in bytes for a bulk request.",
-											"example": 0,
-											"type": "integer"
+											"type": "integer",
+											"example": 0
 										},
 										"supported": {
 											"description": "Whether bulk operations are supported.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -1104,103 +1108,102 @@
 										"maxOperations",
 										"maxPayloadSize"
 									],
-									"title": "SCIM Bulk Feature",
-									"type": "object"
+									"title": "SCIM Bulk Feature"
 								},
 								"changePassword": {
 									"description": "Represents a simple supported/unsupported SCIM feature.",
+									"type": "object",
 									"properties": {
 										"supported": {
 											"description": "Whether the feature is supported.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"supported"
 									],
-									"title": "SCIM Feature",
-									"type": "object"
+									"title": "SCIM Feature"
 								},
 								"documentationUri": {
 									"description": "An HTTP-addressable URL pointing to the service provider's human-consumable help documentation.",
-									"example": "https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/",
-									"type": "string"
+									"type": "string",
+									"example": "https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/"
 								},
 								"etag": {
 									"description": "Represents a simple supported/unsupported SCIM feature.",
+									"type": "object",
 									"properties": {
 										"supported": {
 											"description": "Whether the feature is supported.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"supported"
 									],
-									"title": "SCIM Feature",
-									"type": "object"
+									"title": "SCIM Feature"
 								},
 								"filter": {
 									"description": "Configuration for SCIM filtering operations.",
+									"type": "object",
 									"properties": {
 										"maxResults": {
 											"description": "The maximum number of filter results per page.",
-											"example": 100,
-											"type": "integer"
+											"type": "integer",
+											"example": 100
 										},
 										"supported": {
 											"description": "Whether filtering is supported.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"supported",
 										"maxResults"
 									],
-									"title": "SCIM Filter Feature",
-									"type": "object"
+									"title": "SCIM Filter Feature"
 								},
 								"patch": {
 									"description": "Represents a simple supported/unsupported SCIM feature.",
+									"type": "object",
 									"properties": {
 										"supported": {
 											"description": "Whether the feature is supported.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"supported"
 									],
-									"title": "SCIM Feature",
-									"type": "object"
+									"title": "SCIM Feature"
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"
+									]
 								},
 								"sort": {
 									"description": "Represents a simple supported/unsupported SCIM feature.",
+									"type": "object",
 									"properties": {
 										"supported": {
 											"description": "Whether the feature is supported.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"supported"
 									],
-									"title": "SCIM Feature",
-									"type": "object"
+									"title": "SCIM Feature"
 								}
 							},
 							"required": [
@@ -1213,54 +1216,52 @@
 								"etag",
 								"authenticationSchemes"
 							],
-							"title": "SCIM Service Provider Config",
-							"type": "object"
+							"title": "SCIM Service Provider Config"
 						}
 					}
-				},
-				"description": "Get SCIM Service Provider Config response"
+				}
 			},
 			"4XX": {
+				"description": "Get SCIM Service Provider Config response failure",
 				"content": {
 					"application/scim+json": {
 						"schema": {
 							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"type": "object",
 							"properties": {
 								"detail": {
 									"description": "A human-readable message describing the error.",
-									"example": "Invalid SCIM request: userName is required",
-									"type": "string"
+									"type": "string",
+									"example": "Invalid SCIM request: userName is required"
 								},
 								"schemas": {
-									"example": [
-										"urn:ietf:params:scim:api:messages:2.0:Error"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									]
 								},
 								"scimType": {
 									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
-									"example": "uniqueness",
-									"type": "string"
+									"type": "string",
+									"example": "uniqueness"
 								},
 								"status": {
 									"description": "The HTTP status code as a string.",
-									"example": "400",
-									"type": "string"
+									"type": "string",
+									"example": "400"
 								}
 							},
 							"required": [
 								"schemas",
 								"status"
 							],
-							"title": "SCIM Error Response",
-							"type": "object"
+							"title": "SCIM Error Response"
 						}
 					}
-				},
-				"description": "Get SCIM Service Provider Config response failure"
+				}
 			}
 		},
 		"security": [
@@ -1268,7 +1269,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get SCIM Service Provider Config",
 		"tags": [
 			"SCIM Discovery"
 		],

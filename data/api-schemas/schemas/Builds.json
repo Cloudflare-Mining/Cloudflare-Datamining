@@ -1,7 +1,8 @@
 {
 	"GET /accounts/{account_id}/builds/builds": {
-		"description": "Retrieve builds for specific version IDs",
 		"operationId": "getBuildsByVersionIds",
+		"summary": "Get builds by version IDs",
+		"description": "Retrieve builds for specific version IDs",
 		"parameters": [
 			{
 				"in": "path",
@@ -9,83 +10,85 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
-				"in": "query",
 				"name": "version_ids",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "Comma-separated list of version UUIDs (max 20).",
-					"example": "123e4567-e89b-12d3-a456-426614174000,223e4567-e89b-12d3-a456-426614174001",
-					"type": "string"
+					"type": "string",
+					"example": "123e4567-e89b-12d3-a456-426614174000,223e4567-e89b-12d3-a456-426614174001"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Builds retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -93,301 +96,300 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"builds": {
+													"type": "object",
 													"additionalProperties": {
+														"type": "object",
 														"properties": {
 															"build_outcome": {
+																"type": "string",
+																"example": "success",
 																"enum": [
 																	"success",
 																	"fail",
 																	"skipped",
 																	"cancelled",
 																	"terminated"
-																],
-																"example": "success",
-																"type": "string"
+																]
 															},
 															"build_trigger_metadata": {
+																"type": "object",
 																"properties": {
 																	"author": {
-																		"example": "developer@cloudflare.com",
-																		"type": "string"
+																		"type": "string",
+																		"example": "developer@cloudflare.com"
 																	},
 																	"branch": {
 																		"description": "Git branch name.",
-																		"example": "main",
-																		"type": "string"
+																		"type": "string",
+																		"example": "main"
 																	},
 																	"build_command": {
-																		"example": "npm run build",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npm run build"
 																	},
 																	"build_token_name": {
-																		"example": "My Build Token",
-																		"type": "string"
+																		"type": "string",
+																		"example": "My Build Token"
 																	},
 																	"build_token_uuid": {
 																		"description": "Build token UUID.",
-																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uuid"
 																	},
 																	"build_trigger_source": {
+																		"type": "string",
+																		"example": "push",
 																		"enum": [
 																			"push",
 																			"pull_request",
 																			"manual",
 																			"api"
-																		],
-																		"example": "push",
-																		"type": "string"
+																		]
 																	},
 																	"commit_hash": {
 																		"description": "Git commit hash",
-																		"example": "abc123def456",
-																		"type": "string"
+																		"type": "string",
+																		"example": "abc123def456"
 																	},
 																	"commit_message": {
-																		"example": "Add new feature",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Add new feature"
 																	},
 																	"deploy_command": {
-																		"example": "npx wrangler deploy",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npx wrangler deploy"
 																	},
 																	"environment_variables": {
+																		"type": "object",
 																		"additionalProperties": {
 																			"type": "string"
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"provider_account_name": {
-																		"example": "Cloudflare",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cloudflare"
 																	},
 																	"provider_type": {
+																		"type": "string",
+																		"example": "github",
 																		"enum": [
 																			"github",
 																			"gitlab",
 																			"gitlab_internal"
-																		],
-																		"example": "github",
-																		"type": "string"
+																		]
 																	},
 																	"repo_name": {
-																		"example": "workers-sdk",
-																		"type": "string"
+																		"type": "string",
+																		"example": "workers-sdk"
 																	},
 																	"root_directory": {
 																		"description": "Root directory path.",
-																		"example": "/",
-																		"type": "string"
+																		"type": "string",
+																		"example": "/"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"build_uuid": {
 																"description": "Build UUID.",
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"created_on": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"initializing_on": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"modified_on": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"pull_request": {
+																"type": "object",
 																"nullable": true,
 																"properties": {
 																	"created_on": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"pull_request_url": {
-																		"example": "https://github.com/cloudflare/workers-sdk/pull/123",
+																		"type": "string",
 																		"format": "uri",
-																		"type": "string"
+																		"example": "https://github.com/cloudflare/workers-sdk/pull/123"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"running_on": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"status": {
+																"type": "string",
+																"example": "running",
 																"enum": [
 																	"queued",
 																	"initializing",
 																	"running",
 																	"stopped"
-																],
-																"example": "running",
-																"type": "string"
+																]
 															},
 															"stopped_on": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"trigger": {
 																"description": "Trigger information without build_token_uuid",
+																"type": "object",
 																"properties": {
 																	"branch_excludes": {
-																		"example": [],
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"example": []
 																	},
 																	"branch_includes": {
-																		"example": [
-																			"main"
-																		],
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"example": [
+																			"main"
+																		]
 																	},
 																	"build_caching_enabled": {
-																		"default": false,
+																		"type": "boolean",
 																		"example": false,
-																		"type": "boolean"
+																		"default": false
 																	},
 																	"build_command": {
-																		"example": "npm run build",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npm run build"
 																	},
 																	"created_on": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"deleted_on": {
+																		"type": "string",
 																		"format": "date-time",
-																		"nullable": true,
-																		"type": "string"
+																		"nullable": true
 																	},
 																	"deploy_command": {
-																		"example": "npx wrangler deploy",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npx wrangler deploy"
 																	},
 																	"external_script_id": {
 																		"description": "System-generated worker script tag.",
-																		"example": "dd7160bb9cef458093557736f4b9e75b",
-																		"type": "string"
+																		"type": "string",
+																		"example": "dd7160bb9cef458093557736f4b9e75b"
 																	},
 																	"modified_on": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"path_excludes": {
-																		"example": [
-																			"*.md"
-																		],
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"example": [
+																			"*.md"
+																		]
 																	},
 																	"path_includes": {
-																		"default": "*",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
 																		"example": [
 																			"*"
 																		],
-																		"items": {
-																			"type": "string"
-																		},
-																		"type": "array"
+																		"default": "*"
 																	},
 																	"repo_connection": {
+																		"type": "object",
 																		"properties": {
 																			"created_on": {
-																				"format": "date-time",
-																				"type": "string"
+																				"type": "string",
+																				"format": "date-time"
 																			},
 																			"deleted_on": {
+																				"type": "string",
 																				"format": "date-time",
-																				"nullable": true,
-																				"type": "string"
+																				"nullable": true
 																			},
 																			"modified_on": {
-																				"format": "date-time",
-																				"type": "string"
+																				"type": "string",
+																				"format": "date-time"
 																			},
 																			"provider_account_id": {
 																				"description": "Provider account identifier.",
-																				"example": "cloudflare",
-																				"type": "string"
+																				"type": "string",
+																				"example": "cloudflare"
 																			},
 																			"provider_account_name": {
-																				"example": "Cloudflare",
-																				"type": "string"
+																				"type": "string",
+																				"example": "Cloudflare"
 																			},
 																			"provider_type": {
+																				"type": "string",
+																				"example": "github",
 																				"enum": [
 																					"github",
 																					"gitlab",
 																					"gitlab_internal"
-																				],
-																				"example": "github",
-																				"type": "string"
+																				]
 																			},
 																			"repo_connection_uuid": {
 																				"description": "Repository connection UUID.",
-																				"format": "uuid",
-																				"type": "string"
+																				"type": "string",
+																				"format": "uuid"
 																			},
 																			"repo_id": {
 																				"description": "Repository identifier.",
-																				"example": "workers-sdk",
-																				"type": "string"
+																				"type": "string",
+																				"example": "workers-sdk"
 																			},
 																			"repo_name": {
-																				"example": "workers-sdk",
-																				"type": "string"
+																				"type": "string",
+																				"example": "workers-sdk"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"root_directory": {
 																		"description": "Root directory path.",
-																		"example": "/",
-																		"type": "string"
+																		"type": "string",
+																		"example": "/"
 																	},
 																	"trigger_name": {
-																		"example": "Production Deploy",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Production Deploy"
 																	},
 																	"trigger_uuid": {
 																		"description": "Trigger UUID.",
-																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uuid"
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
-													},
-													"type": "object"
+														}
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -395,8 +397,7 @@
 							]
 						}
 					}
-				},
-				"description": "Builds retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -408,7 +409,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get builds by version IDs",
 		"tags": [
 			"Builds"
 		],
@@ -422,8 +422,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}": {
-		"description": "Retrieve detailed information about a specific build",
 		"operationId": "getBuildByUuid",
+		"summary": "Get build by UUID",
+		"description": "Retrieve detailed information about a specific build",
 		"parameters": [
 			{
 				"in": "path",
@@ -431,8 +432,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -441,73 +442,75 @@
 				"required": true,
 				"schema": {
 					"description": "Build UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Build retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -515,293 +518,292 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"build_outcome": {
+													"type": "string",
+													"example": "success",
 													"enum": [
 														"success",
 														"fail",
 														"skipped",
 														"cancelled",
 														"terminated"
-													],
-													"example": "success",
-													"type": "string"
+													]
 												},
 												"build_trigger_metadata": {
+													"type": "object",
 													"properties": {
 														"author": {
-															"example": "developer@cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"example": "developer@cloudflare.com"
 														},
 														"branch": {
 															"description": "Git branch name.",
-															"example": "main",
-															"type": "string"
+															"type": "string",
+															"example": "main"
 														},
 														"build_command": {
-															"example": "npm run build",
-															"type": "string"
+															"type": "string",
+															"example": "npm run build"
 														},
 														"build_token_name": {
-															"example": "My Build Token",
-															"type": "string"
+															"type": "string",
+															"example": "My Build Token"
 														},
 														"build_token_uuid": {
 															"description": "Build token UUID.",
-															"format": "uuid",
-															"type": "string"
+															"type": "string",
+															"format": "uuid"
 														},
 														"build_trigger_source": {
+															"type": "string",
+															"example": "push",
 															"enum": [
 																"push",
 																"pull_request",
 																"manual",
 																"api"
-															],
-															"example": "push",
-															"type": "string"
+															]
 														},
 														"commit_hash": {
 															"description": "Git commit hash",
-															"example": "abc123def456",
-															"type": "string"
+															"type": "string",
+															"example": "abc123def456"
 														},
 														"commit_message": {
-															"example": "Add new feature",
-															"type": "string"
+															"type": "string",
+															"example": "Add new feature"
 														},
 														"deploy_command": {
-															"example": "npx wrangler deploy",
-															"type": "string"
+															"type": "string",
+															"example": "npx wrangler deploy"
 														},
 														"environment_variables": {
+															"type": "object",
 															"additionalProperties": {
 																"type": "string"
-															},
-															"type": "object"
+															}
 														},
 														"provider_account_name": {
-															"example": "Cloudflare",
-															"type": "string"
+															"type": "string",
+															"example": "Cloudflare"
 														},
 														"provider_type": {
+															"type": "string",
+															"example": "github",
 															"enum": [
 																"github",
 																"gitlab",
 																"gitlab_internal"
-															],
-															"example": "github",
-															"type": "string"
+															]
 														},
 														"repo_name": {
-															"example": "workers-sdk",
-															"type": "string"
+															"type": "string",
+															"example": "workers-sdk"
 														},
 														"root_directory": {
 															"description": "Root directory path.",
-															"example": "/",
-															"type": "string"
+															"type": "string",
+															"example": "/"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"build_uuid": {
 													"description": "Build UUID.",
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"created_on": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"initializing_on": {
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"modified_on": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"pull_request": {
+													"type": "object",
 													"nullable": true,
 													"properties": {
 														"created_on": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"pull_request_url": {
-															"example": "https://github.com/cloudflare/workers-sdk/pull/123",
+															"type": "string",
 															"format": "uri",
-															"type": "string"
+															"example": "https://github.com/cloudflare/workers-sdk/pull/123"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"running_on": {
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"status": {
+													"type": "string",
+													"example": "running",
 													"enum": [
 														"queued",
 														"initializing",
 														"running",
 														"stopped"
-													],
-													"example": "running",
-													"type": "string"
+													]
 												},
 												"stopped_on": {
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"trigger": {
 													"description": "Trigger information without build_token_uuid",
+													"type": "object",
 													"properties": {
 														"branch_excludes": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"example": []
 														},
 														"branch_includes": {
-															"example": [
-																"main"
-															],
+															"type": "array",
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"main"
+															]
 														},
 														"build_caching_enabled": {
-															"default": false,
+															"type": "boolean",
 															"example": false,
-															"type": "boolean"
+															"default": false
 														},
 														"build_command": {
-															"example": "npm run build",
-															"type": "string"
+															"type": "string",
+															"example": "npm run build"
 														},
 														"created_on": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"deleted_on": {
+															"type": "string",
 															"format": "date-time",
-															"nullable": true,
-															"type": "string"
+															"nullable": true
 														},
 														"deploy_command": {
-															"example": "npx wrangler deploy",
-															"type": "string"
+															"type": "string",
+															"example": "npx wrangler deploy"
 														},
 														"external_script_id": {
 															"description": "System-generated worker script tag.",
-															"example": "dd7160bb9cef458093557736f4b9e75b",
-															"type": "string"
+															"type": "string",
+															"example": "dd7160bb9cef458093557736f4b9e75b"
 														},
 														"modified_on": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"path_excludes": {
-															"example": [
-																"*.md"
-															],
+															"type": "array",
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"*.md"
+															]
 														},
 														"path_includes": {
-															"default": "*",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
 															"example": [
 																"*"
 															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
+															"default": "*"
 														},
 														"repo_connection": {
+															"type": "object",
 															"properties": {
 																"created_on": {
-																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																},
 																"deleted_on": {
+																	"type": "string",
 																	"format": "date-time",
-																	"nullable": true,
-																	"type": "string"
+																	"nullable": true
 																},
 																"modified_on": {
-																	"format": "date-time",
-																	"type": "string"
+																	"type": "string",
+																	"format": "date-time"
 																},
 																"provider_account_id": {
 																	"description": "Provider account identifier.",
-																	"example": "cloudflare",
-																	"type": "string"
+																	"type": "string",
+																	"example": "cloudflare"
 																},
 																"provider_account_name": {
-																	"example": "Cloudflare",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Cloudflare"
 																},
 																"provider_type": {
+																	"type": "string",
+																	"example": "github",
 																	"enum": [
 																		"github",
 																		"gitlab",
 																		"gitlab_internal"
-																	],
-																	"example": "github",
-																	"type": "string"
+																	]
 																},
 																"repo_connection_uuid": {
 																	"description": "Repository connection UUID.",
-																	"format": "uuid",
-																	"type": "string"
+																	"type": "string",
+																	"format": "uuid"
 																},
 																"repo_id": {
 																	"description": "Repository identifier.",
-																	"example": "workers-sdk",
-																	"type": "string"
+																	"type": "string",
+																	"example": "workers-sdk"
 																},
 																"repo_name": {
-																	"example": "workers-sdk",
-																	"type": "string"
+																	"type": "string",
+																	"example": "workers-sdk"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"root_directory": {
 															"description": "Root directory path.",
-															"example": "/",
-															"type": "string"
+															"type": "string",
+															"example": "/"
 														},
 														"trigger_name": {
-															"example": "Production Deploy",
-															"type": "string"
+															"type": "string",
+															"example": "Production Deploy"
 														},
 														"trigger_uuid": {
 															"description": "Trigger UUID.",
-															"format": "uuid",
-															"type": "string"
+															"type": "string",
+															"format": "uuid"
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -809,10 +811,10 @@
 							]
 						}
 					}
-				},
-				"description": "Build retrieved successfully"
+				}
 			},
 			"404": {
+				"description": "Resource not found",
 				"content": {
 					"application/json": {
 						"example": {
@@ -827,39 +829,40 @@
 							"success": false
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -867,12 +870,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found"
+				}
 			}
 		},
 		"security": [
@@ -884,7 +885,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get build by UUID",
 		"tags": [
 			"Builds"
 		],
@@ -898,8 +898,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}/logs": {
-		"description": "Retrieve logs for a specific build with cursor-based pagination",
 		"operationId": "getBuildLogs",
+		"summary": "Get build logs",
+		"description": "Retrieve logs for a specific build with cursor-based pagination",
 		"parameters": [
 			{
 				"in": "path",
@@ -907,8 +908,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -917,82 +918,84 @@
 				"required": true,
 				"schema": {
 					"description": "Build UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
 				"schema": {
 					"description": "Pagination cursor for log retrieval.",
-					"example": "eyJsaW5lIjoxMDAsInRpbWVzdGFtcCI6MTYzNjQ3MjQwMH0",
-					"type": "string"
+					"type": "string",
+					"example": "eyJsaW5lIjoxMDAsInRpbWVzdGFtcCI6MTYzNjQ3MjQwMH0"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Build logs retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -1000,19 +1003,20 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cursor": {
 													"description": "Pagination cursor for log retrieval.",
-													"example": "eyJsaW5lIjoxMDAsInRpbWVzdGFtcCI6MTYzNjQ3MjQwMH0",
-													"type": "string"
+													"type": "string",
+													"example": "eyJsaW5lIjoxMDAsInRpbWVzdGFtcCI6MTYzNjQ3MjQwMH0"
 												},
 												"lines": {
+													"type": "array",
 													"items": {
 														"items": {
 															"anyOf": [
@@ -1031,15 +1035,13 @@
 														"maxItems": 2,
 														"minItems": 2,
 														"type": "array"
-													},
-													"type": "array"
+													}
 												},
 												"truncated": {
-													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"example": false
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1047,10 +1049,10 @@
 							]
 						}
 					}
-				},
-				"description": "Build logs retrieved successfully"
+				}
 			},
 			"404": {
+				"description": "Resource not found",
 				"content": {
 					"application/json": {
 						"example": {
@@ -1065,39 +1067,40 @@
 							"success": false
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1105,12 +1108,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found"
+				}
 			}
 		},
 		"security": [
@@ -1122,7 +1123,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get build logs",
 		"tags": [
 			"Builds"
 		],
@@ -1136,8 +1136,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/builds/latest": {
-		"description": "Retrieve the most recent builds for multiple worker scripts",
 		"operationId": "getLatestBuildsByScripts",
+		"summary": "Get latest builds by script IDs",
+		"description": "Retrieve the most recent builds for multiple worker scripts",
 		"parameters": [
 			{
 				"in": "path",
@@ -1145,83 +1146,85 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
-				"in": "query",
 				"name": "external_script_ids",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "Comma-separated list of system-generated worker script tags (max 20).",
-					"example": "dd7160bb9cef458093557736f4b9e75b,42fb14fe81df47139d3be684e4c637a6,ff7cf9a7582f4c0d90a4b95cb17d659e",
-					"type": "string"
+					"type": "string",
+					"example": "dd7160bb9cef458093557736f4b9e75b,42fb14fe81df47139d3be684e4c637a6,ff7cf9a7582f4c0d90a4b95cb17d659e"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Latest builds retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -1229,301 +1232,300 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"builds": {
+													"type": "object",
 													"additionalProperties": {
+														"type": "object",
 														"properties": {
 															"build_outcome": {
+																"type": "string",
+																"example": "success",
 																"enum": [
 																	"success",
 																	"fail",
 																	"skipped",
 																	"cancelled",
 																	"terminated"
-																],
-																"example": "success",
-																"type": "string"
+																]
 															},
 															"build_trigger_metadata": {
+																"type": "object",
 																"properties": {
 																	"author": {
-																		"example": "developer@cloudflare.com",
-																		"type": "string"
+																		"type": "string",
+																		"example": "developer@cloudflare.com"
 																	},
 																	"branch": {
 																		"description": "Git branch name.",
-																		"example": "main",
-																		"type": "string"
+																		"type": "string",
+																		"example": "main"
 																	},
 																	"build_command": {
-																		"example": "npm run build",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npm run build"
 																	},
 																	"build_token_name": {
-																		"example": "My Build Token",
-																		"type": "string"
+																		"type": "string",
+																		"example": "My Build Token"
 																	},
 																	"build_token_uuid": {
 																		"description": "Build token UUID.",
-																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uuid"
 																	},
 																	"build_trigger_source": {
+																		"type": "string",
+																		"example": "push",
 																		"enum": [
 																			"push",
 																			"pull_request",
 																			"manual",
 																			"api"
-																		],
-																		"example": "push",
-																		"type": "string"
+																		]
 																	},
 																	"commit_hash": {
 																		"description": "Git commit hash",
-																		"example": "abc123def456",
-																		"type": "string"
+																		"type": "string",
+																		"example": "abc123def456"
 																	},
 																	"commit_message": {
-																		"example": "Add new feature",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Add new feature"
 																	},
 																	"deploy_command": {
-																		"example": "npx wrangler deploy",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npx wrangler deploy"
 																	},
 																	"environment_variables": {
+																		"type": "object",
 																		"additionalProperties": {
 																			"type": "string"
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"provider_account_name": {
-																		"example": "Cloudflare",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cloudflare"
 																	},
 																	"provider_type": {
+																		"type": "string",
+																		"example": "github",
 																		"enum": [
 																			"github",
 																			"gitlab",
 																			"gitlab_internal"
-																		],
-																		"example": "github",
-																		"type": "string"
+																		]
 																	},
 																	"repo_name": {
-																		"example": "workers-sdk",
-																		"type": "string"
+																		"type": "string",
+																		"example": "workers-sdk"
 																	},
 																	"root_directory": {
 																		"description": "Root directory path.",
-																		"example": "/",
-																		"type": "string"
+																		"type": "string",
+																		"example": "/"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"build_uuid": {
 																"description": "Build UUID.",
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"created_on": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"initializing_on": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"modified_on": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"pull_request": {
+																"type": "object",
 																"nullable": true,
 																"properties": {
 																	"created_on": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"pull_request_url": {
-																		"example": "https://github.com/cloudflare/workers-sdk/pull/123",
+																		"type": "string",
 																		"format": "uri",
-																		"type": "string"
+																		"example": "https://github.com/cloudflare/workers-sdk/pull/123"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"running_on": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"status": {
+																"type": "string",
+																"example": "running",
 																"enum": [
 																	"queued",
 																	"initializing",
 																	"running",
 																	"stopped"
-																],
-																"example": "running",
-																"type": "string"
+																]
 															},
 															"stopped_on": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"trigger": {
 																"description": "Trigger information without build_token_uuid",
+																"type": "object",
 																"properties": {
 																	"branch_excludes": {
-																		"example": [],
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"example": []
 																	},
 																	"branch_includes": {
-																		"example": [
-																			"main"
-																		],
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"example": [
+																			"main"
+																		]
 																	},
 																	"build_caching_enabled": {
-																		"default": false,
+																		"type": "boolean",
 																		"example": false,
-																		"type": "boolean"
+																		"default": false
 																	},
 																	"build_command": {
-																		"example": "npm run build",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npm run build"
 																	},
 																	"created_on": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"deleted_on": {
+																		"type": "string",
 																		"format": "date-time",
-																		"nullable": true,
-																		"type": "string"
+																		"nullable": true
 																	},
 																	"deploy_command": {
-																		"example": "npx wrangler deploy",
-																		"type": "string"
+																		"type": "string",
+																		"example": "npx wrangler deploy"
 																	},
 																	"external_script_id": {
 																		"description": "System-generated worker script tag.",
-																		"example": "dd7160bb9cef458093557736f4b9e75b",
-																		"type": "string"
+																		"type": "string",
+																		"example": "dd7160bb9cef458093557736f4b9e75b"
 																	},
 																	"modified_on": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"path_excludes": {
-																		"example": [
-																			"*.md"
-																		],
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"example": [
+																			"*.md"
+																		]
 																	},
 																	"path_includes": {
-																		"default": "*",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
 																		"example": [
 																			"*"
 																		],
-																		"items": {
-																			"type": "string"
-																		},
-																		"type": "array"
+																		"default": "*"
 																	},
 																	"repo_connection": {
+																		"type": "object",
 																		"properties": {
 																			"created_on": {
-																				"format": "date-time",
-																				"type": "string"
+																				"type": "string",
+																				"format": "date-time"
 																			},
 																			"deleted_on": {
+																				"type": "string",
 																				"format": "date-time",
-																				"nullable": true,
-																				"type": "string"
+																				"nullable": true
 																			},
 																			"modified_on": {
-																				"format": "date-time",
-																				"type": "string"
+																				"type": "string",
+																				"format": "date-time"
 																			},
 																			"provider_account_id": {
 																				"description": "Provider account identifier.",
-																				"example": "cloudflare",
-																				"type": "string"
+																				"type": "string",
+																				"example": "cloudflare"
 																			},
 																			"provider_account_name": {
-																				"example": "Cloudflare",
-																				"type": "string"
+																				"type": "string",
+																				"example": "Cloudflare"
 																			},
 																			"provider_type": {
+																				"type": "string",
+																				"example": "github",
 																				"enum": [
 																					"github",
 																					"gitlab",
 																					"gitlab_internal"
-																				],
-																				"example": "github",
-																				"type": "string"
+																				]
 																			},
 																			"repo_connection_uuid": {
 																				"description": "Repository connection UUID.",
-																				"format": "uuid",
-																				"type": "string"
+																				"type": "string",
+																				"format": "uuid"
 																			},
 																			"repo_id": {
 																				"description": "Repository identifier.",
-																				"example": "workers-sdk",
-																				"type": "string"
+																				"type": "string",
+																				"example": "workers-sdk"
 																			},
 																			"repo_name": {
-																				"example": "workers-sdk",
-																				"type": "string"
+																				"type": "string",
+																				"example": "workers-sdk"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"root_directory": {
 																		"description": "Root directory path.",
-																		"example": "/",
-																		"type": "string"
+																		"type": "string",
+																		"example": "/"
 																	},
 																	"trigger_name": {
-																		"example": "Production Deploy",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Production Deploy"
 																	},
 																	"trigger_uuid": {
 																		"description": "Trigger UUID.",
-																		"format": "uuid",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uuid"
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
-													},
-													"type": "object"
+														}
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1531,8 +1533,7 @@
 							]
 						}
 					}
-				},
-				"description": "Latest builds retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -1544,7 +1545,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get latest builds by script IDs",
 		"tags": [
 			"Builds"
 		],
@@ -1558,8 +1558,9 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/builds/builds/{build_uuid}/cancel": {
-		"description": "Cancel a running or queued build",
 		"operationId": "cancelBuildByUuid",
+		"summary": "Cancel build",
+		"description": "Cancel a running or queued build",
 		"parameters": [
 			{
 				"in": "path",
@@ -1567,8 +1568,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -1577,73 +1578,75 @@
 				"required": true,
 				"schema": {
 					"description": "Build UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Build canceled successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -1651,36 +1654,35 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"build_outcome": {
+													"type": "string",
+													"example": "success",
 													"enum": [
 														"success",
 														"fail",
 														"skipped",
 														"cancelled",
 														"terminated"
-													],
-													"example": "success",
-													"type": "string"
+													]
 												},
 												"build_uuid": {
 													"description": "Build UUID.",
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"stopped_on": {
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1688,10 +1690,10 @@
 							]
 						}
 					}
-				},
-				"description": "Build canceled successfully"
+				}
 			},
 			"404": {
+				"description": "Resource not found",
 				"content": {
 					"application/json": {
 						"example": {
@@ -1706,39 +1708,40 @@
 							"success": false
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1746,12 +1749,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found"
+				}
 			}
 		},
 		"security": [
@@ -1763,7 +1764,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Cancel build",
 		"tags": [
 			"Builds"
 		],

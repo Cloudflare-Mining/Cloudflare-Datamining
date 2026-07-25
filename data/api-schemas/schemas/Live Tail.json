@@ -1,51 +1,57 @@
 {
 	"POST /accounts/{account_id}/workers/observability/telemetry/live-tail": {
-		"description": "Prepare websocket server for live tail.",
 		"operationId": "telemetry.live-tail.post",
+		"summary": "Prepare live tail",
+		"description": "Prepare websocket server for live tail.",
 		"requestBody": {
+			"description": "Create websocket server for live tail.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"filterCombination": {
-								"default": "and",
 								"description": "Set a flag to describe how to combine the filters on the query.",
+								"type": "string",
+								"default": "and",
 								"enum": [
 									"and",
 									"or",
 									"AND",
 									"OR"
-								],
-								"type": "string"
+								]
 							},
 							"filters": {
-								"default": [],
 								"description": "Apply filters to the query. Supports nested groups via kind: 'group'.",
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
+											"description": "Supports nested groups via kind: 'group'.",
+											"type": "object",
 											"anyOf": [
 												{
 													"properties": {
 														"filterCombination": {
+															"type": "string",
 															"enum": [
 																"and",
 																"or",
 																"AND",
 																"OR"
-															],
-															"type": "string"
+															]
 														},
 														"filters": {
+															"type": "array",
 															"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/live-tail.requestBody.content.application/json.schema.properties.filters.items.allOf.0]",
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"kind": {
+															"type": "string",
 															"enum": [
 																"group"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -57,6 +63,7 @@
 												},
 												{
 													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -64,13 +71,14 @@
 														},
 														"kind": {
 															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"operation": {
 															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"type": "string",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -102,19 +110,19 @@
 																"NOT_IN",
 																"STARTS_WITH",
 																"ENDS_WITH"
-															],
-															"type": "string"
+															]
 														},
 														"type": {
 															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+															"type": "string",
 															"enum": [
 																"string",
 																"number",
 																"boolean"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 															"anyOf": [
 																{
 																	"type": "string"
@@ -125,20 +133,16 @@
 																{
 																	"type": "boolean"
 																}
-															],
-															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+															]
 														}
 													},
 													"required": [
 														"key",
 														"operation",
 														"type"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"description": "Supports nested groups via kind: 'group'.",
-											"type": "object"
+											]
 										},
 										{
 											"anyOf": [
@@ -147,39 +151,42 @@
 													"properties": {
 														"filterCombination": {
 															"description": "Logical operator for combining child filters: 'and' (all must match) or 'or' (any must match).",
+															"type": "string",
 															"enum": [
 																"and",
 																"or",
 																"AND",
 																"OR"
-															],
-															"type": "string"
+															]
 														},
 														"filters": {
 															"description": "Child filter nodes. Each can be a leaf filter or another nested group.",
+															"type": "array",
 															"items": {
+																"description": "Supports nested groups via kind: 'group'.",
+																"type": "object",
 																"anyOf": [
 																	{
 																		"properties": {
 																			"filterCombination": {
+																				"type": "string",
 																				"enum": [
 																					"and",
 																					"or",
 																					"AND",
 																					"OR"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"filters": {
+																				"type": "array",
 																				"items": "[Circular ~.POST /accounts/{account_id}/workers/observability/telemetry/live-tail.requestBody.content.application/json.schema.properties.filters.items.allOf.1.anyOf.0.properties.filters.items]",
-																				"minItems": 1,
-																				"type": "array"
+																				"minItems": 1
 																			},
 																			"kind": {
+																				"type": "string",
 																				"enum": [
 																					"group"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -191,6 +198,7 @@
 																	},
 																	{
 																		"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+																		"type": "object",
 																		"properties": {
 																			"key": {
 																				"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -198,13 +206,14 @@
 																			},
 																			"kind": {
 																				"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+																				"type": "string",
 																				"enum": [
 																					"filter"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"operation": {
 																				"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+																				"type": "string",
 																				"enum": [
 																					"includes",
 																					"not_includes",
@@ -236,19 +245,19 @@
 																					"NOT_IN",
 																					"STARTS_WITH",
 																					"ENDS_WITH"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"type": {
 																				"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+																				"type": "string",
 																				"enum": [
 																					"string",
 																					"number",
 																					"boolean"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"value": {
+																				"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 																				"anyOf": [
 																					{
 																						"type": "string"
@@ -259,30 +268,25 @@
 																					{
 																						"type": "boolean"
 																					}
-																				],
-																				"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+																				]
 																			}
 																		},
 																		"required": [
 																			"key",
 																			"operation",
 																			"type"
-																		],
-																		"type": "object"
+																		]
 																	}
-																],
-																"description": "Supports nested groups via kind: 'group'.",
-																"type": "object"
+																]
 															},
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"kind": {
 															"description": "Discriminator indicating this is a nested filter group.",
+															"type": "string",
 															"enum": [
 																"group"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -294,6 +298,7 @@
 												},
 												{
 													"description": "A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters.",
+													"type": "object",
 													"properties": {
 														"key": {
 															"description": "Filter field name. Use verified keys from previous query results or the keys endpoint. Common keys include $metadata.service, $metadata.origin, $metadata.trigger, $metadata.message, and $metadata.error.",
@@ -301,13 +306,14 @@
 														},
 														"kind": {
 															"description": "Discriminator for leaf filter nodes. Always 'filter' when present; may be omitted.",
+															"type": "string",
 															"enum": [
 																"filter"
-															],
-															"type": "string"
+															]
 														},
 														"operation": {
 															"description": "Comparison operator. String operators: includes, not_includes, starts_with, ends_with, regex. Existence: exists, is_null. Set membership: in, not_in (comma-separated values). Numeric: eq, neq, gt, gte, lt, lte.",
+															"type": "string",
 															"enum": [
 																"includes",
 																"not_includes",
@@ -339,19 +345,19 @@
 																"NOT_IN",
 																"STARTS_WITH",
 																"ENDS_WITH"
-															],
-															"type": "string"
+															]
 														},
 														"type": {
 															"description": "Data type of the filter field. Must match the actual type of the key being filtered.",
+															"type": "string",
 															"enum": [
 																"string",
 																"number",
 																"boolean"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
+															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds).",
 															"anyOf": [
 																{
 																	"type": "string"
@@ -362,42 +368,40 @@
 																{
 																	"type": "boolean"
 																}
-															],
-															"description": "Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive. Regex uses RE2 syntax (no lookaheads/lookbehinds)."
+															]
 														}
 													},
 													"required": [
 														"key",
 														"operation",
 														"type"
-													],
-													"type": "object"
+													]
 												}
 											],
 											"description": "Supports nested groups via kind: 'group'. Maximum nesting depth is 4."
 										}
 									]
 								},
-								"type": "array"
+								"default": []
 							},
 							"scriptId": {
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "Create websocket server for live tail.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -408,44 +412,43 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"wsUrl": {
 											"description": "WebSocket URL clients connect to in order to stream live tail events.",
-											"format": "uri",
-											"type": "string"
+											"type": "string",
+											"format": "uri"
 										}
 									},
 									"required": [
 										"wsUrl"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -453,39 +456,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -496,53 +500,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"403": {
+				"description": "Forbidden",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Forbidden"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -553,53 +557,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -610,29 +614,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "Prepare live tail",
 		"tags": [
 			"Live Tail"
 		],
@@ -641,31 +641,35 @@
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat": {
-		"description": "Notify live tail that user is still eligible to receive live events.",
 		"operationId": "telemetry.live-tail.heartbeat.get",
+		"summary": "Live tail heartbeat",
+		"description": "Notify live tail that user is still eligible to receive live events.",
 		"requestBody": {
+			"description": "Keep your live tail connection alive.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"scriptId": {
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "Keep your live tail connection alive.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -676,34 +680,33 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
+												"type": "string",
 												"enum": [
 													"Successful request"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -711,39 +714,40 @@
 								"success",
 								"errors",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Unauthorized"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -754,53 +758,53 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"500": {
+				"description": "Internal error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"detail": {
 												"type": "string"
 											},
 											"message": {
+												"type": "string",
 												"enum": [
 													"Internal error"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -811,29 +815,25 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"errors",
 								"success",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal error"
+				}
 			}
 		},
-		"summary": "Live tail heartbeat",
 		"tags": [
 			"Live Tail"
 		],

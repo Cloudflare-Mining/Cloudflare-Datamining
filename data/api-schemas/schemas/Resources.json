@@ -1,11 +1,12 @@
 {
 	"GET /accounts/{account_id}/magic/cloud/resources": {
-		"description": "List resources in the Resource Catalog (Closed Beta).",
 		"operationId": "resources-catalog-list",
+		"summary": "List Resources",
+		"description": "List resources in the Resource Catalog (Closed Beta).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -13,17 +14,19 @@
 				}
 			},
 			{
-				"in": "query",
 				"name": "provider_id",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "resource_type",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
+						"type": "string",
 						"enum": [
 							"aws_customer_gateway",
 							"aws_egress_only_internet_gateway",
@@ -83,96 +86,94 @@
 							"cloudflare_static_route",
 							"cloudflare_ipsec_tunnel"
 						],
-						"type": "string",
 						"x-auditable": true
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "resource_id",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
-						"format": "uuid",
 						"type": "string",
+						"format": "uuid",
 						"x-auditable": true
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "resource_group",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "managed",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "One of [\"id\", \"resource_type\", \"region\"].",
-				"in": "query",
 				"name": "order_by",
+				"in": "query",
+				"description": "One of [\"id\", \"resource_type\", \"region\"].",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "desc",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"minimum": 1,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"minimum": 1,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "cloudflare",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "v2",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
@@ -180,18 +181,25 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"messages": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
+																"type": "integer",
 																"enum": [
 																	1001,
 																	1002,
@@ -349,7 +357,6 @@
 																	103007,
 																	103008
 																],
-																"type": "integer",
 																"x-auditable": true
 															},
 															"documentation_url": {
@@ -359,6 +366,7 @@
 																"type": "string"
 															},
 															"meta": {
+																"type": "object",
 																"properties": {
 																	"l10n_key": {
 																		"type": "string",
@@ -374,10 +382,10 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"parameter": {
 																		"type": "string",
@@ -391,44 +399,42 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "The number of items in the current result set.",
-															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"example": 1
 														},
 														"page": {
 															"description": "The current page (starts from zero).",
-															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"example": 1
 														},
 														"per_page": {
 															"description": "The maximum number of items per page.",
-															"example": 20,
-															"type": "integer"
+															"type": "integer",
+															"example": 20
 														},
 														"total_count": {
 															"description": "The total number of items in the entire result set.",
-															"example": 2000,
-															"type": "integer"
+															"type": "integer",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 200,
-															"type": "integer"
+															"type": "integer",
+															"example": 200
 														}
 													},
 													"required": [
@@ -436,8 +442,7 @@
 														"per_page",
 														"count",
 														"total_count"
-													],
-													"type": "object"
+													]
 												},
 												"success": {
 													"type": "boolean"
@@ -448,15 +453,17 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"errors": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
+																"type": "integer",
 																"enum": [
 																	1001,
 																	1002,
@@ -614,7 +621,6 @@
 																	103007,
 																	103008
 																],
-																"type": "integer",
 																"x-auditable": true
 															},
 															"documentation_url": {
@@ -624,6 +630,7 @@
 																"type": "string"
 															},
 															"meta": {
+																"type": "object",
 																"properties": {
 																	"l10n_key": {
 																		"type": "string",
@@ -639,10 +646,10 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"parameter": {
 																		"type": "string",
@@ -656,56 +663,54 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
+														]
 													},
-													"maxLength": 0,
-													"type": "array"
+													"maxLength": 0
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"account_id": {
 														"type": "string",
 														"x-auditable": true
 													},
 													"cloud_type": {
+														"type": "string",
 														"enum": [
 															"AWS",
 															"AZURE",
 															"GOOGLE",
 															"CLOUDFLARE"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"config": {
-														"additionalProperties": true,
-														"type": "object"
+														"type": "object",
+														"additionalProperties": true
 													},
 													"deployment_provider": {
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
 														"x-auditable": true
 													},
 													"id": {
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
 														"x-auditable": true
 													},
 													"managed": {
@@ -713,18 +718,20 @@
 														"x-auditable": true
 													},
 													"managed_by": {
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"client_type": {
+																	"type": "string",
 																	"enum": [
 																		"MAGIC_WAN_CLOUD_ONRAMP"
 																	],
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"id": {
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
 																	"x-auditable": true
 																},
 																"name": {
@@ -736,27 +743,25 @@
 																"client_type",
 																"name",
 																"id"
-															],
-															"type": "object"
-														},
-														"type": "array"
+															]
+														}
 													},
 													"monthly_cost_estimate": {
+														"type": "object",
 														"properties": {
 															"currency": {
 																"type": "string",
 																"x-auditable": true
 															},
 															"monthly_cost": {
-																"format": "double",
-																"type": "number"
+																"type": "number",
+																"format": "double"
 															}
 														},
 														"required": [
 															"monthly_cost",
 															"currency"
-														],
-														"type": "object"
+														]
 													},
 													"name": {
 														"type": "string"
@@ -765,7 +770,9 @@
 														"type": "string"
 													},
 													"observations": {
+														"type": "object",
 														"additionalProperties": {
+															"type": "object",
 															"properties": {
 																"first_observed_at": {
 																	"type": "string",
@@ -776,13 +783,13 @@
 																	"x-auditable": true
 																},
 																"provider_id": {
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
 																	"x-auditable": true
 																},
 																"resource_id": {
-																	"format": "uuid",
 																	"type": "string",
+																	"format": "uuid",
 																	"x-auditable": true
 																}
 															},
@@ -791,24 +798,22 @@
 																"resource_id",
 																"first_observed_at",
 																"last_observed_at"
-															],
-															"type": "object"
-														},
-														"type": "object"
+															]
+														}
 													},
 													"provider_ids": {
+														"type": "array",
 														"items": {
-															"format": "uuid",
 															"type": "string",
+															"format": "uuid",
 															"x-auditable": true
-														},
-														"type": "array"
+														}
 													},
 													"provider_names_by_id": {
+														"type": "object",
 														"additionalProperties": {
 															"type": "string"
-														},
-														"type": "object"
+														}
 													},
 													"region": {
 														"type": "string",
@@ -819,6 +824,7 @@
 														"x-auditable": true
 													},
 													"resource_type": {
+														"type": "string",
 														"enum": [
 															"aws_customer_gateway",
 															"aws_egress_only_internet_gateway",
@@ -878,17 +884,20 @@
 															"cloudflare_static_route",
 															"cloudflare_ipsec_tunnel"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"sections": {
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"help_text": {
 																	"type": "string"
 																},
 																"hidden_items": {
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"helpText": {
 																				"type": "string"
@@ -897,11 +906,13 @@
 																				"type": "string"
 																			},
 																			"value": {
+																				"type": "object",
 																				"discriminator": {
 																					"propertyName": "item_type"
 																				},
 																				"oneOf": [
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
@@ -913,10 +924,10 @@
 																						"required": [
 																							"item_type",
 																							"string"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
@@ -928,15 +939,16 @@
 																						"required": [
 																							"item_type",
 																							"yaml"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
 																							},
 																							"yaml_diff": {
+																								"type": "object",
 																								"properties": {
 																									"diff": {
 																										"type": "string"
@@ -960,46 +972,47 @@
 																									"right_yaml",
 																									"right_description",
 																									"diff"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
 																							"item_type",
 																							"yaml_diff"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"resource_preview": {
+																								"type": "object",
 																								"properties": {
 																									"cloud_type": {
+																										"type": "string",
 																										"enum": [
 																											"AWS",
 																											"AZURE",
 																											"GOOGLE",
 																											"CLOUDFLARE"
 																										],
-																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"detail": {
 																										"type": "string"
 																									},
 																									"id": {
-																										"format": "uuid",
 																										"type": "string",
+																										"format": "uuid",
 																										"x-auditable": true
 																									},
 																									"name": {
 																										"type": "string"
 																									},
 																									"resource_type": {
+																										"type": "string",
 																										"enum": [
 																											"aws_customer_gateway",
 																											"aws_egress_only_internet_gateway",
@@ -1059,7 +1072,6 @@
 																											"cloudflare_static_route",
 																											"cloudflare_ipsec_tunnel"
 																										],
-																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"title": {
@@ -1073,28 +1085,29 @@
 																									"name",
 																									"title",
 																									"detail"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
 																							"item_type",
 																							"resource_preview"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
 																							},
 																							"list": {
+																								"type": "array",
 																								"items": {
 																									"discriminator": {
 																										"propertyName": "item_type"
 																									},
 																									"oneOf": [
 																										{
+																											"type": "object",
 																											"properties": {
 																												"item_type": {
 																													"type": "string"
@@ -1106,39 +1119,41 @@
 																											"required": [
 																												"item_type",
 																												"string"
-																											],
-																											"type": "object"
+																											]
 																										},
 																										{
+																											"type": "object",
 																											"properties": {
 																												"item_type": {
 																													"type": "string",
 																													"x-auditable": true
 																												},
 																												"resource_preview": {
+																													"type": "object",
 																													"properties": {
 																														"cloud_type": {
+																															"type": "string",
 																															"enum": [
 																																"AWS",
 																																"AZURE",
 																																"GOOGLE",
 																																"CLOUDFLARE"
 																															],
-																															"type": "string",
 																															"x-auditable": true
 																														},
 																														"detail": {
 																															"type": "string"
 																														},
 																														"id": {
-																															"format": "uuid",
 																															"type": "string",
+																															"format": "uuid",
 																															"x-auditable": true
 																														},
 																														"name": {
 																															"type": "string"
 																														},
 																														"resource_type": {
+																															"type": "string",
 																															"enum": [
 																																"aws_customer_gateway",
 																																"aws_egress_only_internet_gateway",
@@ -1198,7 +1213,6 @@
 																																"cloudflare_static_route",
 																																"cloudflare_ipsec_tunnel"
 																															],
-																															"type": "string",
 																															"x-auditable": true
 																														},
 																														"title": {
@@ -1212,41 +1226,36 @@
 																														"name",
 																														"title",
 																														"detail"
-																													],
-																													"type": "object"
+																													]
 																												}
 																											},
 																											"required": [
 																												"item_type",
 																												"resource_preview"
-																											],
-																											"type": "object"
+																											]
 																										}
 																									],
 																									"type": "object"
-																								},
-																								"type": "array"
+																								}
 																							}
 																						},
 																						"required": [
 																							"item_type",
 																							"list"
-																						],
-																						"type": "object"
+																						]
 																					}
-																				],
-																				"type": "object"
+																				]
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																},
 																"name": {
 																	"type": "string"
 																},
 																"visible_items": {
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"helpText": {
 																				"type": "string"
@@ -1255,11 +1264,13 @@
 																				"type": "string"
 																			},
 																			"value": {
+																				"type": "object",
 																				"discriminator": {
 																					"propertyName": "item_type"
 																				},
 																				"oneOf": [
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
@@ -1271,10 +1282,10 @@
 																						"required": [
 																							"item_type",
 																							"string"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
@@ -1286,15 +1297,16 @@
 																						"required": [
 																							"item_type",
 																							"yaml"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
 																							},
 																							"yaml_diff": {
+																								"type": "object",
 																								"properties": {
 																									"diff": {
 																										"type": "string"
@@ -1318,46 +1330,47 @@
 																									"right_yaml",
 																									"right_description",
 																									"diff"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
 																							"item_type",
 																							"yaml_diff"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"resource_preview": {
+																								"type": "object",
 																								"properties": {
 																									"cloud_type": {
+																										"type": "string",
 																										"enum": [
 																											"AWS",
 																											"AZURE",
 																											"GOOGLE",
 																											"CLOUDFLARE"
 																										],
-																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"detail": {
 																										"type": "string"
 																									},
 																									"id": {
-																										"format": "uuid",
 																										"type": "string",
+																										"format": "uuid",
 																										"x-auditable": true
 																									},
 																									"name": {
 																										"type": "string"
 																									},
 																									"resource_type": {
+																										"type": "string",
 																										"enum": [
 																											"aws_customer_gateway",
 																											"aws_egress_only_internet_gateway",
@@ -1417,7 +1430,6 @@
 																											"cloudflare_static_route",
 																											"cloudflare_ipsec_tunnel"
 																										],
-																										"type": "string",
 																										"x-auditable": true
 																									},
 																									"title": {
@@ -1431,28 +1443,29 @@
 																									"name",
 																									"title",
 																									"detail"
-																								],
-																								"type": "object"
+																								]
 																							}
 																						},
 																						"required": [
 																							"item_type",
 																							"resource_preview"
-																						],
-																						"type": "object"
+																						]
 																					},
 																					{
+																						"type": "object",
 																						"properties": {
 																							"item_type": {
 																								"type": "string"
 																							},
 																							"list": {
+																								"type": "array",
 																								"items": {
 																									"discriminator": {
 																										"propertyName": "item_type"
 																									},
 																									"oneOf": [
 																										{
+																											"type": "object",
 																											"properties": {
 																												"item_type": {
 																													"type": "string"
@@ -1464,39 +1477,41 @@
 																											"required": [
 																												"item_type",
 																												"string"
-																											],
-																											"type": "object"
+																											]
 																										},
 																										{
+																											"type": "object",
 																											"properties": {
 																												"item_type": {
 																													"type": "string",
 																													"x-auditable": true
 																												},
 																												"resource_preview": {
+																													"type": "object",
 																													"properties": {
 																														"cloud_type": {
+																															"type": "string",
 																															"enum": [
 																																"AWS",
 																																"AZURE",
 																																"GOOGLE",
 																																"CLOUDFLARE"
 																															],
-																															"type": "string",
 																															"x-auditable": true
 																														},
 																														"detail": {
 																															"type": "string"
 																														},
 																														"id": {
-																															"format": "uuid",
 																															"type": "string",
+																															"format": "uuid",
 																															"x-auditable": true
 																														},
 																														"name": {
 																															"type": "string"
 																														},
 																														"resource_type": {
+																															"type": "string",
 																															"enum": [
 																																"aws_customer_gateway",
 																																"aws_egress_only_internet_gateway",
@@ -1556,7 +1571,6 @@
 																																"cloudflare_static_route",
 																																"cloudflare_ipsec_tunnel"
 																															],
-																															"type": "string",
 																															"x-auditable": true
 																														},
 																														"title": {
@@ -1570,55 +1584,46 @@
 																														"name",
 																														"title",
 																														"detail"
-																													],
-																													"type": "object"
+																													]
 																												}
 																											},
 																											"required": [
 																												"item_type",
 																												"resource_preview"
-																											],
-																											"type": "object"
+																											]
 																										}
 																									],
 																									"type": "object"
-																								},
-																								"type": "array"
+																								}
 																							}
 																						},
 																						"required": [
 																							"item_type",
 																							"list"
-																						],
-																						"type": "object"
+																						]
 																					}
-																				],
-																				"type": "object"
+																				]
 																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																		}
+																	}
 																}
 															},
 															"required": [
 																"name",
 																"visible_items",
 																"hidden_items"
-															],
-															"type": "object"
-														},
-														"type": "array"
+															]
+														}
 													},
 													"state": {
-														"additionalProperties": true,
-														"type": "object"
+														"type": "object",
+														"additionalProperties": true
 													},
 													"tags": {
+														"type": "object",
 														"additionalProperties": {
 															"type": "string"
-														},
-														"type": "object"
+														}
 													},
 													"updated_at": {
 														"type": "string"
@@ -1648,37 +1653,36 @@
 													"deployment_provider",
 													"sections",
 													"monthly_cost_estimate"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "The number of items in the current result set.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"page": {
 													"description": "The current page (starts from zero).",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
 													"description": "The maximum number of items per page.",
-													"example": 20,
-													"type": "integer"
+													"type": "integer",
+													"example": 20
 												},
 												"total_count": {
 													"description": "The total number of items in the entire result set.",
-													"example": 2000,
-													"type": "integer"
+													"type": "integer",
+													"example": 2000
 												},
 												"total_pages": {
 													"description": "The number of total pages in the entire result set.",
-													"example": 200,
-													"type": "integer"
+													"type": "integer",
+													"example": 200
 												}
 											},
 											"required": [
@@ -1686,30 +1690,33 @@
 												"per_page",
 												"count",
 												"total_count"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -1867,7 +1874,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -1877,6 +1883,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -1892,10 +1899,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -1909,17 +1916,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -1931,15 +1935,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -2097,7 +2103,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -2107,6 +2112,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -2122,10 +2128,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -2139,47 +2145,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"401": {
+				"description": "Invalid Credentials.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -2337,7 +2344,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -2347,6 +2353,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -2362,10 +2369,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -2379,17 +2386,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -2401,15 +2405,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -2567,7 +2573,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -2577,6 +2582,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -2592,10 +2598,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -2609,47 +2615,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid Credentials."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -2807,7 +2814,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -2817,6 +2823,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -2832,10 +2839,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -2849,17 +2856,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -2871,15 +2875,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -3037,7 +3043,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -3047,6 +3052,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -3062,10 +3068,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -3079,47 +3085,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -3277,7 +3284,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -3287,6 +3293,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -3302,10 +3309,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -3319,17 +3326,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -3341,15 +3345,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -3507,7 +3513,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -3517,6 +3522,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -3532,10 +3538,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -3549,47 +3555,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found."
+				}
 			},
 			"500": {
+				"description": "Internal Server Error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -3747,7 +3754,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -3757,6 +3763,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -3772,10 +3779,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -3789,17 +3796,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -3811,15 +3815,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -3977,7 +3983,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -3987,6 +3992,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -4002,10 +4008,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -4019,35 +4025,30 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal Server Error."
+				}
 			}
 		},
 		"security": [
@@ -4057,7 +4058,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Resources",
 		"tags": [
 			"Resources"
 		],
@@ -4067,31 +4067,32 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/{resource_id}": {
-		"description": "Read an resource from the Resource Catalog (Closed Beta).",
 		"operationId": "resources-catalog-read",
+		"summary": "Read Resource",
+		"description": "Read an resource from the Resource Catalog (Closed Beta).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"x-auditable": true
-				}
-			},
-			{
 				"in": "path",
-				"name": "resource_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
 					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
+				"name": "resource_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid",
+					"x-auditable": true
+				}
+			},
+			{
 				"name": "v2",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
@@ -4099,18 +4100,25 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"messages": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
+																"type": "integer",
 																"enum": [
 																	1001,
 																	1002,
@@ -4268,7 +4276,6 @@
 																	103007,
 																	103008
 																],
-																"type": "integer",
 																"x-auditable": true
 															},
 															"documentation_url": {
@@ -4278,6 +4285,7 @@
 																"type": "string"
 															},
 															"meta": {
+																"type": "object",
 																"properties": {
 																	"l10n_key": {
 																		"type": "string",
@@ -4293,10 +4301,10 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"parameter": {
 																		"type": "string",
@@ -4310,17 +4318,14 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"success": {
 													"type": "boolean",
@@ -4332,15 +4337,17 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"errors": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
+																"type": "integer",
 																"enum": [
 																	1001,
 																	1002,
@@ -4498,7 +4505,6 @@
 																	103007,
 																	103008
 																],
-																"type": "integer",
 																"x-auditable": true
 															},
 															"documentation_url": {
@@ -4508,6 +4514,7 @@
 																"type": "string"
 															},
 															"meta": {
+																"type": "object",
 																"properties": {
 																	"l10n_key": {
 																		"type": "string",
@@ -4523,10 +4530,10 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"parameter": {
 																		"type": "string",
@@ -4540,55 +4547,52 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
+														]
 													},
-													"maxLength": 0,
-													"type": "array"
+													"maxLength": 0
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"type": "string",
 													"x-auditable": true
 												},
 												"cloud_type": {
+													"type": "string",
 													"enum": [
 														"AWS",
 														"AZURE",
 														"GOOGLE",
 														"CLOUDFLARE"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"config": {
-													"additionalProperties": true,
-													"type": "object"
+													"type": "object",
+													"additionalProperties": true
 												},
 												"deployment_provider": {
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"id": {
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"managed": {
@@ -4596,18 +4600,20 @@
 													"x-auditable": true
 												},
 												"managed_by": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"client_type": {
+																"type": "string",
 																"enum": [
 																	"MAGIC_WAN_CLOUD_ONRAMP"
 																],
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
-																"format": "uuid",
 																"type": "string",
+																"format": "uuid",
 																"x-auditable": true
 															},
 															"name": {
@@ -4619,27 +4625,25 @@
 															"client_type",
 															"name",
 															"id"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"monthly_cost_estimate": {
+													"type": "object",
 													"properties": {
 														"currency": {
 															"type": "string",
 															"x-auditable": true
 														},
 														"monthly_cost": {
-															"format": "double",
-															"type": "number"
+															"type": "number",
+															"format": "double"
 														}
 													},
 													"required": [
 														"monthly_cost",
 														"currency"
-													],
-													"type": "object"
+													]
 												},
 												"name": {
 													"type": "string"
@@ -4648,7 +4652,9 @@
 													"type": "string"
 												},
 												"observations": {
+													"type": "object",
 													"additionalProperties": {
+														"type": "object",
 														"properties": {
 															"first_observed_at": {
 																"type": "string",
@@ -4659,13 +4665,13 @@
 																"x-auditable": true
 															},
 															"provider_id": {
-																"format": "uuid",
 																"type": "string",
+																"format": "uuid",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"format": "uuid",
 																"type": "string",
+																"format": "uuid",
 																"x-auditable": true
 															}
 														},
@@ -4674,24 +4680,22 @@
 															"resource_id",
 															"first_observed_at",
 															"last_observed_at"
-														],
-														"type": "object"
-													},
-													"type": "object"
+														]
+													}
 												},
 												"provider_ids": {
+													"type": "array",
 													"items": {
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"provider_names_by_id": {
+													"type": "object",
 													"additionalProperties": {
 														"type": "string"
-													},
-													"type": "object"
+													}
 												},
 												"region": {
 													"type": "string",
@@ -4702,6 +4706,7 @@
 													"x-auditable": true
 												},
 												"resource_type": {
+													"type": "string",
 													"enum": [
 														"aws_customer_gateway",
 														"aws_egress_only_internet_gateway",
@@ -4761,17 +4766,20 @@
 														"cloudflare_static_route",
 														"cloudflare_ipsec_tunnel"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"sections": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"help_text": {
 																"type": "string"
 															},
 															"hidden_items": {
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"helpText": {
 																			"type": "string"
@@ -4780,11 +4788,13 @@
 																			"type": "string"
 																		},
 																		"value": {
+																			"type": "object",
 																			"discriminator": {
 																				"propertyName": "item_type"
 																			},
 																			"oneOf": [
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
@@ -4796,10 +4806,10 @@
 																					"required": [
 																						"item_type",
 																						"string"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
@@ -4811,15 +4821,16 @@
 																					"required": [
 																						"item_type",
 																						"yaml"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
 																						},
 																						"yaml_diff": {
+																							"type": "object",
 																							"properties": {
 																								"diff": {
 																									"type": "string"
@@ -4843,46 +4854,47 @@
 																								"right_yaml",
 																								"right_description",
 																								"diff"
-																							],
-																							"type": "object"
+																							]
 																						}
 																					},
 																					"required": [
 																						"item_type",
 																						"yaml_diff"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"resource_preview": {
+																							"type": "object",
 																							"properties": {
 																								"cloud_type": {
+																									"type": "string",
 																									"enum": [
 																										"AWS",
 																										"AZURE",
 																										"GOOGLE",
 																										"CLOUDFLARE"
 																									],
-																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"detail": {
 																									"type": "string"
 																								},
 																								"id": {
-																									"format": "uuid",
 																									"type": "string",
+																									"format": "uuid",
 																									"x-auditable": true
 																								},
 																								"name": {
 																									"type": "string"
 																								},
 																								"resource_type": {
+																									"type": "string",
 																									"enum": [
 																										"aws_customer_gateway",
 																										"aws_egress_only_internet_gateway",
@@ -4942,7 +4954,6 @@
 																										"cloudflare_static_route",
 																										"cloudflare_ipsec_tunnel"
 																									],
-																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"title": {
@@ -4956,28 +4967,29 @@
 																								"name",
 																								"title",
 																								"detail"
-																							],
-																							"type": "object"
+																							]
 																						}
 																					},
 																					"required": [
 																						"item_type",
 																						"resource_preview"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
 																						},
 																						"list": {
+																							"type": "array",
 																							"items": {
 																								"discriminator": {
 																									"propertyName": "item_type"
 																								},
 																								"oneOf": [
 																									{
+																										"type": "object",
 																										"properties": {
 																											"item_type": {
 																												"type": "string"
@@ -4989,39 +5001,41 @@
 																										"required": [
 																											"item_type",
 																											"string"
-																										],
-																										"type": "object"
+																										]
 																									},
 																									{
+																										"type": "object",
 																										"properties": {
 																											"item_type": {
 																												"type": "string",
 																												"x-auditable": true
 																											},
 																											"resource_preview": {
+																												"type": "object",
 																												"properties": {
 																													"cloud_type": {
+																														"type": "string",
 																														"enum": [
 																															"AWS",
 																															"AZURE",
 																															"GOOGLE",
 																															"CLOUDFLARE"
 																														],
-																														"type": "string",
 																														"x-auditable": true
 																													},
 																													"detail": {
 																														"type": "string"
 																													},
 																													"id": {
-																														"format": "uuid",
 																														"type": "string",
+																														"format": "uuid",
 																														"x-auditable": true
 																													},
 																													"name": {
 																														"type": "string"
 																													},
 																													"resource_type": {
+																														"type": "string",
 																														"enum": [
 																															"aws_customer_gateway",
 																															"aws_egress_only_internet_gateway",
@@ -5081,7 +5095,6 @@
 																															"cloudflare_static_route",
 																															"cloudflare_ipsec_tunnel"
 																														],
-																														"type": "string",
 																														"x-auditable": true
 																													},
 																													"title": {
@@ -5095,41 +5108,36 @@
 																													"name",
 																													"title",
 																													"detail"
-																												],
-																												"type": "object"
+																												]
 																											}
 																										},
 																										"required": [
 																											"item_type",
 																											"resource_preview"
-																										],
-																										"type": "object"
+																										]
 																									}
 																								],
 																								"type": "object"
-																							},
-																							"type": "array"
+																							}
 																						}
 																					},
 																					"required": [
 																						"item_type",
 																						"list"
-																					],
-																					"type": "object"
+																					]
 																				}
-																			],
-																			"type": "object"
+																			]
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															},
 															"name": {
 																"type": "string"
 															},
 															"visible_items": {
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"helpText": {
 																			"type": "string"
@@ -5138,11 +5146,13 @@
 																			"type": "string"
 																		},
 																		"value": {
+																			"type": "object",
 																			"discriminator": {
 																				"propertyName": "item_type"
 																			},
 																			"oneOf": [
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
@@ -5154,10 +5164,10 @@
 																					"required": [
 																						"item_type",
 																						"string"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
@@ -5169,15 +5179,16 @@
 																					"required": [
 																						"item_type",
 																						"yaml"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
 																						},
 																						"yaml_diff": {
+																							"type": "object",
 																							"properties": {
 																								"diff": {
 																									"type": "string"
@@ -5201,46 +5212,47 @@
 																								"right_yaml",
 																								"right_description",
 																								"diff"
-																							],
-																							"type": "object"
+																							]
 																						}
 																					},
 																					"required": [
 																						"item_type",
 																						"yaml_diff"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"resource_preview": {
+																							"type": "object",
 																							"properties": {
 																								"cloud_type": {
+																									"type": "string",
 																									"enum": [
 																										"AWS",
 																										"AZURE",
 																										"GOOGLE",
 																										"CLOUDFLARE"
 																									],
-																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"detail": {
 																									"type": "string"
 																								},
 																								"id": {
-																									"format": "uuid",
 																									"type": "string",
+																									"format": "uuid",
 																									"x-auditable": true
 																								},
 																								"name": {
 																									"type": "string"
 																								},
 																								"resource_type": {
+																									"type": "string",
 																									"enum": [
 																										"aws_customer_gateway",
 																										"aws_egress_only_internet_gateway",
@@ -5300,7 +5312,6 @@
 																										"cloudflare_static_route",
 																										"cloudflare_ipsec_tunnel"
 																									],
-																									"type": "string",
 																									"x-auditable": true
 																								},
 																								"title": {
@@ -5314,28 +5325,29 @@
 																								"name",
 																								"title",
 																								"detail"
-																							],
-																							"type": "object"
+																							]
 																						}
 																					},
 																					"required": [
 																						"item_type",
 																						"resource_preview"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				{
+																					"type": "object",
 																					"properties": {
 																						"item_type": {
 																							"type": "string"
 																						},
 																						"list": {
+																							"type": "array",
 																							"items": {
 																								"discriminator": {
 																									"propertyName": "item_type"
 																								},
 																								"oneOf": [
 																									{
+																										"type": "object",
 																										"properties": {
 																											"item_type": {
 																												"type": "string"
@@ -5347,39 +5359,41 @@
 																										"required": [
 																											"item_type",
 																											"string"
-																										],
-																										"type": "object"
+																										]
 																									},
 																									{
+																										"type": "object",
 																										"properties": {
 																											"item_type": {
 																												"type": "string",
 																												"x-auditable": true
 																											},
 																											"resource_preview": {
+																												"type": "object",
 																												"properties": {
 																													"cloud_type": {
+																														"type": "string",
 																														"enum": [
 																															"AWS",
 																															"AZURE",
 																															"GOOGLE",
 																															"CLOUDFLARE"
 																														],
-																														"type": "string",
 																														"x-auditable": true
 																													},
 																													"detail": {
 																														"type": "string"
 																													},
 																													"id": {
-																														"format": "uuid",
 																														"type": "string",
+																														"format": "uuid",
 																														"x-auditable": true
 																													},
 																													"name": {
 																														"type": "string"
 																													},
 																													"resource_type": {
+																														"type": "string",
 																														"enum": [
 																															"aws_customer_gateway",
 																															"aws_egress_only_internet_gateway",
@@ -5439,7 +5453,6 @@
 																															"cloudflare_static_route",
 																															"cloudflare_ipsec_tunnel"
 																														],
-																														"type": "string",
 																														"x-auditable": true
 																													},
 																													"title": {
@@ -5453,55 +5466,46 @@
 																													"name",
 																													"title",
 																													"detail"
-																												],
-																												"type": "object"
+																												]
 																											}
 																										},
 																										"required": [
 																											"item_type",
 																											"resource_preview"
-																										],
-																										"type": "object"
+																										]
 																									}
 																								],
 																								"type": "object"
-																							},
-																							"type": "array"
+																							}
 																						}
 																					},
 																					"required": [
 																						"item_type",
 																						"list"
-																					],
-																					"type": "object"
+																					]
 																				}
-																			],
-																			"type": "object"
+																			]
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															}
 														},
 														"required": [
 															"name",
 															"visible_items",
 															"hidden_items"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"state": {
-													"additionalProperties": true,
-													"type": "object"
+													"type": "object",
+													"additionalProperties": true
 												},
 												"tags": {
+													"type": "object",
 													"additionalProperties": {
 														"type": "string"
-													},
-													"type": "object"
+													}
 												},
 												"updated_at": {
 													"type": "string"
@@ -5531,30 +5535,33 @@
 												"deployment_provider",
 												"sections",
 												"monthly_cost_estimate"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -5712,7 +5719,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -5722,6 +5728,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -5737,10 +5744,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -5754,17 +5761,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -5776,15 +5780,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -5942,7 +5948,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -5952,6 +5957,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -5967,10 +5973,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -5984,47 +5990,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"401": {
+				"description": "Invalid Credentials.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -6182,7 +6189,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -6192,6 +6198,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -6207,10 +6214,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -6224,17 +6231,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -6246,15 +6250,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -6412,7 +6418,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -6422,6 +6427,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -6437,10 +6443,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -6454,47 +6460,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid Credentials."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -6652,7 +6659,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -6662,6 +6668,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -6677,10 +6684,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -6694,17 +6701,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -6716,15 +6720,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -6882,7 +6888,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -6892,6 +6897,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -6907,10 +6913,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -6924,47 +6930,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -7122,7 +7129,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -7132,6 +7138,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -7147,10 +7154,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -7164,17 +7171,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -7186,15 +7190,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -7352,7 +7358,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -7362,6 +7367,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -7377,10 +7383,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -7394,47 +7400,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found."
+				}
 			},
 			"500": {
+				"description": "Internal Server Error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -7592,7 +7599,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -7602,6 +7608,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -7617,10 +7624,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -7634,17 +7641,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -7656,15 +7660,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -7822,7 +7828,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -7832,6 +7837,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -7847,10 +7853,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -7864,35 +7870,30 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal Server Error."
+				}
 			}
 		},
 		"security": [
@@ -7902,7 +7903,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read Resource",
 		"tags": [
 			"Resources"
 		],
@@ -7912,12 +7912,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/magic/cloud/resources/export": {
-		"description": "Export resources in the Resource Catalog as a JSON file (Closed Beta).",
 		"operationId": "resources-catalog-export",
+		"summary": "Export Resources",
+		"description": "Export resources in the Resource Catalog as a JSON file (Closed Beta).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -7925,17 +7926,19 @@
 				}
 			},
 			{
-				"in": "query",
 				"name": "provider_id",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "resource_type",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
+						"type": "string",
 						"enum": [
 							"aws_customer_gateway",
 							"aws_egress_only_internet_gateway",
@@ -7995,66 +7998,64 @@
 							"cloudflare_static_route",
 							"cloudflare_ipsec_tunnel"
 						],
-						"type": "string",
 						"x-auditable": true
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "resource_id",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
-						"format": "uuid",
 						"type": "string",
+						"format": "uuid",
 						"x-auditable": true
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "resource_group",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "One of [\"id\", \"resource_type\", \"region\"].",
-				"in": "query",
 				"name": "order_by",
+				"in": "query",
+				"description": "One of [\"id\", \"resource_type\", \"region\"].",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "desc",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "v2",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
@@ -8062,35 +8063,41 @@
 		],
 		"responses": {
 			"200": {
-				"content": {
-					"application/octet-stream": {
-						"schema": {
-							"format": "binary",
-							"type": "string"
-						}
-					}
-				},
 				"description": "Exported file.",
 				"headers": {
 					"Content-Disposition": {
 						"schema": {
-							"example": "attachment; filename=\"exported_resources.zip\"",
-							"type": "string"
+							"type": "string",
+							"example": "attachment; filename=\"exported_resources.zip\""
+						}
+					}
+				},
+				"content": {
+					"application/octet-stream": {
+						"schema": {
+							"type": "string",
+							"format": "binary"
 						}
 					}
 				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -8248,7 +8255,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -8258,6 +8264,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -8273,10 +8280,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -8290,17 +8297,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -8312,15 +8316,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -8478,7 +8484,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -8488,6 +8493,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -8503,10 +8509,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -8520,47 +8526,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"401": {
+				"description": "Invalid Credentials.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -8718,7 +8725,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -8728,6 +8734,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -8743,10 +8750,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -8760,17 +8767,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -8782,15 +8786,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -8948,7 +8954,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -8958,6 +8963,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -8973,10 +8979,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -8990,47 +8996,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid Credentials."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -9188,7 +9195,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -9198,6 +9204,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -9213,10 +9220,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -9230,17 +9237,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -9252,15 +9256,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -9418,7 +9424,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -9428,6 +9433,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -9443,10 +9449,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -9460,47 +9466,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not Found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -9658,7 +9665,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -9668,6 +9674,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -9683,10 +9690,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -9700,17 +9707,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -9722,15 +9726,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -9888,7 +9894,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -9898,6 +9903,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -9913,10 +9919,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -9930,47 +9936,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found."
+				}
 			},
 			"500": {
+				"description": "Internal Server Error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -10128,7 +10135,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -10138,6 +10144,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -10153,10 +10160,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -10170,17 +10177,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -10192,15 +10196,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -10358,7 +10364,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -10368,6 +10373,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -10383,10 +10389,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -10400,35 +10406,30 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal Server Error."
+				}
 			}
 		},
 		"security": [
@@ -10438,7 +10439,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Export Resources",
 		"tags": [
 			"Resources"
 		],
@@ -10448,12 +10448,13 @@
 		]
 	},
 	"POST /accounts/{account_id}/magic/cloud/resources/policy-preview": {
-		"description": "Preview Rego query result against the latest resource catalog (Closed Beta).",
 		"operationId": "resources-catalog-policy-preview",
+		"summary": "Preview Rego Query",
+		"description": "Preview Rego query result against the latest resource catalog (Closed Beta).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -10462,9 +10463,11 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"policy": {
 								"type": "string"
@@ -10472,27 +10475,32 @@
 						},
 						"required": [
 							"policy"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"messages": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
+																"type": "integer",
 																"enum": [
 																	1001,
 																	1002,
@@ -10650,7 +10658,6 @@
 																	103007,
 																	103008
 																],
-																"type": "integer",
 																"x-auditable": true
 															},
 															"documentation_url": {
@@ -10660,6 +10667,7 @@
 																"type": "string"
 															},
 															"meta": {
+																"type": "object",
 																"properties": {
 																	"l10n_key": {
 																		"type": "string",
@@ -10675,10 +10683,10 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"parameter": {
 																		"type": "string",
@@ -10692,17 +10700,14 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"success": {
 													"type": "boolean",
@@ -10714,15 +10719,17 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"errors": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
+																"type": "integer",
 																"enum": [
 																	1001,
 																	1002,
@@ -10880,7 +10887,6 @@
 																	103007,
 																	103008
 																],
-																"type": "integer",
 																"x-auditable": true
 															},
 															"documentation_url": {
@@ -10890,6 +10896,7 @@
 																"type": "string"
 															},
 															"meta": {
+																"type": "object",
 																"properties": {
 																	"l10n_key": {
 																		"type": "string",
@@ -10905,10 +10912,10 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"parameter": {
 																		"type": "string",
@@ -10922,24 +10929,20 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
+														]
 													},
-													"maxLength": 0,
-													"type": "array"
+													"maxLength": 0
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -10949,24 +10952,28 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -11124,7 +11131,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -11134,6 +11140,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -11149,10 +11156,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -11166,17 +11173,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -11188,15 +11192,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -11354,7 +11360,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -11364,6 +11369,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -11379,10 +11385,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -11396,47 +11402,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			},
 			"401": {
+				"description": "Invalid Credentials.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -11594,7 +11601,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -11604,6 +11610,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -11619,10 +11626,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -11636,17 +11643,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -11658,15 +11662,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -11824,7 +11830,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -11834,6 +11839,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -11849,10 +11855,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -11866,47 +11872,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid Credentials."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -12064,7 +12071,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -12074,6 +12080,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -12089,10 +12096,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -12106,17 +12113,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -12128,15 +12132,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -12294,7 +12300,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -12304,6 +12309,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -12319,10 +12325,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -12336,47 +12342,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"422": {
+				"description": "Unprocessable Entity.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -12534,7 +12541,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -12544,6 +12550,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -12559,10 +12566,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -12576,17 +12583,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -12598,15 +12602,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -12764,7 +12770,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -12774,6 +12779,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -12789,10 +12795,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -12806,47 +12812,48 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unprocessable Entity."
+				}
 			},
 			"500": {
+				"description": "Internal Server Error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -13004,7 +13011,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -13014,6 +13020,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -13029,10 +13036,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -13046,17 +13053,14 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean",
@@ -13068,15 +13072,17 @@
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
+														"type": "integer",
 														"enum": [
 															1001,
 															1002,
@@ -13234,7 +13240,6 @@
 															103007,
 															103008
 														],
-														"type": "integer",
 														"x-auditable": true
 													},
 													"documentation_url": {
@@ -13244,6 +13249,7 @@
 														"type": "string"
 													},
 													"meta": {
+														"type": "object",
 														"properties": {
 															"l10n_key": {
 																"type": "string",
@@ -13259,10 +13265,10 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"parameter": {
 																"type": "string",
@@ -13276,35 +13282,30 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal Server Error."
+				}
 			}
 		},
 		"security": [
@@ -13314,7 +13315,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Preview Rego Query",
 		"tags": [
 			"Resources"
 		]

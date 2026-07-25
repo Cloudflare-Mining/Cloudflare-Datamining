@@ -1,50 +1,53 @@
 {
 	"POST /zones/{zone_id}/api_gateway/expression-template/fallthrough": {
-		"description": "Creates an expression template fallthrough rule for API Shield. Used for configuring default behavior when no other expression templates match.",
 		"operationId": "api-shield-expression-templates-fallthrough",
+		"summary": "Generate fallthrough WAF expression template from a set of API hosts",
+		"description": "Creates an expression template fallthrough rule for API Shield. Used for configuring default behavior when no other expression templates match.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"hosts": {
 								"description": "List of hosts to be targeted in the expression",
-								"example": [
-									"{zone}.domain1.tld",
-									"domain2.tld"
-								],
+								"type": "array",
 								"items": {
 									"type": "string",
 									"x-auditable": true
 								},
-								"type": "array"
+								"example": [
+									"{zone}.domain1.tld",
+									"domain2.tld"
+								]
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"hosts"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Generate fallthrough WAF expression template response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -53,12 +56,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -68,15 +71,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -85,12 +88,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -100,46 +103,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"expression": {
 													"description": "WAF Expression for fallthrough",
-													"example": "(cf.api_gateway.fallthrough_detected)",
 													"type": "string",
+													"example": "(cf.api_gateway.fallthrough_detected)",
 													"x-auditable": true
 												},
 												"title": {
 													"description": "Title for the expression",
-													"example": "Fallthrough Expression for [zone.domain.tld]",
 													"type": "string",
+													"example": "Fallthrough Expression for [zone.domain.tld]",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"title",
 												"expression"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -150,66 +152,30 @@
 							]
 						}
 					}
-				},
-				"description": "Generate fallthrough WAF expression template response"
+				}
 			},
 			"4XX": {
+				"description": "Generate fallthrough WAF expression template failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -218,12 +184,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -233,25 +199,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -259,12 +262,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Generate fallthrough WAF expression template failure"
+				}
 			}
 		},
 		"security": [
@@ -274,7 +275,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Generate fallthrough WAF expression template from a set of API hosts",
 		"tags": [
 			"API Shield WAF Expression Templates"
 		],

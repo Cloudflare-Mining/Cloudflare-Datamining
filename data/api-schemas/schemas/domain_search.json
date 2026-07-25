@@ -1,25 +1,26 @@
 {
 	"DELETE /accounts/{account_id}/brand-protection/queries": {
-		"description": "Return a success message after deleting saved string queries by ID",
 		"operationId": "deleteAccountsAccountIdBrandProtectionQueries",
+		"summary": "Delete saved string queries by ID",
+		"description": "Return a success message after deleting saved string queries by ID",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "id",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "tag",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "scan",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
@@ -30,18 +31,20 @@
 				"description": "No Content"
 			},
 			"422": {
+				"description": "Unprocessable Content",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -51,26 +54,26 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Unprocessable Content"
+				}
 			},
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -80,12 +83,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -93,7 +94,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete saved string queries by ID",
 		"tags": [
 			"domain_search"
 		],
@@ -106,33 +106,34 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/matches": {
-		"description": "Return matches for string queries based on ID",
 		"operationId": "getAccountsAccountIdBrandProtectionMatches",
+		"summary": "Read matches for string queries by ID",
+		"description": "Return matches for string queries based on ID",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "id",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"in": "query",
 				"name": "include_domain_id",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
@@ -140,40 +141,42 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"matches": {
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"total": {
 									"type": "integer"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"422": {
+				"description": "Unprocessable Content",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -183,26 +186,26 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Unprocessable Content"
+				}
 			},
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -212,12 +215,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -225,7 +226,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read matches for string queries by ID",
 		"tags": [
 			"domain_search"
 		],
@@ -239,33 +239,34 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/matches/download": {
-		"description": "Return matches as CSV for string queries based on ID",
 		"operationId": "getAccountsAccountIdBrandProtectionMatchesDownload",
+		"summary": "Download matches for string queries by ID",
+		"description": "Return matches as CSV for string queries based on ID",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "id",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"in": "query",
 				"name": "include_domain_id",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
@@ -273,40 +274,42 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"matches": {
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"total": {
 									"type": "integer"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"422": {
+				"description": "Unprocessable Content",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -316,26 +319,26 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Unprocessable Content"
+				}
 			},
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -345,12 +348,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -358,7 +359,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Download matches for string queries by ID",
 		"tags": [
 			"domain_search"
 		],
@@ -372,22 +372,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/queries": {
-		"description": "Return string queries based on ID",
 		"operationId": "getAccountsAccountIdBrandProtectionQueries",
+		"summary": "Read string queries by ID",
+		"description": "Return string queries based on ID",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -397,12 +400,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -410,7 +411,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read string queries by ID",
 		"tags": [
 			"domain_search"
 		],
@@ -424,22 +424,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/brand-protection/total-queries": {
-		"description": "Return the total number of saved string queries",
 		"operationId": "getAccountsAccountIdBrandProtectionTotalQueries",
+		"summary": "Read the total number of saved string queries",
+		"description": "Return the total number of saved string queries",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -449,12 +452,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -462,7 +463,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Read the total number of saved string queries",
 		"tags": [
 			"domain_search"
 		],
@@ -476,12 +476,15 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/queries": {
-		"description": "Update a saved query's tag, scan setting, or string_matches (pattern). When string_matches is provided, the query parameters and hash are updated. At least one of tag, scan, or string_matches is required.",
 		"operationId": "patchAccountsAccountIdBrandProtectionQueries",
+		"summary": "Update saved string queries by ID",
+		"description": "Update a saved query's tag, scan setting, or string_matches (pattern). When string_matches is provided, the query parameters and hash are updated. At least one of tag, scan, or string_matches is required.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"id": {
 								"description": "The query ID to update (required when updating tag or scan)",
@@ -493,6 +496,7 @@
 							},
 							"string_matches": {
 								"description": "Updated pattern match constraints. When provided, replaces the existing string_matches.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"max_edit_distance": {
@@ -508,34 +512,33 @@
 										"pattern"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"tag": {
 								"description": "Query tag. Required as identifier when updating string_matches.",
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -545,12 +548,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -558,7 +559,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update saved string queries by ID",
 		"tags": [
 			"domain_search"
 		],
@@ -571,45 +571,48 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries": {
-		"description": "Return a success message after creating new saved string queries",
 		"operationId": "postAccountsAccountIdBrandProtectionQueries",
+		"summary": "Create new saved string queries",
+		"description": "Return a success message after creating new saved string queries",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "id",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "tag",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "scan",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"max_time": {
+								"type": "string",
 								"format": "date-time",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"min_time": {
+								"type": "string",
 								"format": "date-time",
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"scan": {
 								"type": "boolean"
@@ -618,30 +621,30 @@
 							"tag": {
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"204": {
 				"description": "No Content"
 			},
 			"422": {
+				"description": "Unprocessable Content",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -651,26 +654,26 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Unprocessable Content"
+				}
 			},
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -680,12 +683,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -693,7 +694,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new saved string queries",
 		"tags": [
 			"domain_search"
 		],
@@ -706,44 +706,47 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/bulk": {
-		"description": "Return a success message after creating new saved string queries in bulk",
 		"operationId": "postAccountsAccountIdBrandProtectionQueriesBulk",
+		"summary": "Create new saved string queries in bulk",
+		"description": "Return a success message after creating new saved string queries in bulk",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"queries": {
+								"type": "array",
 								"items": {
 									"additionalProperties": {},
 									"type": "object"
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"204": {
 				"description": "No Content"
 			},
 			"422": {
+				"description": "Unprocessable Content",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -753,26 +756,26 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Unprocessable Content"
+				}
 			},
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -782,12 +785,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -795,7 +796,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new saved string queries in bulk",
 		"tags": [
 			"domain_search"
 		],
@@ -808,22 +808,25 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/brand-protection/search": {
-		"description": "Return new string queries",
 		"operationId": "postAccountsAccountIdBrandProtectionSearch",
+		"summary": "Create new string queries",
+		"description": "Return new string queries",
 		"responses": {
 			"default": {
+				"description": "Default error response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"code": {
 									"description": "Error code",
 									"type": "integer"
 								},
 								"errors": {
-									"additionalProperties": {},
 									"description": "Errors",
-									"type": "object"
+									"type": "object",
+									"additionalProperties": {}
 								},
 								"message": {
 									"description": "Error message",
@@ -833,12 +836,10 @@
 									"description": "Error name",
 									"type": "string"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Default error response"
+				}
 			}
 		},
 		"security": [
@@ -846,7 +847,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create new string queries",
 		"tags": [
 			"domain_search"
 		],

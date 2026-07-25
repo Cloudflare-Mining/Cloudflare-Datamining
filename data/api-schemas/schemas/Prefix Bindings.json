@@ -1,52 +1,57 @@
 {
 	"DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}": {
-		"description": "Delete a BYOIP prefix binding.\n\nLike creating a binding, this requires **IP Prefixes Write** in addition to **DLS Write**.",
 		"operationId": "publicDeletePrefixBinding",
+		"summary": "Delete a DLS prefix binding",
+		"description": "Delete a BYOIP prefix binding.\n\nLike creating a binding, this requires **IP Prefixes Write** in addition to **DLS Write**.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[0-9a-f]{32}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "binding_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier for the prefix binding.",
-					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-					"type": "string"
+					"type": "string",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Binding deleted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -55,10 +60,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -67,22 +70,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -91,38 +95,39 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"maxLength": 0,
-											"type": "array"
+											"maxLength": 0
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Binding deleted successfully."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -131,10 +136,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -143,22 +146,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -167,15 +171,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -185,27 +187,30 @@
 							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -214,10 +219,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -226,22 +229,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -250,15 +254,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -268,27 +270,30 @@
 							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -297,10 +302,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -309,22 +312,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -333,15 +337,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -351,27 +353,30 @@
 							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -380,10 +385,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -392,22 +395,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.DELETE /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -416,15 +420,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -434,8 +436,7 @@
 							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -447,7 +448,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a DLS prefix binding",
 		"tags": [
 			"Prefix Bindings"
 		],
@@ -457,59 +457,64 @@
 		]
 	},
 	"GET /accounts/{account_id}/dls/regional_services/prefix_bindings": {
-		"description": "List the BYOIP prefix bindings configured for an account.",
 		"operationId": "publicListPrefixBindings",
+		"summary": "List DLS prefix bindings for an account",
+		"description": "List the BYOIP prefix bindings configured for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[0-9a-f]{32}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "Opaque token for cursor-based pagination. Omit for the first page. Pass the value from a previous response to fetch the next page.",
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
+				"description": "Opaque token for cursor-based pagination. Omit for the first page. Pass the value from a previous response to fetch the next page.",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 25,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of bindings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"error_chain": {
 												"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-												"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.200.content.application/json.schema.properties.errors.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.200.content.application/json.schema.properties.errors.items]"
 											},
 											"message": {
 												"type": "string"
@@ -518,22 +523,22 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"error_chain": {
 												"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-												"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.200.content.application/json.schema.properties.messages.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -542,13 +547,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"cidr": {
 												"description": "The CIDR that is bound.",
@@ -564,10 +569,10 @@
 											},
 											"region_key": {
 												"description": "The region key used for the binding.",
+												"type": "string",
 												"maxLength": 128,
 												"minLength": 1,
-												"pattern": "^[a-z0-9_-]+$",
-												"type": "string"
+												"pattern": "^[a-z0-9_-]+$"
 											}
 										},
 										"required": [
@@ -575,12 +580,11 @@
 											"prefix_id",
 											"cidr",
 											"region_key"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"description": "Number of items in the current page.",
@@ -599,8 +603,7 @@
 										"count",
 										"cursor",
 										"per_page"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -612,31 +615,33 @@
 								"messages",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of bindings."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -645,10 +650,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -657,22 +660,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -681,15 +685,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -699,27 +701,30 @@
 							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -728,10 +733,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -740,22 +743,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -764,15 +768,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -782,27 +784,30 @@
 							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -811,10 +816,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -823,22 +826,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -847,15 +851,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -865,27 +867,30 @@
 							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -894,10 +899,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -906,22 +909,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -930,15 +934,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -948,8 +950,7 @@
 							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -961,7 +962,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List DLS prefix bindings for an account",
 		"tags": [
 			"Prefix Bindings"
 		],
@@ -971,36 +971,38 @@
 		]
 	},
 	"GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}": {
-		"description": "Retrieve a single BYOIP prefix binding by ID.",
 		"operationId": "publicGetPrefixBinding",
+		"summary": "Get a DLS prefix binding",
+		"description": "Retrieve a single BYOIP prefix binding by ID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[0-9a-f]{32}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "binding_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier for the prefix binding.",
-					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-					"type": "string"
+					"type": "string",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Binding found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1008,18 +1010,21 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"messages": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"error_chain": {
 																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]",
-																"type": "array"
+																"type": "array",
+																"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
 															},
 															"message": {
 																"type": "string"
@@ -1028,10 +1033,8 @@
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"success": {
 													"type": "boolean"
@@ -1040,22 +1043,23 @@
 											"required": [
 												"success",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"errors": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"error_chain": {
 																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]",
-																"type": "array"
+																"type": "array",
+																"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
 															},
 															"message": {
 																"type": "string"
@@ -1064,11 +1068,9 @@
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
+														]
 													},
-													"maxLength": 0,
-													"type": "array"
+													"maxLength": 0
 												}
 											}
 										}
@@ -1077,6 +1079,7 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cidr": {
 													"description": "The CIDR that is bound.",
@@ -1092,10 +1095,10 @@
 												},
 												"region_key": {
 													"description": "The region key used for the binding.",
+													"type": "string",
 													"maxLength": 128,
 													"minLength": 1,
-													"pattern": "^[a-z0-9_-]+$",
-													"type": "string"
+													"pattern": "^[a-z0-9_-]+$"
 												}
 											},
 											"required": [
@@ -1103,8 +1106,7 @@
 												"prefix_id",
 												"cidr",
 												"region_key"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1114,27 +1116,30 @@
 							]
 						}
 					}
-				},
-				"description": "Binding found."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1143,10 +1148,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1155,22 +1158,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1179,15 +1183,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1197,27 +1199,30 @@
 							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1226,10 +1231,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1238,22 +1241,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1262,15 +1266,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1280,27 +1282,30 @@
 							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1309,10 +1314,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1321,22 +1324,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1345,15 +1349,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1363,27 +1365,30 @@
 							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1392,10 +1397,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1404,22 +1407,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.GET /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1428,15 +1432,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1446,8 +1448,7 @@
 							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -1459,7 +1460,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a DLS prefix binding",
 		"tags": [
 			"Prefix Bindings"
 		],
@@ -1469,59 +1469,61 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}": {
-		"description": "Update the region of an existing BYOIP prefix binding.\n\nLike creating a binding, this requires **IP Prefixes Write** in addition to **DLS Write**.",
 		"operationId": "publicPatchPrefixBinding",
+		"summary": "Update a DLS prefix binding",
+		"description": "Update the region of an existing BYOIP prefix binding.\n\nLike creating a binding, this requires **IP Prefixes Write** in addition to **DLS Write**.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[0-9a-f]{32}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "binding_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier for the prefix binding.",
-					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-					"type": "string"
+					"type": "string",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"region_key": {
 								"description": "New region key to assign (e.g., \"us\", \"eu\", \"cfcanary\").",
+								"type": "string",
 								"example": "eu",
 								"maxLength": 128,
 								"minLength": 1,
-								"pattern": "^[a-z0-9_-]+$",
-								"type": "string"
+								"pattern": "^[a-z0-9_-]+$"
 							}
 						},
 						"required": [
 							"region_key"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Binding updated.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1529,18 +1531,21 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"messages": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"error_chain": {
 																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]",
-																"type": "array"
+																"type": "array",
+																"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
 															},
 															"message": {
 																"type": "string"
@@ -1549,10 +1554,8 @@
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"success": {
 													"type": "boolean"
@@ -1561,22 +1564,23 @@
 											"required": [
 												"success",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"errors": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"error_chain": {
 																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]",
-																"type": "array"
+																"type": "array",
+																"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.200.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
 															},
 															"message": {
 																"type": "string"
@@ -1585,11 +1589,9 @@
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
+														]
 													},
-													"maxLength": 0,
-													"type": "array"
+													"maxLength": 0
 												}
 											}
 										}
@@ -1598,6 +1600,7 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cidr": {
 													"description": "The CIDR that is bound.",
@@ -1613,10 +1616,10 @@
 												},
 												"region_key": {
 													"description": "The region key used for the binding.",
+													"type": "string",
 													"maxLength": 128,
 													"minLength": 1,
-													"pattern": "^[a-z0-9_-]+$",
-													"type": "string"
+													"pattern": "^[a-z0-9_-]+$"
 												}
 											},
 											"required": [
@@ -1624,8 +1627,7 @@
 												"prefix_id",
 												"cidr",
 												"region_key"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1635,27 +1637,30 @@
 							]
 						}
 					}
-				},
-				"description": "Binding updated."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.400.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1664,10 +1669,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1676,22 +1679,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.400.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1700,15 +1704,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1718,27 +1720,30 @@
 							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1747,10 +1752,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1759,22 +1762,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1783,15 +1787,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1801,27 +1803,30 @@
 							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1830,10 +1835,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1842,22 +1845,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1866,15 +1870,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1884,27 +1886,30 @@
 							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1913,10 +1918,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -1925,22 +1928,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.404.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1949,15 +1953,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1967,27 +1969,30 @@
 							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -1996,10 +2001,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -2008,22 +2011,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.PATCH /accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2032,15 +2036,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2050,8 +2052,7 @@
 							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -2063,7 +2064,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a DLS prefix binding",
 		"tags": [
 			"Prefix Bindings"
 		],
@@ -2073,62 +2073,64 @@
 		]
 	},
 	"POST /accounts/{account_id}/dls/regional_services/prefix_bindings": {
-		"description": "Bind a CIDR from a BYOIP prefix to a region.\n\nThis requires the **IP Prefixes Write** permission in addition to **DLS Write**, because the binding is created against a BYOIP prefix in Addressing.",
 		"operationId": "publicCreatePrefixBinding",
+		"summary": "Create a DLS prefix binding",
+		"description": "Bind a CIDR from a BYOIP prefix to a region.\n\nThis requires the **IP Prefixes Write** permission in addition to **DLS Write**, because the binding is created against a BYOIP prefix in Addressing.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[0-9a-f]{32}$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"cidr": {
 								"description": "IP prefix in CIDR notation to bind.",
-								"example": "10.0.1.0/24",
-								"type": "string"
+								"type": "string",
+								"example": "10.0.1.0/24"
 							},
 							"prefix_id": {
 								"description": "The ID of the parent IP prefix that contains the CIDR.",
+								"type": "string",
 								"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-								"maxLength": 64,
-								"type": "string"
+								"maxLength": 64
 							},
 							"region_key": {
 								"description": "Region key from managed regions (e.g., \"us\", \"eu\").",
+								"type": "string",
 								"example": "eu",
 								"maxLength": 128,
 								"minLength": 1,
-								"pattern": "^[a-z0-9_-]+$",
-								"type": "string"
+								"pattern": "^[a-z0-9_-]+$"
 							}
 						},
 						"required": [
 							"prefix_id",
 							"cidr",
 							"region_key"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Binding created.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2136,18 +2138,21 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"messages": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"error_chain": {
 																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.201.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]",
-																"type": "array"
+																"type": "array",
+																"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.201.content.application/json.schema.allOf.0.allOf.0.properties.messages.items]"
 															},
 															"message": {
 																"type": "string"
@@ -2156,10 +2161,8 @@
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"success": {
 													"type": "boolean"
@@ -2168,22 +2171,23 @@
 											"required": [
 												"success",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"errors": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"error_chain": {
 																"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-																"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.201.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]",
-																"type": "array"
+																"type": "array",
+																"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.201.content.application/json.schema.allOf.0.allOf.1.properties.errors.items]"
 															},
 															"message": {
 																"type": "string"
@@ -2192,11 +2196,9 @@
 														"required": [
 															"code",
 															"message"
-														],
-														"type": "object"
+														]
 													},
-													"maxLength": 0,
-													"type": "array"
+													"maxLength": 0
 												}
 											}
 										}
@@ -2205,6 +2207,7 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cidr": {
 													"description": "The CIDR that is bound.",
@@ -2220,10 +2223,10 @@
 												},
 												"region_key": {
 													"description": "The region key used for the binding.",
+													"type": "string",
 													"maxLength": 128,
 													"minLength": 1,
-													"pattern": "^[a-z0-9_-]+$",
-													"type": "string"
+													"pattern": "^[a-z0-9_-]+$"
 												}
 											},
 											"required": [
@@ -2231,8 +2234,7 @@
 												"prefix_id",
 												"cidr",
 												"region_key"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -2242,27 +2244,30 @@
 							]
 						}
 					}
-				},
-				"description": "Binding created."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2271,10 +2276,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -2283,22 +2286,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.400.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2307,15 +2311,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2325,27 +2327,30 @@
 							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2354,10 +2359,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -2366,22 +2369,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.401.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2390,15 +2394,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2408,27 +2410,30 @@
 							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2437,10 +2442,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -2449,22 +2452,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.403.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2473,15 +2477,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2491,27 +2493,30 @@
 							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"409": {
+				"description": "Conflict.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.409.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.409.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2520,10 +2525,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -2532,22 +2535,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.409.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.409.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2556,15 +2560,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2574,27 +2576,30 @@
 							]
 						}
 					}
-				},
-				"description": "Conflict."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.0.properties.messages.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.0.properties.messages.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2603,10 +2608,8 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"success": {
 											"type": "boolean"
@@ -2615,22 +2618,23 @@
 									"required": [
 										"success",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"error_chain": {
 														"description": "Optional upstream error context for APIv4 errors that wrap downstream service failures.",
-														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.1.properties.errors.items]",
-														"type": "array"
+														"type": "array",
+														"items": "[Circular ~.POST /accounts/{account_id}/dls/regional_services/prefix_bindings.responses.500.content.application/json.schema.allOf.1.properties.errors.items]"
 													},
 													"message": {
 														"type": "string"
@@ -2639,15 +2643,13 @@
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"minLength": 1,
-											"type": "array"
+											"minLength": 1
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2657,8 +2659,7 @@
 							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -2670,7 +2671,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a DLS prefix binding",
 		"tags": [
 			"Prefix Bindings"
 		],

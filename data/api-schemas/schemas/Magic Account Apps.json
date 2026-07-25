@@ -1,48 +1,51 @@
 {
 	"DELETE /accounts/{account_id}/magic/apps/{account_app_id}": {
-		"description": "Deletes specific Account App.",
 		"operationId": "magic-account-apps-delete-app",
+		"summary": "Delete Account App",
+		"description": "Deletes specific Account App.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete App response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -55,15 +58,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -76,19 +79,19 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -96,130 +99,104 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Custom app defined for an account.",
+											"type": "object",
 											"properties": {
 												"account_app_id": {
 													"description": "Magic account app ID.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4"
 												},
 												"hostnames": {
 													"description": "FQDNs to associate with traffic decisions.",
+													"type": "array",
 													"items": {
 														"example": "auth.cloudflare.com",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"ip_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"name": {
 													"description": "Display name for the app.",
-													"example": "Cloudflare Dashboard",
-													"type": "string"
+													"type": "string",
+													"example": "Cloudflare Dashboard"
 												},
 												"source_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"type": {
 													"description": "Category of the app.",
-													"example": "Development",
-													"type": "string"
+													"type": "string",
+													"example": "Development"
 												}
 											},
 											"required": [
 												"account_app_id"
 											],
-											"title": "Account App",
-											"type": "object"
+											"title": "Account App"
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete App response"
+				}
 			},
 			"4XX": {
+				"description": "Delete App response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -232,25 +209,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -258,12 +261,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete App response failure"
+				}
 			}
 		},
 		"security": [
@@ -273,7 +274,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Account App",
 		"tags": [
 			"Magic Account Apps"
 		],
@@ -293,37 +293,40 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/apps": {
-		"description": "Lists Apps associated with an account.",
 		"operationId": "magic-account-apps-list-apps",
+		"summary": "List Apps",
+		"description": "Lists Apps associated with an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Apps response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -336,15 +339,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -357,20 +360,20 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
+											"type": "array",
 											"items": {},
-											"nullable": true,
-											"type": "array"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -378,204 +381,178 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Collection of Hostnames and/or IP Subnets to associate with traffic decisions.",
+												"type": "object",
 												"oneOf": [
 													{
 														"description": "Custom app defined for an account.",
+														"type": "object",
 														"properties": {
 															"account_app_id": {
 																"description": "Magic account app ID.",
-																"example": "ac60d3d0435248289d446cedd870bcf4",
-																"type": "string"
+																"type": "string",
+																"example": "ac60d3d0435248289d446cedd870bcf4"
 															},
 															"hostnames": {
 																"description": "FQDNs to associate with traffic decisions.",
+																"type": "array",
 																"items": {
 																	"example": "auth.cloudflare.com",
 																	"type": "string"
-																},
-																"type": "array"
+																}
 															},
 															"ip_subnets": {
 																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"type": "array",
 																"items": {
 																	"allOf": [
 																		{
 																			"description": "A valid CIDR notation representing an IP range.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"example": "192.0.2.0/24"
 																		},
 																		{
 																			"example": "1.1.1.1/32"
 																		}
 																	]
-																},
-																"type": "array"
+																}
 															},
 															"name": {
 																"description": "Display name for the app.",
-																"example": "Cloudflare Dashboard",
-																"type": "string"
+																"type": "string",
+																"example": "Cloudflare Dashboard"
 															},
 															"source_subnets": {
 																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"type": "array",
 																"items": {
 																	"allOf": [
 																		{
 																			"description": "A valid CIDR notation representing an IP range.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"example": "192.0.2.0/24"
 																		},
 																		{
 																			"example": "1.1.1.1/32"
 																		}
 																	]
-																},
-																"type": "array"
+																}
 															},
 															"type": {
 																"description": "Category of the app.",
-																"example": "Development",
-																"type": "string"
+																"type": "string",
+																"example": "Development"
 															}
 														},
 														"required": [
 															"account_app_id"
 														],
-														"title": "Account App",
-														"type": "object"
+														"title": "Account App"
 													},
 													{
 														"description": "Managed app defined by Cloudflare.",
+														"type": "object",
 														"properties": {
 															"hostnames": {
 																"description": "FQDNs to associate with traffic decisions.",
+																"type": "array",
 																"items": {
 																	"example": "auth.cloudflare.com",
 																	"type": "string"
-																},
-																"type": "array"
+																}
 															},
 															"ip_subnets": {
 																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"type": "array",
 																"items": {
 																	"allOf": [
 																		{
 																			"description": "A valid CIDR notation representing an IP range.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"example": "192.0.2.0/24"
 																		},
 																		{
 																			"example": "1.1.1.1/32"
 																		}
 																	]
-																},
-																"type": "array"
+																}
 															},
 															"managed_app_id": {
 																"description": "Managed app ID.",
-																"example": "cloudflare",
-																"type": "string"
+																"type": "string",
+																"example": "cloudflare"
 															},
 															"name": {
 																"description": "Display name for the app.",
-																"example": "Cloudflare Dashboard",
-																"type": "string"
+																"type": "string",
+																"example": "Cloudflare Dashboard"
 															},
 															"source_subnets": {
 																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"type": "array",
 																"items": {
 																	"allOf": [
 																		{
 																			"description": "A valid CIDR notation representing an IP range.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"example": "192.0.2.0/24"
 																		},
 																		{
 																			"example": "1.1.1.1/32"
 																		}
 																	]
-																},
-																"type": "array"
+																}
 															},
 															"type": {
 																"description": "Category of the app.",
-																"example": "Development",
-																"type": "string"
+																"type": "string",
+																"example": "Development"
 															}
 														},
 														"required": [
 															"managed_app_id"
 														],
-														"title": "Managed App",
-														"type": "object"
+														"title": "Managed App"
 													}
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Apps response"
+				}
 			},
 			"4XX": {
+				"description": "List Apps response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -588,25 +565,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -614,12 +617,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Apps response failure"
+				}
 			}
 		},
 		"security": [
@@ -629,7 +630,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Apps",
 		"tags": [
 			"Magic Account Apps"
 		],
@@ -651,38 +651,93 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/apps/{account_app_id}": {
-		"description": "Updates an Account App",
 		"operationId": "magic-account-apps-patch-app",
+		"summary": "Update an App",
+		"description": "Updates an Account App",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
+						"properties": {
+							"hostnames": {
+								"description": "FQDNs to associate with traffic decisions.",
+								"type": "array",
+								"items": {
+									"example": "auth.cloudflare.com",
+									"type": "string"
+								}
+							},
+							"ip_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								}
+							},
+							"name": {
+								"description": "Display name for the app.",
+								"type": "string",
+								"example": "Cloudflare Dashboard"
+							},
+							"source_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								}
+							},
+							"type": {
+								"description": "Category of the app.",
+								"type": "string",
+								"example": "Development"
+							}
+						},
 						"anyOf": [
 							{
 								"required": [
@@ -714,80 +769,28 @@
 								],
 								"title": "Update App Source Subnets"
 							}
-						],
-						"properties": {
-							"hostnames": {
-								"description": "FQDNs to associate with traffic decisions.",
-								"items": {
-									"example": "auth.cloudflare.com",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"ip_subnets": {
-								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
-								"items": {
-									"allOf": [
-										{
-											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
-										},
-										{
-											"example": "1.1.1.1/32"
-										}
-									]
-								},
-								"type": "array"
-							},
-							"name": {
-								"description": "Display name for the app.",
-								"example": "Cloudflare Dashboard",
-								"type": "string"
-							},
-							"source_subnets": {
-								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
-								"items": {
-									"allOf": [
-										{
-											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
-										},
-										{
-											"example": "1.1.1.1/32"
-										}
-									]
-								},
-								"type": "array"
-							},
-							"type": {
-								"description": "Category of the app.",
-								"example": "Development",
-								"type": "string"
-							}
-						},
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update App response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -800,15 +803,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -821,19 +824,19 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -841,130 +844,104 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Custom app defined for an account.",
+											"type": "object",
 											"properties": {
 												"account_app_id": {
 													"description": "Magic account app ID.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4"
 												},
 												"hostnames": {
 													"description": "FQDNs to associate with traffic decisions.",
+													"type": "array",
 													"items": {
 														"example": "auth.cloudflare.com",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"ip_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"name": {
 													"description": "Display name for the app.",
-													"example": "Cloudflare Dashboard",
-													"type": "string"
+													"type": "string",
+													"example": "Cloudflare Dashboard"
 												},
 												"source_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"type": {
 													"description": "Category of the app.",
-													"example": "Development",
-													"type": "string"
+													"type": "string",
+													"example": "Development"
 												}
 											},
 											"required": [
 												"account_app_id"
 											],
-											"title": "Account App",
-											"type": "object"
+											"title": "Account App"
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update App response"
+				}
 			},
 			"4XX": {
+				"description": "Update App response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -977,25 +954,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1003,12 +1006,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update App response failure"
+				}
 			}
 		},
 		"security": [
@@ -1018,7 +1019,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update an App",
 		"tags": [
 			"Magic Account Apps"
 		],
@@ -1034,26 +1034,81 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/apps": {
-		"description": "Creates a new App for an account",
 		"operationId": "magic-account-apps-add-app",
+		"summary": "Create a new App",
+		"description": "Creates a new App for an account",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
+						"properties": {
+							"hostnames": {
+								"description": "FQDNs to associate with traffic decisions.",
+								"type": "array",
+								"items": {
+									"example": "auth.cloudflare.com",
+									"type": "string"
+								}
+							},
+							"ip_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								}
+							},
+							"name": {
+								"description": "Display name for the app.",
+								"type": "string",
+								"example": "Cloudflare Dashboard"
+							},
+							"source_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								}
+							},
+							"type": {
+								"description": "Category of the app.",
+								"type": "string",
+								"example": "Development"
+							}
+						},
 						"anyOf": [
 							{
 								"required": [
@@ -1074,83 +1129,31 @@
 								"title": "Source Subnets"
 							}
 						],
-						"properties": {
-							"hostnames": {
-								"description": "FQDNs to associate with traffic decisions.",
-								"items": {
-									"example": "auth.cloudflare.com",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"ip_subnets": {
-								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
-								"items": {
-									"allOf": [
-										{
-											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
-										},
-										{
-											"example": "1.1.1.1/32"
-										}
-									]
-								},
-								"type": "array"
-							},
-							"name": {
-								"description": "Display name for the app.",
-								"example": "Cloudflare Dashboard",
-								"type": "string"
-							},
-							"source_subnets": {
-								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
-								"items": {
-									"allOf": [
-										{
-											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
-										},
-										{
-											"example": "1.1.1.1/32"
-										}
-									]
-								},
-								"type": "array"
-							},
-							"type": {
-								"description": "Category of the app.",
-								"example": "Development",
-								"type": "string"
-							}
-						},
 						"required": [
 							"name",
 							"type"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Create Account App response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1163,15 +1166,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1184,19 +1187,19 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1204,130 +1207,104 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Custom app defined for an account.",
+											"type": "object",
 											"properties": {
 												"account_app_id": {
 													"description": "Magic account app ID.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4"
 												},
 												"hostnames": {
 													"description": "FQDNs to associate with traffic decisions.",
+													"type": "array",
 													"items": {
 														"example": "auth.cloudflare.com",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"ip_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"name": {
 													"description": "Display name for the app.",
-													"example": "Cloudflare Dashboard",
-													"type": "string"
+													"type": "string",
+													"example": "Cloudflare Dashboard"
 												},
 												"source_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"type": {
 													"description": "Category of the app.",
-													"example": "Development",
-													"type": "string"
+													"type": "string",
+													"example": "Development"
 												}
 											},
 											"required": [
 												"account_app_id"
 											],
-											"title": "Account App",
-											"type": "object"
+											"title": "Account App"
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Account App response"
+				}
 			},
 			"4XX": {
+				"description": "Create Account App response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1340,25 +1317,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1366,12 +1369,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Account App response failure"
+				}
 			}
 		},
 		"security": [
@@ -1381,7 +1382,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new App",
 		"tags": [
 			"Magic Account Apps"
 		],
@@ -1401,38 +1401,93 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/apps/{account_app_id}": {
-		"description": "Updates an Account App",
 		"operationId": "magic-account-apps-update-app",
+		"summary": "Update an App",
+		"description": "Updates an Account App",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
+						"properties": {
+							"hostnames": {
+								"description": "FQDNs to associate with traffic decisions.",
+								"type": "array",
+								"items": {
+									"example": "auth.cloudflare.com",
+									"type": "string"
+								}
+							},
+							"ip_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								}
+							},
+							"name": {
+								"description": "Display name for the app.",
+								"type": "string",
+								"example": "Cloudflare Dashboard"
+							},
+							"source_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								}
+							},
+							"type": {
+								"description": "Category of the app.",
+								"type": "string",
+								"example": "Development"
+							}
+						},
 						"anyOf": [
 							{
 								"required": [
@@ -1464,80 +1519,28 @@
 								],
 								"title": "Update App Source Subnets"
 							}
-						],
-						"properties": {
-							"hostnames": {
-								"description": "FQDNs to associate with traffic decisions.",
-								"items": {
-									"example": "auth.cloudflare.com",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"ip_subnets": {
-								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
-								"items": {
-									"allOf": [
-										{
-											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
-										},
-										{
-											"example": "1.1.1.1/32"
-										}
-									]
-								},
-								"type": "array"
-							},
-							"name": {
-								"description": "Display name for the app.",
-								"example": "Cloudflare Dashboard",
-								"type": "string"
-							},
-							"source_subnets": {
-								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
-								"items": {
-									"allOf": [
-										{
-											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
-										},
-										{
-											"example": "1.1.1.1/32"
-										}
-									]
-								},
-								"type": "array"
-							},
-							"type": {
-								"description": "Category of the app.",
-								"example": "Development",
-								"type": "string"
-							}
-						},
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update App response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1550,15 +1553,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1571,19 +1574,19 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1591,130 +1594,104 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Custom app defined for an account.",
+											"type": "object",
 											"properties": {
 												"account_app_id": {
 													"description": "Magic account app ID.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
-													"type": "string"
+													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4"
 												},
 												"hostnames": {
 													"description": "FQDNs to associate with traffic decisions.",
+													"type": "array",
 													"items": {
 														"example": "auth.cloudflare.com",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"ip_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"name": {
 													"description": "Display name for the app.",
-													"example": "Cloudflare Dashboard",
-													"type": "string"
+													"type": "string",
+													"example": "Cloudflare Dashboard"
 												},
 												"source_subnets": {
 													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															{
 																"example": "1.1.1.1/32"
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"type": {
 													"description": "Category of the app.",
-													"example": "Development",
-													"type": "string"
+													"type": "string",
+													"example": "Development"
 												}
 											},
 											"required": [
 												"account_app_id"
 											],
-											"title": "Account App",
-											"type": "object"
+											"title": "Account App"
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update App response"
+				}
 			},
 			"4XX": {
+				"description": "Update App response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1727,25 +1704,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1753,12 +1756,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update App response failure"
+				}
 			}
 		},
 		"security": [
@@ -1768,7 +1769,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update an App",
 		"tags": [
 			"Magic Account Apps"
 		],

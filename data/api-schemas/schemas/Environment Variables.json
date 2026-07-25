@@ -1,7 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{environment_variable_key}": {
-		"description": "Remove a specific environment variable from a trigger",
 		"operationId": "deleteEnvironmentVariable",
+		"summary": "Delete environment variable",
+		"description": "Remove a specific environment variable from a trigger",
 		"parameters": [
 			{
 				"in": "path",
@@ -9,8 +10,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -19,23 +20,24 @@
 				"required": true,
 				"schema": {
 					"description": "Trigger UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "environment_variable_key",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Environment variable key.",
-					"example": "NODE_ENV",
-					"type": "string"
+					"type": "string",
+					"example": "NODE_ENV"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Operation successful",
 				"content": {
 					"application/json": {
 						"example": {
@@ -45,61 +47,62 @@
 							"success": true
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
-											"example": 25,
-											"type": "integer"
+											"type": "integer",
+											"example": 25
 										},
 										"page": {
-											"example": 1,
-											"type": "integer"
+											"type": "integer",
+											"example": 1
 										},
 										"per_page": {
-											"example": 50,
-											"type": "integer"
+											"type": "integer",
+											"example": 50
 										},
 										"total_count": {
-											"example": 150,
-											"type": "integer"
+											"type": "integer",
+											"example": 150
 										},
 										"total_pages": {
-											"example": 3,
-											"type": "integer"
+											"type": "integer",
+											"example": 3
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -107,14 +110,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Operation successful"
+				}
 			},
 			"404": {
+				"description": "Resource not found",
 				"content": {
 					"application/json": {
 						"example": {
@@ -129,39 +131,40 @@
 							"success": false
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -169,12 +172,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found"
+				}
 			}
 		},
 		"security": [
@@ -186,7 +187,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete environment variable",
 		"tags": [
 			"Environment Variables"
 		],
@@ -199,8 +199,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
-		"description": "Get all environment variables for a trigger",
 		"operationId": "listEnvironmentVariables",
+		"summary": "List environment variables",
+		"description": "Get all environment variables for a trigger",
 		"parameters": [
 			{
 				"in": "path",
@@ -208,8 +209,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -218,73 +219,75 @@
 				"required": true,
 				"schema": {
 					"description": "Trigger UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Environment variables retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -292,34 +295,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"properties": {
-													"created_on": {
-														"format": "date-time",
-														"type": "string"
-													},
-													"is_secret": {
-														"example": false,
-														"type": "boolean"
-													},
-													"value": {
-														"description": "Value is null for secret environment variables",
-														"nullable": true,
-														"type": "string"
-													}
-												},
-												"required": [
-													"is_secret",
-													"created_on"
-												],
-												"type": "object"
-											},
+											"type": "object",
 											"example": {
 												"API_KEY": {
 													"created_on": "2023-01-01T00:00:00Z",
@@ -332,7 +313,28 @@
 													"value": "production"
 												}
 											},
-											"type": "object"
+											"additionalProperties": {
+												"properties": {
+													"created_on": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"is_secret": {
+														"type": "boolean",
+														"example": false
+													},
+													"value": {
+														"description": "Value is null for secret environment variables",
+														"type": "string",
+														"nullable": true
+													}
+												},
+												"required": [
+													"is_secret",
+													"created_on"
+												],
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -340,8 +342,7 @@
 							]
 						}
 					}
-				},
-				"description": "Environment variables retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -353,7 +354,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List environment variables",
 		"tags": [
 			"Environment Variables"
 		],
@@ -367,8 +367,9 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
-		"description": "Create or update environment variables for a trigger",
 		"operationId": "upsertEnvironmentVariables",
+		"summary": "Upsert environment variables",
+		"description": "Create or update environment variables for a trigger",
 		"parameters": [
 			{
 				"in": "path",
@@ -376,8 +377,8 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
@@ -386,32 +387,17 @@
 				"required": true,
 				"schema": {
 					"description": "Trigger UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": {
-							"properties": {
-								"is_secret": {
-									"example": false,
-									"type": "boolean"
-								},
-								"value": {
-									"example": "production",
-									"nullable": true,
-									"type": "string"
-								}
-							},
-							"required": [
-								"is_secret"
-							],
-							"type": "object"
-						},
+						"type": "object",
 						"example": {
 							"API_KEY": {
 								"is_secret": true,
@@ -422,74 +408,91 @@
 								"value": "production"
 							}
 						},
-						"type": "object"
+						"additionalProperties": {
+							"properties": {
+								"is_secret": {
+									"type": "boolean",
+									"example": false
+								},
+								"value": {
+									"type": "string",
+									"example": "production",
+									"nullable": true
+								}
+							},
+							"required": [
+								"is_secret"
+							],
+							"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Environment variables updated successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -497,34 +500,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"properties": {
-													"created_on": {
-														"format": "date-time",
-														"type": "string"
-													},
-													"is_secret": {
-														"example": false,
-														"type": "boolean"
-													},
-													"value": {
-														"description": "Value is null for secret environment variables",
-														"nullable": true,
-														"type": "string"
-													}
-												},
-												"required": [
-													"is_secret",
-													"created_on"
-												],
-												"type": "object"
-											},
+											"type": "object",
 											"example": {
 												"API_KEY": {
 													"created_on": "2023-01-01T00:00:00Z",
@@ -537,7 +518,28 @@
 													"value": "production"
 												}
 											},
-											"type": "object"
+											"additionalProperties": {
+												"properties": {
+													"created_on": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"is_secret": {
+														"type": "boolean",
+														"example": false
+													},
+													"value": {
+														"description": "Value is null for secret environment variables",
+														"type": "string",
+														"nullable": true
+													}
+												},
+												"required": [
+													"is_secret",
+													"created_on"
+												],
+												"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -545,10 +547,10 @@
 							]
 						}
 					}
-				},
-				"description": "Environment variables updated successfully"
+				}
 			},
 			"404": {
+				"description": "Resource not found",
 				"content": {
 					"application/json": {
 						"example": {
@@ -563,39 +565,40 @@
 							"success": false
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 12000,
-												"type": "integer"
+												"type": "integer",
+												"example": 12000
 											},
 											"message": {
-												"example": "Not found",
-												"type": "string"
+												"type": "string",
+												"example": "Not found"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -603,12 +606,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found"
+				}
 			}
 		},
 		"security": [
@@ -620,7 +621,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Upsert environment variables",
 		"tags": [
 			"Environment Variables"
 		],

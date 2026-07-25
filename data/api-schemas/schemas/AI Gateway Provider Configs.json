@@ -1,34 +1,35 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
-		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-providers",
+		"summary": "Delete a Provider Configs",
+		"description": "Deletes an AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -37,11 +38,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the Object if it was successfully deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"alias": {
 											"type": "string"
@@ -51,19 +55,19 @@
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"provider_slug": {
 											"type": "string"
@@ -72,8 +76,8 @@
 											"type": "number"
 										},
 										"rate_limit_period": {
-											"default": 60,
-											"type": "number"
+											"type": "number",
+											"default": 60
 										},
 										"secret_id": {
 											"type": "string"
@@ -91,8 +95,7 @@
 										"modified_at",
 										"alias",
 										"secret_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -101,28 +104,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the Object if it was successfully deleted"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -130,8 +134,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -140,12 +143,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -157,7 +158,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Provider Configs",
 		"tags": [
 			"AI Gateway Provider Configs"
 		],
@@ -177,59 +177,63 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-providers",
+		"summary": "List Provider Configs",
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"alias": {
@@ -240,19 +244,19 @@
 											},
 											"gateway_id": {
 												"description": "gateway id",
+												"type": "string",
 												"example": "my-gateway",
 												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string",
 												"x-auditable": true
 											},
 											"id": {
 												"type": "string"
 											},
 											"modified_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"provider_slug": {
 												"type": "string"
@@ -261,8 +265,8 @@
 												"type": "number"
 											},
 											"rate_limit_period": {
-												"default": 60,
-												"type": "number"
+												"type": "number",
+												"default": 60
 											},
 											"secret_id": {
 												"type": "string"
@@ -282,8 +286,7 @@
 											"secret_id"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -292,19 +295,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List objects"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -315,27 +319,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -347,7 +348,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Provider Configs",
 		"tags": [
 			"AI Gateway Provider Configs"
 		],
@@ -364,29 +364,30 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
-		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-providers",
+		"summary": "Create a new Provider Configs",
+		"description": "Creates a new AI Gateway.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -395,6 +396,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"alias": {
 								"type": "string"
@@ -409,8 +411,8 @@
 								"type": "number"
 							},
 							"rate_limit_period": {
-								"default": 60,
-								"type": "number"
+								"type": "number",
+								"default": 60
 							},
 							"secret": {
 								"type": "string"
@@ -423,19 +425,21 @@
 							"provider_slug",
 							"default_config",
 							"alias"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"alias": {
 											"type": "string"
@@ -445,19 +449,19 @@
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"provider_slug": {
 											"type": "string"
@@ -466,8 +470,8 @@
 											"type": "number"
 										},
 										"rate_limit_period": {
-											"default": 60,
-											"type": "number"
+											"type": "number",
+											"default": 60
 										},
 										"secret_id": {
 											"type": "string"
@@ -485,8 +489,7 @@
 										"modified_at",
 										"alias",
 										"secret_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -495,35 +498,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -532,8 +536,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -542,12 +545,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -559,7 +560,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Provider Configs",
 		"tags": [
 			"AI Gateway Provider Configs"
 		],
@@ -579,35 +579,36 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
-		"description": "Updates an existing AI Gateway dataset.",
 		"operationId": "aig-config-update-providers",
+		"summary": "Update a Provider Configs",
+		"description": "Updates an existing AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -618,6 +619,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"secret": {
 								"type": "string"
@@ -625,19 +627,21 @@
 						},
 						"required": [
 							"secret"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"alias": {
 											"type": "string"
@@ -647,19 +651,19 @@
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"provider_slug": {
 											"type": "string"
@@ -668,8 +672,8 @@
 											"type": "number"
 										},
 										"rate_limit_period": {
-											"default": 60,
-											"type": "number"
+											"type": "number",
+											"default": 60
 										},
 										"secret_id": {
 											"type": "string"
@@ -687,8 +691,7 @@
 										"modified_at",
 										"alias",
 										"secret_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -697,35 +700,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -734,8 +738,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -744,28 +747,29 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -773,8 +777,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -783,12 +786,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -800,7 +801,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a Provider Configs",
 		"tags": [
 			"AI Gateway Provider Configs"
 		],

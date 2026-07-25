@@ -1,23 +1,26 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
-		"deprecated": true,
-		"description": "Permanently removes an uploaded OpenAPI schema from API Shield schema validation. Operations using this schema will lose their validation rules.",
 		"operationId": "api-shield-schema-delete-a-schema",
+		"summary": "Delete a schema",
+		"description": "Permanently removes an uploaded OpenAPI schema from API Shield schema validation. Operations using this schema will lose their validation rules.",
 		"responses": {
 			"200": {
+				"description": "Delete a schema response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -26,12 +29,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -41,15 +44,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -58,12 +61,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -73,88 +76,50 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete a schema response"
+				}
 			},
 			"4XX": {
+				"description": "Delete a schema response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -163,12 +128,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -178,25 +143,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -204,14 +206,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete a schema response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -219,7 +220,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a schema",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -234,26 +234,28 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
-		"deprecated": true,
-		"description": "Retrieves operation-level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-retrieve-operation-level-settings",
+		"summary": "Retrieve operation-level schema validation settings",
+		"description": "Retrieves operation-level schema validation settings on the zone",
 		"responses": {
 			"200": {
+				"description": "Operation-level schema validation settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"mitigation_action": {
 									"description": "When set, this applies a mitigation action to this operation\n\n  - `log` log request when request does not conform to schema for this operation\n  - `block` deny access to the site when request does not conform to schema for this operation\n  - `none` will skip mitigation for this operation\n  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied\n",
+									"type": "string",
+									"example": "block",
 									"enum": [
 										"log",
 										"block",
 										"none",
 										null
 									],
-									"example": "block",
 									"nullable": true,
-									"type": "string",
 									"x-auditable": true
 								},
 								"operation_id": {
@@ -265,77 +267,40 @@
 										},
 										{
 											"description": "UUID.",
+											"type": "string",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"maxLength": 36,
-											"type": "string",
 											"x-auditable": true
 										}
 									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Operation-level schema validation settings response"
+				}
 			},
 			"4XX": {
+				"description": "Operation-level schema validation settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -344,12 +309,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -359,25 +324,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -385,14 +387,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Operation-level schema validation settings response"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -400,7 +401,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve operation-level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -417,101 +417,66 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/settings/schema_validation": {
-		"deprecated": true,
-		"description": "Retrieves zone level schema validation settings currently set on the zone",
 		"operationId": "api-shield-schema-validation-retrieve-zone-level-settings",
+		"summary": "Retrieve zone level schema validation settings",
+		"description": "Retrieves zone level schema validation settings currently set on the zone",
 		"responses": {
 			"200": {
+				"description": "Zone level schema validation settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"validation_default_mitigation_action": {
 									"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
+									"type": "string",
+									"example": "block",
 									"enum": [
 										"none",
 										"log",
 										"block"
 									],
-									"example": "block",
-									"type": "string",
 									"x-auditable": true
 								},
 								"validation_override_mitigation_action": {
 									"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n",
+									"type": "string",
+									"example": "disable_override",
 									"enum": [
 										"none",
 										null
 									],
-									"example": "disable_override",
 									"nullable": true,
-									"type": "string",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Zone level schema validation settings response"
+				}
 			},
 			"4XX": {
+				"description": "Zone level schema validation settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -520,12 +485,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -535,25 +500,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -561,14 +563,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Zone level schema validation settings response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -576,7 +577,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -593,18 +593,18 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas": {
-		"deprecated": true,
-		"description": "Lists all OpenAPI schemas uploaded to API Shield for the zone, including their validation status and associated operations.",
 		"operationId": "api-shield-schema-validation-retrieve-information-about-all-schemas",
+		"summary": "Retrieve information about all schemas on a zone",
+		"description": "Lists all OpenAPI schemas uploaded to API Shield for the zone, including their validation status and associated operations.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -612,10 +612,10 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "integer"
+					"minimum": 5
 				}
 			},
 			{
@@ -623,13 +623,13 @@
 				"in": "query",
 				"name": "omit_source",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			},
 			{
-				"in": "query",
 				"name": "validation_enabled",
+				"in": "query",
 				"schema": {
 					"description": "Flag whether schema is enabled for validation.",
 					"type": "boolean",
@@ -639,21 +639,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve information about all schemas on a zone response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -662,12 +665,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -677,15 +680,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -694,12 +697,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -709,73 +712,73 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"allOf": [
 															{
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															{
@@ -787,17 +790,17 @@
 													},
 													"kind": {
 														"description": "Kind of schema",
+														"type": "string",
+														"example": "openapi_v3",
 														"enum": [
 															"openapi_v3"
 														],
-														"example": "openapi_v3",
-														"type": "string",
 														"x-auditable": true
 													},
 													"name": {
 														"description": "Name of the schema",
-														"example": "petstore schema",
 														"type": "string",
+														"example": "petstore schema",
 														"x-auditable": true
 													},
 													"schema_id": {
@@ -809,17 +812,17 @@
 															},
 															{
 																"description": "UUID.",
+																"type": "string",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string",
 																"x-auditable": true
 															}
 														]
 													},
 													"source": {
 														"description": "Source of the schema",
-														"example": "<schema file bytes>",
 														"type": "string",
+														"example": "<schema file bytes>",
 														"x-auditable": true
 													},
 													"validation_enabled": {
@@ -833,10 +836,8 @@
 													"name",
 													"kind",
 													"created_at"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -847,68 +848,32 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve information about all schemas on a zone response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve information about all schemas on a zone response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -917,12 +882,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -932,25 +897,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -958,16 +960,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Retrieve information about all schemas on a zone response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -975,7 +976,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve information about all schemas on a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -992,35 +992,37 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
-		"deprecated": true,
-		"description": "Gets detailed information about a specific uploaded OpenAPI schema, including its contents and validation configuration.",
 		"operationId": "api-shield-schema-validation-retrieve-information-about-specific-schema",
+		"summary": "Retrieve information about a specific schema on a zone",
+		"description": "Gets detailed information about a specific uploaded OpenAPI schema, including its contents and validation configuration.",
 		"parameters": [
 			{
 				"description": "Omit the source-files of schemas and only retrieve their meta-data.",
 				"in": "query",
 				"name": "omit_source",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve information about a specific schema on a zone response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1029,12 +1031,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1044,15 +1046,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1061,12 +1063,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1076,34 +1078,34 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"allOf": [
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														{
@@ -1115,17 +1117,17 @@
 												},
 												"kind": {
 													"description": "Kind of schema",
+													"type": "string",
+													"example": "openapi_v3",
 													"enum": [
 														"openapi_v3"
 													],
-													"example": "openapi_v3",
-													"type": "string",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the schema",
-													"example": "petstore schema",
 													"type": "string",
+													"example": "petstore schema",
 													"x-auditable": true
 												},
 												"schema_id": {
@@ -1137,17 +1139,17 @@
 														},
 														{
 															"description": "UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														}
 													]
 												},
 												"source": {
 													"description": "Source of the schema",
-													"example": "<schema file bytes>",
 													"type": "string",
+													"example": "<schema file bytes>",
 													"x-auditable": true
 												},
 												"validation_enabled": {
@@ -1161,8 +1163,7 @@
 												"name",
 												"kind",
 												"created_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1173,66 +1174,30 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve information about a specific schema on a zone response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve information about a specific schema zone response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1241,12 +1206,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1256,25 +1221,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1282,14 +1284,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve information about a specific schema zone response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -1297,7 +1298,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve information about a specific schema on a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -1314,18 +1314,16 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations": {
-		"deprecated": true,
-		"description": "Retrieves all operations from the schema. Operations that already exist in API Shield Endpoint Management will be returned as full operations.",
 		"operationId": "api-shield-schema-validation-extract-operations-from-schema",
+		"summary": "Retrieve all operations from a schema.",
+		"description": "Retrieves all operations from the schema. Operations that already exist in API Shield Endpoint Management will be returned as full operations.",
 		"parameters": [
 			{
 				"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.",
 				"in": "query",
 				"name": "feature",
 				"schema": {
-					"example": [
-						"thresholds"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"thresholds",
@@ -1335,7 +1333,9 @@
 						"example": "thresholds",
 						"type": "string"
 					},
-					"type": "array",
+					"example": [
+						"thresholds"
+					],
 					"uniqueItems": true
 				}
 			},
@@ -1344,11 +1344,11 @@
 				"name": "host",
 				"schema": {
 					"description": "Filter results to only include the specified hosts.",
+					"type": "array",
 					"items": {
 						"example": "api.cloudflare.com",
 						"type": "string"
 					},
-					"type": "array",
 					"uniqueItems": true
 				}
 			},
@@ -1357,11 +1357,11 @@
 				"name": "method",
 				"schema": {
 					"description": "Filter results to only include the specified HTTP methods.",
+					"type": "array",
 					"items": {
 						"example": "GET",
 						"type": "string"
 					},
-					"type": "array",
 					"uniqueItems": true
 				}
 			},
@@ -1370,8 +1370,8 @@
 				"name": "endpoint",
 				"schema": {
 					"description": "Filter results to only include endpoints containing this pattern.",
-					"example": "/api/v1",
-					"type": "string"
+					"type": "string",
+					"example": "/api/v1"
 				}
 			},
 			{
@@ -1379,9 +1379,9 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -1389,43 +1389,46 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "integer"
+					"minimum": 5
 				}
 			},
 			{
-				"description": "Filter results by whether operations exist in API Shield Endpoint Management or not. `new` will just return operations from the schema that do not exist in API Shield Endpoint Management. `existing` will just return operations from the schema that already exist in API Shield Endpoint Management.",
-				"in": "query",
 				"name": "operation_status",
+				"in": "query",
+				"description": "Filter results by whether operations exist in API Shield Endpoint Management or not. `new` will just return operations from the schema that do not exist in API Shield Endpoint Management. `existing` will just return operations from the schema that already exist in API Shield Endpoint Management.",
 				"schema": {
+					"type": "string",
+					"example": "new",
 					"enum": [
 						"new",
 						"existing"
-					],
-					"example": "new",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve all operations from a schema response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1434,12 +1437,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1449,15 +1452,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1466,12 +1469,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1481,65 +1484,64 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
@@ -1547,26 +1549,29 @@
 															{
 																"allOf": [
 																	{
+																		"type": "object",
 																		"properties": {
 																			"endpoint": {
 																				"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																				"example": "/api/v1/users/{var1}",
+																				"type": "string",
 																				"format": "uri-template",
+																				"example": "/api/v1/users/{var1}",
 																				"maxLength": 4096,
 																				"pattern": "^/.*$",
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"host": {
 																				"description": "RFC3986-compliant host.",
-																				"example": "www.example.com",
-																				"format": "hostname",
-																				"maxLength": 255,
 																				"type": "string",
+																				"format": "hostname",
+																				"example": "www.example.com",
+																				"maxLength": 255,
 																				"x-auditable": true
 																			},
 																			"method": {
 																				"description": "The HTTP method used to access the endpoint.",
+																				"type": "string",
+																				"example": "GET",
 																				"enum": [
 																					"GET",
 																					"POST",
@@ -1578,8 +1583,6 @@
 																					"PATCH",
 																					"TRACE"
 																				],
-																				"example": "GET",
-																				"type": "string",
 																				"x-auditable": true
 																			}
 																		},
@@ -1587,17 +1590,16 @@
 																			"method",
 																			"host",
 																			"endpoint"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	{
 																		"properties": {
 																			"last_updated": {
 																				"allOf": [
 																					{
-																						"example": "2014-01-01T05:20:00.12345Z",
-																						"format": "date-time",
 																						"type": "string",
+																						"format": "date-time",
+																						"example": "2014-01-01T05:20:00.12345Z",
 																						"x-auditable": true
 																					},
 																					{
@@ -1616,9 +1618,9 @@
 																					},
 																					{
 																						"description": "UUID.",
+																						"type": "string",
 																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																						"maxLength": 36,
-																						"type": "string",
 																						"x-auditable": true
 																					}
 																				]
@@ -1637,67 +1639,69 @@
 																"nullable": true,
 																"properties": {
 																	"features": {
+																		"type": "object",
 																		"anyOf": [
 																			{
+																				"type": "object",
 																				"properties": {
 																					"thresholds": {
+																						"type": "object",
 																						"properties": {
 																							"auth_id_tokens": {
 																								"description": "The total number of auth-ids seen across this calculation.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"data_points": {
 																								"description": "The number of data points used for the threshold suggestion calculation.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
 																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
 																								"x-auditable": true
 																							},
 																							"p50": {
 																								"description": "The p50 quantile of requests (in period_seconds).",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"p90": {
 																								"description": "The p90 quantile of requests (in period_seconds).",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"p99": {
 																								"description": "The p99 quantile of requests (in period_seconds).",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"period_seconds": {
 																								"description": "The period over which this threshold is suggested.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"requests": {
 																								"description": "The estimated number of requests covered by these calculations.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							},
 																							"suggested_threshold": {
 																								"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
-																								"readOnly": true,
 																								"type": "integer",
+																								"readOnly": true,
 																								"x-auditable": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					}
 																				},
 																				"readOnly": true,
@@ -1711,37 +1715,23 @@
 																					"auth_id_tokens",
 																					"data_points",
 																					"last_updated"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			{
+																				"type": "object",
 																				"properties": {
 																					"parameter_schemas": {
+																						"type": "object",
 																						"properties": {
 																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
 																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
 																								"x-auditable": true
 																							},
 																							"parameter_schemas": {
 																								"description": "An operation schema object containing a response.",
-																								"example": {
-																									"parameters": [
-																										{
-																											"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
-																											"in": "path",
-																											"name": "var1",
-																											"required": true,
-																											"schema": {
-																												"maximum": 10,
-																												"minimum": 1,
-																												"type": "integer"
-																											}
-																										}
-																									],
-																									"responses": null
-																								},
+																								"type": "object",
 																								"properties": {
 																									"parameters": {
 																										"description": "An array containing the learned parameter schemas.",
@@ -1752,9 +1742,9 @@
 																												"name": "var1",
 																												"required": true,
 																												"schema": {
+																													"type": "integer",
 																													"maximum": 10,
-																													"minimum": 1,
-																													"type": "integer"
+																													"minimum": 1
 																												}
 																											}
 																										],
@@ -1771,51 +1761,151 @@
 																										"type": "object"
 																									}
 																								},
-																								"readOnly": true,
-																								"type": "object"
+																								"example": {
+																									"parameters": [
+																										{
+																											"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+																											"in": "path",
+																											"name": "var1",
+																											"required": true,
+																											"schema": {
+																												"type": "integer",
+																												"maximum": 10,
+																												"minimum": 1
+																											}
+																										}
+																									],
+																									"responses": null
+																								},
+																								"readOnly": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					}
 																				},
 																				"readOnly": true,
 																				"required": [
 																					"parameter_schemas",
 																					"last_updated"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			{
+																				"type": "object",
+																				"properties": {
+																					"api_routing": {
+																						"description": "API Routing settings on endpoint.",
+																						"type": "object",
+																						"properties": {
+																							"last_updated": {
+																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
+																								"x-auditable": true
+																							},
+																							"route": {
+																								"description": "Target route.",
+																								"type": "string",
+																								"example": "https://api.example.com/api/service",
+																								"x-auditable": true
+																							}
+																						}
+																					}
+																				},
 																				"example": {
 																					"api_routing": {
 																						"last_updated": "2014-01-01T05:20:00.12345Z",
 																						"route": "https://api.example.com/api/service"
 																					}
 																				},
-																				"properties": {
-																					"api_routing": {
-																						"description": "API Routing settings on endpoint.",
-																						"properties": {
-																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
-																								"type": "string",
-																								"x-auditable": true
-																							},
-																							"route": {
-																								"description": "Target route.",
-																								"example": "https://api.example.com/api/service",
-																								"type": "string",
-																								"x-auditable": true
-																							}
-																						},
-																						"type": "object"
-																					}
-																				},
-																				"readOnly": true,
-																				"type": "object"
+																				"readOnly": true
 																			},
 																			{
+																				"type": "object",
+																				"properties": {
+																					"confidence_intervals": {
+																						"type": "object",
+																						"properties": {
+																							"last_updated": {
+																								"type": "string",
+																								"format": "date-time",
+																								"example": "2014-01-01T05:20:00.12345Z",
+																								"x-auditable": true
+																							},
+																							"suggested_threshold": {
+																								"type": "object",
+																								"properties": {
+																									"confidence_intervals": {
+																										"type": "object",
+																										"properties": {
+																											"p90": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"type": "object",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"type": "number",
+																														"example": 20.5,
+																														"x-auditable": true
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"type": "number",
+																														"example": 30.4,
+																														"x-auditable": true
+																													}
+																												},
+																												"readOnly": true
+																											},
+																											"p95": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"type": "object",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"type": "number",
+																														"example": 20.5,
+																														"x-auditable": true
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"type": "number",
+																														"example": 30.4,
+																														"x-auditable": true
+																													}
+																												},
+																												"readOnly": true
+																											},
+																											"p99": {
+																												"description": "Upper and lower bound for percentile estimate",
+																												"type": "object",
+																												"properties": {
+																													"lower": {
+																														"description": "Lower bound for percentile estimate",
+																														"type": "number",
+																														"example": 20.5,
+																														"x-auditable": true
+																													},
+																													"upper": {
+																														"description": "Upper bound for percentile estimate",
+																														"type": "number",
+																														"example": 30.4,
+																														"x-auditable": true
+																													}
+																												},
+																												"readOnly": true
+																											}
+																										}
+																									},
+																									"mean": {
+																										"description": "Suggested threshold.",
+																										"type": "number",
+																										"example": 25.5,
+																										"x-auditable": true
+																									}
+																								}
+																							}
+																						}
+																					}
+																				},
 																				"example": {
 																					"confidence_intervals": {
 																						"last_updated": "2014-01-01T05:20:00.12345Z",
@@ -1838,106 +1928,22 @@
 																						}
 																					}
 																				},
-																				"properties": {
-																					"confidence_intervals": {
-																						"properties": {
-																							"last_updated": {
-																								"example": "2014-01-01T05:20:00.12345Z",
-																								"format": "date-time",
-																								"type": "string",
-																								"x-auditable": true
-																							},
-																							"suggested_threshold": {
-																								"properties": {
-																									"confidence_intervals": {
-																										"properties": {
-																											"p90": {
-																												"description": "Upper and lower bound for percentile estimate",
-																												"properties": {
-																													"lower": {
-																														"description": "Lower bound for percentile estimate",
-																														"example": 20.5,
-																														"type": "number",
-																														"x-auditable": true
-																													},
-																													"upper": {
-																														"description": "Upper bound for percentile estimate",
-																														"example": 30.4,
-																														"type": "number",
-																														"x-auditable": true
-																													}
-																												},
-																												"readOnly": true,
-																												"type": "object"
-																											},
-																											"p95": {
-																												"description": "Upper and lower bound for percentile estimate",
-																												"properties": {
-																													"lower": {
-																														"description": "Lower bound for percentile estimate",
-																														"example": 20.5,
-																														"type": "number",
-																														"x-auditable": true
-																													},
-																													"upper": {
-																														"description": "Upper bound for percentile estimate",
-																														"example": 30.4,
-																														"type": "number",
-																														"x-auditable": true
-																													}
-																												},
-																												"readOnly": true,
-																												"type": "object"
-																											},
-																											"p99": {
-																												"description": "Upper and lower bound for percentile estimate",
-																												"properties": {
-																													"lower": {
-																														"description": "Lower bound for percentile estimate",
-																														"example": 20.5,
-																														"type": "number",
-																														"x-auditable": true
-																													},
-																													"upper": {
-																														"description": "Upper bound for percentile estimate",
-																														"example": 30.4,
-																														"type": "number",
-																														"x-auditable": true
-																													}
-																												},
-																												"readOnly": true,
-																												"type": "object"
-																											}
-																										},
-																										"type": "object"
-																									},
-																									"mean": {
-																										"description": "Suggested threshold.",
-																										"example": 25.5,
-																										"type": "number",
-																										"x-auditable": true
-																									}
-																								},
-																								"type": "object"
-																							}
-																						},
-																						"type": "object"
-																					}
-																				},
-																				"readOnly": true,
-																				"type": "object"
+																				"readOnly": true
 																			},
 																			{
+																				"type": "object",
 																				"properties": {
 																					"schema_info": {
+																						"type": "object",
 																						"properties": {
 																							"active_schema": {
 																								"description": "Schema active on endpoint.",
+																								"type": "object",
 																								"properties": {
 																									"created_at": {
-																										"example": "2014-01-01T05:20:00.12345Z",
-																										"format": "date-time",
 																										"type": "string",
+																										"format": "date-time",
+																										"example": "2014-01-01T05:20:00.12345Z",
 																										"x-auditable": true
 																									},
 																									"id": {
@@ -1949,56 +1955,52 @@
 																											},
 																											{
 																												"description": "UUID.",
+																												"type": "string",
 																												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																												"maxLength": 36,
-																												"type": "string",
 																												"x-auditable": true
 																											}
 																										]
 																									},
 																									"is_learned": {
 																										"description": "True if schema is Cloudflare-provided.",
-																										"example": true,
 																										"type": "boolean",
+																										"example": true,
 																										"x-auditable": true
 																									},
 																									"name": {
 																										"description": "Schema file name.",
-																										"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																										"type": "string",
+																										"example": "api-endpoints-8694824bf5c04d019edcbf399c03c103-api-discovery.example.com-thresholds.json",
 																										"x-auditable": true
 																									}
-																								},
-																								"type": "object"
+																								}
 																							},
 																							"learned_available": {
 																								"description": "Deprecated. Always false.",
-																								"example": false,
 																								"type": "boolean",
+																								"example": false,
 																								"x-auditable": true
 																							},
 																							"mitigation_action": {
 																								"description": "Action taken on requests failing validation.",
+																								"type": "string",
+																								"example": "block",
 																								"enum": [
 																									"none",
 																									"log",
 																									"block"
 																								],
-																								"example": "block",
 																								"nullable": true,
-																								"type": "string",
 																								"x-auditable": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					}
 																				},
-																				"readOnly": true,
-																				"type": "object"
+																				"readOnly": true
 																			}
 																		],
-																		"readOnly": true,
-																		"type": "object"
+																		"readOnly": true
 																	}
 																},
 																"type": "object"
@@ -2006,26 +2008,29 @@
 														]
 													},
 													{
+														"type": "object",
 														"properties": {
 															"endpoint": {
 																"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
-																"example": "/api/v1/users/{var1}",
+																"type": "string",
 																"format": "uri-template",
+																"example": "/api/v1/users/{var1}",
 																"maxLength": 4096,
 																"pattern": "^/.*$",
-																"type": "string",
 																"x-auditable": true
 															},
 															"host": {
 																"description": "RFC3986-compliant host.",
-																"example": "www.example.com",
-																"format": "hostname",
-																"maxLength": 255,
 																"type": "string",
+																"format": "hostname",
+																"example": "www.example.com",
+																"maxLength": 255,
 																"x-auditable": true
 															},
 															"method": {
 																"description": "The HTTP method used to access the endpoint.",
+																"type": "string",
+																"example": "GET",
 																"enum": [
 																	"GET",
 																	"POST",
@@ -2037,8 +2042,6 @@
 																	"PATCH",
 																	"TRACE"
 																],
-																"example": "GET",
-																"type": "string",
 																"x-auditable": true
 															}
 														},
@@ -2046,12 +2049,10 @@
 															"method",
 															"host",
 															"endpoint"
-														],
-														"type": "object"
+														]
 													}
 												]
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -2062,66 +2063,30 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve all operations from a schema response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve all operations from a schema response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2130,12 +2095,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2145,25 +2110,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2171,14 +2173,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve all operations from a schema response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -2186,7 +2187,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve all operations from a schema.",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -2203,26 +2203,29 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/hosts": {
-		"deprecated": true,
-		"description": "Lists all unique hosts found in uploaded OpenAPI schemas for the zone. Useful for understanding which domains have schema coverage.",
 		"operationId": "api-shield-schema-validation-retrieve-user-schema-hosts",
+		"summary": "Retrieve schema hosts in a zone",
+		"description": "Lists all unique hosts found in uploaded OpenAPI schemas for the zone. Useful for understanding which domains have schema coverage.",
 		"responses": {
 			"200": {
+				"description": "Retrieve schema hosts in a zone response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2231,12 +2234,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2246,15 +2249,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2263,12 +2266,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2278,73 +2281,73 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"allOf": [
 															{
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															{
@@ -2356,15 +2359,15 @@
 													},
 													"hosts": {
 														"description": "Hosts serving the schema, e.g zone.host.com",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"name": {
 														"description": "Name of the schema",
-														"example": "petstore schema",
 														"type": "string",
+														"example": "petstore schema",
 														"x-auditable": true
 													},
 													"schema_id": {
@@ -2376,9 +2379,9 @@
 															},
 															{
 																"description": "UUID.",
+																"type": "string",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string",
 																"x-auditable": true
 															}
 														]
@@ -2389,76 +2392,38 @@
 													"name",
 													"hosts",
 													"created_at"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Retrieve schema hosts in a zone response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve schema hosts in a zone response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2467,12 +2432,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2482,25 +2447,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2508,14 +2510,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve schema hosts in a zone response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -2523,7 +2524,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve schema hosts in a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -2540,32 +2540,15 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/operations/schema_validation": {
-		"deprecated": true,
-		"description": "Updates multiple operation-level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-update-multiple-operation-level-settings",
+		"summary": "Update multiple operation-level schema validation settings",
+		"description": "Updates multiple operation-level schema validation settings on the zone",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": {
-							"description": "Operation ID to mitigation action mappings",
-							"properties": {
-								"mitigation_action": {
-									"description": "When set, this applies a mitigation action to this operation\n\n  - `log` log request when request does not conform to schema for this operation\n  - `block` deny access to the site when request does not conform to schema for this operation\n  - `none` will skip mitigation for this operation\n  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied\n",
-									"enum": [
-										"log",
-										"block",
-										"none",
-										null
-									],
-									"example": "block",
-									"nullable": true,
-									"type": "string",
-									"x-auditable": true
-								}
-							},
-							"type": "object"
-						},
+						"type": "object",
 						"example": {
 							"3818d821-5901-4147-a474-f5f5aec1d54e": {
 								"mitigation_action": "log"
@@ -2574,27 +2557,46 @@
 								"mitigation_action": "block"
 							}
 						},
-						"type": "object"
+						"additionalProperties": {
+							"description": "Operation ID to mitigation action mappings",
+							"type": "object",
+							"properties": {
+								"mitigation_action": {
+									"description": "When set, this applies a mitigation action to this operation\n\n  - `log` log request when request does not conform to schema for this operation\n  - `block` deny access to the site when request does not conform to schema for this operation\n  - `none` will skip mitigation for this operation\n  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied\n",
+									"type": "string",
+									"example": "block",
+									"enum": [
+										"log",
+										"block",
+										"none",
+										null
+									],
+									"nullable": true,
+									"x-auditable": true
+								}
+							}
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update multiple operation-level schema validation settings response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2603,12 +2605,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2618,15 +2620,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2635,12 +2637,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2650,46 +2652,27 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": {
-												"description": "Operation ID to mitigation action mappings",
-												"properties": {
-													"mitigation_action": {
-														"description": "When set, this applies a mitigation action to this operation\n\n  - `log` log request when request does not conform to schema for this operation\n  - `block` deny access to the site when request does not conform to schema for this operation\n  - `none` will skip mitigation for this operation\n  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied\n",
-														"enum": [
-															"log",
-															"block",
-															"none",
-															null
-														],
-														"example": "block",
-														"nullable": true,
-														"type": "string",
-														"x-auditable": true
-													}
-												},
-												"type": "object"
-											},
+											"type": "object",
 											"example": {
 												"3818d821-5901-4147-a474-f5f5aec1d54e": {
 													"mitigation_action": "log"
@@ -2698,7 +2681,25 @@
 													"mitigation_action": "block"
 												}
 											},
-											"type": "object"
+											"additionalProperties": {
+												"description": "Operation ID to mitigation action mappings",
+												"type": "object",
+												"properties": {
+													"mitigation_action": {
+														"description": "When set, this applies a mitigation action to this operation\n\n  - `log` log request when request does not conform to schema for this operation\n  - `block` deny access to the site when request does not conform to schema for this operation\n  - `none` will skip mitigation for this operation\n  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied\n",
+														"type": "string",
+														"example": "block",
+														"enum": [
+															"log",
+															"block",
+															"none",
+															null
+														],
+														"nullable": true,
+														"x-auditable": true
+													}
+												}
+											}
 										}
 									},
 									"required": [
@@ -2709,68 +2710,32 @@
 							]
 						}
 					}
-				},
-				"description": "Update multiple operation-level schema validation settings response"
+				}
 			},
 			"4XX": {
+				"description": "Update multiple operation-level schema validation settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2779,12 +2744,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2794,25 +2759,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2820,16 +2822,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update multiple operation-level schema validation settings response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -2837,7 +2838,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update multiple operation-level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -2852,138 +2852,103 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/settings/schema_validation": {
-		"deprecated": true,
-		"description": "Updates zone level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-patch-zone-level-settings",
+		"summary": "Update zone level schema validation settings",
+		"description": "Updates zone level schema validation settings on the zone",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"validation_default_mitigation_action": {
 								"description": "The default mitigation action used when there is no mitigation action defined on the operation\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n\n`null` will have no effect.\n",
+								"type": "string",
+								"example": "block",
 								"enum": [
 									"none",
 									"log",
 									"block",
 									null
 								],
-								"example": "block",
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"validation_override_mitigation_action": {
 								"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n\nTo clear any override, use the special value `disable_override`\n\n`null` will have no effect.\n",
+								"type": "string",
+								"example": "none",
 								"enum": [
 									"none",
 									"disable_override",
 									null
 								],
-								"example": "none",
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update zone level schema validation settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"validation_default_mitigation_action": {
 									"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
+									"type": "string",
+									"example": "block",
 									"enum": [
 										"none",
 										"log",
 										"block"
 									],
-									"example": "block",
-									"type": "string",
 									"x-auditable": true
 								},
 								"validation_override_mitigation_action": {
 									"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n",
+									"type": "string",
+									"example": "disable_override",
 									"enum": [
 										"none",
 										null
 									],
-									"example": "disable_override",
 									"nullable": true,
-									"type": "string",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Update zone level schema validation settings response"
+				}
 			},
 			"4XX": {
+				"description": "Update zone level schema validation settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2992,12 +2957,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3007,25 +2972,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3033,14 +3035,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update zone level schema validation settings response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -3048,7 +3049,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -3063,13 +3063,15 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
-		"deprecated": true,
-		"description": "Activates schema validation for an uploaded OpenAPI schema. Requests to matching endpoints will be validated against the schema definitions.",
 		"operationId": "api-shield-schema-validation-enable-validation-for-a-schema",
+		"summary": "Enable validation for a schema",
+		"description": "Activates schema validation for an uploaded OpenAPI schema. Requests to matching endpoints will be validated against the schema definitions.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"validation_enabled": {
 								"allOf": [
@@ -3085,28 +3087,28 @@
 									}
 								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Enable validation for a schema response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3115,12 +3117,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3130,15 +3132,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3147,12 +3149,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3162,34 +3164,34 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"allOf": [
 														{
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														{
@@ -3201,17 +3203,17 @@
 												},
 												"kind": {
 													"description": "Kind of schema",
+													"type": "string",
+													"example": "openapi_v3",
 													"enum": [
 														"openapi_v3"
 													],
-													"example": "openapi_v3",
-													"type": "string",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the schema",
-													"example": "petstore schema",
 													"type": "string",
+													"example": "petstore schema",
 													"x-auditable": true
 												},
 												"schema_id": {
@@ -3223,17 +3225,17 @@
 														},
 														{
 															"description": "UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														}
 													]
 												},
 												"source": {
 													"description": "Source of the schema",
-													"example": "<schema file bytes>",
 													"type": "string",
+													"example": "<schema file bytes>",
 													"x-auditable": true
 												},
 												"validation_enabled": {
@@ -3247,8 +3249,7 @@
 												"name",
 												"kind",
 												"created_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -3259,66 +3260,30 @@
 							]
 						}
 					}
-				},
-				"description": "Enable validation for a schema response"
+				}
 			},
 			"4XX": {
+				"description": "Enable validation for a schema response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3327,12 +3292,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3342,25 +3307,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3368,14 +3370,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Enable validation for a schema response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -3383,7 +3384,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Enable validation for a schema",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -3398,67 +3398,69 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"POST /zones/{zone_id}/api_gateway/user_schemas": {
-		"deprecated": true,
-		"description": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.",
 		"operationId": "api-shield-schema-validation-post-schema",
+		"summary": "Upload a schema to a zone",
+		"description": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"multipart/form-data": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"file": {
 								"description": "Schema file bytes",
-								"format": "binary",
-								"type": "string"
+								"type": "string",
+								"format": "binary"
 							},
 							"kind": {
 								"description": "Kind of schema",
+								"type": "string",
+								"example": "openapi_v3",
 								"enum": [
 									"openapi_v3"
 								],
-								"example": "openapi_v3",
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Name of the schema",
-								"example": "petstore schema",
-								"type": "string"
+								"type": "string",
+								"example": "petstore schema"
 							},
 							"validation_enabled": {
 								"description": "Flag whether schema is enabled for validation.",
+								"type": "string",
 								"enum": [
 									"true",
 									"false"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"file",
 							"kind"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Upload a schema response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3467,12 +3469,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3482,15 +3484,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3499,12 +3501,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3514,36 +3516,37 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"schema": {
+													"type": "object",
 													"properties": {
 														"created_at": {
 															"allOf": [
 																{
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																},
 																{
@@ -3555,17 +3558,17 @@
 														},
 														"kind": {
 															"description": "Kind of schema",
+															"type": "string",
+															"example": "openapi_v3",
 															"enum": [
 																"openapi_v3"
 															],
-															"example": "openapi_v3",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Name of the schema",
-															"example": "petstore schema",
 															"type": "string",
+															"example": "petstore schema",
 															"x-auditable": true
 														},
 														"schema_id": {
@@ -3577,17 +3580,17 @@
 																},
 																{
 																	"description": "UUID.",
+																	"type": "string",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string",
 																	"x-auditable": true
 																}
 															]
 														},
 														"source": {
 															"description": "Source of the schema",
-															"example": "<schema file bytes>",
 															"type": "string",
+															"example": "<schema file bytes>",
 															"x-auditable": true
 														},
 														"validation_enabled": {
@@ -3601,53 +3604,51 @@
 														"name",
 														"kind",
 														"created_at"
-													],
-													"type": "object"
+													]
 												},
 												"upload_details": {
+													"type": "object",
 													"properties": {
 														"warnings": {
 															"description": "Diagnostic warning events that occurred during processing. These events are non-critical errors found within the schema.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"code": {
 																		"description": "Code that identifies the event that occurred.",
-																		"example": 28,
 																		"type": "integer",
+																		"example": 28,
 																		"x-auditable": true
 																	},
 																	"locations": {
 																		"description": "JSONPath location(s) in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
+																		"type": "array",
 																		"items": {
 																			"description": "JSONPath location in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																			"example": ".paths[\"/user/{username}\"].put",
 																			"type": "string",
 																			"x-auditable": true
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"message": {
 																		"description": "Diagnostic message that describes the event.",
-																		"example": "unsupported media type: application/octet-stream",
 																		"type": "string",
+																		"example": "unsupported media type: application/octet-stream",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"code"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"required": [
 												"schema"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -3658,68 +3659,32 @@
 							]
 						}
 					}
-				},
-				"description": "Upload a schema response"
+				}
 			},
 			"4XX": {
+				"description": "Upload a schema response failure",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3728,12 +3693,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3743,25 +3708,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3769,83 +3771,82 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"upload_details": {
+											"type": "object",
 											"properties": {
 												"critical": {
 													"description": "Diagnostic critical error events that occurred during processing.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
 																"description": "Code that identifies the event that occurred.",
-																"example": 28,
 																"type": "integer",
+																"example": 28,
 																"x-auditable": true
 															},
 															"locations": {
 																"description": "JSONPath location(s) in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
+																"type": "array",
 																"items": {
 																	"description": "JSONPath location in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																	"example": ".paths[\"/user/{username}\"].put",
 																	"type": "string",
 																	"x-auditable": true
-																},
-																"type": "array"
+																}
 															},
 															"message": {
 																"description": "Diagnostic message that describes the event.",
-																"example": "unsupported media type: application/octet-stream",
 																"type": "string",
+																"example": "unsupported media type: application/octet-stream",
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"code"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"errors": {
 													"description": "Diagnostic error events that occurred during processing.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"code": {
 																"description": "Code that identifies the event that occurred.",
-																"example": 28,
 																"type": "integer",
+																"example": 28,
 																"x-auditable": true
 															},
 															"locations": {
 																"description": "JSONPath location(s) in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
+																"type": "array",
 																"items": {
 																	"description": "JSONPath location in the schema where these events were encountered.  See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification.",
 																	"example": ".paths[\"/user/{username}\"].put",
 																	"type": "string",
 																	"x-auditable": true
-																},
-																"type": "array"
+																}
 															},
 															"message": {
 																"description": "Diagnostic message that describes the event.",
-																"example": "unsupported media type: application/octet-stream",
 																"type": "string",
+																"example": "unsupported media type: application/octet-stream",
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"code"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3853,10 +3854,10 @@
 							]
 						}
 					}
-				},
-				"description": "Upload a schema response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -3864,7 +3865,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Upload a schema to a zone",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -3879,51 +3879,53 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
-		"deprecated": true,
-		"description": "Updates operation-level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-update-operation-level-settings",
+		"summary": "Update operation-level schema validation settings",
+		"description": "Updates operation-level schema validation settings on the zone",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"mitigation_action": {
 								"description": "When set, this applies a mitigation action to this operation\n\n  - `log` log request when request does not conform to schema for this operation\n  - `block` deny access to the site when request does not conform to schema for this operation\n  - `none` will skip mitigation for this operation\n  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied\n",
+								"type": "string",
+								"example": "block",
 								"enum": [
 									"log",
 									"block",
 									"none",
 									null
 								],
-								"example": "block",
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update operation-level schema validation settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"mitigation_action": {
 									"description": "When set, this applies a mitigation action to this operation\n\n  - `log` log request when request does not conform to schema for this operation\n  - `block` deny access to the site when request does not conform to schema for this operation\n  - `none` will skip mitigation for this operation\n  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied\n",
+									"type": "string",
+									"example": "block",
 									"enum": [
 										"log",
 										"block",
 										"none",
 										null
 									],
-									"example": "block",
 									"nullable": true,
-									"type": "string",
 									"x-auditable": true
 								},
 								"operation_id": {
@@ -3935,77 +3937,40 @@
 										},
 										{
 											"description": "UUID.",
+											"type": "string",
 											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"maxLength": 36,
-											"type": "string",
 											"x-auditable": true
 										}
 									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Update operation-level schema validation settings response"
+				}
 			},
 			"4XX": {
+				"description": "Update operation-level schema validation settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4014,12 +3979,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4029,25 +3994,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4055,14 +4057,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update operation-level schema validation settings response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -4070,7 +4071,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update operation-level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],
@@ -4085,139 +4085,104 @@
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PUT /zones/{zone_id}/api_gateway/settings/schema_validation": {
-		"deprecated": true,
-		"description": "Updates zone level schema validation settings on the zone",
 		"operationId": "api-shield-schema-validation-update-zone-level-settings",
+		"summary": "Update zone level schema validation settings",
+		"description": "Updates zone level schema validation settings on the zone",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"validation_default_mitigation_action": {
 								"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
+								"type": "string",
+								"example": "block",
 								"enum": [
 									"none",
 									"log",
 									"block"
 								],
-								"example": "block",
-								"type": "string",
 								"x-auditable": true
 							},
 							"validation_override_mitigation_action": {
 								"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n\nTo clear any override, use the special value `disable_override` or `null`\n",
+								"type": "string",
+								"example": "none",
 								"enum": [
 									"none",
 									"disable_override",
 									null
 								],
-								"example": "none",
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"validation_default_mitigation_action"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update zone level schema validation settings response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"validation_default_mitigation_action": {
 									"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
+									"type": "string",
+									"example": "block",
 									"enum": [
 										"none",
 										"log",
 										"block"
 									],
-									"example": "block",
-									"type": "string",
 									"x-auditable": true
 								},
 								"validation_override_mitigation_action": {
 									"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n  - `null` indicates that no override is in place\n",
+									"type": "string",
+									"example": "disable_override",
 									"enum": [
 										"none",
 										null
 									],
-									"example": "disable_override",
 									"nullable": true,
-									"type": "string",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Update zone level schema validation settings response"
+				}
 			},
 			"4XX": {
+				"description": "Update zone level schema validation settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4226,12 +4191,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4241,25 +4206,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4267,14 +4269,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update zone level schema validation settings response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -4282,7 +4283,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update zone level schema validation settings",
 		"tags": [
 			"API Shield Schema Validation 2.0"
 		],

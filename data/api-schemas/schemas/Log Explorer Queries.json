@@ -1,8 +1,8 @@
 {
 	"GET /accounts/{account_id}/logs/explorer/query/sql": {
-		"deprecated": true,
-		"description": "Run a SQL query against account-level datasets. The SQL query is passed as the `query` query parameter. Because the query appears in the URL, it is subject to gateway and proxy URL-length limits and may be recorded in access logs. This endpoint is deprecated in favour of the POST variant which sends the query in the request body.",
 		"operationId": "accounts-logs-explorer-query-get",
+		"summary": "Run a log query",
+		"description": "Run a SQL query against account-level datasets. The SQL query is passed as the `query` query parameter. Because the query appears in the URL, it is subject to gateway and proxy URL-length limits and may be recorded in access logs. This endpoint is deprecated in favour of the POST variant which sends the query in the request body.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -10,33 +10,37 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"pattern": "^[a-f0-9]{32}$",
-					"type": "string"
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
 				}
 			},
 			{
-				"description": "SQL query to execute.",
-				"in": "query",
 				"name": "query",
+				"in": "query",
+				"description": "SQL query to execute.",
 				"required": true,
 				"schema": {
-					"maxLength": 4096,
-					"type": "string"
+					"type": "string",
+					"maxLength": 4096
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Query results.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -45,24 +49,22 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
-										"additionalProperties": true,
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -72,24 +74,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query results."
+				}
 			},
 			"400": {
+				"description": "Invalid request or unsupported query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -98,27 +102,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -126,24 +128,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request or unsupported query."
+				}
 			},
 			"403": {
+				"description": "Missing permission to access the requested resource.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -152,27 +156,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -180,24 +182,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Missing permission to access the requested resource."
+				}
 			},
 			"404": {
+				"description": "Requested resource not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -206,27 +210,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -234,24 +236,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Requested resource not found."
+				}
 			},
 			"507": {
+				"description": "Query exceeded internal memory or resource limits.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -260,27 +264,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -288,20 +290,18 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query exceeded internal memory or resource limits."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
 			}
 		],
-		"summary": "Run a log query",
 		"tags": [
 			"Log Explorer Queries"
 		],
@@ -313,9 +313,9 @@
 		"x-fern-ignore": true
 	},
 	"GET /zones/{zone_id}/logs/explorer/query/sql": {
-		"deprecated": true,
-		"description": "Run a SQL query against zone-level datasets. The SQL query is passed as the `query` query parameter. Because the query appears in the URL, it is subject to gateway and proxy URL-length limits and may be recorded in access logs. This endpoint is deprecated in favour of the POST variant which sends the query in the request body.",
 		"operationId": "zones-logs-explorer-query-get",
+		"summary": "Run a log query",
+		"description": "Run a SQL query against zone-level datasets. The SQL query is passed as the `query` query parameter. Because the query appears in the URL, it is subject to gateway and proxy URL-length limits and may be recorded in access logs. This endpoint is deprecated in favour of the POST variant which sends the query in the request body.",
 		"parameters": [
 			{
 				"description": "Cloudflare zone ID.",
@@ -323,33 +323,37 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"pattern": "^[a-f0-9]{32}$",
-					"type": "string"
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
 				}
 			},
 			{
-				"description": "SQL query to execute.",
-				"in": "query",
 				"name": "query",
+				"in": "query",
+				"description": "SQL query to execute.",
 				"required": true,
 				"schema": {
-					"maxLength": 4096,
-					"type": "string"
+					"type": "string",
+					"maxLength": 4096
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Query results.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -358,24 +362,22 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
-										"additionalProperties": true,
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -385,24 +387,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query results."
+				}
 			},
 			"400": {
+				"description": "Invalid request or unsupported query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -411,27 +415,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -439,24 +441,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request or unsupported query."
+				}
 			},
 			"403": {
+				"description": "Missing permission to access the requested resource.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -465,27 +469,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -493,24 +495,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Missing permission to access the requested resource."
+				}
 			},
 			"404": {
+				"description": "Requested resource not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -519,27 +523,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -547,24 +549,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Requested resource not found."
+				}
 			},
 			"507": {
+				"description": "Query exceeded internal memory or resource limits.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -573,27 +577,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -601,20 +603,18 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query exceeded internal memory or resource limits."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
 			}
 		],
-		"summary": "Run a log query",
 		"tags": [
 			"Log Explorer Queries"
 		],
@@ -626,8 +626,9 @@
 		"x-fern-ignore": true
 	},
 	"POST /accounts/{account_id}/logs/explorer/query/sql": {
-		"description": "Run a SQL query against account-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nList configured account datasets to see enabled account-level datasets.\nZone-level datasets will not appear here.\nList available account datasets to inspect their schemas and timestamp fields.\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "accounts-logs-explorer-query-post",
+		"summary": "Run a log query",
+		"description": "Run a SQL query against account-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nList configured account datasets to see enabled account-level datasets.\nZone-level datasets will not appear here.\nList available account datasets to inspect their schemas and timestamp fields.\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -635,35 +636,39 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"pattern": "^[a-f0-9]{32}$",
-					"type": "string"
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"text/plain": {
 					"schema": {
 						"description": "SQL query to execute.",
-						"format": "binary",
-						"type": "string"
+						"type": "string",
+						"format": "binary"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Query results.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -672,24 +677,22 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
-										"additionalProperties": true,
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -699,24 +702,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query results."
+				}
 			},
 			"400": {
+				"description": "Invalid request or unsupported query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -725,27 +730,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -753,24 +756,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request or unsupported query."
+				}
 			},
 			"403": {
+				"description": "Missing permission to access the requested resource.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -779,27 +784,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -807,24 +810,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Missing permission to access the requested resource."
+				}
 			},
 			"404": {
+				"description": "Requested resource not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -833,27 +838,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -861,24 +864,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Requested resource not found."
+				}
 			},
 			"507": {
+				"description": "Query exceeded internal memory or resource limits.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -887,27 +892,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -915,12 +918,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query exceeded internal memory or resource limits."
+				}
 			}
 		},
 		"security": [
@@ -928,7 +929,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Run a log query",
 		"tags": [
 			"Log Explorer Queries"
 		],
@@ -944,8 +944,9 @@
 		"x-stability": "beta"
 	},
 	"POST /zones/{zone_id}/logs/explorer/query/sql": {
-		"description": "Run a SQL query against zone-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nList configured zone datasets to see enabled zone-level datasets.\nList available zone datasets to inspect their schemas and timestamp fields.\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"operationId": "zones-logs-explorer-query-post",
+		"summary": "Run a log query",
+		"description": "Run a SQL query against zone-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nList configured zone datasets to see enabled zone-level datasets.\nList available zone datasets to inspect their schemas and timestamp fields.\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
 		"parameters": [
 			{
 				"description": "Cloudflare zone ID.",
@@ -953,35 +954,39 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"pattern": "^[a-f0-9]{32}$",
-					"type": "string"
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"text/plain": {
 					"schema": {
 						"description": "SQL query to execute.",
-						"format": "binary",
-						"type": "string"
+						"type": "string",
+						"format": "binary"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Query results.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -990,24 +995,22 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
-										"additionalProperties": true,
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									},
-									"nullable": true,
-									"type": "array"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1017,24 +1020,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query results."
+				}
 			},
 			"400": {
+				"description": "Invalid request or unsupported query.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -1043,27 +1048,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1071,24 +1074,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request or unsupported query."
+				}
 			},
 			"403": {
+				"description": "Missing permission to access the requested resource.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -1097,27 +1102,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1125,24 +1128,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Missing permission to access the requested resource."
+				}
 			},
 			"404": {
+				"description": "Requested resource not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -1151,27 +1156,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1179,24 +1182,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Requested resource not found."
+				}
 			},
 			"507": {
+				"description": "Query exceeded internal memory or resource limits.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int32",
-												"type": "integer"
+												"type": "integer",
+												"format": "int32"
 											},
 											"message": {
 												"type": "string"
@@ -1205,27 +1210,25 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"additionalProperties": true,
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1233,12 +1236,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query exceeded internal memory or resource limits."
+				}
 			}
 		},
 		"security": [
@@ -1246,7 +1247,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Run a log query",
 		"tags": [
 			"Log Explorer Queries"
 		],

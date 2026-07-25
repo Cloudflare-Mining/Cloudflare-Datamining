@@ -1,45 +1,49 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
-		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-account-provider",
+		"summary": "Delete a Account Provider",
+		"description": "Deletes an AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the Object if it was successfully deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"base_url": {
-											"format": "uri",
-											"type": "string"
+											"type": "string",
+											"format": "uri"
 										},
 										"beta": {
 											"type": "boolean"
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"curl_example": {
 											"type": "string"
@@ -51,12 +55,12 @@
 											"type": "boolean"
 										},
 										"headers": {
-											"maxLength": 8192,
-											"type": "string"
+											"type": "string",
+											"maxLength": 8192
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"js_example": {
 											"type": "string"
@@ -68,8 +72,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -88,8 +92,7 @@
 										"name",
 										"slug",
 										"base_url"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -98,28 +101,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the Object if it was successfully deleted"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -127,8 +131,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -137,12 +140,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -154,7 +155,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Account Provider",
 		"tags": [
 			"AI Gateway Account Providers"
 		],
@@ -174,54 +174,55 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers": {
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-account-provider",
+		"summary": "List Account Providers",
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "beta",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "enable",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
 					"description": "Search by id, name, slug",
 					"type": "string"
@@ -230,23 +231,26 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"base_url": {
-												"format": "uri",
-												"type": "string"
+												"type": "string",
+												"format": "uri"
 											},
 											"beta": {
 												"type": "boolean"
 											},
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"curl_example": {
 												"type": "string"
@@ -258,12 +262,12 @@
 												"type": "boolean"
 											},
 											"headers": {
-												"maxLength": 8192,
-												"type": "string"
+												"type": "string",
+												"maxLength": 8192
 											},
 											"id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"js_example": {
 												"type": "string"
@@ -275,8 +279,8 @@
 												"type": "string"
 											},
 											"modified_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"name": {
 												"type": "string"
@@ -297,8 +301,7 @@
 											"base_url"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -307,19 +310,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List objects"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -330,27 +334,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -362,7 +363,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Account Providers",
 		"tags": [
 			"AI Gateway Account Providers"
 		],
@@ -383,46 +383,50 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
-		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"operationId": "aig-config-fetch-account-provider",
+		"summary": "Fetch a Account Provider",
+		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a single object if found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"base_url": {
-											"format": "uri",
-											"type": "string"
+											"type": "string",
+											"format": "uri"
 										},
 										"beta": {
 											"type": "boolean"
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"curl_example": {
 											"type": "string"
@@ -434,12 +438,12 @@
 											"type": "boolean"
 										},
 										"headers": {
-											"maxLength": 8192,
-											"type": "string"
+											"type": "string",
+											"maxLength": 8192
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"js_example": {
 											"type": "string"
@@ -451,8 +455,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -471,8 +475,7 @@
 										"name",
 										"slug",
 										"base_url"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -481,28 +484,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a single object if found"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -510,8 +514,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -520,12 +523,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -537,7 +538,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Fetch a Account Provider",
 		"tags": [
 			"AI Gateway Account Providers"
 		],
@@ -558,25 +558,26 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
-		"description": "Updates an existing AI Gateway dataset.",
 		"operationId": "aig-config-update-account-provider",
+		"summary": "Update a Account Provider",
+		"description": "Updates an existing AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -584,10 +585,11 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"base_url": {
-								"format": "uri",
-								"type": "string"
+								"type": "string",
+								"format": "uri"
 							},
 							"beta": {
 								"type": "boolean"
@@ -602,8 +604,8 @@
 								"type": "boolean"
 							},
 							"headers": {
-								"maxLength": 8192,
-								"type": "string"
+								"type": "string",
+								"maxLength": 8192
 							},
 							"js_example": {
 								"type": "string"
@@ -623,30 +625,32 @@
 							"slug": {
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"base_url": {
-											"format": "uri",
-											"type": "string"
+											"type": "string",
+											"format": "uri"
 										},
 										"beta": {
 											"type": "boolean"
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"curl_example": {
 											"type": "string"
@@ -658,12 +662,12 @@
 											"type": "boolean"
 										},
 										"headers": {
-											"maxLength": 8192,
-											"type": "string"
+											"type": "string",
+											"maxLength": 8192
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"js_example": {
 											"type": "string"
@@ -675,8 +679,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -695,8 +699,7 @@
 										"name",
 										"slug",
 										"base_url"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -705,35 +708,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -742,8 +746,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -752,28 +755,29 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -781,8 +785,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -791,12 +794,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -808,7 +809,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a Account Provider",
 		"tags": [
 			"AI Gateway Account Providers"
 		],
@@ -828,16 +828,17 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/custom-providers": {
-		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-account-provider",
+		"summary": "Create a new Account Provider",
+		"description": "Creates a new AI Gateway.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			}
 		],
@@ -845,10 +846,11 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"base_url": {
-								"format": "uri",
-								"type": "string"
+								"type": "string",
+								"format": "uri"
 							},
 							"beta": {
 								"type": "boolean"
@@ -863,8 +865,8 @@
 								"type": "boolean"
 							},
 							"headers": {
-								"maxLength": 8192,
-								"type": "string"
+								"type": "string",
+								"maxLength": 8192
 							},
 							"js_example": {
 								"type": "string"
@@ -886,30 +888,32 @@
 							"name",
 							"slug",
 							"base_url"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"base_url": {
-											"format": "uri",
-											"type": "string"
+											"type": "string",
+											"format": "uri"
 										},
 										"beta": {
 											"type": "boolean"
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"curl_example": {
 											"type": "string"
@@ -921,12 +925,12 @@
 											"type": "boolean"
 										},
 										"headers": {
-											"maxLength": 8192,
-											"type": "string"
+											"type": "string",
+											"maxLength": 8192
 										},
 										"id": {
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"js_example": {
 											"type": "string"
@@ -938,8 +942,8 @@
 											"type": "string"
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string"
@@ -958,8 +962,7 @@
 										"name",
 										"slug",
 										"base_url"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -968,35 +971,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -1005,8 +1009,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1015,12 +1018,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -1032,7 +1033,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Account Provider",
 		"tags": [
 			"AI Gateway Account Providers"
 		],

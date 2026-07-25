@@ -1,11 +1,12 @@
 {
 	"DELETE /accounts/{account_id}": {
-		"description": "Delete a specific account (only available for tenant admins at this time). This is a permanent operation that will delete any zones or other resources under the account",
 		"operationId": "account-deletion",
+		"summary": "Delete a specific account",
+		"description": "Delete a specific account (only available for tenant admins at this time). This is a permanent operation that will delete any zones or other resources under the account",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account ID of the account to be deleted",
@@ -15,19 +16,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Account Deletion Success Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -36,12 +40,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -51,15 +55,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -68,12 +72,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -83,109 +87,71 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Account Deletion Success Response"
+				}
 			},
 			"4XX": {
+				"description": "Account Deletion Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -194,12 +160,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -209,25 +175,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -235,12 +238,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Account Deletion Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -249,7 +250,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a specific account",
 		"tags": [
 			"Accounts"
 		],
@@ -269,71 +269,75 @@
 		}
 	},
 	"GET /accounts": {
-		"description": "List all accounts you have ownership or verified access to.",
 		"operationId": "accounts-list-accounts",
+		"summary": "List Accounts",
+		"description": "List all accounts you have ownership or verified access to.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "name",
+				"in": "query",
 				"schema": {
 					"description": "Name of the account.",
+					"type": "string",
 					"example": "example.com",
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Maximum number of results per page.",
+					"type": "number",
+					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "number"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
 					"description": "Direction to order results.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Accounts response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -342,12 +346,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -357,15 +361,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -374,12 +378,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -389,107 +393,108 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_on": {
 														"description": "Timestamp for the creation of the account",
-														"example": "2014-03-01T12:21:02.0000Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-03-01T12:21:02.0000Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
 														"minLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"managed_by": {
 														"description": "Parent container details",
+														"type": "object",
 														"properties": {
 															"parent_org_id": {
 																"description": "ID of the parent Organization, if one exists",
+																"type": "string",
 																"example": "4536bcfad5faccb111b47003c79917fa",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"parent_org_name": {
 																"description": "Name of the parent Organization, if one exists",
+																"type": "string",
 																"example": "Demo Parent Organization",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"name": {
 														"description": "Account name",
+														"type": "string",
 														"example": "Demo Account",
 														"maxLength": 100,
-														"type": "string",
 														"x-auditable": true
 													},
 													"settings": {
 														"description": "Account settings",
+														"type": "object",
 														"properties": {
 															"abuse_contact_email": {
 																"description": "Sets an abuse contact email to notify for abuse reports.",
@@ -497,14 +502,13 @@
 																"x-auditable": true
 															},
 															"enforce_twofactor": {
-																"default": false,
 																"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 																"type": "boolean",
+																"default": false,
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"type": {
 														"enum": [
@@ -517,10 +521,8 @@
 													"id",
 													"name",
 													"type"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -529,66 +531,30 @@
 							"title": "Response with a list of accounts"
 						}
 					}
-				},
-				"description": "List Accounts response"
+				}
 			},
 			"4XX": {
+				"description": "List Accounts response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -597,12 +563,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -612,25 +578,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -638,12 +641,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Accounts response failure"
+				}
 			}
 		},
 		"security": [
@@ -652,7 +653,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Accounts",
 		"tags": [
 			"Accounts"
 		],
@@ -664,46 +664,50 @@
 		}
 	},
 	"GET /accounts/{account_id}": {
-		"description": "Get information about a specific account that you are a member of.",
 		"operationId": "accounts-account-details",
+		"summary": "Account Details",
+		"description": "Get information about a specific account that you are a member of.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Account Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -712,12 +716,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -727,15 +731,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -744,12 +748,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -759,77 +763,77 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the account",
-													"example": "2014-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"managed_by": {
 													"description": "Parent container details",
+													"type": "object",
 													"properties": {
 														"parent_org_id": {
 															"description": "ID of the parent Organization, if one exists",
+															"type": "string",
 															"example": "4536bcfad5faccb111b47003c79917fa",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"parent_org_name": {
 															"description": "Name of the parent Organization, if one exists",
+															"type": "string",
 															"example": "Demo Parent Organization",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "Account name",
+													"type": "string",
 													"example": "Demo Account",
 													"maxLength": 100,
-													"type": "string",
 													"x-auditable": true
 												},
 												"settings": {
 													"description": "Account settings",
+													"type": "object",
 													"properties": {
 														"abuse_contact_email": {
 															"description": "Sets an abuse contact email to notify for abuse reports.",
@@ -837,14 +841,13 @@
 															"x-auditable": true
 														},
 														"enforce_twofactor": {
-															"default": false,
 															"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 															"type": "boolean",
+															"default": false,
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"type": {
 													"enum": [
@@ -857,8 +860,7 @@
 												"id",
 												"name",
 												"type"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -867,66 +869,30 @@
 							"title": "Response with a single account"
 						}
 					}
-				},
-				"description": "Account Details response"
+				}
 			},
 			"4XX": {
+				"description": "Account Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -935,12 +901,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -950,25 +916,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -976,12 +979,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Account Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -990,7 +991,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Account Details",
 		"tags": [
 			"Accounts"
 		],
@@ -1038,12 +1038,13 @@
 		}
 	},
 	"GET /accounts/{account_id}/organizations": {
-		"description": "Retrieve a list of the organizations that \"contain\" this account or are\nmanaging it.\n\nThe returned list will be in order from \"root\" to \"leaf\", where the \"leaf\"\nwill be the organization that _immediately_ contains the specified\naccount.",
 		"operationId": "Accounts_listAccountOrganizations",
+		"summary": "List account organizations",
+		"description": "Retrieve a list of the organizations that \"contain\" this account or are\nmanaging it.\n\nThe returned list will be in order from \"root\" to \"leaf\", where the \"leaf\"\nwill be the organization that _immediately_ contains the specified\naccount.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1052,19 +1053,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1076,32 +1081,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"description": "References an Organization in the Cloudflare data model.",
+										"type": "object",
 										"properties": {
 											"create_time": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"id": {
 												"allOf": [
 													{
+														"type": "string",
 														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID",
-														"type": "string"
+														"title": "Organization ID"
 													}
 												],
 												"readOnly": true
 											},
 											"meta": {
+												"type": "object",
 												"additionalProperties": {
 													"type": "object"
 												},
@@ -1110,6 +1116,7 @@
 														"allOf": [
 															{
 																"description": "Enable features for Organizations.",
+																"type": "object",
 																"properties": {
 																	"account_creation": {
 																		"type": "string"
@@ -1133,48 +1140,47 @@
 																	"account_migration",
 																	"account_mobility",
 																	"sub_org_creation"
-																],
-																"type": "object"
+																]
 															}
 														]
 													},
 													"hierarchy_tags": {
 														"description": "Ordered chain of organization tags from the root organization down to\n(and including) this organization itself. Root organizations return a\nsingle-element array containing their own tag; sub-organizations return\n`[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for\nconstructing authorization scopes that need to cover every ancestor\nin the hierarchy.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"managed_by": {
 														"type": "string"
 													}
 												},
-												"readOnly": true,
-												"type": "object"
+												"readOnly": true
 											},
 											"name": {
 												"type": "string"
 											},
 											"parent": {
+												"type": "object",
 												"properties": {
 													"id": {
+														"type": "string",
 														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID",
-														"type": "string"
+														"title": "Organization ID"
 													},
 													"name": {
-														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"readOnly": true
 													}
 												},
 												"required": [
 													"id",
 													"name"
-												],
-												"type": "object"
+												]
 											},
 											"profile": {
+												"type": "object",
 												"properties": {
 													"business_address": {
 														"type": "string"
@@ -1198,8 +1204,7 @@
 													"business_phone",
 													"business_address",
 													"external_metadata"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"required": [
@@ -1207,16 +1212,14 @@
 											"name",
 											"create_time",
 											"meta"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1224,20 +1227,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1249,13 +1254,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1267,31 +1272,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -1300,7 +1301,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List account organizations",
 		"tags": [
 			"Accounts"
 		],
@@ -1341,12 +1341,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/profile": {
-		"description": "Retrieves the profile information for a specific Cloudflare account, including organization details, settings, and metadata. This endpoint is commonly used to verify account access and retrieve account-level configuration.",
 		"operationId": "Accounts_getAccountProfile",
+		"summary": "Get account profile",
+		"description": "Retrieves the profile information for a specific Cloudflare account, including organization details, settings, and metadata. This endpoint is commonly used to verify account access and retrieve account-level configuration.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1355,19 +1356,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1379,12 +1384,11 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"business_address": {
 											"type": "string"
@@ -1408,14 +1412,13 @@
 										"business_phone",
 										"business_address",
 										"external_metadata"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1423,20 +1426,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1448,13 +1453,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1466,31 +1471,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -1499,7 +1500,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get account profile",
 		"tags": [
 			"Accounts"
 		],
@@ -1539,12 +1539,16 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts": {
-		"description": "Create an account (only available for tenant admins at this time)",
 		"operationId": "account-creation",
+		"summary": "Create an account",
+		"description": "Create an account (only available for tenant admins at this time)",
 		"requestBody": {
+			"description": "Parameters for account creation",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Account name",
@@ -1558,47 +1562,47 @@
 							},
 							"unit": {
 								"description": "information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/",
+								"type": "object",
 								"properties": {
 									"id": {
 										"description": "Tenant unit ID",
-										"example": "f267e341f3dd4697bd3b9f71dd96247f",
 										"type": "string",
+										"example": "f267e341f3dd4697bd3b9f71dd96247f",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
-								"type": "object",
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
 							"name"
 						],
-						"title": "Create account",
-						"type": "object"
+						"title": "Create account"
 					}
 				}
-			},
-			"description": "Parameters for account creation",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Account Creation Success Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1607,12 +1611,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1622,15 +1626,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1639,12 +1643,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1654,77 +1658,77 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the account",
-													"example": "2014-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"managed_by": {
 													"description": "Parent container details",
+													"type": "object",
 													"properties": {
 														"parent_org_id": {
 															"description": "ID of the parent Organization, if one exists",
+															"type": "string",
 															"example": "4536bcfad5faccb111b47003c79917fa",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"parent_org_name": {
 															"description": "Name of the parent Organization, if one exists",
+															"type": "string",
 															"example": "Demo Parent Organization",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "Account name",
+													"type": "string",
 													"example": "Demo Account",
 													"maxLength": 100,
-													"type": "string",
 													"x-auditable": true
 												},
 												"settings": {
 													"description": "Account settings",
+													"type": "object",
 													"properties": {
 														"abuse_contact_email": {
 															"description": "Sets an abuse contact email to notify for abuse reports.",
@@ -1732,14 +1736,13 @@
 															"x-auditable": true
 														},
 														"enforce_twofactor": {
-															"default": false,
 															"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 															"type": "boolean",
+															"default": false,
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"type": {
 													"enum": [
@@ -1752,8 +1755,7 @@
 												"id",
 												"name",
 												"type"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1762,66 +1764,30 @@
 							"title": "Response with a single account"
 						}
 					}
-				},
-				"description": "Account Creation Success Response"
+				}
 			},
 			"4XX": {
+				"description": "Account Creation Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1830,12 +1796,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1845,25 +1811,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1871,12 +1874,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Account Creation Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -1885,7 +1886,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create an account",
 		"tags": [
 			"Accounts"
 		],
@@ -1897,12 +1897,13 @@
 		}
 	},
 	"POST /accounts/{account_id}/move": {
-		"description": "Move an account within an organization hierarchy or an account outside an organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Accounts_moveAccounts",
+		"summary": "Move account",
+		"description": "Move an account within an organization hierarchy or an account outside an organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1910,9 +1911,12 @@
 			}
 		],
 		"requestBody": {
+			"description": "The destination organization ID is where the account is to be moved.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"destination_organization_id": {
 								"type": "string"
@@ -1920,29 +1924,30 @@
 						},
 						"required": [
 							"destination_organization_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "The destination organization ID is where the account is to be moved.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1954,12 +1959,11 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"account_id": {
 											"type": "string"
@@ -1975,14 +1979,13 @@
 										"account_id",
 										"source_organization_id",
 										"destination_organization_id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1990,20 +1993,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -2015,13 +2020,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -2033,31 +2038,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -2066,7 +2067,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Move account",
 		"tags": [
 			"Accounts"
 		],
@@ -2076,19 +2076,22 @@
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/move": {
-		"description": "Batch move a collection of accounts to a specific organization. ⚠️ Not implemented.",
 		"operationId": "Accounts_batchMoveAccounts",
+		"summary": "Batch move accounts",
+		"description": "Batch move a collection of accounts to a specific organization. ⚠️ Not implemented.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"account_ids": {
 								"description": "Move these accounts to the destination organization.",
+								"type": "array",
 								"items": {
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"destination_organization_id": {
 								"description": "Move accounts to this organization ID.",
@@ -2098,28 +2101,30 @@
 						"required": [
 							"account_ids",
 							"destination_organization_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -2131,14 +2136,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"statuses": {
+											"type": "object",
 											"properties": {
 												"message": {
 													"type": "string"
@@ -2153,20 +2158,18 @@
 											"required": [
 												"tag",
 												"moved"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"statuses"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2174,20 +2177,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -2199,13 +2204,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -2217,31 +2222,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -2250,7 +2251,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Batch move accounts",
 		"tags": [
 			"Accounts"
 		],
@@ -2259,82 +2259,86 @@
 		"x-fern-sdk-method-name": "move"
 	},
 	"PUT /accounts/{account_id}": {
-		"description": "Update an existing account.",
 		"operationId": "accounts-update-account",
+		"summary": "Update Account",
+		"description": "Update an existing account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"created_on": {
 										"description": "Timestamp for the creation of the account",
-										"example": "2014-03-01T12:21:02.0000Z",
-										"format": "date-time",
-										"readOnly": true,
 										"type": "string",
+										"format": "date-time",
+										"example": "2014-03-01T12:21:02.0000Z",
+										"readOnly": true,
 										"x-auditable": true
 									},
 									"id": {
 										"description": "Identifier",
+										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
 										"minLength": 32,
-										"type": "string",
 										"x-auditable": true
 									},
 									"managed_by": {
 										"description": "Parent container details",
+										"type": "object",
 										"properties": {
 											"parent_org_id": {
 												"description": "ID of the parent Organization, if one exists",
+												"type": "string",
 												"example": "4536bcfad5faccb111b47003c79917fa",
 												"maxLength": 32,
 												"readOnly": true,
-												"type": "string",
 												"x-auditable": true
 											},
 											"parent_org_name": {
 												"description": "Name of the parent Organization, if one exists",
+												"type": "string",
 												"example": "Demo Parent Organization",
 												"readOnly": true,
-												"type": "string",
 												"x-auditable": true
 											}
-										},
-										"type": "object"
+										}
 									},
 									"name": {
 										"description": "Account name",
+										"type": "string",
 										"example": "Demo Account",
 										"maxLength": 100,
-										"type": "string",
 										"x-auditable": true
 									},
 									"settings": {
 										"description": "Account settings",
+										"type": "object",
 										"properties": {
 											"abuse_contact_email": {
 												"description": "Sets an abuse contact email to notify for abuse reports.",
@@ -2342,14 +2346,13 @@
 												"x-auditable": true
 											},
 											"enforce_twofactor": {
-												"default": false,
 												"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 												"type": "boolean",
+												"default": false,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"type": {
 										"enum": [
@@ -2362,32 +2365,33 @@
 									"id",
 									"name",
 									"type"
-								],
-								"type": "object"
+								]
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Account response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2396,12 +2400,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2411,15 +2415,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2428,12 +2432,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2443,77 +2447,77 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the account",
-													"example": "2014-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"managed_by": {
 													"description": "Parent container details",
+													"type": "object",
 													"properties": {
 														"parent_org_id": {
 															"description": "ID of the parent Organization, if one exists",
+															"type": "string",
 															"example": "4536bcfad5faccb111b47003c79917fa",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"parent_org_name": {
 															"description": "Name of the parent Organization, if one exists",
+															"type": "string",
 															"example": "Demo Parent Organization",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "Account name",
+													"type": "string",
 													"example": "Demo Account",
 													"maxLength": 100,
-													"type": "string",
 													"x-auditable": true
 												},
 												"settings": {
 													"description": "Account settings",
+													"type": "object",
 													"properties": {
 														"abuse_contact_email": {
 															"description": "Sets an abuse contact email to notify for abuse reports.",
@@ -2521,14 +2525,13 @@
 															"x-auditable": true
 														},
 														"enforce_twofactor": {
-															"default": false,
 															"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 															"type": "boolean",
+															"default": false,
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"type": {
 													"enum": [
@@ -2541,8 +2544,7 @@
 												"id",
 												"name",
 												"type"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2551,66 +2553,30 @@
 							"title": "Response with a single account"
 						}
 					}
-				},
-				"description": "Update Account response"
+				}
 			},
 			"4XX": {
+				"description": "Update Account response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2619,12 +2585,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2634,25 +2600,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2660,12 +2663,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Account response failure"
+				}
 			}
 		},
 		"security": [
@@ -2674,7 +2675,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Account",
 		"tags": [
 			"Accounts"
 		],
@@ -2694,12 +2694,13 @@
 		}
 	},
 	"PUT /accounts/{account_id}/profile": {
-		"description": "Updates the profile information for a Cloudflare account. Allows modification of account-level settings and organizational details. Requires Account Settings Write permission.",
 		"operationId": "Accounts_modifyAccountProfile",
+		"summary": "Modify account profile",
+		"description": "Updates the profile information for a Cloudflare account. Allows modification of account-level settings and organizational details. Requires Account Settings Write permission.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2707,9 +2708,11 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"business_address": {
 								"type": "string"
@@ -2733,24 +2736,26 @@
 							"business_phone",
 							"business_address",
 							"external_metadata"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"204": {
 				"description": "There is no content to send for this request, but the headers may be useful."
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -2762,13 +2767,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -2780,31 +2785,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -2813,7 +2814,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Modify account profile",
 		"tags": [
 			"Accounts"
 		],

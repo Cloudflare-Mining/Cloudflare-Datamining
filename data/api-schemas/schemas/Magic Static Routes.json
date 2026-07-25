@@ -1,37 +1,41 @@
 {
 	"DELETE /accounts/{account_id}/magic/routes": {
-		"description": "Delete multiple Magic static routes.",
 		"operationId": "magic-static-routes-delete-many-routes",
+		"summary": "Delete Many Routes",
+		"description": "Delete multiple Magic static routes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"routes": {
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												}
 											},
 											"required": [
@@ -39,36 +43,36 @@
 											]
 										}
 									]
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"routes"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Many Routes response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -81,15 +85,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -102,7 +106,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -120,11 +124,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -132,8 +136,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -151,59 +154,60 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"deleted": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"deleted_routes": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
 																"description": "When the route was created.",
-																"example": "2017-06-14T00:00:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T00:00:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional human provided description of the static route.",
-																"example": "New route for new prefix 203.0.113.1",
 																"type": "string",
+																"example": "New route for new prefix 203.0.113.1",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"modified_on": {
 																"description": "When the route was last modified.",
-																"example": "2017-06-14T05:20:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T05:20:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"nexthop": {
 																"description": "The next-hop IP Address for the static route.",
-																"example": "203.0.113.1",
 																"type": "string",
+																"example": "203.0.113.1",
 																"x-auditable": true
 															},
 															"prefix": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																"example": "192.0.2.0/24",
 																"type": "string",
+																"example": "192.0.2.0/24",
 																"x-auditable": true
 															},
 															"priority": {
@@ -213,30 +217,30 @@
 															},
 															"scope": {
 																"description": "Used only for ECMP routes.",
+																"type": "object",
 																"properties": {
 																	"colo_names": {
 																		"description": "List of colo names for the ECMP scope.",
+																		"type": "array",
 																		"items": {
 																			"description": "Scope colo name.",
-																			"example": "den01",
 																			"type": "string",
+																			"example": "den01",
 																			"x-auditable": true
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"colo_regions": {
 																		"description": "List of colo regions for the ECMP scope.",
+																		"type": "array",
 																		"items": {
 																			"description": "Scope colo region.",
-																			"example": "APAC",
 																			"type": "string",
+																			"example": "APAC",
 																			"x-auditable": true
 																		},
-																		"type": "array",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"weight": {
 																"description": "Optional weight of the ECMP scope - if provided.",
@@ -249,10 +253,8 @@
 															"prefix",
 															"nexthop",
 															"priority"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											}
 										}
@@ -261,10 +263,10 @@
 							]
 						}
 					}
-				},
-				"description": "Delete Many Routes response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Many Routes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -272,16 +274,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -294,15 +298,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -315,7 +319,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -333,11 +337,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -345,8 +349,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -364,59 +367,60 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"deleted": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"deleted_routes": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_on": {
 																		"description": "When the route was created.",
-																		"example": "2017-06-14T00:00:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T00:00:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
-																		"example": "New route for new prefix 203.0.113.1",
 																		"type": "string",
+																		"example": "New route for new prefix 203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"modified_on": {
 																		"description": "When the route was last modified.",
-																		"example": "2017-06-14T05:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T05:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
-																		"example": "203.0.113.1",
 																		"type": "string",
+																		"example": "203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																		"example": "192.0.2.0/24",
 																		"type": "string",
+																		"example": "192.0.2.0/24",
 																		"x-auditable": true
 																	},
 																	"priority": {
@@ -426,30 +430,30 @@
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
+																		"type": "object",
 																		"properties": {
 																			"colo_names": {
 																				"description": "List of colo names for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo name.",
-																					"example": "den01",
 																					"type": "string",
+																					"example": "den01",
 																					"x-auditable": true
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"colo_regions": {
 																				"description": "List of colo regions for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo region.",
-																					"example": "APAC",
 																					"type": "string",
+																					"example": "APAC",
 																					"x-auditable": true
 																				},
-																				"type": "array",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
@@ -462,10 +466,8 @@
 																	"prefix",
 																	"nexthop",
 																	"priority"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
 													}
 												}
@@ -474,48 +476,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -528,25 +505,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -554,14 +557,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Many Routes response failure"
+				}
 			}
 		},
 		"security": [
@@ -571,7 +572,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Many Routes",
 		"tags": [
 			"Magic Static Routes"
 		],
@@ -596,57 +596,61 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/routes/{route_id}": {
-		"description": "Disable and remove a specific Magic static route.",
 		"operationId": "magic-static-routes-delete-route",
+		"summary": "Delete Route",
+		"description": "Disable and remove a specific Magic static route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -659,15 +663,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -680,7 +684,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -698,11 +702,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -710,8 +714,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -729,58 +732,59 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"deleted": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"deleted_route": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "When the route was created.",
-															"example": "2017-06-14T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T00:00:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional human provided description of the static route.",
-															"example": "New route for new prefix 203.0.113.1",
 															"type": "string",
+															"example": "New route for new prefix 203.0.113.1",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"modified_on": {
 															"description": "When the route was last modified.",
-															"example": "2017-06-14T05:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T05:20:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"nexthop": {
 															"description": "The next-hop IP Address for the static route.",
-															"example": "203.0.113.1",
 															"type": "string",
+															"example": "203.0.113.1",
 															"x-auditable": true
 														},
 														"prefix": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"priority": {
@@ -790,30 +794,30 @@
 														},
 														"scope": {
 															"description": "Used only for ECMP routes.",
+															"type": "object",
 															"properties": {
 																"colo_names": {
 																	"description": "List of colo names for the ECMP scope.",
+																	"type": "array",
 																	"items": {
 																		"description": "Scope colo name.",
-																		"example": "den01",
 																		"type": "string",
+																		"example": "den01",
 																		"x-auditable": true
-																	},
-																	"type": "array"
+																	}
 																},
 																"colo_regions": {
 																	"description": "List of colo regions for the ECMP scope.",
+																	"type": "array",
 																	"items": {
 																		"description": "Scope colo region.",
-																		"example": "APAC",
 																		"type": "string",
+																		"example": "APAC",
 																		"x-auditable": true
 																	},
-																	"type": "array",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"weight": {
 															"description": "Optional weight of the ECMP scope - if provided.",
@@ -826,21 +830,19 @@
 														"prefix",
 														"nexthop",
 														"priority"
-													],
-													"type": "object"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Route response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -848,16 +850,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -870,15 +874,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -891,7 +895,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -909,11 +913,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -921,8 +925,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -940,58 +943,59 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"deleted": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"deleted_route": {
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"description": "When the route was created.",
-																	"example": "2017-06-14T00:00:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T00:00:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional human provided description of the static route.",
-																	"example": "New route for new prefix 203.0.113.1",
 																	"type": "string",
+																	"example": "New route for new prefix 203.0.113.1",
 																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier",
+																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"readOnly": true,
-																	"type": "string"
+																	"readOnly": true
 																},
 																"modified_on": {
 																	"description": "When the route was last modified.",
-																	"example": "2017-06-14T05:20:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T05:20:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"nexthop": {
 																	"description": "The next-hop IP Address for the static route.",
-																	"example": "203.0.113.1",
 																	"type": "string",
+																	"example": "203.0.113.1",
 																	"x-auditable": true
 																},
 																"prefix": {
 																	"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																	"example": "192.0.2.0/24",
 																	"type": "string",
+																	"example": "192.0.2.0/24",
 																	"x-auditable": true
 																},
 																"priority": {
@@ -1001,30 +1005,30 @@
 																},
 																"scope": {
 																	"description": "Used only for ECMP routes.",
+																	"type": "object",
 																	"properties": {
 																		"colo_names": {
 																			"description": "List of colo names for the ECMP scope.",
+																			"type": "array",
 																			"items": {
 																				"description": "Scope colo name.",
-																				"example": "den01",
 																				"type": "string",
+																				"example": "den01",
 																				"x-auditable": true
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"colo_regions": {
 																			"description": "List of colo regions for the ECMP scope.",
+																			"type": "array",
 																			"items": {
 																				"description": "Scope colo region.",
-																				"example": "APAC",
 																				"type": "string",
+																				"example": "APAC",
 																				"x-auditable": true
 																			},
-																			"type": "array",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"weight": {
 																	"description": "Optional weight of the ECMP scope - if provided.",
@@ -1037,59 +1041,32 @@
 																"prefix",
 																"nexthop",
 																"priority"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1102,25 +1079,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1128,14 +1131,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Route response failure"
+				}
 			}
 		},
 		"security": [
@@ -1145,7 +1146,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Route",
 		"tags": [
 			"Magic Static Routes"
 		],
@@ -1170,39 +1170,43 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/routes": {
-		"description": "List all Magic static routes.",
 		"operationId": "magic-static-routes-list-routes",
+		"summary": "List Routes",
+		"description": "List all Magic static routes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Routes response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1215,15 +1219,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1236,7 +1240,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1254,11 +1258,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1266,8 +1270,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1285,55 +1288,56 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"routes": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
 																"description": "When the route was created.",
-																"example": "2017-06-14T00:00:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T00:00:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional human provided description of the static route.",
-																"example": "New route for new prefix 203.0.113.1",
 																"type": "string",
+																"example": "New route for new prefix 203.0.113.1",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"modified_on": {
 																"description": "When the route was last modified.",
-																"example": "2017-06-14T05:20:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T05:20:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"nexthop": {
 																"description": "The next-hop IP Address for the static route.",
-																"example": "203.0.113.1",
 																"type": "string",
+																"example": "203.0.113.1",
 																"x-auditable": true
 															},
 															"prefix": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																"example": "192.0.2.0/24",
 																"type": "string",
+																"example": "192.0.2.0/24",
 																"x-auditable": true
 															},
 															"priority": {
@@ -1343,30 +1347,30 @@
 															},
 															"scope": {
 																"description": "Used only for ECMP routes.",
+																"type": "object",
 																"properties": {
 																	"colo_names": {
 																		"description": "List of colo names for the ECMP scope.",
+																		"type": "array",
 																		"items": {
 																			"description": "Scope colo name.",
-																			"example": "den01",
 																			"type": "string",
+																			"example": "den01",
 																			"x-auditable": true
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"colo_regions": {
 																		"description": "List of colo regions for the ECMP scope.",
+																		"type": "array",
 																		"items": {
 																			"description": "Scope colo region.",
-																			"example": "APAC",
 																			"type": "string",
+																			"example": "APAC",
 																			"x-auditable": true
 																		},
-																		"type": "array",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"weight": {
 																"description": "Optional weight of the ECMP scope - if provided.",
@@ -1379,10 +1383,8 @@
 															"prefix",
 															"nexthop",
 															"priority"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											}
 										}
@@ -1391,10 +1393,10 @@
 							]
 						}
 					}
-				},
-				"description": "List Routes response"
+				}
 			},
 			"4XX": {
+				"description": "List Routes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1402,16 +1404,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1424,15 +1428,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1445,7 +1449,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1463,11 +1467,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1475,8 +1479,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1494,55 +1497,56 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"routes": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_on": {
 																		"description": "When the route was created.",
-																		"example": "2017-06-14T00:00:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T00:00:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
-																		"example": "New route for new prefix 203.0.113.1",
 																		"type": "string",
+																		"example": "New route for new prefix 203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"modified_on": {
 																		"description": "When the route was last modified.",
-																		"example": "2017-06-14T05:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T05:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
-																		"example": "203.0.113.1",
 																		"type": "string",
+																		"example": "203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																		"example": "192.0.2.0/24",
 																		"type": "string",
+																		"example": "192.0.2.0/24",
 																		"x-auditable": true
 																	},
 																	"priority": {
@@ -1552,30 +1556,30 @@
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
+																		"type": "object",
 																		"properties": {
 																			"colo_names": {
 																				"description": "List of colo names for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo name.",
-																					"example": "den01",
 																					"type": "string",
+																					"example": "den01",
 																					"x-auditable": true
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"colo_regions": {
 																				"description": "List of colo regions for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo region.",
-																					"example": "APAC",
 																					"type": "string",
+																					"example": "APAC",
 																					"x-auditable": true
 																				},
-																				"type": "array",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
@@ -1588,10 +1592,8 @@
 																	"prefix",
 																	"nexthop",
 																	"priority"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
 													}
 												}
@@ -1600,48 +1602,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1654,25 +1631,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1680,14 +1683,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Routes response failure"
+				}
 			}
 		},
 		"security": [
@@ -1697,7 +1698,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Routes",
 		"tags": [
 			"Magic Static Routes"
 		],
@@ -1719,51 +1719,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/routes/{route_id}": {
-		"description": "Get a specific Magic static route.",
 		"operationId": "magic-static-routes-route-details",
+		"summary": "Route Details",
+		"description": "Get a specific Magic static route.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Route Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1776,15 +1780,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1797,7 +1801,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1815,11 +1819,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1827,8 +1831,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1846,54 +1849,55 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"route": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "When the route was created.",
-															"example": "2017-06-14T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T00:00:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional human provided description of the static route.",
-															"example": "New route for new prefix 203.0.113.1",
 															"type": "string",
+															"example": "New route for new prefix 203.0.113.1",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"modified_on": {
 															"description": "When the route was last modified.",
-															"example": "2017-06-14T05:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T05:20:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"nexthop": {
 															"description": "The next-hop IP Address for the static route.",
-															"example": "203.0.113.1",
 															"type": "string",
+															"example": "203.0.113.1",
 															"x-auditable": true
 														},
 														"prefix": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"priority": {
@@ -1903,30 +1907,30 @@
 														},
 														"scope": {
 															"description": "Used only for ECMP routes.",
+															"type": "object",
 															"properties": {
 																"colo_names": {
 																	"description": "List of colo names for the ECMP scope.",
+																	"type": "array",
 																	"items": {
 																		"description": "Scope colo name.",
-																		"example": "den01",
 																		"type": "string",
+																		"example": "den01",
 																		"x-auditable": true
-																	},
-																	"type": "array"
+																	}
 																},
 																"colo_regions": {
 																	"description": "List of colo regions for the ECMP scope.",
+																	"type": "array",
 																	"items": {
 																		"description": "Scope colo region.",
-																		"example": "APAC",
 																		"type": "string",
+																		"example": "APAC",
 																		"x-auditable": true
 																	},
-																	"type": "array",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"weight": {
 															"description": "Optional weight of the ECMP scope - if provided.",
@@ -1939,21 +1943,19 @@
 														"prefix",
 														"nexthop",
 														"priority"
-													],
-													"type": "object"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Route Details response"
+				}
 			},
 			"4XX": {
+				"description": "Route Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1961,16 +1963,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1983,15 +1987,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2004,7 +2008,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2022,11 +2026,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2034,8 +2038,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2053,54 +2056,55 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"route": {
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"description": "When the route was created.",
-																	"example": "2017-06-14T00:00:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T00:00:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional human provided description of the static route.",
-																	"example": "New route for new prefix 203.0.113.1",
 																	"type": "string",
+																	"example": "New route for new prefix 203.0.113.1",
 																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier",
+																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"readOnly": true,
-																	"type": "string"
+																	"readOnly": true
 																},
 																"modified_on": {
 																	"description": "When the route was last modified.",
-																	"example": "2017-06-14T05:20:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T05:20:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"nexthop": {
 																	"description": "The next-hop IP Address for the static route.",
-																	"example": "203.0.113.1",
 																	"type": "string",
+																	"example": "203.0.113.1",
 																	"x-auditable": true
 																},
 																"prefix": {
 																	"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																	"example": "192.0.2.0/24",
 																	"type": "string",
+																	"example": "192.0.2.0/24",
 																	"x-auditable": true
 																},
 																"priority": {
@@ -2110,30 +2114,30 @@
 																},
 																"scope": {
 																	"description": "Used only for ECMP routes.",
+																	"type": "object",
 																	"properties": {
 																		"colo_names": {
 																			"description": "List of colo names for the ECMP scope.",
+																			"type": "array",
 																			"items": {
 																				"description": "Scope colo name.",
-																				"example": "den01",
 																				"type": "string",
+																				"example": "den01",
 																				"x-auditable": true
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"colo_regions": {
 																			"description": "List of colo regions for the ECMP scope.",
+																			"type": "array",
 																			"items": {
 																				"description": "Scope colo region.",
-																				"example": "APAC",
 																				"type": "string",
+																				"example": "APAC",
 																				"x-auditable": true
 																			},
-																			"type": "array",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"weight": {
 																	"description": "Optional weight of the ECMP scope - if provided.",
@@ -2146,59 +2150,32 @@
 																"prefix",
 																"nexthop",
 																"priority"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2211,25 +2188,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2237,14 +2240,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Route Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -2254,7 +2255,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Route Details",
 		"tags": [
 			"Magic Static Routes"
 		],
@@ -2281,43 +2281,46 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/routes": {
-		"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
 		"operationId": "magic-static-routes-create-routes",
+		"summary": "Create a Route",
+		"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "An optional human provided description of the static route.",
-								"example": "New route for new prefix 203.0.113.1",
 								"type": "string",
+								"example": "New route for new prefix 203.0.113.1",
 								"x-auditable": true
 							},
 							"nexthop": {
 								"description": "The next-hop IP Address for the static route.",
-								"example": "203.0.113.1",
 								"type": "string",
+								"example": "203.0.113.1",
 								"x-auditable": true
 							},
 							"prefix": {
 								"description": "IP Prefix in Classless Inter-Domain Routing format.",
-								"example": "192.0.2.0/24",
 								"type": "string",
+								"example": "192.0.2.0/24",
 								"x-auditable": true
 							},
 							"priority": {
@@ -2327,30 +2330,30 @@
 							},
 							"scope": {
 								"description": "Used only for ECMP routes.",
+								"type": "object",
 								"properties": {
 									"colo_names": {
 										"description": "List of colo names for the ECMP scope.",
+										"type": "array",
 										"items": {
 											"description": "Scope colo name.",
-											"example": "den01",
 											"type": "string",
+											"example": "den01",
 											"x-auditable": true
-										},
-										"type": "array"
+										}
 									},
 									"colo_regions": {
 										"description": "List of colo regions for the ECMP scope.",
+										"type": "array",
 										"items": {
 											"description": "Scope colo region.",
-											"example": "APAC",
 											"type": "string",
+											"example": "APAC",
 											"x-auditable": true
 										},
-										"type": "array",
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							},
 							"weight": {
 								"description": "Optional weight of the ECMP scope - if provided.",
@@ -2362,30 +2365,31 @@
 							"prefix",
 							"nexthop",
 							"priority"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Routes response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2398,15 +2402,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2419,7 +2423,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2437,11 +2441,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2449,8 +2453,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2468,52 +2471,52 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "When the route was created.",
-													"example": "2017-06-14T00:00:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2017-06-14T00:00:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "An optional human provided description of the static route.",
-													"example": "New route for new prefix 203.0.113.1",
 													"type": "string",
+													"example": "New route for new prefix 203.0.113.1",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"modified_on": {
 													"description": "When the route was last modified.",
-													"example": "2017-06-14T05:20:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2017-06-14T05:20:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"nexthop": {
 													"description": "The next-hop IP Address for the static route.",
-													"example": "203.0.113.1",
 													"type": "string",
+													"example": "203.0.113.1",
 													"x-auditable": true
 												},
 												"prefix": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"priority": {
@@ -2523,30 +2526,30 @@
 												},
 												"scope": {
 													"description": "Used only for ECMP routes.",
+													"type": "object",
 													"properties": {
 														"colo_names": {
 															"description": "List of colo names for the ECMP scope.",
+															"type": "array",
 															"items": {
 																"description": "Scope colo name.",
-																"example": "den01",
 																"type": "string",
+																"example": "den01",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														},
 														"colo_regions": {
 															"description": "List of colo regions for the ECMP scope.",
+															"type": "array",
 															"items": {
 																"description": "Scope colo region.",
-																"example": "APAC",
 																"type": "string",
+																"example": "APAC",
 																"x-auditable": true
 															},
-															"type": "array",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"weight": {
 													"description": "Optional weight of the ECMP scope - if provided.",
@@ -2559,18 +2562,17 @@
 												"prefix",
 												"nexthop",
 												"priority"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Routes response"
+				}
 			},
 			"4XX": {
+				"description": "Create Routes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2578,16 +2580,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2600,15 +2604,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2621,7 +2625,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2639,11 +2643,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2651,8 +2655,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2670,55 +2673,56 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"routes": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_on": {
 																		"description": "When the route was created.",
-																		"example": "2017-06-14T00:00:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T00:00:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
-																		"example": "New route for new prefix 203.0.113.1",
 																		"type": "string",
+																		"example": "New route for new prefix 203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"modified_on": {
 																		"description": "When the route was last modified.",
-																		"example": "2017-06-14T05:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T05:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
-																		"example": "203.0.113.1",
 																		"type": "string",
+																		"example": "203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																		"example": "192.0.2.0/24",
 																		"type": "string",
+																		"example": "192.0.2.0/24",
 																		"x-auditable": true
 																	},
 																	"priority": {
@@ -2728,30 +2732,30 @@
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
+																		"type": "object",
 																		"properties": {
 																			"colo_names": {
 																				"description": "List of colo names for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo name.",
-																					"example": "den01",
 																					"type": "string",
+																					"example": "den01",
 																					"x-auditable": true
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"colo_regions": {
 																				"description": "List of colo regions for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo region.",
-																					"example": "APAC",
 																					"type": "string",
+																					"example": "APAC",
 																					"x-auditable": true
 																				},
-																				"type": "array",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
@@ -2764,10 +2768,8 @@
 																	"prefix",
 																	"nexthop",
 																	"priority"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
 													}
 												}
@@ -2776,48 +2778,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2830,25 +2807,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2856,14 +2859,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Routes response failure"
+				}
 			}
 		},
 		"security": [
@@ -2873,7 +2874,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a Route",
 		"tags": [
 			"Magic Static Routes"
 		],
@@ -2898,38 +2898,42 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/routes": {
-		"description": "Update multiple Magic static routes. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. Only fields for a route that need to be changed need be provided.",
 		"operationId": "magic-static-routes-update-many-routes",
+		"summary": "Update Many Routes",
+		"description": "Update multiple Magic static routes. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. Only fields for a route that need to be changed need be provided.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"routes": {
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												}
 											},
 											"required": [
@@ -2937,23 +2941,24 @@
 											]
 										},
 										{
+											"type": "object",
 											"properties": {
 												"description": {
 													"description": "An optional human provided description of the static route.",
-													"example": "New route for new prefix 203.0.113.1",
 													"type": "string",
+													"example": "New route for new prefix 203.0.113.1",
 													"x-auditable": true
 												},
 												"nexthop": {
 													"description": "The next-hop IP Address for the static route.",
-													"example": "203.0.113.1",
 													"type": "string",
+													"example": "203.0.113.1",
 													"x-auditable": true
 												},
 												"prefix": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"priority": {
@@ -2963,30 +2968,30 @@
 												},
 												"scope": {
 													"description": "Used only for ECMP routes.",
+													"type": "object",
 													"properties": {
 														"colo_names": {
 															"description": "List of colo names for the ECMP scope.",
+															"type": "array",
 															"items": {
 																"description": "Scope colo name.",
-																"example": "den01",
 																"type": "string",
+																"example": "den01",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														},
 														"colo_regions": {
 															"description": "List of colo regions for the ECMP scope.",
+															"type": "array",
 															"items": {
 																"description": "Scope colo region.",
-																"example": "APAC",
 																"type": "string",
+																"example": "APAC",
 																"x-auditable": true
 															},
-															"type": "array",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"weight": {
 													"description": "Optional weight of the ECMP scope - if provided.",
@@ -2998,40 +3003,39 @@
 												"prefix",
 												"nexthop",
 												"priority"
-											],
-											"type": "object"
+											]
 										}
 									]
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"routes"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Many Routes response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3044,15 +3048,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3065,7 +3069,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3083,11 +3087,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3095,8 +3099,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -3114,59 +3117,60 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"modified": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"modified_routes": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
 																"description": "When the route was created.",
-																"example": "2017-06-14T00:00:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T00:00:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional human provided description of the static route.",
-																"example": "New route for new prefix 203.0.113.1",
 																"type": "string",
+																"example": "New route for new prefix 203.0.113.1",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"modified_on": {
 																"description": "When the route was last modified.",
-																"example": "2017-06-14T05:20:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T05:20:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"nexthop": {
 																"description": "The next-hop IP Address for the static route.",
-																"example": "203.0.113.1",
 																"type": "string",
+																"example": "203.0.113.1",
 																"x-auditable": true
 															},
 															"prefix": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																"example": "192.0.2.0/24",
 																"type": "string",
+																"example": "192.0.2.0/24",
 																"x-auditable": true
 															},
 															"priority": {
@@ -3176,30 +3180,30 @@
 															},
 															"scope": {
 																"description": "Used only for ECMP routes.",
+																"type": "object",
 																"properties": {
 																	"colo_names": {
 																		"description": "List of colo names for the ECMP scope.",
+																		"type": "array",
 																		"items": {
 																			"description": "Scope colo name.",
-																			"example": "den01",
 																			"type": "string",
+																			"example": "den01",
 																			"x-auditable": true
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"colo_regions": {
 																		"description": "List of colo regions for the ECMP scope.",
+																		"type": "array",
 																		"items": {
 																			"description": "Scope colo region.",
-																			"example": "APAC",
 																			"type": "string",
+																			"example": "APAC",
 																			"x-auditable": true
 																		},
-																		"type": "array",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"weight": {
 																"description": "Optional weight of the ECMP scope - if provided.",
@@ -3212,10 +3216,8 @@
 															"prefix",
 															"nexthop",
 															"priority"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											}
 										}
@@ -3224,10 +3226,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update Many Routes response"
+				}
 			},
 			"4XX": {
+				"description": "Update Many Routes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3235,16 +3237,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3257,15 +3261,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3278,7 +3282,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -3296,11 +3300,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -3308,8 +3312,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -3327,59 +3330,60 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"modified": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"modified_routes": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_on": {
 																		"description": "When the route was created.",
-																		"example": "2017-06-14T00:00:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T00:00:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional human provided description of the static route.",
-																		"example": "New route for new prefix 203.0.113.1",
 																		"type": "string",
+																		"example": "New route for new prefix 203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"modified_on": {
 																		"description": "When the route was last modified.",
-																		"example": "2017-06-14T05:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T05:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"nexthop": {
 																		"description": "The next-hop IP Address for the static route.",
-																		"example": "203.0.113.1",
 																		"type": "string",
+																		"example": "203.0.113.1",
 																		"x-auditable": true
 																	},
 																	"prefix": {
 																		"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																		"example": "192.0.2.0/24",
 																		"type": "string",
+																		"example": "192.0.2.0/24",
 																		"x-auditable": true
 																	},
 																	"priority": {
@@ -3389,30 +3393,30 @@
 																	},
 																	"scope": {
 																		"description": "Used only for ECMP routes.",
+																		"type": "object",
 																		"properties": {
 																			"colo_names": {
 																				"description": "List of colo names for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo name.",
-																					"example": "den01",
 																					"type": "string",
+																					"example": "den01",
 																					"x-auditable": true
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"colo_regions": {
 																				"description": "List of colo regions for the ECMP scope.",
+																				"type": "array",
 																				"items": {
 																					"description": "Scope colo region.",
-																					"example": "APAC",
 																					"type": "string",
+																					"example": "APAC",
 																					"x-auditable": true
 																				},
-																				"type": "array",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"weight": {
 																		"description": "Optional weight of the ECMP scope - if provided.",
@@ -3425,10 +3429,8 @@
 																	"prefix",
 																	"nexthop",
 																	"priority"
-																],
-																"type": "object"
-															},
-															"type": "array"
+																]
+															}
 														}
 													}
 												}
@@ -3437,48 +3439,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3491,25 +3468,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3517,14 +3520,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Many Routes response failure"
+				}
 			}
 		},
 		"security": [
@@ -3534,7 +3535,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Many Routes",
 		"tags": [
 			"Magic Static Routes"
 		],
@@ -3559,57 +3559,60 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/routes/{route_id}": {
-		"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
 		"operationId": "magic-static-routes-update-route",
+		"summary": "Update Route",
+		"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "route_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"description": {
 										"description": "An optional human provided description of the static route.",
-										"example": "New route for new prefix 203.0.113.1",
 										"type": "string",
+										"example": "New route for new prefix 203.0.113.1",
 										"x-auditable": true
 									},
 									"nexthop": {
 										"description": "The next-hop IP Address for the static route.",
-										"example": "203.0.113.1",
 										"type": "string",
+										"example": "203.0.113.1",
 										"x-auditable": true
 									},
 									"prefix": {
 										"description": "IP Prefix in Classless Inter-Domain Routing format.",
-										"example": "192.0.2.0/24",
 										"type": "string",
+										"example": "192.0.2.0/24",
 										"x-auditable": true
 									},
 									"priority": {
@@ -3619,30 +3622,30 @@
 									},
 									"scope": {
 										"description": "Used only for ECMP routes.",
+										"type": "object",
 										"properties": {
 											"colo_names": {
 												"description": "List of colo names for the ECMP scope.",
+												"type": "array",
 												"items": {
 													"description": "Scope colo name.",
-													"example": "den01",
 													"type": "string",
+													"example": "den01",
 													"x-auditable": true
-												},
-												"type": "array"
+												}
 											},
 											"colo_regions": {
 												"description": "List of colo regions for the ECMP scope.",
+												"type": "array",
 												"items": {
 													"description": "Scope colo region.",
-													"example": "APAC",
 													"type": "string",
+													"example": "APAC",
 													"x-auditable": true
 												},
-												"type": "array",
 												"x-auditable": true
 											}
-										},
-										"type": "object"
+										}
 									},
 									"weight": {
 										"description": "Optional weight of the ECMP scope - if provided.",
@@ -3654,32 +3657,33 @@
 									"prefix",
 									"nexthop",
 									"priority"
-								],
-								"type": "object"
+								]
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Route response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3692,15 +3696,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3713,7 +3717,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3731,11 +3735,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3743,8 +3747,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -3762,58 +3765,59 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"modified": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"modified_route": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "When the route was created.",
-															"example": "2017-06-14T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T00:00:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional human provided description of the static route.",
-															"example": "New route for new prefix 203.0.113.1",
 															"type": "string",
+															"example": "New route for new prefix 203.0.113.1",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"modified_on": {
 															"description": "When the route was last modified.",
-															"example": "2017-06-14T05:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T05:20:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"nexthop": {
 															"description": "The next-hop IP Address for the static route.",
-															"example": "203.0.113.1",
 															"type": "string",
+															"example": "203.0.113.1",
 															"x-auditable": true
 														},
 														"prefix": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"priority": {
@@ -3823,30 +3827,30 @@
 														},
 														"scope": {
 															"description": "Used only for ECMP routes.",
+															"type": "object",
 															"properties": {
 																"colo_names": {
 																	"description": "List of colo names for the ECMP scope.",
+																	"type": "array",
 																	"items": {
 																		"description": "Scope colo name.",
-																		"example": "den01",
 																		"type": "string",
+																		"example": "den01",
 																		"x-auditable": true
-																	},
-																	"type": "array"
+																	}
 																},
 																"colo_regions": {
 																	"description": "List of colo regions for the ECMP scope.",
+																	"type": "array",
 																	"items": {
 																		"description": "Scope colo region.",
-																		"example": "APAC",
 																		"type": "string",
+																		"example": "APAC",
 																		"x-auditable": true
 																	},
-																	"type": "array",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"weight": {
 															"description": "Optional weight of the ECMP scope - if provided.",
@@ -3859,21 +3863,19 @@
 														"prefix",
 														"nexthop",
 														"priority"
-													],
-													"type": "object"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Route response"
+				}
 			},
 			"4XX": {
+				"description": "Update Route response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3881,16 +3883,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3903,15 +3907,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3924,7 +3928,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -3942,11 +3946,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -3954,8 +3958,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -3973,58 +3976,59 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"modified": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"modified_route": {
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"description": "When the route was created.",
-																	"example": "2017-06-14T00:00:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T00:00:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional human provided description of the static route.",
-																	"example": "New route for new prefix 203.0.113.1",
 																	"type": "string",
+																	"example": "New route for new prefix 203.0.113.1",
 																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Identifier",
+																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"readOnly": true,
-																	"type": "string"
+																	"readOnly": true
 																},
 																"modified_on": {
 																	"description": "When the route was last modified.",
-																	"example": "2017-06-14T05:20:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T05:20:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"nexthop": {
 																	"description": "The next-hop IP Address for the static route.",
-																	"example": "203.0.113.1",
 																	"type": "string",
+																	"example": "203.0.113.1",
 																	"x-auditable": true
 																},
 																"prefix": {
 																	"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																	"example": "192.0.2.0/24",
 																	"type": "string",
+																	"example": "192.0.2.0/24",
 																	"x-auditable": true
 																},
 																"priority": {
@@ -4034,30 +4038,30 @@
 																},
 																"scope": {
 																	"description": "Used only for ECMP routes.",
+																	"type": "object",
 																	"properties": {
 																		"colo_names": {
 																			"description": "List of colo names for the ECMP scope.",
+																			"type": "array",
 																			"items": {
 																				"description": "Scope colo name.",
-																				"example": "den01",
 																				"type": "string",
+																				"example": "den01",
 																				"x-auditable": true
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"colo_regions": {
 																			"description": "List of colo regions for the ECMP scope.",
+																			"type": "array",
 																			"items": {
 																				"description": "Scope colo region.",
-																				"example": "APAC",
 																				"type": "string",
+																				"example": "APAC",
 																				"x-auditable": true
 																			},
-																			"type": "array",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"weight": {
 																	"description": "Optional weight of the ECMP scope - if provided.",
@@ -4070,59 +4074,32 @@
 																"prefix",
 																"nexthop",
 																"priority"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4135,25 +4112,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4161,14 +4164,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Route response failure"
+				}
 			}
 		},
 		"security": [
@@ -4178,7 +4179,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Route",
 		"tags": [
 			"Magic Static Routes"
 		],

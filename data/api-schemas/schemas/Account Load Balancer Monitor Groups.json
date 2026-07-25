@@ -1,47 +1,50 @@
 {
 	"DELETE /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
-		"description": "Delete a configured monitor group.",
 		"operationId": "account-load-balancer-monitor-groups-delete-monitor-group",
+		"summary": "Delete Monitor Group",
+		"description": "Delete a configured monitor group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "monitor_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"type": "string",
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Monitor Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -54,15 +57,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -75,15 +78,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -91,24 +94,24 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "A short description of the monitor group",
-													"example": "Primary datacenter monitors",
-													"type": "string"
+													"type": "string",
+													"example": "Primary datacenter monitors"
 												},
 												"id": {
 													"allOf": [
@@ -122,19 +125,21 @@
 												},
 												"members": {
 													"description": "List of monitors in this group",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "The timestamp of when the monitor was added to the group",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Whether this monitor is enabled in the group",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"monitor_id": {
 																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -143,20 +148,20 @@
 															},
 															"monitoring_only": {
 																"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"must_be_healthy": {
 																"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"updated_at": {
 																"description": "The timestamp of when the monitor group member was last updated",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
@@ -164,36 +169,33 @@
 															"enabled",
 															"monitoring_only",
 															"must_be_healthy"
-														],
-														"type": "object"
+														]
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
 											},
 											"required": [
 												"id",
 												"description",
 												"members"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Monitor Group response"
+				}
 			},
 			"412": {
+				"description": "Precondition Failed - Monitor group is in use by one or more pools",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -201,14 +203,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -221,15 +224,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -242,15 +245,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -258,24 +261,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -289,19 +292,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -310,20 +315,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -331,74 +336,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -411,25 +388,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -437,16 +440,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Precondition Failed - Monitor group is in use by one or more pools"
+				}
 			},
 			"4XX": {
+				"description": "Delete Monitor Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -454,14 +456,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -474,15 +477,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -495,15 +498,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -511,24 +514,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -542,19 +545,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -563,20 +568,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -584,74 +589,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -664,25 +641,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -690,14 +693,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Monitor Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -707,44 +708,46 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Monitor Group",
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups": {
-		"description": "List configured monitor groups.",
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-groups",
+		"summary": "List Monitor Groups",
+		"description": "List configured monitor groups.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Monitor Groups response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -757,15 +760,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -778,15 +781,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -794,25 +797,26 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_on": {
 														"description": "The timestamp of when the monitor group was created",
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"description": {
 														"description": "A short description of the monitor group",
-														"example": "Primary datacenter monitors",
-														"type": "string"
+														"type": "string",
+														"example": "Primary datacenter monitors"
 													},
 													"id": {
 														"allOf": [
@@ -826,19 +830,21 @@
 													},
 													"members": {
 														"description": "List of monitors in this group",
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"created_at": {
 																	"description": "The timestamp of when the monitor was added to the group",
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"enabled": {
 																	"description": "Whether this monitor is enabled in the group",
-																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": true
 																},
 																"monitor_id": {
 																	"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -847,20 +853,20 @@
 																},
 																"monitoring_only": {
 																	"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": false
 																},
 																"must_be_healthy": {
 																	"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": true
 																},
 																"updated_at": {
 																	"description": "The timestamp of when the monitor group member was last updated",
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -868,68 +874,64 @@
 																"enabled",
 																"monitoring_only",
 																"must_be_healthy"
-															],
-															"type": "object"
+															]
 														},
-														"type": "array",
 														"x-stainless-collection-type": "set"
 													},
 													"modified_on": {
 														"description": "The timestamp of when the monitor group was last updated",
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													}
 												},
 												"required": [
 													"id",
 													"description",
 													"members"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results on the current page.",
-													"example": 20,
-													"type": "number"
+													"type": "number",
+													"example": 20
 												},
 												"page": {
 													"description": "Current page within paginated list of results.",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page.",
-													"example": 20,
-													"type": "number"
+													"type": "number",
+													"example": 20
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters.",
-													"example": 2000,
-													"type": "number"
+													"type": "number",
+													"example": 2000
 												},
 												"total_pages": {
 													"description": "Total number of pages available.",
-													"example": 100,
-													"type": "number"
+													"type": "number",
+													"example": 100
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Monitor Groups response"
+				}
 			},
 			"4XX": {
+				"description": "List Monitor Groups response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -937,14 +939,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -957,15 +960,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -978,15 +981,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -994,25 +997,26 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
 																"description": "The timestamp of when the monitor group was created",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "A short description of the monitor group",
-																"example": "Primary datacenter monitors",
-																"type": "string"
+																"type": "string",
+																"example": "Primary datacenter monitors"
 															},
 															"id": {
 																"allOf": [
@@ -1026,19 +1030,21 @@
 															},
 															"members": {
 																"description": "List of monitors in this group",
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"created_at": {
 																			"description": "The timestamp of when the monitor was added to the group",
-																			"example": "2014-01-01T05:20:00.12345Z",
+																			"type": "string",
 																			"format": "date-time",
-																			"readOnly": true,
-																			"type": "string"
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"readOnly": true
 																		},
 																		"enabled": {
 																			"description": "Whether this monitor is enabled in the group",
-																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"example": true
 																		},
 																		"monitor_id": {
 																			"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -1047,20 +1053,20 @@
 																		},
 																		"monitoring_only": {
 																			"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"example": false
 																		},
 																		"must_be_healthy": {
 																			"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																			"example": true,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"example": true
 																		},
 																		"updated_at": {
 																			"description": "The timestamp of when the monitor group member was last updated",
-																			"example": "2014-01-01T05:20:00.12345Z",
+																			"type": "string",
 																			"format": "date-time",
-																			"readOnly": true,
-																			"type": "string"
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"readOnly": true
 																		}
 																	},
 																	"required": [
@@ -1068,106 +1074,77 @@
 																		"enabled",
 																		"monitoring_only",
 																		"must_be_healthy"
-																	],
-																	"type": "object"
+																	]
 																},
-																"type": "array",
 																"x-stainless-collection-type": "set"
 															},
 															"modified_on": {
 																"description": "The timestamp of when the monitor group was last updated",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
 															"id",
 															"description",
 															"members"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results on the current page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "Total number of pages available.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1180,25 +1157,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1206,14 +1209,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Monitor Groups response failure"
+				}
 			}
 		},
 		"security": [
@@ -1223,54 +1224,56 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Monitor Groups",
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
-		"description": "Fetch a single configured monitor group.",
 		"operationId": "account-load-balancer-monitor-groups-monitor-group-details",
+		"summary": "Monitor Group Details",
+		"description": "Fetch a single configured monitor group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "monitor_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"type": "string",
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Monitor Group Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1283,15 +1286,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1304,15 +1307,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1320,24 +1323,24 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "A short description of the monitor group",
-													"example": "Primary datacenter monitors",
-													"type": "string"
+													"type": "string",
+													"example": "Primary datacenter monitors"
 												},
 												"id": {
 													"allOf": [
@@ -1351,19 +1354,21 @@
 												},
 												"members": {
 													"description": "List of monitors in this group",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "The timestamp of when the monitor was added to the group",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Whether this monitor is enabled in the group",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"monitor_id": {
 																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -1372,20 +1377,20 @@
 															},
 															"monitoring_only": {
 																"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"must_be_healthy": {
 																"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"updated_at": {
 																"description": "The timestamp of when the monitor group member was last updated",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
@@ -1393,36 +1398,33 @@
 															"enabled",
 															"monitoring_only",
 															"must_be_healthy"
-														],
-														"type": "object"
+														]
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
 											},
 											"required": [
 												"id",
 												"description",
 												"members"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Monitor Group Details response"
+				}
 			},
 			"4XX": {
+				"description": "Monitor Group Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1430,14 +1432,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1450,15 +1453,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1471,15 +1474,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1487,24 +1490,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -1518,19 +1521,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -1539,20 +1544,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -1560,74 +1565,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1640,25 +1617,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1666,14 +1669,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Monitor Group Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1683,54 +1684,56 @@
 				"api_token": []
 			}
 		],
-		"summary": "Monitor Group Details",
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references": {
-		"description": "Get the list of resources that reference the provided monitor group.",
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-group-references",
+		"summary": "List Monitor Group References",
+		"description": "Get the list of resources that reference the provided monitor group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "monitor_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
 					"type": "string",
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Monitor Group References response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1743,15 +1746,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1764,15 +1767,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1780,30 +1783,22 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "List of resources that reference a given monitor group.",
-											"example": [
-												{
-													"reference_type": "referrer",
-													"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
-													"resource_name": "primary-dc-1",
-													"resource_type": "pool"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"reference_type": {
+														"type": "string",
 														"enum": [
 															"*",
 															"referral",
 															"referrer"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"resource_id": {
@@ -1821,7 +1816,14 @@
 												},
 												"type": "object"
 											},
-											"type": "array"
+											"example": [
+												{
+													"reference_type": "referrer",
+													"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
+													"resource_name": "primary-dc-1",
+													"resource_type": "pool"
+												}
+											]
 										}
 									},
 									"type": "object"
@@ -1829,10 +1831,10 @@
 							]
 						}
 					}
-				},
-				"description": "List Monitor Group References response."
+				}
 			},
 			"4XX": {
+				"description": "List Monitor Group References response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1840,14 +1842,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1860,15 +1863,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1881,15 +1884,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1897,30 +1900,22 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "List of resources that reference a given monitor group.",
-													"example": [
-														{
-															"reference_type": "referrer",
-															"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
-															"resource_name": "primary-dc-1",
-															"resource_type": "pool"
-														}
-													],
+													"type": "array",
 													"items": {
 														"properties": {
 															"reference_type": {
+																"type": "string",
 																"enum": [
 																	"*",
 																	"referral",
 																	"referrer"
 																],
-																"type": "string",
 																"x-auditable": true
 															},
 															"resource_id": {
@@ -1938,7 +1933,14 @@
 														},
 														"type": "object"
 													},
-													"type": "array"
+													"example": [
+														{
+															"reference_type": "referrer",
+															"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
+															"resource_name": "primary-dc-1",
+															"resource_type": "pool"
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1946,48 +1948,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2000,25 +1977,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2026,14 +2029,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Monitor Group References response failure."
+				}
 			}
 		},
 		"security": [
@@ -2043,55 +2044,57 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Monitor Group References",
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		]
 	},
 	"PATCH /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
-		"description": "Apply changes to an existing monitor group, overwriting the supplied properties.",
 		"operationId": "account-load-balancer-monitor-groups-patch-monitor-group",
+		"summary": "Patch Monitor Group",
+		"description": "Apply changes to an existing monitor group, overwriting the supplied properties.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "monitor_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"type": "string",
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"created_on": {
 								"description": "The timestamp of when the monitor group was created",
-								"example": "2014-01-01T05:20:00.12345Z",
+								"type": "string",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+								"example": "2014-01-01T05:20:00.12345Z",
+								"readOnly": true
 							},
 							"description": {
 								"description": "A short description of the monitor group",
-								"example": "Primary datacenter monitors",
-								"type": "string"
+								"type": "string",
+								"example": "Primary datacenter monitors"
 							},
 							"id": {
 								"allOf": [
@@ -2105,19 +2108,21 @@
 							},
 							"members": {
 								"description": "List of monitors in this group",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The timestamp of when the monitor was added to the group",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										},
 										"enabled": {
 											"description": "Whether this monitor is enabled in the group",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"monitor_id": {
 											"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -2126,20 +2131,20 @@
 										},
 										"monitoring_only": {
 											"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										},
 										"must_be_healthy": {
 											"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"updated_at": {
 											"description": "The timestamp of when the monitor group member was last updated",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -2147,46 +2152,44 @@
 										"enabled",
 										"monitoring_only",
 										"must_be_healthy"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"modified_on": {
 								"description": "The timestamp of when the monitor group was last updated",
-								"example": "2014-01-01T05:20:00.12345Z",
+								"type": "string",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+								"example": "2014-01-01T05:20:00.12345Z",
+								"readOnly": true
 							}
 						},
 						"required": [
 							"id",
 							"description",
 							"members"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Monitor Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2199,15 +2202,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2220,15 +2223,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2236,24 +2239,24 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "A short description of the monitor group",
-													"example": "Primary datacenter monitors",
-													"type": "string"
+													"type": "string",
+													"example": "Primary datacenter monitors"
 												},
 												"id": {
 													"allOf": [
@@ -2267,19 +2270,21 @@
 												},
 												"members": {
 													"description": "List of monitors in this group",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "The timestamp of when the monitor was added to the group",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Whether this monitor is enabled in the group",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"monitor_id": {
 																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -2288,20 +2293,20 @@
 															},
 															"monitoring_only": {
 																"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"must_be_healthy": {
 																"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"updated_at": {
 																"description": "The timestamp of when the monitor group member was last updated",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
@@ -2309,36 +2314,33 @@
 															"enabled",
 															"monitoring_only",
 															"must_be_healthy"
-														],
-														"type": "object"
+														]
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
 											},
 											"required": [
 												"id",
 												"description",
 												"members"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Patch Monitor Group response"
+				}
 			},
 			"412": {
+				"description": "Precondition Failed - Referenced monitor does not exist",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2346,14 +2348,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2366,15 +2369,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2387,15 +2390,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2403,24 +2406,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -2434,19 +2437,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -2455,20 +2460,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -2476,74 +2481,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2556,25 +2533,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2582,16 +2585,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Precondition Failed - Referenced monitor does not exist"
+				}
 			},
 			"4XX": {
+				"description": "Patch Monitor Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2599,14 +2601,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2619,15 +2622,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2640,15 +2643,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2656,24 +2659,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -2687,19 +2690,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -2708,20 +2713,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -2729,74 +2734,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2809,25 +2786,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2835,14 +2838,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Patch Monitor Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -2852,45 +2853,47 @@
 				"api_token": []
 			}
 		],
-		"summary": "Patch Monitor Group",
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		]
 	},
 	"POST /accounts/{account_id}/load_balancers/monitor_groups": {
-		"description": "Create a new monitor group.",
 		"operationId": "account-load-balancer-monitor-groups-create-monitor-group",
+		"summary": "Create Monitor Group",
+		"description": "Create a new monitor group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"created_on": {
 								"description": "The timestamp of when the monitor group was created",
-								"example": "2014-01-01T05:20:00.12345Z",
+								"type": "string",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+								"example": "2014-01-01T05:20:00.12345Z",
+								"readOnly": true
 							},
 							"description": {
 								"description": "A short description of the monitor group",
-								"example": "Primary datacenter monitors",
-								"type": "string"
+								"type": "string",
+								"example": "Primary datacenter monitors"
 							},
 							"id": {
 								"allOf": [
@@ -2904,19 +2907,21 @@
 							},
 							"members": {
 								"description": "List of monitors in this group",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The timestamp of when the monitor was added to the group",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										},
 										"enabled": {
 											"description": "Whether this monitor is enabled in the group",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"monitor_id": {
 											"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -2925,20 +2930,20 @@
 										},
 										"monitoring_only": {
 											"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										},
 										"must_be_healthy": {
 											"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"updated_at": {
 											"description": "The timestamp of when the monitor group member was last updated",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -2946,46 +2951,44 @@
 										"enabled",
 										"monitoring_only",
 										"must_be_healthy"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"modified_on": {
 								"description": "The timestamp of when the monitor group was last updated",
-								"example": "2014-01-01T05:20:00.12345Z",
+								"type": "string",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+								"example": "2014-01-01T05:20:00.12345Z",
+								"readOnly": true
 							}
 						},
 						"required": [
 							"id",
 							"description",
 							"members"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Monitor Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2998,15 +3001,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3019,15 +3022,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3035,24 +3038,24 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "A short description of the monitor group",
-													"example": "Primary datacenter monitors",
-													"type": "string"
+													"type": "string",
+													"example": "Primary datacenter monitors"
 												},
 												"id": {
 													"allOf": [
@@ -3066,19 +3069,21 @@
 												},
 												"members": {
 													"description": "List of monitors in this group",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "The timestamp of when the monitor was added to the group",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Whether this monitor is enabled in the group",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"monitor_id": {
 																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -3087,20 +3092,20 @@
 															},
 															"monitoring_only": {
 																"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"must_be_healthy": {
 																"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"updated_at": {
 																"description": "The timestamp of when the monitor group member was last updated",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
@@ -3108,36 +3113,33 @@
 															"enabled",
 															"monitoring_only",
 															"must_be_healthy"
-														],
-														"type": "object"
+														]
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
 											},
 											"required": [
 												"id",
 												"description",
 												"members"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Monitor Group response"
+				}
 			},
 			"412": {
+				"description": "Precondition Failed - Referenced monitor does not exist",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3145,14 +3147,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3165,15 +3168,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3186,15 +3189,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3202,24 +3205,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -3233,19 +3236,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -3254,20 +3259,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -3275,74 +3280,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3355,25 +3332,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3381,16 +3384,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Precondition Failed - Referenced monitor does not exist"
+				}
 			},
 			"4XX": {
+				"description": "Create Monitor Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3398,14 +3400,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3418,15 +3421,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3439,15 +3442,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3455,24 +3458,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -3486,19 +3489,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -3507,20 +3512,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -3528,74 +3533,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3608,25 +3585,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3634,14 +3637,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Monitor Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -3651,55 +3652,57 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create Monitor Group",
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		]
 	},
 	"PUT /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
-		"description": "Modify a configured monitor group.",
 		"operationId": "account-load-balancer-monitor-groups-update-monitor-group",
+		"summary": "Update Monitor Group",
+		"description": "Modify a configured monitor group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "monitor_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"type": "string",
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"created_on": {
 								"description": "The timestamp of when the monitor group was created",
-								"example": "2014-01-01T05:20:00.12345Z",
+								"type": "string",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+								"example": "2014-01-01T05:20:00.12345Z",
+								"readOnly": true
 							},
 							"description": {
 								"description": "A short description of the monitor group",
-								"example": "Primary datacenter monitors",
-								"type": "string"
+								"type": "string",
+								"example": "Primary datacenter monitors"
 							},
 							"id": {
 								"allOf": [
@@ -3713,19 +3716,21 @@
 							},
 							"members": {
 								"description": "List of monitors in this group",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The timestamp of when the monitor was added to the group",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										},
 										"enabled": {
 											"description": "Whether this monitor is enabled in the group",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"monitor_id": {
 											"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -3734,20 +3739,20 @@
 										},
 										"monitoring_only": {
 											"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										},
 										"must_be_healthy": {
 											"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"updated_at": {
 											"description": "The timestamp of when the monitor group member was last updated",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -3755,46 +3760,44 @@
 										"enabled",
 										"monitoring_only",
 										"must_be_healthy"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"modified_on": {
 								"description": "The timestamp of when the monitor group was last updated",
-								"example": "2014-01-01T05:20:00.12345Z",
+								"type": "string",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
+								"example": "2014-01-01T05:20:00.12345Z",
+								"readOnly": true
 							}
 						},
 						"required": [
 							"id",
 							"description",
 							"members"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Monitor Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3807,15 +3810,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3828,15 +3831,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3844,24 +3847,24 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "The timestamp of when the monitor group was created",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "A short description of the monitor group",
-													"example": "Primary datacenter monitors",
-													"type": "string"
+													"type": "string",
+													"example": "Primary datacenter monitors"
 												},
 												"id": {
 													"allOf": [
@@ -3875,19 +3878,21 @@
 												},
 												"members": {
 													"description": "List of monitors in this group",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "The timestamp of when the monitor was added to the group",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Whether this monitor is enabled in the group",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"monitor_id": {
 																"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -3896,20 +3901,20 @@
 															},
 															"monitoring_only": {
 																"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"must_be_healthy": {
 																"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"updated_at": {
 																"description": "The timestamp of when the monitor group member was last updated",
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
 														},
 														"required": [
@@ -3917,36 +3922,33 @@
 															"enabled",
 															"monitoring_only",
 															"must_be_healthy"
-														],
-														"type": "object"
+														]
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the monitor group was last updated",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
 											},
 											"required": [
 												"id",
 												"description",
 												"members"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Monitor Group response"
+				}
 			},
 			"412": {
+				"description": "Precondition Failed - Referenced monitor does not exist",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3954,14 +3956,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3974,15 +3977,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3995,15 +3998,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -4011,24 +4014,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -4042,19 +4045,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -4063,20 +4068,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -4084,74 +4089,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4164,25 +4141,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4190,16 +4193,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Precondition Failed - Referenced monitor does not exist"
+				}
 			},
 			"4XX": {
+				"description": "Update Monitor Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4207,14 +4209,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4227,15 +4230,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4248,15 +4251,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -4264,24 +4267,24 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
 															"description": "The timestamp of when the monitor group was created",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "A short description of the monitor group",
-															"example": "Primary datacenter monitors",
-															"type": "string"
+															"type": "string",
+															"example": "Primary datacenter monitors"
 														},
 														"id": {
 															"allOf": [
@@ -4295,19 +4298,21 @@
 														},
 														"members": {
 															"description": "List of monitors in this group",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"created_at": {
 																		"description": "The timestamp of when the monitor was added to the group",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"enabled": {
 																		"description": "Whether this monitor is enabled in the group",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"monitor_id": {
 																		"description": "The ID of the Monitor to use for checking the health of origins within this pool.",
@@ -4316,20 +4321,20 @@
 																	},
 																	"monitoring_only": {
 																		"description": "Whether this monitor is used for monitoring only (does not affect pool health)",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"must_be_healthy": {
 																		"description": "Whether this monitor must be healthy for the pool to be considered healthy",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"updated_at": {
 																		"description": "The timestamp of when the monitor group member was last updated",
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	}
 																},
 																"required": [
@@ -4337,74 +4342,46 @@
 																	"enabled",
 																	"monitoring_only",
 																	"must_be_healthy"
-																],
-																"type": "object"
+																]
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the monitor group was last updated",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"description",
 														"members"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4417,25 +4394,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4443,14 +4446,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Monitor Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -4460,7 +4461,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Monitor Group",
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		]

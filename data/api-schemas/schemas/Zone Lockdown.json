@@ -1,67 +1,69 @@
 {
 	"DELETE /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
-		"description": "Deletes an existing Zone Lockdown rule.",
 		"operationId": "zone-lockdown-delete-a-zone-lockdown-rule",
+		"summary": "Delete a Zone Lockdown rule",
+		"description": "Deletes an existing Zone Lockdown rule.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "lock_downs_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
+					"type": "string",
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete a Zone Lockdown rule response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"description": "The unique identifier of the Zone Lockdown rule.",
+											"type": "string",
 											"example": "372e67954025e0ba6aaa6d586b9e0b59",
 											"maxLength": 32,
 											"readOnly": true,
-											"type": "string",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Delete a Zone Lockdown rule response"
+				}
 			},
 			"4XX": {
+				"description": "Delete a Zone Lockdown rule response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -69,64 +71,39 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "The unique identifier of the Zone Lockdown rule.",
+													"type": "string",
 													"example": "372e67954025e0ba6aaa6d586b9e0b59",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -139,25 +116,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -165,14 +168,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete a Zone Lockdown rule response failure"
+				}
 			}
 		},
 		"security": [
@@ -182,7 +183,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a Zone Lockdown rule",
 		"tags": [
 			"Zone Lockdown"
 		],
@@ -201,174 +201,178 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/lockdowns": {
-		"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 		"operationId": "zone-lockdown-list-zone-lockdown-rules",
+		"summary": "List Zone Lockdown rules",
+		"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "description",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A string to search for in the description of existing rules.",
-							"example": "endpoints",
 							"type": "string",
+							"example": "endpoints",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "modified_on",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "The timestamp of when the rule was last modified.",
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
-							"readOnly": true,
 							"type": "string",
+							"format": "date-time",
+							"example": "2014-01-01T05:20:00.12345Z",
+							"readOnly": true,
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "ip",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A single IP address to search for in existing rules.",
-							"example": "1.2.3.4",
-							"type": "string"
+							"type": "string",
+							"example": "1.2.3.4"
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "priority",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.",
-							"example": 5,
 							"type": "number",
+							"example": 5,
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "uri_search",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A single URI to search for in the list of URLs of existing rules.",
-							"example": "/some/path",
 							"type": "string",
+							"example": "/some/path",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "ip_range_search",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A single IP address range to search for in existing rules.",
-							"example": "1.2.3.0/16",
 							"type": "string",
+							"example": "1.2.3.0/16",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`.",
+					"type": "number",
+					"default": 20,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "created_on",
+				"in": "query",
 				"schema": {
 					"description": "The timestamp of when the rule was created.",
-					"example": "2014-01-01T05:20:00.12345Z",
+					"type": "string",
 					"format": "date-time",
-					"readOnly": true,
-					"type": "string"
+					"example": "2014-01-01T05:20:00.12345Z",
+					"readOnly": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "description_search",
+				"in": "query",
 				"schema": {
 					"description": "A string to search for in the description of existing rules.",
-					"example": "endpoints",
-					"type": "string"
+					"type": "string",
+					"example": "endpoints"
 				}
 			},
 			{
-				"in": "query",
 				"name": "ip_search",
+				"in": "query",
 				"schema": {
 					"description": "A single IP address to search for in existing rules.",
-					"example": "1.2.3.4",
-					"type": "string"
+					"type": "string",
+					"example": "1.2.3.4"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Zone Lockdown rules response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -381,15 +385,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -402,7 +406,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -422,11 +426,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -434,147 +438,147 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"type": "object"
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Defines the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Defines the current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Defines the number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Defines the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
-												"additionalProperties": false,
+												"type": "object",
 												"properties": {
 													"configurations": {
 														"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
+																	"type": "object",
 																	"properties": {
 																		"target": {
 																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																			"type": "string",
+																			"example": "ip",
 																			"enum": [
 																				"ip"
-																			],
-																			"example": "ip",
-																			"type": "string"
+																			]
 																		},
 																		"value": {
 																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																			"example": "198.51.100.4",
-																			"type": "string"
+																			"type": "string",
+																			"example": "198.51.100.4"
 																		}
 																	},
-																	"title": "An IP address configuration.",
-																	"type": "object"
+																	"title": "An IP address configuration."
 																},
 																{
+																	"type": "object",
 																	"properties": {
 																		"target": {
 																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																			"type": "string",
+																			"example": "ip_range",
 																			"enum": [
 																				"ip_range"
-																			],
-																			"example": "ip_range",
-																			"type": "string"
+																			]
 																		},
 																		"value": {
 																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																			"example": "198.51.100.4/16",
-																			"type": "string"
+																			"type": "string",
+																			"example": "198.51.100.4/16"
 																		}
 																	},
-																	"title": "An IP address range configuration.",
-																	"type": "object"
+																	"title": "An IP address range configuration."
 																}
 															]
-														},
-														"type": "array"
+														}
 													},
 													"created_on": {
 														"description": "The timestamp of when the rule was created.",
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"description": {
 														"description": "An informative summary of the rule.",
+														"type": "string",
 														"example": "Restrict access to these endpoints to requests from a known IP address",
-														"maxLength": 1024,
-														"type": "string"
+														"maxLength": 1024
 													},
 													"id": {
 														"description": "The unique identifier of the Zone Lockdown rule.",
+														"type": "string",
 														"example": "372e67954025e0ba6aaa6d586b9e0b59",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "The timestamp of when the rule was last modified.",
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"paused": {
 														"description": "When true, indicates that the rule is currently paused.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"urls": {
 														"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+														"type": "array",
 														"items": {
 															"example": "api.mysite.com/some/endpoint*",
 															"type": "string",
 															"x-auditable": true
-														},
-														"type": "array"
+														}
 													}
 												},
+												"additionalProperties": false,
 												"required": [
 													"id",
 													"created_on",
@@ -583,10 +587,8 @@
 													"description",
 													"urls",
 													"configurations"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
@@ -597,10 +599,10 @@
 							]
 						}
 					}
-				},
-				"description": "List Zone Lockdown rules response"
+				}
 			},
 			"4XX": {
+				"description": "List Zone Lockdown rules response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -608,16 +610,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -630,15 +634,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -651,7 +655,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -671,11 +675,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -683,147 +687,147 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {
 																"type": "object"
 															},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Defines the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Defines the current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Defines the number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Defines the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
-														"additionalProperties": false,
+														"type": "object",
 														"properties": {
 															"configurations": {
 																"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+																"type": "array",
 																"items": {
 																	"anyOf": [
 																		{
+																			"type": "object",
 																			"properties": {
 																				"target": {
 																					"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																					"type": "string",
+																					"example": "ip",
 																					"enum": [
 																						"ip"
-																					],
-																					"example": "ip",
-																					"type": "string"
+																					]
 																				},
 																				"value": {
 																					"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																					"example": "198.51.100.4",
-																					"type": "string"
+																					"type": "string",
+																					"example": "198.51.100.4"
 																				}
 																			},
-																			"title": "An IP address configuration.",
-																			"type": "object"
+																			"title": "An IP address configuration."
 																		},
 																		{
+																			"type": "object",
 																			"properties": {
 																				"target": {
 																					"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																					"type": "string",
+																					"example": "ip_range",
 																					"enum": [
 																						"ip_range"
-																					],
-																					"example": "ip_range",
-																					"type": "string"
+																					]
 																				},
 																				"value": {
 																					"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																					"example": "198.51.100.4/16",
-																					"type": "string"
+																					"type": "string",
+																					"example": "198.51.100.4/16"
 																				}
 																			},
-																			"title": "An IP address range configuration.",
-																			"type": "object"
+																			"title": "An IP address range configuration."
 																		}
 																	]
-																},
-																"type": "array"
+																}
 															},
 															"created_on": {
 																"description": "The timestamp of when the rule was created.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"description": {
 																"description": "An informative summary of the rule.",
+																"type": "string",
 																"example": "Restrict access to these endpoints to requests from a known IP address",
-																"maxLength": 1024,
-																"type": "string"
+																"maxLength": 1024
 															},
 															"id": {
 																"description": "The unique identifier of the Zone Lockdown rule.",
+																"type": "string",
 																"example": "372e67954025e0ba6aaa6d586b9e0b59",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The timestamp of when the rule was last modified.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"paused": {
 																"description": "When true, indicates that the rule is currently paused.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"urls": {
 																"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+																"type": "array",
 																"items": {
 																	"example": "api.mysite.com/some/endpoint*",
 																	"type": "string",
 																	"x-auditable": true
-																},
-																"type": "array"
+																}
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"id",
 															"created_on",
@@ -832,10 +836,8 @@
 															"description",
 															"urls",
 															"configurations"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
@@ -846,48 +848,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -900,25 +877,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -926,14 +929,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Zone Lockdown rules response failure"
+				}
 			}
 		},
 		"security": [
@@ -943,7 +944,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Zone Lockdown rules",
 		"tags": [
 			"Zone Lockdown"
 		],
@@ -963,52 +963,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
-		"description": "Fetches the details of a Zone Lockdown rule.",
 		"operationId": "zone-lockdown-get-a-zone-lockdown-rule",
+		"summary": "Get a Zone Lockdown rule",
+		"description": "Fetches the details of a Zone Lockdown rule.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "lock_downs_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
+					"type": "string",
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get a Zone Lockdown rule response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1021,15 +1025,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1042,7 +1046,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1062,11 +1066,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1074,8 +1078,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1094,106 +1097,106 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": false,
+											"type": "object",
 											"properties": {
 												"configurations": {
 													"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+													"type": "array",
 													"items": {
 														"anyOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"target": {
 																		"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																		"type": "string",
+																		"example": "ip",
 																		"enum": [
 																			"ip"
-																		],
-																		"example": "ip",
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																		"example": "198.51.100.4",
-																		"type": "string"
+																		"type": "string",
+																		"example": "198.51.100.4"
 																	}
 																},
-																"title": "An IP address configuration.",
-																"type": "object"
+																"title": "An IP address configuration."
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"target": {
 																		"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																		"type": "string",
+																		"example": "ip_range",
 																		"enum": [
 																			"ip_range"
-																		],
-																		"example": "ip_range",
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																		"example": "198.51.100.4/16",
-																		"type": "string"
+																		"type": "string",
+																		"example": "198.51.100.4/16"
 																	}
 																},
-																"title": "An IP address range configuration.",
-																"type": "object"
+																"title": "An IP address range configuration."
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"created_on": {
 													"description": "The timestamp of when the rule was created.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "An informative summary of the rule.",
+													"type": "string",
 													"example": "Restrict access to these endpoints to requests from a known IP address",
-													"maxLength": 1024,
-													"type": "string"
+													"maxLength": 1024
 												},
 												"id": {
 													"description": "The unique identifier of the Zone Lockdown rule.",
+													"type": "string",
 													"example": "372e67954025e0ba6aaa6d586b9e0b59",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"paused": {
 													"description": "When true, indicates that the rule is currently paused.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"urls": {
 													"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+													"type": "array",
 													"items": {
 														"example": "api.mysite.com/some/endpoint*",
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"id",
 												"created_on",
@@ -1202,8 +1205,7 @@
 												"description",
 												"urls",
 												"configurations"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1214,10 +1216,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get a Zone Lockdown rule response"
+				}
 			},
 			"4XX": {
+				"description": "Get a Zone Lockdown rule response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1225,16 +1227,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1247,15 +1251,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1268,7 +1272,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1288,11 +1292,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1300,8 +1304,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1320,106 +1323,106 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"additionalProperties": false,
+													"type": "object",
 													"properties": {
 														"configurations": {
 															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
+																		"type": "object",
 																		"properties": {
 																			"target": {
 																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																				"type": "string",
+																				"example": "ip",
 																				"enum": [
 																					"ip"
-																				],
-																				"example": "ip",
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"example": "198.51.100.4",
-																				"type": "string"
+																				"type": "string",
+																				"example": "198.51.100.4"
 																			}
 																		},
-																		"title": "An IP address configuration.",
-																		"type": "object"
+																		"title": "An IP address configuration."
 																	},
 																	{
+																		"type": "object",
 																		"properties": {
 																			"target": {
 																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																				"type": "string",
+																				"example": "ip_range",
 																				"enum": [
 																					"ip_range"
-																				],
-																				"example": "ip_range",
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																				"example": "198.51.100.4/16",
-																				"type": "string"
+																				"type": "string",
+																				"example": "198.51.100.4/16"
 																			}
 																		},
-																		"title": "An IP address range configuration.",
-																		"type": "object"
+																		"title": "An IP address range configuration."
 																	}
 																]
-															},
-															"type": "array"
+															}
 														},
 														"created_on": {
 															"description": "The timestamp of when the rule was created.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An informative summary of the rule.",
+															"type": "string",
 															"example": "Restrict access to these endpoints to requests from a known IP address",
-															"maxLength": 1024,
-															"type": "string"
+															"maxLength": 1024
 														},
 														"id": {
 															"description": "The unique identifier of the Zone Lockdown rule.",
+															"type": "string",
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"paused": {
 															"description": "When true, indicates that the rule is currently paused.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"urls": {
 															"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+															"type": "array",
 															"items": {
 																"example": "api.mysite.com/some/endpoint*",
 																"type": "string",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"id",
 														"created_on",
@@ -1428,8 +1431,7 @@
 														"description",
 														"urls",
 														"configurations"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
@@ -1440,48 +1442,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1494,25 +1471,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1520,14 +1523,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get a Zone Lockdown rule response failure"
+				}
 			}
 		},
 		"security": [
@@ -1537,7 +1538,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a Zone Lockdown rule",
 		"tags": [
 			"Zone Lockdown"
 		],
@@ -1557,129 +1557,133 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/firewall/lockdowns": {
-		"description": "Creates a new Zone Lockdown rule.",
 		"operationId": "zone-lockdown-create-a-zone-lockdown-rule",
+		"summary": "Create a Zone Lockdown rule",
+		"description": "Creates a new Zone Lockdown rule.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"configurations": {
 								"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+								"type": "array",
 								"items": {
 									"anyOf": [
 										{
+											"type": "object",
 											"properties": {
 												"target": {
 													"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+													"type": "string",
+													"example": "ip",
 													"enum": [
 														"ip"
-													],
-													"example": "ip",
-													"type": "string"
+													]
 												},
 												"value": {
 													"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-													"example": "198.51.100.4",
-													"type": "string"
+													"type": "string",
+													"example": "198.51.100.4"
 												}
 											},
-											"title": "An IP address configuration.",
-											"type": "object"
+											"title": "An IP address configuration."
 										},
 										{
+											"type": "object",
 											"properties": {
 												"target": {
 													"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+													"type": "string",
+													"example": "ip_range",
 													"enum": [
 														"ip_range"
-													],
-													"example": "ip_range",
-													"type": "string"
+													]
 												},
 												"value": {
 													"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-													"example": "198.51.100.4/16",
-													"type": "string"
+													"type": "string",
+													"example": "198.51.100.4/16"
 												}
 											},
-											"title": "An IP address range configuration.",
-											"type": "object"
+											"title": "An IP address range configuration."
 										}
 									]
-								},
-								"type": "array"
+								}
 							},
 							"description": {
 								"description": "An informative summary of the rule. This value is sanitized and any tags will be removed.",
+								"type": "string",
 								"example": "Prevent multiple login failures to mitigate brute force attacks",
 								"maxLength": 1024,
-								"type": "string",
 								"x-auditable": true
 							},
 							"paused": {
 								"description": "When true, indicates that the rule is currently paused.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"priority": {
 								"description": "The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.",
-								"example": 5,
 								"type": "number",
+								"example": 5,
 								"x-auditable": true
 							},
 							"urls": {
 								"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+								"type": "array",
 								"items": {
 									"example": "shop.example.com/*",
 									"type": "string",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"urls",
 							"configurations"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a Zone Lockdown rule response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1692,15 +1696,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1713,7 +1717,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1733,11 +1737,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1745,8 +1749,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1765,106 +1768,106 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": false,
+											"type": "object",
 											"properties": {
 												"configurations": {
 													"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+													"type": "array",
 													"items": {
 														"anyOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"target": {
 																		"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																		"type": "string",
+																		"example": "ip",
 																		"enum": [
 																			"ip"
-																		],
-																		"example": "ip",
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																		"example": "198.51.100.4",
-																		"type": "string"
+																		"type": "string",
+																		"example": "198.51.100.4"
 																	}
 																},
-																"title": "An IP address configuration.",
-																"type": "object"
+																"title": "An IP address configuration."
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"target": {
 																		"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																		"type": "string",
+																		"example": "ip_range",
 																		"enum": [
 																			"ip_range"
-																		],
-																		"example": "ip_range",
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																		"example": "198.51.100.4/16",
-																		"type": "string"
+																		"type": "string",
+																		"example": "198.51.100.4/16"
 																	}
 																},
-																"title": "An IP address range configuration.",
-																"type": "object"
+																"title": "An IP address range configuration."
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"created_on": {
 													"description": "The timestamp of when the rule was created.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "An informative summary of the rule.",
+													"type": "string",
 													"example": "Restrict access to these endpoints to requests from a known IP address",
-													"maxLength": 1024,
-													"type": "string"
+													"maxLength": 1024
 												},
 												"id": {
 													"description": "The unique identifier of the Zone Lockdown rule.",
+													"type": "string",
 													"example": "372e67954025e0ba6aaa6d586b9e0b59",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"paused": {
 													"description": "When true, indicates that the rule is currently paused.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"urls": {
 													"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+													"type": "array",
 													"items": {
 														"example": "api.mysite.com/some/endpoint*",
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"id",
 												"created_on",
@@ -1873,8 +1876,7 @@
 												"description",
 												"urls",
 												"configurations"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -1885,10 +1887,10 @@
 							]
 						}
 					}
-				},
-				"description": "Create a Zone Lockdown rule response"
+				}
 			},
 			"4XX": {
+				"description": "Create a Zone Lockdown rule response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1896,16 +1898,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1918,15 +1922,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1939,7 +1943,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1959,11 +1963,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1971,8 +1975,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1991,106 +1994,106 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"additionalProperties": false,
+													"type": "object",
 													"properties": {
 														"configurations": {
 															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
+																		"type": "object",
 																		"properties": {
 																			"target": {
 																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																				"type": "string",
+																				"example": "ip",
 																				"enum": [
 																					"ip"
-																				],
-																				"example": "ip",
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"example": "198.51.100.4",
-																				"type": "string"
+																				"type": "string",
+																				"example": "198.51.100.4"
 																			}
 																		},
-																		"title": "An IP address configuration.",
-																		"type": "object"
+																		"title": "An IP address configuration."
 																	},
 																	{
+																		"type": "object",
 																		"properties": {
 																			"target": {
 																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																				"type": "string",
+																				"example": "ip_range",
 																				"enum": [
 																					"ip_range"
-																				],
-																				"example": "ip_range",
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																				"example": "198.51.100.4/16",
-																				"type": "string"
+																				"type": "string",
+																				"example": "198.51.100.4/16"
 																			}
 																		},
-																		"title": "An IP address range configuration.",
-																		"type": "object"
+																		"title": "An IP address range configuration."
 																	}
 																]
-															},
-															"type": "array"
+															}
 														},
 														"created_on": {
 															"description": "The timestamp of when the rule was created.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An informative summary of the rule.",
+															"type": "string",
 															"example": "Restrict access to these endpoints to requests from a known IP address",
-															"maxLength": 1024,
-															"type": "string"
+															"maxLength": 1024
 														},
 														"id": {
 															"description": "The unique identifier of the Zone Lockdown rule.",
+															"type": "string",
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"paused": {
 															"description": "When true, indicates that the rule is currently paused.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"urls": {
 															"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+															"type": "array",
 															"items": {
 																"example": "api.mysite.com/some/endpoint*",
 																"type": "string",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"id",
 														"created_on",
@@ -2099,8 +2102,7 @@
 														"description",
 														"urls",
 														"configurations"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
@@ -2111,48 +2113,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2165,25 +2142,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2191,14 +2194,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a Zone Lockdown rule response failure"
+				}
 			}
 		},
 		"security": [
@@ -2208,7 +2209,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a Zone Lockdown rule",
 		"tags": [
 			"Zone Lockdown"
 		],
@@ -2227,123 +2227,127 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/firewall/lockdowns/{lock_downs_id}": {
-		"description": "Updates an existing Zone Lockdown rule.",
 		"operationId": "zone-lockdown-update-a-zone-lockdown-rule",
+		"summary": "Update a Zone Lockdown rule",
+		"description": "Updates an existing Zone Lockdown rule.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "lock_downs_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of the Zone Lockdown rule.",
+					"type": "string",
 					"example": "372e67954025e0ba6aaa6d586b9e0b59",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines an identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"configurations": {
 								"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+								"type": "array",
 								"items": {
 									"anyOf": [
 										{
+											"type": "object",
 											"properties": {
 												"target": {
 													"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+													"type": "string",
+													"example": "ip",
 													"enum": [
 														"ip"
-													],
-													"example": "ip",
-													"type": "string"
+													]
 												},
 												"value": {
 													"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-													"example": "198.51.100.4",
-													"type": "string"
+													"type": "string",
+													"example": "198.51.100.4"
 												}
 											},
-											"title": "An IP address configuration.",
-											"type": "object"
+											"title": "An IP address configuration."
 										},
 										{
+											"type": "object",
 											"properties": {
 												"target": {
 													"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+													"type": "string",
+													"example": "ip_range",
 													"enum": [
 														"ip_range"
-													],
-													"example": "ip_range",
-													"type": "string"
+													]
 												},
 												"value": {
 													"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-													"example": "198.51.100.4/16",
-													"type": "string"
+													"type": "string",
+													"example": "198.51.100.4/16"
 												}
 											},
-											"title": "An IP address range configuration.",
-											"type": "object"
+											"title": "An IP address range configuration."
 										}
 									]
-								},
-								"type": "array"
+								}
 							},
 							"urls": {
 								"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+								"type": "array",
 								"items": {
 									"example": "shop.example.com/*",
 									"type": "string",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"urls",
 							"configurations"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a Zone Lockdown rule response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2356,15 +2360,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2377,7 +2381,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2397,11 +2401,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2409,8 +2413,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2429,106 +2432,106 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": false,
+											"type": "object",
 											"properties": {
 												"configurations": {
 													"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+													"type": "array",
 													"items": {
 														"anyOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"target": {
 																		"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																		"type": "string",
+																		"example": "ip",
 																		"enum": [
 																			"ip"
-																		],
-																		"example": "ip",
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																		"example": "198.51.100.4",
-																		"type": "string"
+																		"type": "string",
+																		"example": "198.51.100.4"
 																	}
 																},
-																"title": "An IP address configuration.",
-																"type": "object"
+																"title": "An IP address configuration."
 															},
 															{
+																"type": "object",
 																"properties": {
 																	"target": {
 																		"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																		"type": "string",
+																		"example": "ip_range",
 																		"enum": [
 																			"ip_range"
-																		],
-																		"example": "ip_range",
-																		"type": "string"
+																		]
 																	},
 																	"value": {
 																		"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																		"example": "198.51.100.4/16",
-																		"type": "string"
+																		"type": "string",
+																		"example": "198.51.100.4/16"
 																	}
 																},
-																"title": "An IP address range configuration.",
-																"type": "object"
+																"title": "An IP address range configuration."
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"created_on": {
 													"description": "The timestamp of when the rule was created.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "An informative summary of the rule.",
+													"type": "string",
 													"example": "Restrict access to these endpoints to requests from a known IP address",
-													"maxLength": 1024,
-													"type": "string"
+													"maxLength": 1024
 												},
 												"id": {
 													"description": "The unique identifier of the Zone Lockdown rule.",
+													"type": "string",
 													"example": "372e67954025e0ba6aaa6d586b9e0b59",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"paused": {
 													"description": "When true, indicates that the rule is currently paused.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"urls": {
 													"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+													"type": "array",
 													"items": {
 														"example": "api.mysite.com/some/endpoint*",
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"id",
 												"created_on",
@@ -2537,8 +2540,7 @@
 												"description",
 												"urls",
 												"configurations"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -2549,10 +2551,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update a Zone Lockdown rule response"
+				}
 			},
 			"4XX": {
+				"description": "Update a Zone Lockdown rule response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2560,16 +2562,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2582,15 +2586,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2603,7 +2607,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2623,11 +2627,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2635,8 +2639,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2655,106 +2658,106 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"additionalProperties": false,
+													"type": "object",
 													"properties": {
 														"configurations": {
 															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
+																		"type": "object",
 																		"properties": {
 																			"target": {
 																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+																				"type": "string",
+																				"example": "ip",
 																				"enum": [
 																					"ip"
-																				],
-																				"example": "ip",
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
-																				"example": "198.51.100.4",
-																				"type": "string"
+																				"type": "string",
+																				"example": "198.51.100.4"
 																			}
 																		},
-																		"title": "An IP address configuration.",
-																		"type": "object"
+																		"title": "An IP address configuration."
 																	},
 																	{
+																		"type": "object",
 																		"properties": {
 																			"target": {
 																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+																				"type": "string",
+																				"example": "ip_range",
 																				"enum": [
 																					"ip_range"
-																				],
-																				"example": "ip_range",
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
-																				"example": "198.51.100.4/16",
-																				"type": "string"
+																				"type": "string",
+																				"example": "198.51.100.4/16"
 																			}
 																		},
-																		"title": "An IP address range configuration.",
-																		"type": "object"
+																		"title": "An IP address range configuration."
 																	}
 																]
-															},
-															"type": "array"
+															}
 														},
 														"created_on": {
 															"description": "The timestamp of when the rule was created.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An informative summary of the rule.",
+															"type": "string",
 															"example": "Restrict access to these endpoints to requests from a known IP address",
-															"maxLength": 1024,
-															"type": "string"
+															"maxLength": 1024
 														},
 														"id": {
 															"description": "The unique identifier of the Zone Lockdown rule.",
+															"type": "string",
 															"example": "372e67954025e0ba6aaa6d586b9e0b59",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"paused": {
 															"description": "When true, indicates that the rule is currently paused.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"urls": {
 															"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+															"type": "array",
 															"items": {
 																"example": "api.mysite.com/some/endpoint*",
 																"type": "string",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"id",
 														"created_on",
@@ -2763,8 +2766,7 @@
 														"description",
 														"urls",
 														"configurations"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
@@ -2775,48 +2777,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2829,25 +2806,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2855,14 +2858,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a Zone Lockdown rule response failure"
+				}
 			}
 		},
 		"security": [
@@ -2872,7 +2873,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a Zone Lockdown rule",
 		"tags": [
 			"Zone Lockdown"
 		],

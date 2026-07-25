@@ -1,12 +1,13 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/countries": {
-		"description": "Retrieve country code information for all supported countries.",
 		"operationId": "get_CountryRead",
+		"summary": "Retrieves countries information for all countries",
+		"description": "Retrieve country code information for all supported countries.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -16,25 +17,28 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the long and short country code for every country.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"result": {
+										"type": "array",
 										"items": {
 											"properties": {
 												"alpha2": {
-													"example": "AF",
-													"type": "string"
+													"type": "string",
+													"example": "AF"
 												},
 												"alpha3": {
-													"example": "AF",
-													"type": "string"
+													"type": "string",
+													"example": "AF"
 												},
 												"name": {
-													"example": "Afghanistan",
-													"type": "string"
+													"type": "string",
+													"example": "Afghanistan"
 												}
 											},
 											"required": [
@@ -43,12 +47,11 @@
 												"alpha2"
 											],
 											"type": "object"
-										},
-										"type": "array"
+										}
 									},
 									"success": {
-										"example": "true",
-										"type": "string"
+										"type": "string",
+										"example": "true"
 									}
 								},
 								"required": [
@@ -56,32 +59,32 @@
 									"result"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns the long and short country code for every country."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -94,12 +97,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -107,7 +108,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieves countries information for all countries",
 		"tags": [
 			"Country"
 		],

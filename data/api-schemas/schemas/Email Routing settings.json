@@ -1,17 +1,18 @@
 {
 	"DELETE /zones/{zone_id}/email/routing/dns": {
-		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 		"operationId": "email-routing-settings-disable-email-routing-dns",
+		"summary": "Disable Email Routing",
+		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -20,37 +21,40 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"nullable": true,
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Domain of your zone.",
-								"example": "example.net",
 								"type": "string",
+								"example": "example.net",
 								"x-auditable": true
 							}
 						},
-						"type": "object"
+						"nullable": true
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Disable Email Routing response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"oneOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -59,12 +63,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -74,15 +78,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -91,12 +95,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -106,40 +110,40 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -148,12 +152,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -163,15 +167,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -180,12 +184,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -195,67 +199,67 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																},
 																"total_pages": {
 																	"description": "The number of total pages in the entire result set.",
-																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"description": "List of records needed to enable an Email Routing zone.",
+														"type": "object",
 														"properties": {
 															"content": {
 																"description": "DNS record content.",
@@ -264,20 +268,23 @@
 															},
 															"name": {
 																"description": "DNS record name (or @ for the zone apex).",
+																"type": "string",
 																"example": "example.com",
 																"maxLength": 255,
-																"type": "string",
 																"x-auditable": true
 															},
 															"priority": {
 																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"type": "number",
 																"example": 12,
 																"maximum": 65535,
 																"minimum": 0,
-																"type": "number",
 																"x-auditable": true
 															},
 															"ttl": {
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"type": "number",
+																"example": 1,
 																"anyOf": [
 																	{
 																		"example": 3600,
@@ -292,13 +299,12 @@
 																		"type": "number"
 																	}
 																],
-																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																"example": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "DNS record type.",
+																"type": "string",
+																"example": "NS",
 																"enum": [
 																	"A",
 																	"AAAA",
@@ -319,15 +325,11 @@
 																	"TLSA",
 																	"URI"
 																],
-																"example": "NS",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
@@ -336,8 +338,7 @@
 							]
 						}
 					}
-				},
-				"description": "Disable Email Routing response"
+				}
 			}
 		},
 		"security": [
@@ -346,7 +347,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Disable Email Routing",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -365,39 +365,43 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing": {
-		"description": "Get information about the settings for your Email Routing zone.",
 		"operationId": "email-routing-settings-get-email-routing-settings",
+		"summary": "Get Email Routing settings",
+		"description": "Get information about the settings for your Email Routing zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Email Routing settings response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -406,12 +410,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -421,15 +425,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -438,12 +442,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -453,84 +457,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -538,46 +544,41 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Email Routing settings response"
+				}
 			}
 		},
 		"security": [
@@ -586,7 +587,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Email Routing settings",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -611,51 +611,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/dns": {
-		"description": "Show the DNS records needed to configure your Email Routing zone.",
 		"operationId": "email-routing-settings-email-routing-dns-settings",
+		"summary": "Email Routing - DNS settings",
+		"description": "Show the DNS records needed to configure your Email Routing zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "subdomain",
+				"in": "query",
 				"schema": {
 					"description": "Domain of your zone.",
-					"example": "example.net",
 					"type": "string",
+					"example": "example.net",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Email Routing - DNS settings response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"oneOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -664,12 +669,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -679,15 +684,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -696,12 +701,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -711,74 +716,76 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																},
 																"total_pages": {
 																	"description": "The number of total pages in the entire result set.",
-																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"errors": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"code": {
 																		"type": "string"
 																	},
 																	"missing": {
 																		"description": "List of records needed to enable an Email Routing zone.",
+																		"type": "object",
 																		"properties": {
 																			"content": {
 																				"description": "DNS record content.",
@@ -787,20 +794,23 @@
 																			},
 																			"name": {
 																				"description": "DNS record name (or @ for the zone apex).",
+																				"type": "string",
 																				"example": "example.com",
 																				"maxLength": 255,
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"priority": {
 																				"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																				"type": "number",
 																				"example": 12,
 																				"maximum": 65535,
 																				"minimum": 0,
-																				"type": "number",
 																				"x-auditable": true
 																			},
 																			"ttl": {
+																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																				"type": "number",
+																				"example": 1,
 																				"anyOf": [
 																					{
 																						"example": 3600,
@@ -815,13 +825,12 @@
 																						"type": "number"
 																					}
 																				],
-																				"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																				"example": 1,
-																				"type": "number",
 																				"x-auditable": true
 																			},
 																			"type": {
 																				"description": "DNS record type.",
+																				"type": "string",
+																				"example": "NS",
 																				"enum": [
 																					"A",
 																					"AAAA",
@@ -842,22 +851,19 @@
 																					"TLSA",
 																					"URI"
 																				],
-																				"example": "NS",
 																				"readOnly": true,
-																				"type": "string",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														},
 														"record": {
+															"type": "array",
 															"items": {
 																"description": "List of records needed to enable an Email Routing zone.",
+																"type": "object",
 																"properties": {
 																	"content": {
 																		"description": "DNS record content.",
@@ -866,20 +872,23 @@
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex).",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"type": "number",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ttl": {
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"type": "number",
+																		"example": 1,
 																		"anyOf": [
 																			{
 																				"example": 3600,
@@ -894,13 +903,12 @@
 																				"type": "number"
 																			}
 																		],
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"example": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "NS",
 																		"enum": [
 																			"A",
 																			"AAAA",
@@ -921,37 +929,33 @@
 																			"TLSA",
 																			"URI"
 																		],
-																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -960,12 +964,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -975,15 +979,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -992,12 +996,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1007,67 +1011,67 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																},
 																"total_pages": {
 																	"description": "The number of total pages in the entire result set.",
-																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"description": "List of records needed to enable an Email Routing zone.",
+														"type": "object",
 														"properties": {
 															"content": {
 																"description": "DNS record content.",
@@ -1076,20 +1080,23 @@
 															},
 															"name": {
 																"description": "DNS record name (or @ for the zone apex).",
+																"type": "string",
 																"example": "example.com",
 																"maxLength": 255,
-																"type": "string",
 																"x-auditable": true
 															},
 															"priority": {
 																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"type": "number",
 																"example": 12,
 																"maximum": 65535,
 																"minimum": 0,
-																"type": "number",
 																"x-auditable": true
 															},
 															"ttl": {
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"type": "number",
+																"example": 1,
 																"anyOf": [
 																	{
 																		"example": 3600,
@@ -1104,13 +1111,12 @@
 																		"type": "number"
 																	}
 																],
-																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																"example": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "DNS record type.",
+																"type": "string",
+																"example": "NS",
 																"enum": [
 																	"A",
 																	"AAAA",
@@ -1131,15 +1137,11 @@
 																	"TLSA",
 																	"URI"
 																],
-																"example": "NS",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
@@ -1148,8 +1150,7 @@
 							]
 						}
 					}
-				},
-				"description": "Email Routing - DNS settings response"
+				}
 			}
 		},
 		"security": [
@@ -1158,7 +1159,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Email Routing - DNS settings",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -1183,78 +1183,82 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/email/routing": {
-		"description": "Update the settings for your Email Routing zone.",
 		"operationId": "email-routing-settings-update-email-routing-settings",
+		"summary": "Update Email Routing settings",
+		"description": "Update the settings for your Email Routing zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"description": "State of your zone Email Routing settings. No-op on this endpoint - use `POST`/`DELETE /zones/{zone_id}/email/routing/dns`.",
+								"type": "boolean",
+								"example": true,
 								"enum": [
 									true,
 									false
-								],
-								"example": true,
-								"type": "boolean"
+								]
 							},
 							"skip_wizard": {
 								"description": "Flag to check if the user skipped the configuration wizard.",
+								"type": "boolean",
+								"example": true,
 								"enum": [
 									true,
 									false
-								],
-								"example": true,
-								"type": "boolean"
+								]
 							},
 							"support_subaddress": {
 								"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+								"type": "boolean",
+								"example": true,
 								"enum": [
 									true,
 									false
-								],
-								"example": true,
-								"type": "boolean"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Email Routing settings response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1263,12 +1267,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1278,15 +1282,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1295,12 +1299,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1310,84 +1314,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -1395,46 +1401,41 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Email Routing settings response"
+				}
 			}
 		},
 		"security": [
@@ -1443,7 +1444,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Email Routing settings",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -1467,18 +1467,19 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/email/routing/dns": {
-		"description": "Unlock MX Records previously locked by Email Routing.",
 		"operationId": "email-routing-settings-unlock-email-routing-dns",
+		"summary": "Unlock Email Routing",
+		"description": "Unlock MX Records previously locked by Email Routing.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -1487,37 +1488,40 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"nullable": true,
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Domain of your zone.",
-								"example": "example.net",
 								"type": "string",
+								"example": "example.net",
 								"x-auditable": true
 							}
 						},
-						"type": "object"
+						"nullable": true
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Unlock Email Routing MX records",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1526,12 +1530,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1541,15 +1545,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1558,12 +1562,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1573,84 +1577,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -1658,46 +1664,41 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Unlock Email Routing MX records"
+				}
 			}
 		},
 		"security": [
@@ -1706,7 +1707,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Unlock Email Routing",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -1730,46 +1730,49 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/disable": {
-		"deprecated": true,
-		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 		"operationId": "email-routing-settings-disable-email-routing",
+		"summary": "Disable Email Routing",
+		"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Disable Email Routing response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1778,12 +1781,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1793,15 +1796,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1810,12 +1813,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1825,84 +1828,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -1910,55 +1915,50 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Disable Email Routing response"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
 				"api_key": []
 			}
 		],
-		"summary": "Disable Email Routing",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -1983,18 +1983,19 @@
 		"x-forge-require-confirmation": "This operation turns off email routing for a zone."
 	},
 	"POST /zones/{zone_id}/email/routing/dns": {
-		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 		"operationId": "email-routing-settings-enable-email-routing-dns",
+		"summary": "Enable Email Routing",
+		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -2003,37 +2004,40 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"nullable": true,
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Domain of your zone.",
-								"example": "example.net",
 								"type": "string",
+								"example": "example.net",
 								"x-auditable": true
 							}
 						},
-						"type": "object"
+						"nullable": true
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Enable Email Routing response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2042,12 +2046,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2057,15 +2061,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2074,12 +2078,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2089,84 +2093,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -2174,46 +2180,41 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Enable Email Routing response"
+				}
 			}
 		},
 		"security": [
@@ -2222,7 +2223,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Enable Email Routing",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -2246,46 +2246,49 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/enable": {
-		"deprecated": true,
-		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 		"operationId": "email-routing-settings-enable-email-routing",
+		"summary": "Enable Email Routing",
+		"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Enable Email Routing response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2294,12 +2297,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2309,15 +2312,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2326,12 +2329,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2341,84 +2344,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -2426,55 +2431,50 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Enable Email Routing response"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
 				"api_key": []
 			}
 		],
-		"summary": "Enable Email Routing",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -2498,19 +2498,19 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/unlock": {
-		"deprecated": true,
-		"description": "Unlock MX records previously locked by Email Routing. Deprecated - use PATCH /zones/{zone_id}/email/routing/dns instead.",
 		"operationId": "email-routing-settings-unlock-email-routing",
+		"summary": "Unlock Email Routing",
+		"description": "Unlock MX records previously locked by Email Routing. Deprecated - use PATCH /zones/{zone_id}/email/routing/dns instead.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
@@ -2519,37 +2519,40 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"nullable": true,
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Domain of your zone.",
-								"example": "example.net",
 								"type": "string",
+								"example": "example.net",
 								"x-auditable": true
 							}
 						},
-						"type": "object"
+						"nullable": true
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Unlock Email Routing response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2558,12 +2561,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2573,15 +2576,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2590,12 +2593,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2605,84 +2608,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -2690,55 +2695,50 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Unlock Email Routing response"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
 				"api_key": []
 			}
 		],
-		"summary": "Unlock Email Routing",
 		"tags": [
 			"Email Routing settings"
 		],
@@ -2762,78 +2762,82 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/email/routing": {
-		"description": "Update the settings for your Email Routing zone.",
 		"operationId": "email-routing-settings-replace-email-routing-settings",
+		"summary": "Update Email Routing settings",
+		"description": "Update the settings for your Email Routing zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"description": "State of your zone Email Routing settings. No-op on this endpoint - use `POST`/`DELETE /zones/{zone_id}/email/routing/dns`.",
+								"type": "boolean",
+								"example": true,
 								"enum": [
 									true,
 									false
-								],
-								"example": true,
-								"type": "boolean"
+								]
 							},
 							"skip_wizard": {
 								"description": "Flag to check if the user skipped the configuration wizard.",
+								"type": "boolean",
+								"example": true,
 								"enum": [
 									true,
 									false
-								],
-								"example": true,
-								"type": "boolean"
+								]
 							},
 							"support_subaddress": {
 								"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+								"type": "boolean",
+								"example": true,
 								"enum": [
 									true,
 									false
-								],
-								"example": true,
-								"type": "boolean"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Email Routing settings response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2842,12 +2846,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2857,15 +2861,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2874,12 +2878,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2889,84 +2893,86 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the settings have been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "State of the zone settings for Email Routing.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
 															"readOnly": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Email Routing settings identifier.",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "Domain of your zone.",
-															"example": "example.net",
 															"type": "string",
+															"example": "example.net",
 															"x-auditable": true
 														},
 														"skip_wizard": {
 															"description": "Flag to check if the user skipped the configuration wizard.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"status": {
 															"description": "Show the state of your account, and the type or configuration error.",
+															"type": "string",
+															"example": "ready",
 															"enum": [
 																"ready",
 																"unconfigured",
@@ -2974,46 +2980,41 @@
 																"misconfigured/locked",
 																"unlocked"
 															],
-															"example": "ready",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"support_subaddress": {
 															"description": "Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true,
 																false
 															],
-															"example": true,
-															"readOnly": true,
-															"type": "boolean"
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
+															"type": "string",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
 													},
 													"required": [
 														"id",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Email Routing settings response"
+				}
 			}
 		},
 		"security": [
@@ -3022,7 +3023,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Email Routing settings",
 		"tags": [
 			"Email Routing settings"
 		],

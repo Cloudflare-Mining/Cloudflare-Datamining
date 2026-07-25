@@ -1,96 +1,99 @@
 {
 	"GET /user/billing/history": {
-		"deprecated": true,
-		"description": "Accesses your billing history object.",
 		"operationId": "user-billing-history-(-deprecated)-billing-history-details",
+		"summary": "Billing History Details",
+		"description": "Accesses your billing history object.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Number of items per page.",
+					"type": "number",
+					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "number"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
 					"description": "Field to order billing history by.",
+					"type": "string",
+					"example": "occurred_at",
 					"enum": [
 						"type",
 						"occurred_at",
 						"action"
-					],
-					"example": "occurred_at",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "occurred_at",
+				"in": "query",
 				"schema": {
 					"description": "When the billing item was created.",
-					"example": "2014-03-01T12:21:59.3456Z",
-					"format": "date-time",
-					"readOnly": true,
 					"type": "string",
+					"format": "date-time",
+					"example": "2014-03-01T12:21:59.3456Z",
+					"readOnly": true,
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "type",
+				"in": "query",
 				"schema": {
 					"description": "The billing item type.",
+					"type": "string",
 					"example": "charge",
 					"maxLength": 30,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "action",
+				"in": "query",
 				"schema": {
 					"description": "The billing item action.",
+					"type": "string",
 					"example": "subscription",
 					"maxLength": 30,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Billing History Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -103,15 +106,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -124,7 +127,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -142,11 +145,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -154,114 +157,114 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"action": {
 														"description": "The billing item action.",
+														"type": "string",
 														"example": "subscription",
 														"maxLength": 30,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"amount": {
 														"description": "The amount associated with this billing item.",
+														"type": "number",
 														"example": 20.99,
 														"readOnly": true,
-														"type": "number",
 														"x-auditable": true
 													},
 													"currency": {
 														"description": "The monetary unit in which pricing information is displayed.",
+														"type": "string",
 														"example": "USD",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"description": {
 														"description": "The billing item description.",
+														"type": "string",
 														"example": "The billing item description",
 														"maxLength": 255,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Billing item identifier tag.",
+														"type": "string",
 														"example": "b69a9f3492637782896352daae219e7d",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"occurred_at": {
 														"description": "When the billing item was created.",
-														"example": "2014-03-01T12:21:59.3456Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-03-01T12:21:59.3456Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"type": {
 														"description": "The billing item type.",
+														"type": "string",
 														"example": "charge",
 														"maxLength": 30,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"zone": {
+														"type": "object",
 														"properties": {
 															"name": {
-																"readOnly": true,
 																"type": "string",
+																"readOnly": true,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -273,20 +276,18 @@
 													"amount",
 													"currency",
 													"zone"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Billing History Details response"
+				}
 			},
 			"4XX": {
+				"description": "Billing History Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -294,16 +295,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -316,15 +319,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -337,7 +340,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -355,11 +358,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -367,114 +370,114 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"action": {
 																"description": "The billing item action.",
+																"type": "string",
 																"example": "subscription",
 																"maxLength": 30,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"amount": {
 																"description": "The amount associated with this billing item.",
+																"type": "number",
 																"example": 20.99,
 																"readOnly": true,
-																"type": "number",
 																"x-auditable": true
 															},
 															"currency": {
 																"description": "The monetary unit in which pricing information is displayed.",
+																"type": "string",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"description": {
 																"description": "The billing item description.",
+																"type": "string",
 																"example": "The billing item description",
 																"maxLength": 255,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Billing item identifier tag.",
+																"type": "string",
 																"example": "b69a9f3492637782896352daae219e7d",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"occurred_at": {
 																"description": "When the billing item was created.",
-																"example": "2014-03-01T12:21:59.3456Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-03-01T12:21:59.3456Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"type": {
 																"description": "The billing item type.",
+																"type": "string",
 																"example": "charge",
 																"maxLength": 30,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"zone": {
+																"type": "object",
 																"properties": {
 																	"name": {
-																		"readOnly": true,
 																		"type": "string",
+																		"readOnly": true,
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -486,58 +489,31 @@
 															"amount",
 															"currency",
 															"zone"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -550,25 +526,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -576,16 +578,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Billing History Details response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -593,7 +594,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Billing History Details",
 		"tags": [
 			"User Billing History"
 		],

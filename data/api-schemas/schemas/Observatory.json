@@ -1,38 +1,41 @@
 {
 	"DELETE /zones/{zone_id}/speed_api/pages/{url}/tests": {
-		"description": "Deletes all tests for a specific webpage from a specific region. Deleted tests are still counted as part of the quota.",
 		"operationId": "speed-delete-tests",
+		"summary": "Delete all page tests",
+		"description": "Deletes all tests for a specific webpage from a specific region. Deleted tests are still counted as part of the quota.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A test region.",
+							"type": "string",
+							"example": "us-central1",
 							"enum": [
 								"asia-east1",
 								"asia-northeast1",
@@ -56,8 +59,6 @@
 								"us-south1",
 								"us-west1"
 							],
-							"example": "us-central1",
-							"type": "string",
 							"x-auditable": true
 						},
 						{
@@ -70,21 +71,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Number of deleted tests.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -99,15 +103,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -122,12 +126,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -135,24 +139,22 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Number of items affected.",
-													"example": 1,
 													"type": "number",
+													"example": 1,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -160,66 +162,30 @@
 							]
 						}
 					}
-				},
-				"description": "Number of deleted tests."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -228,12 +194,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -243,25 +209,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -269,12 +272,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -286,7 +287,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete all page tests",
 		"tags": [
 			"Observatory"
 		],
@@ -305,39 +305,42 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/speed_api/schedule/{url}": {
-		"description": "Deletes a scheduled test for a page.",
 		"operationId": "speed-delete-test-schedule",
+		"summary": "Delete scheduled page test",
+		"description": "Deletes a scheduled test for a page.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A test region.",
+							"type": "string",
+							"example": "us-central1",
 							"enum": [
 								"asia-east1",
 								"asia-northeast1",
@@ -361,8 +364,6 @@
 								"us-south1",
 								"us-west1"
 							],
-							"example": "us-central1",
-							"type": "string",
 							"x-auditable": true
 						},
 						{
@@ -375,21 +376,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Number of deleted tests.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -404,15 +408,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -427,12 +431,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -440,24 +444,22 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Number of items affected.",
-													"example": 1,
 													"type": "number",
+													"example": 1,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -465,66 +467,30 @@
 							]
 						}
 					}
-				},
-				"description": "Number of deleted tests."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -533,12 +499,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -548,25 +514,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -574,12 +577,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -591,7 +592,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete scheduled page test",
 		"tags": [
 			"Observatory"
 		],
@@ -610,39 +610,43 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/availabilities": {
-		"description": "Retrieves quota for all plans, as well as the current zone quota.",
 		"operationId": "speed-get-availabilities",
+		"summary": "Get quota and availability",
+		"description": "Retrieves quota for all plans, as well as the current zone quota.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Page test availability.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -657,15 +661,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -680,12 +684,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -693,114 +697,117 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"quota": {
+													"type": "object",
 													"properties": {
 														"plan": {
 															"description": "Cloudflare plan.",
-															"example": "free",
 															"type": "string",
+															"example": "free",
 															"x-auditable": true
 														},
 														"quotasPerPlan": {
 															"description": "The number of tests available per plan.",
+															"type": "object",
 															"properties": {
 																"value": {
 																	"description": "Counts per account plan.",
+																	"type": "object",
 																	"properties": {
 																		"business": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		},
 																		"enterprise": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		},
 																		"free": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		},
 																		"pro": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"remainingSchedules": {
 															"description": "The number of remaining schedules available.",
-															"example": 1,
 															"type": "number",
+															"example": 1,
 															"x-auditable": true
 														},
 														"remainingTests": {
 															"description": "The number of remaining tests available.",
-															"example": 30,
 															"type": "number",
+															"example": 30,
 															"x-auditable": true
 														},
 														"scheduleQuotasPerPlan": {
 															"description": "The number of schedules available per plan.",
+															"type": "object",
 															"properties": {
 																"value": {
 																	"description": "Counts per account plan.",
+																	"type": "object",
 																	"properties": {
 																		"business": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		},
 																		"enterprise": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		},
 																		"free": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		},
 																		"pro": {
-																			"example": 1,
 																			"type": "integer",
+																			"example": 1,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"regions": {
+													"type": "array",
 													"items": {
 														"description": "A test region with a label.",
+														"type": "object",
 														"properties": {
 															"label": {
-																"example": "Iowa, USA",
 																"type": "string",
+																"example": "Iowa, USA",
 																"x-auditable": true
 															},
 															"value": {
 																"description": "A test region.",
+																"type": "string",
+																"example": "us-central1",
 																"enum": [
 																	"asia-east1",
 																	"asia-northeast1",
@@ -824,29 +831,30 @@
 																	"us-south1",
 																	"us-west1"
 																],
-																"example": "us-central1",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"regionsPerPlan": {
 													"description": "Available regions.",
+													"type": "object",
 													"properties": {
 														"business": {
+															"type": "array",
 															"items": {
 																"description": "A test region with a label.",
+																"type": "object",
 																"properties": {
 																	"label": {
-																		"example": "Iowa, USA",
 																		"type": "string",
+																		"example": "Iowa, USA",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
+																		"type": "string",
+																		"example": "us-central1",
 																		"enum": [
 																			"asia-east1",
 																			"asia-northeast1",
@@ -870,26 +878,26 @@
 																			"us-south1",
 																			"us-west1"
 																		],
-																		"example": "us-central1",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														},
 														"enterprise": {
+															"type": "array",
 															"items": {
 																"description": "A test region with a label.",
+																"type": "object",
 																"properties": {
 																	"label": {
-																		"example": "Iowa, USA",
 																		"type": "string",
+																		"example": "Iowa, USA",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
+																		"type": "string",
+																		"example": "us-central1",
 																		"enum": [
 																			"asia-east1",
 																			"asia-northeast1",
@@ -913,26 +921,26 @@
 																			"us-south1",
 																			"us-west1"
 																		],
-																		"example": "us-central1",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														},
 														"free": {
+															"type": "array",
 															"items": {
 																"description": "A test region with a label.",
+																"type": "object",
 																"properties": {
 																	"label": {
-																		"example": "Iowa, USA",
 																		"type": "string",
+																		"example": "Iowa, USA",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
+																		"type": "string",
+																		"example": "us-central1",
 																		"enum": [
 																			"asia-east1",
 																			"asia-northeast1",
@@ -956,26 +964,26 @@
 																			"us-south1",
 																			"us-west1"
 																		],
-																		"example": "us-central1",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														},
 														"pro": {
+															"type": "array",
 															"items": {
 																"description": "A test region with a label.",
+																"type": "object",
 																"properties": {
 																	"label": {
-																		"example": "Iowa, USA",
 																		"type": "string",
+																		"example": "Iowa, USA",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "A test region.",
+																		"type": "string",
+																		"example": "us-central1",
 																		"enum": [
 																			"asia-east1",
 																			"asia-northeast1",
@@ -999,20 +1007,14 @@
 																			"us-south1",
 																			"us-west1"
 																		],
-																		"example": "us-central1",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1020,66 +1022,30 @@
 							]
 						}
 					}
-				},
-				"description": "Page test availability."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1088,12 +1054,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1103,25 +1069,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1129,12 +1132,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -1146,7 +1147,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get quota and availability",
 		"tags": [
 			"Observatory"
 		],
@@ -1166,39 +1166,43 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages": {
-		"description": "Lists all webpages which have been tested.",
 		"operationId": "speed-list-pages",
+		"summary": "List tested webpages",
+		"description": "Lists all webpages which have been tested.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of pages.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1213,15 +1217,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1236,12 +1240,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -1249,27 +1253,29 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"region": {
 														"description": "A test region with a label.",
+														"type": "object",
 														"properties": {
 															"label": {
-																"example": "Iowa, USA",
 																"type": "string",
+																"example": "Iowa, USA",
 																"x-auditable": true
 															},
 															"value": {
 																"description": "A test region.",
+																"type": "string",
+																"example": "us-central1",
 																"enum": [
 																	"asia-east1",
 																	"asia-northeast1",
@@ -1293,55 +1299,58 @@
 																	"us-south1",
 																	"us-west1"
 																],
-																"example": "us-central1",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"scheduleFrequency": {
 														"description": "The frequency of the test.",
+														"type": "string",
+														"example": "DAILY",
 														"enum": [
 															"DAILY",
 															"WEEKLY"
 														],
-														"example": "DAILY",
-														"type": "string",
 														"x-auditable": true
 													},
 													"tests": {
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"date": {
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																},
 																"desktopReport": {
 																	"description": "The Lighthouse report.",
+																	"type": "object",
 																	"properties": {
 																		"cls": {
 																			"description": "Cumulative Layout Shift.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"deviceType": {
 																			"description": "The type of device.",
+																			"type": "string",
+																			"example": "DESKTOP",
 																			"enum": [
 																				"DESKTOP",
 																				"MOBILE"
 																			],
-																			"example": "DESKTOP",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"error": {
+																			"type": "object",
 																			"properties": {
 																				"code": {
 																					"description": "The error code of the Lighthouse result.",
+																					"type": "string",
+																					"example": "NOT_REACHABLE",
 																					"enum": [
 																						"NOT_REACHABLE",
 																						"DNS_FAILURE",
@@ -1349,29 +1358,26 @@
 																						"LIGHTHOUSE_TIMEOUT",
 																						"UNKNOWN"
 																					],
-																					"example": "NOT_REACHABLE",
-																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"detail": {
 																					"description": "Detailed error message.",
-																					"example": "Details: net::ERR_CONNECTION_CLOSED",
 																					"type": "string",
+																					"example": "Details: net::ERR_CONNECTION_CLOSED",
 																					"x-auditable": true
 																				},
 																				"finalDisplayedUrl": {
 																					"description": "The final URL displayed to the user.",
-																					"example": "example.com",
 																					"type": "string",
+																					"example": "example.com",
 																					"x-auditable": true
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"fcp": {
 																			"description": "First Contentful Paint.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"jsonReportUrl": {
@@ -1381,84 +1387,87 @@
 																		},
 																		"lcp": {
 																			"description": "Largest Contentful Paint.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"performanceScore": {
 																			"description": "The Lighthouse performance score.",
-																			"example": 90,
 																			"type": "number",
+																			"example": 90,
 																			"x-auditable": true
 																		},
 																		"si": {
 																			"description": "Speed Index.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "The state of the Lighthouse report.",
+																			"type": "string",
+																			"example": "COMPLETE",
 																			"enum": [
 																				"RUNNING",
 																				"COMPLETE",
 																				"FAILED"
 																			],
-																			"example": "COMPLETE",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"tbt": {
 																			"description": "Total Blocking Time.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"ttfb": {
 																			"description": "Time To First Byte.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"tti": {
 																			"description": "Time To Interactive.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"id": {
 																	"description": "UUID.",
+																	"type": "string",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"maxLength": 36,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"mobileReport": {
 																	"description": "The Lighthouse report.",
+																	"type": "object",
 																	"properties": {
 																		"cls": {
 																			"description": "Cumulative Layout Shift.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"deviceType": {
 																			"description": "The type of device.",
+																			"type": "string",
+																			"example": "DESKTOP",
 																			"enum": [
 																				"DESKTOP",
 																				"MOBILE"
 																			],
-																			"example": "DESKTOP",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"error": {
+																			"type": "object",
 																			"properties": {
 																				"code": {
 																					"description": "The error code of the Lighthouse result.",
+																					"type": "string",
+																					"example": "NOT_REACHABLE",
 																					"enum": [
 																						"NOT_REACHABLE",
 																						"DNS_FAILURE",
@@ -1466,29 +1475,26 @@
 																						"LIGHTHOUSE_TIMEOUT",
 																						"UNKNOWN"
 																					],
-																					"example": "NOT_REACHABLE",
-																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"detail": {
 																					"description": "Detailed error message.",
-																					"example": "Details: net::ERR_CONNECTION_CLOSED",
 																					"type": "string",
+																					"example": "Details: net::ERR_CONNECTION_CLOSED",
 																					"x-auditable": true
 																				},
 																				"finalDisplayedUrl": {
 																					"description": "The final URL displayed to the user.",
-																					"example": "example.com",
 																					"type": "string",
+																					"example": "example.com",
 																					"x-auditable": true
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"fcp": {
 																			"description": "First Contentful Paint.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"jsonReportUrl": {
@@ -1498,64 +1504,66 @@
 																		},
 																		"lcp": {
 																			"description": "Largest Contentful Paint.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"performanceScore": {
 																			"description": "The Lighthouse performance score.",
-																			"example": 90,
 																			"type": "number",
+																			"example": 90,
 																			"x-auditable": true
 																		},
 																		"si": {
 																			"description": "Speed Index.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "The state of the Lighthouse report.",
+																			"type": "string",
+																			"example": "COMPLETE",
 																			"enum": [
 																				"RUNNING",
 																				"COMPLETE",
 																				"FAILED"
 																			],
-																			"example": "COMPLETE",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"tbt": {
 																			"description": "Total Blocking Time.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"ttfb": {
 																			"description": "Time To First Byte.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		},
 																		"tti": {
 																			"description": "Time To Interactive.",
-																			"example": 100,
 																			"type": "number",
+																			"example": 100,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"region": {
 																	"description": "A test region with a label.",
+																	"type": "object",
 																	"properties": {
 																		"label": {
-																			"example": "Iowa, USA",
 																			"type": "string",
+																			"example": "Iowa, USA",
 																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "A test region.",
+																			"type": "string",
+																			"example": "us-central1",
 																			"enum": [
 																				"asia-east1",
 																				"asia-northeast1",
@@ -1579,44 +1587,38 @@
 																				"us-south1",
 																				"us-west1"
 																			],
-																			"example": "us-central1",
-																			"type": "string",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"scheduleFrequency": {
 																	"description": "The frequency of the test.",
+																	"type": "string",
+																	"example": "DAILY",
 																	"enum": [
 																		"DAILY",
 																		"WEEKLY"
 																	],
-																	"example": "DAILY",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"url": {
 																	"description": "A URL.",
-																	"example": "example.com",
 																	"type": "string",
+																	"example": "example.com",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
-														},
-														"type": "array"
+															}
+														}
 													},
 													"url": {
 														"description": "A URL.",
-														"example": "example.com",
 														"type": "string",
+														"example": "example.com",
 														"x-auditable": true
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
@@ -1624,66 +1626,30 @@
 							]
 						}
 					}
-				},
-				"description": "List of pages."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1692,12 +1658,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1707,25 +1673,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1733,12 +1736,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -1750,7 +1751,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List tested webpages",
 		"tags": [
 			"Observatory"
 		],
@@ -1770,57 +1770,60 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests": {
-		"description": "Test history (list of tests) for a specific webpage.",
 		"operationId": "speed-list-test-history",
+		"summary": "List page test history",
+		"description": "Test history (list of tests) for a specific webpage.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
-					"type": "integer"
+					"type": "integer",
+					"default": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "integer"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A test region.",
+							"type": "string",
+							"example": "us-central1",
 							"enum": [
 								"asia-east1",
 								"asia-northeast1",
@@ -1844,8 +1847,6 @@
 								"us-south1",
 								"us-west1"
 							],
-							"example": "us-central1",
-							"type": "string",
 							"x-auditable": true
 						},
 						{
@@ -1858,21 +1859,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of test history for a page.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1887,15 +1891,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1910,12 +1914,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -1923,46 +1927,50 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"date": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"desktopReport": {
 														"description": "The Lighthouse report.",
+														"type": "object",
 														"properties": {
 															"cls": {
 																"description": "Cumulative Layout Shift.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"deviceType": {
 																"description": "The type of device.",
+																"type": "string",
+																"example": "DESKTOP",
 																"enum": [
 																	"DESKTOP",
 																	"MOBILE"
 																],
-																"example": "DESKTOP",
-																"type": "string",
 																"x-auditable": true
 															},
 															"error": {
+																"type": "object",
 																"properties": {
 																	"code": {
 																		"description": "The error code of the Lighthouse result.",
+																		"type": "string",
+																		"example": "NOT_REACHABLE",
 																		"enum": [
 																			"NOT_REACHABLE",
 																			"DNS_FAILURE",
@@ -1970,29 +1978,26 @@
 																			"LIGHTHOUSE_TIMEOUT",
 																			"UNKNOWN"
 																		],
-																		"example": "NOT_REACHABLE",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"detail": {
 																		"description": "Detailed error message.",
-																		"example": "Details: net::ERR_CONNECTION_CLOSED",
 																		"type": "string",
+																		"example": "Details: net::ERR_CONNECTION_CLOSED",
 																		"x-auditable": true
 																	},
 																	"finalDisplayedUrl": {
 																		"description": "The final URL displayed to the user.",
-																		"example": "example.com",
 																		"type": "string",
+																		"example": "example.com",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"fcp": {
 																"description": "First Contentful Paint.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"jsonReportUrl": {
@@ -2002,84 +2007,87 @@
 															},
 															"lcp": {
 																"description": "Largest Contentful Paint.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"performanceScore": {
 																"description": "The Lighthouse performance score.",
-																"example": 90,
 																"type": "number",
+																"example": 90,
 																"x-auditable": true
 															},
 															"si": {
 																"description": "Speed Index.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"state": {
 																"description": "The state of the Lighthouse report.",
+																"type": "string",
+																"example": "COMPLETE",
 																"enum": [
 																	"RUNNING",
 																	"COMPLETE",
 																	"FAILED"
 																],
-																"example": "COMPLETE",
-																"type": "string",
 																"x-auditable": true
 															},
 															"tbt": {
 																"description": "Total Blocking Time.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"ttfb": {
 																"description": "Time To First Byte.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"tti": {
 																"description": "Time To Interactive.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"id": {
 														"description": "UUID.",
+														"type": "string",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string",
 														"x-auditable": true
 													},
 													"mobileReport": {
 														"description": "The Lighthouse report.",
+														"type": "object",
 														"properties": {
 															"cls": {
 																"description": "Cumulative Layout Shift.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"deviceType": {
 																"description": "The type of device.",
+																"type": "string",
+																"example": "DESKTOP",
 																"enum": [
 																	"DESKTOP",
 																	"MOBILE"
 																],
-																"example": "DESKTOP",
-																"type": "string",
 																"x-auditable": true
 															},
 															"error": {
+																"type": "object",
 																"properties": {
 																	"code": {
 																		"description": "The error code of the Lighthouse result.",
+																		"type": "string",
+																		"example": "NOT_REACHABLE",
 																		"enum": [
 																			"NOT_REACHABLE",
 																			"DNS_FAILURE",
@@ -2087,29 +2095,26 @@
 																			"LIGHTHOUSE_TIMEOUT",
 																			"UNKNOWN"
 																		],
-																		"example": "NOT_REACHABLE",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"detail": {
 																		"description": "Detailed error message.",
-																		"example": "Details: net::ERR_CONNECTION_CLOSED",
 																		"type": "string",
+																		"example": "Details: net::ERR_CONNECTION_CLOSED",
 																		"x-auditable": true
 																	},
 																	"finalDisplayedUrl": {
 																		"description": "The final URL displayed to the user.",
-																		"example": "example.com",
 																		"type": "string",
+																		"example": "example.com",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"fcp": {
 																"description": "First Contentful Paint.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"jsonReportUrl": {
@@ -2119,64 +2124,66 @@
 															},
 															"lcp": {
 																"description": "Largest Contentful Paint.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"performanceScore": {
 																"description": "The Lighthouse performance score.",
-																"example": 90,
 																"type": "number",
+																"example": 90,
 																"x-auditable": true
 															},
 															"si": {
 																"description": "Speed Index.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"state": {
 																"description": "The state of the Lighthouse report.",
+																"type": "string",
+																"example": "COMPLETE",
 																"enum": [
 																	"RUNNING",
 																	"COMPLETE",
 																	"FAILED"
 																],
-																"example": "COMPLETE",
-																"type": "string",
 																"x-auditable": true
 															},
 															"tbt": {
 																"description": "Total Blocking Time.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"ttfb": {
 																"description": "Time To First Byte.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															},
 															"tti": {
 																"description": "Time To Interactive.",
-																"example": 100,
 																"type": "number",
+																"example": 100,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"region": {
 														"description": "A test region with a label.",
+														"type": "object",
 														"properties": {
 															"label": {
-																"example": "Iowa, USA",
 																"type": "string",
+																"example": "Iowa, USA",
 																"x-auditable": true
 															},
 															"value": {
 																"description": "A test region.",
+																"type": "string",
+																"example": "us-central1",
 																"enum": [
 																	"asia-east1",
 																	"asia-northeast1",
@@ -2200,33 +2207,28 @@
 																	"us-south1",
 																	"us-west1"
 																],
-																"example": "us-central1",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"scheduleFrequency": {
 														"description": "The frequency of the test.",
+														"type": "string",
+														"example": "DAILY",
 														"enum": [
 															"DAILY",
 															"WEEKLY"
 														],
-														"example": "DAILY",
-														"type": "string",
 														"x-auditable": true
 													},
 													"url": {
 														"description": "A URL.",
-														"example": "example.com",
 														"type": "string",
+														"example": "example.com",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -2234,29 +2236,29 @@
 								{
 									"properties": {
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 5,
 													"type": "integer",
+													"example": 5,
 													"x-auditable": true
 												},
 												"page": {
-													"example": 1,
 													"type": "integer",
+													"example": 1,
 													"x-auditable": true
 												},
 												"per_page": {
-													"example": 5,
 													"type": "integer",
+													"example": 5,
 													"x-auditable": true
 												},
 												"total_count": {
-													"example": 3,
 													"type": "integer",
+													"example": 3,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2264,66 +2266,30 @@
 							]
 						}
 					}
-				},
-				"description": "List of test history for a page."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2332,12 +2298,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2347,25 +2313,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2373,12 +2376,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -2390,7 +2391,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List page test history",
 		"tags": [
 			"Observatory"
 		],
@@ -2410,35 +2410,36 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests/{test_id}": {
-		"description": "Retrieves the result of a specific test.",
 		"operationId": "speed-get-test",
+		"summary": "Get a page test result",
+		"description": "Retrieves the result of a specific test.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "test_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2447,21 +2448,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Page test result.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -2476,15 +2480,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -2499,12 +2503,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -2512,45 +2516,48 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"date": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"desktopReport": {
 													"description": "The Lighthouse report.",
+													"type": "object",
 													"properties": {
 														"cls": {
 															"description": "Cumulative Layout Shift.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
+															"type": "string",
+															"example": "DESKTOP",
 															"enum": [
 																"DESKTOP",
 																"MOBILE"
 															],
-															"example": "DESKTOP",
-															"type": "string",
 															"x-auditable": true
 														},
 														"error": {
+															"type": "object",
 															"properties": {
 																"code": {
 																	"description": "The error code of the Lighthouse result.",
+																	"type": "string",
+																	"example": "NOT_REACHABLE",
 																	"enum": [
 																		"NOT_REACHABLE",
 																		"DNS_FAILURE",
@@ -2558,29 +2565,26 @@
 																		"LIGHTHOUSE_TIMEOUT",
 																		"UNKNOWN"
 																	],
-																	"example": "NOT_REACHABLE",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
-																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"type": "string",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
-																	"example": "example.com",
 																	"type": "string",
+																	"example": "example.com",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"fcp": {
 															"description": "First Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"jsonReportUrl": {
@@ -2590,84 +2594,87 @@
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
-															"example": 90,
 															"type": "number",
+															"example": 90,
 															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
+															"type": "string",
+															"example": "COMPLETE",
 															"enum": [
 																"RUNNING",
 																"COMPLETE",
 																"FAILED"
 															],
-															"example": "COMPLETE",
-															"type": "string",
 															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"id": {
 													"description": "UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"mobileReport": {
 													"description": "The Lighthouse report.",
+													"type": "object",
 													"properties": {
 														"cls": {
 															"description": "Cumulative Layout Shift.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
+															"type": "string",
+															"example": "DESKTOP",
 															"enum": [
 																"DESKTOP",
 																"MOBILE"
 															],
-															"example": "DESKTOP",
-															"type": "string",
 															"x-auditable": true
 														},
 														"error": {
+															"type": "object",
 															"properties": {
 																"code": {
 																	"description": "The error code of the Lighthouse result.",
+																	"type": "string",
+																	"example": "NOT_REACHABLE",
 																	"enum": [
 																		"NOT_REACHABLE",
 																		"DNS_FAILURE",
@@ -2675,29 +2682,26 @@
 																		"LIGHTHOUSE_TIMEOUT",
 																		"UNKNOWN"
 																	],
-																	"example": "NOT_REACHABLE",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
-																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"type": "string",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
-																	"example": "example.com",
 																	"type": "string",
+																	"example": "example.com",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"fcp": {
 															"description": "First Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"jsonReportUrl": {
@@ -2707,64 +2711,66 @@
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
-															"example": 90,
 															"type": "number",
+															"example": 90,
 															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
+															"type": "string",
+															"example": "COMPLETE",
 															"enum": [
 																"RUNNING",
 																"COMPLETE",
 																"FAILED"
 															],
-															"example": "COMPLETE",
-															"type": "string",
 															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"region": {
 													"description": "A test region with a label.",
+													"type": "object",
 													"properties": {
 														"label": {
-															"example": "Iowa, USA",
 															"type": "string",
+															"example": "Iowa, USA",
 															"x-auditable": true
 														},
 														"value": {
 															"description": "A test region.",
+															"type": "string",
+															"example": "us-central1",
 															"enum": [
 																"asia-east1",
 																"asia-northeast1",
@@ -2788,31 +2794,27 @@
 																"us-south1",
 																"us-west1"
 															],
-															"example": "us-central1",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"scheduleFrequency": {
 													"description": "The frequency of the test.",
+													"type": "string",
+													"example": "DAILY",
 													"enum": [
 														"DAILY",
 														"WEEKLY"
 													],
-													"example": "DAILY",
-													"type": "string",
 													"x-auditable": true
 												},
 												"url": {
 													"description": "A URL.",
-													"example": "example.com",
 													"type": "string",
+													"example": "example.com",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2820,66 +2822,30 @@
 							]
 						}
 					}
-				},
-				"description": "Page test result."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2888,12 +2854,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2903,25 +2869,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2929,12 +2932,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -2946,7 +2947,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a page test result",
 		"tags": [
 			"Observatory"
 		],
@@ -2966,38 +2966,41 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/trend": {
-		"description": "Lists the core web vital metrics trend over time for a specific page.",
 		"operationId": "speed-list-page-trend",
+		"summary": "List core web vital metrics trend",
+		"description": "Lists the core web vital metrics trend over time for a specific page.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "A test region.",
+					"type": "string",
+					"example": "us-central1",
 					"enum": [
 						"asia-east1",
 						"asia-northeast1",
@@ -3021,85 +3024,86 @@
 						"us-south1",
 						"us-west1"
 					],
-					"example": "us-central1",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "deviceType",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "The type of device.",
+					"type": "string",
+					"example": "DESKTOP",
 					"enum": [
 						"DESKTOP",
 						"MOBILE"
 					],
-					"example": "DESKTOP",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "start",
+				"in": "query",
 				"required": true,
 				"schema": {
-					"example": "2014-01-01T05:20:00.12345Z",
-					"format": "date-time",
 					"type": "string",
+					"format": "date-time",
+					"example": "2014-01-01T05:20:00.12345Z",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "end",
+				"in": "query",
 				"schema": {
-					"example": "2014-01-01T05:20:00.12345Z",
-					"format": "date-time",
 					"type": "string",
+					"format": "date-time",
+					"example": "2014-01-01T05:20:00.12345Z",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "The timezone of the start and end timestamps.",
-				"example": "America/Chicago",
-				"in": "query",
 				"name": "tz",
+				"in": "query",
+				"description": "The timezone of the start and end timestamps.",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "America/Chicago"
 			},
 			{
-				"description": "A comma-separated list of metrics to include in the results.",
-				"in": "query",
 				"name": "metrics",
+				"in": "query",
+				"description": "A comma-separated list of metrics to include in the results.",
 				"required": true,
 				"schema": {
-					"example": "performanceScore,ttfb,fcp,si,lcp,tti,tbt,cls",
-					"type": "string"
+					"type": "string",
+					"example": "performanceScore,ttfb,fcp,si,lcp,tti,tbt,cls"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Page trend.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -3114,15 +3118,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -3137,12 +3141,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -3150,90 +3154,88 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cls": {
 													"description": "Cumulative Layout Shift trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"fcp": {
 													"description": "First Contentful Paint trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"lcp": {
 													"description": "Largest Contentful Paint trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"performanceScore": {
 													"description": "The Lighthouse score trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"si": {
 													"description": "Speed Index trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"tbt": {
 													"description": "Total Blocking Time trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"ttfb": {
 													"description": "Time To First Byte trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"tti": {
 													"description": "Time To Interactive trend.",
+													"type": "array",
 													"items": {
 														"nullable": true,
 														"type": "number",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3241,66 +3243,30 @@
 							]
 						}
 					}
-				},
-				"description": "Page trend."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3309,12 +3275,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3324,25 +3290,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3350,12 +3353,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -3367,7 +3368,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List core web vital metrics trend",
 		"tags": [
 			"Observatory"
 		],
@@ -3387,39 +3387,42 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/speed_api/schedule/{url}": {
-		"description": "Retrieves the test schedule for a page in a specific region.",
 		"operationId": "speed-get-scheduled-test",
+		"summary": "Get a page test schedule",
+		"description": "Retrieves the test schedule for a page in a specific region.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A test region.",
+							"type": "string",
+							"example": "us-central1",
 							"enum": [
 								"asia-east1",
 								"asia-northeast1",
@@ -3443,8 +3446,6 @@
 								"us-south1",
 								"us-west1"
 							],
-							"example": "us-central1",
-							"type": "string",
 							"x-auditable": true
 						},
 						{
@@ -3457,21 +3458,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Page test schedule.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -3486,15 +3490,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -3509,12 +3513,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -3522,29 +3526,30 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The test schedule.",
+											"type": "object",
 											"properties": {
 												"frequency": {
 													"description": "The frequency of the test.",
+													"type": "string",
+													"example": "DAILY",
 													"enum": [
 														"DAILY",
 														"WEEKLY"
 													],
-													"example": "DAILY",
-													"type": "string",
 													"x-auditable": true
 												},
 												"region": {
 													"description": "A test region.",
+													"type": "string",
+													"example": "us-central1",
 													"enum": [
 														"asia-east1",
 														"asia-northeast1",
@@ -3568,18 +3573,15 @@
 														"us-south1",
 														"us-west1"
 													],
-													"example": "us-central1",
-													"type": "string",
 													"x-auditable": true
 												},
 												"url": {
 													"description": "A URL.",
-													"example": "example.com",
 													"type": "string",
+													"example": "example.com",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3587,66 +3589,30 @@
 							]
 						}
 					}
-				},
-				"description": "Page test schedule."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3655,12 +3621,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3670,25 +3636,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3696,12 +3699,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -3713,7 +3714,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a page test schedule",
 		"tags": [
 			"Observatory"
 		],
@@ -3733,29 +3733,30 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/speed_api/pages/{url}/tests": {
-		"description": "Starts a test for a specific webpage, in a specific region.",
 		"operationId": "speed-create-test",
+		"summary": "Start page test",
+		"description": "Starts a test for a specific webpage, in a specific region.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			}
@@ -3764,11 +3765,14 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"region": {
 								"allOf": [
 									{
 										"description": "A test region.",
+										"type": "string",
+										"example": "us-central1",
 										"enum": [
 											"asia-east1",
 											"asia-northeast1",
@@ -3792,8 +3796,6 @@
 											"us-south1",
 											"us-west1"
 										],
-										"example": "us-central1",
-										"type": "string",
 										"x-auditable": true
 									},
 									{
@@ -3802,29 +3804,31 @@
 									}
 								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Page test details.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -3839,15 +3843,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -3862,12 +3866,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -3875,45 +3879,48 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"date": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"desktopReport": {
 													"description": "The Lighthouse report.",
+													"type": "object",
 													"properties": {
 														"cls": {
 															"description": "Cumulative Layout Shift.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
+															"type": "string",
+															"example": "DESKTOP",
 															"enum": [
 																"DESKTOP",
 																"MOBILE"
 															],
-															"example": "DESKTOP",
-															"type": "string",
 															"x-auditable": true
 														},
 														"error": {
+															"type": "object",
 															"properties": {
 																"code": {
 																	"description": "The error code of the Lighthouse result.",
+																	"type": "string",
+																	"example": "NOT_REACHABLE",
 																	"enum": [
 																		"NOT_REACHABLE",
 																		"DNS_FAILURE",
@@ -3921,29 +3928,26 @@
 																		"LIGHTHOUSE_TIMEOUT",
 																		"UNKNOWN"
 																	],
-																	"example": "NOT_REACHABLE",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
-																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"type": "string",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
-																	"example": "example.com",
 																	"type": "string",
+																	"example": "example.com",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"fcp": {
 															"description": "First Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"jsonReportUrl": {
@@ -3953,84 +3957,87 @@
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
-															"example": 90,
 															"type": "number",
+															"example": 90,
 															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
+															"type": "string",
+															"example": "COMPLETE",
 															"enum": [
 																"RUNNING",
 																"COMPLETE",
 																"FAILED"
 															],
-															"example": "COMPLETE",
-															"type": "string",
 															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"id": {
 													"description": "UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"mobileReport": {
 													"description": "The Lighthouse report.",
+													"type": "object",
 													"properties": {
 														"cls": {
 															"description": "Cumulative Layout Shift.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"deviceType": {
 															"description": "The type of device.",
+															"type": "string",
+															"example": "DESKTOP",
 															"enum": [
 																"DESKTOP",
 																"MOBILE"
 															],
-															"example": "DESKTOP",
-															"type": "string",
 															"x-auditable": true
 														},
 														"error": {
+															"type": "object",
 															"properties": {
 																"code": {
 																	"description": "The error code of the Lighthouse result.",
+																	"type": "string",
+																	"example": "NOT_REACHABLE",
 																	"enum": [
 																		"NOT_REACHABLE",
 																		"DNS_FAILURE",
@@ -4038,29 +4045,26 @@
 																		"LIGHTHOUSE_TIMEOUT",
 																		"UNKNOWN"
 																	],
-																	"example": "NOT_REACHABLE",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"detail": {
 																	"description": "Detailed error message.",
-																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"type": "string",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
 																	"x-auditable": true
 																},
 																"finalDisplayedUrl": {
 																	"description": "The final URL displayed to the user.",
-																	"example": "example.com",
 																	"type": "string",
+																	"example": "example.com",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"fcp": {
 															"description": "First Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"jsonReportUrl": {
@@ -4070,64 +4074,66 @@
 														},
 														"lcp": {
 															"description": "Largest Contentful Paint.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"performanceScore": {
 															"description": "The Lighthouse performance score.",
-															"example": 90,
 															"type": "number",
+															"example": 90,
 															"x-auditable": true
 														},
 														"si": {
 															"description": "Speed Index.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"state": {
 															"description": "The state of the Lighthouse report.",
+															"type": "string",
+															"example": "COMPLETE",
 															"enum": [
 																"RUNNING",
 																"COMPLETE",
 																"FAILED"
 															],
-															"example": "COMPLETE",
-															"type": "string",
 															"x-auditable": true
 														},
 														"tbt": {
 															"description": "Total Blocking Time.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"ttfb": {
 															"description": "Time To First Byte.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														},
 														"tti": {
 															"description": "Time To Interactive.",
-															"example": 100,
 															"type": "number",
+															"example": 100,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"region": {
 													"description": "A test region with a label.",
+													"type": "object",
 													"properties": {
 														"label": {
-															"example": "Iowa, USA",
 															"type": "string",
+															"example": "Iowa, USA",
 															"x-auditable": true
 														},
 														"value": {
 															"description": "A test region.",
+															"type": "string",
+															"example": "us-central1",
 															"enum": [
 																"asia-east1",
 																"asia-northeast1",
@@ -4151,31 +4157,27 @@
 																"us-south1",
 																"us-west1"
 															],
-															"example": "us-central1",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"scheduleFrequency": {
 													"description": "The frequency of the test.",
+													"type": "string",
+													"example": "DAILY",
 													"enum": [
 														"DAILY",
 														"WEEKLY"
 													],
-													"example": "DAILY",
-													"type": "string",
 													"x-auditable": true
 												},
 												"url": {
 													"description": "A URL.",
-													"example": "example.com",
 													"type": "string",
+													"example": "example.com",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4183,66 +4185,30 @@
 							]
 						}
 					}
-				},
-				"description": "Page test details."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4251,12 +4217,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4266,25 +4232,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4292,12 +4295,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -4309,7 +4310,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Start page test",
 		"tags": [
 			"Observatory"
 		],
@@ -4328,39 +4328,42 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/speed_api/schedule/{url}": {
-		"description": "Creates a scheduled test for a page.",
 		"operationId": "speed-create-scheduled-test",
+		"summary": "Create scheduled page test",
+		"description": "Creates a scheduled test for a page.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "url",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A URL.",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "region",
+				"in": "query",
 				"schema": {
 					"allOf": [
 						{
 							"description": "A test region.",
+							"type": "string",
+							"example": "us-central1",
 							"enum": [
 								"asia-east1",
 								"asia-northeast1",
@@ -4384,8 +4387,6 @@
 								"us-south1",
 								"us-west1"
 							],
-							"example": "us-central1",
-							"type": "string",
 							"x-auditable": true
 						},
 						{
@@ -4397,17 +4398,17 @@
 				"x-stainless-terraform-configurability": "computed_optional"
 			},
 			{
-				"description": "The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.",
-				"in": "query",
 				"name": "frequency",
+				"in": "query",
+				"description": "The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.",
 				"schema": {
 					"description": "The frequency of the test.",
+					"type": "string",
+					"example": "DAILY",
 					"enum": [
 						"DAILY",
 						"WEEKLY"
 					],
-					"example": "DAILY",
-					"type": "string",
 					"x-auditable": true
 				},
 				"x-stainless-terraform-configurability": "computed_optional"
@@ -4415,21 +4416,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Page test schedule.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -4444,15 +4448,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -4467,12 +4471,12 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												}
 											},
@@ -4480,31 +4484,33 @@
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"schedule": {
 													"description": "The test schedule.",
+													"type": "object",
 													"properties": {
 														"frequency": {
 															"description": "The frequency of the test.",
+															"type": "string",
+															"example": "DAILY",
 															"enum": [
 																"DAILY",
 																"WEEKLY"
 															],
-															"example": "DAILY",
-															"type": "string",
 															"x-auditable": true
 														},
 														"region": {
 															"description": "A test region.",
+															"type": "string",
+															"example": "us-central1",
 															"enum": [
 																"asia-east1",
 																"asia-northeast1",
@@ -4528,50 +4534,52 @@
 																"us-south1",
 																"us-west1"
 															],
-															"example": "us-central1",
-															"type": "string",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "A URL.",
-															"example": "example.com",
 															"type": "string",
+															"example": "example.com",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"test": {
+													"type": "object",
 													"properties": {
 														"date": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"desktopReport": {
 															"description": "The Lighthouse report.",
+															"type": "object",
 															"properties": {
 																"cls": {
 																	"description": "Cumulative Layout Shift.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"deviceType": {
 																	"description": "The type of device.",
+																	"type": "string",
+																	"example": "DESKTOP",
 																	"enum": [
 																		"DESKTOP",
 																		"MOBILE"
 																	],
-																	"example": "DESKTOP",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"error": {
+																	"type": "object",
 																	"properties": {
 																		"code": {
 																			"description": "The error code of the Lighthouse result.",
+																			"type": "string",
+																			"example": "NOT_REACHABLE",
 																			"enum": [
 																				"NOT_REACHABLE",
 																				"DNS_FAILURE",
@@ -4579,29 +4587,26 @@
 																				"LIGHTHOUSE_TIMEOUT",
 																				"UNKNOWN"
 																			],
-																			"example": "NOT_REACHABLE",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"detail": {
 																			"description": "Detailed error message.",
-																			"example": "Details: net::ERR_CONNECTION_CLOSED",
 																			"type": "string",
+																			"example": "Details: net::ERR_CONNECTION_CLOSED",
 																			"x-auditable": true
 																		},
 																		"finalDisplayedUrl": {
 																			"description": "The final URL displayed to the user.",
-																			"example": "example.com",
 																			"type": "string",
+																			"example": "example.com",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"fcp": {
 																	"description": "First Contentful Paint.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"jsonReportUrl": {
@@ -4611,84 +4616,87 @@
 																},
 																"lcp": {
 																	"description": "Largest Contentful Paint.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"performanceScore": {
 																	"description": "The Lighthouse performance score.",
-																	"example": 90,
 																	"type": "number",
+																	"example": 90,
 																	"x-auditable": true
 																},
 																"si": {
 																	"description": "Speed Index.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"state": {
 																	"description": "The state of the Lighthouse report.",
+																	"type": "string",
+																	"example": "COMPLETE",
 																	"enum": [
 																		"RUNNING",
 																		"COMPLETE",
 																		"FAILED"
 																	],
-																	"example": "COMPLETE",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"tbt": {
 																	"description": "Total Blocking Time.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"ttfb": {
 																	"description": "Time To First Byte.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"tti": {
 																	"description": "Time To Interactive.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"mobileReport": {
 															"description": "The Lighthouse report.",
+															"type": "object",
 															"properties": {
 																"cls": {
 																	"description": "Cumulative Layout Shift.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"deviceType": {
 																	"description": "The type of device.",
+																	"type": "string",
+																	"example": "DESKTOP",
 																	"enum": [
 																		"DESKTOP",
 																		"MOBILE"
 																	],
-																	"example": "DESKTOP",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"error": {
+																	"type": "object",
 																	"properties": {
 																		"code": {
 																			"description": "The error code of the Lighthouse result.",
+																			"type": "string",
+																			"example": "NOT_REACHABLE",
 																			"enum": [
 																				"NOT_REACHABLE",
 																				"DNS_FAILURE",
@@ -4696,29 +4704,26 @@
 																				"LIGHTHOUSE_TIMEOUT",
 																				"UNKNOWN"
 																			],
-																			"example": "NOT_REACHABLE",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"detail": {
 																			"description": "Detailed error message.",
-																			"example": "Details: net::ERR_CONNECTION_CLOSED",
 																			"type": "string",
+																			"example": "Details: net::ERR_CONNECTION_CLOSED",
 																			"x-auditable": true
 																		},
 																		"finalDisplayedUrl": {
 																			"description": "The final URL displayed to the user.",
-																			"example": "example.com",
 																			"type": "string",
+																			"example": "example.com",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"fcp": {
 																	"description": "First Contentful Paint.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"jsonReportUrl": {
@@ -4728,64 +4733,66 @@
 																},
 																"lcp": {
 																	"description": "Largest Contentful Paint.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"performanceScore": {
 																	"description": "The Lighthouse performance score.",
-																	"example": 90,
 																	"type": "number",
+																	"example": 90,
 																	"x-auditable": true
 																},
 																"si": {
 																	"description": "Speed Index.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"state": {
 																	"description": "The state of the Lighthouse report.",
+																	"type": "string",
+																	"example": "COMPLETE",
 																	"enum": [
 																		"RUNNING",
 																		"COMPLETE",
 																		"FAILED"
 																	],
-																	"example": "COMPLETE",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"tbt": {
 																	"description": "Total Blocking Time.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"ttfb": {
 																	"description": "Time To First Byte.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																},
 																"tti": {
 																	"description": "Time To Interactive.",
-																	"example": 100,
 																	"type": "number",
+																	"example": 100,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"region": {
 															"description": "A test region with a label.",
+															"type": "object",
 															"properties": {
 																"label": {
-																	"example": "Iowa, USA",
 																	"type": "string",
+																	"example": "Iowa, USA",
 																	"x-auditable": true
 																},
 																"value": {
 																	"description": "A test region.",
+																	"type": "string",
+																	"example": "us-central1",
 																	"enum": [
 																		"asia-east1",
 																		"asia-northeast1",
@@ -4809,34 +4816,29 @@
 																		"us-south1",
 																		"us-west1"
 																	],
-																	"example": "us-central1",
-																	"type": "string",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"scheduleFrequency": {
 															"description": "The frequency of the test.",
+															"type": "string",
+															"example": "DAILY",
 															"enum": [
 																"DAILY",
 																"WEEKLY"
 															],
-															"example": "DAILY",
-															"type": "string",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "A URL.",
-															"example": "example.com",
 															"type": "string",
+															"example": "example.com",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4844,66 +4846,30 @@
 							]
 						}
 					}
-				},
-				"description": "Page test schedule."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4912,12 +4878,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4927,25 +4893,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4953,12 +4956,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -4970,7 +4971,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create scheduled page test",
 		"tags": [
 			"Observatory"
 		],

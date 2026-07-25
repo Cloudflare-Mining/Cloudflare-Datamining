@@ -1,11 +1,12 @@
 {
 	"DELETE /accounts/{account_id}/dlp/settings": {
-		"description": "Deletes account-level DLP settings and returns the initial values.",
 		"operationId": "dlp-settings-delete",
+		"summary": "Delete (reset) DLP account-level settings to initial values.",
+		"description": "Deletes account-level DLP settings and returns the initial values.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -14,21 +15,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "DLP settings reset.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -37,12 +41,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -52,15 +56,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -69,12 +73,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -84,31 +88,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "DLP account-level settings response.",
+											"type": "object",
 											"properties": {
 												"ai_context_analysis": {
 													"description": "Whether AI context analysis is enabled at the account level.",
@@ -119,43 +122,42 @@
 													"type": "boolean"
 												},
 												"payload_logging": {
+													"type": "object",
 													"properties": {
 														"masking_level": {
 															"allOf": [
 																{
 																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"type": "string",
 																	"enum": [
 																		"full",
 																		"partial",
 																		"clear",
 																		"default"
-																	],
-																	"type": "string"
+																	]
 																}
 															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"updated_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														}
 													},
 													"required": [
 														"updated_at"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"payload_logging",
 												"ai_context_analysis",
 												"ocr"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -163,66 +165,30 @@
 							]
 						}
 					}
-				},
-				"description": "DLP settings reset."
+				}
 			},
 			"4XX": {
+				"description": "Failed to delete DLP settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -231,12 +197,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -246,25 +212,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -272,12 +275,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to delete DLP settings."
+				}
 			}
 		},
 		"security": [
@@ -287,7 +288,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete (reset) DLP account-level settings to initial values.",
 		"tags": [
 			"DLP Settings"
 		],
@@ -296,12 +296,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/limits": {
-		"description": "Retrieves current DLP usage limits and quotas for the account, including\nmaximum allowed counts and current usage for custom entries, dataset cells,\nand document fingerprints.",
 		"operationId": "dlp-limits-get",
+		"summary": "Fetch limits associated with DLP for account",
+		"description": "Retrieves current DLP usage limits and quotas for the account, including\nmaximum allowed counts and current usage for custom entries, dataset cells,\nand document fingerprints.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -310,21 +311,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Limits retrieved successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -333,12 +337,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -348,15 +352,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -365,12 +369,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -380,66 +384,65 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"max_custom_regex_entries": {
 													"description": "Maximum number of custom regex entries allowed for the account.",
+													"type": "integer",
 													"format": "int64",
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"max_dataset_cells": {
 													"description": "Maximum number of dataset cells allowed for the account, across all EDM and CWL datasets.",
+													"type": "integer",
 													"format": "int64",
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"max_document_fingerprints": {
 													"description": "Maximum number of document fingerprints allowed for the account.",
+													"type": "integer",
 													"format": "int64",
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"used_custom_regex_entries": {
 													"description": "Number of custom regex entries currently configured for the account.",
+													"type": "integer",
 													"format": "int64",
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"used_dataset_cells": {
 													"description": "Number of dataset cells currently configured for the account, across all EDM and CWL datasets. Document fingerprints do not count towards this limit.",
+													"type": "integer",
 													"format": "int64",
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"used_document_fingerprints": {
 													"description": "Number of document fingerprints currently configured for the account.",
+													"type": "integer",
 													"format": "int64",
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												}
 											},
 											"required": [
@@ -449,8 +452,7 @@
 												"used_dataset_cells",
 												"max_document_fingerprints",
 												"used_document_fingerprints"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -458,66 +460,30 @@
 							]
 						}
 					}
-				},
-				"description": "Limits retrieved successfully."
+				}
 			},
 			"4XX": {
+				"description": "Limits get failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -526,12 +492,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -541,25 +507,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -567,12 +570,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Limits get failed."
+				}
 			}
 		},
 		"security": [
@@ -582,7 +583,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch limits associated with DLP for account",
 		"tags": [
 			"DLP Settings"
 		],
@@ -592,12 +592,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/payload_log": {
-		"description": "Gets the current payload logging configuration for DLP, showing whether matched content is being logged.",
 		"operationId": "dlp-payload-log-get",
+		"summary": "Get payload log settings",
+		"description": "Gets the current payload logging configuration for DLP, showing whether matched content is being logged.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -606,21 +607,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Payload log settings.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -629,12 +633,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -644,15 +648,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -661,12 +665,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -676,59 +680,57 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"masking_level": {
 													"allOf": [
 														{
 															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+															"type": "string",
 															"enum": [
 																"full",
 																"partial",
 																"clear",
 																"default"
-															],
-															"type": "string"
+															]
 														}
 													]
 												},
 												"public_key": {
 													"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
 												"updated_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -736,66 +738,30 @@
 							]
 						}
 					}
-				},
-				"description": "Payload log settings."
+				}
 			},
 			"4XX": {
+				"description": "Failed to get payload log settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -804,12 +770,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -819,25 +785,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -845,12 +848,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to get payload log settings."
+				}
 			}
 		},
 		"security": [
@@ -860,7 +861,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get payload log settings",
 		"tags": [
 			"DLP Settings"
 		],
@@ -870,12 +870,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/settings": {
-		"description": "Gets the account-level DLP settings.",
 		"operationId": "dlp-settings-get",
+		"summary": "Get DLP account-level settings.",
+		"description": "Gets the account-level DLP settings.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -884,21 +885,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "DLP settings.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -907,12 +911,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -922,15 +926,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -939,12 +943,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -954,31 +958,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "DLP account-level settings response.",
+											"type": "object",
 											"properties": {
 												"ai_context_analysis": {
 													"description": "Whether AI context analysis is enabled at the account level.",
@@ -989,43 +992,42 @@
 													"type": "boolean"
 												},
 												"payload_logging": {
+													"type": "object",
 													"properties": {
 														"masking_level": {
 															"allOf": [
 																{
 																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"type": "string",
 																	"enum": [
 																		"full",
 																		"partial",
 																		"clear",
 																		"default"
-																	],
-																	"type": "string"
+																	]
 																}
 															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"updated_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														}
 													},
 													"required": [
 														"updated_at"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"payload_logging",
 												"ai_context_analysis",
 												"ocr"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1033,66 +1035,30 @@
 							]
 						}
 					}
-				},
-				"description": "DLP settings."
+				}
 			},
 			"4XX": {
+				"description": "Failed to get DLP settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1101,12 +1067,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1116,25 +1082,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1142,12 +1145,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to get DLP settings."
+				}
 			}
 		},
 		"security": [
@@ -1157,7 +1158,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get DLP account-level settings.",
 		"tags": [
 			"DLP Settings"
 		],
@@ -1167,12 +1167,13 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/dlp/settings": {
-		"description": "Missing fields keep their existing values.",
 		"operationId": "dlp-settings-edit",
+		"summary": "Partially update DLP account-level settings.",
+		"description": "Missing fields keep their existing values.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1180,81 +1181,84 @@
 			}
 		],
 		"requestBody": {
+			"description": "DLP settings fields to update.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request model for updating DLP account-level settings.\nAll fields are optional. Missing fields behave differently for PUT vs PATCH:\n- PUT: missing fields reset to initial (unconfigured) values.\n- PATCH: missing fields keep existing values.",
+						"type": "object",
 						"properties": {
 							"ai_context_analysis": {
-								"default": false,
 								"description": "Whether AI context analysis is enabled at the account level.",
-								"nullable": true,
 								"type": "boolean",
+								"default": false,
+								"nullable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"ocr": {
-								"default": false,
 								"description": "Whether OCR is enabled at the account level.",
-								"nullable": true,
 								"type": "boolean",
+								"default": false,
+								"nullable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"payload_logging": {
 								"allOf": [
 									{
 										"description": "Request model for payload log settings within the DLP settings endpoint.\nUnlike the legacy endpoint, null and missing are treated identically here\n(both mean \"not provided\" for PATCH, \"reset to default\" for PUT).",
+										"type": "object",
 										"properties": {
 											"masking_level": {
+												"default": "default",
 												"allOf": [
 													{
 														"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+														"type": "string",
 														"enum": [
 															"full",
 															"partial",
 															"clear",
 															"default"
-														],
-														"type": "string"
+														]
 													}
-												],
-												"default": "default"
+												]
 											},
 											"public_key": {
 												"description": "Base64-encoded public key for encrypting payload logs.\n\n- Set to a non-empty base64 string to enable payload logging with the given key.\n- Set to an empty string to disable payload logging.\n- Omit or set to null to leave unchanged (PATCH) or reset to disabled (PUT).",
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
-										},
-										"type": "object"
+										}
 									}
 								],
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "DLP settings fields to update.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "DLP settings.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1263,12 +1267,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1278,15 +1282,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1295,12 +1299,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1310,31 +1314,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "DLP account-level settings response.",
+											"type": "object",
 											"properties": {
 												"ai_context_analysis": {
 													"description": "Whether AI context analysis is enabled at the account level.",
@@ -1345,43 +1348,42 @@
 													"type": "boolean"
 												},
 												"payload_logging": {
+													"type": "object",
 													"properties": {
 														"masking_level": {
 															"allOf": [
 																{
 																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"type": "string",
 																	"enum": [
 																		"full",
 																		"partial",
 																		"clear",
 																		"default"
-																	],
-																	"type": "string"
+																	]
 																}
 															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"updated_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														}
 													},
 													"required": [
 														"updated_at"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"payload_logging",
 												"ai_context_analysis",
 												"ocr"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1389,66 +1391,30 @@
 							]
 						}
 					}
-				},
-				"description": "DLP settings."
+				}
 			},
 			"4XX": {
+				"description": "Failed to update DLP settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1457,12 +1423,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1472,25 +1438,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1498,12 +1501,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to update DLP settings."
+				}
 			}
 		},
 		"security": [
@@ -1513,7 +1514,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Partially update DLP account-level settings.",
 		"tags": [
 			"DLP Settings"
 		],
@@ -1522,13 +1522,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/patterns/validate": {
-		"description": "Validates whether this pattern is a valid regular expression. Rejects it if\nthe regular expression is too complex or can match an unbounded-length\nstring. The regex will be rejected if it uses `*` or `+`. Bound the maximum\nnumber of characters that can be matched using a range, e.g. `{1,100}`.",
 		"operationId": "dlp-pattern-validate",
+		"summary": "Validate a DLP regex pattern",
+		"description": "Validates whether this pattern is a valid regular expression. Rejects it if\nthe regular expression is too complex or can match an unbounded-length\nstring. The regex will be rejected if it uses `*` or `+`. Bound the maximum\nnumber of characters that can be matched using a range, e.g. `{1,100}`.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1536,16 +1537,19 @@
 			}
 		],
 		"requestBody": {
+			"description": "Validation query.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"max_match_bytes": {
 								"description": "Maximum number of bytes that the regular expression can match.\n\nIf this is `null` then there is no limit on the length. Patterns can use\n`*` and `+`. Otherwise repeats should use a range `{m,n}` to restrict\npatterns to the length. If this field is missing, then a default length\nlimit is used.\n\nNote that the length is specified in bytes. Since regular expressions\nuse UTF-8 the pattern `.` can match up to 4 bytes. Hence `.{1,256}`\nhas a maximum length of 1024 bytes.",
+								"type": "integer",
 								"format": "int32",
 								"minimum": 0,
-								"nullable": true,
-								"type": "integer"
+								"nullable": true
 							},
 							"regex": {
 								"type": "string"
@@ -1553,31 +1557,31 @@
 						},
 						"required": [
 							"regex"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"description": "Validation query.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Validation response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1586,12 +1590,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1601,15 +1605,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1618,12 +1622,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1633,30 +1637,29 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"valid": {
 													"type": "boolean"
@@ -1664,8 +1667,7 @@
 											},
 											"required": [
 												"valid"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1673,66 +1675,30 @@
 							]
 						}
 					}
-				},
-				"description": "Validation response."
+				}
 			},
 			"4XX": {
+				"description": "Failed to validate.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1741,12 +1707,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1756,25 +1722,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1782,12 +1785,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to validate."
+				}
 			}
 		},
 		"security": [
@@ -1797,7 +1798,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Validate a DLP regex pattern",
 		"tags": [
 			"DLP Settings"
 		],
@@ -1806,12 +1806,13 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/payload_log": {
-		"description": "Enables or disables payload logging for DLP matches. When enabled, matched content is stored for review.",
 		"operationId": "dlp-payload-log-put",
+		"summary": "Set payload log settings",
+		"description": "Enables or disables payload logging for DLP matches. When enabled, matched content is stored for review.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1819,55 +1820,58 @@
 			}
 		],
 		"requestBody": {
+			"description": "New payload log settings.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request model for the legacy payload log settings endpoint.",
+						"type": "object",
 						"properties": {
 							"masking_level": {
 								"allOf": [
 									{
 										"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+										"type": "string",
 										"enum": [
 											"full",
 											"partial",
 											"clear",
 											"default"
-										],
-										"type": "string"
+										]
 									}
 								]
 							},
 							"public_key": {
 								"description": "Base64-encoded public key for encrypting payload logs.\n\n- Set to null or empty string to disable payload logging.\n- Set to a non-empty base64 string to enable payload logging with the given key.\n\nFor customers with configurable payload masking feature rolled out:\n- If the field is missing, the existing setting will be kept. Note that this is different from setting to null or empty string.\n\nFor all other customers:\n- If the field is missing, the existing setting will be cleared.",
-								"nullable": true,
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "New payload log settings.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Payload log settings.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1876,12 +1880,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1891,15 +1895,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1908,12 +1912,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1923,59 +1927,57 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"masking_level": {
 													"allOf": [
 														{
 															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+															"type": "string",
 															"enum": [
 																"full",
 																"partial",
 																"clear",
 																"default"
-															],
-															"type": "string"
+															]
 														}
 													]
 												},
 												"public_key": {
 													"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"updated_at": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
 												"updated_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1983,66 +1985,30 @@
 							]
 						}
 					}
-				},
-				"description": "Payload log settings."
+				}
 			},
 			"4XX": {
+				"description": "Failed to set payload log settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2051,12 +2017,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2066,25 +2032,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2092,12 +2095,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to set payload log settings."
+				}
 			}
 		},
 		"security": [
@@ -2107,7 +2108,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Set payload log settings",
 		"tags": [
 			"DLP Settings"
 		],
@@ -2116,12 +2116,13 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/settings": {
-		"description": "Missing fields are reset to initial (unconfigured) values.",
 		"operationId": "dlp-settings-update",
+		"summary": "Update DLP account-level settings (full replacement).",
+		"description": "Missing fields are reset to initial (unconfigured) values.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2129,81 +2130,84 @@
 			}
 		],
 		"requestBody": {
+			"description": "New DLP settings.",
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request model for updating DLP account-level settings.\nAll fields are optional. Missing fields behave differently for PUT vs PATCH:\n- PUT: missing fields reset to initial (unconfigured) values.\n- PATCH: missing fields keep existing values.",
+						"type": "object",
 						"properties": {
 							"ai_context_analysis": {
-								"default": false,
 								"description": "Whether AI context analysis is enabled at the account level.",
-								"nullable": true,
 								"type": "boolean",
+								"default": false,
+								"nullable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"ocr": {
-								"default": false,
 								"description": "Whether OCR is enabled at the account level.",
-								"nullable": true,
 								"type": "boolean",
+								"default": false,
+								"nullable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"payload_logging": {
 								"allOf": [
 									{
 										"description": "Request model for payload log settings within the DLP settings endpoint.\nUnlike the legacy endpoint, null and missing are treated identically here\n(both mean \"not provided\" for PATCH, \"reset to default\" for PUT).",
+										"type": "object",
 										"properties": {
 											"masking_level": {
+												"default": "default",
 												"allOf": [
 													{
 														"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+														"type": "string",
 														"enum": [
 															"full",
 															"partial",
 															"clear",
 															"default"
-														],
-														"type": "string"
+														]
 													}
-												],
-												"default": "default"
+												]
 											},
 											"public_key": {
 												"description": "Base64-encoded public key for encrypting payload logs.\n\n- Set to a non-empty base64 string to enable payload logging with the given key.\n- Set to an empty string to disable payload logging.\n- Omit or set to null to leave unchanged (PATCH) or reset to disabled (PUT).",
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
-										},
-										"type": "object"
+										}
 									}
 								],
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"description": "New DLP settings.",
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "DLP settings.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2212,12 +2216,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2227,15 +2231,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2244,12 +2248,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2259,31 +2263,30 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "DLP account-level settings response.",
+											"type": "object",
 											"properties": {
 												"ai_context_analysis": {
 													"description": "Whether AI context analysis is enabled at the account level.",
@@ -2294,43 +2297,42 @@
 													"type": "boolean"
 												},
 												"payload_logging": {
+													"type": "object",
 													"properties": {
 														"masking_level": {
 															"allOf": [
 																{
 																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"type": "string",
 																	"enum": [
 																		"full",
 																		"partial",
 																		"clear",
 																		"default"
-																	],
-																	"type": "string"
+																	]
 																}
 															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"updated_at": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														}
 													},
 													"required": [
 														"updated_at"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"payload_logging",
 												"ai_context_analysis",
 												"ocr"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2338,66 +2340,30 @@
 							]
 						}
 					}
-				},
-				"description": "DLP settings."
+				}
 			},
 			"4XX": {
+				"description": "Failed to update DLP settings.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2406,12 +2372,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2421,25 +2387,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2447,12 +2450,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to update DLP settings."
+				}
 			}
 		},
 		"security": [
@@ -2462,7 +2463,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update DLP account-level settings (full replacement).",
 		"tags": [
 			"DLP Settings"
 		],

@@ -1,62 +1,66 @@
 {
 	"DELETE /accounts/{account_id}/sso_connectors/{sso_connector_id}": {
-		"description": "Deletes an SSO connector from the account.",
 		"operationId": "delete-sso-connector",
+		"summary": "Delete SSO connector",
+		"description": "Deletes an SSO connector from the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sso_connector_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "SSO Connector identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "SSO Connector identifier tag.",
 					"title": "SSO Connector Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete SSO connector response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -65,12 +69,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -80,15 +84,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -97,12 +101,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -112,109 +116,71 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete SSO connector response"
+				}
 			},
 			"4XX": {
+				"description": "Delete SSO connector response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -223,12 +189,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -238,25 +204,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -264,12 +267,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete SSO connector response failure"
+				}
 			}
 		},
 		"security": [
@@ -277,7 +278,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete SSO connector",
 		"tags": [
 			"SSO"
 		],
@@ -292,46 +292,50 @@
 		}
 	},
 	"GET /accounts/{account_id}/sso_connectors": {
-		"description": "Lists all SSO connectors configured for the account.",
 		"operationId": "get-all-sso-connectors",
+		"summary": "Get all SSO connectors",
+		"description": "Lists all SSO connectors configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get all SSO connectors response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -340,12 +344,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -355,15 +359,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -372,12 +376,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -387,127 +391,125 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_on": {
 														"description": "Timestamp for the creation of the SSO connector",
-														"example": "2025-01-01T12:21:02.0000Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2025-01-01T12:21:02.0000Z"
 													},
 													"email_domain": {
-														"example": "example.com",
-														"type": "string"
+														"type": "string",
+														"example": "example.com"
 													},
 													"enabled": {
-														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"example": false
 													},
 													"id": {
+														"description": "SSO Connector identifier tag.",
 														"allOf": [
 															{
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															}
 														],
-														"description": "SSO Connector identifier tag.",
 														"title": "SSO Connector Identifier"
 													},
 													"updated_on": {
 														"description": "Timestamp for the last update of the SSO connector",
-														"example": "2025-01-01T12:21:02.0000Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2025-01-01T12:21:02.0000Z"
 													},
 													"use_fedramp_language": {
-														"default": false,
 														"description": "Controls the display of FedRAMP language to the user during SSO login",
-														"example": false,
 														"type": "boolean",
+														"example": false,
+														"default": false,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"verification": {
+														"type": "object",
 														"properties": {
 															"code": {
 																"description": "DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.",
-																"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353",
-																"type": "string"
+																"type": "string",
+																"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353"
 															},
 															"status": {
 																"description": "The status of the verification code from the verification process.",
+																"type": "string",
+																"example": "pending",
 																"enum": [
 																	"awaiting",
 																	"pending",
 																	"failed",
 																	"verified"
-																],
-																"example": "pending",
-																"type": "string"
+																]
 															}
-														},
-														"type": "object"
+														}
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -516,66 +518,30 @@
 							"title": "Response of initializing a new sso connector"
 						}
 					}
-				},
-				"description": "Get all SSO connectors response"
+				}
 			},
 			"4XX": {
+				"description": "Get all SSO connectors response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -584,12 +550,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -599,25 +565,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -625,12 +628,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get all SSO connectors response failure"
+				}
 			}
 		},
 		"security": [
@@ -638,7 +639,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get all SSO connectors",
 		"tags": [
 			"SSO"
 		],
@@ -653,65 +653,69 @@
 		}
 	},
 	"GET /accounts/{account_id}/sso_connectors/{sso_connector_id}": {
-		"description": "Retrieves details for a specific SSO connector.",
 		"operationId": "get-sso-connector",
+		"summary": "Get single SSO connector",
+		"description": "Retrieves details for a specific SSO connector.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sso_connector_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "SSO Connector identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "SSO Connector identifier tag.",
 					"title": "SSO Connector Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get SSO connector response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -720,12 +724,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -735,15 +739,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -752,12 +756,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -767,95 +771,93 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the SSO connector",
-													"example": "2025-01-01T12:21:02.0000Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T12:21:02.0000Z"
 												},
 												"email_domain": {
-													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"example": "example.com"
 												},
 												"enabled": {
-													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"example": false
 												},
 												"id": {
+													"description": "SSO Connector identifier tag.",
 													"allOf": [
 														{
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
-													"description": "SSO Connector identifier tag.",
 													"title": "SSO Connector Identifier"
 												},
 												"updated_on": {
 													"description": "Timestamp for the last update of the SSO connector",
-													"example": "2025-01-01T12:21:02.0000Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T12:21:02.0000Z"
 												},
 												"use_fedramp_language": {
-													"default": false,
 													"description": "Controls the display of FedRAMP language to the user during SSO login",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"verification": {
+													"type": "object",
 													"properties": {
 														"code": {
 															"description": "DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.",
-															"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353"
 														},
 														"status": {
 															"description": "The status of the verification code from the verification process.",
+															"type": "string",
+															"example": "pending",
 															"enum": [
 																"awaiting",
 																"pending",
 																"failed",
 																"verified"
-															],
-															"example": "pending",
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -864,66 +866,30 @@
 							"title": "Response of initializing a new sso connector"
 						}
 					}
-				},
-				"description": "Get SSO connector response"
+				}
 			},
 			"4XX": {
+				"description": "Get SSO connector response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -932,12 +898,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -947,25 +913,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -973,12 +976,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get SSO connector response failure"
+				}
 			}
 		},
 		"security": [
@@ -986,7 +987,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get single SSO connector",
 		"tags": [
 			"SSO"
 		],
@@ -1001,44 +1001,45 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/sso_connectors/{sso_connector_id}": {
-		"description": "Updates the state or configuration of an SSO connector.",
 		"operationId": "update-sso-connector-state",
+		"summary": "Update SSO connector state",
+		"description": "Updates the state or configuration of an SSO connector.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sso_connector_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "SSO Connector identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "SSO Connector identifier tag.",
 					"title": "SSO Connector Identifier"
 				}
 			}
@@ -1047,42 +1048,45 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"description": "SSO Connector enabled state",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							},
 							"use_fedramp_language": {
-								"default": false,
 								"description": "Controls the display of FedRAMP language to the user during SSO login",
-								"example": false,
 								"type": "boolean",
+								"example": false,
+								"default": false,
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update SSO connector state response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1091,12 +1095,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1106,15 +1110,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1123,12 +1127,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1138,95 +1142,93 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the SSO connector",
-													"example": "2025-01-01T12:21:02.0000Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T12:21:02.0000Z"
 												},
 												"email_domain": {
-													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"example": "example.com"
 												},
 												"enabled": {
-													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"example": false
 												},
 												"id": {
+													"description": "SSO Connector identifier tag.",
 													"allOf": [
 														{
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
-													"description": "SSO Connector identifier tag.",
 													"title": "SSO Connector Identifier"
 												},
 												"updated_on": {
 													"description": "Timestamp for the last update of the SSO connector",
-													"example": "2025-01-01T12:21:02.0000Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T12:21:02.0000Z"
 												},
 												"use_fedramp_language": {
-													"default": false,
 													"description": "Controls the display of FedRAMP language to the user during SSO login",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"verification": {
+													"type": "object",
 													"properties": {
 														"code": {
 															"description": "DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.",
-															"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353"
 														},
 														"status": {
 															"description": "The status of the verification code from the verification process.",
+															"type": "string",
+															"example": "pending",
 															"enum": [
 																"awaiting",
 																"pending",
 																"failed",
 																"verified"
-															],
-															"example": "pending",
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1235,66 +1237,30 @@
 							"title": "Response of initializing a new sso connector"
 						}
 					}
-				},
-				"description": "Update SSO connector state response"
+				}
 			},
 			"4XX": {
+				"description": "Update SSO connector state response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1303,12 +1269,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1318,25 +1284,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1344,12 +1347,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update SSO connector state response failure"
+				}
 			}
 		},
 		"security": [
@@ -1357,7 +1358,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update SSO connector state",
 		"tags": [
 			"SSO"
 		],
@@ -1372,25 +1372,26 @@
 		}
 	},
 	"POST /accounts/{account_id}/sso_connectors": {
-		"description": "Creates a new SSO connector for logging into Cloudflare through an identity provider.",
 		"operationId": "init-new-sso-connector",
+		"summary": "Initialize new SSO connector",
+		"description": "Creates a new SSO connector for logging into Cloudflare through an identity provider.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
@@ -1399,52 +1400,55 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"begin_verification": {
-								"default": true,
 								"description": "Begin the verification process after creation",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"email_domain": {
 								"description": "Email domain of the new SSO connector",
-								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"example": "example.com"
 							},
 							"use_fedramp_language": {
-								"default": false,
 								"description": "Controls the display of FedRAMP language to the user during SSO login",
-								"example": false,
 								"type": "boolean",
+								"example": false,
+								"default": false,
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
 							"email_domain"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Initialize new SSO connector response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1453,12 +1457,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1468,15 +1472,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1485,12 +1489,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1500,95 +1504,93 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the SSO connector",
-													"example": "2025-01-01T12:21:02.0000Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T12:21:02.0000Z"
 												},
 												"email_domain": {
-													"example": "example.com",
-													"type": "string"
+													"type": "string",
+													"example": "example.com"
 												},
 												"enabled": {
-													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"example": false
 												},
 												"id": {
+													"description": "SSO Connector identifier tag.",
 													"allOf": [
 														{
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
-													"description": "SSO Connector identifier tag.",
 													"title": "SSO Connector Identifier"
 												},
 												"updated_on": {
 													"description": "Timestamp for the last update of the SSO connector",
-													"example": "2025-01-01T12:21:02.0000Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2025-01-01T12:21:02.0000Z"
 												},
 												"use_fedramp_language": {
-													"default": false,
 													"description": "Controls the display of FedRAMP language to the user during SSO login",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"verification": {
+													"type": "object",
 													"properties": {
 														"code": {
 															"description": "DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.",
-															"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353",
-															"type": "string"
+															"type": "string",
+															"example": "cloudflare_dashboard_sso=023e105f4ecef8ad9ca31a8372d0c353"
 														},
 														"status": {
 															"description": "The status of the verification code from the verification process.",
+															"type": "string",
+															"example": "pending",
 															"enum": [
 																"awaiting",
 																"pending",
 																"failed",
 																"verified"
-															],
-															"example": "pending",
-															"type": "string"
+															]
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1597,66 +1599,30 @@
 							"title": "Response of initializing a new sso connector"
 						}
 					}
-				},
-				"description": "Initialize new SSO connector response"
+				}
 			},
 			"4XX": {
+				"description": "Initialize new SSO connector response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1665,12 +1631,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1680,25 +1646,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1706,12 +1709,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Initialize new SSO connector response failure"
+				}
 			}
 		},
 		"security": [
@@ -1719,7 +1720,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Initialize new SSO connector",
 		"tags": [
 			"SSO"
 		],
@@ -1734,63 +1734,67 @@
 		}
 	},
 	"POST /accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification": {
-		"description": "Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for.",
 		"operationId": "begin-sso-connector-verification",
+		"summary": "Begin SSO connector verification",
+		"description": "Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "sso_connector_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "SSO Connector identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "SSO Connector identifier tag.",
 					"title": "SSO Connector Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Begin SSO connector verification process response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1799,12 +1803,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1814,15 +1818,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1831,12 +1835,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1846,88 +1850,50 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Begin SSO connector verification process response"
+				}
 			},
 			"4XX": {
+				"description": "Begin SSO connector verification process response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1936,12 +1902,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1951,25 +1917,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1977,12 +1980,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Begin SSO connector verification process response failure"
+				}
 			}
 		},
 		"security": [
@@ -1990,7 +1991,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Begin SSO connector verification",
 		"tags": [
 			"SSO"
 		],

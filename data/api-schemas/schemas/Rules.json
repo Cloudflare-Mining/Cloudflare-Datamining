@@ -1,7 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/rules": {
-		"description": "Delete all rules in an account.",
 		"operationId": "cloudforce-one-delete-all-rules",
+		"summary": "Delete all rules",
+		"description": "Delete all rules in an account.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -9,49 +10,49 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "All rules deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"deleted": {
-									"example": 10,
-									"type": "number"
+									"type": "number",
+									"example": 10
 								}
 							},
 							"required": [
 								"deleted"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "All rules deleted."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			}
 		},
 		"security": [
@@ -63,14 +64,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete all rules",
 		"tags": [
 			"Rules"
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/{id}": {
-		"description": "Delete an existing rule.",
 		"operationId": "cloudforce-one-delete-rule",
+		"summary": "Delete a rule",
+		"description": "Delete an existing rule.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -78,20 +79,20 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "The unique identifier for the rule.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the rule.",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier for the rule.",
-					"example": "550e8400-e29b-41d4-a716-446655440000",
+					"type": "string",
 					"format": "uuid",
-					"type": "string"
+					"example": "550e8400-e29b-41d4-a716-446655440000"
 				}
 			}
 		],
@@ -99,119 +100,119 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"commit_message": {
 								"description": "Human-readable justification for the deletion. Required for internal-account submissions; optional for customer accounts and automated sync.",
+								"type": "string",
 								"example": "Rule superseded by yara/workers/tighter-panel.yar.",
-								"maxLength": 1000,
-								"type": "string"
+								"maxLength": 1000
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Rule deleted (customer accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule deleted (customer accounts)."
+				}
 			},
 			"202": {
+				"description": "Deletion pending approval (internal accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"approval_id": {
-									"example": 1,
-									"type": "number"
+									"type": "number",
+									"example": 1
 								},
 								"message": {
-									"example": "Rule creation pending approval",
-									"type": "string"
+									"type": "string",
+									"example": "Rule creation pending approval"
 								}
 							},
 							"required": [
 								"approval_id",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Deletion pending approval (internal accounts)."
+				}
 			},
 			"400": {
+				"description": "Validation error (e.g. commit_message exceeds max length).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Validation error (e.g. commit_message exceeds max length)."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"404": {
+				"description": "Rule not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule not found."
+				}
 			}
 		},
 		"security": [
@@ -223,14 +224,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a rule",
 		"tags": [
 			"Rules"
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/exemptions": {
-		"description": "Remove regex patterns from per-account exemption rules. Missing keys leave that type untouched; non-existent patterns are silently skipped.",
 		"operationId": "cloudforce-one-remove-account-exemptions",
+		"summary": "Remove patterns from exemption rules",
+		"description": "Remove regex patterns from per-account exemption rules. Missing keys leave that type untouched; non-existent patterns are silently skipped.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -238,8 +239,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
@@ -247,139 +248,139 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"namespace": {
+								"type": "array",
 								"items": {
 									"example": "^test-.*$",
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"tag_match": {
+								"type": "array",
 								"items": {
 									"example": "^test-.*$",
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"worker_name": {
+								"type": "array",
 								"items": {
 									"example": "^test-.*$",
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
-						"type": "object"
+						"additionalProperties": false
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Full exemption state after the subtraction.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"namespace": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^test-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"tag_match": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^staging-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"worker_name": {
-									"example": [
-										"^demo-.*$"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"^demo-.*$"
+									]
 								}
 							},
 							"required": [
 								"namespace",
 								"tag_match",
 								"worker_name"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Full exemption state after the subtraction."
+				}
 			},
 			"400": {
+				"description": "Validation error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Validation error."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			}
 		},
 		"security": [
@@ -391,14 +392,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Remove patterns from exemption rules",
 		"tags": [
 			"Rules"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules": {
-		"description": "List all rules for an account with optional filtering.",
 		"operationId": "cloudforce-one-list-rules",
+		"summary": "List rules",
+		"description": "List all rules for an account with optional filtering.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -406,39 +407,20 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
-				"in": "query",
 				"name": "namespace",
+				"in": "query",
+				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
 				"schema": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"items": {
-								"type": "string"
-							},
-							"maxItems": 50,
-							"type": "array"
-						}
-					],
 					"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
 					"example": [
 						"yara/workers",
 						"yara/dns_record"
-					]
-				}
-			},
-			{
-				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
-				"in": "query",
-				"name": "path",
-				"schema": {
+					],
 					"anyOf": [
 						{
 							"type": "string"
@@ -450,130 +432,155 @@
 							"maxItems": 50,
 							"type": "array"
 						}
-					],
-					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
-					"example": [
-						"yara/workers"
 					]
 				}
 			},
 			{
-				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+				"name": "path",
 				"in": "query",
+				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+				"schema": {
+					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+					"example": [
+						"yara/workers"
+					],
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"maxItems": 50,
+							"type": "array"
+						}
+					]
+				}
+			},
+			{
 				"name": "recursive",
+				"in": "query",
+				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
 				"schema": {
 					"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+					"type": "string",
+					"example": "true",
 					"enum": [
 						"true",
 						"false"
-					],
-					"example": "true",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
-					"example": "malicious",
-					"type": "string"
+					"type": "string",
+					"example": "malicious"
 				}
 			},
 			{
-				"description": "Filter by public visibility.",
-				"in": "query",
 				"name": "is_public",
+				"in": "query",
+				"description": "Filter by public visibility.",
 				"schema": {
 					"description": "Filter by public visibility.",
+					"type": "string",
+					"example": "true",
 					"enum": [
 						"true",
 						"false"
-					],
-					"example": "true",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"default": 50,
+					"type": "number",
 					"example": 50,
+					"default": 50,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
-					"default": 0,
+					"type": "number",
 					"example": 0,
+					"default": 0,
 					"minimum": 0,
-					"nullable": true,
-					"type": "number"
+					"nullable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of rules.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"rules": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"content": {
 												"example": "rule example { condition: true }",
 												"type": "string"
 											},
 											"created_at": {
-												"example": 1679529600000,
 												"type": "number",
+												"example": 1679529600000,
 												"x-auditable": true
 											},
 											"created_by": {
-												"example": "user@example.com",
 												"type": "string",
+												"example": "user@example.com",
 												"x-auditable": true
 											},
 											"description": {
-												"example": "Detects malicious proxy workers",
-												"type": "string"
+												"type": "string",
+												"example": "Detects malicious proxy workers"
 											},
 											"enabled": {
 												"description": "Whether this rule is active for dice consumers.",
-												"example": true,
-												"type": "boolean"
+												"type": "boolean",
+												"example": true
 											},
 											"id": {
-												"example": "550e8400-e29b-41d4-a716-446655440000",
-												"format": "uuid",
 												"type": "string",
+												"format": "uuid",
+												"example": "550e8400-e29b-41d4-a716-446655440000",
 												"x-auditable": true
 											},
 											"is_public": {
 												"description": "Whether this rule is visible to other internal accounts.",
-												"example": false,
 												"type": "boolean",
+												"example": false,
 												"x-auditable": true
 											},
 											"meta": {
 												"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"key": {
 															"type": "string"
 														},
 														"type": {
+															"type": "string",
 															"enum": [
 																"string",
 																"bool",
 																"int"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"anyOf": [
@@ -593,49 +600,47 @@
 														"key",
 														"value",
 														"type"
-													],
-													"type": "object"
-												},
-												"type": "array"
+													]
+												}
 											},
 											"name": {
-												"example": "block-malicious-workers",
 												"type": "string",
+												"example": "block-malicious-workers",
 												"x-auditable": true
 											},
 											"namespaces": {
-												"example": [
-													"yara/workers"
-												],
+												"type": "array",
 												"items": {
 													"type": "string"
 												},
-												"type": "array",
+												"example": [
+													"yara/workers"
+												],
 												"x-auditable": true
 											},
 											"path": {
-												"example": "yara/workers",
 												"type": "string",
+												"example": "yara/workers",
 												"x-auditable": true
 											},
 											"pending_approval_id": {
 												"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
-												"nullable": true,
-												"type": "number"
+												"type": "number",
+												"nullable": true
 											},
 											"structured_source": {
 												"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"updated_at": {
-												"example": 1679529600000,
 												"type": "number",
+												"example": 1679529600000,
 												"x-auditable": true
 											},
 											"updated_by": {
-												"example": "user@example.com",
 												"type": "string",
+												"example": "user@example.com",
 												"x-auditable": true
 											}
 										},
@@ -653,44 +658,40 @@
 											"created_by",
 											"updated_by",
 											"pending_approval_id"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"total": {
-									"example": 100,
-									"type": "number"
+									"type": "number",
+									"example": 100
 								}
 							},
 							"required": [
 								"rules",
 								"total"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of rules."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			}
 		},
 		"security": [
@@ -702,14 +703,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "List rules",
 		"tags": [
 			"Rules"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/{id}": {
-		"description": "Get a single rule by ID.",
 		"operationId": "cloudforce-one-get-rule",
+		"summary": "Get a rule",
+		"description": "Get a single rule by ID.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -717,78 +718,82 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "The unique identifier for the rule.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the rule.",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier for the rule.",
-					"example": "550e8400-e29b-41d4-a716-446655440000",
+					"type": "string",
 					"format": "uuid",
-					"type": "string"
+					"example": "550e8400-e29b-41d4-a716-446655440000"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Rule details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"content": {
 									"example": "rule example { condition: true }",
 									"type": "string"
 								},
 								"created_at": {
-									"example": 1679529600000,
 									"type": "number",
+									"example": 1679529600000,
 									"x-auditable": true
 								},
 								"created_by": {
-									"example": "user@example.com",
 									"type": "string",
+									"example": "user@example.com",
 									"x-auditable": true
 								},
 								"description": {
-									"example": "Detects malicious proxy workers",
-									"type": "string"
+									"type": "string",
+									"example": "Detects malicious proxy workers"
 								},
 								"enabled": {
 									"description": "Whether this rule is active for dice consumers.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"id": {
-									"example": "550e8400-e29b-41d4-a716-446655440000",
-									"format": "uuid",
 									"type": "string",
+									"format": "uuid",
+									"example": "550e8400-e29b-41d4-a716-446655440000",
 									"x-auditable": true
 								},
 								"is_public": {
 									"description": "Whether this rule is visible to other internal accounts.",
-									"example": false,
 									"type": "boolean",
+									"example": false,
 									"x-auditable": true
 								},
 								"meta": {
 									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"key": {
 												"type": "string"
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"string",
 													"bool",
 													"int"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"anyOf": [
@@ -808,49 +813,47 @@
 											"key",
 											"value",
 											"type"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"name": {
-									"example": "block-malicious-workers",
 									"type": "string",
+									"example": "block-malicious-workers",
 									"x-auditable": true
 								},
 								"namespaces": {
-									"example": [
-										"yara/workers"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array",
+									"example": [
+										"yara/workers"
+									],
 									"x-auditable": true
 								},
 								"path": {
-									"example": "yara/workers",
 									"type": "string",
+									"example": "yara/workers",
 									"x-auditable": true
 								},
 								"pending_approval_id": {
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"updated_at": {
-									"example": 1679529600000,
 									"type": "number",
+									"example": 1679529600000,
 									"x-auditable": true
 								},
 								"updated_by": {
-									"example": "user@example.com",
 									"type": "string",
+									"example": "user@example.com",
 									"x-auditable": true
 								}
 							},
@@ -868,50 +871,48 @@
 								"created_by",
 								"updated_by",
 								"pending_approval_id"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule details."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"404": {
+				"description": "Rule not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule not found."
+				}
 			}
 		},
 		"security": [
@@ -923,14 +924,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a rule",
 		"tags": [
 			"Rules"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/exemptions": {
-		"description": "Get all exemption rule patterns for the account, grouped by type.",
 		"operationId": "cloudforce-one-get-exemptions",
+		"summary": "Get exemption rules for an account",
+		"description": "Get all exemption rule patterns for the account, grouped by type.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -938,112 +939,112 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Exemption rules grouped by type.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"namespace": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^test-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"tag_match": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^staging-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"worker_name": {
-									"example": [
-										"^demo-.*$"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"^demo-.*$"
+									]
 								}
 							},
 							"required": [
 								"namespace",
 								"tag_match",
 								"worker_name"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Exemption rules grouped by type."
+				}
 			},
 			"400": {
+				"description": "Validation error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Validation error."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			}
 		},
 		"security": [
@@ -1055,14 +1056,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get exemption rules for an account",
 		"tags": [
 			"Rules"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/managed": {
-		"description": "Get DFP managed rule metadata (name and description) from YARA rules.",
 		"operationId": "cloudforce-one-get-managed-rules",
+		"summary": "Get managed rules",
+		"description": "Get DFP managed rule metadata (name and description) from YARA rules.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -1070,18 +1071,21 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Managed rules metadata.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"metadata": {
+									"type": "object",
 									"properties": {
 										"fetched_at": {
 											"type": "string"
@@ -1093,10 +1097,10 @@
 									"required": [
 										"total_rules",
 										"fetched_at"
-									],
-									"type": "object"
+									]
 								},
 								"rules": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"description": {
@@ -1111,38 +1115,35 @@
 											"description"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								}
 							},
 							"required": [
 								"rules",
 								"metadata"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Managed rules metadata."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			}
 		},
 		"security": [
@@ -1154,14 +1155,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get managed rules",
 		"tags": [
 			"Rules"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/search": {
-		"description": "Search rules using hybrid, vector, keyword, or exact retrieval, backed by AI Search with a SQL fallback.",
 		"operationId": "cloudforce-one-search-rules",
+		"summary": "Search rules",
+		"description": "Search rules using hybrid, vector, keyword, or exact retrieval, backed by AI Search with a SQL fallback.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -1169,39 +1170,20 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
-				"in": "query",
 				"name": "namespace",
+				"in": "query",
+				"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
 				"schema": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"items": {
-								"type": "string"
-							},
-							"maxItems": 50,
-							"type": "array"
-						}
-					],
 					"description": "Filter by namespace. Repeat the parameter to filter by multiple namespaces (e.g. namespace=foo&namespace=bar).",
 					"example": [
 						"yara/workers",
 						"yara/dns_record"
-					]
-				}
-			},
-			{
-				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
-				"in": "query",
-				"name": "path",
-				"schema": {
+					],
 					"anyOf": [
 						{
 							"type": "string"
@@ -1213,137 +1195,159 @@
 							"maxItems": 50,
 							"type": "array"
 						}
-					],
-					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
-					"example": [
-						"yara/workers"
 					]
 				}
 			},
 			{
-				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+				"name": "path",
 				"in": "query",
+				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+				"schema": {
+					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+					"example": [
+						"yara/workers"
+					],
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"maxItems": 50,
+							"type": "array"
+						}
+					]
+				}
+			},
+			{
 				"name": "recursive",
+				"in": "query",
+				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
 				"schema": {
 					"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
+					"type": "string",
+					"example": "true",
 					"enum": [
 						"true",
 						"false"
-					],
-					"example": "true",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
-					"example": "malicious",
-					"type": "string"
+					"type": "string",
+					"example": "malicious"
 				}
 			},
 			{
-				"description": "Filter by public visibility.",
-				"in": "query",
 				"name": "is_public",
+				"in": "query",
+				"description": "Filter by public visibility.",
 				"schema": {
 					"description": "Filter by public visibility.",
+					"type": "string",
+					"example": "true",
 					"enum": [
 						"true",
 						"false"
-					],
-					"example": "true",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"default": 50,
+					"type": "number",
 					"example": 50,
+					"default": 50,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
-					"default": 0,
+					"type": "number",
 					"example": 0,
+					"default": 0,
 					"minimum": 0,
-					"nullable": true,
-					"type": "number"
+					"nullable": true
 				}
 			},
 			{
-				"description": "Natural-language or keyword search query.",
-				"in": "query",
 				"name": "query",
+				"in": "query",
+				"description": "Natural-language or keyword search query.",
 				"required": true,
 				"schema": {
 					"description": "Natural-language or keyword search query.",
+					"type": "string",
 					"example": "obfuscated proxy worker",
 					"maxLength": 500,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			},
 			{
-				"description": "Retrieval strategy used for the query.",
-				"in": "query",
 				"name": "mode",
+				"in": "query",
+				"description": "Retrieval strategy used for the query.",
 				"schema": {
-					"default": "hybrid",
 					"description": "Retrieval strategy used for the query.",
+					"type": "string",
+					"example": "hybrid",
+					"default": "hybrid",
 					"enum": [
 						"exact",
 						"hybrid",
 						"vector",
 						"keyword"
-					],
-					"example": "hybrid",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filter results by rule language.",
-				"in": "query",
 				"name": "language",
+				"in": "query",
+				"description": "Filter results by rule language.",
 				"schema": {
 					"description": "Filter results by rule language.",
+					"type": "string",
+					"example": "yara",
 					"enum": [
 						"yara",
 						"js"
-					],
-					"example": "yara",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Hybrid/semantic rule search results",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"fallback": {
 									"description": "True when AI Search was unavailable and the response is from a fallback path.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								},
 								"interpreted": {
 									"description": "Parsed natural-language interpretation of the query, when available.",
+									"type": "object",
 									"properties": {
 										"filters": {
+											"description": "Filters applied during retrieval (account ACL plus user-supplied facets).",
+											"type": "object",
 											"additionalProperties": {
 												"nullable": true,
 												"type": "object"
-											},
-											"description": "Filters applied during retrieval (account ACL plus user-supplied facets).",
-											"type": "object"
+											}
 										},
 										"retrieval_type": {
 											"type": "string"
@@ -1351,68 +1355,71 @@
 									},
 									"required": [
 										"retrieval_type"
-									],
-									"type": "object"
+									]
 								},
 								"mode": {
 									"description": "Retrieval strategy actually used to produce results.",
-									"example": "hybrid",
-									"type": "string"
+									"type": "string",
+									"example": "hybrid"
 								},
 								"results": {
+									"type": "array",
 									"items": {
 										"allOf": [
 											{
+												"type": "object",
 												"properties": {
 													"content": {
 														"example": "rule example { condition: true }",
 														"type": "string"
 													},
 													"created_at": {
-														"example": 1679529600000,
 														"type": "number",
+														"example": 1679529600000,
 														"x-auditable": true
 													},
 													"created_by": {
-														"example": "user@example.com",
 														"type": "string",
+														"example": "user@example.com",
 														"x-auditable": true
 													},
 													"description": {
-														"example": "Detects malicious proxy workers",
-														"type": "string"
+														"type": "string",
+														"example": "Detects malicious proxy workers"
 													},
 													"enabled": {
 														"description": "Whether this rule is active for dice consumers.",
-														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"example": true
 													},
 													"id": {
-														"example": "550e8400-e29b-41d4-a716-446655440000",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
+														"example": "550e8400-e29b-41d4-a716-446655440000",
 														"x-auditable": true
 													},
 													"is_public": {
 														"description": "Whether this rule is visible to other internal accounts.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"meta": {
 														"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"key": {
 																	"type": "string"
 																},
 																"type": {
+																	"type": "string",
 																	"enum": [
 																		"string",
 																		"bool",
 																		"int"
-																	],
-																	"type": "string"
+																	]
 																},
 																"value": {
 																	"anyOf": [
@@ -1432,49 +1439,47 @@
 																"key",
 																"value",
 																"type"
-															],
-															"type": "object"
-														},
-														"type": "array"
+															]
+														}
 													},
 													"name": {
-														"example": "block-malicious-workers",
 														"type": "string",
+														"example": "block-malicious-workers",
 														"x-auditable": true
 													},
 													"namespaces": {
-														"example": [
-															"yara/workers"
-														],
+														"type": "array",
 														"items": {
 															"type": "string"
 														},
-														"type": "array",
+														"example": [
+															"yara/workers"
+														],
 														"x-auditable": true
 													},
 													"path": {
-														"example": "yara/workers",
 														"type": "string",
+														"example": "yara/workers",
 														"x-auditable": true
 													},
 													"pending_approval_id": {
 														"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
-														"nullable": true,
-														"type": "number"
+														"type": "number",
+														"nullable": true
 													},
 													"structured_source": {
 														"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"updated_at": {
-														"example": 1679529600000,
 														"type": "number",
+														"example": 1679529600000,
 														"x-auditable": true
 													},
 													"updated_by": {
-														"example": "user@example.com",
 														"type": "string",
+														"example": "user@example.com",
 														"x-auditable": true
 													}
 												},
@@ -1492,20 +1497,20 @@
 													"created_by",
 													"updated_by",
 													"pending_approval_id"
-												],
-												"type": "object"
+												]
 											},
 											{
 												"properties": {
 													"score": {
 														"description": "Relevance score in [0,1]. Present only when AI Search powers the query.",
+														"type": "number",
 														"example": 0.87,
 														"maximum": 1,
-														"minimum": 0,
-														"type": "number"
+														"minimum": 0
 													},
 													"scoring_details": {
 														"description": "Per-component scoring breakdown returned by AI Search hybrid retrieval.",
+														"type": "object",
 														"properties": {
 															"fusion_method": {
 																"type": "string"
@@ -1525,70 +1530,66 @@
 															"vector_score": {
 																"type": "number"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"type": "object"
 											}
 										]
-									},
-									"type": "array"
+									}
 								},
 								"total": {
+									"type": "integer",
 									"example": 12,
-									"minimum": 0,
-									"type": "integer"
+									"minimum": 0
 								}
 							},
 							"required": [
 								"results",
 								"total",
 								"mode"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Hybrid/semantic rule search results"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"503": {
+				"description": "AI Search unavailable",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "AI Search unavailable"
+				}
 			}
 		},
 		"security": [
@@ -1600,14 +1601,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Search rules",
 		"tags": [
 			"Rules"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/stats": {
-		"description": "Get statistics about rules for the dashboard.",
 		"operationId": "cloudforce-one-get-rule-stats",
+		"summary": "Get dashboard stats",
+		"description": "Get statistics about rules for the dashboard.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -1615,65 +1616,65 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Dashboard statistics.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"pending_approvals": {
-									"example": 5,
-									"type": "number"
+									"type": "number",
+									"example": 5
 								},
 								"rules_by_namespace": {
-									"additionalProperties": {
-										"type": "number"
-									},
+									"type": "object",
 									"example": {
 										"yara/dns_record": 12,
 										"yara/workers": 30
 									},
-									"type": "object"
+									"additionalProperties": {
+										"type": "number"
+									}
 								},
 								"total_rules": {
-									"example": 42,
-									"type": "number"
+									"type": "number",
+									"example": 42
 								}
 							},
 							"required": [
 								"total_rules",
 								"rules_by_namespace",
 								"pending_approvals"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Dashboard statistics."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			}
 		},
 		"security": [
@@ -1685,14 +1686,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get dashboard stats",
 		"tags": [
 			"Rules"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/tree": {
-		"description": "Get the folder tree structure for rules navigation.",
 		"operationId": "cloudforce-one-get-rule-tree",
+		"summary": "Get folder tree structure",
+		"description": "Get the folder tree structure for rules navigation.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -1700,35 +1701,39 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Folder tree structure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"tree": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"children": {
-												"items": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/rules/tree.responses.200.content.application/json.schema.properties.tree.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/cloudforce-one/rules/tree.responses.200.content.application/json.schema.properties.tree.items]"
 											},
 											"count": {
-												"example": 15,
-												"type": "number"
+												"type": "number",
+												"example": 15
 											},
 											"name": {
-												"example": "workers",
-												"type": "string"
+												"type": "string",
+												"example": "workers"
 											},
 											"path": {
-												"example": "yara/workers",
-												"type": "string"
+												"type": "string",
+												"example": "yara/workers"
 											}
 										},
 										"required": [
@@ -1736,39 +1741,35 @@
 											"path",
 											"count",
 											"children"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								}
 							},
 							"required": [
 								"tree"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Folder tree structure."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			}
 		},
 		"security": [
@@ -1780,14 +1781,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get folder tree structure",
 		"tags": [
 			"Rules"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules": {
-		"description": "Create a new detection rule.",
 		"operationId": "cloudforce-one-create-rule",
+		"summary": "Create a rule",
+		"description": "Create a new detection rule.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -1795,8 +1796,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
@@ -1804,11 +1805,16 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"actions": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"action_config": {
+											"description": "Action-specific configuration parameters.",
+											"type": "object",
 											"additionalProperties": {
 												"anyOf": [
 													{
@@ -1833,11 +1839,11 @@
 														"type": "object"
 													}
 												]
-											},
-											"description": "Action-specific configuration parameters.",
-											"type": "object"
+											}
 										},
 										"action_type": {
+											"type": "string",
+											"example": "alert_gchat",
 											"enum": [
 												"alert_gchat",
 												"webhook",
@@ -1847,28 +1853,24 @@
 												"remediation",
 												"throttle",
 												"delete"
-											],
-											"example": "alert_gchat",
-											"type": "string"
+											]
 										},
 										"enabled": {
-											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"default": true
 										}
 									},
 									"required": [
 										"action_type",
 										"action_config"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"commit_message": {
 								"description": "Human-readable justification for this change. Required for internal-account submissions; optional for customer accounts and automated sync.",
+								"type": "string",
 								"example": "Add worker rule to catch bpb-panel variants.",
-								"maxLength": 1000,
-								"type": "string"
+								"maxLength": 1000
 							},
 							"content": {
 								"example": "rule example { condition: true }",
@@ -1877,33 +1879,35 @@
 							},
 							"description": {
 								"description": "Human-readable description of the rule. Auto-extracted from YARA meta if present.",
+								"type": "string",
 								"example": "Detects malicious proxy workers",
-								"maxLength": 1000,
-								"type": "string"
+								"maxLength": 1000
 							},
 							"enabled": {
-								"default": true,
 								"description": "Whether this rule is active for dice consumers.",
+								"type": "boolean",
 								"example": true,
-								"type": "boolean"
+								"default": true
 							},
 							"is_public": {
-								"default": false,
 								"description": "Whether this rule is visible to other internal accounts.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
+								"default": false,
 								"x-auditable": true
 							},
 							"meta": {
 								"description": "Additional YARA meta entries appended to the rule's meta block (and stored in rule_meta alongside meta parsed from the content). Keys must be valid YARA identifiers and must not be 'name', 'enabled', or 'description'. Duplicate keys are allowed.",
+								"type": "array",
 								"items": {
 									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"type": "object",
 									"properties": {
 										"key": {
+											"type": "string",
 											"maxLength": 128,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
 										},
 										"value": {
 											"anyOf": [
@@ -1923,35 +1927,33 @@
 									"required": [
 										"key",
 										"value"
-									],
-									"type": "object"
+									]
 								},
-								"maxItems": 50,
-								"type": "array"
+								"maxItems": 50
 							},
 							"name": {
+								"type": "string",
 								"example": "block-malicious-workers",
 								"maxLength": 255,
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							},
 							"namespaces": {
-								"default": [],
 								"description": "Optional WfP deployment tags (customer rules only). Internal rules leave empty.",
-								"example": [],
+								"type": "array",
 								"items": {
 									"maxLength": 255,
 									"minLength": 1,
 									"type": "string"
 								},
-								"type": "array",
+								"example": [],
+								"default": [],
 								"x-auditable": true
 							},
 							"path": {
+								"type": "string",
 								"example": "yara/workers",
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1959,67 +1961,70 @@
 							"name",
 							"path",
 							"content"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"201": {
+				"description": "Rule created (customer accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"content": {
 									"example": "rule example { condition: true }",
 									"type": "string"
 								},
 								"created_at": {
-									"example": 1679529600000,
 									"type": "number",
+									"example": 1679529600000,
 									"x-auditable": true
 								},
 								"created_by": {
-									"example": "user@example.com",
 									"type": "string",
+									"example": "user@example.com",
 									"x-auditable": true
 								},
 								"description": {
-									"example": "Detects malicious proxy workers",
-									"type": "string"
+									"type": "string",
+									"example": "Detects malicious proxy workers"
 								},
 								"enabled": {
 									"description": "Whether this rule is active for dice consumers.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"id": {
-									"example": "550e8400-e29b-41d4-a716-446655440000",
-									"format": "uuid",
 									"type": "string",
+									"format": "uuid",
+									"example": "550e8400-e29b-41d4-a716-446655440000",
 									"x-auditable": true
 								},
 								"is_public": {
 									"description": "Whether this rule is visible to other internal accounts.",
-									"example": false,
 									"type": "boolean",
+									"example": false,
 									"x-auditable": true
 								},
 								"meta": {
 									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"key": {
 												"type": "string"
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"string",
 													"bool",
 													"int"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"anyOf": [
@@ -2039,49 +2044,47 @@
 											"key",
 											"value",
 											"type"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"name": {
-									"example": "block-malicious-workers",
 									"type": "string",
+									"example": "block-malicious-workers",
 									"x-auditable": true
 								},
 								"namespaces": {
-									"example": [
-										"yara/workers"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array",
+									"example": [
+										"yara/workers"
+									],
 									"x-auditable": true
 								},
 								"path": {
-									"example": "yara/workers",
 									"type": "string",
+									"example": "yara/workers",
 									"x-auditable": true
 								},
 								"pending_approval_id": {
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"updated_at": {
-									"example": 1679529600000,
 									"type": "number",
+									"example": 1679529600000,
 									"x-auditable": true
 								},
 								"updated_by": {
-									"example": "user@example.com",
 									"type": "string",
+									"example": "user@example.com",
 									"x-auditable": true
 								}
 							},
@@ -2099,74 +2102,72 @@
 								"created_by",
 								"updated_by",
 								"pending_approval_id"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule created (customer accounts)."
+				}
 			},
 			"202": {
+				"description": "Rule pending approval (internal accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"approval_id": {
-									"example": 1,
-									"type": "number"
+									"type": "number",
+									"example": 1
 								},
 								"message": {
-									"example": "Rule creation pending approval",
-									"type": "string"
+									"type": "string",
+									"example": "Rule creation pending approval"
 								}
 							},
 							"required": [
 								"approval_id",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule pending approval (internal accounts)."
+				}
 			},
 			"400": {
+				"description": "Validation error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Validation error."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			}
 		},
 		"security": [
@@ -2178,15 +2179,15 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a rule",
 		"tags": [
 			"Rules"
 		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/exemptions": {
-		"description": "Add regex patterns to per-account exemption rules (union semantics). Missing keys leave that type untouched; duplicates are silently deduped.",
 		"operationId": "cloudforce-one-add-account-exemptions",
+		"summary": "Add patterns to exemption rules",
+		"description": "Add regex patterns to per-account exemption rules (union semantics). Missing keys leave that type untouched; duplicates are silently deduped.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -2194,8 +2195,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
@@ -2203,139 +2204,139 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"namespace": {
+								"type": "array",
 								"items": {
 									"example": "^test-.*$",
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"tag_match": {
+								"type": "array",
 								"items": {
 									"example": "^test-.*$",
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"worker_name": {
+								"type": "array",
 								"items": {
 									"example": "^test-.*$",
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
-						"type": "object"
+						"additionalProperties": false
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Full exemption state after the union.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"namespace": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^test-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"tag_match": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^staging-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"worker_name": {
-									"example": [
-										"^demo-.*$"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"^demo-.*$"
+									]
 								}
 							},
 							"required": [
 								"namespace",
 								"tag_match",
 								"worker_name"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Full exemption state after the union."
+				}
 			},
 			"400": {
+				"description": "Validation error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Validation error."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			}
 		},
 		"security": [
@@ -2347,14 +2348,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Add patterns to exemption rules",
 		"tags": [
 			"Rules"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/validate": {
-		"description": "Validate rule syntax, name uniqueness, namespace, and meta checks.",
 		"operationId": "cloudforce-one-validate-rule",
+		"summary": "Validate rule with context",
+		"description": "Validate rule syntax, name uniqueness, namespace, and meta checks.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -2362,8 +2363,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
@@ -2371,85 +2372,85 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"content": {
 								"minLength": 1,
 								"type": "string"
 							},
 							"excludeRuleId": {
-								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"format": "uuid"
 							},
 							"name": {
+								"type": "string",
 								"maxLength": 255,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"namespaces": {
-								"default": [],
+								"type": "array",
 								"items": {
 									"maxLength": 255,
 									"minLength": 1,
 									"type": "string"
 								},
-								"type": "array"
+								"default": []
 							},
 							"path": {
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							}
 						},
 						"required": [
 							"name",
 							"content"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Validation result.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Invalid YARA syntax",
-									"type": "string"
+									"type": "string",
+									"example": "Invalid YARA syntax"
 								},
 								"valid": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"valid"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Validation result."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			}
 		},
 		"security": [
@@ -2461,14 +2462,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Validate rule with context",
 		"tags": [
 			"Rules"
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/{id}": {
-		"description": "Update an existing rule.",
 		"operationId": "cloudforce-one-update-rule",
+		"summary": "Update a rule",
+		"description": "Update an existing rule.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -2476,20 +2477,20 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "The unique identifier for the rule.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the rule.",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier for the rule.",
-					"example": "550e8400-e29b-41d4-a716-446655440000",
+					"type": "string",
 					"format": "uuid",
-					"type": "string"
+					"example": "550e8400-e29b-41d4-a716-446655440000"
 				}
 			}
 		],
@@ -2497,12 +2498,13 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"commit_message": {
 								"description": "Human-readable justification for this change. Required for internal-account submissions; optional for customer accounts and automated sync.",
+								"type": "string",
 								"example": "Reduce false positives on legit CI workers.",
-								"maxLength": 1000,
-								"type": "string"
+								"maxLength": 1000
 							},
 							"content": {
 								"example": "rule example { condition: true }",
@@ -2511,31 +2513,33 @@
 							},
 							"description": {
 								"description": "Human-readable description of the rule. Auto-extracted from YARA meta if present.",
+								"type": "string",
 								"example": "Detects malicious proxy workers",
-								"maxLength": 1000,
-								"type": "string"
+								"maxLength": 1000
 							},
 							"enabled": {
 								"description": "Whether this rule is active for dice consumers.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							},
 							"is_public": {
 								"description": "Whether this rule is visible to other internal accounts.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"meta": {
 								"description": "Additional YARA meta entries appended to the rule's meta block (and stored in rule_meta alongside meta parsed from the content). Keys must be valid YARA identifiers and must not be 'name', 'enabled', or 'description'. Duplicate keys are allowed.",
+								"type": "array",
 								"items": {
 									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"type": "object",
 									"properties": {
 										"key": {
+											"type": "string",
 											"maxLength": 128,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
 										},
 										"value": {
 											"anyOf": [
@@ -2555,99 +2559,100 @@
 									"required": [
 										"key",
 										"value"
-									],
-									"type": "object"
+									]
 								},
-								"maxItems": 50,
-								"type": "array"
+								"maxItems": 50
 							},
 							"name": {
+								"type": "string",
 								"example": "block-malicious-workers",
 								"maxLength": 255,
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							},
 							"namespaces": {
-								"example": [
-									"yara/workers"
-								],
+								"type": "array",
 								"items": {
 									"maxLength": 255,
 									"minLength": 1,
 									"type": "string"
 								},
-								"type": "array",
+								"example": [
+									"yara/workers"
+								],
 								"x-auditable": true
 							},
 							"path": {
 								"description": "Path change goes through approval workflow.",
+								"type": "string",
 								"example": "yara/workers",
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Rule updated (customer accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"content": {
 									"example": "rule example { condition: true }",
 									"type": "string"
 								},
 								"created_at": {
-									"example": 1679529600000,
 									"type": "number",
+									"example": 1679529600000,
 									"x-auditable": true
 								},
 								"created_by": {
-									"example": "user@example.com",
 									"type": "string",
+									"example": "user@example.com",
 									"x-auditable": true
 								},
 								"description": {
-									"example": "Detects malicious proxy workers",
-									"type": "string"
+									"type": "string",
+									"example": "Detects malicious proxy workers"
 								},
 								"enabled": {
 									"description": "Whether this rule is active for dice consumers.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"id": {
-									"example": "550e8400-e29b-41d4-a716-446655440000",
-									"format": "uuid",
 									"type": "string",
+									"format": "uuid",
+									"example": "550e8400-e29b-41d4-a716-446655440000",
 									"x-auditable": true
 								},
 								"is_public": {
 									"description": "Whether this rule is visible to other internal accounts.",
-									"example": false,
 									"type": "boolean",
+									"example": false,
 									"x-auditable": true
 								},
 								"meta": {
 									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"key": {
 												"type": "string"
 											},
 											"type": {
+												"type": "string",
 												"enum": [
 													"string",
 													"bool",
 													"int"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"anyOf": [
@@ -2667,49 +2672,47 @@
 											"key",
 											"value",
 											"type"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"name": {
-									"example": "block-malicious-workers",
 									"type": "string",
+									"example": "block-malicious-workers",
 									"x-auditable": true
 								},
 								"namespaces": {
-									"example": [
-										"yara/workers"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array",
+									"example": [
+										"yara/workers"
+									],
 									"x-auditable": true
 								},
 								"path": {
-									"example": "yara/workers",
 									"type": "string",
+									"example": "yara/workers",
 									"x-auditable": true
 								},
 								"pending_approval_id": {
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
-									"nullable": true,
-									"type": "number"
+									"type": "number",
+									"nullable": true
 								},
 								"structured_source": {
 									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
-									"nullable": true,
-									"type": "string"
+									"type": "string",
+									"nullable": true
 								},
 								"updated_at": {
-									"example": 1679529600000,
 									"type": "number",
+									"example": 1679529600000,
 									"x-auditable": true
 								},
 								"updated_by": {
-									"example": "user@example.com",
 									"type": "string",
+									"example": "user@example.com",
 									"x-auditable": true
 								}
 							},
@@ -2727,74 +2730,72 @@
 								"created_by",
 								"updated_by",
 								"pending_approval_id"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule updated (customer accounts)."
+				}
 			},
 			"202": {
+				"description": "Update pending approval (internal accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"approval_id": {
-									"example": 1,
-									"type": "number"
+									"type": "number",
+									"example": 1
 								},
 								"message": {
-									"example": "Rule creation pending approval",
-									"type": "string"
+									"type": "string",
+									"example": "Rule creation pending approval"
 								}
 							},
 							"required": [
 								"approval_id",
 								"message"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update pending approval (internal accounts)."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"404": {
+				"description": "Rule not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rule not found."
+				}
 			}
 		},
 		"security": [
@@ -2806,14 +2807,14 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a rule",
 		"tags": [
 			"Rules"
 		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/exemptions": {
-		"description": "Replace existing exemption patterns with new values. Each key maps to an array of {old_pattern, new_pattern} entries. Missing keys leave that type untouched. Fails if any old pattern is not found or any new pattern already exists.",
 		"operationId": "cloudforce-one-update-account-exemptions",
+		"summary": "Update exemption rule patterns",
+		"description": "Replace existing exemption patterns with new values. Each key maps to an array of {old_pattern, new_pattern} entries. Missing keys leave that type untouched. Fails if any old pattern is not found or any new pattern already exists.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID.",
@@ -2821,8 +2822,8 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
@@ -2830,219 +2831,219 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"namespace": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"new_pattern": {
+											"type": "string",
 											"example": "^test-.*$",
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										},
 										"old_pattern": {
+											"type": "string",
 											"example": "^test-.*$",
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										}
 									},
 									"required": [
 										"old_pattern",
 										"new_pattern"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"tag_match": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"new_pattern": {
+											"type": "string",
 											"example": "^test-.*$",
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										},
 										"old_pattern": {
+											"type": "string",
 											"example": "^test-.*$",
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										}
 									},
 									"required": [
 										"old_pattern",
 										"new_pattern"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"worker_name": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"new_pattern": {
+											"type": "string",
 											"example": "^test-.*$",
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										},
 										"old_pattern": {
+											"type": "string",
 											"example": "^test-.*$",
-											"minLength": 1,
-											"type": "string"
+											"minLength": 1
 										}
 									},
 									"required": [
 										"old_pattern",
 										"new_pattern"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							}
 						},
-						"type": "object"
+						"additionalProperties": false
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Full exemption state after the updates.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"namespace": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^test-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"tag_match": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
 									"example": [
 										"^staging-.*$"
-									],
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
+									]
 								},
 								"worker_name": {
-									"example": [
-										"^demo-.*$"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"^demo-.*$"
+									]
 								}
 							},
 							"required": [
 								"namespace",
 								"tag_match",
 								"worker_name"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Full exemption state after the updates."
+				}
 			},
 			"400": {
+				"description": "Validation error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Validation error."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Pattern not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Pattern not found."
+				}
 			},
 			"409": {
+				"description": "New pattern already exists.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not found",
-									"type": "string"
+									"type": "string",
+									"example": "Not found"
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "New pattern already exists."
+				}
 			}
 		},
 		"security": [
@@ -3054,7 +3055,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update exemption rule patterns",
 		"tags": [
 			"Rules"
 		]

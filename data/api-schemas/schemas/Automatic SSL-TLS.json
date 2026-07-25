@@ -1,21 +1,23 @@
 {
 	"GET /zones/{zone_id}/settings/ssl_automatic_mode": {
-		"description": "If the system is enabled, the response will include next_scheduled_scan, representing the next time this zone will be scanned and the zone's ssl/tls encryption mode is potentially upgraded by the system. If the system is disabled, next_scheduled_scan will not be present in the response body.",
 		"operationId": "ssl-detector-automatic-mode-get-enrollment",
+		"summary": "Get Automatic SSL/TLS enrollment status for the given zone",
+		"description": "If the system is enabled, the response will include next_scheduled_scan, representing the next time this zone will be scanned and the zone's ssl/tls encryption mode is potentially upgraded by the system. If the system is disabled, next_scheduled_scan will not be present in the response body.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Automatic SSL/TLS Enrollment status response.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -48,14 +50,15 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -68,15 +71,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -89,44 +92,45 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"editable": {
 											"description": "Whether this setting can be updated or not.",
-											"readOnly": true,
-											"type": "boolean"
+											"type": "boolean",
+											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "ssl_automatic_mode",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										},
 										"next_scheduled_scan": {
 											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"value": {
 											"description": "Current setting of the automatic SSL/TLS.",
+											"type": "string",
+											"example": "auto",
 											"enum": [
 												"auto",
 												"custom"
 											],
-											"example": "auto",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -134,13 +138,12 @@
 										"modified_on",
 										"value",
 										"editable"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -148,14 +151,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Automatic SSL/TLS Enrollment status response."
+				}
 			},
 			"4XX": {
+				"description": "Get Automatic SSL/TLS Enrollment status failure.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -179,48 +181,23 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -233,47 +210,74 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"editable": {
 											"description": "Whether this setting can be updated or not.",
-											"readOnly": true,
-											"type": "boolean"
+											"type": "boolean",
+											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "ssl_automatic_mode",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										},
 										"next_scheduled_scan": {
 											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"value": {
 											"description": "Current setting of the automatic SSL/TLS.",
+											"type": "string",
+											"example": "auto",
 											"enum": [
 												"auto",
 												"custom"
 											],
-											"example": "auto",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -281,13 +285,12 @@
 										"modified_on",
 										"value",
 										"editable"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -295,12 +298,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Automatic SSL/TLS Enrollment status failure."
+				}
 			}
 		},
 		"security": [
@@ -312,7 +313,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Automatic SSL/TLS enrollment status for the given zone",
 		"tags": [
 			"Automatic SSL/TLS"
 		],
@@ -335,47 +335,49 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/settings/ssl_automatic_mode": {
-		"description": "The automatic system is enabled when this endpoint is hit with value in the request body is set to \"auto\", and disabled when the request body value is set to \"custom\".",
 		"operationId": "ssl-detector-automatic-mode-patch-enrollment",
+		"summary": "Patch Automatic SSL/TLS Enrollment status for given zone",
+		"description": "The automatic system is enabled when this endpoint is hit with value in the request body is set to \"auto\", and disabled when the request body value is set to \"custom\".",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Update enablement of Automatic SSL/TLS.",
+						"type": "object",
 						"properties": {
 							"value": {
 								"description": "Controls enablement of Automatic SSL/TLS.",
+								"type": "string",
+								"example": "auto",
 								"enum": [
 									"auto",
 									"custom"
-								],
-								"example": "auto",
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"value"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Automatic SSL/TLS Enrollment status response.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -395,14 +397,15 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -415,15 +418,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -436,44 +439,45 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"editable": {
 											"description": "Whether this setting can be updated or not.",
-											"readOnly": true,
-											"type": "boolean"
+											"type": "boolean",
+											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "ssl_automatic_mode",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										},
 										"next_scheduled_scan": {
 											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"value": {
 											"description": "Current setting of the automatic SSL/TLS.",
+											"type": "string",
+											"example": "auto",
 											"enum": [
 												"auto",
 												"custom"
 											],
-											"example": "auto",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -481,13 +485,12 @@
 										"modified_on",
 										"value",
 										"editable"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -495,14 +498,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Automatic SSL/TLS Enrollment status response."
+				}
 			},
 			"4XX": {
+				"description": "Patch Automatic SSL/TLS Enrollment status failure.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -526,48 +528,23 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -580,47 +557,74 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"editable": {
 											"description": "Whether this setting can be updated or not.",
-											"readOnly": true,
-											"type": "boolean"
+											"type": "boolean",
+											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "ssl_automatic_mode",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										},
 										"next_scheduled_scan": {
 											"description": "Next time this zone will be scanned by the Automatic SSL/TLS.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
+											"example": "2014-01-01T05:20:00.12345Z",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"value": {
 											"description": "Current setting of the automatic SSL/TLS.",
+											"type": "string",
+											"example": "auto",
 											"enum": [
 												"auto",
 												"custom"
 											],
-											"example": "auto",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -628,13 +632,12 @@
 										"modified_on",
 										"value",
 										"editable"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -642,12 +645,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Automatic SSL/TLS Enrollment status failure."
+				}
 			}
 		},
 		"security": [
@@ -659,7 +660,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Patch Automatic SSL/TLS Enrollment status for given zone",
 		"tags": [
 			"Automatic SSL/TLS"
 		],

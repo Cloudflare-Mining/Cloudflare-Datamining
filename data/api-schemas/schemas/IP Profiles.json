@@ -1,19 +1,20 @@
 {
 	"DELETE /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
-		"description": "Delete a WARP Device IP profile.",
 		"operationId": "delete-ip-profile",
+		"summary": "Delete IP profile",
+		"description": "Delete a WARP Device IP profile.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -22,13 +23,17 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Device IP profile response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -40,14 +45,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -59,21 +64,19 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"description": "ID of the deleted Device IP profile.",
-											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
@@ -85,12 +88,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Device IP profile response."
+				}
 			}
 		},
 		"security": [
@@ -98,7 +99,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete IP profile",
 		"tags": [
 			"IP Profiles"
 		],
@@ -111,48 +111,53 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles": {
-		"description": "Lists WARP Device IP profiles.",
 		"operationId": "list-ip-profiles",
+		"summary": "List IP profiles",
+		"description": "Lists WARP Device IP profiles.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "The page number to return.",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "The page number to return.",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "The number of IP profiles to return per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "The number of IP profiles to return per page.",
 				"schema": {
+					"type": "integer",
 					"default": 50,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Device IP profiles response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -164,14 +169,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -183,67 +188,67 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"created_at": {
 												"description": "The RFC3339Nano timestamp when the Device IP profile was created.",
-												"example": "2025-02-14T13:17:00.123456789Z",
-												"type": "string"
+												"type": "string",
+												"example": "2025-02-14T13:17:00.123456789Z"
 											},
 											"description": {
 												"description": "An optional description of the Device IP profile.",
+												"type": "string",
 												"example": "example comment",
 												"nullable": true,
-												"type": "string",
 												"x-auditable": true
 											},
 											"enabled": {
 												"description": "Whether the Device IP profile is enabled.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true
 											},
 											"id": {
 												"description": "The ID of the Device IP profile.",
-												"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 												"type": "string",
+												"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 												"x-auditable": true
 											},
 											"match": {
 												"description": "The wirefilter expression to match registrations. Available values: \"identity.name\", \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.saml_attributes\".",
+												"type": "string",
 												"example": "identity.email == \"test@cloudflare.com\"",
 												"maxLength": 10000,
-												"type": "string",
 												"x-auditable": true
 											},
 											"name": {
 												"description": "A user-friendly name for the Device IP profile.",
-												"example": "IPv4 Cloudflare Source IPs",
 												"type": "string",
+												"example": "IPv4 Cloudflare Source IPs",
 												"x-auditable": true
 											},
 											"precedence": {
 												"description": "The precedence of the Device IP profile. Lower values indicate higher precedence. Device IP profile will be evaluated in ascending order of this field.",
-												"example": 100,
 												"type": "integer",
+												"example": 100,
 												"x-auditable": true
 											},
 											"subnet_id": {
 												"description": "The ID of the Subnet.",
-												"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 												"type": "string",
+												"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 												"x-auditable": true
 											},
 											"updated_at": {
 												"description": "The RFC3339Nano timestamp when the Device IP profile was last updated.",
-												"example": "2025-02-14T13:17:00.123456789Z",
-												"type": "string"
+												"type": "string",
+												"example": "2025-02-14T13:17:00.123456789Z"
 											}
 										},
 										"required": [
@@ -256,19 +261,11 @@
 											"created_at",
 											"updated_at",
 											"enabled"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result_info": {
-									"example": {
-										"count": 1,
-										"page": 1,
-										"per_page": 10,
-										"total_count": 10,
-										"total_pages": 1
-									},
+									"type": "object",
 									"properties": {
 										"count": {
 											"description": "Number of records in the response.",
@@ -291,13 +288,19 @@
 											"type": "integer"
 										}
 									},
+									"example": {
+										"count": 1,
+										"page": 1,
+										"per_page": 10,
+										"total_count": 10,
+										"total_pages": 1
+									},
 									"required": [
 										"page",
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
@@ -309,12 +312,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Device IP profiles response."
+				}
 			}
 		},
 		"security": [
@@ -322,7 +323,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List IP profiles",
 		"tags": [
 			"IP Profiles"
 		],
@@ -336,20 +336,21 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
-		"description": "Fetches a single WARP Device IP profile.",
 		"operationId": "get-ip-profile",
+		"summary": "Get IP profile",
+		"description": "Fetches a single WARP Device IP profile.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -358,13 +359,17 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get Device IP profile response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -376,14 +381,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -395,66 +400,65 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The RFC3339Nano timestamp when the Device IP profile was created.",
-											"example": "2025-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2025-02-14T13:17:00.123456789Z"
 										},
 										"description": {
 											"description": "An optional description of the Device IP profile.",
+											"type": "string",
 											"example": "example comment",
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"enabled": {
 											"description": "Whether the Device IP profile is enabled.",
-											"example": true,
 											"type": "boolean",
+											"example": true,
 											"x-auditable": true
 										},
 										"id": {
 											"description": "The ID of the Device IP profile.",
-											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										},
 										"match": {
 											"description": "The wirefilter expression to match registrations. Available values: \"identity.name\", \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.saml_attributes\".",
+											"type": "string",
 											"example": "identity.email == \"test@cloudflare.com\"",
 											"maxLength": 10000,
-											"type": "string",
 											"x-auditable": true
 										},
 										"name": {
 											"description": "A user-friendly name for the Device IP profile.",
-											"example": "IPv4 Cloudflare Source IPs",
 											"type": "string",
+											"example": "IPv4 Cloudflare Source IPs",
 											"x-auditable": true
 										},
 										"precedence": {
 											"description": "The precedence of the Device IP profile. Lower values indicate higher precedence. Device IP profile will be evaluated in ascending order of this field.",
-											"example": 100,
 											"type": "integer",
+											"example": 100,
 											"x-auditable": true
 										},
 										"subnet_id": {
 											"description": "The ID of the Subnet.",
-											"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the Device IP profile was last updated.",
-											"example": "2025-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2025-02-14T13:17:00.123456789Z"
 										}
 									},
 									"required": [
@@ -467,8 +471,7 @@
 										"created_at",
 										"updated_at",
 										"enabled"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
@@ -480,12 +483,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Device IP profile response."
+				}
 			}
 		},
 		"security": [
@@ -493,7 +494,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get IP profile",
 		"tags": [
 			"IP Profiles"
 		],
@@ -507,20 +507,21 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
-		"description": "Updates a WARP Device IP profile. Currently, only IPv4 Device subnets can be associated.",
 		"operationId": "update-ip-profile",
+		"summary": "Update IP profile",
+		"description": "Updates a WARP Device IP profile. Currently, only IPv4 Device subnets can be associated.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "profile_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -528,63 +529,67 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "An optional description of the Device IP profile.",
-								"example": "example comment",
 								"type": "string",
+								"example": "example comment",
 								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Whether the Device IP profile is enabled.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							},
 							"match": {
 								"description": "The wirefilter expression to match registrations. Available values: \"identity.name\", \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.saml_attributes\".",
+								"type": "string",
 								"example": "identity.email == \"test@cloudflare.com\"",
 								"maxLength": 10000,
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "A user-friendly name for the Device IP profile.",
-								"example": "IPv4 Cloudflare Source IPs",
 								"type": "string",
+								"example": "IPv4 Cloudflare Source IPs",
 								"x-auditable": true
 							},
 							"precedence": {
 								"description": "The precedence of the Device IP profile. Lower values indicate higher precedence. Device IP profile will be evaluated in ascending order of this field.",
-								"example": 100,
 								"type": "integer",
+								"example": 100,
 								"x-auditable": true
 							},
 							"subnet_id": {
 								"description": "The ID of the Subnet.",
-								"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"type": "string",
+								"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Device IP profile response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -596,14 +601,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -615,66 +620,65 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The RFC3339Nano timestamp when the Device IP profile was created.",
-											"example": "2025-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2025-02-14T13:17:00.123456789Z"
 										},
 										"description": {
 											"description": "An optional description of the Device IP profile.",
+											"type": "string",
 											"example": "example comment",
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"enabled": {
 											"description": "Whether the Device IP profile is enabled.",
-											"example": true,
 											"type": "boolean",
+											"example": true,
 											"x-auditable": true
 										},
 										"id": {
 											"description": "The ID of the Device IP profile.",
-											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										},
 										"match": {
 											"description": "The wirefilter expression to match registrations. Available values: \"identity.name\", \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.saml_attributes\".",
+											"type": "string",
 											"example": "identity.email == \"test@cloudflare.com\"",
 											"maxLength": 10000,
-											"type": "string",
 											"x-auditable": true
 										},
 										"name": {
 											"description": "A user-friendly name for the Device IP profile.",
-											"example": "IPv4 Cloudflare Source IPs",
 											"type": "string",
+											"example": "IPv4 Cloudflare Source IPs",
 											"x-auditable": true
 										},
 										"precedence": {
 											"description": "The precedence of the Device IP profile. Lower values indicate higher precedence. Device IP profile will be evaluated in ascending order of this field.",
-											"example": 100,
 											"type": "integer",
+											"example": 100,
 											"x-auditable": true
 										},
 										"subnet_id": {
 											"description": "The ID of the Subnet.",
-											"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the Device IP profile was last updated.",
-											"example": "2025-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2025-02-14T13:17:00.123456789Z"
 										}
 									},
 									"required": [
@@ -687,8 +691,7 @@
 										"created_at",
 										"updated_at",
 										"enabled"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
@@ -700,12 +703,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Device IP profile response."
+				}
 			}
 		},
 		"security": [
@@ -713,7 +714,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update IP profile",
 		"tags": [
 			"IP Profiles"
 		],
@@ -726,12 +726,13 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/ip-profiles": {
-		"description": "Creates a WARP Device IP profile. Currently, only IPv4 Device subnets can be associated.",
 		"operationId": "create-ip-profile",
+		"summary": "Create IP profile",
+		"description": "Creates a WARP Device IP profile. Currently, only IPv4 Device subnets can be associated.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -739,47 +740,49 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "An optional description of the Device IP profile.",
+								"type": "string",
 								"example": "example comment",
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"enabled": {
-								"default": true,
 								"description": "Whether the Device IP profile will be applied to matching devices.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": true,
 								"x-auditable": true
 							},
 							"match": {
 								"description": "The wirefilter expression to match registrations. Available values: \"identity.name\", \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.saml_attributes\".",
+								"type": "string",
 								"example": "identity.email == \"test@cloudflare.com\"",
 								"maxLength": 10000,
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "A user-friendly name for the Device IP profile.",
-								"example": "IPv4 Cloudflare Source IPs",
 								"type": "string",
+								"example": "IPv4 Cloudflare Source IPs",
 								"x-auditable": true
 							},
 							"precedence": {
 								"description": "The precedence of the Device IP profile. Lower values indicate higher precedence. Device IP profile will be evaluated in ascending order of this field.",
-								"example": 100,
 								"type": "integer",
+								"example": 100,
 								"x-auditable": true
 							},
 							"subnet_id": {
 								"description": "The ID of the Subnet.",
-								"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"type": "string",
+								"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 								"x-auditable": true
 							}
 						},
@@ -788,22 +791,24 @@
 							"subnet_id",
 							"precedence",
 							"match"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Device IP profile response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -815,14 +820,14 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -834,66 +839,65 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
 											"description": "The RFC3339Nano timestamp when the Device IP profile was created.",
-											"example": "2025-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2025-02-14T13:17:00.123456789Z"
 										},
 										"description": {
 											"description": "An optional description of the Device IP profile.",
+											"type": "string",
 											"example": "example comment",
 											"nullable": true,
-											"type": "string",
 											"x-auditable": true
 										},
 										"enabled": {
 											"description": "Whether the Device IP profile is enabled.",
-											"example": true,
 											"type": "boolean",
+											"example": true,
 											"x-auditable": true
 										},
 										"id": {
 											"description": "The ID of the Device IP profile.",
-											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										},
 										"match": {
 											"description": "The wirefilter expression to match registrations. Available values: \"identity.name\", \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.saml_attributes\".",
+											"type": "string",
 											"example": "identity.email == \"test@cloudflare.com\"",
 											"maxLength": 10000,
-											"type": "string",
 											"x-auditable": true
 										},
 										"name": {
 											"description": "A user-friendly name for the Device IP profile.",
-											"example": "IPv4 Cloudflare Source IPs",
 											"type": "string",
+											"example": "IPv4 Cloudflare Source IPs",
 											"x-auditable": true
 										},
 										"precedence": {
 											"description": "The precedence of the Device IP profile. Lower values indicate higher precedence. Device IP profile will be evaluated in ascending order of this field.",
-											"example": 100,
 											"type": "integer",
+											"example": 100,
 											"x-auditable": true
 										},
 										"subnet_id": {
 											"description": "The ID of the Subnet.",
-											"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "b70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										},
 										"updated_at": {
 											"description": "The RFC3339Nano timestamp when the Device IP profile was last updated.",
-											"example": "2025-02-14T13:17:00.123456789Z",
-											"type": "string"
+											"type": "string",
+											"example": "2025-02-14T13:17:00.123456789Z"
 										}
 									},
 									"required": [
@@ -906,8 +910,7 @@
 										"created_at",
 										"updated_at",
 										"enabled"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
@@ -919,12 +922,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Device IP profile response."
+				}
 			}
 		},
 		"security": [
@@ -932,7 +933,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create IP profile",
 		"tags": [
 			"IP Profiles"
 		],

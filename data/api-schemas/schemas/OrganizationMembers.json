@@ -1,63 +1,68 @@
 {
 	"DELETE /organizations/{organization_id}/members/{member_id}": {
-		"description": "Delete a membership to a particular Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_delete",
+		"summary": "Delete organization member",
+		"description": "Delete a membership to a particular Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "organization_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 					"pattern": "^[a-f0-9]{32}$",
-					"title": "Organization ID",
-					"type": "string"
+					"title": "Organization ID"
 				}
 			},
 			{
-				"in": "path",
 				"name": "member_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Organization Member ID",
+					"type": "string",
 					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-					"pattern": "^[a-f0-9]{32}$",
-					"type": "string"
+					"pattern": "^[a-f0-9]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"member_id": {
 								"description": "Organization Member ID",
+								"type": "string",
 								"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-								"pattern": "^[a-f0-9]{32}$",
-								"type": "string"
+								"pattern": "^[a-f0-9]{32}$"
 							}
 						},
 						"required": [
 							"member_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"204": {
 				"description": "There is no content to send for this request, but the headers may be useful."
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -69,13 +74,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -87,31 +92,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -120,7 +121,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete organization member",
 		"tags": [
 			"OrganizationMembers"
 		],
@@ -130,25 +130,27 @@
 		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/members": {
-		"description": "List memberships for an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_list",
+		"summary": "List organization members",
+		"description": "List memberships for an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "organization_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 					"pattern": "^[a-f0-9]{32}$",
-					"title": "Organization ID",
-					"type": "string"
+					"title": "Organization ID"
 				}
 			},
 			{
-				"description": "Filter the list of memberships by membership status.",
-				"in": "query",
 				"name": "status",
+				"in": "query",
+				"description": "Filter the list of memberships by membership status.",
 				"schema": {
+					"type": "array",
 					"items": {
 						"enum": [
 							"active",
@@ -157,45 +159,44 @@
 							"canceled"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filter the list of memberships for a specific email.",
-				"explode": false,
-				"in": "query",
 				"name": "user.email",
+				"in": "query",
+				"description": "Filter the list of memberships for a specific email.",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"explode": false
 			},
 			{
-				"description": "Filter the list of memberships for a specific email that contains a substring.",
-				"explode": false,
-				"in": "query",
 				"name": "user.email.contains",
+				"in": "query",
+				"description": "Filter the list of memberships for a specific email that contains a substring.",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"explode": false
 			},
 			{
-				"description": "Filter the list of memberships for a specific email that starts with a substring.",
-				"explode": false,
-				"in": "query",
 				"name": "user.email.startsWith",
+				"in": "query",
+				"description": "Filter the list of memberships for a specific email that starts with a substring.",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"explode": false
 			},
 			{
-				"description": "Filter the list of memberships for a specific email that ends with a substring.",
-				"explode": false,
-				"in": "query",
 				"name": "user.email.endsWith",
+				"in": "query",
+				"description": "Filter the list of memberships for a specific email that ends with a substring.",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"explode": false
 			},
 			{
 				"description": "An opaque token returned from the last list response that when\nprovided will retrieve the next page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
@@ -212,27 +213,31 @@
 				"in": "query",
 				"name": "page_size",
 				"schema": {
+					"type": "integer",
 					"maximum": 1000,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -244,44 +249,45 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"create_time": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"id": {
 												"description": "Organization Member ID",
+												"type": "string",
 												"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-												"pattern": "^[a-f0-9]{32}$",
-												"type": "string"
+												"pattern": "^[a-f0-9]{32}$"
 											},
 											"meta": {
+												"type": "object",
 												"additionalProperties": {
 													"type": "object"
-												},
-												"type": "object"
+												}
 											},
 											"status": {
+												"type": "string",
 												"enum": [
 													"active",
 													"pending",
 													"rejected",
 													"canceled"
-												],
-												"type": "string"
+												]
 											},
 											"update_time": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"user": {
+												"type": "object",
 												"properties": {
 													"email": {
 														"type": "string"
@@ -301,8 +307,7 @@
 													"email",
 													"name",
 													"two_factor_authentication_enabled"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"required": [
@@ -312,12 +317,11 @@
 											"meta",
 											"create_time",
 											"update_time"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"next_page_token": {
 											"description": "Use this opaque token in the next request to retrieve the\nnext page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
@@ -327,14 +331,13 @@
 											"description": "Counts the total amount of items in a list with the applied filters. The API omits next_page_token to indicate no more items in a particular list.",
 											"type": "integer"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -343,20 +346,22 @@
 								"messages",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -368,13 +373,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -386,31 +391,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -419,7 +420,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List organization members",
 		"tags": [
 			"OrganizationMembers"
 		],
@@ -429,47 +429,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/members/{member_id}": {
-		"description": "Retrieve a single membership from an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_retrieve",
+		"summary": "Get organization member",
+		"description": "Retrieve a single membership from an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "organization_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 					"pattern": "^[a-f0-9]{32}$",
-					"title": "Organization ID",
-					"type": "string"
+					"title": "Organization ID"
 				}
 			},
 			{
-				"in": "path",
 				"name": "member_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Organization Member ID",
+					"type": "string",
 					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-					"pattern": "^[a-f0-9]{32}$",
-					"type": "string"
+					"pattern": "^[a-f0-9]{32}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -481,43 +486,43 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"create_time": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"id": {
 											"description": "Organization Member ID",
+											"type": "string",
 											"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-											"pattern": "^[a-f0-9]{32}$",
-											"type": "string"
+											"pattern": "^[a-f0-9]{32}$"
 										},
 										"meta": {
+											"type": "object",
 											"additionalProperties": {
 												"type": "object"
-											},
-											"type": "object"
+											}
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"active",
 												"pending",
 												"rejected",
 												"canceled"
-											],
-											"type": "string"
+											]
 										},
 										"update_time": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"user": {
+											"type": "object",
 											"properties": {
 												"email": {
 													"type": "string"
@@ -537,8 +542,7 @@
 												"email",
 												"name",
 												"two_factor_authentication_enabled"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -548,14 +552,13 @@
 										"meta",
 										"create_time",
 										"update_time"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -563,20 +566,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -588,13 +593,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -606,31 +611,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -639,7 +640,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get organization member",
 		"tags": [
 			"OrganizationMembers"
 		],
@@ -649,36 +649,41 @@
 		"x-forge-hidden": true
 	},
 	"POST /organizations/{organization_id}/members": {
-		"description": "Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_create",
+		"summary": "Create organization member",
+		"description": "Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "organization_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 					"pattern": "^[a-f0-9]{32}$",
-					"title": "Organization ID",
-					"type": "string"
+					"title": "Organization ID"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"member": {
+								"type": "object",
 								"properties": {
 									"status": {
+										"type": "string",
 										"enum": [
 											"active",
 											"canceled"
-										],
-										"type": "string"
+										]
 									},
 									"user": {
+										"type": "object",
 										"properties": {
 											"email": {
 												"type": "string"
@@ -686,40 +691,40 @@
 										},
 										"required": [
 											"email"
-										],
-										"type": "object"
+										]
 									}
 								},
 								"required": [
 									"user"
-								],
-								"type": "object"
+								]
 							}
 						},
 						"required": [
 							"member"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -731,43 +736,43 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"create_time": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"id": {
 											"description": "Organization Member ID",
+											"type": "string",
 											"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-											"pattern": "^[a-f0-9]{32}$",
-											"type": "string"
+											"pattern": "^[a-f0-9]{32}$"
 										},
 										"meta": {
+											"type": "object",
 											"additionalProperties": {
 												"type": "object"
-											},
-											"type": "object"
+											}
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"active",
 												"pending",
 												"rejected",
 												"canceled"
-											],
-											"type": "string"
+											]
 										},
 										"update_time": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"user": {
+											"type": "object",
 											"properties": {
 												"email": {
 													"type": "string"
@@ -787,8 +792,7 @@
 												"email",
 												"name",
 												"two_factor_authentication_enabled"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -798,14 +802,13 @@
 										"meta",
 										"create_time",
 										"update_time"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -813,20 +816,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -838,13 +843,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -856,31 +861,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -889,7 +890,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create organization member",
 		"tags": [
 			"OrganizationMembers"
 		],
@@ -899,37 +899,43 @@
 		"x-forge-hidden": true
 	},
 	"POST /organizations/{organization_id}/members:batchCreate": {
-		"description": "Batch create multiple memberships that grant access to a specific Organization.",
 		"operationId": "Members_batchCreate",
+		"summary": "Batch create organization members",
+		"description": "Batch create multiple memberships that grant access to a specific Organization.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "organization_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 					"pattern": "^[a-f0-9]{32}$",
-					"title": "Organization ID",
-					"type": "string"
+					"title": "Organization ID"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"members": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"status": {
+											"type": "string",
 											"enum": [
 												"active",
 												"canceled"
-											],
-											"type": "string"
+											]
 										},
 										"user": {
+											"type": "object",
 											"properties": {
 												"email": {
 													"type": "string"
@@ -937,43 +943,42 @@
 											},
 											"required": [
 												"email"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"user"
-									],
-									"type": "object"
+									]
 								},
-								"maxItems": 10,
-								"type": "array"
+								"maxItems": 10
 							}
 						},
 						"required": [
 							"members"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -985,44 +990,45 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"create_time": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"id": {
 												"description": "Organization Member ID",
+												"type": "string",
 												"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
-												"pattern": "^[a-f0-9]{32}$",
-												"type": "string"
+												"pattern": "^[a-f0-9]{32}$"
 											},
 											"meta": {
+												"type": "object",
 												"additionalProperties": {
 													"type": "object"
-												},
-												"type": "object"
+												}
 											},
 											"status": {
+												"type": "string",
 												"enum": [
 													"active",
 													"pending",
 													"rejected",
 													"canceled"
-												],
-												"type": "string"
+												]
 											},
 											"update_time": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"user": {
+												"type": "object",
 												"properties": {
 													"email": {
 														"type": "string"
@@ -1042,8 +1048,7 @@
 													"email",
 													"name",
 													"two_factor_authentication_enabled"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"required": [
@@ -1053,16 +1058,14 @@
 											"meta",
 											"create_time",
 											"update_time"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1070,20 +1073,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1095,13 +1100,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1113,31 +1118,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -1146,7 +1147,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Batch create organization members",
 		"tags": [
 			"OrganizationMembers"
 		],

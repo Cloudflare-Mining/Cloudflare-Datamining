@@ -1,50 +1,55 @@
 {
 	"GET /accounts/{account_id}/access/policy-tests/{policy_test_id}": {
-		"description": "Fetches the current status of a given Access policy test.",
 		"operationId": "access-policy-tests-get-an-update",
+		"summary": "Get the current status of a given Access policy test",
+		"description": "Fetches the current status of a given Access policy test.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "policy_test_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The UUID of the policy test.",
+					"type": "string",
 					"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 					"maxLength": 64,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get an Access policy test update response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -53,12 +58,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -68,15 +73,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -85,12 +90,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -100,165 +105,126 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "The UUID of the policy test.",
+													"type": "string",
 													"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 													"maxLength": 64,
-													"type": "string",
 													"x-auditable": true
 												},
 												"percent_approved": {
 													"description": "The percentage of (processed) users approved based on policy evaluation results.",
-													"example": 25,
 													"type": "integer",
+													"example": 25,
 													"x-auditable": true
 												},
 												"percent_blocked": {
 													"description": "The percentage of (processed) users blocked based on policy evaluation results.",
-													"example": 25,
 													"type": "integer",
+													"example": 25,
 													"x-auditable": true
 												},
 												"percent_errored": {
 													"description": "The percentage of (processed) users errored based on policy evaluation results.",
-													"example": 25,
 													"type": "integer",
+													"example": 25,
 													"x-auditable": true
 												},
 												"percent_users_processed": {
 													"description": "The percentage of users processed so far (of the entire user base).",
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"status": {
 													"description": "The status of the policy test.",
+													"type": "string",
+													"example": "complete",
 													"enum": [
 														"blocked",
 														"processing",
 														"exceeded time",
 														"complete"
 													],
-													"example": "complete",
-													"type": "string",
 													"x-auditable": true
 												},
 												"total_users": {
 													"description": "The total number of users in the user base.",
-													"example": 20,
 													"type": "integer",
+													"example": 20,
 													"x-auditable": true
 												},
 												"users_approved": {
 													"description": "The number of (processed) users approved based on policy evaluation results.",
-													"example": 5,
 													"type": "integer",
+													"example": 5,
 													"x-auditable": true
 												},
 												"users_blocked": {
 													"description": "The number of (processed) users blocked based on policy evaluation results.",
-													"example": 5,
 													"type": "integer",
+													"example": 5,
 													"x-auditable": true
 												},
 												"users_errored": {
 													"description": "The number of (processed) users errored based on policy evaluation results.",
-													"example": 5,
-													"type": "integer"
+													"type": "integer",
+													"example": 5
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get an Access policy test update response."
+				}
 			},
 			"400": {
+				"description": "Get an Access policy test update response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -267,12 +233,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -282,25 +248,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -308,12 +311,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get an Access policy test update response failure."
+				}
 			}
 		},
 		"security": [
@@ -323,7 +324,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get the current status of a given Access policy test",
 		"tags": [
 			"Access policy tester"
 		],
@@ -337,30 +337,31 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/policy-tests/{policy_test_id}/users": {
-		"description": "Fetches a single page of user results from an Access policy test.",
 		"operationId": "access-policy-tests-get-a-user-page",
+		"summary": "Get an Access policy test users page",
+		"description": "Fetches a single page of user results from an Access policy test.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "policy_test_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The UUID of the policy test.",
+					"type": "string",
 					"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 					"maxLength": 64,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
@@ -368,51 +369,55 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Page number of results.",
-					"type": "integer"
+					"type": "integer",
+					"default": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 25,
-					"maximum": 1000,
-					"type": "integer"
+					"maximum": 1000
 				}
 			},
 			{
-				"description": "Filter users by their policy evaluation status.",
-				"in": "query",
 				"name": "status",
+				"in": "query",
+				"description": "Filter users by their policy evaluation status.",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"success",
 						"fail",
 						"error"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get an Access policy tester users page response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -421,12 +426,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -436,15 +441,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -453,12 +458,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -468,133 +473,94 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Page of processed users.",
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"email": {
 														"description": "The email of the user.",
-														"example": "jdoe@example.com",
+														"type": "string",
 														"format": "email",
-														"type": "string"
+														"example": "jdoe@example.com"
 													},
 													"id": {
 														"description": "UUID.",
+														"type": "string",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string",
 														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the user.",
-														"example": "Jane Doe",
-														"type": "string"
+														"type": "string",
+														"example": "Jane Doe"
 													},
 													"status": {
 														"description": "Policy evaluation result for an individual user.",
+														"type": "string",
+														"example": "approved",
 														"enum": [
 															"approved",
 															"blocked",
 															"error"
 														],
-														"example": "approved",
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get an Access policy tester users page response."
+				}
 			},
 			"400": {
+				"description": "Get an Access policy tester users page response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -603,12 +569,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -618,25 +584,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -644,12 +647,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get an Access policy tester users page response failure."
+				}
 			}
 		},
 		"security": [
@@ -659,7 +660,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get an Access policy test users page",
 		"tags": [
 			"Access policy tester"
 		],
@@ -673,2084 +673,70 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/policy-tests": {
-		"description": "Starts an Access policy test.",
 		"operationId": "access-policy-tests",
+		"summary": "Start Access policy test",
+		"description": "Starts an Access policy test.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"policies": {
+								"type": "array",
 								"items": {
 									"oneOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"decision": {
-															"description": "The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.",
-															"enum": [
-																"allow",
-																"deny",
-																"non_identity",
-																"bypass"
-															],
-															"example": "allow",
-															"type": "string"
-														},
-														"exclude": {
-															"default": [],
-															"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
-															"items": {
-																"oneOf": [
-																	{
-																		"description": "Matches an Access group.",
-																		"properties": {
-																			"group": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created Access group.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"group"
-																		],
-																		"title": "Access groups",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches any valid Access Service Token",
-																		"properties": {
-																			"any_valid_service_token": {
-																				"description": "An empty object which matches on all service tokens.",
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"any_valid_service_token"
-																		],
-																		"title": "Any Valid Service Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
-																		"properties": {
-																			"auth_context": {
-																				"properties": {
-																					"ac_id": {
-																						"description": "The ACID of an Authentication context.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The ID of an Authentication context.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Azure identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"identity_provider_id",
-																					"ac_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"auth_context"
-																		],
-																		"title": "Authentication Context",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Enforce different MFA options",
-																		"properties": {
-																			"auth_method": {
-																				"properties": {
-																					"auth_method": {
-																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
-																						"example": "mfa",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"auth_method"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"auth_method"
-																		],
-																		"title": "Authentication method",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Azure group.\nRequires an Azure identity provider.",
-																		"properties": {
-																			"azureAD": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of an Azure group.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Azure identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"azureAD"
-																		],
-																		"title": "Azure group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches any valid client certificate.",
-																		"example": {
-																			"certificate": {}
-																		},
-																		"properties": {
-																			"certificate": {
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"certificate"
-																		],
-																		"title": "Valid certificate",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific common name.",
-																		"properties": {
-																			"common_name": {
-																				"properties": {
-																					"common_name": {
-																						"description": "The common name to match.",
-																						"example": "james@example.com",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"common_name"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"common_name"
-																		],
-																		"title": "Common Name",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific country",
-																		"properties": {
-																			"geo": {
-																				"properties": {
-																					"country_code": {
-																						"description": "The country code that should be matched.",
-																						"example": "US",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"country_code"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"geo"
-																		],
-																		"title": "Country",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Enforces a device posture rule has run successfully",
-																		"properties": {
-																			"device_posture": {
-																				"properties": {
-																					"integration_uid": {
-																						"description": "The ID of a device posture integration.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"integration_uid"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"device_posture"
-																		],
-																		"title": "Device Posture",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Match an entire email domain.",
-																		"properties": {
-																			"email_domain": {
-																				"properties": {
-																					"domain": {
-																						"description": "The email domain to match.",
-																						"example": "example.com",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"domain"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email_domain"
-																		],
-																		"title": "Email domain",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an email address from a list.",
-																		"properties": {
-																			"email_list": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created email list.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email_list"
-																		],
-																		"title": "Email list",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific email.",
-																		"properties": {
-																			"email": {
-																				"properties": {
-																					"email": {
-																						"description": "The email of the user.",
-																						"example": "test@example.com",
-																						"format": "email",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"email"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email"
-																		],
-																		"title": "Email",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches everyone.",
-																		"properties": {
-																			"everyone": {
-																				"description": "An empty object which matches on all users.",
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"everyone"
-																		],
-																		"title": "Everyone",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
-																		"properties": {
-																			"external_evaluation": {
-																				"properties": {
-																					"evaluate_url": {
-																						"description": "The API endpoint containing your business logic.",
-																						"example": "https://eval.example.com",
-																						"type": "string"
-																					},
-																					"keys_url": {
-																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
-																						"example": "https://eval.example.com/keys",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"evaluate_url",
-																					"keys_url"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"external_evaluation"
-																		],
-																		"title": "External Evaluation",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a Github organization.\nRequires a Github identity provider.",
-																		"properties": {
-																			"github-organization": {
-																				"properties": {
-																					"identity_provider_id": {
-																						"description": "The ID of your Github identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"name": {
-																						"description": "The name of the organization.",
-																						"example": "cloudflare",
-																						"type": "string"
-																					},
-																					"team": {
-																						"description": "The name of the team",
-																						"example": "api-team",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"name",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"github-organization"
-																		],
-																		"title": "Github organization",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
-																		"properties": {
-																			"gsuite": {
-																				"properties": {
-																					"email": {
-																						"description": "The email of the Google Workspace group.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Google Workspace identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"email",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"gsuite"
-																		],
-																		"title": "Google Workspace group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific identity provider id.",
-																		"properties": {
-																			"login_method": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of an identity provider.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"login_method"
-																		],
-																		"title": "Login Method",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an IP address from a list.",
-																		"properties": {
-																			"ip_list": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created IP list.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"ip_list"
-																		],
-																		"title": "IP list",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an IP address block.",
-																		"properties": {
-																			"ip": {
-																				"properties": {
-																					"ip": {
-																						"description": "An IPv4 or IPv6 CIDR block.",
-																						"example": "2400:cb00:21:10a::/64",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"ip"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"ip"
-																		],
-																		"title": "IP ranges",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Okta group.\nRequires an Okta identity provider.",
-																		"properties": {
-																			"okta": {
-																				"properties": {
-																					"identity_provider_id": {
-																						"description": "The ID of your Okta identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"name": {
-																						"description": "The name of the Okta group.",
-																						"example": "devs",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"name",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"okta"
-																		],
-																		"title": "Okta group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a SAML group.\nRequires a SAML identity provider.",
-																		"properties": {
-																			"saml": {
-																				"properties": {
-																					"attribute_name": {
-																						"description": "The name of the SAML attribute.",
-																						"example": "group",
-																						"type": "string"
-																					},
-																					"attribute_value": {
-																						"description": "The SAML attribute value to look for.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your SAML identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"attribute_name",
-																					"attribute_value",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"saml"
-																		],
-																		"title": "SAML group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
-																		"properties": {
-																			"oidc": {
-																				"properties": {
-																					"claim_name": {
-																						"description": "The name of the OIDC claim.",
-																						"example": "group",
-																						"type": "string"
-																					},
-																					"claim_value": {
-																						"description": "The OIDC claim value to look for.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your OIDC identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"claim_name",
-																					"claim_value",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"oidc"
-																		],
-																		"title": "OIDC claim",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific Access Service Token",
-																		"properties": {
-																			"service_token": {
-																				"properties": {
-																					"token_id": {
-																						"description": "The ID of a Service Token.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"token_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"service_token"
-																		],
-																		"title": "Service Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
-																		"properties": {
-																			"linked_app_token": {
-																				"properties": {
-																					"app_uid": {
-																						"description": "The ID of an Access OIDC SaaS application",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"app_uid"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"linked_app_token"
-																		],
-																		"title": "Linked App Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a user's risk score.",
-																		"properties": {
-																			"user_risk_score": {
-																				"properties": {
-																					"user_risk_score": {
-																						"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
-																						"example": [
-																							"low",
-																							"medium"
-																						],
-																						"items": {
-																							"enum": [
-																								"low",
-																								"medium",
-																								"high",
-																								"unscored"
-																							],
-																							"type": "string"
-																						},
-																						"minItems": 1,
-																						"type": "array"
-																					}
-																				},
-																				"required": [
-																					"user_risk_score"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"user_risk_score"
-																		],
-																		"title": "User Risk Score",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
-																		"properties": {
-																			"cloudflare_account_member": {
-																				"properties": {
-																					"account_id": {
-																						"description": "Identifier.",
-																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																						"maxLength": 32,
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"cloudflare_account_member"
-																		],
-																		"title": "Cloudflare Account Member",
-																		"type": "object"
-																	}
-																],
-																"type": "object"
-															},
-															"type": "array",
-															"x-stainless-collection-type": "set"
-														},
-														"include": {
-															"default": [],
-															"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
-															"items": {
-																"oneOf": [
-																	{
-																		"description": "Matches an Access group.",
-																		"properties": {
-																			"group": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created Access group.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"group"
-																		],
-																		"title": "Access groups",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches any valid Access Service Token",
-																		"properties": {
-																			"any_valid_service_token": {
-																				"description": "An empty object which matches on all service tokens.",
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"any_valid_service_token"
-																		],
-																		"title": "Any Valid Service Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
-																		"properties": {
-																			"auth_context": {
-																				"properties": {
-																					"ac_id": {
-																						"description": "The ACID of an Authentication context.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The ID of an Authentication context.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Azure identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"identity_provider_id",
-																					"ac_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"auth_context"
-																		],
-																		"title": "Authentication Context",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Enforce different MFA options",
-																		"properties": {
-																			"auth_method": {
-																				"properties": {
-																					"auth_method": {
-																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
-																						"example": "mfa",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"auth_method"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"auth_method"
-																		],
-																		"title": "Authentication method",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Azure group.\nRequires an Azure identity provider.",
-																		"properties": {
-																			"azureAD": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of an Azure group.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Azure identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"azureAD"
-																		],
-																		"title": "Azure group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches any valid client certificate.",
-																		"example": {
-																			"certificate": {}
-																		},
-																		"properties": {
-																			"certificate": {
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"certificate"
-																		],
-																		"title": "Valid certificate",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific common name.",
-																		"properties": {
-																			"common_name": {
-																				"properties": {
-																					"common_name": {
-																						"description": "The common name to match.",
-																						"example": "james@example.com",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"common_name"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"common_name"
-																		],
-																		"title": "Common Name",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific country",
-																		"properties": {
-																			"geo": {
-																				"properties": {
-																					"country_code": {
-																						"description": "The country code that should be matched.",
-																						"example": "US",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"country_code"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"geo"
-																		],
-																		"title": "Country",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Enforces a device posture rule has run successfully",
-																		"properties": {
-																			"device_posture": {
-																				"properties": {
-																					"integration_uid": {
-																						"description": "The ID of a device posture integration.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"integration_uid"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"device_posture"
-																		],
-																		"title": "Device Posture",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Match an entire email domain.",
-																		"properties": {
-																			"email_domain": {
-																				"properties": {
-																					"domain": {
-																						"description": "The email domain to match.",
-																						"example": "example.com",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"domain"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email_domain"
-																		],
-																		"title": "Email domain",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an email address from a list.",
-																		"properties": {
-																			"email_list": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created email list.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email_list"
-																		],
-																		"title": "Email list",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific email.",
-																		"properties": {
-																			"email": {
-																				"properties": {
-																					"email": {
-																						"description": "The email of the user.",
-																						"example": "test@example.com",
-																						"format": "email",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"email"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email"
-																		],
-																		"title": "Email",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches everyone.",
-																		"properties": {
-																			"everyone": {
-																				"description": "An empty object which matches on all users.",
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"everyone"
-																		],
-																		"title": "Everyone",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
-																		"properties": {
-																			"external_evaluation": {
-																				"properties": {
-																					"evaluate_url": {
-																						"description": "The API endpoint containing your business logic.",
-																						"example": "https://eval.example.com",
-																						"type": "string"
-																					},
-																					"keys_url": {
-																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
-																						"example": "https://eval.example.com/keys",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"evaluate_url",
-																					"keys_url"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"external_evaluation"
-																		],
-																		"title": "External Evaluation",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a Github organization.\nRequires a Github identity provider.",
-																		"properties": {
-																			"github-organization": {
-																				"properties": {
-																					"identity_provider_id": {
-																						"description": "The ID of your Github identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"name": {
-																						"description": "The name of the organization.",
-																						"example": "cloudflare",
-																						"type": "string"
-																					},
-																					"team": {
-																						"description": "The name of the team",
-																						"example": "api-team",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"name",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"github-organization"
-																		],
-																		"title": "Github organization",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
-																		"properties": {
-																			"gsuite": {
-																				"properties": {
-																					"email": {
-																						"description": "The email of the Google Workspace group.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Google Workspace identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"email",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"gsuite"
-																		],
-																		"title": "Google Workspace group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific identity provider id.",
-																		"properties": {
-																			"login_method": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of an identity provider.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"login_method"
-																		],
-																		"title": "Login Method",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an IP address from a list.",
-																		"properties": {
-																			"ip_list": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created IP list.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"ip_list"
-																		],
-																		"title": "IP list",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an IP address block.",
-																		"properties": {
-																			"ip": {
-																				"properties": {
-																					"ip": {
-																						"description": "An IPv4 or IPv6 CIDR block.",
-																						"example": "2400:cb00:21:10a::/64",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"ip"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"ip"
-																		],
-																		"title": "IP ranges",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Okta group.\nRequires an Okta identity provider.",
-																		"properties": {
-																			"okta": {
-																				"properties": {
-																					"identity_provider_id": {
-																						"description": "The ID of your Okta identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"name": {
-																						"description": "The name of the Okta group.",
-																						"example": "devs",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"name",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"okta"
-																		],
-																		"title": "Okta group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a SAML group.\nRequires a SAML identity provider.",
-																		"properties": {
-																			"saml": {
-																				"properties": {
-																					"attribute_name": {
-																						"description": "The name of the SAML attribute.",
-																						"example": "group",
-																						"type": "string"
-																					},
-																					"attribute_value": {
-																						"description": "The SAML attribute value to look for.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your SAML identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"attribute_name",
-																					"attribute_value",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"saml"
-																		],
-																		"title": "SAML group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
-																		"properties": {
-																			"oidc": {
-																				"properties": {
-																					"claim_name": {
-																						"description": "The name of the OIDC claim.",
-																						"example": "group",
-																						"type": "string"
-																					},
-																					"claim_value": {
-																						"description": "The OIDC claim value to look for.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your OIDC identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"claim_name",
-																					"claim_value",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"oidc"
-																		],
-																		"title": "OIDC claim",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific Access Service Token",
-																		"properties": {
-																			"service_token": {
-																				"properties": {
-																					"token_id": {
-																						"description": "The ID of a Service Token.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"token_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"service_token"
-																		],
-																		"title": "Service Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
-																		"properties": {
-																			"linked_app_token": {
-																				"properties": {
-																					"app_uid": {
-																						"description": "The ID of an Access OIDC SaaS application",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"app_uid"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"linked_app_token"
-																		],
-																		"title": "Linked App Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a user's risk score.",
-																		"properties": {
-																			"user_risk_score": {
-																				"properties": {
-																					"user_risk_score": {
-																						"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
-																						"example": [
-																							"low",
-																							"medium"
-																						],
-																						"items": {
-																							"enum": [
-																								"low",
-																								"medium",
-																								"high",
-																								"unscored"
-																							],
-																							"type": "string"
-																						},
-																						"minItems": 1,
-																						"type": "array"
-																					}
-																				},
-																				"required": [
-																					"user_risk_score"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"user_risk_score"
-																		],
-																		"title": "User Risk Score",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
-																		"properties": {
-																			"cloudflare_account_member": {
-																				"properties": {
-																					"account_id": {
-																						"description": "Identifier.",
-																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																						"maxLength": 32,
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"cloudflare_account_member"
-																		],
-																		"title": "Cloudflare Account Member",
-																		"type": "object"
-																	}
-																],
-																"type": "object"
-															},
-															"type": "array",
-															"x-stainless-collection-type": "set"
-														},
-														"name": {
-															"description": "The name of the Access policy.",
-															"example": "Allow devs",
-															"type": "string"
-														},
-														"require": {
-															"default": [],
-															"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
-															"items": {
-																"oneOf": [
-																	{
-																		"description": "Matches an Access group.",
-																		"properties": {
-																			"group": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created Access group.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"group"
-																		],
-																		"title": "Access groups",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches any valid Access Service Token",
-																		"properties": {
-																			"any_valid_service_token": {
-																				"description": "An empty object which matches on all service tokens.",
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"any_valid_service_token"
-																		],
-																		"title": "Any Valid Service Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
-																		"properties": {
-																			"auth_context": {
-																				"properties": {
-																					"ac_id": {
-																						"description": "The ACID of an Authentication context.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"id": {
-																						"description": "The ID of an Authentication context.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Azure identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"identity_provider_id",
-																					"ac_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"auth_context"
-																		],
-																		"title": "Authentication Context",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Enforce different MFA options",
-																		"properties": {
-																			"auth_method": {
-																				"properties": {
-																					"auth_method": {
-																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
-																						"example": "mfa",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"auth_method"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"auth_method"
-																		],
-																		"title": "Authentication method",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Azure group.\nRequires an Azure identity provider.",
-																		"properties": {
-																			"azureAD": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of an Azure group.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Azure identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"azureAD"
-																		],
-																		"title": "Azure group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches any valid client certificate.",
-																		"example": {
-																			"certificate": {}
-																		},
-																		"properties": {
-																			"certificate": {
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"certificate"
-																		],
-																		"title": "Valid certificate",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific common name.",
-																		"properties": {
-																			"common_name": {
-																				"properties": {
-																					"common_name": {
-																						"description": "The common name to match.",
-																						"example": "james@example.com",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"common_name"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"common_name"
-																		],
-																		"title": "Common Name",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific country",
-																		"properties": {
-																			"geo": {
-																				"properties": {
-																					"country_code": {
-																						"description": "The country code that should be matched.",
-																						"example": "US",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"country_code"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"geo"
-																		],
-																		"title": "Country",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Enforces a device posture rule has run successfully",
-																		"properties": {
-																			"device_posture": {
-																				"properties": {
-																					"integration_uid": {
-																						"description": "The ID of a device posture integration.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"integration_uid"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"device_posture"
-																		],
-																		"title": "Device Posture",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Match an entire email domain.",
-																		"properties": {
-																			"email_domain": {
-																				"properties": {
-																					"domain": {
-																						"description": "The email domain to match.",
-																						"example": "example.com",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"domain"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email_domain"
-																		],
-																		"title": "Email domain",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an email address from a list.",
-																		"properties": {
-																			"email_list": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created email list.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email_list"
-																		],
-																		"title": "Email list",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific email.",
-																		"properties": {
-																			"email": {
-																				"properties": {
-																					"email": {
-																						"description": "The email of the user.",
-																						"example": "test@example.com",
-																						"format": "email",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"email"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"email"
-																		],
-																		"title": "Email",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches everyone.",
-																		"properties": {
-																			"everyone": {
-																				"description": "An empty object which matches on all users.",
-																				"example": {},
-																				"type": "object",
-																				"x-stainless-empty-object": true
-																			}
-																		},
-																		"required": [
-																			"everyone"
-																		],
-																		"title": "Everyone",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
-																		"properties": {
-																			"external_evaluation": {
-																				"properties": {
-																					"evaluate_url": {
-																						"description": "The API endpoint containing your business logic.",
-																						"example": "https://eval.example.com",
-																						"type": "string"
-																					},
-																					"keys_url": {
-																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
-																						"example": "https://eval.example.com/keys",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"evaluate_url",
-																					"keys_url"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"external_evaluation"
-																		],
-																		"title": "External Evaluation",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a Github organization.\nRequires a Github identity provider.",
-																		"properties": {
-																			"github-organization": {
-																				"properties": {
-																					"identity_provider_id": {
-																						"description": "The ID of your Github identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"name": {
-																						"description": "The name of the organization.",
-																						"example": "cloudflare",
-																						"type": "string"
-																					},
-																					"team": {
-																						"description": "The name of the team",
-																						"example": "api-team",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"name",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"github-organization"
-																		],
-																		"title": "Github organization",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
-																		"properties": {
-																			"gsuite": {
-																				"properties": {
-																					"email": {
-																						"description": "The email of the Google Workspace group.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your Google Workspace identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"email",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"gsuite"
-																		],
-																		"title": "Google Workspace group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific identity provider id.",
-																		"properties": {
-																			"login_method": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of an identity provider.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"login_method"
-																		],
-																		"title": "Login Method",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an IP address from a list.",
-																		"properties": {
-																			"ip_list": {
-																				"properties": {
-																					"id": {
-																						"description": "The ID of a previously created IP list.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"ip_list"
-																		],
-																		"title": "IP list",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an IP address block.",
-																		"properties": {
-																			"ip": {
-																				"properties": {
-																					"ip": {
-																						"description": "An IPv4 or IPv6 CIDR block.",
-																						"example": "2400:cb00:21:10a::/64",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"ip"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"ip"
-																		],
-																		"title": "IP ranges",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an Okta group.\nRequires an Okta identity provider.",
-																		"properties": {
-																			"okta": {
-																				"properties": {
-																					"identity_provider_id": {
-																						"description": "The ID of your Okta identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					},
-																					"name": {
-																						"description": "The name of the Okta group.",
-																						"example": "devs",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"name",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"okta"
-																		],
-																		"title": "Okta group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a SAML group.\nRequires a SAML identity provider.",
-																		"properties": {
-																			"saml": {
-																				"properties": {
-																					"attribute_name": {
-																						"description": "The name of the SAML attribute.",
-																						"example": "group",
-																						"type": "string"
-																					},
-																					"attribute_value": {
-																						"description": "The SAML attribute value to look for.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your SAML identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"attribute_name",
-																					"attribute_value",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"saml"
-																		],
-																		"title": "SAML group",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
-																		"properties": {
-																			"oidc": {
-																				"properties": {
-																					"claim_name": {
-																						"description": "The name of the OIDC claim.",
-																						"example": "group",
-																						"type": "string"
-																					},
-																					"claim_value": {
-																						"description": "The OIDC claim value to look for.",
-																						"example": "devs@cloudflare.com",
-																						"type": "string"
-																					},
-																					"identity_provider_id": {
-																						"description": "The ID of your OIDC identity provider.",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"claim_name",
-																					"claim_value",
-																					"identity_provider_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"oidc"
-																		],
-																		"title": "OIDC claim",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a specific Access Service Token",
-																		"properties": {
-																			"service_token": {
-																				"properties": {
-																					"token_id": {
-																						"description": "The ID of a Service Token.",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"token_id"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"service_token"
-																		],
-																		"title": "Service Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
-																		"properties": {
-																			"linked_app_token": {
-																				"properties": {
-																					"app_uid": {
-																						"description": "The ID of an Access OIDC SaaS application",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"app_uid"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"linked_app_token"
-																		],
-																		"title": "Linked App Token",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches a user's risk score.",
-																		"properties": {
-																			"user_risk_score": {
-																				"properties": {
-																					"user_risk_score": {
-																						"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
-																						"example": [
-																							"low",
-																							"medium"
-																						],
-																						"items": {
-																							"enum": [
-																								"low",
-																								"medium",
-																								"high",
-																								"unscored"
-																							],
-																							"type": "string"
-																						},
-																						"minItems": 1,
-																						"type": "array"
-																					}
-																				},
-																				"required": [
-																					"user_risk_score"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"user_risk_score"
-																		],
-																		"title": "User Risk Score",
-																		"type": "object"
-																	},
-																	{
-																		"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
-																		"properties": {
-																			"cloudflare_account_member": {
-																				"properties": {
-																					"account_id": {
-																						"description": "Identifier.",
-																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																						"maxLength": 32,
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"cloudflare_account_member"
-																		],
-																		"title": "Cloudflare Account Member",
-																		"type": "object"
-																	}
-																],
-																"type": "object"
-															},
-															"type": "array",
-															"x-stainless-collection-type": "set"
-														}
-													},
-													"required": [
-														"name",
-														"decision",
-														"include"
-													],
-													"type": "object"
-												}
-											],
+											"type": "object",
 											"properties": {
 												"approval_groups": {
 													"description": "Administrators who can approve a temporary authentication request.",
+													"type": "array",
+													"items": {
+														"description": "A group of email addresses that can approve a temporary authentication request.",
+														"type": "object",
+														"properties": {
+															"approvals_needed": {
+																"description": "The number of approvals needed to obtain access.",
+																"type": "number",
+																"example": 1,
+																"minimum": 0
+															},
+															"email_addresses": {
+																"description": "A list of emails that can approve the access request.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"example": [
+																	"test@cloudflare.com",
+																	"test2@cloudflare.com"
+																]
+															},
+															"email_list_uuid": {
+																"description": "The UUID of an re-usable email list.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"approvals_needed"
+														]
+													},
 													"example": [
 														{
 															"approvals_needed": 1,
@@ -2764,107 +750,73 @@
 															"email_list_uuid": "597147a1-976b-4ef2-9af0-81d5d007fc34"
 														}
 													],
-													"items": {
-														"description": "A group of email addresses that can approve a temporary authentication request.",
-														"properties": {
-															"approvals_needed": {
-																"description": "The number of approvals needed to obtain access.",
-																"example": 1,
-																"minimum": 0,
-																"type": "number"
-															},
-															"email_addresses": {
-																"description": "A list of emails that can approve the access request.",
-																"example": [
-																	"test@cloudflare.com",
-																	"test2@cloudflare.com"
-																],
-																"items": {
-																	"type": "string"
-																},
-																"type": "array"
-															},
-															"email_list_uuid": {
-																"description": "The UUID of an re-usable email list.",
-																"type": "string"
-															}
-														},
-														"required": [
-															"approvals_needed"
-														],
-														"type": "object"
-													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"approval_required": {
 													"description": "Requires the user to request access from an administrator at the start of each session.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"connection_rules": {
 													"description": "The rules that define how users may connect to targets secured by your application.",
+													"type": "object",
 													"properties": {
 														"rdp": {
 															"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+															"type": "object",
 															"properties": {
 																"allowed_clipboard_local_to_remote_formats": {
 																	"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
-																	"example": [
-																		"text",
-																		"file"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Clipboard format for RDP connections.",
+																		"type": "string",
 																		"enum": [
 																			"text",
 																			"file"
 																		],
-																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"example": [
+																		"text",
+																		"file"
+																	]
 																},
 																"allowed_clipboard_remote_to_local_formats": {
 																	"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
-																	"example": [
-																		"text",
-																		"file"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Clipboard format for RDP connections.",
+																		"type": "string",
 																		"enum": [
 																			"text",
 																			"file"
 																		],
-																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"example": [
+																		"text",
+																		"file"
+																	]
 																}
 															},
-															"title": "RDP Connection Rules",
-															"type": "object"
+															"title": "RDP Connection Rules"
 														}
 													},
-													"title": "Connection Rules",
-													"type": "object"
+													"title": "Connection Rules"
 												},
 												"isolation_required": {
 													"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
-													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"example": false
 												},
 												"mfa_config": {
 													"description": "Configures multi-factor authentication (MFA) settings.",
+													"type": "object",
 													"properties": {
 														"allowed_authenticators": {
 															"description": "Lists the MFA methods that users can authenticate with.",
-															"example": [
-																"totp",
-																"biometrics",
-																"security_key"
-															],
+															"type": "array",
 															"items": {
 																"enum": [
 																	"totp",
@@ -2873,40 +825,2092 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"example": [
+																"totp",
+																"biometrics",
+																"security_key"
+															]
 														},
 														"mfa_disabled": {
 															"description": "Indicates whether to disable MFA for this resource. This option is available at the application and policy level.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"session_duration": {
 															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
-															"example": "24h",
-															"type": "string"
+															"type": "string",
+															"example": "24h"
 														}
 													},
-													"type": "object",
 													"x-auditable": true
 												},
 												"purpose_justification_prompt": {
 													"description": "A custom message that will appear on the purpose justification screen.",
-													"example": "Please enter a justification for entering this protected domain.",
-													"type": "string"
+													"type": "string",
+													"example": "Please enter a justification for entering this protected domain."
 												},
 												"purpose_justification_required": {
 													"description": "Require users to enter a justification when they log in to the application.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"session_duration": {
-													"default": "24h",
 													"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"type": "string",
 													"example": "24h",
-													"type": "string"
+													"default": "24h"
 												}
 											},
-											"type": "object"
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"decision": {
+															"description": "The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.",
+															"type": "string",
+															"example": "allow",
+															"enum": [
+																"allow",
+																"deny",
+																"non_identity",
+																"bypass"
+															]
+														},
+														"exclude": {
+															"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"oneOf": [
+																	{
+																		"description": "Matches an Access group.",
+																		"type": "object",
+																		"properties": {
+																			"group": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created Access group.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"group"
+																		],
+																		"title": "Access groups"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"type": "object",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token"
+																	},
+																	{
+																		"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"auth_context": {
+																				"type": "object",
+																				"properties": {
+																					"ac_id": {
+																						"description": "The ACID of an Authentication context.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"id": {
+																						"description": "The ID of an Authentication context.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Azure identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"identity_provider_id",
+																					"ac_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"auth_context"
+																		],
+																		"title": "Authentication Context"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"type": "object",
+																		"properties": {
+																			"auth_method": {
+																				"type": "object",
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
+																						"type": "string",
+																						"example": "mfa"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				]
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method"
+																	},
+																	{
+																		"description": "Matches an Azure group.\nRequires an Azure identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"azureAD": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of an Azure group.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Azure identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"azureAD"
+																		],
+																		"title": "Azure group"
+																	},
+																	{
+																		"description": "Matches any valid client certificate.",
+																		"type": "object",
+																		"properties": {
+																			"certificate": {
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"example": {
+																			"certificate": {}
+																		},
+																		"required": [
+																			"certificate"
+																		],
+																		"title": "Valid certificate"
+																	},
+																	{
+																		"description": "Matches a specific common name.",
+																		"type": "object",
+																		"properties": {
+																			"common_name": {
+																				"type": "object",
+																				"properties": {
+																					"common_name": {
+																						"description": "The common name to match.",
+																						"type": "string",
+																						"example": "james@example.com"
+																					}
+																				},
+																				"required": [
+																					"common_name"
+																				]
+																			}
+																		},
+																		"required": [
+																			"common_name"
+																		],
+																		"title": "Common Name"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"type": "object",
+																		"properties": {
+																			"geo": {
+																				"type": "object",
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"type": "string",
+																						"example": "US"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				]
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"type": "object",
+																		"properties": {
+																			"device_posture": {
+																				"type": "object",
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				]
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture"
+																	},
+																	{
+																		"description": "Match an entire email domain.",
+																		"type": "object",
+																		"properties": {
+																			"email_domain": {
+																				"type": "object",
+																				"properties": {
+																					"domain": {
+																						"description": "The email domain to match.",
+																						"type": "string",
+																						"example": "example.com"
+																					}
+																				},
+																				"required": [
+																					"domain"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email_domain"
+																		],
+																		"title": "Email domain"
+																	},
+																	{
+																		"description": "Matches an email address from a list.",
+																		"type": "object",
+																		"properties": {
+																			"email_list": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list"
+																	},
+																	{
+																		"description": "Matches a specific email.",
+																		"type": "object",
+																		"properties": {
+																			"email": {
+																				"type": "object",
+																				"properties": {
+																					"email": {
+																						"description": "The email of the user.",
+																						"type": "string",
+																						"format": "email",
+																						"example": "test@example.com"
+																					}
+																				},
+																				"required": [
+																					"email"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email"
+																		],
+																		"title": "Email"
+																	},
+																	{
+																		"description": "Matches everyone.",
+																		"type": "object",
+																		"properties": {
+																			"everyone": {
+																				"description": "An empty object which matches on all users.",
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"required": [
+																			"everyone"
+																		],
+																		"title": "Everyone"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"type": "object",
+																		"properties": {
+																			"external_evaluation": {
+																				"type": "object",
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"type": "string",
+																						"example": "https://eval.example.com"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"type": "string",
+																						"example": "https://eval.example.com/keys"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				]
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation"
+																	},
+																	{
+																		"description": "Matches a Github organization.\nRequires a Github identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"github-organization": {
+																				"type": "object",
+																				"properties": {
+																					"identity_provider_id": {
+																						"description": "The ID of your Github identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"name": {
+																						"description": "The name of the organization.",
+																						"type": "string",
+																						"example": "cloudflare"
+																					},
+																					"team": {
+																						"description": "The name of the team",
+																						"type": "string",
+																						"example": "api-team"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"github-organization"
+																		],
+																		"title": "Github organization"
+																	},
+																	{
+																		"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"gsuite": {
+																				"type": "object",
+																				"properties": {
+																					"email": {
+																						"description": "The email of the Google Workspace group.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Google Workspace identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"email",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"gsuite"
+																		],
+																		"title": "Google Workspace group"
+																	},
+																	{
+																		"description": "Matches a specific identity provider id.",
+																		"type": "object",
+																		"properties": {
+																			"login_method": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of an identity provider.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"login_method"
+																		],
+																		"title": "Login Method"
+																	},
+																	{
+																		"description": "Matches an IP address from a list.",
+																		"type": "object",
+																		"properties": {
+																			"ip_list": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created IP list.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"ip_list"
+																		],
+																		"title": "IP list"
+																	},
+																	{
+																		"description": "Matches an IP address block.",
+																		"type": "object",
+																		"properties": {
+																			"ip": {
+																				"type": "object",
+																				"properties": {
+																					"ip": {
+																						"description": "An IPv4 or IPv6 CIDR block.",
+																						"type": "string",
+																						"example": "2400:cb00:21:10a::/64"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				]
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"title": "IP ranges"
+																	},
+																	{
+																		"description": "Matches an Okta group.\nRequires an Okta identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"okta": {
+																				"type": "object",
+																				"properties": {
+																					"identity_provider_id": {
+																						"description": "The ID of your Okta identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"name": {
+																						"description": "The name of the Okta group.",
+																						"type": "string",
+																						"example": "devs"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"okta"
+																		],
+																		"title": "Okta group"
+																	},
+																	{
+																		"description": "Matches a SAML group.\nRequires a SAML identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"saml": {
+																				"type": "object",
+																				"properties": {
+																					"attribute_name": {
+																						"description": "The name of the SAML attribute.",
+																						"type": "string",
+																						"example": "group"
+																					},
+																					"attribute_value": {
+																						"description": "The SAML attribute value to look for.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your SAML identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"attribute_name",
+																					"attribute_value",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"saml"
+																		],
+																		"title": "SAML group"
+																	},
+																	{
+																		"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"oidc": {
+																				"type": "object",
+																				"properties": {
+																					"claim_name": {
+																						"description": "The name of the OIDC claim.",
+																						"type": "string",
+																						"example": "group"
+																					},
+																					"claim_value": {
+																						"description": "The OIDC claim value to look for.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your OIDC identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"claim_name",
+																					"claim_value",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"oidc"
+																		],
+																		"title": "OIDC claim"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"type": "object",
+																		"properties": {
+																			"service_token": {
+																				"type": "object",
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token"
+																	},
+																	{
+																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																		"type": "object",
+																		"properties": {
+																			"linked_app_token": {
+																				"type": "object",
+																				"properties": {
+																					"app_uid": {
+																						"description": "The ID of an Access OIDC SaaS application",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"app_uid"
+																				]
+																			}
+																		},
+																		"required": [
+																			"linked_app_token"
+																		],
+																		"title": "Linked App Token"
+																	},
+																	{
+																		"description": "Matches a user's risk score.",
+																		"type": "object",
+																		"properties": {
+																			"user_risk_score": {
+																				"type": "object",
+																				"properties": {
+																					"user_risk_score": {
+																						"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																						"type": "array",
+																						"items": {
+																							"enum": [
+																								"low",
+																								"medium",
+																								"high",
+																								"unscored"
+																							],
+																							"type": "string"
+																						},
+																						"example": [
+																							"low",
+																							"medium"
+																						],
+																						"minItems": 1
+																					}
+																				},
+																				"required": [
+																					"user_risk_score"
+																				]
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"title": "User Risk Score"
+																	},
+																	{
+																		"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"cloudflare_account_member": {
+																				"type": "object",
+																				"properties": {
+																					"account_id": {
+																						"description": "Identifier.",
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				}
+																			}
+																		},
+																		"required": [
+																			"cloudflare_account_member"
+																		],
+																		"title": "Cloudflare Account Member"
+																	}
+																]
+															},
+															"default": [],
+															"x-stainless-collection-type": "set"
+														},
+														"include": {
+															"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"oneOf": [
+																	{
+																		"description": "Matches an Access group.",
+																		"type": "object",
+																		"properties": {
+																			"group": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created Access group.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"group"
+																		],
+																		"title": "Access groups"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"type": "object",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token"
+																	},
+																	{
+																		"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"auth_context": {
+																				"type": "object",
+																				"properties": {
+																					"ac_id": {
+																						"description": "The ACID of an Authentication context.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"id": {
+																						"description": "The ID of an Authentication context.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Azure identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"identity_provider_id",
+																					"ac_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"auth_context"
+																		],
+																		"title": "Authentication Context"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"type": "object",
+																		"properties": {
+																			"auth_method": {
+																				"type": "object",
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
+																						"type": "string",
+																						"example": "mfa"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				]
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method"
+																	},
+																	{
+																		"description": "Matches an Azure group.\nRequires an Azure identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"azureAD": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of an Azure group.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Azure identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"azureAD"
+																		],
+																		"title": "Azure group"
+																	},
+																	{
+																		"description": "Matches any valid client certificate.",
+																		"type": "object",
+																		"properties": {
+																			"certificate": {
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"example": {
+																			"certificate": {}
+																		},
+																		"required": [
+																			"certificate"
+																		],
+																		"title": "Valid certificate"
+																	},
+																	{
+																		"description": "Matches a specific common name.",
+																		"type": "object",
+																		"properties": {
+																			"common_name": {
+																				"type": "object",
+																				"properties": {
+																					"common_name": {
+																						"description": "The common name to match.",
+																						"type": "string",
+																						"example": "james@example.com"
+																					}
+																				},
+																				"required": [
+																					"common_name"
+																				]
+																			}
+																		},
+																		"required": [
+																			"common_name"
+																		],
+																		"title": "Common Name"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"type": "object",
+																		"properties": {
+																			"geo": {
+																				"type": "object",
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"type": "string",
+																						"example": "US"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				]
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"type": "object",
+																		"properties": {
+																			"device_posture": {
+																				"type": "object",
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				]
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture"
+																	},
+																	{
+																		"description": "Match an entire email domain.",
+																		"type": "object",
+																		"properties": {
+																			"email_domain": {
+																				"type": "object",
+																				"properties": {
+																					"domain": {
+																						"description": "The email domain to match.",
+																						"type": "string",
+																						"example": "example.com"
+																					}
+																				},
+																				"required": [
+																					"domain"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email_domain"
+																		],
+																		"title": "Email domain"
+																	},
+																	{
+																		"description": "Matches an email address from a list.",
+																		"type": "object",
+																		"properties": {
+																			"email_list": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list"
+																	},
+																	{
+																		"description": "Matches a specific email.",
+																		"type": "object",
+																		"properties": {
+																			"email": {
+																				"type": "object",
+																				"properties": {
+																					"email": {
+																						"description": "The email of the user.",
+																						"type": "string",
+																						"format": "email",
+																						"example": "test@example.com"
+																					}
+																				},
+																				"required": [
+																					"email"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email"
+																		],
+																		"title": "Email"
+																	},
+																	{
+																		"description": "Matches everyone.",
+																		"type": "object",
+																		"properties": {
+																			"everyone": {
+																				"description": "An empty object which matches on all users.",
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"required": [
+																			"everyone"
+																		],
+																		"title": "Everyone"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"type": "object",
+																		"properties": {
+																			"external_evaluation": {
+																				"type": "object",
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"type": "string",
+																						"example": "https://eval.example.com"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"type": "string",
+																						"example": "https://eval.example.com/keys"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				]
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation"
+																	},
+																	{
+																		"description": "Matches a Github organization.\nRequires a Github identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"github-organization": {
+																				"type": "object",
+																				"properties": {
+																					"identity_provider_id": {
+																						"description": "The ID of your Github identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"name": {
+																						"description": "The name of the organization.",
+																						"type": "string",
+																						"example": "cloudflare"
+																					},
+																					"team": {
+																						"description": "The name of the team",
+																						"type": "string",
+																						"example": "api-team"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"github-organization"
+																		],
+																		"title": "Github organization"
+																	},
+																	{
+																		"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"gsuite": {
+																				"type": "object",
+																				"properties": {
+																					"email": {
+																						"description": "The email of the Google Workspace group.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Google Workspace identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"email",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"gsuite"
+																		],
+																		"title": "Google Workspace group"
+																	},
+																	{
+																		"description": "Matches a specific identity provider id.",
+																		"type": "object",
+																		"properties": {
+																			"login_method": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of an identity provider.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"login_method"
+																		],
+																		"title": "Login Method"
+																	},
+																	{
+																		"description": "Matches an IP address from a list.",
+																		"type": "object",
+																		"properties": {
+																			"ip_list": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created IP list.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"ip_list"
+																		],
+																		"title": "IP list"
+																	},
+																	{
+																		"description": "Matches an IP address block.",
+																		"type": "object",
+																		"properties": {
+																			"ip": {
+																				"type": "object",
+																				"properties": {
+																					"ip": {
+																						"description": "An IPv4 or IPv6 CIDR block.",
+																						"type": "string",
+																						"example": "2400:cb00:21:10a::/64"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				]
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"title": "IP ranges"
+																	},
+																	{
+																		"description": "Matches an Okta group.\nRequires an Okta identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"okta": {
+																				"type": "object",
+																				"properties": {
+																					"identity_provider_id": {
+																						"description": "The ID of your Okta identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"name": {
+																						"description": "The name of the Okta group.",
+																						"type": "string",
+																						"example": "devs"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"okta"
+																		],
+																		"title": "Okta group"
+																	},
+																	{
+																		"description": "Matches a SAML group.\nRequires a SAML identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"saml": {
+																				"type": "object",
+																				"properties": {
+																					"attribute_name": {
+																						"description": "The name of the SAML attribute.",
+																						"type": "string",
+																						"example": "group"
+																					},
+																					"attribute_value": {
+																						"description": "The SAML attribute value to look for.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your SAML identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"attribute_name",
+																					"attribute_value",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"saml"
+																		],
+																		"title": "SAML group"
+																	},
+																	{
+																		"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"oidc": {
+																				"type": "object",
+																				"properties": {
+																					"claim_name": {
+																						"description": "The name of the OIDC claim.",
+																						"type": "string",
+																						"example": "group"
+																					},
+																					"claim_value": {
+																						"description": "The OIDC claim value to look for.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your OIDC identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"claim_name",
+																					"claim_value",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"oidc"
+																		],
+																		"title": "OIDC claim"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"type": "object",
+																		"properties": {
+																			"service_token": {
+																				"type": "object",
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token"
+																	},
+																	{
+																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																		"type": "object",
+																		"properties": {
+																			"linked_app_token": {
+																				"type": "object",
+																				"properties": {
+																					"app_uid": {
+																						"description": "The ID of an Access OIDC SaaS application",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"app_uid"
+																				]
+																			}
+																		},
+																		"required": [
+																			"linked_app_token"
+																		],
+																		"title": "Linked App Token"
+																	},
+																	{
+																		"description": "Matches a user's risk score.",
+																		"type": "object",
+																		"properties": {
+																			"user_risk_score": {
+																				"type": "object",
+																				"properties": {
+																					"user_risk_score": {
+																						"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																						"type": "array",
+																						"items": {
+																							"enum": [
+																								"low",
+																								"medium",
+																								"high",
+																								"unscored"
+																							],
+																							"type": "string"
+																						},
+																						"example": [
+																							"low",
+																							"medium"
+																						],
+																						"minItems": 1
+																					}
+																				},
+																				"required": [
+																					"user_risk_score"
+																				]
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"title": "User Risk Score"
+																	},
+																	{
+																		"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"cloudflare_account_member": {
+																				"type": "object",
+																				"properties": {
+																					"account_id": {
+																						"description": "Identifier.",
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				}
+																			}
+																		},
+																		"required": [
+																			"cloudflare_account_member"
+																		],
+																		"title": "Cloudflare Account Member"
+																	}
+																]
+															},
+															"default": [],
+															"x-stainless-collection-type": "set"
+														},
+														"name": {
+															"description": "The name of the Access policy.",
+															"type": "string",
+															"example": "Allow devs"
+														},
+														"require": {
+															"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"oneOf": [
+																	{
+																		"description": "Matches an Access group.",
+																		"type": "object",
+																		"properties": {
+																			"group": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created Access group.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"group"
+																		],
+																		"title": "Access groups"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"type": "object",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token"
+																	},
+																	{
+																		"description": "Matches an Azure Authentication Context.\nRequires an Azure identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"auth_context": {
+																				"type": "object",
+																				"properties": {
+																					"ac_id": {
+																						"description": "The ACID of an Authentication context.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"id": {
+																						"description": "The ID of an Authentication context.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Azure identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"identity_provider_id",
+																					"ac_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"auth_context"
+																		],
+																		"title": "Authentication Context"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"type": "object",
+																		"properties": {
+																			"auth_method": {
+																				"type": "object",
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
+																						"type": "string",
+																						"example": "mfa"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				]
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method"
+																	},
+																	{
+																		"description": "Matches an Azure group.\nRequires an Azure identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"azureAD": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of an Azure group.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Azure identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"azureAD"
+																		],
+																		"title": "Azure group"
+																	},
+																	{
+																		"description": "Matches any valid client certificate.",
+																		"type": "object",
+																		"properties": {
+																			"certificate": {
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"example": {
+																			"certificate": {}
+																		},
+																		"required": [
+																			"certificate"
+																		],
+																		"title": "Valid certificate"
+																	},
+																	{
+																		"description": "Matches a specific common name.",
+																		"type": "object",
+																		"properties": {
+																			"common_name": {
+																				"type": "object",
+																				"properties": {
+																					"common_name": {
+																						"description": "The common name to match.",
+																						"type": "string",
+																						"example": "james@example.com"
+																					}
+																				},
+																				"required": [
+																					"common_name"
+																				]
+																			}
+																		},
+																		"required": [
+																			"common_name"
+																		],
+																		"title": "Common Name"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"type": "object",
+																		"properties": {
+																			"geo": {
+																				"type": "object",
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"type": "string",
+																						"example": "US"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				]
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"type": "object",
+																		"properties": {
+																			"device_posture": {
+																				"type": "object",
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				]
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture"
+																	},
+																	{
+																		"description": "Match an entire email domain.",
+																		"type": "object",
+																		"properties": {
+																			"email_domain": {
+																				"type": "object",
+																				"properties": {
+																					"domain": {
+																						"description": "The email domain to match.",
+																						"type": "string",
+																						"example": "example.com"
+																					}
+																				},
+																				"required": [
+																					"domain"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email_domain"
+																		],
+																		"title": "Email domain"
+																	},
+																	{
+																		"description": "Matches an email address from a list.",
+																		"type": "object",
+																		"properties": {
+																			"email_list": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list"
+																	},
+																	{
+																		"description": "Matches a specific email.",
+																		"type": "object",
+																		"properties": {
+																			"email": {
+																				"type": "object",
+																				"properties": {
+																					"email": {
+																						"description": "The email of the user.",
+																						"type": "string",
+																						"format": "email",
+																						"example": "test@example.com"
+																					}
+																				},
+																				"required": [
+																					"email"
+																				]
+																			}
+																		},
+																		"required": [
+																			"email"
+																		],
+																		"title": "Email"
+																	},
+																	{
+																		"description": "Matches everyone.",
+																		"type": "object",
+																		"properties": {
+																			"everyone": {
+																				"description": "An empty object which matches on all users.",
+																				"type": "object",
+																				"example": {},
+																				"x-stainless-empty-object": true
+																			}
+																		},
+																		"required": [
+																			"everyone"
+																		],
+																		"title": "Everyone"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"type": "object",
+																		"properties": {
+																			"external_evaluation": {
+																				"type": "object",
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"type": "string",
+																						"example": "https://eval.example.com"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"type": "string",
+																						"example": "https://eval.example.com/keys"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				]
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation"
+																	},
+																	{
+																		"description": "Matches a Github organization.\nRequires a Github identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"github-organization": {
+																				"type": "object",
+																				"properties": {
+																					"identity_provider_id": {
+																						"description": "The ID of your Github identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"name": {
+																						"description": "The name of the organization.",
+																						"type": "string",
+																						"example": "cloudflare"
+																					},
+																					"team": {
+																						"description": "The name of the team",
+																						"type": "string",
+																						"example": "api-team"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"github-organization"
+																		],
+																		"title": "Github organization"
+																	},
+																	{
+																		"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"gsuite": {
+																				"type": "object",
+																				"properties": {
+																					"email": {
+																						"description": "The email of the Google Workspace group.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your Google Workspace identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"email",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"gsuite"
+																		],
+																		"title": "Google Workspace group"
+																	},
+																	{
+																		"description": "Matches a specific identity provider id.",
+																		"type": "object",
+																		"properties": {
+																			"login_method": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of an identity provider.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"login_method"
+																		],
+																		"title": "Login Method"
+																	},
+																	{
+																		"description": "Matches an IP address from a list.",
+																		"type": "object",
+																		"properties": {
+																			"ip_list": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created IP list.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"ip_list"
+																		],
+																		"title": "IP list"
+																	},
+																	{
+																		"description": "Matches an IP address block.",
+																		"type": "object",
+																		"properties": {
+																			"ip": {
+																				"type": "object",
+																				"properties": {
+																					"ip": {
+																						"description": "An IPv4 or IPv6 CIDR block.",
+																						"type": "string",
+																						"example": "2400:cb00:21:10a::/64"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				]
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"title": "IP ranges"
+																	},
+																	{
+																		"description": "Matches an Okta group.\nRequires an Okta identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"okta": {
+																				"type": "object",
+																				"properties": {
+																					"identity_provider_id": {
+																						"description": "The ID of your Okta identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					},
+																					"name": {
+																						"description": "The name of the Okta group.",
+																						"type": "string",
+																						"example": "devs"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"okta"
+																		],
+																		"title": "Okta group"
+																	},
+																	{
+																		"description": "Matches a SAML group.\nRequires a SAML identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"saml": {
+																				"type": "object",
+																				"properties": {
+																					"attribute_name": {
+																						"description": "The name of the SAML attribute.",
+																						"type": "string",
+																						"example": "group"
+																					},
+																					"attribute_value": {
+																						"description": "The SAML attribute value to look for.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your SAML identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"attribute_name",
+																					"attribute_value",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"saml"
+																		],
+																		"title": "SAML group"
+																	},
+																	{
+																		"description": "Matches an OIDC claim.\nRequires an OIDC identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"oidc": {
+																				"type": "object",
+																				"properties": {
+																					"claim_name": {
+																						"description": "The name of the OIDC claim.",
+																						"type": "string",
+																						"example": "group"
+																					},
+																					"claim_value": {
+																						"description": "The OIDC claim value to look for.",
+																						"type": "string",
+																						"example": "devs@cloudflare.com"
+																					},
+																					"identity_provider_id": {
+																						"description": "The ID of your OIDC identity provider.",
+																						"type": "string",
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																					}
+																				},
+																				"required": [
+																					"claim_name",
+																					"claim_value",
+																					"identity_provider_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"oidc"
+																		],
+																		"title": "OIDC claim"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"type": "object",
+																		"properties": {
+																			"service_token": {
+																				"type": "object",
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				]
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token"
+																	},
+																	{
+																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
+																		"type": "object",
+																		"properties": {
+																			"linked_app_token": {
+																				"type": "object",
+																				"properties": {
+																					"app_uid": {
+																						"description": "The ID of an Access OIDC SaaS application",
+																						"type": "string",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																					}
+																				},
+																				"required": [
+																					"app_uid"
+																				]
+																			}
+																		},
+																		"required": [
+																			"linked_app_token"
+																		],
+																		"title": "Linked App Token"
+																	},
+																	{
+																		"description": "Matches a user's risk score.",
+																		"type": "object",
+																		"properties": {
+																			"user_risk_score": {
+																				"type": "object",
+																				"properties": {
+																					"user_risk_score": {
+																						"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																						"type": "array",
+																						"items": {
+																							"enum": [
+																								"low",
+																								"medium",
+																								"high",
+																								"unscored"
+																							],
+																							"type": "string"
+																						},
+																						"example": [
+																							"low",
+																							"medium"
+																						],
+																						"minItems": 1
+																					}
+																				},
+																				"required": [
+																					"user_risk_score"
+																				]
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"title": "User Risk Score"
+																	},
+																	{
+																		"description": "Matches users who are members of a specific Cloudflare account.\nRequires a Cloudflare identity provider.",
+																		"type": "object",
+																		"properties": {
+																			"cloudflare_account_member": {
+																				"type": "object",
+																				"properties": {
+																					"account_id": {
+																						"description": "Identifier.",
+																						"type": "string",
+																						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																						"maxLength": 32,
+																						"x-auditable": true
+																					}
+																				}
+																			}
+																		},
+																		"required": [
+																			"cloudflare_account_member"
+																		],
+																		"title": "Cloudflare Account Member"
+																	}
+																]
+															},
+															"default": [],
+															"x-stainless-collection-type": "set"
+														}
+													},
+													"required": [
+														"name",
+														"decision",
+														"include"
+													]
+												}
+											]
 										},
 										{
 											"description": "The UUID of the reusable policy you wish to test",
@@ -2914,33 +2918,34 @@
 											"type": "string"
 										}
 									]
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Start Access policy test response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2949,12 +2954,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2964,15 +2969,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2981,12 +2986,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2996,116 +3001,77 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "The UUID of the policy test.",
+													"type": "string",
 													"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
 													"maxLength": 64,
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
 													"description": "The status of the policy test request.",
+													"type": "string",
+													"example": "success",
 													"enum": [
 														"success"
 													],
-													"example": "success",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Start Access policy test response."
+				}
 			},
 			"400": {
+				"description": "Start Access policy test response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3114,12 +3080,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3129,25 +3095,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3155,12 +3158,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Start Access policy test response failure."
+				}
 			}
 		},
 		"security": [
@@ -3170,7 +3171,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Start Access policy test",
 		"tags": [
 			"Access policy tester"
 		],

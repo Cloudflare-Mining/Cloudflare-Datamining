@@ -1,39 +1,43 @@
 {
 	"GET /zones/{zone_id}/available_plans": {
-		"description": "Lists available plans the zone can subscribe to.",
 		"operationId": "zone-rate-plan-list-available-plans",
+		"summary": "List Available Plans",
+		"description": "Lists available plans the zone can subscribe to.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Available Plans response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -46,15 +50,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -67,7 +71,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -85,11 +89,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -97,142 +101,140 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"can_subscribe": {
-														"default": false,
 														"description": "Indicates whether you can subscribe to this plan.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
+														"default": false,
 														"x-auditable": true
 													},
 													"currency": {
 														"description": "The monetary unit in which pricing information is displayed.",
+														"type": "string",
 														"example": "USD",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"externally_managed": {
-														"default": false,
 														"description": "Indicates whether this plan is managed externally.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
+														"default": false,
 														"x-auditable": true
 													},
 													"frequency": {
 														"description": "The frequency at which you will be billed for this plan.",
+														"type": "string",
+														"example": "monthly",
 														"enum": [
 															"weekly",
 															"monthly",
 															"quarterly",
 															"yearly"
 														],
-														"example": "monthly",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"is_subscribed": {
-														"default": false,
 														"description": "Indicates whether you are currently subscribed to this plan.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
+														"default": false,
 														"x-auditable": true
 													},
 													"legacy_discount": {
-														"default": false,
 														"description": "Indicates whether this plan has a legacy discount applied.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
+														"default": false,
 														"x-auditable": true
 													},
 													"legacy_id": {
 														"description": "The legacy identifier for this rate plan, if any.",
+														"type": "string",
 														"example": "free",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"name": {
 														"description": "The plan name.",
+														"type": "string",
 														"example": "Free Plan",
 														"maxLength": 80,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"price": {
 														"description": "The amount you will be billed for this plan.",
-														"example": 0,
 														"type": "number",
+														"example": 0,
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Available Plans response"
+				}
 			},
 			"4XX": {
+				"description": "List Available Plans response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -240,16 +242,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -262,15 +266,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -283,7 +287,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -301,11 +305,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -313,180 +317,153 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"can_subscribe": {
-																"default": false,
 																"description": "Indicates whether you can subscribe to this plan.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
+																"default": false,
 																"x-auditable": true
 															},
 															"currency": {
 																"description": "The monetary unit in which pricing information is displayed.",
+																"type": "string",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"externally_managed": {
-																"default": false,
 																"description": "Indicates whether this plan is managed externally.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
+																"default": false,
 																"x-auditable": true
 															},
 															"frequency": {
 																"description": "The frequency at which you will be billed for this plan.",
+																"type": "string",
+																"example": "monthly",
 																"enum": [
 																	"weekly",
 																	"monthly",
 																	"quarterly",
 																	"yearly"
 																],
-																"example": "monthly",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"is_subscribed": {
-																"default": false,
 																"description": "Indicates whether you are currently subscribed to this plan.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
+																"default": false,
 																"x-auditable": true
 															},
 															"legacy_discount": {
-																"default": false,
 																"description": "Indicates whether this plan has a legacy discount applied.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
+																"default": false,
 																"x-auditable": true
 															},
 															"legacy_id": {
 																"description": "The legacy identifier for this rate plan, if any.",
+																"type": "string",
 																"example": "free",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "The plan name.",
+																"type": "string",
 																"example": "Free Plan",
 																"maxLength": 80,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"price": {
 																"description": "The amount you will be billed for this plan.",
-																"example": 0,
 																"type": "number",
+																"example": 0,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -499,25 +476,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -525,14 +528,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Available Plans response failure"
+				}
 			}
 		},
 		"security": [
@@ -542,7 +543,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Available Plans",
 		"tags": [
 			"Zone Rate Plan"
 		],
@@ -566,53 +566,57 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/available_plans/{plan_identifier}": {
-		"description": "Details of the available plan that the zone can subscribe to.",
 		"operationId": "zone-rate-plan-available-plan-details",
+		"summary": "Available Plan Details",
+		"description": "Details of the available plan that the zone can subscribe to.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "plan_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Available Plan Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -625,15 +629,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -646,7 +650,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -664,11 +668,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -676,8 +680,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -695,102 +698,101 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"can_subscribe": {
-													"default": false,
 													"description": "Indicates whether you can subscribe to this plan.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"currency": {
 													"description": "The monetary unit in which pricing information is displayed.",
+													"type": "string",
 													"example": "USD",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"externally_managed": {
-													"default": false,
 													"description": "Indicates whether this plan is managed externally.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"frequency": {
 													"description": "The frequency at which you will be billed for this plan.",
+													"type": "string",
+													"example": "monthly",
 													"enum": [
 														"weekly",
 														"monthly",
 														"quarterly",
 														"yearly"
 													],
-													"example": "monthly",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"is_subscribed": {
-													"default": false,
 													"description": "Indicates whether you are currently subscribed to this plan.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"legacy_discount": {
-													"default": false,
 													"description": "Indicates whether this plan has a legacy discount applied.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"legacy_id": {
 													"description": "The legacy identifier for this rate plan, if any.",
+													"type": "string",
 													"example": "free",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "The plan name.",
+													"type": "string",
 													"example": "Free Plan",
 													"maxLength": 80,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"price": {
 													"description": "The amount you will be billed for this plan.",
-													"example": 0,
 													"type": "number",
+													"example": 0,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Available Plan Details response"
+				}
 			},
 			"4XX": {
+				"description": "Available Plan Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -798,16 +800,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -820,15 +824,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -841,7 +845,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -859,11 +863,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -871,8 +875,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -890,140 +893,114 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"can_subscribe": {
-															"default": false,
 															"description": "Indicates whether you can subscribe to this plan.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"currency": {
 															"description": "The monetary unit in which pricing information is displayed.",
+															"type": "string",
 															"example": "USD",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"externally_managed": {
-															"default": false,
 															"description": "Indicates whether this plan is managed externally.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"frequency": {
 															"description": "The frequency at which you will be billed for this plan.",
+															"type": "string",
+															"example": "monthly",
 															"enum": [
 																"weekly",
 																"monthly",
 																"quarterly",
 																"yearly"
 															],
-															"example": "monthly",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"is_subscribed": {
-															"default": false,
 															"description": "Indicates whether you are currently subscribed to this plan.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"legacy_discount": {
-															"default": false,
 															"description": "Indicates whether this plan has a legacy discount applied.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"legacy_id": {
 															"description": "The legacy identifier for this rate plan, if any.",
+															"type": "string",
 															"example": "free",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "The plan name.",
+															"type": "string",
 															"example": "Free Plan",
 															"maxLength": 80,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"price": {
 															"description": "The amount you will be billed for this plan.",
-															"example": 0,
 															"type": "number",
+															"example": 0,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1036,25 +1013,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1062,14 +1065,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Available Plan Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1079,7 +1080,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Available Plan Details",
 		"tags": [
 			"Zone Rate Plan"
 		],
@@ -1103,40 +1103,44 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/available_rate_plans": {
-		"description": "Lists all rate plans the zone can subscribe to.",
 		"operationId": "zone-rate-plan-list-available-rate-plans",
+		"summary": "List Available Rate Plans",
+		"description": "Lists all rate plans the zone can subscribe to.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Available Rate Plans response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1149,15 +1153,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1170,7 +1174,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1188,11 +1192,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1200,134 +1204,132 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"allOf": [
 													{
+														"type": "object",
 														"properties": {
 															"components": {
 																"description": "Array of available components values for the plan.",
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"default": {
 																			"description": "The default amount allocated.",
-																			"example": 5,
 																			"type": "number",
+																			"example": 5,
 																			"x-auditable": true
 																		},
 																		"name": {
 																			"description": "The unique component.",
+																			"example": "page_rules",
 																			"enum": [
 																				"zones",
 																				"page_rules",
 																				"dedicated_certificates",
 																				"dedicated_certificates_custom"
 																			],
-																			"example": "page_rules",
 																			"x-auditable": true
 																		},
 																		"unit_price": {
 																			"description": "The unit price of the addon.",
+																			"type": "number",
 																			"example": 1,
 																			"readOnly": true,
-																			"type": "number",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															},
 															"currency": {
 																"description": "The monetary unit in which pricing information is displayed.",
+																"type": "string",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"duration": {
 																"description": "The duration of the plan subscription.",
-																"example": 1,
 																"type": "number",
+																"example": 1,
 																"x-auditable": true
 															},
 															"frequency": {
 																"description": "The frequency at which you will be billed for this plan.",
+																"type": "string",
+																"example": "monthly",
 																"enum": [
 																	"weekly",
 																	"monthly",
 																	"quarterly",
 																	"yearly"
 																],
-																"example": "monthly",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Plan identifier tag.",
+																"type": "string",
 																"example": "free",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "The plan name.",
+																"type": "string",
 																"example": "Free Plan",
 																"maxLength": 80,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -1335,10 +1337,10 @@
 							]
 						}
 					}
-				},
-				"description": "List Available Rate Plans response"
+				}
 			},
 			"4XX": {
+				"description": "List Available Rate Plans response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1346,16 +1348,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1368,15 +1372,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1389,7 +1393,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1407,11 +1411,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1419,134 +1423,132 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"allOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"components": {
 																		"description": "Array of available components values for the plan.",
+																		"type": "array",
 																		"items": {
+																			"type": "object",
 																			"properties": {
 																				"default": {
 																					"description": "The default amount allocated.",
-																					"example": 5,
 																					"type": "number",
+																					"example": 5,
 																					"x-auditable": true
 																				},
 																				"name": {
 																					"description": "The unique component.",
+																					"example": "page_rules",
 																					"enum": [
 																						"zones",
 																						"page_rules",
 																						"dedicated_certificates",
 																						"dedicated_certificates_custom"
 																					],
-																					"example": "page_rules",
 																					"x-auditable": true
 																				},
 																				"unit_price": {
 																					"description": "The unit price of the addon.",
+																					"type": "number",
 																					"example": 1,
 																					"readOnly": true,
-																					"type": "number",
 																					"x-auditable": true
 																				}
-																			},
-																			"type": "object"
-																		},
-																		"type": "array"
+																			}
+																		}
 																	},
 																	"currency": {
 																		"description": "The monetary unit in which pricing information is displayed.",
+																		"type": "string",
 																		"example": "USD",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"duration": {
 																		"description": "The duration of the plan subscription.",
-																		"example": 1,
 																		"type": "number",
+																		"example": 1,
 																		"x-auditable": true
 																	},
 																	"frequency": {
 																		"description": "The frequency at which you will be billed for this plan.",
+																		"type": "string",
+																		"example": "monthly",
 																		"enum": [
 																			"weekly",
 																			"monthly",
 																			"quarterly",
 																			"yearly"
 																		],
-																		"example": "monthly",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Plan identifier tag.",
+																		"type": "string",
 																		"example": "free",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The plan name.",
+																		"type": "string",
 																		"example": "Free Plan",
 																		"maxLength": 80,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"type": "object"
@@ -1554,48 +1556,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1608,25 +1585,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1634,14 +1637,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Available Rate Plans response failure"
+				}
 			}
 		},
 		"security": [
@@ -1651,7 +1652,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Available Rate Plans",
 		"tags": [
 			"Zone Rate Plan"
 		],

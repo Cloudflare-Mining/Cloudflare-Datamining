@@ -1,62 +1,66 @@
 {
 	"DELETE /accounts/{account_id}/iam/user_groups/{user_group_id}": {
-		"description": "Remove a user group from an account.",
 		"operationId": "account-user-group-delete",
+		"summary": "Remove User Group",
+		"description": "Remove a user group from an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Remove User Group response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -65,12 +69,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -80,15 +84,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -97,12 +101,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -112,109 +116,71 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Remove User Group response"
+				}
 			},
 			"4XX": {
+				"description": "Remove User Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -223,12 +189,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -238,25 +204,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -264,12 +267,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Remove User Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -278,7 +279,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Remove User Group",
 		"tags": [
 			"Account User Groups"
 		],
@@ -299,118 +299,122 @@
 		}
 	},
 	"GET /accounts/{account_id}/iam/user_groups": {
-		"description": "List all the user groups for an account.",
 		"operationId": "account-user-group-list",
+		"summary": "List User Groups",
+		"description": "List all the user groups for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"description": "ID of the user group to be fetched.",
-				"in": "query",
 				"name": "id",
+				"in": "query",
+				"description": "ID of the user group to be fetched.",
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			},
 			{
-				"in": "query",
 				"name": "name",
+				"in": "query",
 				"schema": {
 					"description": "Name of the user group to be fetched.",
-					"example": "NameOfTheUserGroup",
-					"type": "string"
+					"type": "string",
+					"example": "NameOfTheUserGroup"
 				}
 			},
 			{
-				"in": "query",
 				"name": "fuzzyName",
+				"in": "query",
 				"schema": {
 					"description": "A string used for searching for user groups containing that substring.",
-					"example": "Foo",
-					"type": "string"
+					"type": "string",
+					"example": "Foo"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 100,
 					"description": "Maximum number of results per page.",
+					"type": "number",
+					"default": 100,
 					"maximum": 500,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
-					"default": "asc",
 					"description": "The sort order of returned user groups by name (ascending or descending).",
+					"type": "string",
+					"example": "desc",
+					"default": "asc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List User Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -419,12 +423,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -434,15 +438,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -451,12 +455,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -466,125 +470,167 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A list of user groups for the account.",
+											"type": "array",
 											"items": {
 												"description": "A group of policies resources.",
+												"type": "object",
 												"properties": {
 													"created_on": {
 														"description": "Timestamp for the creation of the user group",
-														"example": "2024-03-01T12:21:02.0000Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2024-03-01T12:21:02.0000Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"id": {
+														"description": "User Group identifier tag.",
 														"allOf": [
 															{
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															}
 														],
-														"description": "User Group identifier tag.",
 														"title": "User Group Identifier"
 													},
 													"modified_on": {
 														"description": "Last time the user group was modified.",
-														"example": "2024-03-01T12:21:02.0000Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2024-03-01T12:21:02.0000Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"name": {
 														"description": "Name of the user group.",
+														"type": "string",
 														"example": "My New User Group",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"policies": {
 														"description": "Policies attached to the User group",
+														"type": "array",
 														"items": {
 															"description": "Policy",
 															"properties": {
 																"access": {
 																	"description": "Allow or deny operations against the resources.",
+																	"type": "string",
+																	"example": "allow",
 																	"enum": [
 																		"allow",
 																		"deny"
 																	],
-																	"example": "allow",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Policy identifier.",
+																	"type": "string",
 																	"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true,
 																	"x-stainless-terraform-always-send": true
 																},
 																"permission_groups": {
 																	"description": "A set of permission groups that are specified to the policy.",
+																	"type": "array",
+																	"items": {
+																		"description": "A named group of permissions that map to a group of operations against resources.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"description": "Identifier of the permission group.",
+																				"type": "string",
+																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																				"x-auditable": true
+																			},
+																			"meta": {
+																				"description": "Attributes associated to the permission group.",
+																				"type": "object",
+																				"example": {
+																					"label": "load_balancer_admin",
+																					"scopes": "com.cloudflare.api.account"
+																				},
+																				"properties": {
+																					"key": {
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"value": {
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				}
+																			},
+																			"name": {
+																				"description": "Name of the permission group.",
+																				"type": "string",
+																				"example": "Load Balancer",
+																				"readOnly": true,
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"id"
+																		]
+																	},
 																	"example": [
 																		{
 																			"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -602,63 +648,25 @@
 																			},
 																			"name": "Magic Network Monitoring"
 																		}
-																	],
-																	"items": {
-																		"description": "A named group of permissions that map to a group of operations against resources.",
-																		"properties": {
-																			"id": {
-																				"description": "Identifier of the permission group.",
-																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"meta": {
-																				"description": "Attributes associated to the permission group.",
-																				"example": {
-																					"label": "load_balancer_admin",
-																					"scopes": "com.cloudflare.api.account"
-																				},
-																				"properties": {
-																					"key": {
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"value": {
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"name": {
-																				"description": "Name of the permission group.",
-																				"example": "Load Balancer",
-																				"readOnly": true,
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"id"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
+																	]
 																},
 																"resource_groups": {
 																	"description": "A list of resource groups that the policy applies to.",
+																	"type": "array",
 																	"items": {
 																		"description": "A group of scoped resources.",
+																		"type": "object",
 																		"properties": {
 																			"id": {
 																				"description": "Identifier of the resource group.",
+																				"type": "string",
 																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																				"readOnly": true,
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"meta": {
 																				"description": "Attributes associated to the resource group.",
+																				"type": "object",
 																				"example": {
 																					"editable": "false"
 																				},
@@ -669,18 +677,18 @@
 																					"value": {
 																						"type": "string"
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			"name": {
 																				"description": "Name of the resource group.",
+																				"type": "string",
 																				"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 																				"readOnly": true,
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"scope": {
 																				"description": "A scope is a combination of scope objects which provides additional context.",
+																				"type": "object",
 																				"properties": {
 																					"key": {
 																						"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -690,8 +698,10 @@
 																					},
 																					"objects": {
 																						"description": "A list of scope objects for additional context.",
+																						"type": "array",
 																						"items": {
 																							"description": "A scope object represents any resource that can have actions applied against invite.",
+																							"type": "object",
 																							"properties": {
 																								"key": {
 																									"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -702,32 +712,26 @@
 																							},
 																							"required": [
 																								"key"
-																							],
-																							"type": "object"
-																						},
-																						"type": "array"
+																							]
+																						}
 																					}
 																				},
 																				"required": [
 																					"key",
 																					"objects"
-																				],
-																				"type": "object"
+																				]
 																			}
 																		},
 																		"required": [
 																			"id",
 																			"scope"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
+																		]
+																	}
 																}
 															},
 															"title": "Authorization Policy"
 														},
-														"title": "User Group Policies",
-														"type": "array"
+														"title": "User Group Policies"
 													}
 												},
 												"required": [
@@ -735,11 +739,9 @@
 													"name",
 													"created_on",
 													"modified_on"
-												],
-												"type": "object"
+												]
 											},
-											"title": "User Groups",
-											"type": "array"
+											"title": "User Groups"
 										}
 									},
 									"type": "object"
@@ -747,66 +749,30 @@
 							]
 						}
 					}
-				},
-				"description": "List User Group response"
+				}
 			},
 			"4XX": {
+				"description": "List User Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -815,12 +781,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -830,25 +796,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -856,12 +859,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List User Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -874,7 +875,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List User Groups",
 		"tags": [
 			"Account User Groups"
 		],
@@ -896,65 +896,69 @@
 		}
 	},
 	"GET /accounts/{account_id}/iam/user_groups/{user_group_id}": {
-		"description": "Get information about a specific user group in an account.",
 		"operationId": "account-user-group-details",
+		"summary": "User Group Details",
+		"description": "Get information about a specific user group in an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "User Group Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -963,12 +967,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -978,15 +982,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -995,12 +999,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1010,94 +1014,135 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A group of policies resources.",
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the user group",
-													"example": "2024-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2024-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
+													"description": "User Group identifier tag.",
 													"allOf": [
 														{
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
-													"description": "User Group identifier tag.",
 													"title": "User Group Identifier"
 												},
 												"modified_on": {
 													"description": "Last time the user group was modified.",
-													"example": "2024-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2024-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the user group.",
+													"type": "string",
 													"example": "My New User Group",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"policies": {
 													"description": "Policies attached to the User group",
+													"type": "array",
 													"items": {
 														"description": "Policy",
 														"properties": {
 															"access": {
 																"description": "Allow or deny operations against the resources.",
+																"type": "string",
+																"example": "allow",
 																"enum": [
 																	"allow",
 																	"deny"
 																],
-																"example": "allow",
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Policy identifier.",
+																"type": "string",
 																"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-always-send": true
 															},
 															"permission_groups": {
 																"description": "A set of permission groups that are specified to the policy.",
+																"type": "array",
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the permission group.",
+																			"type": "string",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"type": "object",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"value": {
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			}
+																		},
+																		"name": {
+																			"description": "Name of the permission group.",
+																			"type": "string",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id"
+																	]
+																},
 																"example": [
 																	{
 																		"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -1115,63 +1160,25 @@
 																		},
 																		"name": "Magic Network Monitoring"
 																	}
-																],
-																"items": {
-																	"description": "A named group of permissions that map to a group of operations against resources.",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier of the permission group.",
-																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"meta": {
-																			"description": "Attributes associated to the permission group.",
-																			"example": {
-																				"label": "load_balancer_admin",
-																				"scopes": "com.cloudflare.api.account"
-																			},
-																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"value": {
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"name": {
-																			"description": "Name of the permission group.",
-																			"example": "Load Balancer",
-																			"readOnly": true,
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"id"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																]
 															},
 															"resource_groups": {
 																"description": "A list of resource groups that the policy applies to.",
+																"type": "array",
 																"items": {
 																	"description": "A group of scoped resources.",
+																	"type": "object",
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the resource group.",
+																			"type": "string",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"meta": {
 																			"description": "Attributes associated to the resource group.",
+																			"type": "object",
 																			"example": {
 																				"editable": "false"
 																			},
@@ -1182,18 +1189,18 @@
 																				"value": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"name": {
 																			"description": "Name of the resource group.",
+																			"type": "string",
 																			"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"scope": {
 																			"description": "A scope is a combination of scope objects which provides additional context.",
+																			"type": "object",
 																			"properties": {
 																				"key": {
 																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -1203,8 +1210,10 @@
 																				},
 																				"objects": {
 																					"description": "A list of scope objects for additional context.",
+																					"type": "array",
 																					"items": {
 																						"description": "A scope object represents any resource that can have actions applied against invite.",
+																						"type": "object",
 																						"properties": {
 																							"key": {
 																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -1215,32 +1224,26 @@
 																						},
 																						"required": [
 																							"key"
-																						],
-																						"type": "object"
-																					},
-																					"type": "array"
+																						]
+																					}
 																				}
 																			},
 																			"required": [
 																				"key",
 																				"objects"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
 																		"id",
 																		"scope"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																	]
+																}
 															}
 														},
 														"title": "Authorization Policy"
 													},
-													"title": "User Group Policies",
-													"type": "array"
+													"title": "User Group Policies"
 												}
 											},
 											"required": [
@@ -1248,8 +1251,7 @@
 												"name",
 												"created_on",
 												"modified_on"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1257,66 +1259,30 @@
 							]
 						}
 					}
-				},
-				"description": "User Group Details response"
+				}
 			},
 			"4XX": {
+				"description": "User Group Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1325,12 +1291,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1340,25 +1306,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1366,12 +1369,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "User Group Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1380,7 +1381,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "User Group Details",
 		"tags": [
 			"Account User Groups"
 		],
@@ -1402,79 +1402,76 @@
 		}
 	},
 	"POST /accounts/{account_id}/iam/user_groups": {
-		"description": "Create a new user group under the specified account.",
 		"operationId": "account-user-group-create",
+		"summary": "Create User Group",
+		"description": "Create a new user group under the specified account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Name of the User group.",
-								"example": "My New User Group",
 								"type": "string",
+								"example": "My New User Group",
 								"x-auditable": true
 							},
 							"policies": {
 								"description": "Policies attached to the User group",
+								"type": "array",
 								"items": {
 									"properties": {
 										"access": {
 											"description": "Allow or deny operations against the resources.",
+											"type": "string",
+											"example": "allow",
 											"enum": [
 												"allow",
 												"deny"
 											],
-											"example": "allow",
-											"type": "string",
 											"x-auditable": true
 										},
 										"permission_groups": {
 											"description": "A set of permission groups that are specified to the policy.",
-											"example": [
-												{
-													"id": "c8fed203ed3043cba015a93ad1616f1f"
-												},
-												{
-													"id": "82e64a83756745bbbb1c9c2701bf816b"
-												}
-											],
+											"type": "array",
 											"items": {
 												"description": "A named group of permissions that map to a group of operations against resources.",
 												"properties": {
 													"id": {
+														"description": "Permission Group identifier tag.",
 														"allOf": [
 															{
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															}
 														],
-														"description": "Permission Group identifier tag.",
 														"title": "Permission Group Identifier"
 													}
 												},
@@ -1483,31 +1480,34 @@
 												],
 												"type": "object"
 											},
-											"title": "Permission Group IDs",
-											"type": "array"
+											"example": [
+												{
+													"id": "c8fed203ed3043cba015a93ad1616f1f"
+												},
+												{
+													"id": "82e64a83756745bbbb1c9c2701bf816b"
+												}
+											],
+											"title": "Permission Group IDs"
 										},
 										"resource_groups": {
 											"description": "A set of resource groups that are specified to the policy.",
-											"example": [
-												{
-													"id": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
-												}
-											],
+											"type": "array",
 											"items": {
 												"description": "A group of scoped resources.",
 												"properties": {
 													"id": {
+														"description": "Resource Group identifier tag.",
 														"allOf": [
 															{
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															}
 														],
-														"description": "Resource Group identifier tag.",
 														"title": "Resource Group Identifier"
 													}
 												},
@@ -1516,8 +1516,12 @@
 												],
 												"type": "object"
 											},
-											"title": "Resource Group IDs",
-											"type": "array"
+											"example": [
+												{
+													"id": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
+												}
+											],
+											"title": "Resource Group IDs"
 										}
 									},
 									"required": [
@@ -1526,37 +1530,37 @@
 										"resource_groups"
 									]
 								},
-								"title": "User Group Policies",
-								"type": "array"
+								"title": "User Group Policies"
 							}
 						},
 						"required": [
 							"name"
 						],
-						"title": "Create User group with a set of policies",
-						"type": "object"
+						"title": "Create User group with a set of policies"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Add User Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1565,12 +1569,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1580,15 +1584,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1597,12 +1601,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1612,94 +1616,135 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A group of policies resources.",
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the user group",
-													"example": "2024-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2024-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
+													"description": "User Group identifier tag.",
 													"allOf": [
 														{
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
-													"description": "User Group identifier tag.",
 													"title": "User Group Identifier"
 												},
 												"modified_on": {
 													"description": "Last time the user group was modified.",
-													"example": "2024-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2024-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the user group.",
+													"type": "string",
 													"example": "My New User Group",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"policies": {
 													"description": "Policies attached to the User group",
+													"type": "array",
 													"items": {
 														"description": "Policy",
 														"properties": {
 															"access": {
 																"description": "Allow or deny operations against the resources.",
+																"type": "string",
+																"example": "allow",
 																"enum": [
 																	"allow",
 																	"deny"
 																],
-																"example": "allow",
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Policy identifier.",
+																"type": "string",
 																"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-always-send": true
 															},
 															"permission_groups": {
 																"description": "A set of permission groups that are specified to the policy.",
+																"type": "array",
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the permission group.",
+																			"type": "string",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"type": "object",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"value": {
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			}
+																		},
+																		"name": {
+																			"description": "Name of the permission group.",
+																			"type": "string",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id"
+																	]
+																},
 																"example": [
 																	{
 																		"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -1717,63 +1762,25 @@
 																		},
 																		"name": "Magic Network Monitoring"
 																	}
-																],
-																"items": {
-																	"description": "A named group of permissions that map to a group of operations against resources.",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier of the permission group.",
-																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"meta": {
-																			"description": "Attributes associated to the permission group.",
-																			"example": {
-																				"label": "load_balancer_admin",
-																				"scopes": "com.cloudflare.api.account"
-																			},
-																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"value": {
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"name": {
-																			"description": "Name of the permission group.",
-																			"example": "Load Balancer",
-																			"readOnly": true,
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"id"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																]
 															},
 															"resource_groups": {
 																"description": "A list of resource groups that the policy applies to.",
+																"type": "array",
 																"items": {
 																	"description": "A group of scoped resources.",
+																	"type": "object",
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the resource group.",
+																			"type": "string",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"meta": {
 																			"description": "Attributes associated to the resource group.",
+																			"type": "object",
 																			"example": {
 																				"editable": "false"
 																			},
@@ -1784,18 +1791,18 @@
 																				"value": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"name": {
 																			"description": "Name of the resource group.",
+																			"type": "string",
 																			"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"scope": {
 																			"description": "A scope is a combination of scope objects which provides additional context.",
+																			"type": "object",
 																			"properties": {
 																				"key": {
 																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -1805,8 +1812,10 @@
 																				},
 																				"objects": {
 																					"description": "A list of scope objects for additional context.",
+																					"type": "array",
 																					"items": {
 																						"description": "A scope object represents any resource that can have actions applied against invite.",
+																						"type": "object",
 																						"properties": {
 																							"key": {
 																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -1817,32 +1826,26 @@
 																						},
 																						"required": [
 																							"key"
-																						],
-																						"type": "object"
-																					},
-																					"type": "array"
+																						]
+																					}
 																				}
 																			},
 																			"required": [
 																				"key",
 																				"objects"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
 																		"id",
 																		"scope"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																	]
+																}
 															}
 														},
 														"title": "Authorization Policy"
 													},
-													"title": "User Group Policies",
-													"type": "array"
+													"title": "User Group Policies"
 												}
 											},
 											"required": [
@@ -1850,8 +1853,7 @@
 												"name",
 												"created_on",
 												"modified_on"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1859,66 +1861,30 @@
 							]
 						}
 					}
-				},
-				"description": "Add User Group response"
+				}
 			},
 			"4XX": {
+				"description": "Add User Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1927,12 +1893,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1942,25 +1908,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1968,12 +1971,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Add User Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -1982,7 +1983,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create User Group",
 		"tags": [
 			"Account User Groups"
 		],
@@ -2003,68 +2003,72 @@
 		}
 	},
 	"PUT /accounts/{account_id}/iam/user_groups/{user_group_id}": {
-		"description": "Modify an existing user group.",
 		"operationId": "account-user-group-update",
+		"summary": "Update User Group",
+		"description": "Modify an existing user group.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "user_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "User Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "User Group identifier tag.",
 					"title": "User Group Identifier"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Name of the User group.",
-								"example": "My New User Group",
-								"type": "string"
+								"type": "string",
+								"example": "My New User Group"
 							},
 							"policies": {
 								"description": "Policies attached to the User group",
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
 											"properties": {
 												"id": {
 													"description": "Policy identifier.",
-													"example": "f267e341f3dd4697bd3b9f71dd96247f",
-													"type": "string"
+													"type": "string",
+													"example": "f267e341f3dd4697bd3b9f71dd96247f"
 												}
 											},
 											"required": [
@@ -2076,39 +2080,32 @@
 											"properties": {
 												"access": {
 													"description": "Allow or deny operations against the resources.",
+													"type": "string",
+													"example": "allow",
 													"enum": [
 														"allow",
 														"deny"
 													],
-													"example": "allow",
-													"type": "string",
 													"x-auditable": true
 												},
 												"permission_groups": {
 													"description": "A set of permission groups that are specified to the policy.",
-													"example": [
-														{
-															"id": "c8fed203ed3043cba015a93ad1616f1f"
-														},
-														{
-															"id": "82e64a83756745bbbb1c9c2701bf816b"
-														}
-													],
+													"type": "array",
 													"items": {
 														"description": "A named group of permissions that map to a group of operations against resources.",
 														"properties": {
 															"id": {
+																"description": "Permission Group identifier tag.",
 																"allOf": [
 																	{
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"minLength": 32,
-																		"type": "string",
 																		"x-auditable": true
 																	}
 																],
-																"description": "Permission Group identifier tag.",
 																"title": "Permission Group Identifier"
 															}
 														},
@@ -2117,31 +2114,34 @@
 														],
 														"type": "object"
 													},
-													"title": "Permission Group IDs",
-													"type": "array"
+													"example": [
+														{
+															"id": "c8fed203ed3043cba015a93ad1616f1f"
+														},
+														{
+															"id": "82e64a83756745bbbb1c9c2701bf816b"
+														}
+													],
+													"title": "Permission Group IDs"
 												},
 												"resource_groups": {
 													"description": "A set of resource groups that are specified to the policy.",
-													"example": [
-														{
-															"id": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
-														}
-													],
+													"type": "array",
 													"items": {
 														"description": "A group of scoped resources.",
 														"properties": {
 															"id": {
+																"description": "Resource Group identifier tag.",
 																"allOf": [
 																	{
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"minLength": 32,
-																		"type": "string",
 																		"x-auditable": true
 																	}
 																],
-																"description": "Resource Group identifier tag.",
 																"title": "Resource Group Identifier"
 															}
 														},
@@ -2150,8 +2150,12 @@
 														],
 														"type": "object"
 													},
-													"title": "Resource Group IDs",
-													"type": "array"
+													"example": [
+														{
+															"id": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
+														}
+													],
+													"title": "Resource Group IDs"
 												}
 											},
 											"required": [
@@ -2162,34 +2166,34 @@
 										}
 									]
 								},
-								"title": "User Group Policies",
-								"type": "array"
+								"title": "User Group Policies"
 							}
 						},
-						"title": "Create User group with a set of policies",
-						"type": "object"
+						"title": "Create User group with a set of policies"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update User Group response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2198,12 +2202,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2213,15 +2217,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2230,12 +2234,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2245,94 +2249,135 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A group of policies resources.",
+											"type": "object",
 											"properties": {
 												"created_on": {
 													"description": "Timestamp for the creation of the user group",
-													"example": "2024-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2024-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"id": {
+													"description": "User Group identifier tag.",
 													"allOf": [
 														{
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"minLength": 32,
-															"type": "string",
 															"x-auditable": true
 														}
 													],
-													"description": "User Group identifier tag.",
 													"title": "User Group Identifier"
 												},
 												"modified_on": {
 													"description": "Last time the user group was modified.",
-													"example": "2024-03-01T12:21:02.0000Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2024-03-01T12:21:02.0000Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the user group.",
+													"type": "string",
 													"example": "My New User Group",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"policies": {
 													"description": "Policies attached to the User group",
+													"type": "array",
 													"items": {
 														"description": "Policy",
 														"properties": {
 															"access": {
 																"description": "Allow or deny operations against the resources.",
+																"type": "string",
+																"example": "allow",
 																"enum": [
 																	"allow",
 																	"deny"
 																],
-																"example": "allow",
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Policy identifier.",
+																"type": "string",
 																"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-always-send": true
 															},
 															"permission_groups": {
 																"description": "A set of permission groups that are specified to the policy.",
+																"type": "array",
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the permission group.",
+																			"type": "string",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"type": "object",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"value": {
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			}
+																		},
+																		"name": {
+																			"description": "Name of the permission group.",
+																			"type": "string",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id"
+																	]
+																},
 																"example": [
 																	{
 																		"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -2350,63 +2395,25 @@
 																		},
 																		"name": "Magic Network Monitoring"
 																	}
-																],
-																"items": {
-																	"description": "A named group of permissions that map to a group of operations against resources.",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier of the permission group.",
-																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"meta": {
-																			"description": "Attributes associated to the permission group.",
-																			"example": {
-																				"label": "load_balancer_admin",
-																				"scopes": "com.cloudflare.api.account"
-																			},
-																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"value": {
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"name": {
-																			"description": "Name of the permission group.",
-																			"example": "Load Balancer",
-																			"readOnly": true,
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"id"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																]
 															},
 															"resource_groups": {
 																"description": "A list of resource groups that the policy applies to.",
+																"type": "array",
 																"items": {
 																	"description": "A group of scoped resources.",
+																	"type": "object",
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the resource group.",
+																			"type": "string",
 																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"meta": {
 																			"description": "Attributes associated to the resource group.",
+																			"type": "object",
 																			"example": {
 																				"editable": "false"
 																			},
@@ -2417,18 +2424,18 @@
 																				"value": {
 																					"type": "string"
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"name": {
 																			"description": "Name of the resource group.",
+																			"type": "string",
 																			"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"scope": {
 																			"description": "A scope is a combination of scope objects which provides additional context.",
+																			"type": "object",
 																			"properties": {
 																				"key": {
 																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
@@ -2438,8 +2445,10 @@
 																				},
 																				"objects": {
 																					"description": "A list of scope objects for additional context.",
+																					"type": "array",
 																					"items": {
 																						"description": "A scope object represents any resource that can have actions applied against invite.",
+																						"type": "object",
 																						"properties": {
 																							"key": {
 																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
@@ -2450,32 +2459,26 @@
 																						},
 																						"required": [
 																							"key"
-																						],
-																						"type": "object"
-																					},
-																					"type": "array"
+																						]
+																					}
 																				}
 																			},
 																			"required": [
 																				"key",
 																				"objects"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"required": [
 																		"id",
 																		"scope"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																	]
+																}
 															}
 														},
 														"title": "Authorization Policy"
 													},
-													"title": "User Group Policies",
-													"type": "array"
+													"title": "User Group Policies"
 												}
 											},
 											"required": [
@@ -2483,8 +2486,7 @@
 												"name",
 												"created_on",
 												"modified_on"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2492,66 +2494,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update User Group response"
+				}
 			},
 			"4XX": {
+				"description": "Update User Group response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2560,12 +2526,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2575,25 +2541,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2601,12 +2604,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update User Group response failure"
+				}
 			}
 		},
 		"security": [
@@ -2615,7 +2616,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update User Group",
 		"tags": [
 			"Account User Groups"
 		],

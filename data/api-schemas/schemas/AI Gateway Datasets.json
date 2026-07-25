@@ -1,34 +1,35 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
-		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-dataset",
+		"summary": "Delete a Dataset",
+		"description": "Deletes an AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -38,24 +39,29 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the Object if it was successfully deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"enable": {
 											"type": "boolean",
 											"x-auditable": true
 										},
 										"filters": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"key": {
+														"type": "string",
 														"enum": [
 															"created_at",
 															"request_content_type",
@@ -71,20 +77,20 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"operator": {
+														"type": "string",
 														"enum": [
 															"eq",
 															"contains",
 															"lt",
 															"gt"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"value": {
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
@@ -98,7 +104,6 @@
 																}
 															]
 														},
-														"type": "array",
 														"x-auditable": true
 													}
 												},
@@ -109,16 +114,15 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
 											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
@@ -126,8 +130,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -142,8 +146,7 @@
 										"id",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -152,28 +155,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the Object if it was successfully deleted"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -181,8 +185,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -191,12 +194,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -208,7 +209,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Dataset",
 		"tags": [
 			"AI Gateway Datasets"
 		],
@@ -228,70 +228,71 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets": {
-		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-dataset",
+		"summary": "List Datasets",
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "name",
+				"in": "query",
 				"schema": {
 					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "enable",
+				"in": "query",
 				"schema": {
 					"type": "boolean",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
 					"description": "Search by id, name, filters",
 					"type": "string"
@@ -300,25 +301,30 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"enable": {
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"filters": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"key": {
+															"type": "string",
 															"enum": [
 																"created_at",
 																"request_content_type",
@@ -334,20 +340,20 @@
 																"duration",
 																"feedback"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"operator": {
+															"type": "string",
 															"enum": [
 																"eq",
 																"contains",
 																"lt",
 																"gt"
 															],
-															"type": "string",
 															"x-auditable": true
 														},
 														"value": {
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
@@ -361,7 +367,6 @@
 																	}
 																]
 															},
-															"type": "array",
 															"x-auditable": true
 														}
 													},
@@ -372,16 +377,15 @@
 													],
 													"type": "object"
 												},
-												"type": "array",
 												"x-auditable": true
 											},
 											"gateway_id": {
 												"description": "gateway id",
+												"type": "string",
 												"example": "my-gateway",
 												"maxLength": 64,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string",
 												"x-auditable": true
 											},
 											"id": {
@@ -389,8 +393,8 @@
 												"x-auditable": true
 											},
 											"modified_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"name": {
 												"type": "string",
@@ -407,8 +411,7 @@
 											"modified_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -417,19 +420,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List objects"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -440,27 +444,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -472,7 +473,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Datasets",
 		"tags": [
 			"AI Gateway Datasets"
 		],
@@ -493,35 +493,36 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
-		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"operationId": "aig-config-fetch-dataset",
+		"summary": "Fetch a Dataset",
+		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -531,24 +532,29 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a single object if found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"enable": {
 											"type": "boolean",
 											"x-auditable": true
 										},
 										"filters": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"key": {
+														"type": "string",
 														"enum": [
 															"created_at",
 															"request_content_type",
@@ -564,20 +570,20 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"operator": {
+														"type": "string",
 														"enum": [
 															"eq",
 															"contains",
 															"lt",
 															"gt"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"value": {
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
@@ -591,7 +597,6 @@
 																}
 															]
 														},
-														"type": "array",
 														"x-auditable": true
 													}
 												},
@@ -602,16 +607,15 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
 											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
@@ -619,8 +623,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -635,8 +639,7 @@
 										"id",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -645,28 +648,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a single object if found"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -674,8 +678,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -684,12 +687,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -701,7 +702,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Fetch a Dataset",
 		"tags": [
 			"AI Gateway Datasets"
 		],
@@ -722,30 +722,31 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets": {
-		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-dataset",
+		"summary": "Create a new Dataset",
+		"description": "Creates a new AI Gateway.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			}
 		],
@@ -753,15 +754,18 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"enable": {
 								"type": "boolean",
 								"x-auditable": true
 							},
 							"filters": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"key": {
+											"type": "string",
 											"enum": [
 												"created_at",
 												"request_content_type",
@@ -777,20 +781,20 @@
 												"duration",
 												"feedback"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"operator": {
+											"type": "string",
 											"enum": [
 												"eq",
 												"contains",
 												"lt",
 												"gt"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"value": {
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
@@ -804,7 +808,6 @@
 													}
 												]
 											},
-											"type": "array",
 											"x-auditable": true
 										}
 									},
@@ -815,7 +818,6 @@
 									],
 									"type": "object"
 								},
-								"type": "array",
 								"x-auditable": true
 							},
 							"name": {
@@ -827,32 +829,36 @@
 							"name",
 							"filters",
 							"enable"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"enable": {
 											"type": "boolean",
 											"x-auditable": true
 										},
 										"filters": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"key": {
+														"type": "string",
 														"enum": [
 															"created_at",
 															"request_content_type",
@@ -868,20 +874,20 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"operator": {
+														"type": "string",
 														"enum": [
 															"eq",
 															"contains",
 															"lt",
 															"gt"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"value": {
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
@@ -895,7 +901,6 @@
 																}
 															]
 														},
-														"type": "array",
 														"x-auditable": true
 													}
 												},
@@ -906,16 +911,15 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
 											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
@@ -923,8 +927,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -939,8 +943,7 @@
 										"id",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -949,35 +952,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -986,8 +990,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -996,12 +999,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -1013,7 +1014,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Dataset",
 		"tags": [
 			"AI Gateway Datasets"
 		],
@@ -1033,35 +1033,36 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
-		"description": "Updates an existing AI Gateway dataset.",
 		"operationId": "aig-config-update-dataset",
+		"summary": "Update a Dataset",
+		"description": "Updates an existing AI Gateway dataset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0",
-					"type": "string"
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -1073,15 +1074,18 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"enable": {
 								"type": "boolean",
 								"x-auditable": true
 							},
 							"filters": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"key": {
+											"type": "string",
 											"enum": [
 												"created_at",
 												"request_content_type",
@@ -1097,20 +1101,20 @@
 												"duration",
 												"feedback"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"operator": {
+											"type": "string",
 											"enum": [
 												"eq",
 												"contains",
 												"lt",
 												"gt"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"value": {
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
@@ -1124,7 +1128,6 @@
 													}
 												]
 											},
-											"type": "array",
 											"x-auditable": true
 										}
 									},
@@ -1135,7 +1138,6 @@
 									],
 									"type": "object"
 								},
-								"type": "array",
 								"x-auditable": true
 							},
 							"name": {
@@ -1147,32 +1149,36 @@
 							"name",
 							"filters",
 							"enable"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"enable": {
 											"type": "boolean",
 											"x-auditable": true
 										},
 										"filters": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"key": {
+														"type": "string",
 														"enum": [
 															"created_at",
 															"request_content_type",
@@ -1188,20 +1194,20 @@
 															"duration",
 															"feedback"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"operator": {
+														"type": "string",
 														"enum": [
 															"eq",
 															"contains",
 															"lt",
 															"gt"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"value": {
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
@@ -1215,7 +1221,6 @@
 																}
 															]
 														},
-														"type": "array",
 														"x-auditable": true
 													}
 												},
@@ -1226,16 +1231,15 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
 											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
+											"type": "string",
 											"example": "my-gateway",
 											"maxLength": 64,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
@@ -1243,8 +1247,8 @@
 											"x-auditable": true
 										},
 										"modified_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"name": {
 											"type": "string",
@@ -1259,8 +1263,7 @@
 										"id",
 										"created_at",
 										"modified_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1269,35 +1272,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -1306,8 +1310,7 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1316,28 +1319,29 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -1345,8 +1349,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1355,12 +1358,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1372,7 +1373,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a Dataset",
 		"tags": [
 			"AI Gateway Datasets"
 		],

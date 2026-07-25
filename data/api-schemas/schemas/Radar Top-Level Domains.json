@@ -1,107 +1,112 @@
 {
 	"GET /radar/tlds": {
-		"description": "Retrieves a list of TLDs.",
 		"operationId": "radar-get-tlds",
+		"summary": "List TLDs",
+		"description": "Retrieves a list of TLDs.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Skips the specified number of objects before fetching the results.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Skips the specified number of objects before fetching the results.",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
-					"minimum": 0,
-					"type": "integer"
+					"type": "integer",
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Filters results by TLD manager.",
-				"in": "query",
 				"name": "tldManager",
+				"in": "query",
+				"description": "Filters results by TLD manager.",
 				"schema": {
 					"description": "Filters results by TLD manager.",
-					"maxLength": 100,
-					"type": "string"
+					"type": "string",
+					"maxLength": 100
 				}
 			},
 			{
-				"description": "Filters results by TLD type.",
-				"in": "query",
 				"name": "tldType",
+				"in": "query",
+				"description": "Filters results by TLD type.",
 				"schema": {
 					"description": "Filters results by TLD type.",
+					"type": "string",
 					"enum": [
 						"GENERIC",
 						"COUNTRY_CODE",
 						"GENERIC_RESTRICTED",
 						"INFRASTRUCTURE",
 						"SPONSORED"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filters results by top-level domain. Specify a comma-separated list of TLDs.",
-				"in": "query",
 				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain. Specify a comma-separated list of TLDs.",
 				"schema": {
 					"description": "Filters results by top-level domain. Specify a comma-separated list of TLDs.",
-					"example": "com,pt",
-					"type": "string"
+					"type": "string",
+					"example": "com,pt"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"tlds": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"manager": {
 														"description": "The organization that manages the TLD.",
-														"example": "VeriSign Global Registry Services",
-														"type": "string"
+														"type": "string",
+														"example": "VeriSign Global Registry Services"
 													},
 													"tld": {
 														"description": "The actual TLD.",
-														"example": "com",
-														"type": "string"
+														"type": "string",
+														"example": "com"
 													},
 													"type": {
 														"description": "The type of TLD.",
-														"example": "GENERIC",
-														"type": "string"
+														"type": "string",
+														"example": "GENERIC"
 													}
 												},
 												"required": [
@@ -110,36 +115,35 @@
 													"manager"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"tlds"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -150,27 +154,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -180,7 +181,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List TLDs",
 		"tags": [
 			"Radar Top-Level Domains"
 		],
@@ -200,110 +200,111 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/tlds/{tld}": {
-		"description": "Retrieves the requested TLD information.",
 		"operationId": "radar-get-tld-details",
+		"summary": "Get TLD details",
+		"description": "Retrieves the requested TLD information.",
 		"parameters": [
 			{
-				"description": "Top-level domain.",
-				"in": "path",
 				"name": "tld",
+				"in": "path",
+				"description": "Top-level domain.",
 				"required": true,
 				"schema": {
 					"description": "Top-level domain.",
+					"type": "string",
 					"example": "com",
 					"maxLength": 63,
 					"minLength": 2,
-					"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$",
-					"type": "string"
+					"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"tld": {
+											"type": "object",
 											"properties": {
 												"manager": {
 													"description": "The organization that manages the TLD.",
-													"example": "VeriSign Global Registry Services",
-													"type": "string"
+													"type": "string",
+													"example": "VeriSign Global Registry Services"
 												},
 												"tld": {
 													"description": "The actual TLD.",
-													"example": "com",
-													"type": "string"
+													"type": "string",
+													"example": "com"
 												},
 												"type": {
 													"description": "The type of TLD.",
-													"example": "GENERIC",
-													"type": "string"
+													"type": "string",
+													"example": "GENERIC"
 												}
 											},
 											"required": [
 												"tld",
 												"type",
 												"manager"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"tld"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -313,7 +314,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get TLD details",
 		"tags": [
 			"Radar Top-Level Domains"
 		],
@@ -333,113 +333,114 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/tlds/performance/summary/{dimension}": {
-		"description": "Returns a summary of TLD authoritative nameserver performance grouped by the specified dimension.",
 		"operationId": "radar-get-tlds-performance-summary",
+		"summary": "Get TLD Performance Summary",
+		"description": "Returns a summary of TLD authoritative nameserver performance grouped by the specified dimension.",
 		"parameters": [
 			{
-				"description": "Dimension to summarize TLD nameserver latency by.",
-				"in": "path",
 				"name": "dimension",
+				"in": "path",
+				"description": "Dimension to summarize TLD nameserver latency by.",
 				"required": true,
 				"schema": {
 					"description": "Dimension to summarize TLD nameserver latency by.",
+					"type": "string",
 					"enum": [
 						"LATENCY",
 						"NAMESERVER_LATENCY",
 						"LOCATION_LATENCY"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"schema": {
 					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "US,CA"
 				}
 			},
 			{
-				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
-				"in": "query",
 				"name": "continent",
+				"in": "query",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"schema": {
 					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
-					"example": "EU,NA",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "EU,NA"
 				}
 			},
 			{
-				"description": "Filters results by top-level domain.",
-				"in": "query",
 				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain.",
 				"schema": {
 					"description": "Filters results by top-level domain.",
-					"example": "com",
+					"type": "array",
 					"items": {
 						"example": "com",
 						"maxLength": 63,
@@ -447,66 +448,73 @@
 						"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "com"
 				}
 			},
 			{
-				"description": "Filters results by nameserver hostname.",
-				"in": "query",
 				"name": "nameserver",
+				"in": "query",
+				"description": "Filters results by nameserver hostname.",
 				"schema": {
 					"description": "Filters results by nameserver hostname.",
+					"type": "string",
 					"example": "a.gtld-servers.net",
 					"maxLength": 253,
 					"minLength": 1,
-					"pattern": "^(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)\\.)+(?:[A-Za-z]{2,63})$",
-					"type": "string"
+					"pattern": "^(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)\\.)+(?:[A-Za-z]{2,63})$"
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-				"in": "query",
 				"name": "limitPerGroup",
+				"in": "query",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 				"schema": {
 					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-					"example": 10,
-					"type": "integer"
+					"type": "integer",
+					"example": 10
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -533,19 +541,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -553,27 +561,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -586,8 +593,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -597,23 +603,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -621,16 +627,16 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -640,20 +646,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -661,8 +667,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -671,50 +676,49 @@
 												"normalization",
 												"lastUpdated",
 												"units"
-											],
-											"type": "object"
+											]
 										},
 										"summary_0": {
+											"type": "object",
+											"example": {
+												"a.gtld-servers.net": "2.0",
+												"b.gtld-servers.net": "3.0"
+											},
 											"additionalProperties": {
 												"description": "A numeric string.",
 												"example": "10",
 												"pattern": "^-?\\d+(\\.\\d+)?$",
 												"type": "string"
-											},
-											"example": {
-												"a.gtld-servers.net": "2.0",
-												"b.gtld-servers.net": "3.0"
-											},
-											"type": "object"
+											}
 										}
 									},
 									"required": [
 										"summary_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -725,27 +729,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -755,7 +756,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get TLD Performance Summary",
 		"tags": [
 			"Radar Top-Level Domains"
 		],
@@ -775,129 +775,130 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/tlds/performance/timeseries_groups/{dimension}": {
-		"description": "Returns a timeseries of TLD authoritative nameserver performance grouped by the specified dimension.",
 		"operationId": "radar-get-tlds-performance-timeseries-groups",
+		"summary": "Get TLD Performance Over Time",
+		"description": "Returns a timeseries of TLD authoritative nameserver performance grouped by the specified dimension.",
 		"parameters": [
 			{
-				"description": "Dimension for the TLD nameserver latency timeseries.",
-				"in": "path",
 				"name": "dimension",
+				"in": "path",
+				"description": "Dimension for the TLD nameserver latency timeseries.",
 				"required": true,
 				"schema": {
 					"description": "Dimension for the TLD nameserver latency timeseries.",
+					"type": "string",
 					"enum": [
 						"LATENCY",
 						"NAMESERVER_LATENCY",
 						"LOCATION_LATENCY"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
-				"in": "query",
 				"name": "aggInterval",
+				"in": "query",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 				"schema": {
 					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
+					"type": "string",
+					"example": "1h",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
-					],
-					"example": "1h",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"schema": {
 					"description": "Filters results by location. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude locations from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "US,CA"
 				}
 			},
 			{
-				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
-				"in": "query",
 				"name": "continent",
+				"in": "query",
+				"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
 				"schema": {
 					"description": "Filters results by continent. Specify a comma-separated list of alpha-2 codes. Prefix with `-` to exclude continents from results. For example, `-EU,NA` excludes results from EU, but includes results from NA.",
-					"example": "EU,NA",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "EU,NA"
 				}
 			},
 			{
-				"description": "Filters results by top-level domain.",
-				"in": "query",
 				"name": "tld",
+				"in": "query",
+				"description": "Filters results by top-level domain.",
 				"schema": {
 					"description": "Filters results by top-level domain.",
-					"example": "com",
+					"type": "array",
 					"items": {
 						"example": "com",
 						"maxLength": 63,
@@ -905,77 +906,84 @@
 						"pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "com"
 				}
 			},
 			{
-				"description": "Filters results by nameserver hostname.",
-				"in": "query",
 				"name": "nameserver",
+				"in": "query",
+				"description": "Filters results by nameserver hostname.",
 				"schema": {
 					"description": "Filters results by nameserver hostname.",
+					"type": "string",
 					"example": "a.gtld-servers.net",
 					"maxLength": 253,
 					"minLength": 1,
-					"pattern": "^(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)\\.)+(?:[A-Za-z]{2,63})$",
-					"type": "string"
+					"pattern": "^(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)\\.)+(?:[A-Za-z]{2,63})$"
 				}
 			},
 			{
-				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-				"in": "query",
 				"name": "limitPerGroup",
+				"in": "query",
+				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
 				"schema": {
 					"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category. Only supported on high-cardinality dimensions; otherwise the request is rejected. Minimum value is 2.",
-					"example": 10,
-					"type": "integer"
+					"type": "integer",
+					"example": 10
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"aggInterval": {
 													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"type": "string",
 													"enum": [
 														"FIFTEEN_MINUTES",
 														"ONE_HOUR",
 														"ONE_DAY",
 														"ONE_WEEK",
 														"ONE_MONTH"
-													],
-													"type": "string"
+													]
 												},
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -1002,19 +1010,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -1022,27 +1030,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -1055,8 +1062,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -1066,23 +1072,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -1090,16 +1096,16 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -1109,20 +1115,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -1130,8 +1136,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -1141,20 +1146,10 @@
 												"lastUpdated",
 												"units",
 												"aggInterval"
-											],
-											"type": "object"
+											]
 										},
 										"serie_0": {
-											"additionalProperties": {
-												"items": {
-													"description": "A numeric string.",
-													"example": "10",
-													"nullable": true,
-													"pattern": "^-?\\d+(\\.\\d+)?$",
-													"type": "string"
-												},
-												"type": "array"
-											},
+											"type": "object",
 											"example": {
 												"p25": [
 													"1.0"
@@ -1169,48 +1164,57 @@
 													"2025-01-01T00:00:00Z"
 												]
 											},
+											"additionalProperties": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"nullable": true,
+													"pattern": "^-?\\d+(\\.\\d+)?$",
+													"type": "string"
+												},
+												"type": "array"
+											},
 											"properties": {
 												"timestamps": {
+													"type": "array",
 													"items": {
 														"format": "date-time",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"timestamps"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"serie_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1221,27 +1225,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -1251,7 +1252,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get TLD Performance Over Time",
 		"tags": [
 			"Radar Top-Level Domains"
 		],

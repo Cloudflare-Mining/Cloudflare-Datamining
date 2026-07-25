@@ -1,39 +1,44 @@
 {
 	"DELETE /zones/{zone_id}/settings/origin_tls_compliance_modes": {
-		"description": "Delete the Origin TLS Compliance Modes setting for the zone, removing any configured compliance constraint. After deletion, Cloudflare's default behavior applies (no compliance filtering of the key-exchange algorithm list sent to the origin).",
 		"operationId": "zone-cache-settings-delete-origin-tls-compliance-modes-setting",
+		"summary": "Delete Origin TLS Compliance Modes setting",
+		"description": "Delete the Origin TLS Compliance Modes setting for the zone, removing any configured compliance constraint. After deletion, Cloudflare's default behavior applies (no compliance filtering of the key-exchange algorithm list sent to the origin).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Origin TLS Compliance Modes setting response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -46,15 +51,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -67,27 +72,27 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable.",
@@ -101,28 +106,29 @@
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified.",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"id",
 														"editable"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
@@ -131,98 +137,69 @@
 														},
 														"modified_on": {
 															"description": "Last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"nullable": true,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"id"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"id": {
 															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "origin_tls_compliance_modes",
 															"enum": [
 																"origin_tls_compliance_modes"
 															],
-															"example": "origin_tls_compliance_modes",
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"type": "object"
 												}
 											],
-											"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
-											"title": "Origin TLS Compliance Modes",
-											"type": "object"
+											"title": "Origin TLS Compliance Modes"
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Origin TLS Compliance Modes setting response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Origin TLS Compliance Modes setting response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"items": {
-										"type": "object"
-									},
-									"minLength": 1,
-									"type": "array"
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -235,29 +212,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": [],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"type": "array"
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -265,12 +268,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Origin TLS Compliance Modes setting response failure."
+				}
 			}
 		},
 		"security": [
@@ -282,7 +283,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Origin TLS Compliance Modes setting",
 		"tags": [
 			"Origin TLS"
 		],
@@ -294,22 +294,24 @@
 		}
 	},
 	"GET /zones/{zone_id}/settings/auto_origin_tls_kex": {
-		"description": "When enabled, Cloudflare automatically selects the preferred TLS key-exchange algorithm to use when establishing the TLS connection to the zone's origin, picking from the algorithms permitted by the zone's `origin_tls_compliance_modes` setting. When disabled, the default key-exchange ordering is used.",
 		"operationId": "ssl-detector-auto-origin-tls-kex-get-enrollment",
+		"summary": "Get Auto-Origin TLS KEX enrollment status for the given zone",
+		"description": "When enabled, Cloudflare automatically selects the preferred TLS key-exchange algorithm to use when establishing the TLS connection to the zone's origin, picking from the algorithms permitted by the zone's `origin_tls_compliance_modes` setting. When disabled, the default key-exchange ordering is used.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Auto-Origin TLS KEX enrollment status response.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -339,14 +341,15 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -359,15 +362,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -380,45 +383,45 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"enabled": {
+											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"allOf": [
 												{
 													"description": "Controls enablement of Auto-Origin TLS KEX selection for the zone.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
 											],
-											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "auto_origin_tls_kex",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										}
 									},
 									"required": [
 										"id",
 										"enabled",
 										"modified_on"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -426,14 +429,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Auto-Origin TLS KEX enrollment status response."
+				}
 			},
 			"4XX": {
+				"description": "Get Auto-Origin TLS KEX enrollment status failure.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -456,16 +458,17 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -478,18 +481,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
 									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -502,45 +505,45 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"enabled": {
+											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"allOf": [
 												{
 													"description": "Controls enablement of Auto-Origin TLS KEX selection for the zone.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
 											],
-											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "auto_origin_tls_kex",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										}
 									},
 									"required": [
 										"id",
 										"enabled",
 										"modified_on"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -548,12 +551,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Auto-Origin TLS KEX enrollment status failure."
+				}
 			}
 		},
 		"security": [
@@ -565,7 +566,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Auto-Origin TLS KEX enrollment status for the given zone",
 		"tags": [
 			"Origin TLS"
 		],
@@ -577,40 +577,45 @@
 		}
 	},
 	"GET /zones/{zone_id}/settings/origin_tls_compliance_modes": {
-		"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists. An empty list (or no rule configured) means no compliance constraint is applied.",
 		"operationId": "zone-cache-settings-get-origin-tls-compliance-modes-setting",
+		"summary": "Get Origin TLS Compliance Modes setting",
+		"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists. An empty list (or no rule configured) means no compliance constraint is applied.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Origin TLS Compliance Modes setting response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -623,15 +628,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -644,27 +649,27 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable.",
@@ -678,8 +683,8 @@
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified.",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
 															"x-auditable": true
 														},
 														"value": {
@@ -692,22 +697,25 @@
 														"id",
 														"value",
 														"editable"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
@@ -716,53 +724,50 @@
 																},
 																"modified_on": {
 																	"description": "Last time this setting was modified.",
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"id"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"id": {
 																	"description": "ID of the zone setting.",
+																	"type": "string",
+																	"example": "origin_tls_compliance_modes",
 																	"enum": [
 																		"origin_tls_compliance_modes"
 																	],
-																	"example": "origin_tls_compliance_modes",
-																	"type": "string",
 																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														}
 													],
-													"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
-													"title": "Origin TLS Compliance Modes",
-													"type": "object"
+													"title": "Origin TLS Compliance Modes"
 												},
 												{
 													"properties": {
 														"value": {
 															"description": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
-															"example": [
-																"fips",
-																"pqh"
-															],
+															"type": "array",
 															"items": {
 																"maxLength": 64,
 																"type": "string",
 																"x-auditable": true
 															},
+															"example": [
+																"fips",
+																"pqh"
+															],
 															"maxItems": 20,
-															"type": "array",
 															"uniqueItems": true,
 															"x-auditable": true
 														}
@@ -772,69 +777,41 @@
 													],
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										}
-									},
-									"type": "object"
+									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Origin TLS Compliance Modes setting response."
+				}
 			},
 			"4XX": {
+				"description": "Get Origin TLS Compliance Modes setting response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"items": {
-										"type": "object"
-									},
-									"minLength": 1,
-									"type": "array"
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -847,29 +824,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": [],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"type": "array"
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -877,12 +880,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Origin TLS Compliance Modes setting response failure."
+				}
 			}
 		},
 		"security": [
@@ -894,7 +895,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Origin TLS Compliance Modes setting",
 		"tags": [
 			"Origin TLS"
 		],
@@ -906,43 +906,45 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/settings/auto_origin_tls_kex": {
-		"description": "Enable or disable Auto-Origin TLS KEX selection for the zone by sending `{\"enabled\": true}` or `{\"enabled\": false}`. When enabled, Cloudflare runs a periodic scan of the zone's origins to determine the preferred key-exchange algorithm and writes that preference to the edge so it is sent first in the TLS ClientHello to the origin.",
 		"operationId": "ssl-detector-auto-origin-tls-kex-patch-enrollment",
+		"summary": "Patch Auto-Origin TLS KEX enrollment status for the given zone",
+		"description": "Enable or disable Auto-Origin TLS KEX selection for the zone by sending `{\"enabled\": true}` or `{\"enabled\": false}`. When enabled, Cloudflare runs a periodic scan of the zone's origins to determine the preferred key-exchange algorithm and writes that preference to the edge so it is sent first in the TLS ClientHello to the origin.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Update enablement of Auto-Origin TLS KEX selection.",
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"description": "Controls enablement of Auto-Origin TLS KEX selection for the zone.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							}
 						},
 						"required": [
 							"enabled"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Auto-Origin TLS KEX enrollment status response.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -972,14 +974,15 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -992,15 +995,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1013,45 +1016,45 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"enabled": {
+											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"allOf": [
 												{
 													"description": "Controls enablement of Auto-Origin TLS KEX selection for the zone.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
 											],
-											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "auto_origin_tls_kex",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										}
 									},
 									"required": [
 										"id",
 										"enabled",
 										"modified_on"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -1059,14 +1062,13 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Auto-Origin TLS KEX enrollment status response."
+				}
 			},
 			"4XX": {
+				"description": "Patch Auto-Origin TLS KEX enrollment status failure.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1089,16 +1091,17 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1111,18 +1114,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
 									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1135,45 +1138,45 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"enabled": {
+											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"allOf": [
 												{
 													"description": "Controls enablement of Auto-Origin TLS KEX selection for the zone.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
 											],
-											"description": "Whether Auto-Origin TLS KEX selection is enabled for the zone.",
 											"readOnly": true
 										},
 										"id": {
+											"type": "string",
 											"example": "auto_origin_tls_kex",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_on": {
 											"description": "Last time this setting was modified.",
-											"example": "2014-01-01T05:20:00.12345Z",
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"readOnly": true
 										}
 									},
 									"required": [
 										"id",
 										"enabled",
 										"modified_on"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1181,12 +1184,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Auto-Origin TLS KEX enrollment status failure."
+				}
 			}
 		},
 		"security": [
@@ -1198,7 +1199,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Patch Auto-Origin TLS KEX enrollment status for the given zone",
 		"tags": [
 			"Origin TLS"
 		],
@@ -1210,71 +1210,76 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/settings/origin_tls_compliance_modes": {
-		"description": "Update the set of TLS compliance modes for the zone. PATCH performs a full replace of the modes list, not a merge — the request body is treated as the complete new list, and any modes not present in it are removed. (To remove a single mode from an existing configuration, send the updated list without it.) The request body must be of the form `{\"value\": [\"fips\", \"pqh\"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response.",
 		"operationId": "zone-cache-settings-change-origin-tls-compliance-modes-setting",
+		"summary": "Change Origin TLS Compliance Modes setting",
+		"description": "Update the set of TLS compliance modes for the zone. PATCH performs a full replace of the modes list, not a merge — the request body is treated as the complete new list, and any modes not present in it are removed. (To remove a single mode from an existing configuration, send the updated list without it.) The request body must be of the form `{\"value\": [\"fips\", \"pqh\"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"value": {
 								"description": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
-								"example": [
-									"fips",
-									"pqh"
-								],
+								"type": "array",
 								"items": {
 									"maxLength": 64,
 									"type": "string",
 									"x-auditable": true
 								},
+								"example": [
+									"fips",
+									"pqh"
+								],
 								"maxItems": 20,
-								"type": "array",
 								"uniqueItems": true,
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"value"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Change Origin TLS Compliance Modes setting response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1287,15 +1292,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1308,27 +1313,27 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable.",
@@ -1342,8 +1347,8 @@
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified.",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
 															"x-auditable": true
 														},
 														"value": {
@@ -1356,22 +1361,25 @@
 														"id",
 														"value",
 														"editable"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
@@ -1380,53 +1388,50 @@
 																},
 																"modified_on": {
 																	"description": "Last time this setting was modified.",
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"id"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"id": {
 																	"description": "ID of the zone setting.",
+																	"type": "string",
+																	"example": "origin_tls_compliance_modes",
 																	"enum": [
 																		"origin_tls_compliance_modes"
 																	],
-																	"example": "origin_tls_compliance_modes",
-																	"type": "string",
 																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														}
 													],
-													"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
-													"title": "Origin TLS Compliance Modes",
-													"type": "object"
+													"title": "Origin TLS Compliance Modes"
 												},
 												{
 													"properties": {
 														"value": {
 															"description": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
-															"example": [
-																"fips",
-																"pqh"
-															],
+															"type": "array",
 															"items": {
 																"maxLength": 64,
 																"type": "string",
 																"x-auditable": true
 															},
+															"example": [
+																"fips",
+																"pqh"
+															],
 															"maxItems": 20,
-															"type": "array",
 															"uniqueItems": true,
 															"x-auditable": true
 														}
@@ -1436,69 +1441,41 @@
 													],
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										}
-									},
-									"type": "object"
+									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Change Origin TLS Compliance Modes setting response."
+				}
 			},
 			"4XX": {
+				"description": "Change Origin TLS Compliance Modes setting response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"items": {
-										"type": "object"
-									},
-									"minLength": 1,
-									"type": "array"
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1511,29 +1488,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": [],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"type": "array"
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1541,12 +1544,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Change Origin TLS Compliance Modes setting response failure."
+				}
 			}
 		},
 		"security": [
@@ -1558,7 +1559,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Change Origin TLS Compliance Modes setting",
 		"tags": [
 			"Origin TLS"
 		],
@@ -1570,71 +1570,76 @@
 		}
 	},
 	"PUT /zones/{zone_id}/settings/origin_tls_compliance_modes": {
-		"description": "Replace the entire set of TLS compliance modes for the zone with the list provided in the request body. PUT performs a full replace, not a merge — any modes not present in the request body are removed. The request body must be of the form `{\"value\": [\"fips\", \"pqh\"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response.",
 		"operationId": "zone-cache-settings-replace-origin-tls-compliance-modes-setting",
+		"summary": "Replace Origin TLS Compliance Modes setting",
+		"description": "Replace the entire set of TLS compliance modes for the zone with the list provided in the request body. PUT performs a full replace, not a merge — any modes not present in the request body are removed. The request body must be of the form `{\"value\": [\"fips\", \"pqh\"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"value": {
 								"description": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
-								"example": [
-									"fips",
-									"pqh"
-								],
+								"type": "array",
 								"items": {
 									"maxLength": 64,
 									"type": "string",
 									"x-auditable": true
 								},
+								"example": [
+									"fips",
+									"pqh"
+								],
 								"maxItems": 20,
-								"type": "array",
 								"uniqueItems": true,
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"value"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Replace Origin TLS Compliance Modes setting response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1647,15 +1652,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1668,27 +1673,27 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"editable": {
 															"description": "Whether the setting is editable.",
@@ -1702,8 +1707,8 @@
 														},
 														"modified_on": {
 															"description": "The time when the setting was last modified.",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
 															"x-auditable": true
 														},
 														"value": {
@@ -1716,22 +1721,25 @@
 														"id",
 														"value",
 														"editable"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
@@ -1740,53 +1748,50 @@
 																},
 																"modified_on": {
 																	"description": "Last time this setting was modified.",
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"nullable": true,
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"id"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"id": {
 																	"description": "ID of the zone setting.",
+																	"type": "string",
+																	"example": "origin_tls_compliance_modes",
 																	"enum": [
 																		"origin_tls_compliance_modes"
 																	],
-																	"example": "origin_tls_compliance_modes",
-																	"type": "string",
 																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														}
 													],
-													"description": "Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists.",
-													"title": "Origin TLS Compliance Modes",
-													"type": "object"
+													"title": "Origin TLS Compliance Modes"
 												},
 												{
 													"properties": {
 														"value": {
 															"description": "List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint.",
-															"example": [
-																"fips",
-																"pqh"
-															],
+															"type": "array",
 															"items": {
 																"maxLength": 64,
 																"type": "string",
 																"x-auditable": true
 															},
+															"example": [
+																"fips",
+																"pqh"
+															],
 															"maxItems": 20,
-															"type": "array",
 															"uniqueItems": true,
 															"x-auditable": true
 														}
@@ -1796,69 +1801,41 @@
 													],
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										}
-									},
-									"type": "object"
+									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Replace Origin TLS Compliance Modes setting response."
+				}
 			},
 			"4XX": {
+				"description": "Replace Origin TLS Compliance Modes setting response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"items": {
-										"type": "object"
-									},
-									"minLength": 1,
-									"type": "array"
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1871,29 +1848,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": [],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"type": "array"
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1901,12 +1904,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Replace Origin TLS Compliance Modes setting response failure."
+				}
 			}
 		},
 		"security": [
@@ -1918,7 +1919,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Replace Origin TLS Compliance Modes setting",
 		"tags": [
 			"Origin TLS"
 		],

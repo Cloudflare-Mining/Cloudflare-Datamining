@@ -1,7 +1,8 @@
 {
 	"GET /zones/{zone_id}/settings/csam_scanner_third_party": {
-		"description": "Retrieve the current CSAM Scanner configuration for a zone.\n\nThe notification email is masked by default in responses.\n",
 		"operationId": "csam-scanner-get-setting",
+		"summary": "Get CSAM Scanner setting",
+		"description": "Retrieve the current CSAM Scanner configuration for a zone.\n\nThe notification email is masked by default in responses.\n",
 		"parameters": [
 			{
 				"description": "Identifier for the zone.",
@@ -10,146 +11,147 @@
 				"required": true,
 				"schema": {
 					"description": "Identifier for the zone.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "CSAM Scanner setting response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"example": 1000,
-														"type": "integer"
+														"type": "integer",
+														"example": 1000
 													},
 													"message": {
-														"example": "success",
-														"type": "string"
+														"type": "string",
+														"example": "success"
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"example": 1000,
-														"type": "integer"
+														"type": "integer",
+														"example": 1000
 													},
 													"message": {
-														"example": "success",
-														"type": "string"
+														"type": "string",
+														"example": "success"
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "CSAM Scanner configuration for a zone.",
+											"type": "object",
 											"properties": {
 												"editable": {
 													"description": "Whether the feature state can be changed. When false, the zone\nor account may be locked by Trust & Safety.\n",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
 													"description": "The feature identifier.",
+													"type": "string",
+													"example": "csam_scanner",
 													"enum": [
 														"csam_scanner"
-													],
-													"example": "csam_scanner",
-													"type": "string"
+													]
 												},
 												"modified_on": {
 													"description": "When the setting was last modified. Currently always null as the\nserver does not populate this field.\n",
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"value": {
 													"description": "The CSAM Scanner feature configuration values. Contains the\nnotification email and scanning enablement settings.\n",
+													"type": "object",
 													"properties": {
 														"email": {
 															"description": "Notification email address for CSAM scan results. Masked in\nresponses unless explicitly unmasked via admin endpoint.\n",
+															"type": "string",
 															"example": "**********",
-															"maxLength": 254,
-															"type": "string"
+															"maxLength": 254
 														},
 														"email_state": {
 															"description": "Current verification state of the notification email.\n",
+															"type": "string",
+															"example": "valid",
 															"enum": [
 																"valid",
 																"pending",
 																"unverified"
-															],
-															"example": "valid",
-															"type": "string"
+															]
 														},
 														"enabled": {
 															"description": "Whether CSAM scanning is enabled for this zone.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"sources": {
-															"additionalProperties": {
-																"type": "boolean"
-															},
 															"description": "Map of scanning sources and their enabled state.",
+															"type": "object",
 															"example": {
 																"source1": true
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "boolean"
+															}
 														},
 														"zone_plan": {
 															"description": "The zone's plan level.",
+															"type": "string",
 															"example": "ent",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -157,368 +159,367 @@
 							]
 						}
 					}
-				},
-				"description": "CSAM Scanner setting response"
+				}
 			},
 			"400": {
+				"description": "Bad request - malformed zone ID in URL",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request - malformed zone ID in URL"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"403": {
+				"description": "Forbidden",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden"
+				}
 			},
 			"404": {
+				"description": "Zone not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Zone not found"
+				}
 			},
 			"500": {
+				"description": "Internal server error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error"
+				}
 			}
 		},
 		"security": [
@@ -530,7 +531,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get CSAM Scanner setting",
 		"tags": [
 			"CSAM Scanner Settings"
 		],
@@ -539,8 +539,9 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/settings/csam_scanner_third_party": {
-		"description": "Update the CSAM Scanner configuration for a zone. Allows enabling or\ndisabling CSAM scanning, updating the notification email, and\nconfiguring scanning sources.\n\nWhen a new email is provided, email verification is triggered\nautomatically. The `enabled` field is a toggle; the server may\nadjust it based on whether the notification email is verified.\n\nReturns 403 if the zone or account is locked by Trust & Safety.\n",
 		"operationId": "csam-scanner-update-setting",
+		"summary": "Update CSAM Scanner setting",
+		"description": "Update the CSAM Scanner configuration for a zone. Allows enabling or\ndisabling CSAM scanning, updating the notification email, and\nconfiguring scanning sources.\n\nWhen a new email is provided, email verification is triggered\nautomatically. The `enabled` field is a toggle; the server may\nadjust it based on whether the notification email is verified.\n\nReturns 403 if the zone or account is locked by Trust & Safety.\n",
 		"parameters": [
 			{
 				"description": "Identifier for the zone.",
@@ -549,199 +550,200 @@
 				"required": true,
 				"schema": {
 					"description": "Identifier for the zone.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"minLength": 1,
-					"type": "string"
+					"minLength": 1
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request body for updating CSAM Scanner configuration.\n",
+						"type": "object",
 						"properties": {
 							"id": {
 								"description": "The feature identifier.",
+								"type": "string",
+								"example": "csam_scanner",
 								"enum": [
 									"csam_scanner"
-								],
-								"example": "csam_scanner",
-								"type": "string"
+								]
 							},
 							"value": {
 								"description": "Writable CSAM Scanner feature configuration values.\n",
+								"type": "object",
 								"properties": {
 									"email": {
 										"description": "Notification email address for CSAM scan results. When changed,\nemail verification is triggered automatically.\n",
+										"type": "string",
 										"example": "user@example.com",
-										"maxLength": 254,
-										"type": "string"
+										"maxLength": 254
 									},
 									"enabled": {
 										"description": "Whether CSAM scanning is enabled for this zone.",
-										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"example": true
 									},
 									"resend_email": {
 										"description": "Set to true to trigger re-sending the email verification.\nWrite-only; never appears in responses (omitted when false).\n",
-										"example": true,
-										"type": "boolean"
+										"type": "boolean",
+										"example": true
 									},
 									"sources": {
-										"additionalProperties": {
-											"type": "boolean"
-										},
 										"description": "Map of scanning sources and their enabled state.",
+										"type": "object",
 										"example": {
 											"source1": true
 										},
-										"type": "object"
+										"additionalProperties": {
+											"type": "boolean"
+										}
 									}
-								},
-								"type": "object"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "CSAM Scanner setting updated",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"example": 1000,
-														"type": "integer"
+														"type": "integer",
+														"example": 1000
 													},
 													"message": {
-														"example": "success",
-														"type": "string"
+														"type": "string",
+														"example": "success"
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
-														"example": 1000,
-														"type": "integer"
+														"type": "integer",
+														"example": 1000
 													},
 													"message": {
-														"example": "success",
-														"type": "string"
+														"type": "string",
+														"example": "success"
 													}
 												},
 												"required": [
 													"code",
 													"message"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "CSAM Scanner configuration for a zone.",
+											"type": "object",
 											"properties": {
 												"editable": {
 													"description": "Whether the feature state can be changed. When false, the zone\nor account may be locked by Trust & Safety.\n",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
 													"description": "The feature identifier.",
+													"type": "string",
+													"example": "csam_scanner",
 													"enum": [
 														"csam_scanner"
-													],
-													"example": "csam_scanner",
-													"type": "string"
+													]
 												},
 												"modified_on": {
 													"description": "When the setting was last modified. Currently always null as the\nserver does not populate this field.\n",
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"value": {
 													"description": "The CSAM Scanner feature configuration values. Contains the\nnotification email and scanning enablement settings.\n",
+													"type": "object",
 													"properties": {
 														"email": {
 															"description": "Notification email address for CSAM scan results. Masked in\nresponses unless explicitly unmasked via admin endpoint.\n",
+															"type": "string",
 															"example": "**********",
-															"maxLength": 254,
-															"type": "string"
+															"maxLength": 254
 														},
 														"email_state": {
 															"description": "Current verification state of the notification email.\n",
+															"type": "string",
+															"example": "valid",
 															"enum": [
 																"valid",
 																"pending",
 																"unverified"
-															],
-															"example": "valid",
-															"type": "string"
+															]
 														},
 														"enabled": {
 															"description": "Whether CSAM scanning is enabled for this zone.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"sources": {
-															"additionalProperties": {
-																"type": "boolean"
-															},
 															"description": "Map of scanning sources and their enabled state.",
+															"type": "object",
 															"example": {
 																"source1": true
 															},
-															"type": "object"
+															"additionalProperties": {
+																"type": "boolean"
+															}
 														},
 														"zone_plan": {
 															"description": "The zone's plan level.",
+															"type": "string",
 															"example": "ent",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -749,368 +751,367 @@
 							]
 						}
 					}
-				},
-				"description": "CSAM Scanner setting updated"
+				}
 			},
 			"400": {
+				"description": "Bad request - validation failure or malformed request body",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request - validation failure or malformed request body"
+				}
 			},
 			"401": {
+				"description": "Unauthorized",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized"
+				}
 			},
 			"403": {
+				"description": "Forbidden - zone or account is locked",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden - zone or account is locked"
+				}
 			},
 			"404": {
+				"description": "Zone not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Zone not found"
+				}
 			},
 			"500": {
+				"description": "Internal server error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 1000
+											},
+											"message": {
+												"type": "string",
+												"example": "success"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
-									],
-									"items": {
-										"properties": {
-											"code": {
-												"example": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"example": "success",
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "success",
-												"type": "string"
+												"type": "string",
+												"example": "success"
 											}
 										},
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error"
+				}
 			}
 		},
 		"security": [
@@ -1122,7 +1123,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update CSAM Scanner setting",
 		"tags": [
 			"CSAM Scanner Settings"
 		],

@@ -1,7 +1,8 @@
 {
 	"GET /accounts/{account_id}/builds/account/limits": {
-		"description": "Retrieve account limits and usage information",
 		"operationId": "getAccountLimits",
+		"summary": "Get account limits",
+		"description": "Retrieve account limits and usage information",
 		"parameters": [
 			{
 				"in": "path",
@@ -9,73 +10,75 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Account limits retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -83,26 +86,25 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"build_minutes_refresh_on": {
 													"description": "When build minutes will refresh (only for non-paid plans)",
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"has_reached_build_minutes_limit": {
 													"description": "Whether build minutes limit has been reached (only for non-paid plans)",
-													"nullable": true,
-													"type": "boolean"
+													"type": "boolean",
+													"nullable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -110,8 +112,7 @@
 							]
 						}
 					}
-				},
-				"description": "Account limits retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -123,7 +124,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get account limits",
 		"tags": [
 			"Account"
 		],

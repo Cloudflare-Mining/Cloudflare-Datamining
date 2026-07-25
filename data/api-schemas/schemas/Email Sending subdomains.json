@@ -1,49 +1,53 @@
 {
 	"DELETE /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
-		"description": "Disables sending on a subdomain and removes its DNS records. If routing is still active on the subdomain, only sending is disabled.",
 		"operationId": "email-sending-subdomains-delete-sending-subdomain",
+		"summary": "Delete a sending subdomain",
+		"description": "Disables sending on a subdomain and removes its DNS records. If routing is still active on the subdomain, only sending is disabled.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "subdomain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Sending subdomain identifier.",
+					"type": "string",
 					"example": "aabbccdd11223344aabbccdd11223344",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete a sending subdomain response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -52,12 +56,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -67,15 +71,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -84,12 +88,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -99,30 +103,27 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete a sending subdomain response"
+				}
 			}
 		},
 		"security": [
@@ -131,7 +132,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a sending subdomain",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -152,39 +152,43 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains": {
-		"description": "Lists all sending-enabled subdomains for the zone.",
 		"operationId": "email-sending-subdomains-list-sending-subdomains",
+		"summary": "List sending subdomains",
+		"description": "Lists all sending-enabled subdomains for the zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List sending subdomains response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -193,12 +197,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -208,15 +212,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -225,12 +229,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -240,118 +244,118 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"allOf": [
 													{
+														"type": "object",
 														"properties": {
 															"created": {
 																"description": "The date and time the destination address has been created.",
-																"example": "2014-01-02T02:20:00Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-02T02:20:00Z",
+																"readOnly": true
 															},
 															"dkim_selector": {
 																"description": "The DKIM selector used for email signing.",
+																"type": "string",
 																"example": "cf-bounce",
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Whether Email Sending is enabled on this subdomain.",
-																"readOnly": true,
-																"type": "boolean"
+																"type": "boolean",
+																"readOnly": true
 															},
 															"modified": {
 																"description": "The date and time the destination address was last modified.",
-																"example": "2014-01-02T02:20:00Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-02T02:20:00Z",
+																"readOnly": true
 															},
 															"name": {
 																"description": "The subdomain domain name.",
-																"example": "sub.example.com",
 																"type": "string",
+																"example": "sub.example.com",
 																"x-auditable": true
 															},
 															"preview_enabled": {
 																"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"return_path_domain": {
 																"description": "The return-path domain used for bounce handling.",
+																"type": "string",
 																"example": "cf-bounce.sub.example.com",
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"tag": {
 																"description": "Sending subdomain identifier.",
+																"type": "string",
 																"example": "aabbccdd11223344aabbccdd11223344",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
 														},
@@ -359,20 +363,17 @@
 															"tag",
 															"name",
 															"enabled"
-														],
-														"type": "object"
+														]
 													}
 												]
-											},
-											"type": "array"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List sending subdomains response"
+				}
 			}
 		},
 		"security": [
@@ -381,7 +382,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List sending subdomains",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -402,52 +402,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
-		"description": "Gets information for a specific sending subdomain.",
 		"operationId": "email-sending-subdomains-get-sending-subdomain",
+		"summary": "Get a sending subdomain",
+		"description": "Gets information for a specific sending subdomain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "subdomain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Sending subdomain identifier.",
+					"type": "string",
 					"example": "aabbccdd11223344aabbccdd11223344",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get a sending subdomain response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -456,12 +460,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -471,15 +475,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -488,12 +492,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -503,82 +507,81 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the destination address has been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"dkim_selector": {
 															"description": "The DKIM selector used for email signing.",
+															"type": "string",
 															"example": "cf-bounce",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
-															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"readOnly": true
 														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "The subdomain domain name.",
-															"example": "sub.example.com",
 															"type": "string",
+															"example": "sub.example.com",
 															"x-auditable": true
 														},
 														"preview_enabled": {
 															"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"return_path_domain": {
 															"description": "The return-path domain used for bounce handling.",
+															"type": "string",
 															"example": "cf-bounce.sub.example.com",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"tag": {
 															"description": "Sending subdomain identifier.",
+															"type": "string",
 															"example": "aabbccdd11223344aabbccdd11223344",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
 													},
@@ -586,8 +589,7 @@
 														"tag",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
 											]
 										}
@@ -596,8 +598,7 @@
 							]
 						}
 					}
-				},
-				"description": "Get a sending subdomain response"
+				}
 			}
 		},
 		"security": [
@@ -606,7 +607,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a sending subdomain",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -627,52 +627,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
-		"description": "Returns the expected DNS records for a sending subdomain.",
 		"operationId": "email-sending-subdomains-get-sending-subdomain-dns",
+		"summary": "Get sending subdomain DNS records",
+		"description": "Returns the expected DNS records for a sending subdomain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "subdomain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Sending subdomain identifier.",
+					"type": "string",
 					"example": "aabbccdd11223344aabbccdd11223344",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get sending subdomain DNS records response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -681,12 +685,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -696,15 +700,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -713,12 +717,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -728,67 +732,67 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "List of records needed to enable an Email Routing zone.",
+												"type": "object",
 												"properties": {
 													"content": {
 														"description": "DNS record content.",
@@ -797,20 +801,23 @@
 													},
 													"name": {
 														"description": "DNS record name (or @ for the zone apex).",
+														"type": "string",
 														"example": "example.com",
 														"maxLength": 255,
-														"type": "string",
 														"x-auditable": true
 													},
 													"priority": {
 														"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+														"type": "number",
 														"example": 12,
 														"maximum": 65535,
 														"minimum": 0,
-														"type": "number",
 														"x-auditable": true
 													},
 													"ttl": {
+														"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+														"type": "number",
+														"example": 1,
 														"anyOf": [
 															{
 																"example": 3600,
@@ -825,13 +832,12 @@
 																"type": "number"
 															}
 														],
-														"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-														"example": 1,
-														"type": "number",
 														"x-auditable": true
 													},
 													"type": {
 														"description": "DNS record type.",
+														"type": "string",
+														"example": "NS",
 														"enum": [
 															"A",
 															"AAAA",
@@ -852,23 +858,18 @@
 															"TLSA",
 															"URI"
 														],
-														"example": "NS",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get sending subdomain DNS records response"
+				}
 			}
 		},
 		"security": [
@@ -877,7 +878,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get sending subdomain DNS records",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -898,52 +898,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns/status": {
-		"description": "Returns the desired DNS records for a sending subdomain along with a live diff against actual DNS state. Use this to detect missing, unlocked, foreign, or multi-record conflicts before deciding whether to call the fix endpoint.",
 		"operationId": "email-sending-subdomains-get-sending-subdomain-dns-status",
+		"summary": "Get sending subdomain DNS status",
+		"description": "Returns the desired DNS records for a sending subdomain along with a live diff against actual DNS state. Use this to detect missing, unlocked, foreign, or multi-record conflicts before deciding whether to call the fix endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "subdomain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Sending subdomain identifier.",
+					"type": "string",
 					"example": "aabbccdd11223344aabbccdd11223344",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get sending subdomain DNS status response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -952,12 +956,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -967,15 +971,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -984,12 +988,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -999,38 +1003,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"errors": {
 													"description": "DNS issues detected against the current zone state.",
+													"type": "array",
 													"items": {
 														"description": "A DNS record status detected during preview, status, or fix.",
+														"type": "object",
 														"properties": {
 															"code": {
 																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct. `domainkey.delegated` indicates that\n`_domainkey.<subdomain>` has NS records in the Cloudflare zone,\ncreating a zone cut that shadows the DKIM TXT record we publish;\nthe customer must remove the NS delegation for DKIM to verify.\n",
+																"type": "string",
+																"example": "dkim.conflict",
 																"enum": [
 																	"mx.missing",
 																	"mx.foreign",
@@ -1042,12 +1049,11 @@
 																	"dmarc.missing",
 																	"dmarc.multiple",
 																	"domainkey.delegated"
-																],
-																"example": "dkim.conflict",
-																"type": "string"
+																]
 															},
 															"existing": {
 																"description": "List of records needed to enable an Email Routing zone.",
+																"type": "object",
 																"properties": {
 																	"content": {
 																		"description": "DNS record content.",
@@ -1056,20 +1062,23 @@
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex).",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"type": "number",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ttl": {
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"type": "number",
+																		"example": 1,
 																		"anyOf": [
 																			{
 																				"example": 3600,
@@ -1084,13 +1093,12 @@
 																				"type": "number"
 																			}
 																		],
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"example": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "NS",
 																		"enum": [
 																			"A",
 																			"AAAA",
@@ -1111,16 +1119,14 @@
 																			"TLSA",
 																			"URI"
 																		],
-																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"missing": {
 																"description": "List of records needed to enable an Email Routing zone.",
+																"type": "object",
 																"properties": {
 																	"content": {
 																		"description": "DNS record content.",
@@ -1129,20 +1135,23 @@
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex).",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"type": "number",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ttl": {
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"type": "number",
+																		"example": 1,
 																		"anyOf": [
 																			{
 																				"example": 3600,
@@ -1157,13 +1166,12 @@
 																				"type": "number"
 																			}
 																		],
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"example": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "NS",
 																		"enum": [
 																			"A",
 																			"AAAA",
@@ -1184,17 +1192,16 @@
 																			"TLSA",
 																			"URI"
 																		],
-																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"multiple": {
+																"type": "array",
 																"items": {
 																	"description": "List of records needed to enable an Email Routing zone.",
+																	"type": "object",
 																	"properties": {
 																		"content": {
 																			"description": "DNS record content.",
@@ -1203,20 +1210,23 @@
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex).",
+																			"type": "string",
 																			"example": "example.com",
 																			"maxLength": 255,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"priority": {
 																			"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																			"type": "number",
 																			"example": 12,
 																			"maximum": 65535,
 																			"minimum": 0,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"ttl": {
+																			"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																			"type": "number",
+																			"example": 1,
 																			"anyOf": [
 																				{
 																					"example": 3600,
@@ -1231,13 +1241,12 @@
 																					"type": "number"
 																				}
 																			],
-																			"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																			"example": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"type": {
 																			"description": "DNS record type.",
+																			"type": "string",
+																			"example": "NS",
 																			"enum": [
 																				"A",
 																				"AAAA",
@@ -1258,28 +1267,24 @@
 																				"TLSA",
 																				"URI"
 																			],
-																			"example": "NS",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															}
 														},
 														"required": [
 															"code"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"records": {
 													"description": "Desired DNS records for the subdomain.",
+													"type": "array",
 													"items": {
 														"description": "List of records needed to enable an Email Routing zone.",
+														"type": "object",
 														"properties": {
 															"content": {
 																"description": "DNS record content.",
@@ -1288,20 +1293,23 @@
 															},
 															"name": {
 																"description": "DNS record name (or @ for the zone apex).",
+																"type": "string",
 																"example": "example.com",
 																"maxLength": 255,
-																"type": "string",
 																"x-auditable": true
 															},
 															"priority": {
 																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"type": "number",
 																"example": 12,
 																"maximum": 65535,
 																"minimum": 0,
-																"type": "number",
 																"x-auditable": true
 															},
 															"ttl": {
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"type": "number",
+																"example": 1,
 																"anyOf": [
 																	{
 																		"example": 3600,
@@ -1316,13 +1324,12 @@
 																		"type": "number"
 																	}
 																],
-																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																"example": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "DNS record type.",
+																"type": "string",
+																"example": "NS",
 																"enum": [
 																	"A",
 																	"AAAA",
@@ -1343,36 +1350,30 @@
 																	"TLSA",
 																	"URI"
 																],
-																"example": "NS",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"status": {
 													"description": "Aggregated DNS state for the subdomain. `unlocked` means desired records exist with correct content but at least one has had its email_routing/read_only lock cleared.",
+													"type": "string",
 													"enum": [
 														"ready",
 														"unconfigured",
 														"unlocked",
 														"misconfigured"
-													],
-													"type": "string"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get sending subdomain DNS status response"
+				}
 			},
 			"400": {
 				"description": "Error 2028: subdomain_id is not a valid UUID."
@@ -1387,7 +1388,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get sending subdomain DNS status",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -1408,72 +1408,76 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
-		"description": "Updates the activity-log preview preference for a sending subdomain.",
 		"operationId": "email-sending-subdomains-update-sending-subdomain",
+		"summary": "Update a sending subdomain",
+		"description": "Updates the activity-log preview preference for a sending subdomain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "subdomain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Sending subdomain identifier.",
+					"type": "string",
 					"example": "aabbccdd11223344aabbccdd11223344",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"preview_enabled": {
 								"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							}
 						},
 						"required": [
 							"preview_enabled"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a sending subdomain response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1482,12 +1486,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1497,15 +1501,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1514,12 +1518,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1529,82 +1533,81 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the destination address has been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"dkim_selector": {
 															"description": "The DKIM selector used for email signing.",
+															"type": "string",
 															"example": "cf-bounce",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
-															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"readOnly": true
 														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "The subdomain domain name.",
-															"example": "sub.example.com",
 															"type": "string",
+															"example": "sub.example.com",
 															"x-auditable": true
 														},
 														"preview_enabled": {
 															"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"return_path_domain": {
 															"description": "The return-path domain used for bounce handling.",
+															"type": "string",
 															"example": "cf-bounce.sub.example.com",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"tag": {
 															"description": "Sending subdomain identifier.",
+															"type": "string",
 															"example": "aabbccdd11223344aabbccdd11223344",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
 													},
@@ -1612,8 +1615,7 @@
 														"tag",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
 											]
 										}
@@ -1622,8 +1624,7 @@
 							]
 						}
 					}
-				},
-				"description": "Update a sending subdomain response"
+				}
 			}
 		},
 		"security": [
@@ -1632,7 +1633,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a sending subdomain",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -1653,59 +1653,63 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains": {
-		"description": "Creates a new sending subdomain or re-enables sending on an existing subdomain that had it disabled. If zone-level Email Sending has not been enabled yet, the zone flag is automatically set when the entitlement is present.",
 		"operationId": "email-sending-subdomains-create-sending-subdomain",
+		"summary": "Create a sending subdomain",
+		"description": "Creates a new sending subdomain or re-enables sending on an existing subdomain that had it disabled. If zone-level Email Sending has not been enabled yet, the zone flag is automatically set when the entitlement is present.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "The subdomain name. Must be within the zone.",
-								"example": "sub.example.com",
-								"type": "string"
+								"type": "string",
+								"example": "sub.example.com"
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a sending subdomain response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1714,12 +1718,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1729,15 +1733,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1746,12 +1750,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1761,82 +1765,81 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the destination address has been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"dkim_selector": {
 															"description": "The DKIM selector used for email signing.",
+															"type": "string",
 															"example": "cf-bounce",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "Whether Email Sending is enabled on this subdomain.",
-															"readOnly": true,
-															"type": "boolean"
+															"type": "boolean",
+															"readOnly": true
 														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"name": {
 															"description": "The subdomain domain name.",
-															"example": "sub.example.com",
 															"type": "string",
+															"example": "sub.example.com",
 															"x-auditable": true
 														},
 														"preview_enabled": {
 															"description": "Whether sent messages from this subdomain can be previewed in the activity log.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"return_path_domain": {
 															"description": "The return-path domain used for bounce handling.",
+															"type": "string",
 															"example": "cf-bounce.sub.example.com",
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"tag": {
 															"description": "Sending subdomain identifier.",
+															"type": "string",
 															"example": "aabbccdd11223344aabbccdd11223344",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														}
 													},
@@ -1844,8 +1847,7 @@
 														"tag",
 														"name",
 														"enabled"
-													],
-													"type": "object"
+													]
 												}
 											]
 										}
@@ -1854,8 +1856,7 @@
 							]
 						}
 					}
-				},
-				"description": "Create a sending subdomain response"
+				}
 			}
 		},
 		"security": [
@@ -1864,7 +1865,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a sending subdomain",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -1885,52 +1885,56 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
-		"description": "Idempotently re-applies the sending DNS records (creates missing records, re-applies the email_routing lock on records whose lock has been cleared). Refuses with a 409 if foreign MX, multiple SPF, multiple DMARC, or multiple DKIM records exist at the relevant DNS names — those require manual cleanup.",
 		"operationId": "email-sending-subdomains-fix-sending-subdomain-dns",
+		"summary": "Fix sending subdomain DNS records",
+		"description": "Idempotently re-applies the sending DNS records (creates missing records, re-applies the email_routing lock on records whose lock has been cleared). Refuses with a 409 if foreign MX, multiple SPF, multiple DMARC, or multiple DKIM records exist at the relevant DNS names — those require manual cleanup.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "subdomain_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Sending subdomain identifier.",
+					"type": "string",
 					"example": "aabbccdd11223344aabbccdd11223344",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Fix sending subdomain DNS records response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1939,12 +1943,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1954,15 +1958,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1971,12 +1975,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1986,38 +1990,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"errors": {
 													"description": "DNS issues detected against the current zone state.",
+													"type": "array",
 													"items": {
 														"description": "A DNS record status detected during preview, status, or fix.",
+														"type": "object",
 														"properties": {
 															"code": {
 																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct. `domainkey.delegated` indicates that\n`_domainkey.<subdomain>` has NS records in the Cloudflare zone,\ncreating a zone cut that shadows the DKIM TXT record we publish;\nthe customer must remove the NS delegation for DKIM to verify.\n",
+																"type": "string",
+																"example": "dkim.conflict",
 																"enum": [
 																	"mx.missing",
 																	"mx.foreign",
@@ -2029,12 +2036,11 @@
 																	"dmarc.missing",
 																	"dmarc.multiple",
 																	"domainkey.delegated"
-																],
-																"example": "dkim.conflict",
-																"type": "string"
+																]
 															},
 															"existing": {
 																"description": "List of records needed to enable an Email Routing zone.",
+																"type": "object",
 																"properties": {
 																	"content": {
 																		"description": "DNS record content.",
@@ -2043,20 +2049,23 @@
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex).",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"type": "number",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ttl": {
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"type": "number",
+																		"example": 1,
 																		"anyOf": [
 																			{
 																				"example": 3600,
@@ -2071,13 +2080,12 @@
 																				"type": "number"
 																			}
 																		],
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"example": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "NS",
 																		"enum": [
 																			"A",
 																			"AAAA",
@@ -2098,16 +2106,14 @@
 																			"TLSA",
 																			"URI"
 																		],
-																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"missing": {
 																"description": "List of records needed to enable an Email Routing zone.",
+																"type": "object",
 																"properties": {
 																	"content": {
 																		"description": "DNS record content.",
@@ -2116,20 +2122,23 @@
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex).",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"type": "number",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ttl": {
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"type": "number",
+																		"example": 1,
 																		"anyOf": [
 																			{
 																				"example": 3600,
@@ -2144,13 +2153,12 @@
 																				"type": "number"
 																			}
 																		],
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"example": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "NS",
 																		"enum": [
 																			"A",
 																			"AAAA",
@@ -2171,17 +2179,16 @@
 																			"TLSA",
 																			"URI"
 																		],
-																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"multiple": {
+																"type": "array",
 																"items": {
 																	"description": "List of records needed to enable an Email Routing zone.",
+																	"type": "object",
 																	"properties": {
 																		"content": {
 																			"description": "DNS record content.",
@@ -2190,20 +2197,23 @@
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex).",
+																			"type": "string",
 																			"example": "example.com",
 																			"maxLength": 255,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"priority": {
 																			"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																			"type": "number",
 																			"example": 12,
 																			"maximum": 65535,
 																			"minimum": 0,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"ttl": {
+																			"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																			"type": "number",
+																			"example": 1,
 																			"anyOf": [
 																				{
 																					"example": 3600,
@@ -2218,13 +2228,12 @@
 																					"type": "number"
 																				}
 																			],
-																			"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																			"example": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"type": {
 																			"description": "DNS record type.",
+																			"type": "string",
+																			"example": "NS",
 																			"enum": [
 																				"A",
 																				"AAAA",
@@ -2245,28 +2254,24 @@
 																				"TLSA",
 																				"URI"
 																			],
-																			"example": "NS",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															}
 														},
 														"required": [
 															"code"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"records": {
 													"description": "Desired DNS records for the subdomain.",
+													"type": "array",
 													"items": {
 														"description": "List of records needed to enable an Email Routing zone.",
+														"type": "object",
 														"properties": {
 															"content": {
 																"description": "DNS record content.",
@@ -2275,20 +2280,23 @@
 															},
 															"name": {
 																"description": "DNS record name (or @ for the zone apex).",
+																"type": "string",
 																"example": "example.com",
 																"maxLength": 255,
-																"type": "string",
 																"x-auditable": true
 															},
 															"priority": {
 																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"type": "number",
 																"example": 12,
 																"maximum": 65535,
 																"minimum": 0,
-																"type": "number",
 																"x-auditable": true
 															},
 															"ttl": {
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"type": "number",
+																"example": 1,
 																"anyOf": [
 																	{
 																		"example": 3600,
@@ -2303,13 +2311,12 @@
 																		"type": "number"
 																	}
 																],
-																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																"example": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "DNS record type.",
+																"type": "string",
+																"example": "NS",
 																"enum": [
 																	"A",
 																	"AAAA",
@@ -2330,36 +2337,30 @@
 																	"TLSA",
 																	"URI"
 																],
-																"example": "NS",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"status": {
 													"description": "Aggregated DNS state for the subdomain. `unlocked` means desired records exist with correct content but at least one has had its email_routing/read_only lock cleared.",
+													"type": "string",
 													"enum": [
 														"ready",
 														"unconfigured",
 														"unlocked",
 														"misconfigured"
-													],
-													"type": "string"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Fix sending subdomain DNS records response"
+				}
 			},
 			"400": {
 				"description": "Error 2028: subdomain_id is not a valid UUID."
@@ -2380,7 +2381,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Fix sending subdomain DNS records",
 		"tags": [
 			"Email Sending subdomains"
 		],
@@ -2401,59 +2401,63 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/preview": {
-		"description": "Returns the DNS records that would be created for a sending subdomain, flags which records are missing, and reports any conflicts with existing DNS records. This is a read-only dry-run — no records are created or modified. Use before or after creating a subdomain to check DNS status.",
 		"operationId": "email-sending-subdomains-preview-sending-subdomain",
+		"summary": "Preview sending subdomain DNS",
+		"description": "Returns the DNS records that would be created for a sending subdomain, flags which records are missing, and reports any conflicts with existing DNS records. This is a read-only dry-run — no records are created or modified. Use before or after creating a subdomain to check DNS status.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "The subdomain name. Must be within the zone.",
-								"example": "sub.example.com",
-								"type": "string"
+								"type": "string",
+								"example": "sub.example.com"
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Preview sending subdomain DNS response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2462,12 +2466,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2477,15 +2481,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2494,12 +2498,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2509,38 +2513,41 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"errors": {
 													"description": "DNS issues detected — missing records that will be created and conflicts with existing records.",
+													"type": "array",
 													"items": {
 														"description": "A DNS record status detected during preview, status, or fix.",
+														"type": "object",
 														"properties": {
 															"code": {
 																"description": "Error code identifying the type of issue. `dkim.conflict` is\nreported whenever 2+ TXT records exist at the DKIM selector,\neven if one matches the canonical Cloudflare content — multi-record\nDKIM can permerror at recipient verification regardless of which\nentry is correct. `domainkey.delegated` indicates that\n`_domainkey.<subdomain>` has NS records in the Cloudflare zone,\ncreating a zone cut that shadows the DKIM TXT record we publish;\nthe customer must remove the NS delegation for DKIM to verify.\n",
+																"type": "string",
+																"example": "dkim.conflict",
 																"enum": [
 																	"mx.missing",
 																	"mx.foreign",
@@ -2552,12 +2559,11 @@
 																	"dmarc.missing",
 																	"dmarc.multiple",
 																	"domainkey.delegated"
-																],
-																"example": "dkim.conflict",
-																"type": "string"
+																]
 															},
 															"existing": {
 																"description": "List of records needed to enable an Email Routing zone.",
+																"type": "object",
 																"properties": {
 																	"content": {
 																		"description": "DNS record content.",
@@ -2566,20 +2572,23 @@
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex).",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"type": "number",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ttl": {
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"type": "number",
+																		"example": 1,
 																		"anyOf": [
 																			{
 																				"example": 3600,
@@ -2594,13 +2603,12 @@
 																				"type": "number"
 																			}
 																		],
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"example": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "NS",
 																		"enum": [
 																			"A",
 																			"AAAA",
@@ -2621,16 +2629,14 @@
 																			"TLSA",
 																			"URI"
 																		],
-																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"missing": {
 																"description": "List of records needed to enable an Email Routing zone.",
+																"type": "object",
 																"properties": {
 																	"content": {
 																		"description": "DNS record content.",
@@ -2639,20 +2645,23 @@
 																	},
 																	"name": {
 																		"description": "DNS record name (or @ for the zone apex).",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 255,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"priority": {
 																		"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																		"type": "number",
 																		"example": 12,
 																		"maximum": 65535,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ttl": {
+																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																		"type": "number",
+																		"example": 1,
 																		"anyOf": [
 																			{
 																				"example": 3600,
@@ -2667,13 +2676,12 @@
 																				"type": "number"
 																			}
 																		],
-																		"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																		"example": 1,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"type": {
 																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "NS",
 																		"enum": [
 																			"A",
 																			"AAAA",
@@ -2694,17 +2702,16 @@
 																			"TLSA",
 																			"URI"
 																		],
-																		"example": "NS",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"multiple": {
+																"type": "array",
 																"items": {
 																	"description": "List of records needed to enable an Email Routing zone.",
+																	"type": "object",
 																	"properties": {
 																		"content": {
 																			"description": "DNS record content.",
@@ -2713,20 +2720,23 @@
 																		},
 																		"name": {
 																			"description": "DNS record name (or @ for the zone apex).",
+																			"type": "string",
 																			"example": "example.com",
 																			"maxLength": 255,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"priority": {
 																			"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																			"type": "number",
 																			"example": 12,
 																			"maximum": 65535,
 																			"minimum": 0,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"ttl": {
+																			"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																			"type": "number",
+																			"example": 1,
 																			"anyOf": [
 																				{
 																					"example": 3600,
@@ -2741,13 +2751,12 @@
 																					"type": "number"
 																				}
 																			],
-																			"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																			"example": 1,
-																			"type": "number",
 																			"x-auditable": true
 																		},
 																		"type": {
 																			"description": "DNS record type.",
+																			"type": "string",
+																			"example": "NS",
 																			"enum": [
 																				"A",
 																				"AAAA",
@@ -2768,28 +2777,24 @@
 																				"TLSA",
 																				"URI"
 																			],
-																			"example": "NS",
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															}
 														},
 														"required": [
 															"code"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"records": {
 													"description": "DNS records that would be created for the subdomain.",
+													"type": "array",
 													"items": {
 														"description": "List of records needed to enable an Email Routing zone.",
+														"type": "object",
 														"properties": {
 															"content": {
 																"description": "DNS record content.",
@@ -2798,20 +2803,23 @@
 															},
 															"name": {
 																"description": "DNS record name (or @ for the zone apex).",
+																"type": "string",
 																"example": "example.com",
 																"maxLength": 255,
-																"type": "string",
 																"x-auditable": true
 															},
 															"priority": {
 																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"type": "number",
 																"example": 12,
 																"maximum": 65535,
 																"minimum": 0,
-																"type": "number",
 																"x-auditable": true
 															},
 															"ttl": {
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"type": "number",
+																"example": 1,
 																"anyOf": [
 																	{
 																		"example": 3600,
@@ -2826,13 +2834,12 @@
 																		"type": "number"
 																	}
 																],
-																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
-																"example": 1,
-																"type": "number",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "DNS record type.",
+																"type": "string",
+																"example": "NS",
 																"enum": [
 																	"A",
 																	"AAAA",
@@ -2853,26 +2860,20 @@
 																	"TLSA",
 																	"URI"
 																],
-																"example": "NS",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Preview sending subdomain DNS response"
+				}
 			}
 		},
 		"security": [
@@ -2881,7 +2882,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Preview sending subdomain DNS",
 		"tags": [
 			"Email Sending subdomains"
 		],

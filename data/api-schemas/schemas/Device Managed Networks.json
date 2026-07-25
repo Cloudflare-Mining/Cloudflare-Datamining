@@ -1,23 +1,24 @@
 {
 	"DELETE /accounts/{account_id}/devices/networks/{network_id}": {
-		"description": "Deletes a device managed network and fetches a list of the remaining device managed networks for an account.",
 		"operationId": "device-managed-networks-delete-device-managed-network",
+		"summary": "Delete a device managed network",
+		"description": "Deletes a device managed network and fetches a list of the remaining device managed networks for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "network_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -25,28 +26,31 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete a device managed network response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -59,15 +63,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -80,7 +84,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -100,11 +104,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -112,56 +116,57 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"type": "object"
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"config": {
 														"description": "The configuration object containing information for the WARP client to detect the managed network.",
+														"type": "object",
 														"example": {
 															"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 															"tls_sockaddr": "foo.bar:1234"
@@ -169,53 +174,50 @@
 														"oneOf": [
 															{
 																"description": "The Managed Network TLS Config Response.",
+																"type": "object",
 																"properties": {
 																	"sha256": {
 																		"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																		"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																		"type": "string"
+																		"type": "string",
+																		"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																	},
 																	"tls_sockaddr": {
 																		"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																		"example": "foobar:1234",
 																		"type": "string",
+																		"example": "foobar:1234",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"tls_sockaddr"
-																],
-																"type": "object"
+																]
 															}
-														],
-														"type": "object"
+														]
 													},
 													"name": {
 														"description": "The name of the device managed network. This name must be unique.",
-														"example": "managed-network-1",
 														"type": "string",
+														"example": "managed-network-1",
 														"x-auditable": true
 													},
 													"network_id": {
 														"description": "API UUID.",
+														"type": "string",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string",
 														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of device managed network.",
+														"type": "string",
+														"example": "tls",
 														"enum": [
 															"tls"
 														],
-														"example": "tls",
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -223,10 +225,10 @@
 							]
 						}
 					}
-				},
-				"description": "Delete a device managed network response."
+				}
 			},
 			"4XX": {
+				"description": "Delete a device managed network response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -234,16 +236,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -256,15 +260,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -277,7 +281,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -297,11 +301,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -309,56 +313,57 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {
 																"type": "object"
 															},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"config": {
 																"description": "The configuration object containing information for the WARP client to detect the managed network.",
+																"type": "object",
 																"example": {
 																	"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 																	"tls_sockaddr": "foo.bar:1234"
@@ -366,53 +371,50 @@
 																"oneOf": [
 																	{
 																		"description": "The Managed Network TLS Config Response.",
+																		"type": "object",
 																		"properties": {
 																			"sha256": {
 																				"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																				"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																				"type": "string"
+																				"type": "string",
+																				"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																			},
 																			"tls_sockaddr": {
 																				"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																				"example": "foobar:1234",
 																				"type": "string",
+																				"example": "foobar:1234",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"tls_sockaddr"
-																		],
-																		"type": "object"
+																		]
 																	}
-																],
-																"type": "object"
+																]
 															},
 															"name": {
 																"description": "The name of the device managed network. This name must be unique.",
-																"example": "managed-network-1",
 																"type": "string",
+																"example": "managed-network-1",
 																"x-auditable": true
 															},
 															"network_id": {
 																"description": "API UUID.",
+																"type": "string",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of device managed network.",
+																"type": "string",
+																"example": "tls",
 																"enum": [
 																	"tls"
 																],
-																"example": "tls",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -420,48 +422,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -474,25 +451,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -500,14 +503,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete a device managed network response failure."
+				}
 			}
 		},
 		"security": [
@@ -517,7 +518,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a device managed network",
 		"tags": [
 			"Device Managed Networks"
 		],
@@ -530,12 +530,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/networks": {
-		"description": "Fetches a list of managed networks for an account.",
 		"operationId": "device-managed-networks-list-device-managed-networks",
+		"summary": "List your device managed networks",
+		"description": "Fetches a list of managed networks for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -544,21 +545,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List your device managed networks response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -571,15 +575,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -592,7 +596,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -612,11 +616,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -624,56 +628,57 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
 														"type": "object"
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"config": {
 														"description": "The configuration object containing information for the WARP client to detect the managed network.",
+														"type": "object",
 														"example": {
 															"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 															"tls_sockaddr": "foo.bar:1234"
@@ -681,53 +686,50 @@
 														"oneOf": [
 															{
 																"description": "The Managed Network TLS Config Response.",
+																"type": "object",
 																"properties": {
 																	"sha256": {
 																		"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																		"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																		"type": "string"
+																		"type": "string",
+																		"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																	},
 																	"tls_sockaddr": {
 																		"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																		"example": "foobar:1234",
 																		"type": "string",
+																		"example": "foobar:1234",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"tls_sockaddr"
-																],
-																"type": "object"
+																]
 															}
-														],
-														"type": "object"
+														]
 													},
 													"name": {
 														"description": "The name of the device managed network. This name must be unique.",
-														"example": "managed-network-1",
 														"type": "string",
+														"example": "managed-network-1",
 														"x-auditable": true
 													},
 													"network_id": {
 														"description": "API UUID.",
+														"type": "string",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string",
 														"x-auditable": true
 													},
 													"type": {
 														"description": "The type of device managed network.",
+														"type": "string",
+														"example": "tls",
 														"enum": [
 															"tls"
 														],
-														"example": "tls",
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -735,10 +737,10 @@
 							]
 						}
 					}
-				},
-				"description": "List your device managed networks response."
+				}
 			},
 			"4XX": {
+				"description": "List your device managed networks response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -746,16 +748,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -768,15 +772,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -789,7 +793,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -809,11 +813,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -821,56 +825,57 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {
 																"type": "object"
 															},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"config": {
 																"description": "The configuration object containing information for the WARP client to detect the managed network.",
+																"type": "object",
 																"example": {
 																	"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 																	"tls_sockaddr": "foo.bar:1234"
@@ -878,53 +883,50 @@
 																"oneOf": [
 																	{
 																		"description": "The Managed Network TLS Config Response.",
+																		"type": "object",
 																		"properties": {
 																			"sha256": {
 																				"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																				"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																				"type": "string"
+																				"type": "string",
+																				"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																			},
 																			"tls_sockaddr": {
 																				"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																				"example": "foobar:1234",
 																				"type": "string",
+																				"example": "foobar:1234",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"tls_sockaddr"
-																		],
-																		"type": "object"
+																		]
 																	}
-																],
-																"type": "object"
+																]
 															},
 															"name": {
 																"description": "The name of the device managed network. This name must be unique.",
-																"example": "managed-network-1",
 																"type": "string",
+																"example": "managed-network-1",
 																"x-auditable": true
 															},
 															"network_id": {
 																"description": "API UUID.",
+																"type": "string",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "The type of device managed network.",
+																"type": "string",
+																"example": "tls",
 																"enum": [
 																	"tls"
 																],
-																"example": "tls",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -932,48 +934,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -986,25 +963,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1012,14 +1015,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List your device managed networks response failure."
+				}
 			}
 		},
 		"security": [
@@ -1029,7 +1030,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List your device managed networks",
 		"tags": [
 			"Device Managed Networks"
 		],
@@ -1039,24 +1039,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/networks/{network_id}": {
-		"description": "Fetches details for a single managed network.",
 		"operationId": "device-managed-networks-device-managed-network-details",
+		"summary": "Get device managed network details",
+		"description": "Fetches details for a single managed network.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "network_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1065,21 +1066,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get device managed network details response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1092,15 +1096,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1113,7 +1117,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1133,11 +1137,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1145,12 +1149,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -1159,21 +1163,21 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config": {
 													"description": "The configuration object containing information for the WARP client to detect the managed network.",
+													"type": "object",
 													"example": {
 														"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 														"tls_sockaddr": "foo.bar:1234"
@@ -1181,51 +1185,49 @@
 													"oneOf": [
 														{
 															"description": "The Managed Network TLS Config Response.",
+															"type": "object",
 															"properties": {
 																"sha256": {
 																	"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																},
 																"tls_sockaddr": {
 																	"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																	"example": "foobar:1234",
 																	"type": "string",
+																	"example": "foobar:1234",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"tls_sockaddr"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"type": "object"
+													]
 												},
 												"name": {
 													"description": "The name of the device managed network. This name must be unique.",
-													"example": "managed-network-1",
 													"type": "string",
+													"example": "managed-network-1",
 													"x-auditable": true
 												},
 												"network_id": {
 													"description": "API UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device managed network.",
+													"type": "string",
+													"example": "tls",
 													"enum": [
 														"tls"
 													],
-													"example": "tls",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1233,10 +1235,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get device managed network details response."
+				}
 			},
 			"4XX": {
+				"description": "Get device managed network details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1244,16 +1246,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1266,15 +1270,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1287,7 +1291,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1307,11 +1311,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1319,12 +1323,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -1333,21 +1337,21 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"config": {
 															"description": "The configuration object containing information for the WARP client to detect the managed network.",
+															"type": "object",
 															"example": {
 																"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 																"tls_sockaddr": "foo.bar:1234"
@@ -1355,51 +1359,49 @@
 															"oneOf": [
 																{
 																	"description": "The Managed Network TLS Config Response.",
+																	"type": "object",
 																	"properties": {
 																		"sha256": {
 																			"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																		},
 																		"tls_sockaddr": {
 																			"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																			"example": "foobar:1234",
 																			"type": "string",
+																			"example": "foobar:1234",
 																			"x-auditable": true
 																		}
 																	},
 																	"required": [
 																		"tls_sockaddr"
-																	],
-																	"type": "object"
+																	]
 																}
-															],
-															"type": "object"
+															]
 														},
 														"name": {
 															"description": "The name of the device managed network. This name must be unique.",
-															"example": "managed-network-1",
 															"type": "string",
+															"example": "managed-network-1",
 															"x-auditable": true
 														},
 														"network_id": {
 															"description": "API UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device managed network.",
+															"type": "string",
+															"example": "tls",
 															"enum": [
 																"tls"
 															],
-															"example": "tls",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -1407,48 +1409,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1461,25 +1438,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1487,14 +1490,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get device managed network details response failure."
+				}
 			}
 		},
 		"security": [
@@ -1504,7 +1505,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get device managed network details",
 		"tags": [
 			"Device Managed Networks"
 		],
@@ -1514,12 +1514,13 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/networks": {
-		"description": "Creates a new device managed network.",
 		"operationId": "device-managed-networks-create-device-managed-network",
+		"summary": "Create a device managed network",
+		"description": "Creates a new device managed network.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1527,51 +1528,53 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"config": {
 								"description": "The configuration object containing information for the WARP client to detect the managed network.",
+								"type": "object",
 								"example": {
 									"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 									"tls_sockaddr": "foo.bar:1234"
 								},
 								"oneOf": [
 									{
+										"type": "object",
 										"properties": {
 											"sha256": {
 												"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 											},
 											"tls_sockaddr": {
 												"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-												"example": "foobar:1234",
-												"type": "string"
+												"type": "string",
+												"example": "foobar:1234"
 											}
 										},
 										"required": [
 											"tls_sockaddr"
-										],
-										"type": "object"
+										]
 									}
-								],
-								"type": "object"
+								]
 							},
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",
-								"example": "managed-network-1",
 								"type": "string",
+								"example": "managed-network-1",
 								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device managed network.",
+								"type": "string",
+								"example": "tls",
 								"enum": [
 									"tls"
 								],
-								"example": "tls",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1579,30 +1582,31 @@
 							"name",
 							"type",
 							"config"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a device managed networks response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1615,15 +1619,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1636,7 +1640,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1656,11 +1660,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1668,12 +1672,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -1682,21 +1686,21 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config": {
 													"description": "The configuration object containing information for the WARP client to detect the managed network.",
+													"type": "object",
 													"example": {
 														"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 														"tls_sockaddr": "foo.bar:1234"
@@ -1704,51 +1708,49 @@
 													"oneOf": [
 														{
 															"description": "The Managed Network TLS Config Response.",
+															"type": "object",
 															"properties": {
 																"sha256": {
 																	"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																},
 																"tls_sockaddr": {
 																	"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																	"example": "foobar:1234",
 																	"type": "string",
+																	"example": "foobar:1234",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"tls_sockaddr"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"type": "object"
+													]
 												},
 												"name": {
 													"description": "The name of the device managed network. This name must be unique.",
-													"example": "managed-network-1",
 													"type": "string",
+													"example": "managed-network-1",
 													"x-auditable": true
 												},
 												"network_id": {
 													"description": "API UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device managed network.",
+													"type": "string",
+													"example": "tls",
 													"enum": [
 														"tls"
 													],
-													"example": "tls",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1756,10 +1758,10 @@
 							]
 						}
 					}
-				},
-				"description": "Create a device managed networks response."
+				}
 			},
 			"4XX": {
+				"description": "Create a device managed networks response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1767,16 +1769,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1789,15 +1793,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1810,7 +1814,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1830,11 +1834,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1842,12 +1846,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -1856,21 +1860,21 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"config": {
 															"description": "The configuration object containing information for the WARP client to detect the managed network.",
+															"type": "object",
 															"example": {
 																"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 																"tls_sockaddr": "foo.bar:1234"
@@ -1878,51 +1882,49 @@
 															"oneOf": [
 																{
 																	"description": "The Managed Network TLS Config Response.",
+																	"type": "object",
 																	"properties": {
 																		"sha256": {
 																			"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																		},
 																		"tls_sockaddr": {
 																			"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																			"example": "foobar:1234",
 																			"type": "string",
+																			"example": "foobar:1234",
 																			"x-auditable": true
 																		}
 																	},
 																	"required": [
 																		"tls_sockaddr"
-																	],
-																	"type": "object"
+																	]
 																}
-															],
-															"type": "object"
+															]
 														},
 														"name": {
 															"description": "The name of the device managed network. This name must be unique.",
-															"example": "managed-network-1",
 															"type": "string",
+															"example": "managed-network-1",
 															"x-auditable": true
 														},
 														"network_id": {
 															"description": "API UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device managed network.",
+															"type": "string",
+															"example": "tls",
 															"enum": [
 																"tls"
 															],
-															"example": "tls",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -1930,48 +1932,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1984,25 +1961,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2010,14 +2013,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a device managed networks response failure."
+				}
 			}
 		},
 		"security": [
@@ -2027,7 +2028,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a device managed network",
 		"tags": [
 			"Device Managed Networks"
 		],
@@ -2040,24 +2040,25 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/networks/{network_id}": {
-		"description": "Updates a configured device managed network.",
 		"operationId": "device-managed-networks-update-device-managed-network",
+		"summary": "Update a device managed network",
+		"description": "Updates a configured device managed network.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "network_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -2065,77 +2066,80 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"config": {
 								"description": "The configuration object containing information for the WARP client to detect the managed network.",
+								"type": "object",
 								"example": {
 									"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 									"tls_sockaddr": "foo.bar:1234"
 								},
 								"oneOf": [
 									{
+										"type": "object",
 										"properties": {
 											"sha256": {
 												"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-												"type": "string"
+												"type": "string",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 											},
 											"tls_sockaddr": {
 												"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-												"example": "foobar:1234",
-												"type": "string"
+												"type": "string",
+												"example": "foobar:1234"
 											}
 										},
 										"required": [
 											"tls_sockaddr"
-										],
-										"type": "object"
+										]
 									}
-								],
-								"type": "object"
+								]
 							},
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",
-								"example": "managed-network-1",
 								"type": "string",
+								"example": "managed-network-1",
 								"x-auditable": true
 							},
 							"type": {
 								"description": "The type of device managed network.",
+								"type": "string",
+								"example": "tls",
 								"enum": [
 									"tls"
 								],
-								"example": "tls",
-								"type": "string",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a device managed network response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2148,15 +2152,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2169,7 +2173,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2189,11 +2193,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2201,12 +2205,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -2215,21 +2219,21 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config": {
 													"description": "The configuration object containing information for the WARP client to detect the managed network.",
+													"type": "object",
 													"example": {
 														"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 														"tls_sockaddr": "foo.bar:1234"
@@ -2237,51 +2241,49 @@
 													"oneOf": [
 														{
 															"description": "The Managed Network TLS Config Response.",
+															"type": "object",
 															"properties": {
 																"sha256": {
 																	"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																	"type": "string"
+																	"type": "string",
+																	"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																},
 																"tls_sockaddr": {
 																	"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																	"example": "foobar:1234",
 																	"type": "string",
+																	"example": "foobar:1234",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"tls_sockaddr"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"type": "object"
+													]
 												},
 												"name": {
 													"description": "The name of the device managed network. This name must be unique.",
-													"example": "managed-network-1",
 													"type": "string",
+													"example": "managed-network-1",
 													"x-auditable": true
 												},
 												"network_id": {
 													"description": "API UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "The type of device managed network.",
+													"type": "string",
+													"example": "tls",
 													"enum": [
 														"tls"
 													],
-													"example": "tls",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2289,10 +2291,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update a device managed network response."
+				}
 			},
 			"4XX": {
+				"description": "Update a device managed network response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2300,16 +2302,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2322,15 +2326,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2343,7 +2347,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2363,11 +2367,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2375,12 +2379,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -2389,21 +2393,21 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"config": {
 															"description": "The configuration object containing information for the WARP client to detect the managed network.",
+															"type": "object",
 															"example": {
 																"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
 																"tls_sockaddr": "foo.bar:1234"
@@ -2411,51 +2415,49 @@
 															"oneOf": [
 																{
 																	"description": "The Managed Network TLS Config Response.",
+																	"type": "object",
 																	"properties": {
 																		"sha256": {
 																			"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
-																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-																			"type": "string"
+																			"type": "string",
+																			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 																		},
 																		"tls_sockaddr": {
 																			"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
-																			"example": "foobar:1234",
 																			"type": "string",
+																			"example": "foobar:1234",
 																			"x-auditable": true
 																		}
 																	},
 																	"required": [
 																		"tls_sockaddr"
-																	],
-																	"type": "object"
+																	]
 																}
-															],
-															"type": "object"
+															]
 														},
 														"name": {
 															"description": "The name of the device managed network. This name must be unique.",
-															"example": "managed-network-1",
 															"type": "string",
+															"example": "managed-network-1",
 															"x-auditable": true
 														},
 														"network_id": {
 															"description": "API UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "The type of device managed network.",
+															"type": "string",
+															"example": "tls",
 															"enum": [
 																"tls"
 															],
-															"example": "tls",
-															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -2463,48 +2465,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2517,25 +2494,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2543,14 +2546,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a device managed network response failure."
+				}
 			}
 		},
 		"security": [
@@ -2560,7 +2561,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a device managed network",
 		"tags": [
 			"Device Managed Networks"
 		],

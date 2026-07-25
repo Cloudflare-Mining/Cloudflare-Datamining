@@ -1,7 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
-		"description": "Soft deletes a webhook configuration by its unique identifier.\nThe webhook will be marked as deleted and will no longer be available for use.",
 		"operationId": "DeleteWebhook",
+		"summary": "Delete a webhook configuration",
+		"description": "Soft deletes a webhook configuration by its unique identifier.\nThe webhook will be marked as deleted and will no longer be available for use.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -19,48 +20,50 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Webhook successfully deleted",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Common response structure for all API endpoints.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -69,39 +72,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -110,65 +113,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Webhook successfully deleted"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid webhook ID or webhook already deleted"
 			},
 			"409": {
+				"description": "Conflict: webhook is associated with one or more policies and cannot be deleted",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -177,39 +180,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -218,28 +221,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Conflict: webhook is associated with one or more policies and cannot be deleted"
+				}
 			}
 		},
 		"security": [
@@ -247,7 +248,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a webhook configuration",
 		"tags": [
 			"webhooks"
 		],
@@ -260,8 +260,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks": {
-		"description": "Retrieves all webhook configurations for the authenticated account.\nReturns an array of webhook configurations that can be used to send finding notifications.",
 		"operationId": "ListWebhooks",
+		"summary": "List webhook configurations",
+		"description": "Retrieves all webhook configurations for the authenticated account.\nReturns an array of webhook configurations that can be used to send finding notifications.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -276,43 +277,46 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -321,39 +325,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -362,104 +366,105 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "List of webhook configurations.",
+											"type": "array",
 											"items": {
 												"description": "Webhook configuration for sending finding notifications.",
+												"type": "object",
 												"properties": {
 													"authentication_type": {
 														"description": "Type of authentication used for the webhook.",
+														"type": "string",
+														"example": "Bearer Auth",
 														"enum": [
 															"Basic Auth",
 															"None",
 															"Bearer Auth",
 															"Static Headers",
 															"HMAC-Signing"
-														],
-														"example": "Bearer Auth",
-														"type": "string"
+														]
 													},
 													"created_at": {
 														"description": "Timestamp when the webhook configuration was created.",
-														"example": "2024-01-15T10:30:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2024-01-15T10:30:00Z"
 													},
 													"destination_url": {
 														"description": "Target URL for the webhook configuration. Where resulting data will be sent.",
-														"example": "https://example.com/webhook",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://example.com/webhook"
 													},
 													"headers": {
 														"description": "List of header keys configured for this webhook. Values are not included for security reasons.",
+														"type": "array",
 														"items": {
 															"properties": {
 																"key": {
 																	"description": "Header key name (lowercase).",
-																	"example": "authorization",
-																	"type": "string"
+																	"type": "string",
+																	"example": "authorization"
 																},
 																"value": {
 																	"description": "Header value. This field is never returned in API responses for security reasons.",
-																	"example": "my-authorization-value",
 																	"type": "string",
+																	"example": "my-authorization-value",
 																	"writeOnly": true
 																}
 															},
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"id": {
 														"description": "Unique identifier for the specific webhook configuration.",
-														"example": "550e8400-e29b-41d4-a716-446655440000",
+														"type": "string",
 														"format": "uuid",
-														"type": "string"
+														"example": "550e8400-e29b-41d4-a716-446655440000"
 													},
 													"label": {
 														"description": "Account-specified display label for the webhook configuration.",
-														"example": "Send to Gmail",
-														"type": "string"
+														"type": "string",
+														"example": "Send to Gmail"
 													},
 													"status": {
 														"description": "Current status of the webhook configuration. If disabled, data cannot be sent through this configuration.",
+														"type": "string",
+														"example": "enabled",
 														"enum": [
 															"enabled",
 															"disabled"
-														],
-														"example": "enabled",
-														"type": "string"
+														]
 													},
 													"updated_at": {
 														"description": "Timestamp when the webhook configuration was last updated.",
-														"example": "2024-01-20T14:45:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2024-01-20T14:45:00Z"
 													},
 													"version": {
 														"description": "Version number of the configuration.",
-														"example": 1,
+														"type": "integer",
 														"format": "uint32",
-														"type": "integer"
+														"example": 1
 													}
 												},
 												"required": [
@@ -471,57 +476,55 @@
 													"created_at",
 													"updated_at",
 													"version"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"401": {
+				"description": "Unauthorized: Authentication required",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -530,39 +533,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -571,65 +574,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized: Authentication required"
+				}
 			},
 			"403": {
+				"description": "Forbidden: Insufficient permissions",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -638,39 +641,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -679,28 +682,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden: Insufficient permissions"
+				}
 			}
 		},
 		"security": [
@@ -708,7 +709,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List webhook configurations",
 		"tags": [
 			"webhooks"
 		],
@@ -722,8 +722,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
-		"description": "Retrieves a specific webhook configuration by its unique identifier.",
 		"operationId": "GetWebhookConfigByID",
+		"summary": "Get webhook configuration by ID",
+		"description": "Retrieves a specific webhook configuration by its unique identifier.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -741,50 +742,53 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -793,39 +797,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -834,102 +838,102 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Webhook configuration for sending finding notifications.",
+											"type": "object",
 											"properties": {
 												"authentication_type": {
 													"description": "Type of authentication used for the webhook.",
+													"type": "string",
+													"example": "Bearer Auth",
 													"enum": [
 														"Basic Auth",
 														"None",
 														"Bearer Auth",
 														"Static Headers",
 														"HMAC-Signing"
-													],
-													"example": "Bearer Auth",
-													"type": "string"
+													]
 												},
 												"created_at": {
 													"description": "Timestamp when the webhook configuration was created.",
-													"example": "2024-01-15T10:30:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-15T10:30:00Z"
 												},
 												"destination_url": {
 													"description": "Target URL for the webhook configuration. Where resulting data will be sent.",
-													"example": "https://example.com/webhook",
+													"type": "string",
 													"format": "uri",
-													"type": "string"
+													"example": "https://example.com/webhook"
 												},
 												"headers": {
 													"description": "List of header keys configured for this webhook. Values are not included for security reasons.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
 																"description": "Header key name (lowercase).",
-																"example": "authorization",
-																"type": "string"
+																"type": "string",
+																"example": "authorization"
 															},
 															"value": {
 																"description": "Header value. This field is never returned in API responses for security reasons.",
-																"example": "my-authorization-value",
 																"type": "string",
+																"example": "my-authorization-value",
 																"writeOnly": true
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"id": {
 													"description": "Unique identifier for the specific webhook configuration.",
-													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"type": "string",
 													"format": "uuid",
-													"type": "string"
+													"example": "550e8400-e29b-41d4-a716-446655440000"
 												},
 												"label": {
 													"description": "Account-specified display label for the webhook configuration.",
-													"example": "Send to Gmail",
-													"type": "string"
+													"type": "string",
+													"example": "Send to Gmail"
 												},
 												"status": {
 													"description": "Current status of the webhook configuration. If disabled, data cannot be sent through this configuration.",
+													"type": "string",
+													"example": "enabled",
 													"enum": [
 														"enabled",
 														"disabled"
-													],
-													"example": "enabled",
-													"type": "string"
+													]
 												},
 												"updated_at": {
 													"description": "Timestamp when the webhook configuration was last updated.",
-													"example": "2024-01-20T14:45:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-20T14:45:00Z"
 												},
 												"version": {
 													"description": "Version number of the configuration.",
-													"example": 1,
+													"type": "integer",
 													"format": "uint32",
-													"type": "integer"
+													"example": 1
 												}
 											},
 											"required": [
@@ -941,55 +945,54 @@
 												"created_at",
 												"updated_at",
 												"version"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
+				"description": "Bad Request: Invalid webhook ID",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -998,39 +1001,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1039,65 +1042,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request: Invalid webhook ID"
+				}
 			},
 			"401": {
+				"description": "Unauthorized: Authentication required",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1106,39 +1109,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1147,65 +1150,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized: Authentication required"
+				}
 			},
 			"403": {
+				"description": "Forbidden: Insufficient permissions",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1214,39 +1217,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1255,65 +1258,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden: Insufficient permissions"
+				}
 			},
 			"404": {
+				"description": "Not Found: Webhook not found",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1322,39 +1325,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1363,28 +1366,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found: Webhook not found"
+				}
 			}
 		},
 		"security": [
@@ -1392,7 +1393,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get webhook configuration by ID",
 		"tags": [
 			"webhooks"
 		],
@@ -1406,8 +1406,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks": {
-		"description": "Creates a new webhook configuration for sending finding notifications to external endpoints.",
 		"operationId": "CreateWebhook",
+		"summary": "Create a new webhook configuration",
+		"description": "Creates a new webhook configuration for sending finding notifications to external endpoints.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -1421,31 +1422,56 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request body for creating a new webhook configuration.",
+						"type": "object",
 						"properties": {
 							"authentication_type": {
 								"description": "Type of authentication used for the webhook.",
+								"type": "string",
+								"example": "Bearer Auth",
 								"enum": [
 									"Basic Auth",
 									"None",
 									"Bearer Auth",
 									"Static Headers",
 									"HMAC-Signing"
-								],
-								"example": "Bearer Auth",
-								"type": "string"
+								]
 							},
 							"destination_url": {
 								"description": "Target URL for the webhook configuration. Where resulting data will be sent.",
-								"example": "https://example.com/webhook",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/webhook"
 							},
 							"headers": {
 								"description": "List of custom headers to include in webhook requests.",
+								"type": "array",
+								"items": {
+									"description": "A header to include in webhook requests. On Create/Evaluate, both key and value are required. On Update, omitting value means \"keep existing value\".",
+									"type": "object",
+									"properties": {
+										"key": {
+											"description": "Header key name.",
+											"type": "string",
+											"example": "Authorization",
+											"maxLength": 255
+										},
+										"value": {
+											"description": "Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.",
+											"type": "string",
+											"example": "Bearer token123",
+											"maxLength": 4096,
+											"nullable": true
+										}
+									},
+									"required": [
+										"key"
+									]
+								},
 								"example": [
 									{
 										"key": "Authorization",
@@ -1455,92 +1481,70 @@
 										"key": "X-Custom-Header",
 										"value": "value"
 									}
-								],
-								"items": {
-									"description": "A header to include in webhook requests. On Create/Evaluate, both key and value are required. On Update, omitting value means \"keep existing value\".",
-									"properties": {
-										"key": {
-											"description": "Header key name.",
-											"example": "Authorization",
-											"maxLength": 255,
-											"type": "string"
-										},
-										"value": {
-											"description": "Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.",
-											"example": "Bearer token123",
-											"maxLength": 4096,
-											"nullable": true,
-											"type": "string"
-										}
-									},
-									"required": [
-										"key"
-									],
-									"type": "object"
-								},
-								"type": "array"
+								]
 							},
 							"label": {
 								"description": "Account-specified display label for the webhook configuration.",
-								"example": "Send to Slack",
-								"type": "string"
+								"type": "string",
+								"example": "Send to Slack"
 							},
 							"signing_secret": {
 								"description": "Secret key used for HMAC signing when authentication_type is \"HMAC-Signing\".",
-								"example": "my-secret-key",
-								"type": "string"
+								"type": "string",
+								"example": "my-secret-key"
 							}
 						},
 						"required": [
 							"label",
 							"destination_url",
 							"authentication_type"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Webhook created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1549,39 +1553,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1590,102 +1594,102 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Webhook configuration for sending finding notifications.",
+											"type": "object",
 											"properties": {
 												"authentication_type": {
 													"description": "Type of authentication used for the webhook.",
+													"type": "string",
+													"example": "Bearer Auth",
 													"enum": [
 														"Basic Auth",
 														"None",
 														"Bearer Auth",
 														"Static Headers",
 														"HMAC-Signing"
-													],
-													"example": "Bearer Auth",
-													"type": "string"
+													]
 												},
 												"created_at": {
 													"description": "Timestamp when the webhook configuration was created.",
-													"example": "2024-01-15T10:30:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-15T10:30:00Z"
 												},
 												"destination_url": {
 													"description": "Target URL for the webhook configuration. Where resulting data will be sent.",
-													"example": "https://example.com/webhook",
+													"type": "string",
 													"format": "uri",
-													"type": "string"
+													"example": "https://example.com/webhook"
 												},
 												"headers": {
 													"description": "List of header keys configured for this webhook. Values are not included for security reasons.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
 																"description": "Header key name (lowercase).",
-																"example": "authorization",
-																"type": "string"
+																"type": "string",
+																"example": "authorization"
 															},
 															"value": {
 																"description": "Header value. This field is never returned in API responses for security reasons.",
-																"example": "my-authorization-value",
 																"type": "string",
+																"example": "my-authorization-value",
 																"writeOnly": true
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"id": {
 													"description": "Unique identifier for the specific webhook configuration.",
-													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"type": "string",
 													"format": "uuid",
-													"type": "string"
+													"example": "550e8400-e29b-41d4-a716-446655440000"
 												},
 												"label": {
 													"description": "Account-specified display label for the webhook configuration.",
-													"example": "Send to Gmail",
-													"type": "string"
+													"type": "string",
+													"example": "Send to Gmail"
 												},
 												"status": {
 													"description": "Current status of the webhook configuration. If disabled, data cannot be sent through this configuration.",
+													"type": "string",
+													"example": "enabled",
 													"enum": [
 														"enabled",
 														"disabled"
-													],
-													"example": "enabled",
-													"type": "string"
+													]
 												},
 												"updated_at": {
 													"description": "Timestamp when the webhook configuration was last updated.",
-													"example": "2024-01-20T14:45:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-20T14:45:00Z"
 												},
 												"version": {
 													"description": "Version number of the configuration.",
-													"example": 1,
+													"type": "integer",
 													"format": "uint32",
-													"type": "integer"
+													"example": 1
 												}
 											},
 											"required": [
@@ -1697,55 +1701,54 @@
 												"created_at",
 												"updated_at",
 												"version"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Webhook created successfully"
+				}
 			},
 			"400": {
+				"description": "Bad Request: Invalid request parameters",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1754,39 +1757,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1795,65 +1798,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request: Invalid request parameters"
+				}
 			},
 			"401": {
+				"description": "Unauthorized: Authentication required",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1862,39 +1865,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1903,65 +1906,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized: Authentication required"
+				}
 			},
 			"403": {
+				"description": "Forbidden: Insufficient permissions",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -1970,39 +1973,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2011,65 +2014,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden: Insufficient permissions"
+				}
 			},
 			"422": {
+				"description": "Unprocessable Entity: Webhook configuration limit reached for this account",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2078,39 +2081,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2119,28 +2122,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unprocessable Entity: Webhook configuration limit reached for this account"
+				}
 			}
 		},
 		"security": [
@@ -2148,7 +2149,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new webhook configuration",
 		"tags": [
 			"webhooks"
 		],
@@ -2161,8 +2161,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}/evaluate": {
-		"description": "Sends a test webhook event using an existing webhook configuration.\nThis allows customers to verify their webhook endpoint is still reachable and properly \nconfigured after creating the webhook resource.\n\nThe test payload includes:\n- event_type: \"webhook.test\"\n- timestamp: Current UTC timestamp\n- message: Test message indicating this is from Cloudflare CASB\n- data: Object with test: true\n",
 		"operationId": "EvaluateExistingWebhook",
+		"summary": "Test an existing webhook configuration",
+		"description": "Sends a test webhook event using an existing webhook configuration.\nThis allows customers to verify their webhook endpoint is still reachable and properly \nconfigured after creating the webhook resource.\n\nThe test payload includes:\n- event_type: \"webhook.test\"\n- timestamp: Current UTC timestamp\n- message: Test message indicating this is from Cloudflare CASB\n- data: Object with test: true\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -2180,50 +2181,52 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Webhook test completed (check success field for result)",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2232,39 +2235,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2273,49 +2276,48 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Response body for webhook evaluation test results.",
+											"type": "object",
 											"properties": {
 												"message": {
 													"description": "Human-readable message describing the test result.",
-													"example": "Webhook test successful",
-													"type": "string"
+													"type": "string",
+													"example": "Webhook test successful"
 												},
 												"status_code": {
 													"description": "HTTP status code returned by the webhook endpoint. 0 if connection failed.",
-													"example": 200,
-													"type": "integer"
+													"type": "integer",
+													"example": 200
 												},
 												"success": {
 													"description": "Whether the webhook test was successful (received 2xx response).",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
 											},
 											"required": [
 												"success",
 												"status_code",
 												"message"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2323,45 +2325,46 @@
 							]
 						}
 					}
-				},
-				"description": "OK: Webhook test completed (check success field for result)"
+				}
 			},
 			"400": {
+				"description": "Bad Request: Invalid webhook ID",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2370,39 +2373,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2411,65 +2414,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request: Invalid webhook ID"
+				}
 			},
 			"401": {
+				"description": "Unauthorized: Authentication required",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2478,39 +2481,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2519,65 +2522,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized: Authentication required"
+				}
 			},
 			"403": {
+				"description": "Forbidden: Insufficient permissions",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2586,39 +2589,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2627,65 +2630,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden: Insufficient permissions"
+				}
 			},
 			"404": {
+				"description": "Not Found: Webhook not found",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2694,39 +2697,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -2735,28 +2738,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found: Webhook not found"
+				}
 			}
 		},
 		"security": [
@@ -2764,7 +2765,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Test an existing webhook configuration",
 		"tags": [
 			"webhooks"
 		],
@@ -2777,8 +2777,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/evaluate": {
-		"description": "Sends a test webhook event to the specified destination URL to verify the webhook endpoint \nis reachable and properly configured. This allows customers to validate their webhook \nconfiguration before creating the actual webhook resource.\n\nThe test payload includes:\n- event_type: \"webhook.test\"\n- timestamp: Current UTC timestamp\n- message: Test message indicating this is from Cloudflare CASB\n- data: Object with test: true\n",
 		"operationId": "EvaluateNewWebhook",
+		"summary": "Test a webhook configuration before creating it",
+		"description": "Sends a test webhook event to the specified destination URL to verify the webhook endpoint \nis reachable and properly configured. This allows customers to validate their webhook \nconfiguration before creating the actual webhook resource.\n\nThe test payload includes:\n- event_type: \"webhook.test\"\n- timestamp: Current UTC timestamp\n- message: Test message indicating this is from Cloudflare CASB\n- data: Object with test: true\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -2792,31 +2793,56 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request body for testing a webhook configuration before creating it.",
+						"type": "object",
 						"properties": {
 							"authentication_type": {
 								"description": "Type of authentication to use for the test webhook request.",
+								"type": "string",
+								"example": "Bearer Auth",
 								"enum": [
 									"Basic Auth",
 									"None",
 									"Bearer Auth",
 									"Static Headers",
 									"HMAC-Signing"
-								],
-								"example": "Bearer Auth",
-								"type": "string"
+								]
 							},
 							"destination_url": {
 								"description": "Target URL to send the test webhook event to.",
-								"example": "https://example.com/webhook",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/webhook"
 							},
 							"headers": {
 								"description": "List of custom headers to include in the test webhook request.",
+								"type": "array",
+								"items": {
+									"description": "A header to include in webhook requests. On Create/Evaluate, both key and value are required. On Update, omitting value means \"keep existing value\".",
+									"type": "object",
+									"properties": {
+										"key": {
+											"description": "Header key name.",
+											"type": "string",
+											"example": "Authorization",
+											"maxLength": 255
+										},
+										"value": {
+											"description": "Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.",
+											"type": "string",
+											"example": "Bearer token123",
+											"maxLength": 4096,
+											"nullable": true
+										}
+									},
+									"required": [
+										"key"
+									]
+								},
 								"example": [
 									{
 										"key": "Authorization",
@@ -2826,86 +2852,63 @@
 										"key": "X-Custom-Header",
 										"value": "value"
 									}
-								],
-								"items": {
-									"description": "A header to include in webhook requests. On Create/Evaluate, both key and value are required. On Update, omitting value means \"keep existing value\".",
-									"properties": {
-										"key": {
-											"description": "Header key name.",
-											"example": "Authorization",
-											"maxLength": 255,
-											"type": "string"
-										},
-										"value": {
-											"description": "Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.",
-											"example": "Bearer token123",
-											"maxLength": 4096,
-											"nullable": true,
-											"type": "string"
-										}
-									},
-									"required": [
-										"key"
-									],
-									"type": "object"
-								},
-								"type": "array"
+								]
 							},
 							"signing_secret": {
 								"description": "Secret key used for HMAC signing when authentication_type is \"HMAC-Signing\".",
-								"example": "my-secret-key",
-								"type": "string"
+								"type": "string",
+								"example": "my-secret-key"
 							}
 						},
 						"required": [
 							"destination_url",
 							"authentication_type"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Webhook test completed (check success field for result)",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2914,39 +2917,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2955,49 +2958,48 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Response body for webhook evaluation test results.",
+											"type": "object",
 											"properties": {
 												"message": {
 													"description": "Human-readable message describing the test result.",
-													"example": "Webhook test successful",
-													"type": "string"
+													"type": "string",
+													"example": "Webhook test successful"
 												},
 												"status_code": {
 													"description": "HTTP status code returned by the webhook endpoint. 0 if connection failed.",
-													"example": 200,
-													"type": "integer"
+													"type": "integer",
+													"example": 200
 												},
 												"success": {
 													"description": "Whether the webhook test was successful (received 2xx response).",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
 											},
 											"required": [
 												"success",
 												"status_code",
 												"message"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -3005,45 +3007,46 @@
 							]
 						}
 					}
-				},
-				"description": "OK: Webhook test completed (check success field for result)"
+				}
 			},
 			"400": {
+				"description": "Bad Request: Invalid request parameters",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3052,39 +3055,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3093,65 +3096,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request: Invalid request parameters"
+				}
 			},
 			"401": {
+				"description": "Unauthorized: Authentication required",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3160,39 +3163,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3201,65 +3204,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized: Authentication required"
+				}
 			},
 			"403": {
+				"description": "Forbidden: Insufficient permissions",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3268,39 +3271,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3309,28 +3312,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden: Insufficient permissions"
+				}
 			}
 		},
 		"security": [
@@ -3338,7 +3339,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Test a webhook configuration before creating it",
 		"tags": [
 			"webhooks"
 		],
@@ -3351,8 +3351,9 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/jobs": {
-		"description": "Creates webhook jobs to send a finding instance to one or more configured webhooks.",
 		"operationId": "CreateWebhookJobs",
+		"summary": "Create webhook jobs",
+		"description": "Creates webhook jobs to send a finding instance to one or more configured webhooks.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -3366,86 +3367,90 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request body for creating webhook jobs",
+						"type": "object",
 						"properties": {
 							"finding_instance_ids": {
 								"description": "Array of finding instance IDs to send to the webhooks",
-								"example": [
-									"770e8400-e29b-41d4-a716-446655440002",
-									"660e8400-e29b-41d4-a716-446655440001"
-								],
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"770e8400-e29b-41d4-a716-446655440002",
+									"660e8400-e29b-41d4-a716-446655440001"
+								]
 							},
 							"webhook_ids": {
 								"description": "Array of webhook IDs to trigger jobs for",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
 								"example": [
 									"550e8400-e29b-41d4-a716-446655440000",
 									"660e8400-e29b-41d4-a716-446655440001"
 								],
-								"items": {
-									"format": "uuid",
-									"type": "string"
-								},
-								"minItems": 1,
-								"type": "array"
+								"minItems": 1
 							}
 						},
 						"required": [
 							"webhook_ids",
 							"finding_instance_ids"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Webhook jobs successfully created",
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "Response for webhook job creation requests.",
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3454,39 +3459,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3495,118 +3500,120 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "Successfully created webhook jobs.",
+													"type": "array",
 													"items": {
 														"description": "Information about a webhook job.",
+														"type": "object",
 														"properties": {
 															"asset_data": {
-																"additionalProperties": true,
 																"description": "Asset data associated with this webhook job.",
-																"type": "object"
+																"type": "object",
+																"additionalProperties": true
 															},
 															"created_at": {
 																"description": "When the webhook job was created.",
-																"example": "2025-07-07T18:39:13.123456Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2025-07-07T18:39:13.123456Z"
 															},
 															"failure_details": {
-																"additionalProperties": true,
 																"description": "Additional details about the failure.",
-																"type": "object"
+																"type": "object",
+																"additionalProperties": true
 															},
 															"failure_reason": {
 																"description": "Reason for webhook job failure.",
+																"type": "string",
 																"enum": [
 																	"Permission Denied",
 																	"Integration Unavailable",
 																	"Service Temporarily Unavailable",
 																	"System Error"
-																],
-																"type": "string"
+																]
 															},
 															"id": {
 																"description": "Unique identifier for the webhook job.",
-																"example": "c416bc38-75db-425f-ae25-c37b5df5c37f",
+																"type": "string",
 																"format": "uuid",
-																"type": "string"
+																"example": "c416bc38-75db-425f-ae25-c37b5df5c37f"
 															},
 															"integration_id": {
 																"description": "ID of the integration.",
-																"example": "9f8e7d6c-5b4a-3210-fedc-ba0987654321",
+																"type": "string",
 																"format": "uuid",
-																"type": "string"
+																"example": "9f8e7d6c-5b4a-3210-fedc-ba0987654321"
 															},
 															"last_updated_at": {
 																"description": "When the webhook job was last updated.",
-																"example": "2025-07-07T18:39:13.123456Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2025-07-07T18:39:13.123456Z"
 															},
 															"parameters": {
 																"description": "Parameters for a webhook job.",
+																"type": "object",
 																"properties": {
 																	"finding_instance_id": {
 																		"description": "ID of the finding instance.",
-																		"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e",
+																		"type": "string",
 																		"format": "uuid",
-																		"type": "string"
+																		"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e"
 																	}
 																},
 																"required": [
 																	"finding_instance_id"
-																],
-																"type": "object"
+																]
 															},
 															"status": {
 																"description": "Status of a webhook job.",
+																"type": "string",
 																"enum": [
 																	"pending",
 																	"processing",
 																	"completed",
 																	"failed"
-																],
-																"type": "string"
+																]
 															},
 															"triggered_by_actor": {
 																"description": "Type of actor that triggered the webhook job.",
+																"type": "string",
 																"enum": [
 																	"user",
 																	"account_token"
-																],
-																"type": "string"
+																]
 															},
 															"triggered_by_id": {
 																"description": "ID of the actor that triggered the job.",
-																"example": "user@example.com",
-																"type": "string"
+																"type": "string",
+																"example": "user@example.com"
 															},
 															"webhook_id": {
 																"description": "ID of the webhook configuration.",
-																"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+																"type": "string",
 																"format": "uuid",
-																"type": "string"
+																"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 															}
 														},
 														"required": [
@@ -3620,49 +3627,46 @@
 															"triggered_by_id",
 															"created_at",
 															"last_updated_at"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"failed": {
 													"description": "Failed webhook job creation attempts.",
+													"type": "array",
 													"items": {
 														"description": "Information about a failed webhook job creation.",
+														"type": "object",
 														"properties": {
 															"error": {
 																"description": "Error message describing the failure.",
-																"example": "Failed to create webhook job",
-																"type": "string"
+																"type": "string",
+																"example": "Failed to create webhook job"
 															},
 															"finding_instance_id": {
 																"description": "ID of the finding instance that failed to create a webhook job.",
-																"example": "2e6b4c8a-9d1f-4e3b-8c7a-5f9e2d1a6b4c",
+																"type": "string",
 																"format": "uuid",
-																"type": "string"
+																"example": "2e6b4c8a-9d1f-4e3b-8c7a-5f9e2d1a6b4c"
 															},
 															"webhook_id": {
 																"description": "ID of the webhook configuration.",
-																"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+																"type": "string",
 																"format": "uuid",
-																"type": "string"
+																"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 															}
 														},
 														"required": [
 															"webhook_id",
 															"finding_instance_id",
 															"error"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
 												"created",
 												"failed"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -3670,50 +3674,49 @@
 									],
 									"type": "object"
 								}
-							],
-							"description": "Response for webhook job creation requests.",
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Webhook jobs successfully created"
+				}
 			},
 			"400": {
+				"description": "Bad Request: Invalid request parameters",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3722,39 +3725,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3763,65 +3766,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request: Invalid request parameters"
+				}
 			},
 			"401": {
+				"description": "Unauthorized: Authentication required",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3830,39 +3833,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3871,65 +3874,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized: Authentication required"
+				}
 			},
 			"403": {
+				"description": "Forbidden: Insufficient permissions",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3938,39 +3941,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -3979,65 +3982,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden: Insufficient permissions"
+				}
 			},
 			"404": {
+				"description": "Not Found: Webhook or finding instance not found",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4046,39 +4049,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4087,28 +4090,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found: Webhook or finding instance not found"
+				}
 			}
 		},
 		"security": [
@@ -4116,7 +4117,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create webhook jobs",
 		"tags": [
 			"webhooks"
 		],
@@ -4129,8 +4129,9 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
-		"description": "Updates an existing webhook configuration with new settings.",
 		"operationId": "UpdateWebhook",
+		"summary": "Update an existing webhook configuration",
+		"description": "Updates an existing webhook configuration with new settings.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -4148,37 +4149,62 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Request body for updating an existing webhook configuration.",
+						"type": "object",
 						"properties": {
 							"authentication_type": {
 								"description": "Type of authentication used for the webhook.",
+								"type": "string",
+								"example": "Bearer Auth",
 								"enum": [
 									"Basic Auth",
 									"None",
 									"Bearer Auth",
 									"Static Headers",
 									"HMAC-Signing"
-								],
-								"example": "Bearer Auth",
-								"type": "string"
+								]
 							},
 							"destination_url": {
 								"description": "Target URL for the webhook configuration. Where resulting data will be sent.",
-								"example": "https://example.com/webhook",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/webhook"
 							},
 							"headers": {
 								"description": "List of custom headers to include in webhook requests.",
+								"type": "array",
+								"items": {
+									"description": "A header to include in webhook requests. On Create/Evaluate, both key and value are required. On Update, omitting value means \"keep existing value\".",
+									"type": "object",
+									"properties": {
+										"key": {
+											"description": "Header key name.",
+											"type": "string",
+											"example": "Authorization",
+											"maxLength": 255
+										},
+										"value": {
+											"description": "Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.",
+											"type": "string",
+											"example": "Bearer token123",
+											"maxLength": 4096,
+											"nullable": true
+										}
+									},
+									"required": [
+										"key"
+									]
+								},
 								"example": [
 									{
 										"key": "Authorization",
@@ -4188,49 +4214,26 @@
 										"key": "X-Custom-Header",
 										"value": "value"
 									}
-								],
-								"items": {
-									"description": "A header to include in webhook requests. On Create/Evaluate, both key and value are required. On Update, omitting value means \"keep existing value\".",
-									"properties": {
-										"key": {
-											"description": "Header key name.",
-											"example": "Authorization",
-											"maxLength": 255,
-											"type": "string"
-										},
-										"value": {
-											"description": "Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.",
-											"example": "Bearer token123",
-											"maxLength": 4096,
-											"nullable": true,
-											"type": "string"
-										}
-									},
-									"required": [
-										"key"
-									],
-									"type": "object"
-								},
-								"type": "array"
+								]
 							},
 							"label": {
 								"description": "Account-specified display label for the webhook configuration.",
-								"example": "Send to Slack",
-								"type": "string"
+								"type": "string",
+								"example": "Send to Slack"
 							},
 							"signing_secret": {
 								"description": "Secret key used for HMAC signing when authentication_type is \"HMAC-Signing\".",
-								"example": "my-secret-key",
-								"type": "string"
+								"type": "string",
+								"example": "my-secret-key"
 							},
 							"status": {
 								"description": "Status of the webhook configuration.",
+								"type": "string",
+								"example": "enabled",
 								"enum": [
 									"enabled",
 									"disabled"
-								],
-								"example": "enabled",
-								"type": "string"
+								]
 							}
 						},
 						"required": [
@@ -4238,52 +4241,53 @@
 							"destination_url",
 							"authentication_type",
 							"status"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "OK: Webhook updated successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4292,39 +4296,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4333,102 +4337,102 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Webhook configuration for sending finding notifications.",
+											"type": "object",
 											"properties": {
 												"authentication_type": {
 													"description": "Type of authentication used for the webhook.",
+													"type": "string",
+													"example": "Bearer Auth",
 													"enum": [
 														"Basic Auth",
 														"None",
 														"Bearer Auth",
 														"Static Headers",
 														"HMAC-Signing"
-													],
-													"example": "Bearer Auth",
-													"type": "string"
+													]
 												},
 												"created_at": {
 													"description": "Timestamp when the webhook configuration was created.",
-													"example": "2024-01-15T10:30:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-15T10:30:00Z"
 												},
 												"destination_url": {
 													"description": "Target URL for the webhook configuration. Where resulting data will be sent.",
-													"example": "https://example.com/webhook",
+													"type": "string",
 													"format": "uri",
-													"type": "string"
+													"example": "https://example.com/webhook"
 												},
 												"headers": {
 													"description": "List of header keys configured for this webhook. Values are not included for security reasons.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"key": {
 																"description": "Header key name (lowercase).",
-																"example": "authorization",
-																"type": "string"
+																"type": "string",
+																"example": "authorization"
 															},
 															"value": {
 																"description": "Header value. This field is never returned in API responses for security reasons.",
-																"example": "my-authorization-value",
 																"type": "string",
+																"example": "my-authorization-value",
 																"writeOnly": true
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"id": {
 													"description": "Unique identifier for the specific webhook configuration.",
-													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"type": "string",
 													"format": "uuid",
-													"type": "string"
+													"example": "550e8400-e29b-41d4-a716-446655440000"
 												},
 												"label": {
 													"description": "Account-specified display label for the webhook configuration.",
-													"example": "Send to Gmail",
-													"type": "string"
+													"type": "string",
+													"example": "Send to Gmail"
 												},
 												"status": {
 													"description": "Current status of the webhook configuration. If disabled, data cannot be sent through this configuration.",
+													"type": "string",
+													"example": "enabled",
 													"enum": [
 														"enabled",
 														"disabled"
-													],
-													"example": "enabled",
-													"type": "string"
+													]
 												},
 												"updated_at": {
 													"description": "Timestamp when the webhook configuration was last updated.",
-													"example": "2024-01-20T14:45:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-20T14:45:00Z"
 												},
 												"version": {
 													"description": "Version number of the configuration.",
-													"example": 1,
+													"type": "integer",
 													"format": "uint32",
-													"type": "integer"
+													"example": 1
 												}
 											},
 											"required": [
@@ -4440,55 +4444,54 @@
 												"created_at",
 												"updated_at",
 												"version"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Webhook updated successfully"
+				}
 			},
 			"400": {
+				"description": "Bad Request: Invalid request parameters",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4497,39 +4500,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4538,65 +4541,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request: Invalid request parameters"
+				}
 			},
 			"401": {
+				"description": "Unauthorized: Authentication required",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4605,39 +4608,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4646,65 +4649,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized: Authentication required"
+				}
 			},
 			"403": {
+				"description": "Forbidden: Insufficient permissions",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4713,39 +4716,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4754,65 +4757,65 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden: Insufficient permissions"
+				}
 			},
 			"404": {
+				"description": "Not Found: Webhook not found",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Standard error response structure.",
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4821,39 +4824,39 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
 												"description": "Error or message code.",
+												"type": "integer",
 												"example": 1000,
-												"minimum": 1000,
-												"type": "integer"
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"description": "Link to relevant documentation.",
-												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://developers.cloudflare.com/api/operations/list-findings"
 											},
 											"message": {
 												"description": "Human-readable message.",
-												"example": "Request processed successfully",
-												"type": "string"
+												"type": "string",
+												"example": "Request processed successfully"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"description": "JSON pointer to the source of the error.",
-														"example": "/data/attributes/name",
-														"type": "string"
+														"type": "string",
+														"example": "/data/attributes/name"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -4862,28 +4865,26 @@
 										],
 										"type": "object"
 									},
-									"type": "array",
+									"example": [],
 									"uniqueItems": true
 								},
 								"success": {
 									"description": "Indicates the request failed.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found: Webhook not found"
+				}
 			}
 		},
 		"security": [
@@ -4891,7 +4892,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update an existing webhook configuration",
 		"tags": [
 			"webhooks"
 		],

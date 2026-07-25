@@ -1,36 +1,39 @@
 {
 	"GET /zones/{zone_id}/settings/google-tag-gateway/config": {
-		"description": "Gets the Google Tag Gateway configuration for a zone.",
 		"operationId": "zone-settings-get-google-tag-gateway-config",
+		"summary": "Get Google Tag Gateway configuration",
+		"description": "Gets the Google Tag Gateway configuration for a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Google Tag Gateway configuration response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -39,12 +42,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -54,15 +57,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -71,12 +74,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -86,58 +89,58 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Google Tag Gateway configuration for a zone.",
+											"type": "object",
 											"properties": {
 												"enabled": {
 													"description": "Enables or disables Google Tag Gateway for this zone.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"endpoint": {
 													"description": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
-													"example": "/metrics",
 													"type": "string",
+													"example": "/metrics",
 													"x-auditable": true
 												},
 												"hideOriginalIp": {
 													"description": "Hides the original client IP address from Google when enabled.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"measurementId": {
 													"description": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
-													"example": "GTM-P2F3N47Q",
 													"type": "string",
+													"example": "GTM-P2F3N47Q",
 													"x-auditable": true
 												},
 												"setUpTag": {
 													"description": "Set up the associated Google Tag on the zone automatically when enabled.",
+													"type": "boolean",
 													"example": true,
 													"nullable": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -147,8 +150,7 @@
 												"hideOriginalIp",
 												"measurementId"
 											],
-											"title": "Google Tag Gateway configuration",
-											"type": "object"
+											"title": "Google Tag Gateway configuration"
 										}
 									},
 									"type": "object"
@@ -156,66 +158,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get Google Tag Gateway configuration response."
+				}
 			},
 			"4XX": {
+				"description": "Get Google Tag Gateway configuration response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -224,12 +190,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -239,25 +205,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -265,12 +268,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Google Tag Gateway configuration response failure."
+				}
 			}
 		},
 		"security": [
@@ -282,7 +283,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Google Tag Gateway configuration",
 		"tags": [
 			"Google Tag Gateway"
 		],
@@ -308,57 +308,60 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/settings/google-tag-gateway/config": {
-		"description": "Updates the Google Tag Gateway configuration for a zone.",
 		"operationId": "zone-settings-change-google-tag-gateway-config",
+		"summary": "Update Google Tag Gateway configuration",
+		"description": "Updates the Google Tag Gateway configuration for a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Google Tag Gateway configuration for a zone.",
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"description": "Enables or disables Google Tag Gateway for this zone.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							},
 							"endpoint": {
 								"description": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
-								"example": "/metrics",
 								"type": "string",
+								"example": "/metrics",
 								"x-auditable": true
 							},
 							"hideOriginalIp": {
 								"description": "Hides the original client IP address from Google when enabled.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							},
 							"measurementId": {
 								"description": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
-								"example": "GTM-P2F3N47Q",
 								"type": "string",
+								"example": "GTM-P2F3N47Q",
 								"x-auditable": true
 							},
 							"setUpTag": {
 								"description": "Set up the associated Google Tag on the zone automatically when enabled.",
+								"type": "boolean",
 								"example": true,
 								"nullable": true,
-								"type": "boolean",
 								"x-auditable": true
 							}
 						},
@@ -368,28 +371,28 @@
 							"hideOriginalIp",
 							"measurementId"
 						],
-						"title": "Google Tag Gateway configuration",
-						"type": "object"
+						"title": "Google Tag Gateway configuration"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Google Tag Gateway configuration response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -398,12 +401,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -413,15 +416,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -430,12 +433,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -445,58 +448,58 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Google Tag Gateway configuration for a zone.",
+											"type": "object",
 											"properties": {
 												"enabled": {
 													"description": "Enables or disables Google Tag Gateway for this zone.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"endpoint": {
 													"description": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
-													"example": "/metrics",
 													"type": "string",
+													"example": "/metrics",
 													"x-auditable": true
 												},
 												"hideOriginalIp": {
 													"description": "Hides the original client IP address from Google when enabled.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"measurementId": {
 													"description": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
-													"example": "GTM-P2F3N47Q",
 													"type": "string",
+													"example": "GTM-P2F3N47Q",
 													"x-auditable": true
 												},
 												"setUpTag": {
 													"description": "Set up the associated Google Tag on the zone automatically when enabled.",
+													"type": "boolean",
 													"example": true,
 													"nullable": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -506,8 +509,7 @@
 												"hideOriginalIp",
 												"measurementId"
 											],
-											"title": "Google Tag Gateway configuration",
-											"type": "object"
+											"title": "Google Tag Gateway configuration"
 										}
 									},
 									"type": "object"
@@ -515,66 +517,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update Google Tag Gateway configuration response."
+				}
 			},
 			"4XX": {
+				"description": "Update Google Tag Gateway configuration response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -583,12 +549,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -598,25 +564,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -624,12 +627,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Google Tag Gateway configuration response failure."
+				}
 			}
 		},
 		"security": [
@@ -641,7 +642,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Google Tag Gateway configuration",
 		"tags": [
 			"Google Tag Gateway"
 		],

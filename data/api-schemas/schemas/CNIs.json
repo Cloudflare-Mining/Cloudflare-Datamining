@@ -1,20 +1,21 @@
 {
 	"DELETE /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "delete_cni",
+		"summary": "Delete a specified CNI object",
 		"parameters": [
 			{
-				"description": "CNI ID to retrieve information about",
-				"in": "path",
 				"name": "cni",
+				"in": "path",
+				"description": "CNI ID to retrieve information about",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -43,7 +44,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a specified CNI object",
 		"tags": [
 			"CNIs"
 		],
@@ -54,46 +54,47 @@
 	},
 	"GET /accounts/{account_id}/cni/cnis": {
 		"operationId": "list_cnis",
+		"summary": "List existing CNI objects",
 		"parameters": [
 			{
-				"description": "If specified, only show CNIs associated with the specified slot",
-				"in": "query",
 				"name": "slot",
+				"in": "query",
+				"description": "If specified, only show CNIs associated with the specified slot",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "If specified, only show cnis associated with the specified tunnel id",
-				"in": "query",
 				"name": "tunnel_id",
+				"in": "query",
+				"description": "If specified, only show cnis associated with the specified tunnel id",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
-				"schema": {
-					"format": "int32",
-					"nullable": true,
-					"type": "integer"
-				}
-			},
-			{
 				"in": "query",
-				"name": "limit",
 				"schema": {
-					"minimum": 0,
-					"nullable": true,
-					"type": "integer"
+					"type": "integer",
+					"format": "int32",
+					"nullable": true
 				}
 			},
 			{
-				"in": "path",
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"minimum": 0,
+					"nullable": true
+				}
+			},
+			{
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -103,61 +104,66 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of matching CNI objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"items": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"account": {
 												"description": "Customer account tag",
 												"type": "string"
 											},
 											"bgp": {
+												"type": "object",
 												"properties": {
 													"customer_asn": {
 														"description": "ASN used on the customer end of the BGP session",
+														"type": "integer",
 														"format": "int32",
-														"minimum": 0,
-														"type": "integer"
+														"minimum": 0
 													},
 													"extra_prefixes": {
 														"description": "Extra set of static prefixes to advertise to the customer's end of the session",
-														"example": "192.168.3.4/31",
+														"type": "array",
 														"items": {
 															"format": "A.B.C.D/N",
 															"type": "string"
 														},
-														"type": "array"
+														"example": "192.168.3.4/31"
 													},
 													"md5_key": {
 														"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													}
 												},
 												"required": [
 													"customer_asn",
 													"extra_prefixes"
-												],
-												"type": "object"
+												]
 											},
 											"cust_ip": {
 												"description": "Customer end of the point-to-point link\n\nThis should always be inside the same prefix as `p2p_ip`.",
-												"example": "192.168.3.4/31",
+												"type": "string",
 												"format": "A.B.C.D/N",
-												"type": "string"
+												"example": "192.168.3.4/31"
 											},
 											"id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"interconnect": {
 												"description": "Interconnect identifier hosting this CNI",
 												"type": "string"
 											},
 											"magic": {
+												"type": "object",
 												"properties": {
 													"conduit_name": {
 														"type": "string"
@@ -166,23 +172,22 @@
 														"type": "string"
 													},
 													"mtu": {
+														"type": "integer",
 														"format": "int32",
-														"minimum": 0,
-														"type": "integer"
+														"minimum": 0
 													}
 												},
 												"required": [
 													"conduit_name",
 													"description",
 													"mtu"
-												],
-												"type": "object"
+												]
 											},
 											"p2p_ip": {
 												"description": "Cloudflare end of the point-to-point link",
-												"example": "192.168.3.4/31",
+												"type": "string",
 												"format": "A.B.C.D/N",
-												"type": "string"
+												"example": "192.168.3.4/31"
 											}
 										},
 										"required": [
@@ -192,25 +197,21 @@
 											"p2p_ip",
 											"cust_ip",
 											"magic"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"next": {
+									"type": "integer",
 									"format": "int32",
-									"nullable": true,
-									"type": "integer"
+									"nullable": true
 								}
 							},
 							"required": [
 								"items"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of matching CNI objects"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -226,7 +227,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List existing CNI objects",
 		"tags": [
 			"CNIs"
 		],
@@ -239,20 +239,21 @@
 	},
 	"GET /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "get_cni",
+		"summary": "Get information about a CNI object",
 		"parameters": [
 			{
-				"description": "CNI ID to retrieve information about",
-				"in": "path",
 				"name": "cni",
+				"in": "path",
+				"description": "CNI ID to retrieve information about",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -262,58 +263,61 @@
 		],
 		"responses": {
 			"200": {
+				"description": "CNI's associated data",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account": {
 									"description": "Customer account tag",
 									"type": "string"
 								},
 								"bgp": {
+									"type": "object",
 									"properties": {
 										"customer_asn": {
 											"description": "ASN used on the customer end of the BGP session",
+											"type": "integer",
 											"format": "int32",
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										},
 										"extra_prefixes": {
 											"description": "Extra set of static prefixes to advertise to the customer's end of the session",
-											"example": "192.168.3.4/31",
+											"type": "array",
 											"items": {
 												"format": "A.B.C.D/N",
 												"type": "string"
 											},
-											"type": "array"
+											"example": "192.168.3.4/31"
 										},
 										"md5_key": {
 											"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"required": [
 										"customer_asn",
 										"extra_prefixes"
-									],
-									"type": "object"
+									]
 								},
 								"cust_ip": {
 									"description": "Customer end of the point-to-point link\n\nThis should always be inside the same prefix as `p2p_ip`.",
-									"example": "192.168.3.4/31",
+									"type": "string",
 									"format": "A.B.C.D/N",
-									"type": "string"
+									"example": "192.168.3.4/31"
 								},
 								"id": {
-									"format": "uuid",
-									"type": "string"
+									"type": "string",
+									"format": "uuid"
 								},
 								"interconnect": {
 									"description": "Interconnect identifier hosting this CNI",
 									"type": "string"
 								},
 								"magic": {
+									"type": "object",
 									"properties": {
 										"conduit_name": {
 											"type": "string"
@@ -322,23 +326,22 @@
 											"type": "string"
 										},
 										"mtu": {
+											"type": "integer",
 											"format": "int32",
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										}
 									},
 									"required": [
 										"conduit_name",
 										"description",
 										"mtu"
-									],
-									"type": "object"
+									]
 								},
 								"p2p_ip": {
 									"description": "Cloudflare end of the point-to-point link",
-									"example": "192.168.3.4/31",
+									"type": "string",
 									"format": "A.B.C.D/N",
-									"type": "string"
+									"example": "192.168.3.4/31"
 								}
 							},
 							"required": [
@@ -348,12 +351,10 @@
 								"p2p_ip",
 								"cust_ip",
 								"magic"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "CNI's associated data"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -372,7 +373,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get information about a CNI object",
 		"tags": [
 			"CNIs"
 		],
@@ -385,10 +385,11 @@
 	},
 	"POST /accounts/{account_id}/cni/cnis": {
 		"operationId": "create_cni",
+		"summary": "Create a new CNI object",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -397,47 +398,50 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"account": {
 								"description": "Customer account tag",
 								"type": "string"
 							},
 							"bgp": {
+								"type": "object",
 								"properties": {
 									"customer_asn": {
 										"description": "ASN used on the customer end of the BGP session",
+										"type": "integer",
 										"format": "int32",
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"extra_prefixes": {
 										"description": "Extra set of static prefixes to advertise to the customer's end of the session",
-										"example": "192.168.3.4/31",
+										"type": "array",
 										"items": {
 											"format": "A.B.C.D/N",
 											"type": "string"
 										},
-										"type": "array"
+										"example": "192.168.3.4/31"
 									},
 									"md5_key": {
 										"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"nullable": true
 									}
 								},
 								"required": [
 									"customer_asn",
 									"extra_prefixes"
-								],
-								"type": "object"
+								]
 							},
 							"interconnect": {
 								"type": "string"
 							},
 							"magic": {
+								"type": "object",
 								"properties": {
 									"conduit_name": {
 										"type": "string"
@@ -446,84 +450,84 @@
 										"type": "string"
 									},
 									"mtu": {
+										"type": "integer",
 										"format": "int32",
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									}
 								},
 								"required": [
 									"conduit_name",
 									"description",
 									"mtu"
-								],
-								"type": "object"
+								]
 							}
 						},
 						"required": [
 							"interconnect",
 							"account",
 							"magic"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "CNI was successfully created",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account": {
 									"description": "Customer account tag",
 									"type": "string"
 								},
 								"bgp": {
+									"type": "object",
 									"properties": {
 										"customer_asn": {
 											"description": "ASN used on the customer end of the BGP session",
+											"type": "integer",
 											"format": "int32",
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										},
 										"extra_prefixes": {
 											"description": "Extra set of static prefixes to advertise to the customer's end of the session",
-											"example": "192.168.3.4/31",
+											"type": "array",
 											"items": {
 												"format": "A.B.C.D/N",
 												"type": "string"
 											},
-											"type": "array"
+											"example": "192.168.3.4/31"
 										},
 										"md5_key": {
 											"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"required": [
 										"customer_asn",
 										"extra_prefixes"
-									],
-									"type": "object"
+									]
 								},
 								"cust_ip": {
 									"description": "Customer end of the point-to-point link\n\nThis should always be inside the same prefix as `p2p_ip`.",
-									"example": "192.168.3.4/31",
+									"type": "string",
 									"format": "A.B.C.D/N",
-									"type": "string"
+									"example": "192.168.3.4/31"
 								},
 								"id": {
-									"format": "uuid",
-									"type": "string"
+									"type": "string",
+									"format": "uuid"
 								},
 								"interconnect": {
 									"description": "Interconnect identifier hosting this CNI",
 									"type": "string"
 								},
 								"magic": {
+									"type": "object",
 									"properties": {
 										"conduit_name": {
 											"type": "string"
@@ -532,23 +536,22 @@
 											"type": "string"
 										},
 										"mtu": {
+											"type": "integer",
 											"format": "int32",
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										}
 									},
 									"required": [
 										"conduit_name",
 										"description",
 										"mtu"
-									],
-									"type": "object"
+									]
 								},
 								"p2p_ip": {
 									"description": "Cloudflare end of the point-to-point link",
-									"example": "192.168.3.4/31",
+									"type": "string",
 									"format": "A.B.C.D/N",
-									"type": "string"
+									"example": "192.168.3.4/31"
 								}
 							},
 							"required": [
@@ -558,12 +561,10 @@
 								"p2p_ip",
 								"cust_ip",
 								"magic"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "CNI was successfully created"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -582,7 +583,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new CNI object",
 		"tags": [
 			"CNIs"
 		],
@@ -593,20 +593,21 @@
 	},
 	"PUT /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "update_cni",
+		"summary": "Modify stored information about a CNI object",
 		"parameters": [
 			{
-				"description": "CNI ID to retrieve information about",
-				"in": "path",
 				"name": "cni",
+				"in": "path",
+				"description": "CNI ID to retrieve information about",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -615,58 +616,61 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"account": {
 								"description": "Customer account tag",
 								"type": "string"
 							},
 							"bgp": {
+								"type": "object",
 								"properties": {
 									"customer_asn": {
 										"description": "ASN used on the customer end of the BGP session",
+										"type": "integer",
 										"format": "int32",
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									},
 									"extra_prefixes": {
 										"description": "Extra set of static prefixes to advertise to the customer's end of the session",
-										"example": "192.168.3.4/31",
+										"type": "array",
 										"items": {
 											"format": "A.B.C.D/N",
 											"type": "string"
 										},
-										"type": "array"
+										"example": "192.168.3.4/31"
 									},
 									"md5_key": {
 										"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"nullable": true
 									}
 								},
 								"required": [
 									"customer_asn",
 									"extra_prefixes"
-								],
-								"type": "object"
+								]
 							},
 							"cust_ip": {
 								"description": "Customer end of the point-to-point link\n\nThis should always be inside the same prefix as `p2p_ip`.",
-								"example": "192.168.3.4/31",
+								"type": "string",
 								"format": "A.B.C.D/N",
-								"type": "string"
+								"example": "192.168.3.4/31"
 							},
 							"id": {
-								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"format": "uuid"
 							},
 							"interconnect": {
 								"description": "Interconnect identifier hosting this CNI",
 								"type": "string"
 							},
 							"magic": {
+								"type": "object",
 								"properties": {
 									"conduit_name": {
 										"type": "string"
@@ -675,23 +679,22 @@
 										"type": "string"
 									},
 									"mtu": {
+										"type": "integer",
 										"format": "int32",
-										"minimum": 0,
-										"type": "integer"
+										"minimum": 0
 									}
 								},
 								"required": [
 									"conduit_name",
 									"description",
 									"mtu"
-								],
-								"type": "object"
+								]
 							},
 							"p2p_ip": {
 								"description": "Cloudflare end of the point-to-point link",
-								"example": "192.168.3.4/31",
+								"type": "string",
 								"format": "A.B.C.D/N",
-								"type": "string"
+								"example": "192.168.3.4/31"
 							}
 						},
 						"required": [
@@ -701,67 +704,68 @@
 							"p2p_ip",
 							"cust_ip",
 							"magic"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "CNI has been successfully modified",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account": {
 									"description": "Customer account tag",
 									"type": "string"
 								},
 								"bgp": {
+									"type": "object",
 									"properties": {
 										"customer_asn": {
 											"description": "ASN used on the customer end of the BGP session",
+											"type": "integer",
 											"format": "int32",
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										},
 										"extra_prefixes": {
 											"description": "Extra set of static prefixes to advertise to the customer's end of the session",
-											"example": "192.168.3.4/31",
+											"type": "array",
 											"items": {
 												"format": "A.B.C.D/N",
 												"type": "string"
 											},
-											"type": "array"
+											"example": "192.168.3.4/31"
 										},
 										"md5_key": {
 											"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"required": [
 										"customer_asn",
 										"extra_prefixes"
-									],
-									"type": "object"
+									]
 								},
 								"cust_ip": {
 									"description": "Customer end of the point-to-point link\n\nThis should always be inside the same prefix as `p2p_ip`.",
-									"example": "192.168.3.4/31",
+									"type": "string",
 									"format": "A.B.C.D/N",
-									"type": "string"
+									"example": "192.168.3.4/31"
 								},
 								"id": {
-									"format": "uuid",
-									"type": "string"
+									"type": "string",
+									"format": "uuid"
 								},
 								"interconnect": {
 									"description": "Interconnect identifier hosting this CNI",
 									"type": "string"
 								},
 								"magic": {
+									"type": "object",
 									"properties": {
 										"conduit_name": {
 											"type": "string"
@@ -770,23 +774,22 @@
 											"type": "string"
 										},
 										"mtu": {
+											"type": "integer",
 											"format": "int32",
-											"minimum": 0,
-											"type": "integer"
+											"minimum": 0
 										}
 									},
 									"required": [
 										"conduit_name",
 										"description",
 										"mtu"
-									],
-									"type": "object"
+									]
 								},
 								"p2p_ip": {
 									"description": "Cloudflare end of the point-to-point link",
-									"example": "192.168.3.4/31",
+									"type": "string",
 									"format": "A.B.C.D/N",
-									"type": "string"
+									"example": "192.168.3.4/31"
 								}
 							},
 							"required": [
@@ -796,12 +799,10 @@
 								"p2p_ip",
 								"cust_ip",
 								"magic"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "CNI has been successfully modified"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -820,7 +821,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Modify stored information about a CNI object",
 		"tags": [
 			"CNIs"
 		],

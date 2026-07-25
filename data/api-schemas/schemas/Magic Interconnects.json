@@ -1,24 +1,25 @@
 {
 	"GET /accounts/{account_id}/magic/cf_interconnects": {
-		"description": "Lists interconnects associated with an account.",
 		"operationId": "magic-interconnects-list-interconnects",
+		"summary": "List interconnects",
+		"description": "Lists interconnects associated with an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
-				"in": "header",
 				"name": "x-magic-new-hc-target",
+				"in": "header",
+				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
 				"schema": {
 					"type": "boolean"
 				}
@@ -26,21 +27,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List interconnects response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -53,15 +57,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -74,7 +78,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -92,11 +96,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -104,8 +108,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -123,71 +126,73 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"interconnects": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"automatic_return_routing": {
-																"default": false,
 																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
+																"default": false,
 																"x-auditable": true
 															},
 															"colo_name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																"example": "pni_ord",
-																"type": "string"
+																"type": "string",
+																"example": "pni_ord"
 															},
 															"created_on": {
 																"description": "The date and time the tunnel was created.",
-																"example": "2017-06-14T00:00:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T00:00:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional description of the interconnect.",
-																"example": "Tunnel for Interconnect to ORD",
-																"type": "string"
+																"type": "string",
+																"example": "Tunnel for Interconnect to ORD"
 															},
 															"gre": {
 																"description": "The configuration specific to GRE interconnects.",
+																"type": "object",
 																"properties": {
 																	"cloudflare_endpoint": {
 																		"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "203.0.113.1"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"health_check": {
+																"type": "object",
 																"properties": {
 																	"enabled": {
-																		"default": true,
 																		"description": "Determines whether to run healthchecks for a tunnel.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
+																		"default": true,
 																		"x-auditable": true
 																	},
 																	"rate": {
-																		"default": "mid",
 																		"description": "How frequent the health check is run. The default value is `mid`.",
+																		"type": "string",
+																		"example": "low",
+																		"default": "mid",
 																		"enum": [
 																			"low",
 																			"mid",
 																			"high"
 																		],
-																		"example": "low",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"target": {
@@ -195,22 +200,22 @@
 																		"oneOf": [
 																			{
 																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																				"type": "object",
 																				"properties": {
 																					"effective": {
 																						"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																						"type": "string",
 																						"example": "203.0.113.1",
 																						"readOnly": true,
-																						"type": "string",
 																						"x-auditable": true
 																					},
 																					"saved": {
 																						"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																						"example": "203.0.113.1",
 																						"type": "string",
+																						"example": "203.0.113.1",
 																						"x-auditable": true
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			{
 																				"type": "string"
@@ -218,70 +223,69 @@
 																		]
 																	},
 																	"type": {
-																		"default": "reply",
 																		"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																		"type": "string",
+																		"example": "request",
+																		"default": "reply",
 																		"enum": [
 																			"reply",
 																			"request"
 																		],
-																		"example": "request",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "c4a7362d577a6c3019a474fd6f485821",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"interface_address": {
 																"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-																"example": "192.0.2.3/29",
 																"type": "string",
+																"example": "192.0.2.3/29",
 																"x-auditable": true
 															},
 															"interface_address6": {
 																"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																"type": "string",
+																"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The date and time the tunnel was last modified.",
-																"example": "2017-06-14T05:20:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T05:20:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"mtu": {
-																"default": 1476,
 																"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-																"type": "integer"
+																"type": "integer",
+																"default": 1476
 															},
 															"name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																"example": "pni_ord",
-																"type": "string"
+																"type": "string",
+																"example": "pni_ord"
 															},
 															"version": {
 																"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-																"example": "1.5",
-																"type": "string"
+																"type": "string",
+																"example": "1.5"
 															},
 															"virtual_port_reservation_id": {
 																"allOf": [
 																	{
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	{
@@ -290,10 +294,8 @@
 																	}
 																]
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
@@ -302,10 +304,10 @@
 							]
 						}
 					}
-				},
-				"description": "List interconnects response"
+				}
 			},
 			"4XX": {
+				"description": "List interconnects response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -313,16 +315,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -335,15 +339,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -356,7 +360,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -374,11 +378,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -386,8 +390,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -405,71 +408,73 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"interconnects": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"automatic_return_routing": {
-																		"default": false,
 																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
+																		"default": false,
 																		"x-auditable": true
 																	},
 																	"colo_name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																		"example": "pni_ord",
-																		"type": "string"
+																		"type": "string",
+																		"example": "pni_ord"
 																	},
 																	"created_on": {
 																		"description": "The date and time the tunnel was created.",
-																		"example": "2017-06-14T00:00:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T00:00:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional description of the interconnect.",
-																		"example": "Tunnel for Interconnect to ORD",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Tunnel for Interconnect to ORD"
 																	},
 																	"gre": {
 																		"description": "The configuration specific to GRE interconnects.",
+																		"type": "object",
 																		"properties": {
 																			"cloudflare_endpoint": {
 																				"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																				"example": "203.0.113.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "203.0.113.1"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"health_check": {
+																		"type": "object",
 																		"properties": {
 																			"enabled": {
-																				"default": true,
 																				"description": "Determines whether to run healthchecks for a tunnel.",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
+																				"default": true,
 																				"x-auditable": true
 																			},
 																			"rate": {
-																				"default": "mid",
 																				"description": "How frequent the health check is run. The default value is `mid`.",
+																				"type": "string",
+																				"example": "low",
+																				"default": "mid",
 																				"enum": [
 																					"low",
 																					"mid",
 																					"high"
 																				],
-																				"example": "low",
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"target": {
@@ -477,22 +482,22 @@
 																				"oneOf": [
 																					{
 																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																						"type": "object",
 																						"properties": {
 																							"effective": {
 																								"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																								"type": "string",
 																								"example": "203.0.113.1",
 																								"readOnly": true,
-																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"saved": {
 																								"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																								"example": "203.0.113.1",
 																								"type": "string",
+																								"example": "203.0.113.1",
 																								"x-auditable": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					},
 																					{
 																						"type": "string"
@@ -500,70 +505,69 @@
 																				]
 																			},
 																			"type": {
-																				"default": "reply",
 																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																				"type": "string",
+																				"example": "request",
+																				"default": "reply",
 																				"enum": [
 																					"reply",
 																					"request"
 																				],
-																				"example": "request",
-																				"type": "string",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"id": {
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"interface_address": {
 																		"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-																		"example": "192.0.2.3/29",
 																		"type": "string",
+																		"example": "192.0.2.3/29",
 																		"x-auditable": true
 																	},
 																	"interface_address6": {
 																		"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																		"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																		"type": "string",
+																		"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																		"x-auditable": true
 																	},
 																	"modified_on": {
 																		"description": "The date and time the tunnel was last modified.",
-																		"example": "2017-06-14T05:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T05:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"mtu": {
-																		"default": 1476,
 																		"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-																		"type": "integer"
+																		"type": "integer",
+																		"default": 1476
 																	},
 																	"name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																		"example": "pni_ord",
-																		"type": "string"
+																		"type": "string",
+																		"example": "pni_ord"
 																	},
 																	"version": {
 																		"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-																		"example": "1.5",
-																		"type": "string"
+																		"type": "string",
+																		"example": "1.5"
 																	},
 																	"virtual_port_reservation_id": {
 																		"allOf": [
 																			{
 																				"description": "Identifier",
+																				"type": "string",
 																				"example": "c4a7362d577a6c3019a474fd6f485821",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			{
@@ -572,10 +576,8 @@
 																			}
 																		]
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
 													}
 												}
@@ -584,48 +586,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -638,25 +615,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -664,14 +667,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List interconnects response failure"
+				}
 			}
 		},
 		"security": [
@@ -681,7 +682,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List interconnects",
 		"tags": [
 			"Magic Interconnects"
 		],
@@ -703,37 +703,38 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}": {
-		"description": "Lists details for a specific interconnect.",
 		"operationId": "magic-interconnects-list-interconnect-details",
+		"summary": "List interconnect Details",
+		"description": "Lists details for a specific interconnect.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "cf_interconnect_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
-				"in": "header",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
 				"name": "x-magic-new-hc-target",
+				"in": "header",
+				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
 				"schema": {
 					"type": "boolean"
 				}
@@ -741,21 +742,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List interconnect Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -768,15 +772,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -789,7 +793,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -807,11 +811,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -819,8 +823,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -838,70 +841,72 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"interconnect": {
+													"type": "object",
 													"properties": {
 														"automatic_return_routing": {
-															"default": false,
 															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"colo_name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-															"example": "pni_ord",
-															"type": "string"
+															"type": "string",
+															"example": "pni_ord"
 														},
 														"created_on": {
 															"description": "The date and time the tunnel was created.",
-															"example": "2017-06-14T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T00:00:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional description of the interconnect.",
-															"example": "Tunnel for Interconnect to ORD",
-															"type": "string"
+															"type": "string",
+															"example": "Tunnel for Interconnect to ORD"
 														},
 														"gre": {
 															"description": "The configuration specific to GRE interconnects.",
+															"type": "object",
 															"properties": {
 																"cloudflare_endpoint": {
 																	"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																	"example": "203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "203.0.113.1"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"health_check": {
+															"type": "object",
 															"properties": {
 																"enabled": {
-																	"default": true,
 																	"description": "Determines whether to run healthchecks for a tunnel.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": true,
 																	"x-auditable": true
 																},
 																"rate": {
-																	"default": "mid",
 																	"description": "How frequent the health check is run. The default value is `mid`.",
+																	"type": "string",
+																	"example": "low",
+																	"default": "mid",
 																	"enum": [
 																		"low",
 																		"mid",
 																		"high"
 																	],
-																	"example": "low",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"target": {
@@ -909,22 +914,22 @@
 																	"oneOf": [
 																		{
 																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																			"type": "object",
 																			"properties": {
 																				"effective": {
 																					"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																					"type": "string",
 																					"example": "203.0.113.1",
 																					"readOnly": true,
-																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"saved": {
 																					"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																					"example": "203.0.113.1",
 																					"type": "string",
+																					"example": "203.0.113.1",
 																					"x-auditable": true
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		{
 																			"type": "string"
@@ -932,70 +937,69 @@
 																	]
 																},
 																"type": {
-																	"default": "reply",
 																	"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																	"type": "string",
+																	"example": "request",
+																	"default": "reply",
 																	"enum": [
 																		"reply",
 																		"request"
 																	],
-																	"example": "request",
-																	"type": "string",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"interface_address": {
 															"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-															"example": "192.0.2.3/29",
 															"type": "string",
+															"example": "192.0.2.3/29",
 															"x-auditable": true
 														},
 														"interface_address6": {
 															"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-															"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 															"type": "string",
+															"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The date and time the tunnel was last modified.",
-															"example": "2017-06-14T05:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T05:20:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"mtu": {
-															"default": 1476,
 															"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-															"type": "integer"
+															"type": "integer",
+															"default": 1476
 														},
 														"name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-															"example": "pni_ord",
-															"type": "string"
+															"type": "string",
+															"example": "pni_ord"
 														},
 														"version": {
 															"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-															"example": "1.5",
-															"type": "string"
+															"type": "string",
+															"example": "1.5"
 														},
 														"virtual_port_reservation_id": {
 															"allOf": [
 																{
 																	"description": "Identifier",
+																	"type": "string",
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																{
@@ -1004,21 +1008,19 @@
 																}
 															]
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List interconnect Details response"
+				}
 			},
 			"4XX": {
+				"description": "List interconnect Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1026,16 +1028,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1048,15 +1052,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1069,7 +1073,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1087,11 +1091,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1099,8 +1103,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1118,70 +1121,72 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"interconnect": {
+															"type": "object",
 															"properties": {
 																"automatic_return_routing": {
-																	"default": false,
 																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": false,
 																	"x-auditable": true
 																},
 																"colo_name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																	"example": "pni_ord",
-																	"type": "string"
+																	"type": "string",
+																	"example": "pni_ord"
 																},
 																"created_on": {
 																	"description": "The date and time the tunnel was created.",
-																	"example": "2017-06-14T00:00:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T00:00:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional description of the interconnect.",
-																	"example": "Tunnel for Interconnect to ORD",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Tunnel for Interconnect to ORD"
 																},
 																"gre": {
 																	"description": "The configuration specific to GRE interconnects.",
+																	"type": "object",
 																	"properties": {
 																		"cloudflare_endpoint": {
 																			"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																			"example": "203.0.113.1",
-																			"type": "string"
+																			"type": "string",
+																			"example": "203.0.113.1"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"health_check": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
-																			"default": true,
 																			"description": "Determines whether to run healthchecks for a tunnel.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
+																			"default": true,
 																			"x-auditable": true
 																		},
 																		"rate": {
-																			"default": "mid",
 																			"description": "How frequent the health check is run. The default value is `mid`.",
+																			"type": "string",
+																			"example": "low",
+																			"default": "mid",
 																			"enum": [
 																				"low",
 																				"mid",
 																				"high"
 																			],
-																			"example": "low",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"target": {
@@ -1189,22 +1194,22 @@
 																			"oneOf": [
 																				{
 																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																					"type": "object",
 																					"properties": {
 																						"effective": {
 																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																							"type": "string",
 																							"example": "203.0.113.1",
 																							"readOnly": true,
-																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"saved": {
 																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																							"example": "203.0.113.1",
 																							"type": "string",
+																							"example": "203.0.113.1",
 																							"x-auditable": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				},
 																				{
 																					"type": "string"
@@ -1212,70 +1217,69 @@
 																			]
 																		},
 																		"type": {
-																			"default": "reply",
 																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																			"type": "string",
+																			"example": "request",
+																			"default": "reply",
 																			"enum": [
 																				"reply",
 																				"request"
 																			],
-																			"example": "request",
-																			"type": "string",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"id": {
 																	"description": "Identifier",
+																	"type": "string",
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"interface_address": {
 																	"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-																	"example": "192.0.2.3/29",
 																	"type": "string",
+																	"example": "192.0.2.3/29",
 																	"x-auditable": true
 																},
 																"interface_address6": {
 																	"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																	"type": "string",
+																	"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																	"x-auditable": true
 																},
 																"modified_on": {
 																	"description": "The date and time the tunnel was last modified.",
-																	"example": "2017-06-14T05:20:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T05:20:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"mtu": {
-																	"default": 1476,
 																	"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-																	"type": "integer"
+																	"type": "integer",
+																	"default": 1476
 																},
 																"name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																	"example": "pni_ord",
-																	"type": "string"
+																	"type": "string",
+																	"example": "pni_ord"
 																},
 																"version": {
 																	"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-																	"example": "1.5",
-																	"type": "string"
+																	"type": "string",
+																	"example": "1.5"
 																},
 																"virtual_port_reservation_id": {
 																	"allOf": [
 																		{
 																			"description": "Identifier",
+																			"type": "string",
 																			"example": "c4a7362d577a6c3019a474fd6f485821",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		{
@@ -1284,59 +1288,32 @@
 																		}
 																	]
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1349,25 +1326,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1375,14 +1378,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List interconnect Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1392,7 +1393,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List interconnect Details",
 		"tags": [
 			"Magic Interconnects"
 		],
@@ -1414,31 +1414,33 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cf_interconnects": {
-		"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-interconnects-update-multiple-interconnects",
+		"summary": "Update multiple interconnects",
+		"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false.",
-				"in": "header",
 				"name": "x-magic-new-hc-target",
+				"in": "header",
+				"description": "If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false.",
 				"schema": {
 					"type": "boolean"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -1447,26 +1449,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update multiple interconnects response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1479,15 +1483,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1500,7 +1504,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1518,11 +1522,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1530,8 +1534,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1549,75 +1552,77 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"modified": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"modified_interconnects": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"automatic_return_routing": {
-																"default": false,
 																"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
+																"default": false,
 																"x-auditable": true
 															},
 															"colo_name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																"example": "pni_ord",
-																"type": "string"
+																"type": "string",
+																"example": "pni_ord"
 															},
 															"created_on": {
 																"description": "The date and time the tunnel was created.",
-																"example": "2017-06-14T00:00:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T00:00:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"description": {
 																"description": "An optional description of the interconnect.",
-																"example": "Tunnel for Interconnect to ORD",
-																"type": "string"
+																"type": "string",
+																"example": "Tunnel for Interconnect to ORD"
 															},
 															"gre": {
 																"description": "The configuration specific to GRE interconnects.",
+																"type": "object",
 																"properties": {
 																	"cloudflare_endpoint": {
 																		"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																		"example": "203.0.113.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "203.0.113.1"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"health_check": {
+																"type": "object",
 																"properties": {
 																	"enabled": {
-																		"default": true,
 																		"description": "Determines whether to run healthchecks for a tunnel.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
+																		"default": true,
 																		"x-auditable": true
 																	},
 																	"rate": {
-																		"default": "mid",
 																		"description": "How frequent the health check is run. The default value is `mid`.",
+																		"type": "string",
+																		"example": "low",
+																		"default": "mid",
 																		"enum": [
 																			"low",
 																			"mid",
 																			"high"
 																		],
-																		"example": "low",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"target": {
@@ -1625,22 +1630,22 @@
 																		"oneOf": [
 																			{
 																				"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																				"type": "object",
 																				"properties": {
 																					"effective": {
 																						"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																						"type": "string",
 																						"example": "203.0.113.1",
 																						"readOnly": true,
-																						"type": "string",
 																						"x-auditable": true
 																					},
 																					"saved": {
 																						"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																						"example": "203.0.113.1",
 																						"type": "string",
+																						"example": "203.0.113.1",
 																						"x-auditable": true
 																					}
-																				},
-																				"type": "object"
+																				}
 																			},
 																			{
 																				"type": "string"
@@ -1648,70 +1653,69 @@
 																		]
 																	},
 																	"type": {
-																		"default": "reply",
 																		"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																		"type": "string",
+																		"example": "request",
+																		"default": "reply",
 																		"enum": [
 																			"reply",
 																			"request"
 																		],
-																		"example": "request",
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "c4a7362d577a6c3019a474fd6f485821",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"interface_address": {
 																"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-																"example": "192.0.2.3/29",
 																"type": "string",
+																"example": "192.0.2.3/29",
 																"x-auditable": true
 															},
 															"interface_address6": {
 																"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																"type": "string",
+																"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "The date and time the tunnel was last modified.",
-																"example": "2017-06-14T05:20:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2017-06-14T05:20:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"mtu": {
-																"default": 1476,
 																"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-																"type": "integer"
+																"type": "integer",
+																"default": 1476
 															},
 															"name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																"example": "pni_ord",
-																"type": "string"
+																"type": "string",
+																"example": "pni_ord"
 															},
 															"version": {
 																"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-																"example": "1.5",
-																"type": "string"
+																"type": "string",
+																"example": "1.5"
 															},
 															"virtual_port_reservation_id": {
 																"allOf": [
 																	{
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	{
@@ -1720,10 +1724,8 @@
 																	}
 																]
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
@@ -1732,10 +1734,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update multiple interconnects response"
+				}
 			},
 			"4XX": {
+				"description": "Update multiple interconnects response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1743,16 +1745,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1765,15 +1769,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1786,7 +1790,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1804,11 +1808,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1816,8 +1820,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1835,75 +1838,77 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"modified": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"modified_interconnects": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"automatic_return_routing": {
-																		"default": false,
 																		"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
+																		"default": false,
 																		"x-auditable": true
 																	},
 																	"colo_name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																		"example": "pni_ord",
-																		"type": "string"
+																		"type": "string",
+																		"example": "pni_ord"
 																	},
 																	"created_on": {
 																		"description": "The date and time the tunnel was created.",
-																		"example": "2017-06-14T00:00:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T00:00:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"description": {
 																		"description": "An optional description of the interconnect.",
-																		"example": "Tunnel for Interconnect to ORD",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Tunnel for Interconnect to ORD"
 																	},
 																	"gre": {
 																		"description": "The configuration specific to GRE interconnects.",
+																		"type": "object",
 																		"properties": {
 																			"cloudflare_endpoint": {
 																				"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																				"example": "203.0.113.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "203.0.113.1"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"health_check": {
+																		"type": "object",
 																		"properties": {
 																			"enabled": {
-																				"default": true,
 																				"description": "Determines whether to run healthchecks for a tunnel.",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
+																				"default": true,
 																				"x-auditable": true
 																			},
 																			"rate": {
-																				"default": "mid",
 																				"description": "How frequent the health check is run. The default value is `mid`.",
+																				"type": "string",
+																				"example": "low",
+																				"default": "mid",
 																				"enum": [
 																					"low",
 																					"mid",
 																					"high"
 																				],
-																				"example": "low",
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"target": {
@@ -1911,22 +1916,22 @@
 																				"oneOf": [
 																					{
 																						"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																						"type": "object",
 																						"properties": {
 																							"effective": {
 																								"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																								"type": "string",
 																								"example": "203.0.113.1",
 																								"readOnly": true,
-																								"type": "string",
 																								"x-auditable": true
 																							},
 																							"saved": {
 																								"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																								"example": "203.0.113.1",
 																								"type": "string",
+																								"example": "203.0.113.1",
 																								"x-auditable": true
 																							}
-																						},
-																						"type": "object"
+																						}
 																					},
 																					{
 																						"type": "string"
@@ -1934,70 +1939,69 @@
 																				]
 																			},
 																			"type": {
-																				"default": "reply",
 																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																				"type": "string",
+																				"example": "request",
+																				"default": "reply",
 																				"enum": [
 																					"reply",
 																					"request"
 																				],
-																				"example": "request",
-																				"type": "string",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"id": {
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "c4a7362d577a6c3019a474fd6f485821",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"interface_address": {
 																		"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-																		"example": "192.0.2.3/29",
 																		"type": "string",
+																		"example": "192.0.2.3/29",
 																		"x-auditable": true
 																	},
 																	"interface_address6": {
 																		"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																		"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																		"type": "string",
+																		"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																		"x-auditable": true
 																	},
 																	"modified_on": {
 																		"description": "The date and time the tunnel was last modified.",
-																		"example": "2017-06-14T05:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2017-06-14T05:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"mtu": {
-																		"default": 1476,
 																		"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-																		"type": "integer"
+																		"type": "integer",
+																		"default": 1476
 																	},
 																	"name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																		"example": "pni_ord",
-																		"type": "string"
+																		"type": "string",
+																		"example": "pni_ord"
 																	},
 																	"version": {
 																		"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-																		"example": "1.5",
-																		"type": "string"
+																		"type": "string",
+																		"example": "1.5"
 																	},
 																	"virtual_port_reservation_id": {
 																		"allOf": [
 																			{
 																				"description": "Identifier",
+																				"type": "string",
 																				"example": "c4a7362d577a6c3019a474fd6f485821",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			{
@@ -2006,10 +2010,8 @@
 																			}
 																		]
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
 													}
 												}
@@ -2018,48 +2020,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2072,25 +2049,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2098,14 +2101,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update multiple interconnects response failure"
+				}
 			}
 		},
 		"security": [
@@ -2115,7 +2116,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update multiple interconnects",
 		"tags": [
 			"Magic Interconnects"
 		],
@@ -2135,89 +2135,93 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}": {
-		"description": "Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"operationId": "magic-interconnects-update-interconnect",
+		"summary": "Update interconnect",
+		"description": "Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "cf_interconnect_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false.",
-				"in": "header",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
 				"name": "x-magic-new-hc-target",
+				"in": "header",
+				"description": "If true, the health check target in the request and response bodies will be presented using the new object format. Defaults to false.",
 				"schema": {
 					"type": "boolean"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"automatic_return_routing": {
-								"default": false,
 								"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"description": {
 								"description": "An optional description of the interconnect.",
-								"example": "Tunnel for Interconnect to ORD",
-								"type": "string"
+								"type": "string",
+								"example": "Tunnel for Interconnect to ORD"
 							},
 							"gre": {
 								"description": "The configuration specific to GRE interconnects.",
+								"type": "object",
 								"properties": {
 									"cloudflare_endpoint": {
 										"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-										"example": "203.0.113.1",
-										"type": "string"
+										"type": "string",
+										"example": "203.0.113.1"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"health_check": {
+								"type": "object",
 								"properties": {
 									"enabled": {
-										"default": true,
 										"description": "Determines whether to run healthchecks for a tunnel.",
-										"example": true,
 										"type": "boolean",
+										"example": true,
+										"default": true,
 										"x-auditable": true
 									},
 									"rate": {
-										"default": "mid",
 										"description": "How frequent the health check is run. The default value is `mid`.",
+										"type": "string",
+										"example": "low",
+										"default": "mid",
 										"enum": [
 											"low",
 											"mid",
 											"high"
 										],
-										"example": "low",
-										"type": "string",
 										"x-auditable": true
 									},
 									"target": {
@@ -2225,22 +2229,22 @@
 										"oneOf": [
 											{
 												"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+												"type": "object",
 												"properties": {
 													"effective": {
 														"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+														"type": "string",
 														"example": "203.0.113.1",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"saved": {
 														"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-														"example": "203.0.113.1",
 														"type": "string",
+														"example": "203.0.113.1",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
+												}
 											},
 											{
 												"type": "string"
@@ -2248,65 +2252,65 @@
 										]
 									},
 									"type": {
-										"default": "reply",
 										"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+										"type": "string",
+										"example": "request",
+										"default": "reply",
 										"enum": [
 											"reply",
 											"request"
 										],
-										"example": "request",
-										"type": "string",
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							},
 							"interface_address": {
 								"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-								"example": "192.0.2.3/29",
 								"type": "string",
+								"example": "192.0.2.3/29",
 								"x-auditable": true
 							},
 							"interface_address6": {
 								"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-								"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 								"type": "string",
+								"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 								"x-auditable": true
 							},
 							"mtu": {
-								"default": 1476,
 								"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-								"type": "integer"
+								"type": "integer",
+								"default": 1476
 							},
 							"name": {
 								"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-								"example": "pni_ord",
-								"type": "string"
+								"type": "string",
+								"example": "pni_ord"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update interconnect response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2319,15 +2323,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2340,7 +2344,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2358,11 +2362,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2370,8 +2374,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2389,74 +2392,76 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"modified": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"modified_interconnect": {
+													"type": "object",
 													"properties": {
 														"automatic_return_routing": {
-															"default": false,
 															"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"colo_name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-															"example": "pni_ord",
-															"type": "string"
+															"type": "string",
+															"example": "pni_ord"
 														},
 														"created_on": {
 															"description": "The date and time the tunnel was created.",
-															"example": "2017-06-14T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T00:00:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"description": {
 															"description": "An optional description of the interconnect.",
-															"example": "Tunnel for Interconnect to ORD",
-															"type": "string"
+															"type": "string",
+															"example": "Tunnel for Interconnect to ORD"
 														},
 														"gre": {
 															"description": "The configuration specific to GRE interconnects.",
+															"type": "object",
 															"properties": {
 																"cloudflare_endpoint": {
 																	"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																	"example": "203.0.113.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "203.0.113.1"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"health_check": {
+															"type": "object",
 															"properties": {
 																"enabled": {
-																	"default": true,
 																	"description": "Determines whether to run healthchecks for a tunnel.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": true,
 																	"x-auditable": true
 																},
 																"rate": {
-																	"default": "mid",
 																	"description": "How frequent the health check is run. The default value is `mid`.",
+																	"type": "string",
+																	"example": "low",
+																	"default": "mid",
 																	"enum": [
 																		"low",
 																		"mid",
 																		"high"
 																	],
-																	"example": "low",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"target": {
@@ -2464,22 +2469,22 @@
 																	"oneOf": [
 																		{
 																			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																			"type": "object",
 																			"properties": {
 																				"effective": {
 																					"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																					"type": "string",
 																					"example": "203.0.113.1",
 																					"readOnly": true,
-																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"saved": {
 																					"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																					"example": "203.0.113.1",
 																					"type": "string",
+																					"example": "203.0.113.1",
 																					"x-auditable": true
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		{
 																			"type": "string"
@@ -2487,70 +2492,69 @@
 																	]
 																},
 																"type": {
-																	"default": "reply",
 																	"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																	"type": "string",
+																	"example": "request",
+																	"default": "reply",
 																	"enum": [
 																		"reply",
 																		"request"
 																	],
-																	"example": "request",
-																	"type": "string",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "c4a7362d577a6c3019a474fd6f485821",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"interface_address": {
 															"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-															"example": "192.0.2.3/29",
 															"type": "string",
+															"example": "192.0.2.3/29",
 															"x-auditable": true
 														},
 														"interface_address6": {
 															"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-															"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 															"type": "string",
+															"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "The date and time the tunnel was last modified.",
-															"example": "2017-06-14T05:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2017-06-14T05:20:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"mtu": {
-															"default": 1476,
 															"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-															"type": "integer"
+															"type": "integer",
+															"default": 1476
 														},
 														"name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-															"example": "pni_ord",
-															"type": "string"
+															"type": "string",
+															"example": "pni_ord"
 														},
 														"version": {
 															"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-															"example": "1.5",
-															"type": "string"
+															"type": "string",
+															"example": "1.5"
 														},
 														"virtual_port_reservation_id": {
 															"allOf": [
 																{
 																	"description": "Identifier",
+																	"type": "string",
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																{
@@ -2559,21 +2563,19 @@
 																}
 															]
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update interconnect response"
+				}
 			},
 			"4XX": {
+				"description": "Update interconnect response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2581,16 +2583,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2603,15 +2607,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2624,7 +2628,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2642,11 +2646,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2654,8 +2658,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2673,74 +2676,76 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"modified": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"modified_interconnect": {
+															"type": "object",
 															"properties": {
 																"automatic_return_routing": {
-																	"default": false,
 																	"description": "True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
+																	"default": false,
 																	"x-auditable": true
 																},
 																"colo_name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																	"example": "pni_ord",
-																	"type": "string"
+																	"type": "string",
+																	"example": "pni_ord"
 																},
 																"created_on": {
 																	"description": "The date and time the tunnel was created.",
-																	"example": "2017-06-14T00:00:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T00:00:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"description": {
 																	"description": "An optional description of the interconnect.",
-																	"example": "Tunnel for Interconnect to ORD",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Tunnel for Interconnect to ORD"
 																},
 																"gre": {
 																	"description": "The configuration specific to GRE interconnects.",
+																	"type": "object",
 																	"properties": {
 																		"cloudflare_endpoint": {
 																			"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-																			"example": "203.0.113.1",
-																			"type": "string"
+																			"type": "string",
+																			"example": "203.0.113.1"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"health_check": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
-																			"default": true,
 																			"description": "Determines whether to run healthchecks for a tunnel.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
+																			"default": true,
 																			"x-auditable": true
 																		},
 																		"rate": {
-																			"default": "mid",
 																			"description": "How frequent the health check is run. The default value is `mid`.",
+																			"type": "string",
+																			"example": "low",
+																			"default": "mid",
 																			"enum": [
 																				"low",
 																				"mid",
 																				"high"
 																			],
-																			"example": "low",
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"target": {
@@ -2748,22 +2753,22 @@
 																			"oneOf": [
 																				{
 																					"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+																					"type": "object",
 																					"properties": {
 																						"effective": {
 																							"description": "The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.",
+																							"type": "string",
 																							"example": "203.0.113.1",
 																							"readOnly": true,
-																							"type": "string",
 																							"x-auditable": true
 																						},
 																						"saved": {
 																							"description": "The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.",
-																							"example": "203.0.113.1",
 																							"type": "string",
+																							"example": "203.0.113.1",
 																							"x-auditable": true
 																						}
-																					},
-																					"type": "object"
+																					}
 																				},
 																				{
 																					"type": "string"
@@ -2771,70 +2776,69 @@
 																			]
 																		},
 																		"type": {
-																			"default": "reply",
 																			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																			"type": "string",
+																			"example": "request",
+																			"default": "reply",
 																			"enum": [
 																				"reply",
 																				"request"
 																			],
-																			"example": "request",
-																			"type": "string",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"id": {
 																	"description": "Identifier",
+																	"type": "string",
 																	"example": "c4a7362d577a6c3019a474fd6f485821",
 																	"maxLength": 32,
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"interface_address": {
 																	"description": "The IPv4 interface address for the interconnect. For MPLS Interconnects,\nuse a /30 or /31 prefix. For GRE Interconnects, a /29, /30, or /31 prefix\nmay be used. A /29 prefix is only allowed for v1.5 interconnects,\nand the address must be the .3 host of the subnet (the fourth address\noverall; the network address is not usable). Select the subnet from RFC 1918\nor the approved link-local ranges.\n",
-																	"example": "192.0.2.3/29",
 																	"type": "string",
+																	"example": "192.0.2.3/29",
 																	"x-auditable": true
 																},
 																"interface_address6": {
 																	"description": "A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127",
-																	"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																	"type": "string",
+																	"example": "2606:54c1:7:0:a9fe:12d2:1:200/127",
 																	"x-auditable": true
 																},
 																"modified_on": {
 																	"description": "The date and time the tunnel was last modified.",
-																	"example": "2017-06-14T05:20:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2017-06-14T05:20:00Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"mtu": {
-																	"default": 1476,
 																	"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
-																	"type": "integer"
+																	"type": "integer",
+																	"default": 1476
 																},
 																"name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-																	"example": "pni_ord",
-																	"type": "string"
+																	"type": "string",
+																	"example": "pni_ord"
 																},
 																"version": {
 																	"description": "Immutable interconnect version configured at creation time. One of:\n- \"1\"\n- \"1.5\"\n- \"2\"\n",
-																	"example": "1.5",
-																	"type": "string"
+																	"type": "string",
+																	"example": "1.5"
 																},
 																"virtual_port_reservation_id": {
 																	"allOf": [
 																		{
 																			"description": "Identifier",
+																			"type": "string",
 																			"example": "c4a7362d577a6c3019a474fd6f485821",
 																			"maxLength": 32,
 																			"readOnly": true,
-																			"type": "string",
 																			"x-auditable": true
 																		},
 																		{
@@ -2843,59 +2847,32 @@
 																		}
 																	]
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2908,25 +2885,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2934,14 +2937,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update interconnect response failure"
+				}
 			}
 		},
 		"security": [
@@ -2951,7 +2952,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update interconnect",
 		"tags": [
 			"Magic Interconnects"
 		],

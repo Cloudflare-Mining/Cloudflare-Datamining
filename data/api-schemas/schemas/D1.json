@@ -1,49 +1,52 @@
 {
 	"DELETE /accounts/{account_id}/d1/database/{database_id}": {
-		"description": "Deletes the specified D1 database.",
 		"operationId": "d1-delete-database",
+		"summary": "Delete D1 Database",
+		"description": "Deletes the specified D1 database.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete D1 database response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -56,15 +59,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -77,18 +80,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -96,72 +99,46 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete D1 database response"
+				}
 			},
 			"4XX": {
+				"description": "Delete D1 database response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -174,25 +151,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -200,12 +203,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete D1 database response failure"
+				}
 			}
 		},
 		"security": [
@@ -217,7 +218,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete D1 Database",
 		"tags": [
 			"D1"
 		],
@@ -294,67 +294,70 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/d1/database": {
-		"description": "Returns a list of D1 databases.",
 		"operationId": "d1-list-databases",
+		"summary": "List D1 Databases",
+		"description": "Returns a list of D1 databases.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "name",
+				"in": "query",
 				"schema": {
 					"description": "a database name to search for.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 1000,
 					"description": "Number of items per page.",
+					"type": "number",
+					"default": 1000,
 					"maximum": 10000,
-					"minimum": 10,
-					"type": "number"
+					"minimum": 10
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List D1 databases response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -367,15 +370,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -388,18 +391,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -407,137 +410,111 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-														"example": "2022-11-15T18:25:44.442097Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2022-11-15T18:25:44.442097Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"jurisdiction": {
 														"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+														"type": "string",
+														"example": "eu",
 														"enum": [
 															"eu",
 															"fedramp"
 														],
-														"example": "eu",
 														"nullable": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"name": {
 														"description": "D1 database name.",
+														"type": "string",
 														"example": "my-database",
 														"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
-														"type": "string",
 														"x-auditable": true
 													},
 													"uuid": {
 														"description": "D1 database identifier (UUID).",
+														"type": "string",
 														"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"version": {
+														"type": "string",
 														"example": "production",
 														"pattern": "^(alpha|beta|production)$",
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results for the requested service",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"page": {
 													"description": "Current page within paginated list of results",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page of results",
-													"example": 20,
-													"type": "number"
+													"type": "number",
+													"example": 20
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters",
-													"example": 2000,
-													"type": "number"
+													"type": "number",
+													"example": 2000
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List D1 databases response"
+				}
 			},
 			"4XX": {
+				"description": "List D1 databases response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -550,25 +527,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -576,12 +579,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List D1 databases response failure"
+				}
 			}
 		},
 		"security": [
@@ -593,7 +594,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List D1 Databases",
 		"tags": [
 			"D1"
 		],
@@ -671,52 +671,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}": {
-		"description": "Returns the specified D1 database.",
 		"operationId": "d1-get-database",
+		"summary": "Get D1 Database",
+		"description": "Returns the specified D1 database.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"oneOf": [
 						{
 							"description": "D1 database identifier (UUID).",
+							"type": "string",
 							"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 							"readOnly": true,
-							"type": "string",
 							"x-auditable": true
 						},
 						{
 							"description": "D1 database name.",
+							"type": "string",
 							"example": "my-database",
 							"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
-							"type": "string",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"description": "Comma-separated list of fields to include in the response. When omitted,\nall fields are returned.\n",
-				"example": "uuid,name,version",
-				"explode": false,
-				"in": "query",
 				"name": "fields",
+				"in": "query",
+				"description": "Comma-separated list of fields to include in the response. When omitted,\nall fields are returned.\n",
 				"schema": {
+					"type": "array",
 					"items": {
 						"enum": [
 							"uuid",
@@ -730,27 +730,30 @@
 							"read_replication"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				},
+				"example": "uuid,name,version",
+				"explode": false,
 				"style": "form"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Database details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -763,15 +766,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -784,18 +787,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -803,140 +806,114 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The details of the D1 database.",
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"file_size": {
 													"description": "The D1 database's size, in bytes.",
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"jurisdiction": {
 													"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+													"type": "string",
+													"example": "eu",
 													"enum": [
 														"eu",
 														"fedramp"
 													],
-													"example": "eu",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "D1 database name.",
+													"type": "string",
 													"example": "my-database",
 													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"num_tables": {
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"read_replication": {
 													"description": "Configuration for D1 read replication.",
+													"type": "object",
 													"properties": {
 														"mode": {
 															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+															"type": "string",
+															"example": "auto",
 															"enum": [
 																"auto",
 																"disabled"
 															],
-															"example": "auto",
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"mode"
-													],
-													"type": "object"
+													]
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
+													"type": "string",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"version": {
+													"type": "string",
 													"example": "production",
 													"pattern": "^(alpha|beta|production)$",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Database details response"
+				}
 			},
 			"4XX": {
+				"description": "Database details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -949,25 +926,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -975,12 +978,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Database details response failure"
+				}
 			}
 		},
 		"security": [
@@ -992,7 +993,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get D1 Database",
 		"tags": [
 			"D1"
 		],
@@ -1069,62 +1069,65 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark": {
-		"description": "Retrieves the current bookmark, or the nearest bookmark at or before a provided timestamp.\nBookmarks can be used with the restore endpoint to revert the database to a previous point in time.\n",
 		"operationId": "d1-time-travel-get-bookmark",
+		"summary": "Get D1 database bookmark",
+		"description": "Retrieves the current bookmark, or the nearest bookmark at or before a provided timestamp.\nBookmarks can be used with the restore endpoint to revert the database to a previous point in time.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "An optional ISO 8601 timestamp. If provided, returns the nearest available bookmark at or before this timestamp. If omitted, returns the current bookmark.",
-				"in": "query",
 				"name": "timestamp",
+				"in": "query",
+				"description": "An optional ISO 8601 timestamp. If provided, returns the nearest available bookmark at or before this timestamp. If omitted, returns the current bookmark.",
 				"schema": {
 					"description": "An ISO 8601 timestamp used for time travel operations. The database will be restored to the nearest available bookmark at or before this timestamp.",
-					"example": "2024-01-15T12:00:00Z",
-					"format": "date-time",
 					"type": "string",
+					"format": "date-time",
+					"example": "2024-01-15T12:00:00Z",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Bookmark retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1137,15 +1140,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1158,18 +1161,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1177,76 +1180,50 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"bookmark": {
 													"description": "A bookmark representing a specific state of the database at a specific point in time.",
-													"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 													"type": "string",
+													"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Bookmark retrieved successfully"
+				}
 			},
 			"4XX": {
+				"description": "Failed to retrieve bookmark",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1259,25 +1236,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1285,12 +1288,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to retrieve bookmark"
+				}
 			}
 		},
 		"security": [
@@ -1302,7 +1303,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get D1 database bookmark",
 		"tags": [
 			"D1"
 		],
@@ -1380,82 +1380,85 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
-		"description": "Updates partially the specified D1 database.",
 		"operationId": "d1-update-partial-database",
+		"summary": "Update D1 Database partially",
+		"description": "Updates partially the specified D1 database.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"read_replication": {
 								"description": "Configuration for D1 read replication.",
+								"type": "object",
 								"properties": {
 									"mode": {
 										"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+										"type": "string",
+										"example": "auto",
 										"enum": [
 											"auto",
 											"disabled"
 										],
-										"example": "auto",
-										"type": "string",
 										"x-auditable": true
 									}
 								},
 								"required": [
 									"mode"
 								],
-								"type": "object",
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Database details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1468,15 +1471,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1489,18 +1492,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1508,140 +1511,114 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The details of the D1 database.",
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"file_size": {
 													"description": "The D1 database's size, in bytes.",
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"jurisdiction": {
 													"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+													"type": "string",
+													"example": "eu",
 													"enum": [
 														"eu",
 														"fedramp"
 													],
-													"example": "eu",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "D1 database name.",
+													"type": "string",
 													"example": "my-database",
 													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"num_tables": {
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"read_replication": {
 													"description": "Configuration for D1 read replication.",
+													"type": "object",
 													"properties": {
 														"mode": {
 															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+															"type": "string",
+															"example": "auto",
 															"enum": [
 																"auto",
 																"disabled"
 															],
-															"example": "auto",
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"mode"
-													],
-													"type": "object"
+													]
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
+													"type": "string",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"version": {
+													"type": "string",
 													"example": "production",
 													"pattern": "^(alpha|beta|production)$",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Database details response"
+				}
 			},
 			"4XX": {
+				"description": "Update D1 database response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1654,25 +1631,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1680,12 +1683,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update D1 database response failure"
+				}
 			}
 		},
 		"security": [
@@ -1697,7 +1698,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update D1 Database partially",
 		"tags": [
 			"D1"
 		],
@@ -1773,47 +1773,52 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database": {
-		"description": "Returns the created D1 database.",
 		"operationId": "d1-create-database",
+		"summary": "Create D1 Database",
+		"description": "Returns the created D1 database.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"jurisdiction": {
 								"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+								"type": "string",
+								"example": "eu",
 								"enum": [
 									"eu",
 									"fedramp"
 								],
-								"example": "eu",
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "D1 database name.",
+								"type": "string",
 								"example": "my-database",
 								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
-								"type": "string",
 								"x-auditable": true
 							},
 							"primary_location_hint": {
 								"description": "Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.",
+								"type": "string",
+								"example": "wnam",
 								"enum": [
 									"wnam",
 									"enam",
@@ -1822,55 +1827,53 @@
 									"apac",
 									"oc"
 								],
-								"example": "wnam",
-								"type": "string",
 								"x-auditable": true
 							},
 							"read_replication": {
 								"description": "Configuration for D1 read replication.",
+								"type": "object",
 								"properties": {
 									"mode": {
 										"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+										"type": "string",
+										"example": "auto",
 										"enum": [
 											"auto",
 											"disabled"
 										],
-										"example": "auto",
-										"type": "string",
 										"x-auditable": true
 									}
 								},
 								"required": [
 									"mode"
 								],
-								"type": "object",
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created D1 database's metadata",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1883,15 +1886,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1904,18 +1907,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1923,140 +1926,114 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The details of the D1 database.",
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"file_size": {
 													"description": "The D1 database's size, in bytes.",
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"jurisdiction": {
 													"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+													"type": "string",
+													"example": "eu",
 													"enum": [
 														"eu",
 														"fedramp"
 													],
-													"example": "eu",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "D1 database name.",
+													"type": "string",
 													"example": "my-database",
 													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"num_tables": {
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"read_replication": {
 													"description": "Configuration for D1 read replication.",
+													"type": "object",
 													"properties": {
 														"mode": {
 															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+															"type": "string",
+															"example": "auto",
 															"enum": [
 																"auto",
 																"disabled"
 															],
-															"example": "auto",
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"mode"
-													],
-													"type": "object"
+													]
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
+													"type": "string",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"version": {
+													"type": "string",
 													"example": "production",
 													"pattern": "^(alpha|beta|production)$",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Returns the created D1 database's metadata"
+				}
 			},
 			"4XX": {
+				"description": "Database details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2069,25 +2046,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2095,12 +2098,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Database details response failure"
+				}
 			}
 		},
 		"security": [
@@ -2112,7 +2113,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create D1 Database",
 		"tags": [
 			"D1"
 		],
@@ -2189,39 +2189,42 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/export": {
-		"description": "Returns a URL where the SQL contents of your D1 can be downloaded. Note: this process may take\nsome time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid\nblocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel.\n",
 		"operationId": "d1-export-database",
+		"summary": "Export D1 Database as SQL",
+		"description": "Returns a URL where the SQL contents of your D1 can be downloaded. Note: this process may take\nsome time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid\nblocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"current_bookmark": {
 								"description": "To poll an in-progress export, provide the current bookmark (returned by your first polling response)",
@@ -2229,6 +2232,7 @@
 								"x-auditable": true
 							},
 							"dump_options": {
+								"type": "object",
 								"properties": {
 									"no_data": {
 										"description": "Export only the table definitions, not their contents",
@@ -2242,48 +2246,47 @@
 									},
 									"tables": {
 										"description": "Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables.",
+										"type": "array",
 										"items": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"type": "array"
+										}
 									}
-								},
-								"type": "object"
+								}
 							},
 							"output_format": {
 								"description": "Specifies that you will poll this endpoint until the export completes",
+								"type": "string",
 								"enum": [
 									"polling"
 								],
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"output_format"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Polled successfully, task no longer running (errored or complete)",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2296,15 +2299,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2317,18 +2320,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2336,12 +2339,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"at_bookmark": {
 													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task.",
@@ -2355,14 +2358,15 @@
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
+													"type": "array",
 													"items": {
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"result": {
 													"description": "Only present when status = 'complete'",
+													"type": "object",
 													"properties": {
 														"filename": {
 															"description": "The generated SQL filename.",
@@ -2373,15 +2377,14 @@
 															"description": "The URL to download the exported SQL. Available for one hour.",
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"complete",
 														"error"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"success": {
@@ -2389,37 +2392,37 @@
 													"x-auditable": true
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"export"
 													],
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Polled successfully, task no longer running (errored or complete)"
+				}
 			},
 			"202": {
+				"description": "Polled successfully, task is currently running",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2432,15 +2435,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2453,18 +2456,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2472,12 +2475,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"at_bookmark": {
 													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task.",
@@ -2486,17 +2489,17 @@
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
+													"type": "array",
 													"items": {
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"active"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"success": {
@@ -2504,69 +2507,43 @@
 													"x-auditable": true
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"export"
 													],
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Polled successfully, task is currently running"
+				}
 			},
 			"4XX": {
+				"description": "Poll failed (API error)",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2579,25 +2556,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2605,12 +2608,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Poll failed (API error)"
+				}
 			}
 		},
 		"security": [
@@ -2622,7 +2623,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Export D1 Database as SQL",
 		"tags": [
 			"D1"
 		],
@@ -2695,36 +2695,38 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/import": {
-		"description": "Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it\nand polling it for status updates. Imports block the D1 for their duration.\n",
 		"operationId": "d1-import-database",
+		"summary": "Import SQL into your D1 Database",
+		"description": "Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it\nand polling it for status updates. Imports block the D1 for their duration.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -2733,10 +2735,10 @@
 								"properties": {
 									"action": {
 										"description": "Indicates you have a new SQL file to upload.",
+										"type": "string",
 										"enum": [
 											"init"
 										],
-										"type": "string",
 										"x-auditable": true
 									},
 									"etag": {
@@ -2756,10 +2758,10 @@
 								"properties": {
 									"action": {
 										"description": "Indicates you've finished uploading to tell the D1 to start consuming it",
+										"type": "string",
 										"enum": [
 											"ingest"
 										],
-										"type": "string",
 										"x-auditable": true
 									},
 									"etag": {
@@ -2785,10 +2787,10 @@
 								"properties": {
 									"action": {
 										"description": "Indicates you've finished uploading to tell the D1 to start consuming it",
+										"type": "string",
 										"enum": [
 											"poll"
 										],
-										"type": "string",
 										"x-auditable": true
 									},
 									"current_bookmark": {
@@ -2807,24 +2809,25 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful action. Import is either ready to start, under way, or finished (succeeded or failed).",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2837,15 +2840,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2858,18 +2861,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2877,12 +2880,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"at_bookmark": {
 													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import. Only returned if an import process is currently running or recently finished.",
@@ -2901,14 +2904,15 @@
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
+													"type": "array",
 													"items": {
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"result": {
 													"description": "Only present when status = 'complete'",
+													"type": "object",
 													"properties": {
 														"final_bookmark": {
 															"description": "The time-travel bookmark if you need restore your D1 to directly after the import succeeded.",
@@ -2916,6 +2920,7 @@
 															"x-auditable": true
 														},
 														"meta": {
+															"type": "object",
 															"properties": {
 																"changed_db": {
 																	"description": "Denotes if the database has been altered in some way, like deleting rows.",
@@ -2949,8 +2954,8 @@
 																},
 																"served_by_colo": {
 																	"description": "The three letters airport code of the colo that handled the query.",
-																	"example": "LHR",
 																	"type": "string",
+																	"example": "LHR",
 																	"x-auditable": true
 																},
 																"served_by_primary": {
@@ -2960,6 +2965,8 @@
 																},
 																"served_by_region": {
 																	"description": "Region location hint of the database instance that handled the query.",
+																	"type": "string",
+																	"example": "EEUR",
 																	"enum": [
 																		"WNAM",
 																		"ENAM",
@@ -2968,8 +2975,6 @@
 																		"APAC",
 																		"OC"
 																	],
-																	"example": "EEUR",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"size_after": {
@@ -2979,32 +2984,30 @@
 																},
 																"timings": {
 																	"description": "Various durations for the query.",
+																	"type": "object",
 																	"properties": {
 																		"sql_duration_ms": {
 																			"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
 																			"type": "number",
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"num_queries": {
 															"description": "The total number of queries that were executed during the import.",
 															"type": "number",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"complete",
 														"error"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"success": {
@@ -3012,41 +3015,41 @@
 													"x-auditable": true
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"import"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"upload_url": {
 													"description": "The R2 presigned URL to use for uploading. Only returned when for the 'init' action.",
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Successful action. Import is either ready to start, under way, or finished (succeeded or failed)."
+				}
 			},
 			"202": {
+				"description": "Polled successfully, task is currently running",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3059,15 +3062,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3080,18 +3083,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3099,12 +3102,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"at_bookmark": {
 													"description": "The current bookmark for your D1, used to poll for updates. Will not change for the duration of the import.",
@@ -3113,17 +3116,17 @@
 												},
 												"messages": {
 													"description": "Logs since the last time you polled",
+													"type": "array",
 													"items": {
 														"type": "string",
 														"x-auditable": true
-													},
-													"type": "array"
+													}
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"active"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"success": {
@@ -3131,69 +3134,43 @@
 													"x-auditable": true
 												},
 												"type": {
+													"type": "string",
 													"enum": [
 														"import"
 													],
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Polled successfully, task is currently running"
+				}
 			},
 			"4XX": {
+				"description": "Poll failed (API error)",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3206,25 +3183,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3232,12 +3235,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Poll failed (API error)"
+				}
 			}
 		},
 		"security": [
@@ -3249,7 +3250,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Import SQL into your D1 Database",
 		"tags": [
 			"D1"
 		],
@@ -3322,36 +3322,38 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/query": {
-		"description": "Returns the query result as an object.",
 		"operationId": "d1-query-database",
+		"summary": "Query D1 Database",
+		"description": "Returns the query result as an object.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -3359,58 +3361,58 @@
 						"oneOf": [
 							{
 								"description": "A single query with or without parameters",
+								"type": "object",
 								"properties": {
 									"params": {
-										"example": [
-											"firstParam",
-											"secondParam"
-										],
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"example": [
+											"firstParam",
+											"secondParam"
+										]
 									},
 									"sql": {
 										"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
-										"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
-										"type": "string"
+										"type": "string",
+										"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;"
 									}
 								},
 								"required": [
 									"sql"
 								],
-								"title": "single query",
-								"type": "object"
+								"title": "single query"
 							},
 							{
 								"properties": {
 									"batch": {
+										"type": "array",
 										"items": {
 											"description": "A single query with or without parameters",
+											"type": "object",
 											"properties": {
 												"params": {
-													"example": [
-														"firstParam",
-														"secondParam"
-													],
+													"type": "array",
 													"items": {
 														"type": "string"
 													},
-													"type": "array"
+													"example": [
+														"firstParam",
+														"secondParam"
+													]
 												},
 												"sql": {
 													"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
-													"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
-													"type": "string"
+													"type": "string",
+													"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;"
 												}
 											},
 											"required": [
 												"sql"
 											],
-											"title": "single query",
-											"type": "object"
-										},
-										"type": "array"
+											"title": "single query"
+										}
 									}
 								},
 								"required": [
@@ -3422,24 +3424,25 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Query response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3452,15 +3455,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3473,18 +3476,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3492,15 +3495,17 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"meta": {
+														"type": "object",
 														"properties": {
 															"changed_db": {
 																"description": "Denotes if the database has been altered in some way, like deleting rows.",
@@ -3534,8 +3539,8 @@
 															},
 															"served_by_colo": {
 																"description": "The three letters airport code of the colo that handled the query.",
-																"example": "LHR",
 																"type": "string",
+																"example": "LHR",
 																"x-auditable": true
 															},
 															"served_by_primary": {
@@ -3545,6 +3550,8 @@
 															},
 															"served_by_region": {
 																"description": "Region location hint of the database instance that handled the query.",
+																"type": "string",
+																"example": "EEUR",
 																"enum": [
 																	"WNAM",
 																	"ENAM",
@@ -3553,8 +3560,6 @@
 																	"APAC",
 																	"OC"
 																],
-																"example": "EEUR",
-																"type": "string",
 																"x-auditable": true
 															},
 															"size_after": {
@@ -3564,86 +3569,58 @@
 															},
 															"timings": {
 																"description": "Various durations for the query.",
+																"type": "object",
 																"properties": {
 																	"sql_duration_ms": {
 																		"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
 																		"type": "number",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
+														}
 													},
 													"results": {
+														"type": "array",
 														"items": {
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"success": {
 														"type": "boolean"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Query response"
+				}
 			},
 			"4XX": {
+				"description": "Query response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3656,25 +3633,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3682,12 +3685,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query response failure"
+				}
 			}
 		},
 		"security": [
@@ -3699,7 +3700,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Query D1 Database",
 		"tags": [
 			"D1"
 		],
@@ -3776,36 +3776,38 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/raw": {
-		"description": "Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint.",
 		"operationId": "d1-raw-database-query",
+		"summary": "Raw D1 Database query",
+		"description": "Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -3813,58 +3815,58 @@
 						"oneOf": [
 							{
 								"description": "A single query with or without parameters",
+								"type": "object",
 								"properties": {
 									"params": {
-										"example": [
-											"firstParam",
-											"secondParam"
-										],
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"example": [
+											"firstParam",
+											"secondParam"
+										]
 									},
 									"sql": {
 										"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
-										"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
-										"type": "string"
+										"type": "string",
+										"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;"
 									}
 								},
 								"required": [
 									"sql"
 								],
-								"title": "single query",
-								"type": "object"
+								"title": "single query"
 							},
 							{
 								"properties": {
 									"batch": {
+										"type": "array",
 										"items": {
 											"description": "A single query with or without parameters",
+											"type": "object",
 											"properties": {
 												"params": {
-													"example": [
-														"firstParam",
-														"secondParam"
-													],
+													"type": "array",
 													"items": {
 														"type": "string"
 													},
-													"type": "array"
+													"example": [
+														"firstParam",
+														"secondParam"
+													]
 												},
 												"sql": {
 													"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
-													"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
-													"type": "string"
+													"type": "string",
+													"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;"
 												}
 											},
 											"required": [
 												"sql"
 											],
-											"title": "single query",
-											"type": "object"
-										},
-										"type": "array"
+											"title": "single query"
+										}
 									}
 								},
 								"required": [
@@ -3876,24 +3878,25 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Raw query response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3906,15 +3909,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3927,18 +3930,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3946,15 +3949,17 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"meta": {
+														"type": "object",
 														"properties": {
 															"changed_db": {
 																"description": "Denotes if the database has been altered in some way, like deleting rows.",
@@ -3988,8 +3993,8 @@
 															},
 															"served_by_colo": {
 																"description": "The three letters airport code of the colo that handled the query.",
-																"example": "LHR",
 																"type": "string",
+																"example": "LHR",
 																"x-auditable": true
 															},
 															"served_by_primary": {
@@ -3999,6 +4004,8 @@
 															},
 															"served_by_region": {
 																"description": "Region location hint of the database instance that handled the query.",
+																"type": "string",
+																"example": "EEUR",
 																"enum": [
 																	"WNAM",
 																	"ENAM",
@@ -4007,8 +4014,6 @@
 																	"APAC",
 																	"OC"
 																],
-																"example": "EEUR",
-																"type": "string",
 																"x-auditable": true
 															},
 															"size_after": {
@@ -4018,27 +4023,28 @@
 															},
 															"timings": {
 																"description": "Various durations for the query.",
+																"type": "object",
 																"properties": {
 																	"sql_duration_ms": {
 																		"description": "The duration of the SQL query execution inside the database. Does not include any network communication.",
 																		"type": "number",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
+														}
 													},
 													"results": {
+														"type": "object",
 														"properties": {
 															"columns": {
+																"type": "array",
 																"items": {
 																	"type": "string"
-																},
-																"type": "array"
+																}
 															},
 															"rows": {
+																"type": "array",
 																"items": {
 																	"items": {
 																		"anyOf": [
@@ -4054,74 +4060,45 @@
 																		]
 																	},
 																	"type": "array"
-																},
-																"type": "array"
+																}
 															}
-														},
-														"type": "object"
+														}
 													},
 													"success": {
 														"type": "boolean"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Raw query response"
+				}
 			},
 			"4XX": {
+				"description": "Query response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4134,25 +4111,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4160,12 +4163,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Query response failure"
+				}
 			}
 		},
 		"security": [
@@ -4177,7 +4178,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Raw D1 Database query",
 		"tags": [
 			"D1"
 		],
@@ -4254,73 +4254,76 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
-		"description": "Restores a D1 database to a previous point in time either via a bookmark or a timestamp.\n",
 		"operationId": "d1-time-travel-restore",
+		"summary": "Restore D1 Database to a bookmark or point in time",
+		"description": "Restores a D1 database to a previous point in time either via a bookmark or a timestamp.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "A bookmark to restore the database to. Required if `timestamp` is not provided.",
-				"in": "query",
 				"name": "bookmark",
+				"in": "query",
+				"description": "A bookmark to restore the database to. Required if `timestamp` is not provided.",
 				"schema": {
 					"description": "A bookmark representing a specific state of the database at a specific point in time.",
-					"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 					"type": "string",
+					"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "An ISO 8601 timestamp to restore the database to. Required if `bookmark` is not provided.",
-				"in": "query",
 				"name": "timestamp",
+				"in": "query",
+				"description": "An ISO 8601 timestamp to restore the database to. Required if `bookmark` is not provided.",
 				"schema": {
 					"description": "An ISO 8601 timestamp used for time travel operations. The database will be restored to the nearest available bookmark at or before this timestamp.",
-					"example": "2024-01-15T12:00:00Z",
-					"format": "date-time",
 					"type": "string",
+					"format": "date-time",
+					"example": "2024-01-15T12:00:00Z",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Database restored successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4333,15 +4336,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4354,18 +4357,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4373,20 +4376,20 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Response from a time travel restore operation.",
+											"type": "object",
 											"properties": {
 												"bookmark": {
 													"allOf": [
 														{
 															"description": "A bookmark representing a specific state of the database at a specific point in time.",
-															"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 															"type": "string",
+															"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 															"x-auditable": true
 														},
 														{
@@ -4396,16 +4399,16 @@
 												},
 												"message": {
 													"description": "A message describing the result of the restore operation.",
-													"example": "Database restored successfully",
 													"type": "string",
+													"example": "Database restored successfully",
 													"x-auditable": true
 												},
 												"previous_bookmark": {
 													"allOf": [
 														{
 															"description": "A bookmark representing a specific state of the database at a specific point in time.",
-															"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 															"type": "string",
+															"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
 															"x-auditable": true
 														},
 														{
@@ -4413,63 +4416,37 @@
 														}
 													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Database restored successfully"
+				}
 			},
 			"4XX": {
+				"description": "Restore operation failed",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4482,25 +4459,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4508,12 +4511,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Restore operation failed"
+				}
 			}
 		},
 		"security": [
@@ -4525,7 +4526,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Restore D1 Database to a bookmark or point in time",
 		"tags": [
 			"D1"
 		],
@@ -4599,85 +4599,88 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/d1/database/{database_id}": {
-		"description": "Updates the specified D1 database.",
 		"operationId": "d1-update-database",
+		"summary": "Update D1 Database",
+		"description": "Updates the specified D1 database.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "database_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "D1 database identifier (UUID).",
+					"type": "string",
 					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"read_replication": {
 								"description": "Configuration for D1 read replication.",
+								"type": "object",
 								"properties": {
 									"mode": {
 										"description": "The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).",
+										"type": "string",
+										"example": "auto",
 										"enum": [
 											"auto",
 											"disabled"
 										],
-										"example": "auto",
-										"type": "string",
 										"x-auditable": true
 									}
 								},
 								"required": [
 									"mode"
 								],
-								"type": "object",
 								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
 							"read_replication"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Database details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4690,15 +4693,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4711,18 +4714,18 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4730,140 +4733,114 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The details of the D1 database.",
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"file_size": {
 													"description": "The D1 database's size, in bytes.",
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"jurisdiction": {
 													"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+													"type": "string",
+													"example": "eu",
 													"enum": [
 														"eu",
 														"fedramp"
 													],
-													"example": "eu",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"name": {
 													"description": "D1 database name.",
+													"type": "string",
 													"example": "my-database",
 													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"num_tables": {
-													"example": 12,
 													"type": "number",
+													"example": 12,
 													"x-auditable": true
 												},
 												"read_replication": {
 													"description": "Configuration for D1 read replication.",
+													"type": "object",
 													"properties": {
 														"mode": {
 															"description": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+															"type": "string",
+															"example": "auto",
 															"enum": [
 																"auto",
 																"disabled"
 															],
-															"example": "auto",
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"mode"
-													],
-													"type": "object"
+													]
 												},
 												"uuid": {
 													"description": "D1 database identifier (UUID).",
+													"type": "string",
 													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"version": {
+													"type": "string",
 													"example": "production",
 													"pattern": "^(alpha|beta|production)$",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Database details response"
+				}
 			},
 			"4XX": {
+				"description": "Update D1 database response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4876,25 +4853,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4902,12 +4905,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update D1 database response failure"
+				}
 			}
 		},
 		"security": [
@@ -4919,7 +4920,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update D1 Database",
 		"tags": [
 			"D1"
 		],

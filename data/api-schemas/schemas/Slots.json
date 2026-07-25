@@ -1,64 +1,65 @@
 {
 	"GET /accounts/{account_id}/cni/slots": {
 		"operationId": "list_slots",
+		"summary": "Retrieve a list of all slots matching the specified parameters",
 		"parameters": [
 			{
-				"description": "If specified, only show slots with the given text in their address field",
-				"in": "query",
 				"name": "address_contains",
+				"in": "query",
+				"description": "If specified, only show slots with the given text in their address field",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "If specified, only show slots located at the given site",
-				"in": "query",
 				"name": "site",
+				"in": "query",
+				"description": "If specified, only show slots located at the given site",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "If specified, only show slots that support the given speed",
-				"in": "query",
 				"name": "speed",
+				"in": "query",
+				"description": "If specified, only show slots that support the given speed",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "If specified, only show slots with a specific occupied/unoccupied state",
-				"in": "query",
 				"name": "occupied",
+				"in": "query",
+				"description": "If specified, only show slots with a specific occupied/unoccupied state",
 				"schema": {
-					"nullable": true,
-					"type": "boolean"
+					"type": "boolean",
+					"nullable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
-				"schema": {
-					"format": "int32",
-					"nullable": true,
-					"type": "integer"
-				}
-			},
-			{
 				"in": "query",
-				"name": "limit",
 				"schema": {
-					"minimum": 0,
-					"nullable": true,
-					"type": "integer"
+					"type": "integer",
+					"format": "int32",
+					"nullable": true
 				}
 			},
 			{
-				"in": "path",
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"minimum": 0,
+					"nullable": true
+				}
+			},
+			{
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -68,24 +69,29 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of matching slots",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"items": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"account": {
 												"description": "Customer account tag",
 												"type": "string"
 											},
 											"facility": {
+												"type": "object",
 												"properties": {
 													"address": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"name": {
 														"type": "string"
@@ -94,13 +100,12 @@
 												"required": [
 													"name",
 													"address"
-												],
-												"type": "object"
+												]
 											},
 											"id": {
 												"description": "Slot ID",
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"occupied": {
 												"description": "Whether the slot is occupied or not",
@@ -119,25 +124,21 @@
 											"site",
 											"speed",
 											"facility"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"next": {
+									"type": "integer",
 									"format": "int32",
-									"nullable": true,
-									"type": "integer"
+									"nullable": true
 								}
 							},
 							"required": [
 								"items"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of matching slots"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -153,7 +154,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve a list of all slots matching the specified parameters",
 		"tags": [
 			"Slots"
 		],
@@ -166,19 +166,20 @@
 	},
 	"GET /accounts/{account_id}/cni/slots/{slot}": {
 		"operationId": "get_slot",
+		"summary": "Get information about the specified slot",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "slot",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -188,21 +189,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Information about the specified slot",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"account": {
 									"description": "Customer account tag",
 									"type": "string"
 								},
 								"facility": {
+									"type": "object",
 									"properties": {
 										"address": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"name": {
 											"type": "string"
@@ -211,13 +215,12 @@
 									"required": [
 										"name",
 										"address"
-									],
-									"type": "object"
+									]
 								},
 								"id": {
 									"description": "Slot ID",
-									"format": "uuid",
-									"type": "string"
+									"type": "string",
+									"format": "uuid"
 								},
 								"occupied": {
 									"description": "Whether the slot is occupied or not",
@@ -236,12 +239,10 @@
 								"site",
 								"speed",
 								"facility"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Information about the specified slot"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -260,7 +261,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get information about the specified slot",
 		"tags": [
 			"Slots"
 		],

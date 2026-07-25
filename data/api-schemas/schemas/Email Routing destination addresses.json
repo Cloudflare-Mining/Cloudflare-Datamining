@@ -1,51 +1,55 @@
 {
 	"DELETE /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
-		"description": "Deletes a specific destination address.",
 		"operationId": "email-routing-destination-addresses-delete-destination-address",
+		"summary": "Delete destination address",
+		"description": "Deletes a specific destination address.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "destination_address_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Destination address identifier.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete destination address response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -54,12 +58,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -69,15 +73,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -86,12 +90,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -101,90 +105,87 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the destination address has been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"email": {
 															"description": "The contact email address of the user.",
+															"type": "string",
 															"example": "user@example.com",
 															"maxLength": 90,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Destination address identifier.",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"verified": {
 															"description": "The date and time the destination address has been verified. Null means not verified yet.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete destination address response"
+				}
 			}
 		},
 		"security": [
@@ -193,7 +194,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete destination address",
 		"tags": [
 			"Email Routing destination addresses"
 		],
@@ -217,88 +217,92 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/routing/addresses": {
-		"description": "Lists existing destination addresses.",
 		"operationId": "email-routing-destination-addresses-list-destination-addresses",
+		"summary": "List destination addresses",
+		"description": "Lists existing destination addresses.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Maximum number of results per page.",
+					"type": "number",
+					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "number"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
-					"default": "asc",
 					"description": "Sorts results in an ascending or descending order.",
+					"type": "string",
+					"example": "asc",
+					"default": "asc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"example": "asc",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "verified",
+				"in": "query",
 				"schema": {
-					"default": true,
 					"description": "Filter by verified destination addresses.",
+					"type": "boolean",
+					"example": true,
+					"default": true,
 					"enum": [
 						true,
 						false
-					],
-					"example": true,
-					"type": "boolean"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List destination addresses response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -307,12 +311,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -322,15 +326,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -339,12 +343,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -354,122 +358,121 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"allOf": [
 													{
+														"type": "object",
 														"properties": {
 															"created": {
 																"description": "The date and time the destination address has been created.",
-																"example": "2014-01-02T02:20:00Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-02T02:20:00Z",
+																"readOnly": true
 															},
 															"email": {
 																"description": "The contact email address of the user.",
+																"type": "string",
 																"example": "user@example.com",
 																"maxLength": 90,
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Destination address identifier.",
+																"type": "string",
 																"example": "ea95132c15732412d22c1476fa83f27a",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"modified": {
 																"description": "The date and time the destination address was last modified.",
-																"example": "2014-01-02T02:20:00Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-02T02:20:00Z",
+																"readOnly": true
 															},
 															"tag": {
-																"deprecated": true,
 																"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
+																"type": "string",
 																"example": "ea95132c15732412d22c1476fa83f27a",
+																"deprecated": true,
 																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"verified": {
 																"description": "The date and time the destination address has been verified. Null means not verified yet.",
-																"example": "2014-01-02T02:20:00Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-02T02:20:00Z",
+																"readOnly": true
 															}
-														},
-														"type": "object"
+														}
 													}
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"example": 1
@@ -483,16 +486,14 @@
 												"total_count": {
 													"example": 1
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List destination addresses response"
+				}
 			}
 		},
 		"security": [
@@ -501,7 +502,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List destination addresses",
 		"tags": [
 			"Email Routing destination addresses"
 		],
@@ -526,52 +526,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
-		"description": "Gets information for a specific destination email already created.",
 		"operationId": "email-routing-destination-addresses-get-a-destination-address",
+		"summary": "Get a destination address",
+		"description": "Gets information for a specific destination email already created.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "destination_address_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Destination address identifier.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get a destination address response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -580,12 +584,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -595,15 +599,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -612,12 +616,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -627,90 +631,87 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the destination address has been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"email": {
 															"description": "The contact email address of the user.",
+															"type": "string",
 															"example": "user@example.com",
 															"maxLength": 90,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Destination address identifier.",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"verified": {
 															"description": "The date and time the destination address has been verified. Null means not verified yet.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get a destination address response"
+				}
 			}
 		},
 		"security": [
@@ -719,7 +720,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a destination address",
 		"tags": [
 			"Email Routing destination addresses"
 		],
@@ -744,77 +744,81 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
-		"description": "Updates the status of a specific destination address.",
 		"operationId": "email-routing-destination-addresses-update-destination-address",
+		"summary": "Update destination address",
+		"description": "Updates the status of a specific destination address.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "destination_address_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Destination address identifier.",
+					"type": "string",
 					"example": "ea95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"status": {
 								"description": "Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.",
+								"type": "string",
+								"example": "verified",
 								"enum": [
 									"unverified",
 									"verified"
 								],
-								"example": "verified",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"status"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update destination address response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -823,12 +827,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -838,15 +842,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -855,12 +859,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -870,90 +874,87 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the destination address has been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"email": {
 															"description": "The contact email address of the user.",
+															"type": "string",
 															"example": "user@example.com",
 															"maxLength": 90,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Destination address identifier.",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"verified": {
 															"description": "The date and time the destination address has been verified. Null means not verified yet.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update destination address response"
+				}
 			}
 		},
 		"security": [
@@ -962,7 +963,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update destination address",
 		"tags": [
 			"Email Routing destination addresses"
 		],
@@ -986,61 +986,65 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/email/routing/addresses": {
-		"description": "Create a destination address to forward your emails to. Destination addresses need to be verified before they can be used.",
 		"operationId": "email-routing-destination-addresses-create-a-destination-address",
+		"summary": "Create a destination address",
+		"description": "Create a destination address to forward your emails to. Destination addresses need to be verified before they can be used.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"email": {
 								"description": "The contact email address of the user.",
+								"type": "string",
 								"example": "user@example.com",
 								"maxLength": 90,
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"email"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a destination address response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1049,12 +1053,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1064,15 +1068,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1081,12 +1085,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1096,90 +1100,87 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and time the destination address has been created.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"email": {
 															"description": "The contact email address of the user.",
+															"type": "string",
 															"example": "user@example.com",
 															"maxLength": 90,
-															"type": "string",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Destination address identifier.",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														},
 														"tag": {
-															"deprecated": true,
 															"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
+															"deprecated": true,
 															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"readOnly": true
 														},
 														"verified": {
 															"description": "The date and time the destination address has been verified. Null means not verified yet.",
-															"example": "2014-01-02T02:20:00Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-02T02:20:00Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a destination address response"
+				}
 			}
 		},
 		"security": [
@@ -1188,7 +1189,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a destination address",
 		"tags": [
 			"Email Routing destination addresses"
 		],

@@ -1,131 +1,131 @@
 {
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/ingest": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/memories/{memory_id}": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/recall": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/remember": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/sessions/{session_id}": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/agent-memory/namespaces/{namespace_name}/profiles/{profile_name}/summary": [
 		{
-			"description": "Cloudflare Account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare Account ID.",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"minLength": 1,
-				"pattern": "^\\d+$",
-				"type": "string"
+				"pattern": "^\\d+$"
 			}
 		}
 	],
@@ -136,16 +136,16 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"type": "string"
+				"type": "string",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -154,9 +154,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -165,9 +165,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -176,9 +176,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -187,9 +187,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/blob/{hash}": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -198,9 +198,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/commit/{hash}": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -209,9 +209,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/file": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -220,9 +220,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/fork": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -231,9 +231,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/import": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -242,9 +242,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/log": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -253,9 +253,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/raw/{ref}/{path}": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -264,9 +264,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tokens": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -275,9 +275,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tree/{hash}": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -286,9 +286,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -297,9 +297,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens/{id}": [
 		{
-			"description": "Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -308,307 +308,307 @@
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/alerts": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/alerts/clear": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/alerts/refute": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/alerts/verify": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/brands": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/brands/patterns": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/clear": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/domain-info": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/logo-matches": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/logo-matches/download": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/logos": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/logos/{logo_id}": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		},
 		{
-			"in": "path",
 			"name": "logo_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/matches": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/matches/download": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/queries": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/queries/bulk": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/recent-submissions": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/refute": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/scan-logo": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/scan-page": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/search": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/submission-info": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/submit": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/total-queries": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/tracked-domains": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/url-info": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/verify": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
@@ -619,135 +619,135 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"minLength": 1,
-				"type": "string"
+				"type": "string",
+				"minLength": 1
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Identifier",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
 				"readOnly": true,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "query",
 			"name": "page",
+			"in": "query",
 			"schema": {
-				"default": 1,
 				"description": "Page number of paginated results.",
-				"minimum": 1,
-				"type": "number"
+				"type": "number",
+				"default": 1,
+				"minimum": 1
 			}
 		},
 		{
-			"in": "query",
 			"name": "per_page",
+			"in": "query",
 			"schema": {
-				"default": 25,
 				"description": "Number of items per page.",
+				"type": "number",
+				"default": 25,
 				"maximum": 1000,
-				"minimum": 5,
-				"type": "number"
+				"minimum": 5
 			}
 		},
 		{
-			"in": "query",
 			"name": "order",
+			"in": "query",
 			"schema": {
 				"description": "Field to order widgets by.",
+				"type": "string",
+				"example": "id",
 				"enum": [
 					"id",
 					"sitekey",
 					"name",
 					"created_on",
 					"modified_on"
-				],
-				"example": "id",
-				"type": "string"
+				]
 			}
 		},
 		{
-			"in": "query",
 			"name": "direction",
+			"in": "query",
 			"schema": {
 				"description": "Direction to order widgets.",
+				"type": "string",
+				"example": "asc",
 				"enum": [
 					"asc",
 					"desc"
-				],
-				"example": "asc",
-				"type": "string"
+				]
 			}
 		},
 		{
-			"description": "Filter widgets by field using case-insensitive substring matching.\nFormat: `field:value`\n\nSupported fields:\n- `name` - Filter by widget name (e.g., `filter=name:login-form`)\n- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)\n\nReturns 400 Bad Request if the field is unsupported or format is invalid.\nAn empty filter value returns all results.\n",
-			"in": "query",
 			"name": "filter",
+			"in": "query",
+			"description": "Filter widgets by field using case-insensitive substring matching.\nFormat: `field:value`\n\nSupported fields:\n- `name` - Filter by widget name (e.g., `filter=name:login-form`)\n- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)\n\nReturns 400 Bad Request if the field is unsupported or format is invalid.\nAn empty filter value returns all results.\n",
 			"schema": {
-				"example": "name:my-widget",
-				"type": "string"
+				"type": "string",
+				"example": "name:my-widget"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets/{sitekey}": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Identifier",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
 				"readOnly": true,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "sitekey",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Widget item identifier tag.",
+				"type": "string",
 				"example": "0x4AAF00AAAABn0R22HWm-YUc",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Identifier",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
 				"readOnly": true,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "sitekey",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Widget item identifier tag.",
+				"type": "string",
 				"example": "0x4AAF00AAAABn0R22HWm-YUc",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -759,8 +759,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -771,8 +771,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -783,8 +783,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -795,8 +795,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -807,8 +807,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -819,8 +819,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -831,8 +831,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -843,8 +843,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -855,8 +855,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -867,8 +867,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -879,8 +879,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -891,8 +891,8 @@
 			"name": "account_id",
 			"required": true,
 			"schema": {
-				"example": "account-123",
-				"type": "string"
+				"type": "string",
+				"example": "account-123"
 			}
 		}
 	],
@@ -904,9 +904,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -919,20 +919,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		},
 		{
@@ -952,20 +952,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		}
 	],
@@ -977,20 +977,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		}
 	],
@@ -1002,20 +1002,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		}
 	],
@@ -1027,20 +1027,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		}
 	],
@@ -1052,20 +1052,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		}
 	],
@@ -1077,20 +1077,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		}
 	],
@@ -1102,20 +1102,20 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "investigate_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Unique identifier for a message retrieved from investigation.",
-				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678",
-				"type": "string"
+				"type": "string",
+				"example": "4Njp3P0STMz2c02Q-2024-01-05T10:00:00-12345678"
 			}
 		}
 	],
@@ -1127,9 +1127,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1142,19 +1142,19 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "job_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
@@ -1166,19 +1166,19 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "job_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
@@ -1190,19 +1190,19 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "job_id",
+			"in": "path",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
@@ -1214,9 +1214,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1229,9 +1229,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1244,9 +1244,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1259,9 +1259,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1274,9 +1274,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1289,21 +1289,21 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "policy_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Allow policy identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"x-auditable": true
 			}
 		}
@@ -1316,9 +1316,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1331,9 +1331,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1346,21 +1346,21 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "pattern_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Blocked sender pattern identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"x-auditable": true
 			}
 		}
@@ -1373,9 +1373,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1388,9 +1388,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1403,21 +1403,21 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "domain_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Domain identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"x-auditable": true
 			}
 		}
@@ -1430,21 +1430,21 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "domain_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Domain identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"x-auditable": true
 			}
 		}
@@ -1457,9 +1457,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1472,9 +1472,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1487,22 +1487,22 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "impersonation_registry_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Impersonation registry entry identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
-				"title": "identifier",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"title": "identifier",
 				"x-auditable": true
 			}
 		}
@@ -1515,9 +1515,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1530,22 +1530,22 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "sending_domain_restriction_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Sending domain restriction identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
-				"title": "identifier",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"title": "identifier",
 				"x-auditable": true
 			}
 		}
@@ -1558,9 +1558,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1573,9 +1573,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1588,21 +1588,21 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "trusted_domain_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "Trusted domain identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"x-auditable": true
 			}
 		}
@@ -1615,9 +1615,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1630,9 +1630,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1645,22 +1645,22 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "pattern_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "URL ignore pattern identifier.",
-				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-				"format": "uuid",
-				"title": "identifier",
 				"type": "string",
+				"format": "uuid",
+				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+				"title": "identifier",
 				"x-auditable": true
 			}
 		}
@@ -1673,9 +1673,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1688,60 +1688,60 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/livestreams": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		},
 		{
@@ -1751,33 +1751,33 @@
 			"name": "meeting_id",
 			"required": true,
 			"schema": {
-				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
-				"type": "string"
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		},
 		{
@@ -1787,33 +1787,33 @@
 			"name": "meeting_id",
 			"required": true,
 			"schema": {
-				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
-				"type": "string"
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		},
 		{
@@ -1823,33 +1823,33 @@
 			"name": "meeting_id",
 			"required": true,
 			"schema": {
-				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
-				"type": "string"
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		},
 		{
@@ -1859,33 +1859,33 @@
 			"name": "meeting_id",
 			"required": true,
 			"schema": {
-				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
-				"type": "string"
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestream": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		},
 		{
@@ -1895,33 +1895,33 @@
 			"name": "meeting_id",
 			"required": true,
 			"schema": {
-				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
-				"type": "string"
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		},
 		{
@@ -1931,33 +1931,33 @@
 			"name": "meeting_id",
 			"required": true,
 			"schema": {
-				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
-				"type": "string"
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
 		{
-			"in": "path",
 			"name": "app_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The app identifier tag.",
+				"type": "string",
 				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-				"maxLength": 32,
-				"type": "string"
+				"maxLength": 32
 			}
 		},
 		{
@@ -1967,21 +1967,21 @@
 			"name": "meeting_id",
 			"required": true,
 			"schema": {
-				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
-				"type": "string"
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/apps": [
 		{
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
 			"required": true,
 			"schema": {
 				"description": "The account identifier tag.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -1994,9 +1994,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -2009,9 +2009,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
@@ -2021,8 +2021,8 @@
 			"name": "credential_set_id",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
@@ -2034,9 +2034,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
@@ -2046,8 +2046,8 @@
 			"name": "credential_set_id",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
@@ -2059,9 +2059,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
@@ -2071,8 +2071,8 @@
 			"name": "credential_set_id",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		},
 		{
@@ -2081,8 +2081,8 @@
 			"name": "credential_id",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
@@ -2094,9 +2094,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -2109,9 +2109,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
@@ -2121,8 +2121,8 @@
 			"name": "scan_id",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
@@ -2134,9 +2134,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -2149,9 +2149,9 @@
 			"required": true,
 			"schema": {
 				"description": "Identifier.",
+				"type": "string",
 				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
-				"type": "string",
 				"x-auditable": true
 			}
 		},
@@ -2161,16 +2161,16 @@
 			"name": "target_environment_id",
 			"required": true,
 			"schema": {
-				"format": "uuid",
-				"type": "string"
+				"type": "string",
+				"format": "uuid"
 			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/destinations": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2179,9 +2179,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/destinations/{slug}": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2190,9 +2190,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/metricsexport": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2201,9 +2201,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/queries": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2212,9 +2212,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/queries/{queryId}": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2223,9 +2223,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/shared/query": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2234,9 +2234,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/shared/query/{id}": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2245,9 +2245,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/keys": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2256,9 +2256,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/live-tail": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2267,9 +2267,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2278,9 +2278,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/query": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2289,9 +2289,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/values": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2300,9 +2300,9 @@
 	],
 	"PARAMETERS /accounts/{account_id}/workers/observability/usage": [
 		{
-			"description": "Your Cloudflare account ID.",
-			"in": "path",
 			"name": "account_id",
+			"in": "path",
+			"description": "Your Cloudflare account ID.",
 			"required": true,
 			"schema": {
 				"type": "string"
@@ -2318,9 +2318,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2332,9 +2332,9 @@
 			}
 		},
 		{
-			"description": "Ensures that the configuration is written or retrieved in normalized fashion",
-			"in": "query",
 			"name": "normalize",
+			"in": "query",
+			"description": "Ensures that the configuration is written or retrieved in normalized fashion",
 			"schema": {
 				"type": "boolean"
 			}
@@ -2349,9 +2349,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2372,9 +2372,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2395,9 +2395,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2422,9 +2422,9 @@
 					},
 					{
 						"description": "UUID.",
+						"type": "string",
 						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 						"maxLength": 36,
-						"type": "string",
 						"x-auditable": true
 					}
 				]
@@ -2440,9 +2440,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2463,9 +2463,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2486,9 +2486,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2506,8 +2506,8 @@
 			"required": true,
 			"schema": {
 				"description": "The name of the label",
-				"example": "login",
 				"type": "string",
+				"example": "login",
 				"x-auditable": true
 			}
 		}
@@ -2521,9 +2521,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2541,8 +2541,8 @@
 			"required": true,
 			"schema": {
 				"description": "The name of the label",
-				"example": "login",
 				"type": "string",
+				"example": "login",
 				"x-auditable": true
 			}
 		}
@@ -2556,9 +2556,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2579,9 +2579,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2599,8 +2599,8 @@
 			"required": true,
 			"schema": {
 				"description": "The name of the label",
-				"example": "login",
 				"type": "string",
+				"example": "login",
 				"x-auditable": true
 			}
 		}
@@ -2614,9 +2614,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2634,8 +2634,8 @@
 			"required": true,
 			"schema": {
 				"description": "The name of the label",
-				"example": "login",
 				"type": "string",
+				"example": "login",
 				"x-auditable": true
 			}
 		}
@@ -2649,9 +2649,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2672,9 +2672,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2693,9 +2693,9 @@
 			"required": true,
 			"schema": {
 				"description": "UUID.",
+				"type": "string",
 				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"maxLength": 36,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -2709,9 +2709,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2730,9 +2730,9 @@
 			"required": true,
 			"schema": {
 				"description": "UUID.",
+				"type": "string",
 				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"maxLength": 36,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -2746,9 +2746,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2767,9 +2767,9 @@
 			"required": true,
 			"schema": {
 				"description": "UUID.",
+				"type": "string",
 				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"maxLength": 36,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -2783,9 +2783,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2806,9 +2806,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2829,9 +2829,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2852,9 +2852,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2875,9 +2875,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2898,9 +2898,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2921,9 +2921,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2941,10 +2941,10 @@
 			"name": "schema_id",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"format": "uuid",
 				"maxLength": 36,
-				"readOnly": true,
-				"type": "string"
+				"readOnly": true
 			}
 		}
 	],
@@ -2956,10 +2956,10 @@
 			"name": "schema_id",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"format": "uuid",
 				"maxLength": 36,
-				"readOnly": true,
-				"type": "string"
+				"readOnly": true
 			}
 		},
 		{
@@ -2970,9 +2970,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -2993,9 +2993,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3011,9 +3011,9 @@
 			"in": "query",
 			"name": "page",
 			"schema": {
+				"type": "integer",
 				"default": 1,
-				"minimum": 1,
-				"type": "integer"
+				"minimum": 1
 			}
 		},
 		{
@@ -3021,10 +3021,10 @@
 			"in": "query",
 			"name": "per_page",
 			"schema": {
+				"type": "integer",
 				"default": 20,
 				"maximum": 50,
-				"minimum": 5,
-				"type": "integer"
+				"minimum": 5
 			}
 		}
 	],
@@ -3088,9 +3088,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3111,9 +3111,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3130,6 +3130,7 @@
 			"name": "schema_id",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"allOf": [
 					{
 						"allOf": [
@@ -3140,9 +3141,9 @@
 							},
 							{
 								"description": "UUID.",
+								"type": "string",
 								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 								"maxLength": 36,
-								"type": "string",
 								"x-auditable": true
 							}
 						]
@@ -3152,8 +3153,7 @@
 						"readOnly": true,
 						"type": "string"
 					}
-				],
-				"type": "string"
+				]
 			}
 		}
 	],
@@ -3166,9 +3166,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3185,6 +3185,7 @@
 			"name": "schema_id",
 			"required": true,
 			"schema": {
+				"type": "string",
 				"allOf": [
 					{
 						"allOf": [
@@ -3195,9 +3196,9 @@
 							},
 							{
 								"description": "UUID.",
+								"type": "string",
 								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 								"maxLength": 36,
-								"type": "string",
 								"x-auditable": true
 							}
 						]
@@ -3207,8 +3208,7 @@
 						"readOnly": true,
 						"type": "string"
 					}
-				],
-				"type": "string"
+				]
 			}
 		}
 	],
@@ -3221,9 +3221,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3244,9 +3244,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3267,9 +3267,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3290,9 +3290,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3311,9 +3311,9 @@
 			"required": true,
 			"schema": {
 				"description": "UUID.",
+				"type": "string",
 				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 				"maxLength": 36,
-				"type": "string",
 				"x-auditable": true
 			}
 		}
@@ -3327,9 +3327,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3350,9 +3350,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3378,9 +3378,9 @@
 					},
 					{
 						"description": "UUID.",
+						"type": "string",
 						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 						"maxLength": 36,
-						"type": "string",
 						"x-auditable": true
 					}
 				]
@@ -3396,9 +3396,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3424,9 +3424,9 @@
 					},
 					{
 						"description": "UUID.",
+						"type": "string",
 						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 						"maxLength": 36,
-						"type": "string",
 						"x-auditable": true
 					}
 				]
@@ -3442,9 +3442,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3465,9 +3465,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3493,9 +3493,9 @@
 					},
 					{
 						"description": "UUID.",
+						"type": "string",
 						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 						"maxLength": 36,
-						"type": "string",
 						"x-auditable": true
 					}
 				]
@@ -3511,9 +3511,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{
@@ -3534,9 +3534,9 @@
 				"allOf": [
 					{
 						"description": "Identifier.",
+						"type": "string",
 						"example": "023e105f4ecef8ad9ca31a8372d0c353",
 						"maxLength": 32,
-						"type": "string",
 						"x-auditable": true
 					},
 					{

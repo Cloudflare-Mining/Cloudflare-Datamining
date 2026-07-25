@@ -1,95 +1,99 @@
 {
 	"GET /accounts/{account_id}/iam/permission_groups": {
-		"description": "List all the permissions groups for an account.",
 		"operationId": "account-permission-group-list",
+		"summary": "List Account Permission Groups",
+		"description": "List all the permissions groups for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "query",
 				"name": "id",
+				"in": "query",
 				"schema": {
 					"description": "ID of the permission group to be fetched.",
+					"type": "string",
 					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 					"maxLength": 32,
-					"minLength": 32,
-					"type": "string"
+					"minLength": 32
 				}
 			},
 			{
-				"in": "query",
 				"name": "name",
+				"in": "query",
 				"schema": {
 					"description": "Name of the permission group to be fetched.",
-					"example": "NameOfThePermissionGroup",
-					"type": "string"
+					"type": "string",
+					"example": "NameOfThePermissionGroup"
 				}
 			},
 			{
-				"in": "query",
 				"name": "label",
+				"in": "query",
 				"schema": {
 					"description": "Label of the permission group to be fetched.",
-					"example": "labelOfThePermissionGroup",
-					"type": "string"
+					"type": "string",
+					"example": "labelOfThePermissionGroup"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Maximum number of results per page.",
+					"type": "number",
+					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "number"
+					"minimum": 5
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Permission Groups response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -98,12 +102,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -113,15 +117,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -130,12 +134,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -145,60 +149,99 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A set of permission groups that are specified to the policy.",
+											"type": "array",
+											"items": {
+												"description": "A named group of permissions that map to a group of operations against resources.",
+												"type": "object",
+												"properties": {
+													"id": {
+														"description": "Identifier of the permission group.",
+														"type": "string",
+														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+														"x-auditable": true
+													},
+													"meta": {
+														"description": "Attributes associated to the permission group.",
+														"type": "object",
+														"example": {
+															"label": "load_balancer_admin",
+															"scopes": "com.cloudflare.api.account"
+														},
+														"properties": {
+															"key": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														}
+													},
+													"name": {
+														"description": "Name of the permission group.",
+														"type": "string",
+														"example": "Load Balancer",
+														"readOnly": true,
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id"
+												]
+											},
 											"example": [
 												{
 													"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -216,48 +259,7 @@
 													},
 													"name": "Magic Network Monitoring"
 												}
-											],
-											"items": {
-												"description": "A named group of permissions that map to a group of operations against resources.",
-												"properties": {
-													"id": {
-														"description": "Identifier of the permission group.",
-														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-														"type": "string",
-														"x-auditable": true
-													},
-													"meta": {
-														"description": "Attributes associated to the permission group.",
-														"example": {
-															"label": "load_balancer_admin",
-															"scopes": "com.cloudflare.api.account"
-														},
-														"properties": {
-															"key": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
-													},
-													"name": {
-														"description": "Name of the permission group.",
-														"example": "Load Balancer",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													}
-												},
-												"required": [
-													"id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+											]
 										}
 									},
 									"type": "object"
@@ -266,66 +268,30 @@
 							"title": "List of Resource groups"
 						}
 					}
-				},
-				"description": "List Permission Groups response"
+				}
 			},
 			"4XX": {
+				"description": "List Permission Groups response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -334,12 +300,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -349,25 +315,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -375,12 +378,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Permission Groups response failure"
+				}
 			}
 		},
 		"security": [
@@ -392,7 +393,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Account Permission Groups",
 		"tags": [
 			"Account Permission Groups"
 		],
@@ -440,65 +440,69 @@
 		}
 	},
 	"GET /accounts/{account_id}/iam/permission_groups/{permission_group_id}": {
-		"description": "Get information about a specific permission group in an account.",
 		"operationId": "account-permission-group-details",
+		"summary": "Permission Group Details",
+		"description": "Get information about a specific permission group in an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Account identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Account identifier tag.",
 					"title": "Account Identifier"
 				}
 			},
 			{
-				"in": "path",
 				"name": "permission_group_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Permission Group identifier tag.",
 					"allOf": [
 						{
 							"description": "Identifier",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"minLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					],
-					"description": "Permission Group identifier tag.",
 					"title": "Permission Group Identifier"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Permission Group Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -507,12 +511,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -522,15 +526,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -539,12 +543,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -554,40 +558,40 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A named group of permissions that map to a group of operations against resources.",
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier of the permission group.",
-													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 													"type": "string",
+													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "Attributes associated to the permission group.",
+													"type": "object",
 													"example": {
 														"label": "load_balancer_admin",
 														"scopes": "com.cloudflare.api.account"
@@ -601,21 +605,19 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "Name of the permission group.",
+													"type": "string",
 													"example": "Load Balancer",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -624,66 +626,30 @@
 							"title": "Response with Permission Groups"
 						}
 					}
-				},
-				"description": "Permission Group Details response"
+				}
 			},
 			"4XX": {
+				"description": "Permission Group Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -692,12 +658,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -707,25 +673,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -733,12 +736,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Permission Group Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -750,7 +751,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Permission Group Details",
 		"tags": [
 			"Account Permission Groups"
 		],

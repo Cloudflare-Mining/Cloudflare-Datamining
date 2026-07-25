@@ -1,38 +1,43 @@
 {
 	"GET /accounts/{account_id}/gateway/apps/review_status": {
-		"description": "Retrieve the statuses of your applications.",
 		"operationId": "zero-trust-applications-review-status-list",
+		"summary": "List applications review statuses",
+		"description": "Retrieve the statuses of your applications.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Provide the identifier string.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List applications review status response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -45,15 +50,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -66,99 +71,100 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"approved_apps": {
 													"description": "Contains the ids of the approved applications.",
+													"type": "array",
 													"items": {
 														"type": "integer"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"in_review_apps": {
 													"description": "Contains the ids of the applications in review.",
+													"type": "array",
 													"items": {
 														"type": "integer"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"unapproved_apps": {
 													"description": "Contains the ids of the unapproved applications.",
+													"type": "array",
 													"items": {
 														"type": "integer"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
 							],
-							"type": "object",
 							"x-auditable": true
 						}
 					}
-				},
-				"description": "List applications review status response."
+				}
 			},
 			"4XX": {
+				"description": "List applications review status failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -171,15 +177,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -192,121 +198,93 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"approved_apps": {
 															"description": "Contains the ids of the approved applications.",
+															"type": "array",
 															"items": {
 																"type": "integer"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"in_review_apps": {
 															"description": "Contains the ids of the applications in review.",
+															"type": "array",
 															"items": {
 																"type": "integer"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"unapproved_apps": {
 															"description": "Contains the ids of the unapproved applications.",
+															"type": "array",
 															"items": {
 																"type": "integer"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
 									],
-									"type": "object",
 									"x-auditable": true
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -319,26 +297,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -346,15 +350,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List applications review status failure response."
+				}
 			}
 		},
 		"security": [
@@ -364,7 +365,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List applications review statuses",
 		"tags": [
 			"Zero Trust applications review status"
 		],
@@ -374,49 +374,52 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/apps/review_status": {
-		"description": "Update the statuses of your applications.",
 		"operationId": "zero-trust-applications-review-status-update",
+		"summary": "Update applications review statuses",
+		"description": "Update the statuses of your applications.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Provide the identifier string.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"approved_apps": {
 								"description": "Contains the ids of the approved applications.",
+								"type": "array",
 								"items": {
 									"type": "integer"
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"in_review_apps": {
 								"description": "Contains the ids of the applications in review.",
+								"type": "array",
 								"items": {
 									"type": "integer"
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"unapproved_apps": {
 								"description": "Contains the ids of the unapproved applications.",
+								"type": "array",
 								"items": {
 									"type": "integer"
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							}
 						},
@@ -424,30 +427,32 @@
 							"approved_apps",
 							"unapproved_apps",
 							"in_review_apps"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update applications review status response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -460,15 +465,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -481,99 +486,100 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"approved_apps": {
 													"description": "Contains the ids of the approved applications.",
+													"type": "array",
 													"items": {
 														"type": "integer"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"in_review_apps": {
 													"description": "Contains the ids of the applications in review.",
+													"type": "array",
 													"items": {
 														"type": "integer"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"unapproved_apps": {
 													"description": "Contains the ids of the unapproved applications.",
+													"type": "array",
 													"items": {
 														"type": "integer"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
 							],
-							"type": "object",
 							"x-auditable": true
 						}
 					}
-				},
-				"description": "Update applications review status response."
+				}
 			},
 			"4XX": {
+				"description": "Update applications review status failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -586,15 +592,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -607,121 +613,93 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"approved_apps": {
 															"description": "Contains the ids of the approved applications.",
+															"type": "array",
 															"items": {
 																"type": "integer"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"in_review_apps": {
 															"description": "Contains the ids of the applications in review.",
+															"type": "array",
 															"items": {
 																"type": "integer"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"unapproved_apps": {
 															"description": "Contains the ids of the unapproved applications.",
+															"type": "array",
 															"items": {
 																"type": "integer"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
 									],
-									"type": "object",
 									"x-auditable": true
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -734,26 +712,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -761,15 +765,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update applications review status failure response."
+				}
 			}
 		},
 		"security": [
@@ -779,7 +780,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update applications review statuses",
 		"tags": [
 			"Zero Trust applications review status"
 		],

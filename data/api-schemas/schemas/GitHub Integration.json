@@ -1,7 +1,8 @@
 {
 	"GET /accounts/{account_id}/builds/repos/{provider_type}/{provider_account_id}/{repo_id}/config_autofill": {
-		"description": "Analyze repository for automatic configuration detection",
 		"operationId": "getWorkerConfigAutofill",
+		"summary": "Get repository configuration autofill",
+		"description": "Analyze repository for automatic configuration detection",
 		"parameters": [
 			{
 				"in": "path",
@@ -9,127 +10,129 @@
 				"required": true,
 				"schema": {
 					"description": "Account identifier.",
-					"example": "account-123",
-					"type": "string"
+					"type": "string",
+					"example": "account-123"
 				}
 			},
 			{
-				"description": "SCM provider type",
-				"in": "path",
 				"name": "provider_type",
+				"in": "path",
+				"description": "SCM provider type",
 				"required": true,
 				"schema": {
+					"type": "string",
+					"example": "github",
 					"enum": [
 						"github",
 						"gitlab",
 						"gitlab_internal"
-					],
-					"example": "github",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "path",
 				"name": "provider_account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Provider account identifier.",
-					"example": "cloudflare",
-					"type": "string"
+					"type": "string",
+					"example": "cloudflare"
 				}
 			},
 			{
-				"in": "path",
 				"name": "repo_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Repository identifier.",
-					"example": "workers-sdk",
-					"type": "string"
+					"type": "string",
+					"example": "workers-sdk"
 				}
 			},
 			{
-				"in": "query",
 				"name": "branch",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "Git branch name.",
-					"example": "main",
-					"type": "string"
+					"type": "string",
+					"example": "main"
 				}
 			},
 			{
-				"in": "query",
 				"name": "root_directory",
+				"in": "query",
 				"schema": {
 					"description": "Root directory path.",
-					"example": "/",
-					"type": "string"
+					"type": "string",
+					"example": "/"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Configuration autofill data retrieved successfully",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"example": 12000,
-														"type": "integer"
+														"type": "integer",
+														"example": 12000
 													},
 													"message": {
-														"example": "Not found",
-														"type": "string"
+														"type": "string",
+														"example": "Not found"
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"page": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
-													"example": 50,
-													"type": "integer"
+													"type": "integer",
+													"example": 50
 												},
 												"total_count": {
-													"example": 150,
-													"type": "integer"
+													"type": "integer",
+													"example": 150
 												},
 												"total_pages": {
-													"example": 3,
-													"type": "integer"
+													"type": "integer",
+													"example": 3
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -137,64 +140,63 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config_file": {
+													"type": "string",
 													"example": "wrangler.toml",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"default_worker_name": {
+													"type": "string",
 													"example": "my-worker",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"env_worker_names": {
-													"additionalProperties": {
-														"type": "string"
-													},
+													"type": "object",
 													"example": {
 														"production": "my-worker-prod",
 														"staging": "my-worker-staging"
 													},
-													"nullable": true,
-													"type": "object"
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true
 												},
 												"package_manager": {
+													"type": "string",
 													"allOf": [
 														{
+															"type": "string",
+															"example": "npm",
 															"enum": [
 																"npm",
 																"yarn",
 																"pnpm",
 																"bun",
 																"uv"
-															],
-															"example": "npm",
-															"type": "string"
+															]
 														}
 													],
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"scripts": {
-													"additionalProperties": {
-														"type": "string"
-													},
+													"type": "object",
 													"example": {
 														"build": "npm run build",
 														"test": "npm test"
 													},
-													"nullable": true,
-													"type": "object"
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -202,8 +204,7 @@
 							]
 						}
 					}
-				},
-				"description": "Configuration autofill data retrieved successfully"
+				}
 			}
 		},
 		"security": [
@@ -215,7 +216,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get repository configuration autofill",
 		"tags": [
 			"GitHub Integration"
 		],

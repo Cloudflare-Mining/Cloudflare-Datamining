@@ -1,22 +1,23 @@
 {
 	"DELETE /accounts/{account_id}/one/integrations/{id}": {
-		"description": "Delete an integration by soft-deleting it.",
 		"operationId": "delete_integration_v2",
+		"summary": "Delete integration",
+		"description": "Delete an integration by soft-deleting it.",
 		"parameters": [
 			{
-				"description": "Cloudflare account identifier.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Integration ID.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Integration ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -40,7 +41,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete integration",
 		"tags": [
 			"Integrations"
 		],
@@ -51,103 +51,104 @@
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/integrations": {
-		"description": "Returns a paginated list of integrations for the account.",
 		"operationId": "list_integrations_v2",
+		"summary": "List integrations",
+		"description": "Returns a paginated list of integrations for the account.",
 		"parameters": [
 			{
-				"description": "Cloudflare account identifier.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Filter by application/vendor (e.g., GOOGLE_WORKSPACE, MICROSOFT_INTERNAL).",
-				"in": "query",
 				"name": "application",
+				"in": "query",
+				"description": "Filter by application/vendor (e.g., GOOGLE_WORKSPACE, MICROSOFT_INTERNAL).",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Direction to order results.",
-				"in": "query",
 				"name": "direction",
+				"in": "query",
+				"description": "Direction to order results.",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filter by DLP enabled status (true/false).",
-				"in": "query",
 				"name": "dlp_enabled",
+				"in": "query",
+				"description": "Filter by DLP enabled status (true/false).",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Field to order results by.",
-				"in": "query",
 				"name": "order",
+				"in": "query",
+				"description": "Field to order results by.",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"application",
 						"created",
 						"name",
 						"status"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Page number within the paginated result set.",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Page number within the paginated result set.",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of results per page.",
-				"in": "query",
 				"name": "page_size",
+				"in": "query",
+				"description": "Number of results per page.",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Search integrations by name or application.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Search integrations by name or application.",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter by integration status.",
-				"in": "query",
 				"name": "status",
+				"in": "query",
+				"description": "Filter by integration status.",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"Healthy",
 						"Initializing",
 						"Offline",
 						"Unhealthy"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filter by enabled use cases (e.g., casb, ces). Matches integrations enrolled in any of the specified values. Can be specified multiple times.",
-				"in": "query",
 				"name": "use_cases",
+				"in": "query",
+				"description": "Filter by enabled use cases (e.g., casb, ces). Matches integrations enrolled in any of the specified values. Can be specified multiple times.",
 				"schema": {
 					"type": "string"
 				}
@@ -155,6 +156,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of integrations.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -192,8 +194,7 @@
 						},
 						"schema": {}
 					}
-				},
-				"description": "List of integrations."
+				}
 			},
 			"400": {
 				"description": "Invalid request."
@@ -208,7 +209,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List integrations",
 		"tags": [
 			"Integrations"
 		],
@@ -219,23 +219,24 @@
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/integrations/{id}": {
-		"description": "Returns full integration details including use cases and permissions.",
 		"operationId": "get_integration_v2",
+		"summary": "Get integration details",
+		"description": "Returns full integration details including use cases and permissions.",
 		"parameters": [
 			{
-				"description": "Cloudflare account identifier.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Integration ID.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Integration ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -244,6 +245,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Integration details.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -340,26 +342,28 @@
 						},
 						"schema": {
 							"description": "Serializer for v2 integration detail response with use cases.",
+							"type": "object",
 							"properties": {
 								"application": {
+									"type": "object",
 									"additionalProperties": {
 										"nullable": true,
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"auth_method": {
+									"description": "The integration's authentication method.",
+									"type": "object",
 									"additionalProperties": {
 										"type": "string"
 									},
-									"description": "The integration's authentication method.",
 									"nullable": true,
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"authorization_link": {
 									"description": "Authorization link for the integration.",
+									"type": "object",
 									"nullable": true,
 									"properties": {
 										"components": {
@@ -368,73 +372,72 @@
 											"type": "object"
 										},
 										"link": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"readOnly": true,
 									"required": [
 										"components",
 										"link"
-									],
-									"type": "object"
+									]
 								},
 								"created": {
 									"description": "When the integration was created.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"credentials_expiry": {
 									"description": "Credentials expiry time.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"dlp_profiles": {
 									"description": "DLP Profiles enabled for the integration.",
+									"type": "array",
 									"items": {
 										"format": "uuid",
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"health_details": {
 									"description": "Health details with remediation hints.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"id": {
 									"description": "Integration ID.",
+									"type": "string",
 									"format": "uuid",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"is_paused": {
 									"description": "Whether the user paused the integration.",
-									"readOnly": true,
-									"type": "boolean"
+									"type": "boolean",
+									"readOnly": true
 								},
 								"last_hydrated": {
 									"description": "Last time the integration was hydrated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"name": {
 									"description": "Name of the integration.",
-									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"readOnly": true
 								},
 								"organization_id": {
 									"description": "Organization ID.",
-									"readOnly": true,
-									"type": "integer"
+									"type": "integer",
+									"readOnly": true
 								},
 								"status": {
 									"description": "Integration status.",
@@ -442,18 +445,18 @@
 								},
 								"updated": {
 									"description": "When the integration was last updated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"use_cases": {
 									"description": "Use cases enabled for the integration.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								}
 							},
 							"required": [
@@ -472,12 +475,10 @@
 								"status",
 								"updated",
 								"use_cases"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Integration details."
+				}
 			},
 			"404": {
 				"description": "Integration not found."
@@ -492,7 +493,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get integration details",
 		"tags": [
 			"Integrations"
 		],
@@ -503,23 +503,24 @@
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/one/integrations/{id}": {
-		"description": "Updates an integration's name, permissions, DLP profiles, use cases, or credentials.",
 		"operationId": "update_integration_v2",
+		"summary": "Update integration",
+		"description": "Updates an integration's name, permissions, DLP profiles, use cases, or credentials.",
 		"parameters": [
 			{
-				"description": "Cloudflare account identifier.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Integration ID.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Integration ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -561,37 +562,39 @@
 					},
 					"schema": {
 						"description": "Serializer for v2 integration PATCH requests.",
+						"type": "object",
 						"properties": {
 							"credentials": {
-								"additionalProperties": {},
 								"description": "Partial credential fields to merge with existing.",
-								"type": "object"
+								"type": "object",
+								"additionalProperties": {}
 							},
 							"dlp_profiles": {
 								"description": "List of DLP profile IDs to associate with the integration.",
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							},
 							"name": {
 								"description": "Name of the integration.",
+								"type": "string",
 								"maxLength": 256,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"permissions": {
 								"description": "List of permission scopes granted to the integration.",
+								"type": "array",
 								"items": {
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"use_cases": {
 								"description": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).",
+								"type": "array",
 								"items": {
 									"description": "* `casb` - casb\n* `ces` - ces\n* `auto_remediation` - auto_remediation",
 									"enum": [
@@ -600,11 +603,9 @@
 										"auto_remediation"
 									],
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				},
 				"application/json": {
@@ -640,37 +641,39 @@
 					},
 					"schema": {
 						"description": "Serializer for v2 integration PATCH requests.",
+						"type": "object",
 						"properties": {
 							"credentials": {
-								"additionalProperties": {},
 								"description": "Partial credential fields to merge with existing.",
-								"type": "object"
+								"type": "object",
+								"additionalProperties": {}
 							},
 							"dlp_profiles": {
 								"description": "List of DLP profile IDs to associate with the integration.",
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							},
 							"name": {
 								"description": "Name of the integration.",
+								"type": "string",
 								"maxLength": 256,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"permissions": {
 								"description": "List of permission scopes granted to the integration.",
+								"type": "array",
 								"items": {
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"use_cases": {
 								"description": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).",
+								"type": "array",
 								"items": {
 									"description": "* `casb` - casb\n* `ces` - ces\n* `auto_remediation` - auto_remediation",
 									"enum": [
@@ -679,47 +682,47 @@
 										"auto_remediation"
 									],
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				},
 				"text/plain;charset=UTF-8": {
 					"schema": {
 						"description": "Serializer for v2 integration PATCH requests.",
+						"type": "object",
 						"properties": {
 							"credentials": {
-								"additionalProperties": {},
 								"description": "Partial credential fields to merge with existing.",
-								"type": "object"
+								"type": "object",
+								"additionalProperties": {}
 							},
 							"dlp_profiles": {
 								"description": "List of DLP profile IDs to associate with the integration.",
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							},
 							"name": {
 								"description": "Name of the integration.",
+								"type": "string",
 								"maxLength": 256,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"permissions": {
 								"description": "List of permission scopes granted to the integration.",
+								"type": "array",
 								"items": {
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"use_cases": {
 								"description": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).",
+								"type": "array",
 								"items": {
 									"description": "* `casb` - casb\n* `ces` - ces\n* `auto_remediation` - auto_remediation",
 									"enum": [
@@ -728,17 +731,16 @@
 										"auto_remediation"
 									],
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Integration updated successfully.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -835,26 +837,28 @@
 						},
 						"schema": {
 							"description": "Serializer for v2 integration detail response with use cases.",
+							"type": "object",
 							"properties": {
 								"application": {
+									"type": "object",
 									"additionalProperties": {
 										"nullable": true,
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"auth_method": {
+									"description": "The integration's authentication method.",
+									"type": "object",
 									"additionalProperties": {
 										"type": "string"
 									},
-									"description": "The integration's authentication method.",
 									"nullable": true,
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"authorization_link": {
 									"description": "Authorization link for the integration.",
+									"type": "object",
 									"nullable": true,
 									"properties": {
 										"components": {
@@ -863,73 +867,72 @@
 											"type": "object"
 										},
 										"link": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"readOnly": true,
 									"required": [
 										"components",
 										"link"
-									],
-									"type": "object"
+									]
 								},
 								"created": {
 									"description": "When the integration was created.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"credentials_expiry": {
 									"description": "Credentials expiry time.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"dlp_profiles": {
 									"description": "DLP Profiles enabled for the integration.",
+									"type": "array",
 									"items": {
 										"format": "uuid",
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"health_details": {
 									"description": "Health details with remediation hints.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"id": {
 									"description": "Integration ID.",
+									"type": "string",
 									"format": "uuid",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"is_paused": {
 									"description": "Whether the user paused the integration.",
-									"readOnly": true,
-									"type": "boolean"
+									"type": "boolean",
+									"readOnly": true
 								},
 								"last_hydrated": {
 									"description": "Last time the integration was hydrated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"name": {
 									"description": "Name of the integration.",
-									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"readOnly": true
 								},
 								"organization_id": {
 									"description": "Organization ID.",
-									"readOnly": true,
-									"type": "integer"
+									"type": "integer",
+									"readOnly": true
 								},
 								"status": {
 									"description": "Integration status.",
@@ -937,18 +940,18 @@
 								},
 								"updated": {
 									"description": "When the integration was last updated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"use_cases": {
 									"description": "Use cases enabled for the integration.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								}
 							},
 							"required": [
@@ -967,12 +970,10 @@
 								"status",
 								"updated",
 								"use_cases"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Integration updated successfully."
+				}
 			},
 			"400": {
 				"description": "Invalid request."
@@ -987,7 +988,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update integration",
 		"tags": [
 			"Integrations"
 		],
@@ -998,21 +998,23 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations": {
-		"description": "Creates a new integration for the specified application. Integration creation with OAuth is not supported by API at the moment. For other auth methods, use `GET /v2/applications/{application_id}/credential-guide` to see the required credential structure and example payloads for each vendor.",
 		"operationId": "create_integration_v2",
+		"summary": "Create integration",
+		"description": "Creates a new integration for the specified application. Integration creation with OAuth is not supported by API at the moment. For other auth methods, use `GET /v2/applications/{application_id}/credential-guide` to see the required credential structure and example payloads for each vendor.",
 		"parameters": [
 			{
-				"description": "Cloudflare account identifier.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"": {
 					"examples": {
@@ -1040,9 +1042,11 @@
 					},
 					"schema": {
 						"description": "Serializer for v2 integration create requests.",
+						"type": "object",
 						"properties": {
 							"application": {
 								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"type": "string",
 								"enum": [
 									"ANTHROPIC",
 									"BITBUCKET",
@@ -1057,45 +1061,45 @@
 									"OPENAI",
 									"SALESFORCE",
 									"SLACK"
-								],
-								"type": "string"
+								]
 							},
 							"auth_method": {
 								"description": "Authentication method slug (uses default if omitted).",
+								"type": "string",
 								"minLength": 1,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"credentials": {
-								"additionalProperties": {},
 								"description": "Credentials for the integration.",
-								"type": "object"
+								"type": "object",
+								"additionalProperties": {}
 							},
 							"dlp_profiles": {
 								"description": "List of DLP profile IDs to associate.",
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							},
 							"name": {
 								"description": "Name of the integration.",
+								"type": "string",
 								"maxLength": 256,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"permissions": {
 								"description": "List of permission scopes (uses policy defaults if empty).",
+								"type": "array",
 								"items": {
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"use_cases": {
 								"description": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).",
+								"type": "array",
 								"items": {
 									"description": "* `casb` - casb\n* `ces` - ces\n* `auto_remediation` - auto_remediation",
 									"enum": [
@@ -1104,16 +1108,14 @@
 										"auto_remediation"
 									],
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"application",
 							"credentials",
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				},
 				"application/json": {
@@ -1142,9 +1144,11 @@
 					},
 					"schema": {
 						"description": "Serializer for v2 integration create requests.",
+						"type": "object",
 						"properties": {
 							"application": {
 								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"type": "string",
 								"enum": [
 									"ANTHROPIC",
 									"BITBUCKET",
@@ -1159,45 +1163,45 @@
 									"OPENAI",
 									"SALESFORCE",
 									"SLACK"
-								],
-								"type": "string"
+								]
 							},
 							"auth_method": {
 								"description": "Authentication method slug (uses default if omitted).",
+								"type": "string",
 								"minLength": 1,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"credentials": {
-								"additionalProperties": {},
 								"description": "Credentials for the integration.",
-								"type": "object"
+								"type": "object",
+								"additionalProperties": {}
 							},
 							"dlp_profiles": {
 								"description": "List of DLP profile IDs to associate.",
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							},
 							"name": {
 								"description": "Name of the integration.",
+								"type": "string",
 								"maxLength": 256,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"permissions": {
 								"description": "List of permission scopes (uses policy defaults if empty).",
+								"type": "array",
 								"items": {
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"use_cases": {
 								"description": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).",
+								"type": "array",
 								"items": {
 									"description": "* `casb` - casb\n* `ces` - ces\n* `auto_remediation` - auto_remediation",
 									"enum": [
@@ -1206,24 +1210,24 @@
 										"auto_remediation"
 									],
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"application",
 							"credentials",
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				},
 				"text/plain;charset=UTF-8": {
 					"schema": {
 						"description": "Serializer for v2 integration create requests.",
+						"type": "object",
 						"properties": {
 							"application": {
 								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"type": "string",
 								"enum": [
 									"ANTHROPIC",
 									"BITBUCKET",
@@ -1238,45 +1242,45 @@
 									"OPENAI",
 									"SALESFORCE",
 									"SLACK"
-								],
-								"type": "string"
+								]
 							},
 							"auth_method": {
 								"description": "Authentication method slug (uses default if omitted).",
+								"type": "string",
 								"minLength": 1,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"credentials": {
-								"additionalProperties": {},
 								"description": "Credentials for the integration.",
-								"type": "object"
+								"type": "object",
+								"additionalProperties": {}
 							},
 							"dlp_profiles": {
 								"description": "List of DLP profile IDs to associate.",
+								"type": "array",
 								"items": {
 									"format": "uuid",
 									"type": "string"
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							},
 							"name": {
 								"description": "Name of the integration.",
+								"type": "string",
 								"maxLength": 256,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"permissions": {
 								"description": "List of permission scopes (uses policy defaults if empty).",
+								"type": "array",
 								"items": {
 									"minLength": 1,
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"use_cases": {
 								"description": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).",
+								"type": "array",
 								"items": {
 									"description": "* `casb` - casb\n* `ces` - ces\n* `auto_remediation` - auto_remediation",
 									"enum": [
@@ -1285,23 +1289,21 @@
 										"auto_remediation"
 									],
 									"type": "string"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
 							"application",
 							"credentials",
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Integration created successfully.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1398,26 +1400,28 @@
 						},
 						"schema": {
 							"description": "Serializer for v2 integration detail response with use cases.",
+							"type": "object",
 							"properties": {
 								"application": {
+									"type": "object",
 									"additionalProperties": {
 										"nullable": true,
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"auth_method": {
+									"description": "The integration's authentication method.",
+									"type": "object",
 									"additionalProperties": {
 										"type": "string"
 									},
-									"description": "The integration's authentication method.",
 									"nullable": true,
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"authorization_link": {
 									"description": "Authorization link for the integration.",
+									"type": "object",
 									"nullable": true,
 									"properties": {
 										"components": {
@@ -1426,73 +1430,72 @@
 											"type": "object"
 										},
 										"link": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"readOnly": true,
 									"required": [
 										"components",
 										"link"
-									],
-									"type": "object"
+									]
 								},
 								"created": {
 									"description": "When the integration was created.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"credentials_expiry": {
 									"description": "Credentials expiry time.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"dlp_profiles": {
 									"description": "DLP Profiles enabled for the integration.",
+									"type": "array",
 									"items": {
 										"format": "uuid",
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"health_details": {
 									"description": "Health details with remediation hints.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"id": {
 									"description": "Integration ID.",
+									"type": "string",
 									"format": "uuid",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"is_paused": {
 									"description": "Whether the user paused the integration.",
-									"readOnly": true,
-									"type": "boolean"
+									"type": "boolean",
+									"readOnly": true
 								},
 								"last_hydrated": {
 									"description": "Last time the integration was hydrated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"name": {
 									"description": "Name of the integration.",
-									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"readOnly": true
 								},
 								"organization_id": {
 									"description": "Organization ID.",
-									"readOnly": true,
-									"type": "integer"
+									"type": "integer",
+									"readOnly": true
 								},
 								"status": {
 									"description": "Integration status.",
@@ -1500,18 +1503,18 @@
 								},
 								"updated": {
 									"description": "When the integration was last updated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"use_cases": {
 									"description": "Use cases enabled for the integration.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								}
 							},
 							"required": [
@@ -1530,12 +1533,10 @@
 								"status",
 								"updated",
 								"use_cases"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Integration created successfully."
+				}
 			},
 			"400": {
 				"description": "Invalid request."
@@ -1550,7 +1551,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create integration",
 		"tags": [
 			"Integrations"
 		],
@@ -1561,23 +1561,24 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations/{id}/pause": {
-		"description": "Pauses an integration, stopping all crawlers.",
 		"operationId": "pause_integration_v2",
+		"summary": "Pause integration",
+		"description": "Pauses an integration, stopping all crawlers.",
 		"parameters": [
 			{
-				"description": "Cloudflare account identifier.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Integration ID.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Integration ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1586,6 +1587,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Integration paused successfully.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1682,26 +1684,28 @@
 						},
 						"schema": {
 							"description": "Serializer for v2 integration detail response with use cases.",
+							"type": "object",
 							"properties": {
 								"application": {
+									"type": "object",
 									"additionalProperties": {
 										"nullable": true,
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"auth_method": {
+									"description": "The integration's authentication method.",
+									"type": "object",
 									"additionalProperties": {
 										"type": "string"
 									},
-									"description": "The integration's authentication method.",
 									"nullable": true,
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"authorization_link": {
 									"description": "Authorization link for the integration.",
+									"type": "object",
 									"nullable": true,
 									"properties": {
 										"components": {
@@ -1710,73 +1714,72 @@
 											"type": "object"
 										},
 										"link": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"readOnly": true,
 									"required": [
 										"components",
 										"link"
-									],
-									"type": "object"
+									]
 								},
 								"created": {
 									"description": "When the integration was created.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"credentials_expiry": {
 									"description": "Credentials expiry time.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"dlp_profiles": {
 									"description": "DLP Profiles enabled for the integration.",
+									"type": "array",
 									"items": {
 										"format": "uuid",
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"health_details": {
 									"description": "Health details with remediation hints.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"id": {
 									"description": "Integration ID.",
+									"type": "string",
 									"format": "uuid",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"is_paused": {
 									"description": "Whether the user paused the integration.",
-									"readOnly": true,
-									"type": "boolean"
+									"type": "boolean",
+									"readOnly": true
 								},
 								"last_hydrated": {
 									"description": "Last time the integration was hydrated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"name": {
 									"description": "Name of the integration.",
-									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"readOnly": true
 								},
 								"organization_id": {
 									"description": "Organization ID.",
-									"readOnly": true,
-									"type": "integer"
+									"type": "integer",
+									"readOnly": true
 								},
 								"status": {
 									"description": "Integration status.",
@@ -1784,18 +1787,18 @@
 								},
 								"updated": {
 									"description": "When the integration was last updated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"use_cases": {
 									"description": "Use cases enabled for the integration.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								}
 							},
 							"required": [
@@ -1814,12 +1817,10 @@
 								"status",
 								"updated",
 								"use_cases"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Integration paused successfully."
+				}
 			},
 			"400": {
 				"description": "Invalid request."
@@ -1834,7 +1835,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Pause integration",
 		"tags": [
 			"Integrations"
 		],
@@ -1845,23 +1845,24 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations/{id}/resume": {
-		"description": "Resumes a paused integration, restarting crawlers.",
 		"operationId": "resume_integration_v2",
+		"summary": "Resume integration",
+		"description": "Resumes a paused integration, restarting crawlers.",
 		"parameters": [
 			{
-				"description": "Cloudflare account identifier.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
 				"required": true,
 				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
-				"description": "Integration ID.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Integration ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1870,6 +1871,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Integration resumed successfully.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1966,26 +1968,28 @@
 						},
 						"schema": {
 							"description": "Serializer for v2 integration detail response with use cases.",
+							"type": "object",
 							"properties": {
 								"application": {
+									"type": "object",
 									"additionalProperties": {
 										"nullable": true,
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"auth_method": {
+									"description": "The integration's authentication method.",
+									"type": "object",
 									"additionalProperties": {
 										"type": "string"
 									},
-									"description": "The integration's authentication method.",
 									"nullable": true,
-									"readOnly": true,
-									"type": "object"
+									"readOnly": true
 								},
 								"authorization_link": {
 									"description": "Authorization link for the integration.",
+									"type": "object",
 									"nullable": true,
 									"properties": {
 										"components": {
@@ -1994,73 +1998,72 @@
 											"type": "object"
 										},
 										"link": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"readOnly": true,
 									"required": [
 										"components",
 										"link"
-									],
-									"type": "object"
+									]
 								},
 								"created": {
 									"description": "When the integration was created.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"credentials_expiry": {
 									"description": "Credentials expiry time.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"dlp_profiles": {
 									"description": "DLP Profiles enabled for the integration.",
+									"type": "array",
 									"items": {
 										"format": "uuid",
 										"type": "string"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"health_details": {
 									"description": "Health details with remediation hints.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								},
 								"id": {
 									"description": "Integration ID.",
+									"type": "string",
 									"format": "uuid",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"is_paused": {
 									"description": "Whether the user paused the integration.",
-									"readOnly": true,
-									"type": "boolean"
+									"type": "boolean",
+									"readOnly": true
 								},
 								"last_hydrated": {
 									"description": "Last time the integration was hydrated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"name": {
 									"description": "Name of the integration.",
-									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"readOnly": true
 								},
 								"organization_id": {
 									"description": "Organization ID.",
-									"readOnly": true,
-									"type": "integer"
+									"type": "integer",
+									"readOnly": true
 								},
 								"status": {
 									"description": "Integration status.",
@@ -2068,18 +2071,18 @@
 								},
 								"updated": {
 									"description": "When the integration was last updated.",
+									"type": "string",
 									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
+									"readOnly": true
 								},
 								"use_cases": {
 									"description": "Use cases enabled for the integration.",
+									"type": "array",
 									"items": {
 										"additionalProperties": {},
 										"type": "object"
 									},
-									"readOnly": true,
-									"type": "array"
+									"readOnly": true
 								}
 							},
 							"required": [
@@ -2098,12 +2101,10 @@
 								"status",
 								"updated",
 								"use_cases"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Integration resumed successfully."
+				}
 			},
 			"400": {
 				"description": "Invalid request."
@@ -2118,7 +2119,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Resume integration",
 		"tags": [
 			"Integrations"
 		],

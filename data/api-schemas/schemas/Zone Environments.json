@@ -1,19 +1,24 @@
 {
 	"DELETE /zones/{zone_id}/environments/{environment_id}": {
-		"description": "Deletes a zone environment by reference identifier.",
 		"operationId": "zonesEnvironmentsDelete",
+		"summary": "Delete zone environment",
+		"description": "Deletes a zone environment by reference identifier.",
 		"responses": {
 			"200": {
+				"description": "Successfully deleted zone environment.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -22,17 +27,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -41,31 +46,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"environments": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"expression": {
 														"type": "string"
 													},
 													"http_application_id": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"locked_on_deployment": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"position": {
+														"type": "object",
 														"properties": {
 															"after": {
 																"type": "string"
@@ -73,16 +80,15 @@
 															"before": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"ref": {
 														"type": "string"
 													},
 													"version": {
+														"type": "integer",
 														"format": "int64",
-														"nullable": true,
-														"type": "integer"
+														"nullable": true
 													}
 												},
 												"required": [
@@ -92,16 +98,13 @@
 													"expression",
 													"locked_on_deployment",
 													"position"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"environments"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -112,24 +115,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully deleted zone environment."
+				}
 			},
 			"4XX": {
+				"description": "Client error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -138,17 +143,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -157,14 +162,12 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -175,12 +178,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error response."
+				}
 			}
 		},
 		"security": [
@@ -192,7 +193,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete zone environment",
 		"tags": [
 			"Zone Environments"
 		],
@@ -201,20 +201,25 @@
 		]
 	},
 	"GET /zones/{zone_id}/environments": {
-		"description": "Lists configured environments for a zone.",
 		"operationId": "zonesEnvironmentsList",
+		"summary": "List zone environments",
+		"description": "Lists configured environments for a zone.",
 		"responses": {
 			"200": {
+				"description": "Successfully listed zone environments.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -223,17 +228,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -242,31 +247,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"environments": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"expression": {
 														"type": "string"
 													},
 													"http_application_id": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"locked_on_deployment": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"position": {
+														"type": "object",
 														"properties": {
 															"after": {
 																"type": "string"
@@ -274,16 +281,15 @@
 															"before": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"ref": {
 														"type": "string"
 													},
 													"version": {
+														"type": "integer",
 														"format": "int64",
-														"nullable": true,
-														"type": "integer"
+														"nullable": true
 													}
 												},
 												"required": [
@@ -293,16 +299,13 @@
 													"expression",
 													"locked_on_deployment",
 													"position"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"environments"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -313,24 +316,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully listed zone environments."
+				}
 			},
 			"4XX": {
+				"description": "Client error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -339,17 +344,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -358,14 +363,12 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -376,12 +379,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error response."
+				}
 			}
 		},
 		"security": [
@@ -393,7 +394,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List zone environments",
 		"tags": [
 			"Zone Environments"
 		],
@@ -403,31 +403,37 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/environments": {
-		"description": "Applies partial updates to zone environments.",
 		"operationId": "zonesEnvironmentsEdit",
+		"summary": "Partially update zone environments",
+		"description": "Applies partial updates to zone environments.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"environments": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"expression": {
 											"type": "string"
 										},
 										"http_application_id": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"locked_on_deployment": {
-											"nullable": true,
-											"type": "boolean"
+											"type": "boolean",
+											"nullable": true
 										},
 										"name": {
 											"type": "string"
 										},
 										"position": {
+											"type": "object",
 											"properties": {
 												"after": {
 													"type": "string"
@@ -435,16 +441,15 @@
 												"before": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"ref": {
 											"type": "string"
 										},
 										"version": {
+											"type": "integer",
 											"format": "int64",
-											"nullable": true,
-											"type": "integer"
+											"nullable": true
 										}
 									},
 									"required": [
@@ -454,33 +459,33 @@
 										"expression",
 										"locked_on_deployment",
 										"position"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							}
 						},
 						"required": [
 							"environments"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully updated zone environments.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -489,17 +494,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -508,31 +513,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"environments": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"expression": {
 														"type": "string"
 													},
 													"http_application_id": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"locked_on_deployment": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"position": {
+														"type": "object",
 														"properties": {
 															"after": {
 																"type": "string"
@@ -540,16 +547,15 @@
 															"before": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"ref": {
 														"type": "string"
 													},
 													"version": {
+														"type": "integer",
 														"format": "int64",
-														"nullable": true,
-														"type": "integer"
+														"nullable": true
 													}
 												},
 												"required": [
@@ -559,16 +565,13 @@
 													"expression",
 													"locked_on_deployment",
 													"position"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"environments"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -579,24 +582,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully updated zone environments."
+				}
 			},
 			"4XX": {
+				"description": "Client error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -605,17 +610,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -624,14 +629,12 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -642,12 +645,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error response."
+				}
 			}
 		},
 		"security": [
@@ -659,7 +660,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Partially update zone environments",
 		"tags": [
 			"Zone Environments"
 		],
@@ -668,31 +668,37 @@
 		]
 	},
 	"POST /zones/{zone_id}/environments": {
-		"description": "Creates environments for a zone.",
 		"operationId": "zonesEnvironmentsCreate",
+		"summary": "Create zone environments",
+		"description": "Creates environments for a zone.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"environments": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"expression": {
 											"type": "string"
 										},
 										"http_application_id": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"locked_on_deployment": {
-											"nullable": true,
-											"type": "boolean"
+											"type": "boolean",
+											"nullable": true
 										},
 										"name": {
 											"type": "string"
 										},
 										"position": {
+											"type": "object",
 											"properties": {
 												"after": {
 													"type": "string"
@@ -700,16 +706,15 @@
 												"before": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"ref": {
 											"type": "string"
 										},
 										"version": {
+											"type": "integer",
 											"format": "int64",
-											"nullable": true,
-											"type": "integer"
+											"nullable": true
 										}
 									},
 									"required": [
@@ -719,33 +724,33 @@
 										"expression",
 										"locked_on_deployment",
 										"position"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							}
 						},
 						"required": [
 							"environments"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully created zone environments.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -754,17 +759,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -773,31 +778,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"environments": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"expression": {
 														"type": "string"
 													},
 													"http_application_id": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"locked_on_deployment": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"position": {
+														"type": "object",
 														"properties": {
 															"after": {
 																"type": "string"
@@ -805,16 +812,15 @@
 															"before": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"ref": {
 														"type": "string"
 													},
 													"version": {
+														"type": "integer",
 														"format": "int64",
-														"nullable": true,
-														"type": "integer"
+														"nullable": true
 													}
 												},
 												"required": [
@@ -824,16 +830,13 @@
 													"expression",
 													"locked_on_deployment",
 													"position"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"environments"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -844,24 +847,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully created zone environments."
+				}
 			},
 			"4XX": {
+				"description": "Client error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -870,17 +875,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -889,14 +894,12 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -907,12 +910,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error response."
+				}
 			}
 		},
 		"security": [
@@ -924,7 +925,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create zone environments",
 		"tags": [
 			"Zone Environments"
 		],
@@ -933,20 +933,25 @@
 		]
 	},
 	"POST /zones/{zone_id}/environments/{environment_id}/rollback": {
-		"description": "Rolls a zone environment back to its previous version.",
 		"operationId": "zonesEnvironmentsRollback",
+		"summary": "Roll back zone environment",
+		"description": "Rolls a zone environment back to its previous version.",
 		"responses": {
 			"200": {
+				"description": "Successfully rolled back zone environment.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -955,17 +960,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -974,31 +979,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"environments": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"expression": {
 														"type": "string"
 													},
 													"http_application_id": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"locked_on_deployment": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"position": {
+														"type": "object",
 														"properties": {
 															"after": {
 																"type": "string"
@@ -1006,16 +1013,15 @@
 															"before": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"ref": {
 														"type": "string"
 													},
 													"version": {
+														"type": "integer",
 														"format": "int64",
-														"nullable": true,
-														"type": "integer"
+														"nullable": true
 													}
 												},
 												"required": [
@@ -1025,16 +1031,13 @@
 													"expression",
 													"locked_on_deployment",
 													"position"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"environments"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1045,24 +1048,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully rolled back zone environment."
+				}
 			},
 			"4XX": {
+				"description": "Client error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -1071,17 +1076,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -1090,14 +1095,12 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1108,12 +1111,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error response."
+				}
 			}
 		},
 		"security": [
@@ -1125,7 +1126,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Roll back zone environment",
 		"tags": [
 			"Zone Environments"
 		],
@@ -1134,31 +1134,37 @@
 		]
 	},
 	"PUT /zones/{zone_id}/environments": {
-		"description": "Replaces the full environment configuration for a zone.",
 		"operationId": "zonesEnvironmentsUpdate",
+		"summary": "Upsert zone environments",
+		"description": "Replaces the full environment configuration for a zone.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"environments": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"expression": {
 											"type": "string"
 										},
 										"http_application_id": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"locked_on_deployment": {
-											"nullable": true,
-											"type": "boolean"
+											"type": "boolean",
+											"nullable": true
 										},
 										"name": {
 											"type": "string"
 										},
 										"position": {
+											"type": "object",
 											"properties": {
 												"after": {
 													"type": "string"
@@ -1166,16 +1172,15 @@
 												"before": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"ref": {
 											"type": "string"
 										},
 										"version": {
+											"type": "integer",
 											"format": "int64",
-											"nullable": true,
-											"type": "integer"
+											"nullable": true
 										}
 									},
 									"required": [
@@ -1185,33 +1190,33 @@
 										"expression",
 										"locked_on_deployment",
 										"position"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							}
 						},
 						"required": [
 							"environments"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successfully upserted zone environments.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -1220,17 +1225,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -1239,31 +1244,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"environments": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"expression": {
 														"type": "string"
 													},
 													"http_application_id": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"locked_on_deployment": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"name": {
 														"type": "string"
 													},
 													"position": {
+														"type": "object",
 														"properties": {
 															"after": {
 																"type": "string"
@@ -1271,16 +1278,15 @@
 															"before": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"ref": {
 														"type": "string"
 													},
 													"version": {
+														"type": "integer",
 														"format": "int64",
-														"nullable": true,
-														"type": "integer"
+														"nullable": true
 													}
 												},
 												"required": [
@@ -1290,16 +1296,13 @@
 													"expression",
 													"locked_on_deployment",
 													"position"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"environments"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1310,24 +1313,26 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successfully upserted zone environments."
+				}
 			},
 			"4XX": {
+				"description": "Client error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -1336,17 +1341,17 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"format": "int64",
-												"type": "integer"
+												"type": "integer",
+												"format": "int64"
 											},
 											"message": {
 												"type": "string"
@@ -1355,14 +1360,12 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1373,12 +1376,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error response."
+				}
 			}
 		},
 		"security": [
@@ -1390,7 +1391,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Upsert zone environments",
 		"tags": [
 			"Zone Environments"
 		],

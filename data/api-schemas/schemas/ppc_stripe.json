@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/pay-per-crawl/crawler/stripe": {
-		"description": "Deletes the stripe config for a crawler.",
 		"operationId": "pay-per-crawl.crawlerDeleteStripeConfig",
+		"summary": "Deletes the stripe config for a crawler",
+		"description": "Deletes the stripe config for a crawler.",
 		"parameters": [
 			{
-				"description": "account id",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "account id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -16,12 +17,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -30,8 +35,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.errors.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.errors.items]"
 											},
 											"message": {
 												"type": "string"
@@ -40,6 +45,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -51,21 +57,20 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -74,8 +79,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.messages.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -84,6 +89,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -95,20 +101,18 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -126,26 +130,27 @@
 											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
 											"type": "integer"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -157,28 +162,24 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -187,7 +188,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Deletes the stripe config for a crawler",
 		"tags": [
 			"ppc_stripe"
 		],
@@ -196,13 +196,14 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/pay-per-crawl/publisher/stripe": {
-		"description": "Deletes the stripe config for a publisher.",
 		"operationId": "pay-per-crawl.publisherDeleteStripeConfig",
+		"summary": "Deletes the stripe config for a publisher",
+		"description": "Deletes the stripe config for a publisher.",
 		"parameters": [
 			{
-				"description": "account id",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "account id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -212,12 +213,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -226,8 +231,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.errors.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.errors.items]"
 											},
 											"message": {
 												"type": "string"
@@ -236,6 +241,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -247,21 +253,20 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -270,8 +275,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.messages.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.DELETE /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -280,6 +285,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -291,20 +297,18 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -322,26 +326,27 @@
 											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
 											"type": "integer"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -353,28 +358,24 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -383,7 +384,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Deletes the stripe config for a publisher",
 		"tags": [
 			"ppc_stripe"
 		],
@@ -392,13 +392,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/pay-per-crawl/crawler/stripe": {
-		"description": "Gets the stripe config for a crawler.",
 		"operationId": "pay-per-crawl.crawlerGetStripeConfig",
+		"summary": "Gets the stripe config for a crawler",
+		"description": "Gets the stripe config for a crawler.",
 		"parameters": [
 			{
-				"description": "account id",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "account id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -408,12 +409,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -422,8 +427,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.errors.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.errors.items]"
 											},
 											"message": {
 												"type": "string"
@@ -432,6 +437,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -443,21 +449,20 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -466,8 +471,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.messages.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -476,6 +481,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -487,20 +493,18 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"connect_status": {
 											"type": "string"
@@ -508,10 +512,10 @@
 										"stripe_account_id": {
 											"type": "string"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -529,26 +533,27 @@
 											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
 											"type": "integer"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -560,28 +565,24 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -590,7 +591,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Gets the stripe config for a crawler",
 		"tags": [
 			"ppc_stripe"
 		],
@@ -627,13 +627,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/pay-per-crawl/publisher/stripe": {
-		"description": "Gets the stripe config for a publisher.",
 		"operationId": "pay-per-crawl.publisherGetStripeConfig",
+		"summary": "Gets the stripe config for a publisher",
+		"description": "Gets the stripe config for a publisher.",
 		"parameters": [
 			{
-				"description": "account id",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "account id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -643,12 +644,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -657,8 +662,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.errors.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.errors.items]"
 											},
 											"message": {
 												"type": "string"
@@ -667,6 +672,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -678,21 +684,20 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -701,8 +706,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.messages.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -711,6 +716,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -722,20 +728,18 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"connect_status": {
 											"type": "string"
@@ -743,10 +747,10 @@
 										"stripe_account_id": {
 											"type": "string"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -764,26 +768,27 @@
 											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
 											"type": "integer"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -795,28 +800,24 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -825,7 +826,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Gets the stripe config for a publisher",
 		"tags": [
 			"ppc_stripe"
 		],
@@ -862,13 +862,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/pay-per-crawl/crawler/stripe": {
-		"description": "Creates the stripe config for a crawler.",
 		"operationId": "pay-per-crawl.crawlerCreateStripeConfig",
+		"summary": "Creates the stripe config for a crawler",
+		"description": "Creates the stripe config for a crawler.",
 		"parameters": [
 			{
-				"description": "account id",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "account id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -878,12 +879,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -892,8 +897,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.errors.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.errors.items]"
 											},
 											"message": {
 												"type": "string"
@@ -902,6 +907,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -913,21 +919,20 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -936,8 +941,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.messages.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/crawler/stripe.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -946,6 +951,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -957,28 +963,26 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"url": {
 											"type": "string"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -996,26 +1000,27 @@
 											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
 											"type": "integer"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1027,28 +1032,24 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1057,7 +1058,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Creates the stripe config for a crawler",
 		"tags": [
 			"ppc_stripe"
 		],
@@ -1066,13 +1066,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/pay-per-crawl/publisher/stripe": {
-		"description": "Creates the stripe config for a publisher.",
 		"operationId": "pay-per-crawl.publisherCreateStripeConfig",
+		"summary": "Creates the stripe config for a publisher",
+		"description": "Creates the stripe config for a publisher.",
 		"parameters": [
 			{
-				"description": "account id",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "account id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1082,12 +1083,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1096,8 +1101,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.errors.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.errors.items]"
 											},
 											"message": {
 												"type": "string"
@@ -1106,6 +1111,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -1117,21 +1123,20 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1140,8 +1145,8 @@
 												"type": "string"
 											},
 											"error_chain": {
-												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.messages.items]",
-												"type": "array"
+												"type": "array",
+												"items": "[Circular ~.POST /accounts/{account_id}/pay-per-crawl/publisher/stripe.responses.200.content.application/json.schema.properties.messages.items]"
 											},
 											"message": {
 												"type": "string"
@@ -1150,6 +1155,7 @@
 												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"parameter": {
 														"description": "Parameter is a string indicating which URI query parameter caused the error.",
@@ -1161,28 +1167,26 @@
 													},
 													"pointer": {
 														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"url": {
 											"type": "string"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -1200,26 +1204,27 @@
 											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
 											"type": "integer"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -1231,28 +1236,24 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -1261,7 +1262,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Creates the stripe config for a publisher",
 		"tags": [
 			"ppc_stripe"
 		],

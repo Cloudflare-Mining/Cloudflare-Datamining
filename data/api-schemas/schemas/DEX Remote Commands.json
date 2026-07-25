@@ -1,126 +1,130 @@
 {
 	"GET /accounts/{account_id}/dex/commands": {
-		"description": "Retrieves a paginated list of commands issued to devices under the specified account, optionally filtered by time range, device, or other parameters",
 		"operationId": "get-commands",
+		"summary": "List account commands",
+		"description": "Retrieves a paginated list of commands issued to devices under the specified account, optionally filtered by time range, device, or other parameters",
 		"parameters": [
 			{
-				"description": "Unique Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier linked to an account.",
+					"type": "string",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Page number of paginated results.",
 				"required": true,
 				"schema": {
-					"default": 1,
+					"type": "number",
 					"example": 1,
-					"minimum": 1,
-					"type": "number"
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Number of results per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
 				"required": true,
 				"schema": {
+					"type": "number",
 					"example": 10,
 					"maximum": 50,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format.",
-				"in": "query",
 				"name": "from",
+				"in": "query",
+				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format.",
 				"schema": {
-					"example": "2023-08-20T20:45:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-08-20T20:45:00Z"
 				}
 			},
 			{
-				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format.",
-				"in": "query",
 				"name": "to",
+				"in": "query",
+				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format.",
 				"schema": {
-					"example": "2023-08-24T20:45:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-08-24T20:45:00Z"
 				}
 			},
 			{
-				"description": "Unique identifier for a device.",
-				"in": "query",
 				"name": "device_id",
+				"in": "query",
+				"description": "Unique identifier for a device.",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Email tied to the device.",
-				"in": "query",
 				"name": "user_email",
+				"in": "query",
+				"description": "Email tied to the device.",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Optionally filter executed commands by command type.",
-				"in": "query",
 				"name": "command_type",
+				"in": "query",
+				"description": "Optionally filter executed commands by command type.",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"pcap",
 						"speed-test",
 						"warp-diag"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Optionally filter executed commands by status.",
-				"in": "query",
 				"name": "status",
+				"in": "query",
+				"description": "Optionally filter executed commands by status.",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"PENDING_EXEC",
 						"PENDING_UPLOAD",
 						"SUCCESS",
 						"FAILED"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get commands response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -129,12 +133,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -144,15 +148,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -161,12 +165,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -176,84 +180,84 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"commands": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"completed_date": {
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"created_date": {
-																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"format": "date-time"
 															},
 															"device_id": {
 																"type": "string"
 															},
 															"filename": {
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"id": {
 																"type": "string"
@@ -273,77 +277,39 @@
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get commands response."
+				}
 			},
 			"4XX": {
+				"description": "Get commands failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -352,12 +318,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -367,25 +333,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -393,12 +396,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get commands failure response."
+				}
 			}
 		},
 		"security": [
@@ -413,7 +414,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "List account commands",
 		"tags": [
 			"DEX Remote Commands"
 		],
@@ -429,37 +429,38 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}": {
-		"description": "Downloads artifacts for an executed command. Bulk downloads are not supported",
 		"operationId": "get-commands-command-id-downloads-filename",
+		"summary": "Download command output file",
+		"description": "Downloads artifacts for an executed command. Bulk downloads are not supported",
 		"parameters": [
 			{
-				"description": "Unique Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier linked to an account.",
+					"type": "string",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "Unique identifier for command.",
-				"in": "path",
 				"name": "command_id",
+				"in": "path",
+				"description": "Unique identifier for command.",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier for a command",
-					"example": "5758fefe-ae7e-4538-a39b-1fef6abcb909",
-					"type": "string"
+					"type": "string",
+					"example": "5758fefe-ae7e-4538-a39b-1fef6abcb909"
 				}
 			},
 			{
-				"description": "The name of the file to be downloaded, including the `.zip` extension.",
-				"in": "path",
 				"name": "filename",
+				"in": "path",
+				"description": "The name of the file to be downloaded, including the `.zip` extension.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -468,35 +469,27 @@
 		],
 		"responses": {
 			"200": {
-				"content": {
-					"application/zip": {
-						"schema": {
-							"format": "binary",
-							"type": "string"
-						}
-					}
-				},
 				"description": "Get command artifacts response.",
 				"headers": {
 					"Accept-Ranges": {
 						"description": "Indicates that the file supports byte-range requests.",
 						"schema": {
-							"example": "bytes",
-							"type": "string"
+							"type": "string",
+							"example": "bytes"
 						}
 					},
 					"Content-Disposition": {
 						"description": "Indicates that the file should be treated as an attachment for downloading",
 						"schema": {
-							"example": "attachment; filename*=example.zip",
-							"type": "string"
+							"type": "string",
+							"example": "attachment; filename*=example.zip"
 						}
 					},
 					"Content-Encoding": {
 						"description": "Specifies the encoding of the file content, if any.",
 						"schema": {
-							"example": "gzip",
-							"type": "string"
+							"type": "string",
+							"example": "gzip"
 						}
 					},
 					"Content-Length": {
@@ -508,84 +501,57 @@
 					"Content-Type": {
 						"description": "Specifies the media type of the file.",
 						"schema": {
-							"example": "application/zip",
-							"type": "string"
+							"type": "string",
+							"example": "application/zip"
 						}
 					},
 					"ETag": {
 						"description": "The entity tag of the file for cache validation.",
 						"schema": {
-							"example": "34f9b5e9c8a6",
-							"type": "string"
+							"type": "string",
+							"example": "34f9b5e9c8a6"
 						}
 					},
 					"Last-Modified": {
 						"description": "The last modification date of the file.",
 						"schema": {
-							"example": "Wed, 21 Oct 2023 07:28:00 GMT",
+							"type": "string",
 							"format": "date-time",
-							"type": "string"
+							"example": "Wed, 21 Oct 2023 07:28:00 GMT"
+						}
+					}
+				},
+				"content": {
+					"application/zip": {
+						"schema": {
+							"type": "string",
+							"format": "binary"
 						}
 					}
 				}
 			},
 			"4XX": {
+				"description": "Get downloaded commands failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -594,12 +560,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -609,25 +575,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -635,12 +638,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get downloaded commands failure response."
+				}
 			}
 		},
 		"security": [
@@ -655,7 +656,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Download command output file",
 		"tags": [
 			"DEX Remote Commands"
 		],
@@ -671,50 +671,51 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/commands/devices": {
-		"description": "List devices with WARP client support for remote captures which have been connected in the last 1 hour.",
 		"operationId": "get-commands-eligible-devices",
+		"summary": "List devices eligible for remote captures",
+		"description": "List devices with WARP client support for remote captures which have been connected in the last 1 hour.",
 		"parameters": [
 			{
-				"description": "Unique Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier linked to an account.",
+					"type": "string",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "Page number of paginated results.",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Page number of paginated results.",
 				"required": true,
 				"schema": {
-					"default": 1,
+					"type": "number",
 					"example": 1,
-					"minimum": 1,
-					"type": "number"
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Number of results per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
 				"required": true,
 				"schema": {
+					"type": "number",
 					"example": 10,
 					"maximum": 50,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Filter devices by name or email.",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Filter devices by name or email.",
 				"schema": {
 					"type": "string"
 				}
@@ -722,21 +723,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of eligible devices.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -745,12 +749,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -760,15 +764,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -777,12 +781,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -792,68 +796,68 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"devices": {
 													"description": "List of eligible devices",
+													"type": "array",
 													"items": {
 														"properties": {
 															"deviceId": {
@@ -878,8 +882,8 @@
 															},
 															"platform": {
 																"description": "Operating system.",
-																"example": "windows",
-																"type": "string"
+																"type": "string",
+																"example": "windows"
 															},
 															"registrationId": {
 																"description": "Device registration identifier (UUID v4). On multi-user devices, this uniquely identifies a user's registration on the device.",
@@ -887,91 +891,53 @@
 															},
 															"status": {
 																"description": "Network status.",
-																"example": "connected",
-																"type": "string"
+																"type": "string",
+																"example": "connected"
 															},
 															"timestamp": {
-																"example": "2023-10-11 00:00:00+00",
-																"type": "string"
+																"type": "string",
+																"example": "2023-10-11 00:00:00+00"
 															},
 															"version": {
 																"description": "WARP client version.",
-																"example": "1.0.0",
-																"type": "string"
+																"type": "string",
+																"example": "1.0.0"
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List of eligible devices."
+				}
 			},
 			"4XX": {
+				"description": "List eligible devices failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -980,12 +946,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -995,25 +961,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1021,12 +1024,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List eligible devices failure response."
+				}
 			}
 		},
 		"security": [
@@ -1041,7 +1042,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "List devices eligible for remote captures",
 		"tags": [
 			"DEX Remote Commands"
 		],
@@ -1057,40 +1057,44 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/commands/quota": {
-		"description": "Retrieves the current quota usage and limits for device commands within a specific account, including the time when the quota will reset",
 		"operationId": "get-commands-quota",
+		"summary": "Returns account commands usage, quota, and reset time",
+		"description": "Retrieves the current quota usage and limits for device commands within a specific account, including the time when the quota will reset",
 		"parameters": [
 			{
-				"description": "Unique Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier linked to an account.",
+					"type": "string",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get commands quota response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1099,12 +1103,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1114,15 +1118,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1131,12 +1135,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1146,65 +1150,64 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"quota": {
 													"description": "The total number of commands that can be initiated for an account.",
@@ -1216,82 +1219,45 @@
 												},
 												"reset_time": {
 													"description": "The time when the quota resets.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
 												"quota_usage",
 												"quota",
 												"reset_time"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get commands quota response."
+				}
 			},
 			"4XX": {
+				"description": "Get commands quota failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1300,12 +1266,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1315,25 +1281,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1341,12 +1344,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get commands quota failure response."
+				}
 			}
 		},
 		"security": [
@@ -1361,7 +1362,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Returns account commands usage, quota, and reset time",
 		"tags": [
 			"DEX Remote Commands"
 		],
@@ -1377,42 +1377,47 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dex/commands": {
-		"description": "Initiate commands for up to 10 devices per account.",
 		"operationId": "post-commands",
+		"summary": "Create account commands",
+		"description": "Initiate commands for up to 10 devices per account.",
 		"parameters": [
 			{
-				"description": "Unique Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Unique identifier linked to an account.",
+					"type": "string",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"commands": {
 								"description": "List of device-level commands to execute",
+								"type": "array",
 								"items": {
 									"properties": {
 										"args": {
 											"description": "Command arguments. Allowed fields depend on `type`.",
+											"type": "object",
 											"oneOf": [
 												{
 													"additionalProperties": false,
 													"properties": {
 														"test-all-routes": {
-															"default": true,
 															"description": "Test an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>' and collecting the results. This option may increase the time taken to collect the warp-diag.",
 															"type": "boolean",
+															"default": true,
 															"x-auditable": true
 														}
 													},
@@ -1423,24 +1428,24 @@
 													"additionalProperties": false,
 													"properties": {
 														"max-file-size-mb": {
-															"default": 5,
 															"description": "Maximum file size (in MB) for the capture file. If the capture artifact exceeds the specified max file size, it will NOT be uploaded.",
-															"minimum": 1,
 															"type": "number",
+															"default": 5,
+															"minimum": 1,
 															"x-auditable": true
 														},
 														"packet-size-bytes": {
-															"default": 160,
 															"description": "Maximum number of bytes to save for each packet",
-															"minimum": 1,
 															"type": "number",
+															"default": 160,
+															"minimum": 1,
 															"x-auditable": true
 														},
 														"time-limit-min": {
-															"default": 5,
 															"description": "Limit on capture duration (in minutes)",
-															"minimum": 1,
 															"type": "number",
+															"default": 5,
+															"minimum": 1,
 															"x-auditable": true
 														}
 													},
@@ -1452,6 +1457,7 @@
 													"properties": {
 														"interfaces": {
 															"description": "List of interfaces to run the speed test on",
+															"type": "array",
 															"items": {
 																"enum": [
 																	"default",
@@ -1459,15 +1465,13 @@
 																],
 																"type": "string",
 																"x-auditable": true
-															},
-															"type": "array"
+															}
 														}
 													},
 													"title": "speed-test args",
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										"device_id": {
 											"description": "Unique identifier for the physical device",
@@ -1479,12 +1483,12 @@
 										},
 										"type": {
 											"description": "Type of command to execute on the device",
+											"type": "string",
 											"enum": [
 												"pcap",
 												"speed-test",
 												"warp-diag"
 											],
-											"type": "string",
 											"x-auditable": true
 										},
 										"user_email": {
@@ -1499,36 +1503,36 @@
 									],
 									"type": "object"
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							}
 						},
 						"required": [
 							"commands"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create commands response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1537,12 +1541,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1552,15 +1556,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1569,12 +1573,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1584,77 +1588,77 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"commands": {
 													"description": "List of created commands",
+													"type": "array",
 													"items": {
 														"properties": {
 															"args": {
+																"description": "Command arguments",
+																"type": "object",
 																"additionalProperties": {
 																	"description": "Command argument value as a string",
 																	"type": "string"
-																},
-																"description": "Command arguments",
-																"type": "object"
+																}
 															},
 															"device_id": {
 																"description": "Identifier for the device associated with the command",
@@ -1670,13 +1674,13 @@
 															},
 															"status": {
 																"description": "Current status of the command",
+																"type": "string",
 																"enum": [
 																	"PENDING_EXEC",
 																	"PENDING_UPLOAD",
 																	"SUCCESS",
 																	"FAILED"
-																],
-																"type": "string"
+																]
 															},
 															"type": {
 																"description": "Type of the command (e.g., \"pcap\", \"speed-test\", or \"warp-diag\")",
@@ -1684,77 +1688,39 @@
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create commands response."
+				}
 			},
 			"4XX": {
+				"description": "Create commands failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1763,12 +1729,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1778,25 +1744,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1804,12 +1807,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create commands failure response."
+				}
 			}
 		},
 		"security": [
@@ -1824,7 +1825,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Create account commands",
 		"tags": [
 			"DEX Remote Commands"
 		],

@@ -1,88 +1,90 @@
 {
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables": {
-		"description": "Returns a list of tables in the specified namespace within an R2 catalog.\nSupports pagination for efficient traversal of large table collections.\n",
 		"operationId": "list-tables",
+		"summary": "List tables in namespace",
+		"description": "Returns a list of tables in the specified namespace within an R2 catalog.\nSupports pagination for efficient traversal of large table collections.\n",
 		"parameters": [
 			{
-				"description": "Identifies the account.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Identifies the account.",
 				"required": true,
 				"schema": {
 					"description": "Use this to identify the account.",
+					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef",
-					"pattern": "^[a-fA-F0-9]{32}$",
-					"type": "string"
+					"pattern": "^[a-fA-F0-9]{32}$"
 				}
 			},
 			{
-				"description": "Specifies the R2 bucket name.",
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
+				"description": "Specifies the R2 bucket name.",
 				"required": true,
 				"schema": {
 					"description": "Specifies the R2 bucket name.",
+					"type": "string",
 					"example": "my-data-bucket",
 					"maxLength": 63,
 					"minLength": 3,
-					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"description": "The namespace identifier.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\n",
-				"example": "bronze",
-				"in": "path",
 				"name": "namespace",
+				"in": "path",
+				"description": "The namespace identifier.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\n",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "bronze"
 			},
 			{
-				"description": "Opaque pagination token from a previous response.\nUse this to fetch the next page of results.\n",
-				"example": "MSYxNzU5NzU2MTI4NTU2Njk2JjAxOTliOWEzLTkxMmUtN2ZhMS05YzllLTg5MTAxMGQzYTg0MQ",
-				"in": "query",
 				"name": "page_token",
+				"in": "query",
+				"description": "Opaque pagination token from a previous response.\nUse this to fetch the next page of results.\n",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "MSYxNzU5NzU2MTI4NTU2Njk2JjAxOTliOWEzLTkxMmUtN2ZhMS05YzllLTg5MTAxMGQzYTg0MQ"
 			},
 			{
-				"description": "Maximum number of tables to return per page.\nDefaults to 100, maximum 1000.\n",
-				"example": 100,
-				"in": "query",
 				"name": "page_size",
+				"in": "query",
+				"description": "Maximum number of tables to return per page.\nDefaults to 100, maximum 1000.\n",
 				"schema": {
+					"type": "integer",
 					"default": 100,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
-				}
+					"minimum": 1
+				},
+				"example": 100
 			},
 			{
-				"description": "Whether to include table UUIDs in the response.\nSet to true to receive the table_uuids array.\n",
-				"example": true,
-				"in": "query",
 				"name": "return_uuids",
+				"in": "query",
+				"description": "Whether to include table UUIDs in the response.\nSet to true to receive the table_uuids array.\n",
 				"schema": {
-					"default": false,
-					"type": "boolean"
-				}
+					"type": "boolean",
+					"default": false
+				},
+				"example": true
 			},
 			{
-				"description": "Whether to include additional metadata (timestamps, locations).\nWhen true, response includes created_at, updated_at, metadata_locations, and locations arrays.\n",
-				"example": true,
-				"in": "query",
 				"name": "return_details",
+				"in": "query",
+				"description": "Whether to include additional metadata (timestamps, locations).\nWhen true, response includes created_at, updated_at, metadata_locations, and locations arrays.\n",
 				"schema": {
-					"default": false,
-					"type": "boolean"
-				}
+					"type": "boolean",
+					"default": false
+				},
+				"example": true
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of tables retrieved successfully.",
 				"content": {
 					"application/json": {
 						"example": {
@@ -142,9 +144,11 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Contains errors if the API call was unsuccessful.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -161,11 +165,11 @@
 													"message"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
 											"description": "Contains informational messages.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -182,153 +186,151 @@
 													"message"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
 											"description": "Indicates whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Contains the list of tables with optional pagination.",
+											"type": "object",
 											"properties": {
 												"details": {
 													"description": "Contains detailed metadata for each table when return_details is true.\nEach object includes identifier, UUID, timestamps, and locations.\n",
+													"type": "array",
 													"items": {
 														"description": "Contains table with metadata.",
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "Indicates the creation timestamp in ISO 8601 format.",
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"identifier": {
 																"description": "Specifies a unique table identifier within a catalog.",
+																"type": "object",
 																"properties": {
 																	"name": {
 																		"description": "Specifies the table name.",
-																		"example": "events",
-																		"type": "string"
+																		"type": "string",
+																		"example": "events"
 																	},
 																	"namespace": {
 																		"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
 																		"example": [
 																			"bronze",
 																			"analytics"
 																		],
-																		"items": {
-																			"type": "string"
-																		},
 																		"maxItems": 16,
-																		"minItems": 1,
-																		"type": "array"
+																		"minItems": 1
 																	}
 																},
 																"required": [
 																	"namespace",
 																	"name"
-																],
-																"type": "object"
+																]
 															},
 															"location": {
 																"description": "Specifies the base S3 URI for table storage location.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"metadata_location": {
 																"description": "Contains the S3 URI to table metadata file. Null for staged tables.",
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"table_uuid": {
 																"description": "Contains the UUID that persists across renames.",
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"updated_at": {
 																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
+																"type": "string",
 																"format": "date-time",
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															}
 														},
 														"required": [
 															"identifier",
 															"table_uuid"
-														],
-														"type": "object"
+														]
 													},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"identifiers": {
 													"description": "Lists tables in the namespace.",
+													"type": "array",
 													"items": {
 														"description": "Specifies a unique table identifier within a catalog.",
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "Specifies the table name.",
-																"example": "events",
-																"type": "string"
+																"type": "string",
+																"example": "events"
 															},
 															"namespace": {
 																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
 																"example": [
 																	"bronze",
 																	"analytics"
 																],
-																"items": {
-																	"type": "string"
-																},
 																"maxItems": 16,
-																"minItems": 1,
-																"type": "array"
+																"minItems": 1
 															}
 														},
 														"required": [
 															"namespace",
 															"name"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"next_page_token": {
 													"description": "Use this opaque token to fetch the next page of results.\nA null or absent value indicates the last page.\n",
+													"type": "string",
 													"example": "MSYxNzU5NzU2MTI4NTU2Njk2JjAxOTliOWEzLTkxMmUtN2ZhMS05YzllLTg5MTAxMGQzYTg0MQ",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"table_uuids": {
 													"description": "Contains UUIDs for each table when return_uuids is true.\nThe order corresponds to the identifiers array.\n",
-													"example": [
-														"0199b9a1-28a0-71e0-a73e-b0fc32c8468e",
-														"0199b9a1-3c74-7731-bf53-d8c67ead079d"
-													],
+													"type": "array",
 													"items": {
 														"format": "uuid",
 														"type": "string"
 													},
-													"nullable": true,
-													"type": "array"
+													"example": [
+														"0199b9a1-28a0-71e0-a73e-b0fc32c8468e",
+														"0199b9a1-3c74-7731-bf53-d8c67ead079d"
+													],
+													"nullable": true
 												}
 											},
 											"required": [
 												"identifiers"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -336,15 +338,17 @@
 							]
 						}
 					}
-				},
-				"description": "List of tables retrieved successfully."
+				}
 			},
 			"400": {
+				"description": "Bad request (e.g., invalid page_size, malformed namespace).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -356,34 +360,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad request (e.g., invalid page_size, malformed namespace)."
+				}
 			},
 			"401": {
+				"description": "Authentication failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -395,34 +399,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Authentication failed."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -434,34 +438,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Catalog or namespace not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -473,34 +477,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Catalog or namespace not found."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -512,27 +516,24 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -544,7 +545,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List tables in namespace",
 		"tags": [
 			"Table Management"
 		],
@@ -558,58 +558,60 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}": {
-		"description": "Returns full Apache Iceberg metadata for a single table: schema,\npartition specs, sort orders, properties, and recent snapshot history.\nDesigned for catalog introspection UIs that need per-table details\nwithout holding R2 credentials.\n\nThe `metadata.snapshots`, `metadata.snapshot-log`, and\n`metadata.metadata-log` arrays are pruned to the most recent 10\nentries by `timestamp-ms`. Use `total_snapshots` and\n`returned_snapshots` to surface the truncation to end users.\n",
 		"operationId": "get-table",
+		"summary": "Get table details",
+		"description": "Returns full Apache Iceberg metadata for a single table: schema,\npartition specs, sort orders, properties, and recent snapshot history.\nDesigned for catalog introspection UIs that need per-table details\nwithout holding R2 credentials.\n\nThe `metadata.snapshots`, `metadata.snapshot-log`, and\n`metadata.metadata-log` arrays are pruned to the most recent 10\nentries by `timestamp-ms`. Use `total_snapshots` and\n`returned_snapshots` to surface the truncation to end users.\n",
 		"parameters": [
 			{
-				"description": "Identifies the account.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Identifies the account.",
 				"required": true,
 				"schema": {
 					"description": "Use this to identify the account.",
+					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef",
-					"pattern": "^[a-fA-F0-9]{32}$",
-					"type": "string"
+					"pattern": "^[a-fA-F0-9]{32}$"
 				}
 			},
 			{
-				"description": "Specifies the R2 bucket name.",
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
+				"description": "Specifies the R2 bucket name.",
 				"required": true,
 				"schema": {
 					"description": "Specifies the R2 bucket name.",
+					"type": "string",
 					"example": "my-data-bucket",
 					"maxLength": 63,
 					"minLength": 3,
-					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
-					"type": "string"
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
 				}
 			},
 			{
-				"description": "The namespace identifier.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\n",
-				"example": "bronze",
-				"in": "path",
 				"name": "namespace",
+				"in": "path",
+				"description": "The namespace identifier.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\n",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "bronze"
 			},
 			{
-				"description": "The table name within the given namespace.",
-				"example": "events",
-				"in": "path",
 				"name": "table_name",
+				"in": "path",
+				"description": "The table name within the given namespace.",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "events"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Table details retrieved successfully.",
 				"content": {
 					"application/json": {
 						"example": {
@@ -646,6 +648,7 @@
 									},
 									"schemas": [
 										{
+											"type": "struct",
 											"fields": [
 												{
 													"id": 1,
@@ -654,8 +657,7 @@
 													"type": "long"
 												}
 											],
-											"schema-id": 1,
-											"type": "struct"
+											"schema-id": 1
 										}
 									],
 									"snapshots": [
@@ -680,9 +682,11 @@
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Contains errors if the API call was unsuccessful.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -699,11 +703,11 @@
 													"message"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
 											"description": "Contains informational messages.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -720,58 +724,57 @@
 													"message"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
 											"description": "Indicates whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Single-table detail response wrapping standard Iceberg `TableMetadata`\nwith snapshot-pruning counters.\n",
+											"type": "object",
 											"properties": {
 												"identifier": {
 													"description": "Specifies a unique table identifier within a catalog.",
+													"type": "object",
 													"properties": {
 														"name": {
 															"description": "Specifies the table name.",
-															"example": "events",
-															"type": "string"
+															"type": "string",
+															"example": "events"
 														},
 														"namespace": {
 															"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
 															"example": [
 																"bronze",
 																"analytics"
 															],
-															"items": {
-																"type": "string"
-															},
 															"maxItems": 16,
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														}
 													},
 													"required": [
 														"namespace",
 														"name"
-													],
-													"type": "object"
+													]
 												},
 												"metadata": {
-													"additionalProperties": true,
 													"description": "Contains standard Apache Iceberg table metadata (format version 1 or 2).\nSee https://iceberg.apache.org/spec/#table-metadata-fields for the full\nfield reference. Uses the `s3://` URI scheme for S3 compatibility,\nregardless of the underlying R2 backend.\n\nLimits the `snapshots`, `snapshot-log`, and `metadata-log` arrays to the\nmost recent 10 entries (by `timestamp-ms`). Always keeps the current\nsnapshot (via `current-snapshot-id`) even when it falls outside that\nwindow.\n",
+													"type": "object",
 													"example": {
 														"current-schema-id": 1,
 														"current-snapshot-id": 3055729675574597000,
@@ -854,30 +857,30 @@
 														],
 														"table-uuid": "550e8400-e29b-41d4-a716-446655440000"
 													},
-													"type": "object"
+													"additionalProperties": true
 												},
 												"metadata_location": {
 													"description": "Specifies the S3-compatible URI to the current Iceberg metadata file\nin R2. Omitted for staged tables that have not yet been committed.\n",
-													"example": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json",
-													"type": "string"
+													"type": "string",
+													"example": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json"
 												},
 												"returned_snapshots": {
 													"description": "Describes the number of snapshots that appear in `metadata.snapshots`. Caps the\nlist at 10 (the most recent by `timestamp-ms`), but if the current\nsnapshot falls outside the recent window, the result includes it in the\nset, leading to a possible total of 11.\n",
+													"type": "integer",
 													"example": 10,
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												},
 												"table_uuid": {
 													"description": "Contains the Iceberg table UUID, stable across renames.",
-													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"type": "string",
 													"format": "uuid",
-													"type": "string"
+													"example": "550e8400-e29b-41d4-a716-446655440000"
 												},
 												"total_snapshots": {
 													"description": "Indicates the total number of snapshots stored for the table, before pruning.",
+													"type": "integer",
 													"example": 122113,
-													"minimum": 0,
-													"type": "integer"
+													"minimum": 0
 												}
 											},
 											"required": [
@@ -886,8 +889,7 @@
 												"total_snapshots",
 												"returned_snapshots",
 												"metadata"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -895,15 +897,17 @@
 							]
 						}
 					}
-				},
-				"description": "Table details retrieved successfully."
+				}
 			},
 			"400": {
+				"description": "Bad request (e.g., malformed namespace).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -915,34 +919,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Bad request (e.g., malformed namespace)."
+				}
 			},
 			"401": {
+				"description": "Authentication failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -954,34 +958,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Authentication failed."
+				}
 			},
 			"403": {
+				"description": "Forbidden — JWT claims do not match account.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -993,34 +997,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Forbidden — JWT claims do not match account."
+				}
 			},
 			"404": {
+				"description": "Catalog, namespace, or table not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1032,34 +1036,34 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Catalog, namespace, or table not found."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1071,27 +1075,24 @@
 										},
 										"type": "object"
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -1103,7 +1104,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get table details",
 		"tags": [
 			"Table Management"
 		],

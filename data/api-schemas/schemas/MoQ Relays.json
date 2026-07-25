@@ -1,7 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/moq/relays/{relay_id}": {
-		"description": "Soft-deletes a MoQ relay. The relay ID goes in the URL path —\n`DELETE /accounts/{account_id}/moq/relays/{relay_id}` — not the\nrequest body; there is no collection-level delete endpoint.\n",
 		"operationId": "moq-relays-delete",
+		"summary": "Delete a relay",
+		"description": "Soft-deletes a MoQ relay. The relay ID goes in the URL path —\n`DELETE /accounts/{account_id}/moq/relays/{relay_id}` — not the\nrequest body; there is no collection-level delete endpoint.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -10,8 +11,8 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
@@ -20,21 +21,24 @@
 				"name": "relay_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Relay deleted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -45,10 +49,10 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -59,26 +63,24 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -86,21 +88,17 @@
 							]
 						}
 					}
-				},
-				"description": "Relay deleted successfully."
+				}
 			},
 			"400": {
+				"description": "Error 21003: Relay ID should be 32 hex characters.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -117,46 +115,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21003: Relay ID should be 32 hex characters."
+				}
 			},
 			"404": {
+				"description": "Error 21007: Relay not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -173,46 +171,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21007: Relay not found."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -229,33 +227,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -263,15 +264,15 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a relay",
 		"tags": [
 			"MoQ Relays"
 		],
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/moq/relays/{relay_id}/tokens/{jti}": {
-		"description": "Revokes a token by removing it from the relay's registry. crique rejects\nthe token within the cache TTL. Idempotent — revoking an unknown token\nsucceeds.\n",
 		"operationId": "moq-relays-tokens-delete",
+		"summary": "Revoke a token",
+		"description": "Revokes a token by removing it from the relay's registry. crique rejects\nthe token within the cache TTL. Idempotent — revoking an unknown token\nsucceeds.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -280,8 +281,8 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
@@ -290,9 +291,9 @@
 				"name": "relay_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			},
 			{
@@ -301,19 +302,22 @@
 				"name": "jti",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "f3a1b2c3d4e5f67890a1b2c3d4e5f678",
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Token revoked.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -324,10 +328,10 @@
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -338,37 +342,31 @@
 											}
 										},
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token revoked."
+				}
 			},
 			"400": {
+				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), invalid token id.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -385,46 +383,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), invalid token id."
+				}
 			},
 			"404": {
+				"description": "Error 21007: Relay not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -441,46 +439,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21007: Relay not found."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -497,33 +495,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -531,15 +532,15 @@
 				"api_token": []
 			}
 		],
-		"summary": "Revoke a token",
 		"tags": [
 			"MoQ Relays"
 		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/moq/relays": {
-		"description": "Lists all MoQ relays for the account. Returns only metadata.\nConfig, status, and tokens are omitted.\n\nResults are cursor-paginated (keyset on the `created` timestamp).\nUse `created_before` / `created_after` with the `created` value of the\nfirst/last item in a page to fetch the adjacent page. `result_info`\nreports the page `count` and the `total` matching the cursor filters.\n",
 		"operationId": "moq-relays-list",
+		"summary": "List relays",
+		"description": "Lists all MoQ relays for the account. Returns only metadata.\nConfig, status, and tokens are omitted.\n\nResults are cursor-paginated (keyset on the `created` timestamp).\nUse `created_before` / `created_after` with the `created` value of the\nfirst/last item in a page to fetch the adjacent page. `result_info`\nreports the page `count` and the `total` matching the cursor filters.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -548,8 +549,8 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
@@ -557,9 +558,9 @@
 				"in": "query",
 				"name": "created_before",
 				"schema": {
-					"example": "2026-03-27T15:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2026-03-27T15:00:00Z"
 				}
 			},
 			{
@@ -567,9 +568,9 @@
 				"in": "query",
 				"name": "created_after",
 				"schema": {
-					"example": "2026-03-27T15:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2026-03-27T15:00:00Z"
 				}
 			},
 			{
@@ -577,9 +578,9 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"example": 50,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -587,20 +588,23 @@
 				"in": "query",
 				"name": "asc",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Relay list retrieved successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -611,10 +615,10 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -625,41 +629,41 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "Abbreviated relay for list responses.",
+												"type": "object",
 												"properties": {
 													"created": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"modified": {
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"name": {
 														"type": "string"
 													},
 													"uid": {
-														"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-														"type": "string"
+														"type": "string",
+														"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890"
 													}
 												},
 												"required": [
@@ -667,12 +671,11 @@
 													"created",
 													"modified",
 													"name"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"type": "integer"
@@ -680,8 +683,7 @@
 												"total": {
 													"type": "integer"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -689,21 +691,17 @@
 							]
 						}
 					}
-				},
-				"description": "Relay list retrieved successfully."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -720,33 +718,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -754,15 +755,15 @@
 				"api_token": []
 			}
 		],
-		"summary": "List relays",
 		"tags": [
 			"MoQ Relays"
 		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/moq/relays/{relay_id}": {
-		"description": "Retrieves a single MoQ relay including config and status.\nTokens are NOT included.\n",
 		"operationId": "moq-relays-get",
+		"summary": "Get a relay",
+		"description": "Retrieves a single MoQ relay including config and status.\nTokens are NOT included.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -771,8 +772,8 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
@@ -781,21 +782,24 @@
 				"name": "relay_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Relay retrieved successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -806,10 +810,10 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -820,82 +824,81 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Full relay details (no tokens).",
+											"type": "object",
 											"properties": {
 												"config": {
+													"type": "object",
 													"properties": {
 														"upstreams": {
 															"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
+															"type": "object",
 															"properties": {
 																"enabled": {
-																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"default": false
 																},
 																"upstreams": {
-																	"default": [],
 																	"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
+																	"type": "array",
 																	"items": {
 																		"description": "A single upstream MOQT server publisher.",
+																		"type": "object",
 																		"properties": {
 																			"url": {
 																				"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
-																				"format": "uri",
-																				"type": "string"
+																				"type": "string",
+																				"format": "uri"
 																			}
 																		},
 																		"required": [
 																			"url"
-																		],
-																		"type": "object"
+																		]
 																	},
-																	"type": "array"
+																	"default": []
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"created": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"modified": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"name": {
-													"example": "Production Live Stream",
-													"type": "string"
+													"type": "string",
+													"example": "Production Live Stream"
 												},
 												"status": {
 													"description": "\"connected\" when active, omitted otherwise.",
+													"type": "string",
 													"enum": [
 														"connected"
-													],
-													"type": "string"
+													]
 												},
 												"uid": {
-													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-													"type": "string"
+													"type": "string",
+													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890"
 												}
 											},
 											"required": [
@@ -904,8 +907,7 @@
 												"modified",
 												"name",
 												"config"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -913,21 +915,17 @@
 							]
 						}
 					}
-				},
-				"description": "Relay retrieved successfully."
+				}
 			},
 			"400": {
+				"description": "Error 21003: Relay ID should be 32 hex characters.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -944,46 +942,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21003: Relay ID should be 32 hex characters."
+				}
 			},
 			"404": {
+				"description": "Error 21007: Relay not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1000,46 +998,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21007: Relay not found."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1056,33 +1054,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -1090,15 +1091,15 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a relay",
 		"tags": [
 			"MoQ Relays"
 		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/moq/relays/{relay_id}/tokens": {
-		"description": "Returns metadata for every token in the relay's registry. Secrets are\nnever returned. The dashboard derives an `expired` flag by comparing\neach token's `expires` to the current time.\n",
 		"operationId": "moq-relays-tokens-list",
+		"summary": "List tokens",
+		"description": "Returns metadata for every token in the relay's registry. Secrets are\nnever returned. The dashboard derives an `expired` flag by comparing\neach token's `expires` to the current time.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -1107,8 +1108,8 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
@@ -1117,21 +1118,24 @@
 				"name": "relay_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Token metadata (no secrets).",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -1142,10 +1146,10 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -1156,27 +1160,27 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A relay's token collection, keyed on issuer `type` (a discriminated\nunion). V1 ships exactly one arm (`cloudflare_jwt`). Clients iterate\n`issuers`, switch on `type`, and ignore unknown types — that contract is\nwhat makes adding or removing an arm non-breaking.\n",
+											"type": "object",
 											"properties": {
 												"issuers": {
+													"type": "array",
 													"items": {
 														"description": "One arm of the discriminated-union token collection.",
 														"discriminator": {
@@ -1188,36 +1192,36 @@
 														"oneOf": [
 															{
 																"description": "Cloudflare-managed, Ed25519-signed JWT tokens (the only V1 type).",
+																"type": "object",
 																"properties": {
 																	"cloudflare_tokens": {
 																		"description": "Always present ([] when empty).",
+																		"type": "array",
 																		"items": {
+																			"type": "object",
 																			"properties": {
 																				"created": {
-																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"format": "date-time"
 																				},
 																				"expires": {
 																					"description": "Mandatory; no more than 1 year after `created`.",
-																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"format": "date-time"
 																				},
 																				"jti": {
 																					"description": "Token identity and registry key (32 hex chars).",
-																					"example": "f3a1b2c3d4e5f67890a1b2c3d4e5f678",
-																					"type": "string"
+																					"type": "string",
+																					"example": "f3a1b2c3d4e5f67890a1b2c3d4e5f678"
 																				},
 																				"label": {
 																					"description": "Optional, customer-set.",
-																					"example": "primary-encoder",
-																					"type": "string"
+																					"type": "string",
+																					"example": "primary-encoder"
 																				},
 																				"operations": {
 																					"description": "Signed allowlist of what the token may do. V1 coarse roles; the array\nform extends to fine-grained MoQT message names later without a\nbreaking change.\n",
-																					"example": [
-																						"publish",
-																						"subscribe"
-																					],
+																					"type": "array",
 																					"items": {
 																						"enum": [
 																							"publish",
@@ -1225,13 +1229,16 @@
 																						],
 																						"type": "string"
 																					},
-																					"minItems": 1,
-																					"type": "array"
+																					"example": [
+																						"publish",
+																						"subscribe"
+																					],
+																					"minItems": 1
 																				},
 																				"secret": {
 																					"description": "The signed JWT. Present ONLY in create / auto-create responses (shown\nonce); never returned by list, never stored.\n",
-																					"example": "eyJhbGciOiJFZDI1NTE5...",
 																					"type": "string",
+																					"example": "eyJhbGciOiJFZDI1NTE5...",
 																					"x-sensitive": true
 																				}
 																			},
@@ -1240,40 +1247,35 @@
 																				"operations",
 																				"created",
 																				"expires"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
+																			]
+																		}
 																	},
 																	"issuer": {
+																		"type": "string",
 																		"enum": [
 																			"cloudflare"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"cloudflare_jwt"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
 																	"type",
 																	"issuer",
 																	"cloudflare_tokens"
-																],
-																"type": "object"
+																]
 															}
 														]
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"issuers"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1281,21 +1283,17 @@
 							]
 						}
 					}
-				},
-				"description": "Token metadata (no secrets)."
+				}
 			},
 			"400": {
+				"description": "Error 21003: Relay ID should be 32 hex characters.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1312,46 +1310,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21003: Relay ID should be 32 hex characters."
+				}
 			},
 			"404": {
+				"description": "Error 21007: Relay not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1368,46 +1366,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21007: Relay not found."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1424,33 +1422,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -1458,15 +1459,15 @@
 				"api_token": []
 			}
 		],
-		"summary": "List tokens",
 		"tags": [
 			"MoQ Relays"
 		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/moq/relays": {
-		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is always set to defaults (upstreams\noff) and cannot be supplied here — sending a non-empty `config` is\nrejected (21014); `null` or `{}` is accepted as absent. Use PUT to\nconfigure the relay after it exists.\n",
 		"operationId": "moq-relays-create",
+		"summary": "Create a relay",
+		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is always set to defaults (upstreams\noff) and cannot be supplied here — sending a non-empty `config` is\nrejected (21014); `null` or `{}` is accepted as absent. Use PUT to\nconfigure the relay after it exists.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -1475,41 +1476,44 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "Human-readable name for the relay.",
+								"type": "string",
 								"example": "Production Live Stream",
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Relay created successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -1520,10 +1524,10 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -1534,66 +1538,66 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Relay with its auto-created default token pair (one full-access\n[publish, subscribe] and one [subscribe]-only), each with its one-time\nsecret, wrapped in the issuers envelope.\n",
+											"type": "object",
 											"properties": {
 												"config": {
+													"type": "object",
 													"properties": {
 														"upstreams": {
 															"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
+															"type": "object",
 															"properties": {
 																"enabled": {
-																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"default": false
 																},
 																"upstreams": {
-																	"default": [],
 																	"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
+																	"type": "array",
 																	"items": {
 																		"description": "A single upstream MOQT server publisher.",
+																		"type": "object",
 																		"properties": {
 																			"url": {
 																				"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
-																				"format": "uri",
-																				"type": "string"
+																				"type": "string",
+																				"format": "uri"
 																			}
 																		},
 																		"required": [
 																			"url"
-																		],
-																		"type": "object"
+																		]
 																	},
-																	"type": "array"
+																	"default": []
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"created": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"issuers": {
 													"description": "Token collection (discriminated union on `type`). On create this\nholds the auto-created default pair, each including its one-time\nsecret.\n",
+													"type": "array",
 													"items": {
 														"description": "One arm of the discriminated-union token collection.",
 														"discriminator": {
@@ -1605,36 +1609,36 @@
 														"oneOf": [
 															{
 																"description": "Cloudflare-managed, Ed25519-signed JWT tokens (the only V1 type).",
+																"type": "object",
 																"properties": {
 																	"cloudflare_tokens": {
 																		"description": "Always present ([] when empty).",
+																		"type": "array",
 																		"items": {
+																			"type": "object",
 																			"properties": {
 																				"created": {
-																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"format": "date-time"
 																				},
 																				"expires": {
 																					"description": "Mandatory; no more than 1 year after `created`.",
-																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"format": "date-time"
 																				},
 																				"jti": {
 																					"description": "Token identity and registry key (32 hex chars).",
-																					"example": "f3a1b2c3d4e5f67890a1b2c3d4e5f678",
-																					"type": "string"
+																					"type": "string",
+																					"example": "f3a1b2c3d4e5f67890a1b2c3d4e5f678"
 																				},
 																				"label": {
 																					"description": "Optional, customer-set.",
-																					"example": "primary-encoder",
-																					"type": "string"
+																					"type": "string",
+																					"example": "primary-encoder"
 																				},
 																				"operations": {
 																					"description": "Signed allowlist of what the token may do. V1 coarse roles; the array\nform extends to fine-grained MoQT message names later without a\nbreaking change.\n",
-																					"example": [
-																						"publish",
-																						"subscribe"
-																					],
+																					"type": "array",
 																					"items": {
 																						"enum": [
 																							"publish",
@@ -1642,13 +1646,16 @@
 																						],
 																						"type": "string"
 																					},
-																					"minItems": 1,
-																					"type": "array"
+																					"example": [
+																						"publish",
+																						"subscribe"
+																					],
+																					"minItems": 1
 																				},
 																				"secret": {
 																					"description": "The signed JWT. Present ONLY in create / auto-create responses (shown\nonce); never returned by list, never stored.\n",
-																					"example": "eyJhbGciOiJFZDI1NTE5...",
 																					"type": "string",
+																					"example": "eyJhbGciOiJFZDI1NTE5...",
 																					"x-sensitive": true
 																				}
 																			},
@@ -1657,47 +1664,43 @@
 																				"operations",
 																				"created",
 																				"expires"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
+																			]
+																		}
 																	},
 																	"issuer": {
+																		"type": "string",
 																		"enum": [
 																			"cloudflare"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"cloudflare_jwt"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
 																	"type",
 																	"issuer",
 																	"cloudflare_tokens"
-																],
-																"type": "object"
+																]
 															}
 														]
-													},
-													"type": "array"
+													}
 												},
 												"modified": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"name": {
-													"example": "Production Live Stream",
-													"type": "string"
+													"type": "string",
+													"example": "Production Live Stream"
 												},
 												"uid": {
 													"description": "Server-generated unique identifier (32 hex chars).",
-													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-													"type": "string"
+													"type": "string",
+													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890"
 												}
 											},
 											"required": [
@@ -1707,8 +1710,7 @@
 												"name",
 												"issuers",
 												"config"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1716,21 +1718,17 @@
 							]
 						}
 					}
-				},
-				"description": "Relay created successfully."
+				}
 			},
 			"400": {
+				"description": "Bad request. Possible errors:\n- 21002: Request body too small\n- 21004: Failed to decode body (invalid JSON)\n- 21011: Invalid relay name (must not be empty)\n- 21014: Config cannot be set on create (set it via PUT after the relay exists)\n",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1747,46 +1745,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request. Possible errors:\n- 21002: Request body too small\n- 21004: Failed to decode body (invalid JSON)\n- 21011: Invalid relay name (must not be empty)\n- 21014: Config cannot be set on create (set it via PUT after the relay exists)\n"
+				}
 			},
 			"409": {
+				"description": "Error 21008: Relay limit exceeded for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1803,46 +1801,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21008: Relay limit exceeded for this account."
+				}
 			},
 			"413": {
+				"description": "Error 21001: Request body too large.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1859,46 +1857,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21001: Request body too large."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1915,33 +1913,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -1949,15 +1950,15 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a relay",
 		"tags": [
 			"MoQ Relays"
 		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/moq/relays/{relay_id}/tokens": {
-		"description": "Mints a new relay-scoped token and adds it to the relay's accepted-auth\nregistry. The token value (secret) is shown once in the response. A relay\nmay hold up to 10 tokens; creating an 11th is rejected.\n",
 		"operationId": "moq-relays-tokens-create",
+		"summary": "Create a token",
+		"description": "Mints a new relay-scoped token and adds it to the relay's accepted-auth\nregistry. The token value (secret) is shown once in the response. A relay\nmay hold up to 10 tokens; creating an 11th is rejected.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -1966,8 +1967,8 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
@@ -1976,34 +1977,33 @@
 				"name": "relay_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"expires": {
 								"description": "Optional expiry (RFC 3339). Defaults to 1 year from creation;\nrejected if more than 1 year in the future.\n",
-								"example": "2027-03-27T15:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2027-03-27T15:00:00Z"
 							},
 							"label": {
 								"description": "Optional, customer-set label.",
-								"example": "primary-encoder",
-								"type": "string"
+								"type": "string",
+								"example": "primary-encoder"
 							},
 							"operations": {
 								"description": "Non-empty subset of the V1 roles the token is allowed to\nperform. Signed into the token.\n",
-								"example": [
-									"publish",
-									"subscribe"
-								],
+								"type": "array",
 								"items": {
 									"enum": [
 										"publish",
@@ -2011,28 +2011,32 @@
 									],
 									"type": "string"
 								},
-								"minItems": 1,
-								"type": "array"
+								"example": [
+									"publish",
+									"subscribe"
+								],
+								"minItems": 1
 							}
 						},
 						"required": [
 							"operations"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Token created. The secret is shown once.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -2043,10 +2047,10 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -2057,27 +2061,27 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A relay's token collection, keyed on issuer `type` (a discriminated\nunion). V1 ships exactly one arm (`cloudflare_jwt`). Clients iterate\n`issuers`, switch on `type`, and ignore unknown types — that contract is\nwhat makes adding or removing an arm non-breaking.\n",
+											"type": "object",
 											"properties": {
 												"issuers": {
+													"type": "array",
 													"items": {
 														"description": "One arm of the discriminated-union token collection.",
 														"discriminator": {
@@ -2089,36 +2093,36 @@
 														"oneOf": [
 															{
 																"description": "Cloudflare-managed, Ed25519-signed JWT tokens (the only V1 type).",
+																"type": "object",
 																"properties": {
 																	"cloudflare_tokens": {
 																		"description": "Always present ([] when empty).",
+																		"type": "array",
 																		"items": {
+																			"type": "object",
 																			"properties": {
 																				"created": {
-																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"format": "date-time"
 																				},
 																				"expires": {
 																					"description": "Mandatory; no more than 1 year after `created`.",
-																					"format": "date-time",
-																					"type": "string"
+																					"type": "string",
+																					"format": "date-time"
 																				},
 																				"jti": {
 																					"description": "Token identity and registry key (32 hex chars).",
-																					"example": "f3a1b2c3d4e5f67890a1b2c3d4e5f678",
-																					"type": "string"
+																					"type": "string",
+																					"example": "f3a1b2c3d4e5f67890a1b2c3d4e5f678"
 																				},
 																				"label": {
 																					"description": "Optional, customer-set.",
-																					"example": "primary-encoder",
-																					"type": "string"
+																					"type": "string",
+																					"example": "primary-encoder"
 																				},
 																				"operations": {
 																					"description": "Signed allowlist of what the token may do. V1 coarse roles; the array\nform extends to fine-grained MoQT message names later without a\nbreaking change.\n",
-																					"example": [
-																						"publish",
-																						"subscribe"
-																					],
+																					"type": "array",
 																					"items": {
 																						"enum": [
 																							"publish",
@@ -2126,13 +2130,16 @@
 																						],
 																						"type": "string"
 																					},
-																					"minItems": 1,
-																					"type": "array"
+																					"example": [
+																						"publish",
+																						"subscribe"
+																					],
+																					"minItems": 1
 																				},
 																				"secret": {
 																					"description": "The signed JWT. Present ONLY in create / auto-create responses (shown\nonce); never returned by list, never stored.\n",
-																					"example": "eyJhbGciOiJFZDI1NTE5...",
 																					"type": "string",
+																					"example": "eyJhbGciOiJFZDI1NTE5...",
 																					"x-sensitive": true
 																				}
 																			},
@@ -2141,40 +2148,35 @@
 																				"operations",
 																				"created",
 																				"expires"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
+																			]
+																		}
 																	},
 																	"issuer": {
+																		"type": "string",
 																		"enum": [
 																			"cloudflare"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"type": {
+																		"type": "string",
 																		"enum": [
 																			"cloudflare_jwt"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
 																	"type",
 																	"issuer",
 																	"cloudflare_tokens"
-																],
-																"type": "object"
+																]
 															}
 														]
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"issuers"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2182,21 +2184,17 @@
 							]
 						}
 					}
-				},
-				"description": "Token created. The secret is shown once."
+				}
 			},
 			"400": {
+				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21010 (invalid operations), 21012 (expires more than 1 year out).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2213,46 +2211,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21010 (invalid operations), 21012 (expires more than 1 year out)."
+				}
 			},
 			"404": {
+				"description": "Error 21007: Relay not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2269,46 +2267,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21007: Relay not found."
+				}
 			},
 			"409": {
+				"description": "Error 21009: Token limit reached (a relay may hold at most 10 tokens).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2325,46 +2323,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21009: Token limit reached (a relay may hold at most 10 tokens)."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2381,33 +2379,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -2415,15 +2416,15 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a token",
 		"tags": [
 			"MoQ Relays"
 		],
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/moq/relays/{relay_id}": {
-		"description": "Updates a relay's name and/or configuration. The relay ID goes in\nthe URL path — `PUT /accounts/{account_id}/moq/relays/{relay_id}` —\nnot the request body; there is no collection-level update endpoint.\nThis is also the only way to set a relay's config (config cannot be\nset at create time). Partial updates: omitted fields are preserved;\nconfig sub-objects replace as whole objects when present.\n",
 		"operationId": "moq-relays-update",
+		"summary": "Update a relay",
+		"description": "Updates a relay's name and/or configuration. The relay ID goes in\nthe URL path — `PUT /accounts/{account_id}/moq/relays/{relay_id}` —\nnot the request body; there is no collection-level update endpoint.\nThis is also the only way to set a relay's config (config cannot be\nset at create time). Partial updates: omitted fields are preserved;\nconfig sub-objects replace as whole objects when present.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -2432,8 +2433,8 @@
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"type": "string"
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
 				}
 			},
 			{
@@ -2442,70 +2443,73 @@
 				"name": "relay_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"config": {
+								"type": "object",
 								"properties": {
 									"upstreams": {
 										"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
+										"type": "object",
 										"properties": {
 											"enabled": {
-												"default": false,
-												"type": "boolean"
+												"type": "boolean",
+												"default": false
 											},
 											"upstreams": {
-												"default": [],
 												"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
+												"type": "array",
 												"items": {
 													"description": "A single upstream MOQT server publisher.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
-															"format": "uri",
-															"type": "string"
+															"type": "string",
+															"format": "uri"
 														}
 													},
 													"required": [
 														"url"
-													],
-													"type": "object"
+													]
 												},
-												"type": "array"
+												"default": []
 											}
-										},
-										"type": "object"
+										}
 									}
-								},
-								"type": "object"
+								}
 							},
 							"name": {
 								"type": "string"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Relay updated successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -2516,10 +2520,10 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
@@ -2530,82 +2534,81 @@
 													}
 												},
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"success": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Full relay details (no tokens).",
+											"type": "object",
 											"properties": {
 												"config": {
+													"type": "object",
 													"properties": {
 														"upstreams": {
 															"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
+															"type": "object",
 															"properties": {
 																"enabled": {
-																	"default": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"default": false
 																},
 																"upstreams": {
-																	"default": [],
 																	"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
+																	"type": "array",
 																	"items": {
 																		"description": "A single upstream MOQT server publisher.",
+																		"type": "object",
 																		"properties": {
 																			"url": {
 																				"description": "Upstream MOQT server publisher URL. Must be an absolute URL with a\nhost and a scheme crique can dial: moqt:// (raw QUIC) or https://\n(WebTransport). Validated on update (PUT); rejected with 21013.\n",
-																				"format": "uri",
-																				"type": "string"
+																				"type": "string",
+																				"format": "uri"
 																			}
 																		},
 																		"required": [
 																			"url"
-																		],
-																		"type": "object"
+																		]
 																	},
-																	"type": "array"
+																	"default": []
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"created": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"modified": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"name": {
-													"example": "Production Live Stream",
-													"type": "string"
+													"type": "string",
+													"example": "Production Live Stream"
 												},
 												"status": {
 													"description": "\"connected\" when active, omitted otherwise.",
+													"type": "string",
 													"enum": [
 														"connected"
-													],
-													"type": "string"
+													]
 												},
 												"uid": {
-													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890",
-													"type": "string"
+													"type": "string",
+													"example": "a1b2c3d4e5f67890a1b2c3d4e5f67890"
 												}
 											},
 											"required": [
@@ -2614,8 +2617,7 @@
 												"modified",
 												"name",
 												"config"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2623,21 +2625,17 @@
 							]
 						}
 					}
-				},
-				"description": "Relay updated successfully."
+				}
 			},
 			"400": {
+				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21011 (name must not be empty), 21013 (invalid upstream URL — must be an absolute moqt:// or https:// URL with a host).",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2654,46 +2652,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21011 (name must not be empty), 21013 (invalid upstream URL — must be an absolute moqt:// or https:// URL with a host)."
+				}
 			},
 			"404": {
+				"description": "Error 21007: Relay not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2710,46 +2708,46 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21007: Relay not found."
+				}
 			},
 			"500": {
+				"description": "Error 21006: Unexpected server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 21007,
-											"message": "A MoQ relay with this ID was not found."
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2766,33 +2764,36 @@
 										],
 										"type": "object"
 									},
-									"type": "array"
+									"example": [
+										{
+											"code": 21007,
+											"message": "A MoQ relay with this ID was not found."
+										}
+									]
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Error 21006: Unexpected server error."
+				}
 			}
 		},
 		"security": [
@@ -2800,7 +2801,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a relay",
 		"tags": [
 			"MoQ Relays"
 		],

@@ -1,11 +1,12 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "delete_DeleteScans",
+		"summary": "Delete a Scan Config",
 		"parameters": [
 			{
-				"description": "Defines the Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Defines the Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Account ID.",
@@ -13,9 +14,9 @@
 				}
 			},
 			{
-				"description": "Defines the Config ID.",
-				"in": "path",
 				"name": "config_id",
+				"in": "path",
+				"description": "Defines the Config ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Config ID.",
@@ -25,21 +26,23 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Delete a Scan Config.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -53,27 +56,27 @@
 								"result",
 								"messages",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete a Scan Config."
+				}
 			},
 			"4XX": {
+				"description": "Delete a Scan Config failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -82,12 +85,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -97,15 +100,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -114,12 +117,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -129,44 +132,42 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"example": {
 												"code": 10433,
 												"message": "request error"
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete a Scan Config failure."
+				}
 			}
 		},
 		"security": [
@@ -178,7 +179,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Scan Config",
 		"tags": [
 			"Scans"
 		],
@@ -187,23 +187,26 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
-		"description": "Deletes a scan and all associated data.\n\nOnly scans in a terminal state (`finished`, `failed`) may be deleted.\nAttempting to delete a scan that is still being created or executed\n(`created`, `scheduled`, `planning`, `running`) returns `400`.\n",
 		"operationId": "delete-scan",
+		"summary": "Delete Scan",
+		"description": "Deletes a scan and all associated data.\n\nOnly scans in a terminal state (`finished`, `failed`) may be deleted.\nAttempting to delete a scan that is still being created or executed\n(`created`, `scheduled`, `planning`, `running`) returns `400`.\n",
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -212,12 +215,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -227,15 +230,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -244,12 +247,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -259,44 +262,43 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Successful scan deletion result.",
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "ID of the deleted scan.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -304,66 +306,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -372,12 +338,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -387,25 +353,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -413,12 +416,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -430,18 +431,18 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Scan",
 		"tags": [
 			"Scans"
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "get_ConfigFetch",
+		"summary": "List Scan Configs",
 		"parameters": [
 			{
-				"description": "Defines the Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Defines the Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Account ID.",
@@ -451,19 +452,21 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns all Scan Configs.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -472,12 +475,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -487,15 +490,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -504,12 +507,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -519,68 +522,69 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"account_id": {
-														"example": "abcd1234abcd1234abcd1234abcd1234",
-														"type": "string"
+														"type": "string",
+														"example": "abcd1234abcd1234abcd1234abcd1234"
 													},
 													"frequency": {
 														"description": "Defines the number of days between each scan (0 = One-off scan).",
+														"type": "number",
 														"example": 7,
-														"title": "Frequency",
-														"type": "number"
+														"title": "Frequency"
 													},
 													"id": {
 														"description": "Defines the Config ID.",
-														"example": "uuid",
-														"type": "string"
+														"type": "string",
+														"example": "uuid"
 													},
 													"ips": {
 														"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
-														"example": [
-															"1.1.1.1",
-															"2606:4700:4700::1111"
-														],
+														"type": "array",
 														"items": {
 															"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 															"type": "string"
 														},
-														"title": "IP List",
-														"type": "array"
+														"example": [
+															"1.1.1.1",
+															"2606:4700:4700::1111"
+														],
+														"title": "IP List"
 													},
 													"ports": {
 														"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
-														"example": [
-															"default"
-														],
+														"type": "array",
 														"items": {
 															"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 															"type": "string"
 														},
-														"title": "Port List",
-														"type": "array"
+														"example": [
+															"default"
+														],
+														"title": "Port List"
 													}
 												},
 												"required": [
@@ -590,33 +594,32 @@
 													"frequency",
 													"ports"
 												],
-												"title": "Config",
-												"type": "object"
-											},
-											"type": "array"
+												"title": "Config"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Returns all Scan Configs."
+				}
 			},
 			"4XX": {
+				"description": "List Scan Configs failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -625,12 +628,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -640,15 +643,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -657,12 +660,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -672,44 +675,42 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"example": {
 												"code": 10433,
 												"message": "request error"
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Scan Configs failure."
+				}
 			}
 		},
 		"security": [
@@ -721,7 +722,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Scan Configs",
 		"tags": [
 			"Scans"
 		],
@@ -732,11 +732,12 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/results/{config_id}": {
 		"operationId": "get_GetOpenPorts",
+		"summary": "Get the Latest Scan Result",
 		"parameters": [
 			{
-				"description": "Defines the Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Defines the Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Account ID.",
@@ -744,9 +745,9 @@
 				}
 			},
 			{
-				"description": "Defines the Config ID.",
-				"in": "path",
 				"name": "config_id",
+				"in": "path",
+				"description": "Defines the Config ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Config ID.",
@@ -756,38 +757,43 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns Current Open Ports.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"1.1.1.1": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"number": {
-														"example": 8080,
-														"type": "number"
+														"type": "number",
+														"example": 8080
 													},
 													"proto": {
-														"example": "tcp",
-														"type": "string"
+														"type": "string",
+														"example": "tcp"
 													},
 													"status": {
-														"example": "open",
-														"type": "string"
+														"type": "string",
+														"example": "open"
 													}
 												},
 												"required": [
@@ -795,16 +801,13 @@
 													"ips",
 													"frequency"
 												],
-												"title": "Port",
-												"type": "object"
-											},
-											"type": "array"
+												"title": "Port"
+											}
 										}
 									},
 									"required": [
 										"1.1.1.1"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -815,27 +818,27 @@
 								"result",
 								"messages",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns Current Open Ports."
+				}
 			},
 			"4XX": {
+				"description": "Get the Latest Scan Result failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -844,12 +847,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -859,15 +862,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -876,12 +879,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -891,44 +894,42 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"example": {
 												"code": 10433,
 												"message": "request error"
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get the Latest Scan Result failure."
+				}
 			}
 		},
 		"security": [
@@ -940,7 +941,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get the Latest Scan Result",
 		"tags": [
 			"Scans"
 		],
@@ -950,17 +950,18 @@
 		]
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans": {
-		"description": "Returns all scans for the account.",
 		"operationId": "list-scans",
+		"summary": "List Scans",
+		"description": "Returns all scans for the account.",
 		"parameters": [
 			{
 				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
@@ -968,30 +969,33 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "integer"
+					"minimum": 5
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1000,12 +1004,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1015,15 +1019,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1032,12 +1036,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1047,120 +1051,128 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"id": {
 														"description": "Scan identifier.",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
 														"x-auditable": true
 													},
 													"report": {
+														"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
+														"type": "object",
 														"allOf": [
 															{
 																"description": "A BOLA vulnerability scan report, versioned for future evolution.",
+																"type": "object",
 																"properties": {
 																	"report": {
 																		"allOf": [
 																			{
 																				"description": "Version 1 of the BOLA vulnerability scan report.",
+																				"type": "object",
 																				"properties": {
 																					"summary": {
+																						"description": "Summary of all steps and findings.",
 																						"allOf": [
 																							{
 																								"description": "Overall report summary.",
+																								"type": "object",
 																								"properties": {
 																									"verdict": {
+																										"description": "Overall verdict of the vulnerability scan.",
 																										"allOf": [
 																											{
 																												"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																												"type": "string",
 																												"enum": [
 																													"ok",
 																													"warning",
 																													"inconclusive"
-																												],
-																												"type": "string"
+																												]
 																											}
-																										],
-																										"description": "Overall verdict of the vulnerability scan."
+																										]
 																									}
 																								},
 																								"required": [
 																									"verdict"
-																								],
-																								"type": "object"
+																								]
 																							}
-																						],
-																						"description": "Summary of all steps and findings."
+																						]
 																					},
 																					"tests": {
 																						"description": "List of tests that were run.",
+																						"type": "array",
 																						"items": {
 																							"description": "Result of a single test.",
+																							"type": "object",
 																							"properties": {
 																								"preflight_errors": {
 																									"description": "Errors that prevented step execution.",
+																									"type": "array",
 																									"items": {
 																										"description": "Error that occurred during a test.",
+																										"type": "object",
 																										"properties": {
 																											"description": {
 																												"description": "Human-readable error description.",
@@ -1168,34 +1180,37 @@
 																											},
 																											"error_code": {
 																												"description": "Numeric error code identifying the class of error, if available.",
+																												"type": "integer",
 																												"format": "uint32",
 																												"minimum": 0,
-																												"nullable": true,
-																												"type": "integer"
+																												"nullable": true
 																											}
 																										},
 																										"required": [
 																											"description"
-																										],
-																										"type": "object"
-																									},
-																									"type": "array"
+																										]
+																									}
 																								},
 																								"steps": {
 																									"description": "Steps that were executed.",
+																									"type": "array",
 																									"items": {
 																										"description": "A single step in a test.",
+																										"type": "object",
 																										"properties": {
 																											"assertions": {
 																												"description": "Assertions that were made against the received response.",
+																												"type": "array",
 																												"items": {
 																													"description": "Assertion that was made against the received response.",
+																													"type": "object",
 																													"properties": {
 																														"description": {
 																															"description": "Human-readable description of the assertion, explaining what was checked.",
 																															"type": "string"
 																														},
 																														"kind": {
+																															"description": "Kind of assertion.",
 																															"allOf": [
 																																{
 																																	"description": "The kind of assertion to make.",
@@ -1205,31 +1220,31 @@
 																																			"properties": {
 																																				"parameters": {
 																																					"description": "Range of HTTP status codes.",
+																																					"type": "object",
 																																					"properties": {
 																																						"max": {
 																																							"description": "Maximum (inclusive) status code of the range.",
+																																							"type": "integer",
 																																							"maximum": 65535,
-																																							"minimum": 0,
-																																							"type": "integer"
+																																							"minimum": 0
 																																						},
 																																						"min": {
 																																							"description": "Minimum (inclusive) status code of the range.",
+																																							"type": "integer",
 																																							"maximum": 65535,
-																																							"minimum": 0,
-																																							"type": "integer"
+																																							"minimum": 0
 																																						}
 																																					},
 																																					"required": [
 																																						"min",
 																																						"max"
-																																					],
-																																					"type": "object"
+																																					]
 																																				},
 																																				"type": {
+																																					"type": "string",
 																																					"enum": [
 																																						"http_status_within_range"
-																																					],
-																																					"type": "string"
+																																					]
 																																				}
 																																			},
 																																			"required": [
@@ -1240,27 +1255,26 @@
 																																		}
 																																	]
 																																}
-																															],
-																															"description": "Kind of assertion."
+																															]
 																														},
 																														"observed": {
 																															"description": "Observed value on which the assertion was made.",
-																															"nullable": true,
-																															"type": "integer"
+																															"type": "integer",
+																															"nullable": true
 																														},
 																														"outcome": {
+																															"description": "Outcome of the assertion.",
 																															"allOf": [
 																																{
 																																	"description": "Outcome of an assertion. `ok` means the assertion passed, `fail` means the assertion failed, `inconclusive` means the scanner could not evaluate the assertion.",
+																																	"type": "string",
 																																	"enum": [
 																																		"ok",
 																																		"fail",
 																																		"inconclusive"
-																																	],
-																																	"type": "string"
+																																	]
 																																}
-																															],
-																															"description": "Outcome of the assertion."
+																															]
 																														}
 																													},
 																													"required": [
@@ -1268,15 +1282,15 @@
 																														"kind",
 																														"observed",
 																														"outcome"
-																													],
-																													"type": "object"
-																												},
-																												"type": "array"
+																													]
+																												}
 																											},
 																											"errors": {
 																												"description": "Errors the step encountered that may explain absent or incomplete fields.",
+																												"type": "array",
 																												"items": {
 																													"description": "Error that occurred during a test.",
+																													"type": "object",
 																													"properties": {
 																														"description": {
 																															"description": "Human-readable error description.",
@@ -1284,94 +1298,97 @@
 																														},
 																														"error_code": {
 																															"description": "Numeric error code identifying the class of error, if available.",
+																															"type": "integer",
 																															"format": "uint32",
 																															"minimum": 0,
-																															"nullable": true,
-																															"type": "integer"
+																															"nullable": true
 																														}
 																													},
 																													"required": [
 																														"description"
-																													],
-																													"type": "object"
-																												},
-																												"type": "array"
+																													]
+																												}
 																											},
 																											"request": {
+																												"description": "HTTP request that was made, if any.",
+																												"type": "object",
 																												"allOf": [
 																													{
 																														"description": "HTTP request that was made.",
+																														"type": "object",
 																														"properties": {
 																															"body": {
 																																"description": "Request body, if any.",
-																																"nullable": true,
-																																"type": "object"
+																																"type": "object",
+																																"nullable": true
 																															},
 																															"credential_set": {
+																																"description": "Credential set that was used.",
 																																"allOf": [
 																																	{
 																																		"description": "Credential set that was used.",
+																																		"type": "object",
 																																		"properties": {
 																																			"id": {
 																																				"description": "ID of the credential set.",
-																																				"format": "uuid",
-																																				"type": "string"
+																																				"type": "string",
+																																				"format": "uuid"
 																																			},
 																																			"role": {
+																																				"description": "Role of the credential set.",
 																																				"allOf": [
 																																					{
 																																						"description": "Identifies the role a request was made with. The credential set governs this role. `owner` is the resource owner, `attacker` attempts to access resources.",
+																																						"type": "string",
 																																						"enum": [
 																																							"owner",
 																																							"attacker"
-																																						],
-																																						"type": "string"
+																																						]
 																																					}
-																																				],
-																																				"description": "Role of the credential set."
+																																				]
 																																			}
 																																		},
 																																		"required": [
 																																			"id",
 																																			"role"
-																																		],
-																																		"type": "object"
+																																		]
 																																	}
-																																],
-																																"description": "Credential set that was used."
+																																]
 																															},
 																															"header_names": {
 																																"description": "Names of headers that were sent.",
+																																"type": "array",
 																																"items": {
 																																	"type": "string"
-																																},
-																																"type": "array"
+																																}
 																															},
 																															"method": {
+																																"description": "HTTP method.",
 																																"allOf": [
 																																	{
 																																		"description": "HTTP method.",
+																																		"type": "string",
 																																		"enum": [
 																																			"GET",
 																																			"DELETE",
 																																			"PATCH",
 																																			"POST",
 																																			"PUT"
-																																		],
-																																		"type": "string"
+																																		]
 																																	}
-																																],
-																																"description": "HTTP method."
+																																]
 																															},
 																															"url": {
 																																"description": "Exact and full URL (including host, query parameters) that was requested.",
-																																"format": "uri",
-																																"type": "string"
+																																"type": "string",
+																																"format": "uri"
 																															},
 																															"variable_captures": {
 																																"description": "Variable captures requested for this step.",
+																																"type": "array",
 																																"items": {
 																																	"description": "A variable to capture from the response body.",
+																																	"type": "object",
 																																	"properties": {
 																																		"json_path": {
 																																			"description": "JSONPath expression used for capture, e.g. `\"$.id\"`.",
@@ -1385,10 +1402,8 @@
 																																	"required": [
 																																		"name",
 																																		"json_path"
-																																	],
-																																	"type": "object"
-																																},
-																																"type": "array"
+																																	]
+																																}
 																															}
 																														},
 																														"required": [
@@ -1397,20 +1412,21 @@
 																															"credential_set",
 																															"header_names",
 																															"variable_captures"
-																														],
-																														"type": "object"
+																														]
 																													}
 																												],
-																												"description": "HTTP request that was made, if any.",
-																												"nullable": true,
-																												"type": "object"
+																												"nullable": true
 																											},
 																											"response": {
+																												"description": "HTTP response that was received, if any.",
+																												"type": "object",
 																												"allOf": [
 																													{
 																														"description": "HTTP response that was received.",
+																														"type": "object",
 																														"properties": {
 																															"body": {
+																																"description": "HTTP response body.",
 																																"allOf": [
 																																	{
 																																		"description": "HTTP response body preview.",
@@ -1426,30 +1442,31 @@
 																																		"oneOf": [
 																																			{
 																																				"description": "No body was received.",
+																																				"type": "object",
 																																				"properties": {
 																																					"kind": {
+																																						"type": "string",
 																																						"enum": [
 																																							"not_found"
-																																						],
-																																						"type": "string"
+																																						]
 																																					}
 																																				},
 																																				"required": [
 																																					"kind"
-																																				],
-																																				"type": "object"
+																																				]
 																																			},
 																																			{
 																																				"description": "Body received but unable to read as UTF-8. Raw bytes, base64-encoded.",
+																																				"type": "object",
 																																				"properties": {
 																																					"contents": {
 																																						"type": "string"
 																																					},
 																																					"kind": {
+																																						"type": "string",
 																																						"enum": [
 																																							"bytes"
-																																						],
-																																						"type": "string"
+																																						]
 																																					},
 																																					"truncated": {
 																																						"type": "boolean"
@@ -1459,20 +1476,20 @@
 																																					"kind",
 																																					"contents",
 																																					"truncated"
-																																				],
-																																				"type": "object"
+																																				]
 																																			},
 																																			{
 																																				"description": "Body received as valid UTF-8 text but not valid JSON.",
+																																				"type": "object",
 																																				"properties": {
 																																					"contents": {
 																																						"type": "string"
 																																					},
 																																					"kind": {
+																																						"type": "string",
 																																						"enum": [
 																																							"text"
-																																						],
-																																						"type": "string"
+																																						]
 																																					},
 																																					"truncated": {
 																																						"type": "boolean"
@@ -1482,20 +1499,20 @@
 																																					"kind",
 																																					"contents",
 																																					"truncated"
-																																				],
-																																				"type": "object"
+																																				]
 																																			},
 																																			{
 																																				"description": "Body received as valid JSON.",
+																																				"type": "object",
 																																				"properties": {
 																																					"contents": {
 																																						"type": "string"
 																																					},
 																																					"kind": {
+																																						"type": "string",
 																																						"enum": [
 																																							"json"
-																																						],
-																																						"type": "string"
+																																						]
 																																					},
 																																					"truncated": {
 																																						"type": "boolean"
@@ -1505,114 +1522,102 @@
 																																					"kind",
 																																					"contents",
 																																					"truncated"
-																																				],
-																																				"type": "object"
+																																				]
 																																			}
 																																		]
 																																	}
-																																],
-																																"description": "HTTP response body."
+																																]
 																															},
 																															"header_names": {
 																																"description": "Names of headers that were received.",
+																																"type": "array",
 																																"items": {
 																																	"type": "string"
-																																},
-																																"type": "array"
+																																}
 																															},
 																															"status": {
 																																"description": "HTTP status code.",
+																																"type": "integer",
 																																"maximum": 65535,
-																																"minimum": 0,
-																																"type": "integer"
+																																"minimum": 0
 																															},
 																															"status_text": {
 																																"description": "HTTP status text, if available for the status code.",
-																																"nullable": true,
-																																"type": "string"
+																																"type": "string",
+																																"nullable": true
 																															}
 																														},
 																														"required": [
 																															"status",
 																															"header_names",
 																															"body"
-																														],
-																														"type": "object"
+																														]
 																													}
 																												],
-																												"description": "HTTP response that was received, if any.",
-																												"nullable": true,
-																												"type": "object"
+																												"nullable": true
 																											}
 																										},
 																										"required": [
 																											"assertions"
-																										],
-																										"type": "object"
-																									},
-																									"type": "array"
+																										]
+																									}
 																								},
 																								"verdict": {
+																									"description": "Verdict of this single test.",
 																									"allOf": [
 																										{
 																											"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																											"type": "string",
 																											"enum": [
 																												"ok",
 																												"warning",
 																												"inconclusive"
-																											],
-																											"type": "string"
+																											]
 																										}
-																									],
-																									"description": "Verdict of this single test."
+																									]
 																								}
 																							},
 																							"required": [
 																								"verdict",
 																								"steps"
-																							],
-																							"type": "object"
-																						},
-																						"type": "array"
+																							]
+																						}
 																					}
 																				},
 																				"required": [
 																					"summary",
 																					"tests"
-																				],
-																				"type": "object"
+																				]
 																			}
 																		]
 																	},
 																	"report_schema_version": {
 																		"description": "Version of the report schema.",
+																		"type": "string",
 																		"enum": [
 																			"v1"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"required": [
 																	"report_schema_version",
 																	"report"
-																],
-																"type": "object"
+																]
 															}
 														],
-														"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
-														"nullable": true,
-														"type": "object"
+														"nullable": true
 													},
 													"scan_type": {
 														"description": "The type of vulnerability scan.",
+														"type": "string",
 														"enum": [
 															"bola"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"status": {
 														"description": "Current lifecycle status of the scan.",
+														"type": "string",
 														"enum": [
 															"created",
 															"scheduled",
@@ -1621,13 +1626,12 @@
 															"finished",
 															"failed"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"target_environment_id": {
 														"description": "The target environment this scan runs against.",
-														"format": "uuid",
 														"type": "string",
+														"format": "uuid",
 														"x-auditable": true
 													}
 												},
@@ -1636,10 +1640,8 @@
 													"target_environment_id",
 													"scan_type",
 													"status"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -1647,66 +1649,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1715,12 +1681,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1730,25 +1696,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1756,12 +1759,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -1773,29 +1774,31 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Scans",
 		"tags": [
 			"Scans"
 		]
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
-		"description": "Returns a single scan by ID.",
 		"operationId": "get-scan",
+		"summary": "Get Scan",
+		"description": "Returns a single scan by ID.",
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1804,12 +1807,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1819,15 +1822,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1836,12 +1839,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1851,81 +1854,89 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Scan identifier.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"report": {
+													"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
+													"type": "object",
 													"allOf": [
 														{
 															"description": "A BOLA vulnerability scan report, versioned for future evolution.",
+															"type": "object",
 															"properties": {
 																"report": {
 																	"allOf": [
 																		{
 																			"description": "Version 1 of the BOLA vulnerability scan report.",
+																			"type": "object",
 																			"properties": {
 																				"summary": {
+																					"description": "Summary of all steps and findings.",
 																					"allOf": [
 																						{
 																							"description": "Overall report summary.",
+																							"type": "object",
 																							"properties": {
 																								"verdict": {
+																									"description": "Overall verdict of the vulnerability scan.",
 																									"allOf": [
 																										{
 																											"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																											"type": "string",
 																											"enum": [
 																												"ok",
 																												"warning",
 																												"inconclusive"
-																											],
-																											"type": "string"
+																											]
 																										}
-																									],
-																									"description": "Overall verdict of the vulnerability scan."
+																									]
 																								}
 																							},
 																							"required": [
 																								"verdict"
-																							],
-																							"type": "object"
+																							]
 																						}
-																					],
-																					"description": "Summary of all steps and findings."
+																					]
 																				},
 																				"tests": {
 																					"description": "List of tests that were run.",
+																					"type": "array",
 																					"items": {
 																						"description": "Result of a single test.",
+																						"type": "object",
 																						"properties": {
 																							"preflight_errors": {
 																								"description": "Errors that prevented step execution.",
+																								"type": "array",
 																								"items": {
 																									"description": "Error that occurred during a test.",
+																									"type": "object",
 																									"properties": {
 																										"description": {
 																											"description": "Human-readable error description.",
@@ -1933,34 +1944,37 @@
 																										},
 																										"error_code": {
 																											"description": "Numeric error code identifying the class of error, if available.",
+																											"type": "integer",
 																											"format": "uint32",
 																											"minimum": 0,
-																											"nullable": true,
-																											"type": "integer"
+																											"nullable": true
 																										}
 																									},
 																									"required": [
 																										"description"
-																									],
-																									"type": "object"
-																								},
-																								"type": "array"
+																									]
+																								}
 																							},
 																							"steps": {
 																								"description": "Steps that were executed.",
+																								"type": "array",
 																								"items": {
 																									"description": "A single step in a test.",
+																									"type": "object",
 																									"properties": {
 																										"assertions": {
 																											"description": "Assertions that were made against the received response.",
+																											"type": "array",
 																											"items": {
 																												"description": "Assertion that was made against the received response.",
+																												"type": "object",
 																												"properties": {
 																													"description": {
 																														"description": "Human-readable description of the assertion, explaining what was checked.",
 																														"type": "string"
 																													},
 																													"kind": {
+																														"description": "Kind of assertion.",
 																														"allOf": [
 																															{
 																																"description": "The kind of assertion to make.",
@@ -1970,31 +1984,31 @@
 																																		"properties": {
 																																			"parameters": {
 																																				"description": "Range of HTTP status codes.",
+																																				"type": "object",
 																																				"properties": {
 																																					"max": {
 																																						"description": "Maximum (inclusive) status code of the range.",
+																																						"type": "integer",
 																																						"maximum": 65535,
-																																						"minimum": 0,
-																																						"type": "integer"
+																																						"minimum": 0
 																																					},
 																																					"min": {
 																																						"description": "Minimum (inclusive) status code of the range.",
+																																						"type": "integer",
 																																						"maximum": 65535,
-																																						"minimum": 0,
-																																						"type": "integer"
+																																						"minimum": 0
 																																					}
 																																				},
 																																				"required": [
 																																					"min",
 																																					"max"
-																																				],
-																																				"type": "object"
+																																				]
 																																			},
 																																			"type": {
+																																				"type": "string",
 																																				"enum": [
 																																					"http_status_within_range"
-																																				],
-																																				"type": "string"
+																																				]
 																																			}
 																																		},
 																																		"required": [
@@ -2005,27 +2019,26 @@
 																																	}
 																																]
 																															}
-																														],
-																														"description": "Kind of assertion."
+																														]
 																													},
 																													"observed": {
 																														"description": "Observed value on which the assertion was made.",
-																														"nullable": true,
-																														"type": "integer"
+																														"type": "integer",
+																														"nullable": true
 																													},
 																													"outcome": {
+																														"description": "Outcome of the assertion.",
 																														"allOf": [
 																															{
 																																"description": "Outcome of an assertion. `ok` means the assertion passed, `fail` means the assertion failed, `inconclusive` means the scanner could not evaluate the assertion.",
+																																"type": "string",
 																																"enum": [
 																																	"ok",
 																																	"fail",
 																																	"inconclusive"
-																																],
-																																"type": "string"
+																																]
 																															}
-																														],
-																														"description": "Outcome of the assertion."
+																														]
 																													}
 																												},
 																												"required": [
@@ -2033,15 +2046,15 @@
 																													"kind",
 																													"observed",
 																													"outcome"
-																												],
-																												"type": "object"
-																											},
-																											"type": "array"
+																												]
+																											}
 																										},
 																										"errors": {
 																											"description": "Errors the step encountered that may explain absent or incomplete fields.",
+																											"type": "array",
 																											"items": {
 																												"description": "Error that occurred during a test.",
+																												"type": "object",
 																												"properties": {
 																													"description": {
 																														"description": "Human-readable error description.",
@@ -2049,94 +2062,97 @@
 																													},
 																													"error_code": {
 																														"description": "Numeric error code identifying the class of error, if available.",
+																														"type": "integer",
 																														"format": "uint32",
 																														"minimum": 0,
-																														"nullable": true,
-																														"type": "integer"
+																														"nullable": true
 																													}
 																												},
 																												"required": [
 																													"description"
-																												],
-																												"type": "object"
-																											},
-																											"type": "array"
+																												]
+																											}
 																										},
 																										"request": {
+																											"description": "HTTP request that was made, if any.",
+																											"type": "object",
 																											"allOf": [
 																												{
 																													"description": "HTTP request that was made.",
+																													"type": "object",
 																													"properties": {
 																														"body": {
 																															"description": "Request body, if any.",
-																															"nullable": true,
-																															"type": "object"
+																															"type": "object",
+																															"nullable": true
 																														},
 																														"credential_set": {
+																															"description": "Credential set that was used.",
 																															"allOf": [
 																																{
 																																	"description": "Credential set that was used.",
+																																	"type": "object",
 																																	"properties": {
 																																		"id": {
 																																			"description": "ID of the credential set.",
-																																			"format": "uuid",
-																																			"type": "string"
+																																			"type": "string",
+																																			"format": "uuid"
 																																		},
 																																		"role": {
+																																			"description": "Role of the credential set.",
 																																			"allOf": [
 																																				{
 																																					"description": "Identifies the role a request was made with. The credential set governs this role. `owner` is the resource owner, `attacker` attempts to access resources.",
+																																					"type": "string",
 																																					"enum": [
 																																						"owner",
 																																						"attacker"
-																																					],
-																																					"type": "string"
+																																					]
 																																				}
-																																			],
-																																			"description": "Role of the credential set."
+																																			]
 																																		}
 																																	},
 																																	"required": [
 																																		"id",
 																																		"role"
-																																	],
-																																	"type": "object"
+																																	]
 																																}
-																															],
-																															"description": "Credential set that was used."
+																															]
 																														},
 																														"header_names": {
 																															"description": "Names of headers that were sent.",
+																															"type": "array",
 																															"items": {
 																																"type": "string"
-																															},
-																															"type": "array"
+																															}
 																														},
 																														"method": {
+																															"description": "HTTP method.",
 																															"allOf": [
 																																{
 																																	"description": "HTTP method.",
+																																	"type": "string",
 																																	"enum": [
 																																		"GET",
 																																		"DELETE",
 																																		"PATCH",
 																																		"POST",
 																																		"PUT"
-																																	],
-																																	"type": "string"
+																																	]
 																																}
-																															],
-																															"description": "HTTP method."
+																															]
 																														},
 																														"url": {
 																															"description": "Exact and full URL (including host, query parameters) that was requested.",
-																															"format": "uri",
-																															"type": "string"
+																															"type": "string",
+																															"format": "uri"
 																														},
 																														"variable_captures": {
 																															"description": "Variable captures requested for this step.",
+																															"type": "array",
 																															"items": {
 																																"description": "A variable to capture from the response body.",
+																																"type": "object",
 																																"properties": {
 																																	"json_path": {
 																																		"description": "JSONPath expression used for capture, e.g. `\"$.id\"`.",
@@ -2150,10 +2166,8 @@
 																																"required": [
 																																	"name",
 																																	"json_path"
-																																],
-																																"type": "object"
-																															},
-																															"type": "array"
+																																]
+																															}
 																														}
 																													},
 																													"required": [
@@ -2162,20 +2176,21 @@
 																														"credential_set",
 																														"header_names",
 																														"variable_captures"
-																													],
-																													"type": "object"
+																													]
 																												}
 																											],
-																											"description": "HTTP request that was made, if any.",
-																											"nullable": true,
-																											"type": "object"
+																											"nullable": true
 																										},
 																										"response": {
+																											"description": "HTTP response that was received, if any.",
+																											"type": "object",
 																											"allOf": [
 																												{
 																													"description": "HTTP response that was received.",
+																													"type": "object",
 																													"properties": {
 																														"body": {
+																															"description": "HTTP response body.",
 																															"allOf": [
 																																{
 																																	"description": "HTTP response body preview.",
@@ -2191,30 +2206,31 @@
 																																	"oneOf": [
 																																		{
 																																			"description": "No body was received.",
+																																			"type": "object",
 																																			"properties": {
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"not_found"
-																																					],
-																																					"type": "string"
+																																					]
 																																				}
 																																			},
 																																			"required": [
 																																				"kind"
-																																			],
-																																			"type": "object"
+																																			]
 																																		},
 																																		{
 																																			"description": "Body received but unable to read as UTF-8. Raw bytes, base64-encoded.",
+																																			"type": "object",
 																																			"properties": {
 																																				"contents": {
 																																					"type": "string"
 																																				},
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"bytes"
-																																					],
-																																					"type": "string"
+																																					]
 																																				},
 																																				"truncated": {
 																																					"type": "boolean"
@@ -2224,20 +2240,20 @@
 																																				"kind",
 																																				"contents",
 																																				"truncated"
-																																			],
-																																			"type": "object"
+																																			]
 																																		},
 																																		{
 																																			"description": "Body received as valid UTF-8 text but not valid JSON.",
+																																			"type": "object",
 																																			"properties": {
 																																				"contents": {
 																																					"type": "string"
 																																				},
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"text"
-																																					],
-																																					"type": "string"
+																																					]
 																																				},
 																																				"truncated": {
 																																					"type": "boolean"
@@ -2247,20 +2263,20 @@
 																																				"kind",
 																																				"contents",
 																																				"truncated"
-																																			],
-																																			"type": "object"
+																																			]
 																																		},
 																																		{
 																																			"description": "Body received as valid JSON.",
+																																			"type": "object",
 																																			"properties": {
 																																				"contents": {
 																																					"type": "string"
 																																				},
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"json"
-																																					],
-																																					"type": "string"
+																																					]
 																																				},
 																																				"truncated": {
 																																					"type": "boolean"
@@ -2270,114 +2286,102 @@
 																																				"kind",
 																																				"contents",
 																																				"truncated"
-																																			],
-																																			"type": "object"
+																																			]
 																																		}
 																																	]
 																																}
-																															],
-																															"description": "HTTP response body."
+																															]
 																														},
 																														"header_names": {
 																															"description": "Names of headers that were received.",
+																															"type": "array",
 																															"items": {
 																																"type": "string"
-																															},
-																															"type": "array"
+																															}
 																														},
 																														"status": {
 																															"description": "HTTP status code.",
+																															"type": "integer",
 																															"maximum": 65535,
-																															"minimum": 0,
-																															"type": "integer"
+																															"minimum": 0
 																														},
 																														"status_text": {
 																															"description": "HTTP status text, if available for the status code.",
-																															"nullable": true,
-																															"type": "string"
+																															"type": "string",
+																															"nullable": true
 																														}
 																													},
 																													"required": [
 																														"status",
 																														"header_names",
 																														"body"
-																													],
-																													"type": "object"
+																													]
 																												}
 																											],
-																											"description": "HTTP response that was received, if any.",
-																											"nullable": true,
-																											"type": "object"
+																											"nullable": true
 																										}
 																									},
 																									"required": [
 																										"assertions"
-																									],
-																									"type": "object"
-																								},
-																								"type": "array"
+																									]
+																								}
 																							},
 																							"verdict": {
+																								"description": "Verdict of this single test.",
 																								"allOf": [
 																									{
 																										"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																										"type": "string",
 																										"enum": [
 																											"ok",
 																											"warning",
 																											"inconclusive"
-																										],
-																										"type": "string"
+																										]
 																									}
-																								],
-																								"description": "Verdict of this single test."
+																								]
 																							}
 																						},
 																						"required": [
 																							"verdict",
 																							"steps"
-																						],
-																						"type": "object"
-																					},
-																					"type": "array"
+																						]
+																					}
 																				}
 																			},
 																			"required": [
 																				"summary",
 																				"tests"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	]
 																},
 																"report_schema_version": {
 																	"description": "Version of the report schema.",
+																	"type": "string",
 																	"enum": [
 																		"v1"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
 																"report_schema_version",
 																"report"
-															],
-															"type": "object"
+															]
 														}
 													],
-													"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												},
 												"scan_type": {
 													"description": "The type of vulnerability scan.",
+													"type": "string",
 													"enum": [
 														"bola"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
 													"description": "Current lifecycle status of the scan.",
+													"type": "string",
 													"enum": [
 														"created",
 														"scheduled",
@@ -2386,13 +2390,12 @@
 														"finished",
 														"failed"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"target_environment_id": {
 													"description": "The target environment this scan runs against.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												}
 											},
@@ -2401,12 +2404,11 @@
 												"target_environment_id",
 												"scan_type",
 												"status"
-											],
-											"type": "object"
+											]
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -2414,66 +2416,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2482,12 +2448,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2497,25 +2463,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2523,12 +2526,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -2540,18 +2541,18 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Scan",
 		"tags": [
 			"Scans"
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "post_ConfigUpdate",
+		"summary": "Update an existing Scan Config",
 		"parameters": [
 			{
-				"description": "Defines the Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Defines the Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Account ID.",
@@ -2559,9 +2560,9 @@
 				}
 			},
 			{
-				"description": "Defines the Config ID.",
-				"in": "path",
 				"name": "config_id",
+				"in": "path",
+				"description": "Defines the Config ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Config ID.",
@@ -2573,59 +2574,61 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"frequency": {
 								"description": "Defines the number of days between each scan (0 = One-off scan).",
+								"type": "number",
 								"example": 7,
-								"title": "Frequency",
-								"type": "number"
+								"title": "Frequency"
 							},
 							"ips": {
 								"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
-								"example": [
-									"1.1.1.1",
-									"2606:4700:4700::1111"
-								],
+								"type": "array",
 								"items": {
 									"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 									"type": "string"
 								},
-								"title": "IP List",
-								"type": "array"
+								"example": [
+									"1.1.1.1",
+									"2606:4700:4700::1111"
+								],
+								"title": "IP List"
 							},
 							"ports": {
 								"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
-								"example": [
-									"default"
-								],
+								"type": "array",
 								"items": {
 									"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 									"type": "string"
 								},
-								"title": "Port List",
-								"type": "array"
+								"example": [
+									"default"
+								],
+								"title": "Port List"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated config.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2634,12 +2637,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2649,15 +2652,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2666,12 +2669,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2681,67 +2684,67 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
-													"example": "abcd1234abcd1234abcd1234abcd1234",
-													"type": "string"
+													"type": "string",
+													"example": "abcd1234abcd1234abcd1234abcd1234"
 												},
 												"frequency": {
 													"description": "Defines the number of days between each scan (0 = One-off scan).",
+													"type": "number",
 													"example": 7,
-													"title": "Frequency",
-													"type": "number"
+													"title": "Frequency"
 												},
 												"id": {
 													"description": "Defines the Config ID.",
-													"example": "uuid",
-													"type": "string"
+													"type": "string",
+													"example": "uuid"
 												},
 												"ips": {
 													"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
-													"example": [
-														"1.1.1.1",
-														"2606:4700:4700::1111"
-													],
+													"type": "array",
 													"items": {
 														"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 														"type": "string"
 													},
-													"title": "IP List",
-													"type": "array"
+													"example": [
+														"1.1.1.1",
+														"2606:4700:4700::1111"
+													],
+													"title": "IP List"
 												},
 												"ports": {
 													"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
-													"example": [
-														"default"
-													],
+													"type": "array",
 													"items": {
 														"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 														"type": "string"
 													},
-													"title": "Port List",
-													"type": "array"
+													"example": [
+														"default"
+													],
+													"title": "Port List"
 												}
 											},
 											"required": [
@@ -2751,31 +2754,31 @@
 												"frequency",
 												"ports"
 											],
-											"title": "Config",
-											"type": "object"
+											"title": "Config"
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Returns the updated config."
+				}
 			},
 			"4XX": {
+				"description": "Update an Existing Scan Config failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2784,12 +2787,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2799,15 +2802,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2816,12 +2819,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2831,44 +2834,42 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"example": {
 												"code": 10433,
 												"message": "request error"
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update an Existing Scan Config failure."
+				}
 			}
 		},
 		"security": [
@@ -2880,7 +2881,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update an existing Scan Config",
 		"tags": [
 			"Scans"
 		],
@@ -2890,11 +2890,12 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "post_ConfigCreate",
+		"summary": "Create a new Scan Config",
 		"parameters": [
 			{
-				"description": "Defines the Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Defines the Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Defines the Account ID.",
@@ -2906,62 +2907,64 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"frequency": {
 								"description": "Defines the number of days between each scan (0 = One-off scan).",
+								"type": "number",
 								"example": 7,
-								"title": "Frequency",
-								"type": "number"
+								"title": "Frequency"
 							},
 							"ips": {
 								"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
-								"example": [
-									"1.1.1.1",
-									"2606:4700:4700::1111"
-								],
+								"type": "array",
 								"items": {
 									"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 									"type": "string"
 								},
-								"title": "IP List",
-								"type": "array"
+								"example": [
+									"1.1.1.1",
+									"2606:4700:4700::1111"
+								],
+								"title": "IP List"
 							},
 							"ports": {
 								"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
-								"example": [
-									"default"
-								],
+								"type": "array",
 								"items": {
 									"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 									"type": "string"
 								},
-								"title": "Port List",
-								"type": "array"
+								"example": [
+									"default"
+								],
+								"title": "Port List"
 							}
 						},
 						"required": [
 							"ips"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created config.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2970,12 +2973,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2985,15 +2988,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3002,12 +3005,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3017,67 +3020,67 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
-													"example": "abcd1234abcd1234abcd1234abcd1234",
-													"type": "string"
+													"type": "string",
+													"example": "abcd1234abcd1234abcd1234abcd1234"
 												},
 												"frequency": {
 													"description": "Defines the number of days between each scan (0 = One-off scan).",
+													"type": "number",
 													"example": 7,
-													"title": "Frequency",
-													"type": "number"
+													"title": "Frequency"
 												},
 												"id": {
 													"description": "Defines the Config ID.",
-													"example": "uuid",
-													"type": "string"
+													"type": "string",
+													"example": "uuid"
 												},
 												"ips": {
 													"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
-													"example": [
-														"1.1.1.1",
-														"2606:4700:4700::1111"
-													],
+													"type": "array",
 													"items": {
 														"description": "Defines a list of IP addresses or CIDR blocks to scan. The maximum number of total IP addresses allowed is 5000.",
 														"type": "string"
 													},
-													"title": "IP List",
-													"type": "array"
+													"example": [
+														"1.1.1.1",
+														"2606:4700:4700::1111"
+													],
+													"title": "IP List"
 												},
 												"ports": {
 													"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
-													"example": [
-														"default"
-													],
+													"type": "array",
 													"items": {
 														"description": "Defines a list of ports to scan. Valid values are:\"default\", \"all\", or a comma-separated list of ports or range of ports (e.g. [\"1-80\", \"443\"]). \"default\" scans the 100 most commonly open ports.",
 														"type": "string"
 													},
-													"title": "Port List",
-													"type": "array"
+													"example": [
+														"default"
+													],
+													"title": "Port List"
 												}
 											},
 											"required": [
@@ -3087,31 +3090,31 @@
 												"frequency",
 												"ports"
 											],
-											"title": "Config",
-											"type": "object"
+											"title": "Config"
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Returns the created config."
+				}
 			},
 			"4XX": {
+				"description": "Create a new Scan Config failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3120,12 +3123,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3135,15 +3138,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3152,12 +3155,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3167,44 +3170,42 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"errors": {
+											"type": "object",
 											"example": {
 												"code": 10433,
 												"message": "request error"
-											},
-											"type": "object"
+											}
 										},
 										"success": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create a new Scan Config failure."
+				}
 			}
 		},
 		"security": [
@@ -3216,7 +3217,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Scan Config",
 		"tags": [
 			"Scans"
 		],
@@ -3225,9 +3225,11 @@
 		]
 	},
 	"POST /accounts/{account_id}/vuln_scanner/scans": {
-		"description": "Creates and starts a new vulnerability scan. The response may include\nnon-fatal warnings in the `messages` array.\n",
 		"operationId": "create-scan",
+		"summary": "Create Scan",
+		"description": "Creates and starts a new vulnerability scan. The response may include\nnon-fatal warnings in the `messages` array.\n",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -3240,41 +3242,42 @@
 						},
 						"oneOf": [
 							{
+								"type": "object",
 								"properties": {
 									"credential_sets": {
 										"description": "Credential set references for a BOLA scan. The scanner uses the\n`owner` credentials for legitimate requests and the `attacker`\ncredentials to attempt unauthorized access.\n",
+										"type": "object",
 										"properties": {
 											"attacker": {
 												"description": "Credential set ID for the attacker.",
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"owner": {
 												"description": "Credential set ID for the resource owner.",
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											}
 										},
 										"required": [
 											"owner",
 											"attacker"
-										],
-										"type": "object"
+										]
 									},
 									"open_api": {
 										"description": "OpenAPI schema definition for the API under test. The scanner\nuses this to discover endpoints and construct requests.\n",
 										"type": "string"
 									},
 									"scan_type": {
+										"type": "string",
 										"enum": [
 											"bola"
-										],
-										"type": "string"
+										]
 									},
 									"target_environment_id": {
 										"description": "The target environment to scan.",
-										"format": "uuid",
-										"type": "string"
+										"type": "string",
+										"format": "uuid"
 									}
 								},
 								"required": [
@@ -3282,30 +3285,30 @@
 									"scan_type",
 									"open_api",
 									"credential_sets"
-								],
-								"type": "object"
+								]
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful response. Check the `messages` array for non-fatal\nwarnings that arose during scan creation.\n",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3314,12 +3317,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3329,15 +3332,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3346,12 +3349,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3361,81 +3364,89 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Scan identifier.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												},
 												"report": {
+													"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
+													"type": "object",
 													"allOf": [
 														{
 															"description": "A BOLA vulnerability scan report, versioned for future evolution.",
+															"type": "object",
 															"properties": {
 																"report": {
 																	"allOf": [
 																		{
 																			"description": "Version 1 of the BOLA vulnerability scan report.",
+																			"type": "object",
 																			"properties": {
 																				"summary": {
+																					"description": "Summary of all steps and findings.",
 																					"allOf": [
 																						{
 																							"description": "Overall report summary.",
+																							"type": "object",
 																							"properties": {
 																								"verdict": {
+																									"description": "Overall verdict of the vulnerability scan.",
 																									"allOf": [
 																										{
 																											"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																											"type": "string",
 																											"enum": [
 																												"ok",
 																												"warning",
 																												"inconclusive"
-																											],
-																											"type": "string"
+																											]
 																										}
-																									],
-																									"description": "Overall verdict of the vulnerability scan."
+																									]
 																								}
 																							},
 																							"required": [
 																								"verdict"
-																							],
-																							"type": "object"
+																							]
 																						}
-																					],
-																					"description": "Summary of all steps and findings."
+																					]
 																				},
 																				"tests": {
 																					"description": "List of tests that were run.",
+																					"type": "array",
 																					"items": {
 																						"description": "Result of a single test.",
+																						"type": "object",
 																						"properties": {
 																							"preflight_errors": {
 																								"description": "Errors that prevented step execution.",
+																								"type": "array",
 																								"items": {
 																									"description": "Error that occurred during a test.",
+																									"type": "object",
 																									"properties": {
 																										"description": {
 																											"description": "Human-readable error description.",
@@ -3443,34 +3454,37 @@
 																										},
 																										"error_code": {
 																											"description": "Numeric error code identifying the class of error, if available.",
+																											"type": "integer",
 																											"format": "uint32",
 																											"minimum": 0,
-																											"nullable": true,
-																											"type": "integer"
+																											"nullable": true
 																										}
 																									},
 																									"required": [
 																										"description"
-																									],
-																									"type": "object"
-																								},
-																								"type": "array"
+																									]
+																								}
 																							},
 																							"steps": {
 																								"description": "Steps that were executed.",
+																								"type": "array",
 																								"items": {
 																									"description": "A single step in a test.",
+																									"type": "object",
 																									"properties": {
 																										"assertions": {
 																											"description": "Assertions that were made against the received response.",
+																											"type": "array",
 																											"items": {
 																												"description": "Assertion that was made against the received response.",
+																												"type": "object",
 																												"properties": {
 																													"description": {
 																														"description": "Human-readable description of the assertion, explaining what was checked.",
 																														"type": "string"
 																													},
 																													"kind": {
+																														"description": "Kind of assertion.",
 																														"allOf": [
 																															{
 																																"description": "The kind of assertion to make.",
@@ -3480,31 +3494,31 @@
 																																		"properties": {
 																																			"parameters": {
 																																				"description": "Range of HTTP status codes.",
+																																				"type": "object",
 																																				"properties": {
 																																					"max": {
 																																						"description": "Maximum (inclusive) status code of the range.",
+																																						"type": "integer",
 																																						"maximum": 65535,
-																																						"minimum": 0,
-																																						"type": "integer"
+																																						"minimum": 0
 																																					},
 																																					"min": {
 																																						"description": "Minimum (inclusive) status code of the range.",
+																																						"type": "integer",
 																																						"maximum": 65535,
-																																						"minimum": 0,
-																																						"type": "integer"
+																																						"minimum": 0
 																																					}
 																																				},
 																																				"required": [
 																																					"min",
 																																					"max"
-																																				],
-																																				"type": "object"
+																																				]
 																																			},
 																																			"type": {
+																																				"type": "string",
 																																				"enum": [
 																																					"http_status_within_range"
-																																				],
-																																				"type": "string"
+																																				]
 																																			}
 																																		},
 																																		"required": [
@@ -3515,27 +3529,26 @@
 																																	}
 																																]
 																															}
-																														],
-																														"description": "Kind of assertion."
+																														]
 																													},
 																													"observed": {
 																														"description": "Observed value on which the assertion was made.",
-																														"nullable": true,
-																														"type": "integer"
+																														"type": "integer",
+																														"nullable": true
 																													},
 																													"outcome": {
+																														"description": "Outcome of the assertion.",
 																														"allOf": [
 																															{
 																																"description": "Outcome of an assertion. `ok` means the assertion passed, `fail` means the assertion failed, `inconclusive` means the scanner could not evaluate the assertion.",
+																																"type": "string",
 																																"enum": [
 																																	"ok",
 																																	"fail",
 																																	"inconclusive"
-																																],
-																																"type": "string"
+																																]
 																															}
-																														],
-																														"description": "Outcome of the assertion."
+																														]
 																													}
 																												},
 																												"required": [
@@ -3543,15 +3556,15 @@
 																													"kind",
 																													"observed",
 																													"outcome"
-																												],
-																												"type": "object"
-																											},
-																											"type": "array"
+																												]
+																											}
 																										},
 																										"errors": {
 																											"description": "Errors the step encountered that may explain absent or incomplete fields.",
+																											"type": "array",
 																											"items": {
 																												"description": "Error that occurred during a test.",
+																												"type": "object",
 																												"properties": {
 																													"description": {
 																														"description": "Human-readable error description.",
@@ -3559,94 +3572,97 @@
 																													},
 																													"error_code": {
 																														"description": "Numeric error code identifying the class of error, if available.",
+																														"type": "integer",
 																														"format": "uint32",
 																														"minimum": 0,
-																														"nullable": true,
-																														"type": "integer"
+																														"nullable": true
 																													}
 																												},
 																												"required": [
 																													"description"
-																												],
-																												"type": "object"
-																											},
-																											"type": "array"
+																												]
+																											}
 																										},
 																										"request": {
+																											"description": "HTTP request that was made, if any.",
+																											"type": "object",
 																											"allOf": [
 																												{
 																													"description": "HTTP request that was made.",
+																													"type": "object",
 																													"properties": {
 																														"body": {
 																															"description": "Request body, if any.",
-																															"nullable": true,
-																															"type": "object"
+																															"type": "object",
+																															"nullable": true
 																														},
 																														"credential_set": {
+																															"description": "Credential set that was used.",
 																															"allOf": [
 																																{
 																																	"description": "Credential set that was used.",
+																																	"type": "object",
 																																	"properties": {
 																																		"id": {
 																																			"description": "ID of the credential set.",
-																																			"format": "uuid",
-																																			"type": "string"
+																																			"type": "string",
+																																			"format": "uuid"
 																																		},
 																																		"role": {
+																																			"description": "Role of the credential set.",
 																																			"allOf": [
 																																				{
 																																					"description": "Identifies the role a request was made with. The credential set governs this role. `owner` is the resource owner, `attacker` attempts to access resources.",
+																																					"type": "string",
 																																					"enum": [
 																																						"owner",
 																																						"attacker"
-																																					],
-																																					"type": "string"
+																																					]
 																																				}
-																																			],
-																																			"description": "Role of the credential set."
+																																			]
 																																		}
 																																	},
 																																	"required": [
 																																		"id",
 																																		"role"
-																																	],
-																																	"type": "object"
+																																	]
 																																}
-																															],
-																															"description": "Credential set that was used."
+																															]
 																														},
 																														"header_names": {
 																															"description": "Names of headers that were sent.",
+																															"type": "array",
 																															"items": {
 																																"type": "string"
-																															},
-																															"type": "array"
+																															}
 																														},
 																														"method": {
+																															"description": "HTTP method.",
 																															"allOf": [
 																																{
 																																	"description": "HTTP method.",
+																																	"type": "string",
 																																	"enum": [
 																																		"GET",
 																																		"DELETE",
 																																		"PATCH",
 																																		"POST",
 																																		"PUT"
-																																	],
-																																	"type": "string"
+																																	]
 																																}
-																															],
-																															"description": "HTTP method."
+																															]
 																														},
 																														"url": {
 																															"description": "Exact and full URL (including host, query parameters) that was requested.",
-																															"format": "uri",
-																															"type": "string"
+																															"type": "string",
+																															"format": "uri"
 																														},
 																														"variable_captures": {
 																															"description": "Variable captures requested for this step.",
+																															"type": "array",
 																															"items": {
 																																"description": "A variable to capture from the response body.",
+																																"type": "object",
 																																"properties": {
 																																	"json_path": {
 																																		"description": "JSONPath expression used for capture, e.g. `\"$.id\"`.",
@@ -3660,10 +3676,8 @@
 																																"required": [
 																																	"name",
 																																	"json_path"
-																																],
-																																"type": "object"
-																															},
-																															"type": "array"
+																																]
+																															}
 																														}
 																													},
 																													"required": [
@@ -3672,20 +3686,21 @@
 																														"credential_set",
 																														"header_names",
 																														"variable_captures"
-																													],
-																													"type": "object"
+																													]
 																												}
 																											],
-																											"description": "HTTP request that was made, if any.",
-																											"nullable": true,
-																											"type": "object"
+																											"nullable": true
 																										},
 																										"response": {
+																											"description": "HTTP response that was received, if any.",
+																											"type": "object",
 																											"allOf": [
 																												{
 																													"description": "HTTP response that was received.",
+																													"type": "object",
 																													"properties": {
 																														"body": {
+																															"description": "HTTP response body.",
 																															"allOf": [
 																																{
 																																	"description": "HTTP response body preview.",
@@ -3701,30 +3716,31 @@
 																																	"oneOf": [
 																																		{
 																																			"description": "No body was received.",
+																																			"type": "object",
 																																			"properties": {
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"not_found"
-																																					],
-																																					"type": "string"
+																																					]
 																																				}
 																																			},
 																																			"required": [
 																																				"kind"
-																																			],
-																																			"type": "object"
+																																			]
 																																		},
 																																		{
 																																			"description": "Body received but unable to read as UTF-8. Raw bytes, base64-encoded.",
+																																			"type": "object",
 																																			"properties": {
 																																				"contents": {
 																																					"type": "string"
 																																				},
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"bytes"
-																																					],
-																																					"type": "string"
+																																					]
 																																				},
 																																				"truncated": {
 																																					"type": "boolean"
@@ -3734,20 +3750,20 @@
 																																				"kind",
 																																				"contents",
 																																				"truncated"
-																																			],
-																																			"type": "object"
+																																			]
 																																		},
 																																		{
 																																			"description": "Body received as valid UTF-8 text but not valid JSON.",
+																																			"type": "object",
 																																			"properties": {
 																																				"contents": {
 																																					"type": "string"
 																																				},
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"text"
-																																					],
-																																					"type": "string"
+																																					]
 																																				},
 																																				"truncated": {
 																																					"type": "boolean"
@@ -3757,20 +3773,20 @@
 																																				"kind",
 																																				"contents",
 																																				"truncated"
-																																			],
-																																			"type": "object"
+																																			]
 																																		},
 																																		{
 																																			"description": "Body received as valid JSON.",
+																																			"type": "object",
 																																			"properties": {
 																																				"contents": {
 																																					"type": "string"
 																																				},
 																																				"kind": {
+																																					"type": "string",
 																																					"enum": [
 																																						"json"
-																																					],
-																																					"type": "string"
+																																					]
 																																				},
 																																				"truncated": {
 																																					"type": "boolean"
@@ -3780,114 +3796,102 @@
 																																				"kind",
 																																				"contents",
 																																				"truncated"
-																																			],
-																																			"type": "object"
+																																			]
 																																		}
 																																	]
 																																}
-																															],
-																															"description": "HTTP response body."
+																															]
 																														},
 																														"header_names": {
 																															"description": "Names of headers that were received.",
+																															"type": "array",
 																															"items": {
 																																"type": "string"
-																															},
-																															"type": "array"
+																															}
 																														},
 																														"status": {
 																															"description": "HTTP status code.",
+																															"type": "integer",
 																															"maximum": 65535,
-																															"minimum": 0,
-																															"type": "integer"
+																															"minimum": 0
 																														},
 																														"status_text": {
 																															"description": "HTTP status text, if available for the status code.",
-																															"nullable": true,
-																															"type": "string"
+																															"type": "string",
+																															"nullable": true
 																														}
 																													},
 																													"required": [
 																														"status",
 																														"header_names",
 																														"body"
-																													],
-																													"type": "object"
+																													]
 																												}
 																											],
-																											"description": "HTTP response that was received, if any.",
-																											"nullable": true,
-																											"type": "object"
+																											"nullable": true
 																										}
 																									},
 																									"required": [
 																										"assertions"
-																									],
-																									"type": "object"
-																								},
-																								"type": "array"
+																									]
+																								}
 																							},
 																							"verdict": {
+																								"description": "Verdict of this single test.",
 																								"allOf": [
 																									{
 																										"description": "A verdict. `ok` means the scan passed, `warning` means the scan detected issues, `inconclusive` means errors prevented the scanner from reaching an accurate verdict.",
+																										"type": "string",
 																										"enum": [
 																											"ok",
 																											"warning",
 																											"inconclusive"
-																										],
-																										"type": "string"
+																										]
 																									}
-																								],
-																								"description": "Verdict of this single test."
+																								]
 																							}
 																						},
 																						"required": [
 																							"verdict",
 																							"steps"
-																						],
-																						"type": "object"
-																					},
-																					"type": "array"
+																						]
+																					}
 																				}
 																			},
 																			"required": [
 																				"summary",
 																				"tests"
-																			],
-																			"type": "object"
+																			]
 																		}
 																	]
 																},
 																"report_schema_version": {
 																	"description": "Version of the report schema.",
+																	"type": "string",
 																	"enum": [
 																		"v1"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
 																"report_schema_version",
 																"report"
-															],
-															"type": "object"
+															]
 														}
 													],
-													"description": "Vulnerability report produced after the scan completes. The shape depends on the scan type. Present only for finished scans.",
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												},
 												"scan_type": {
 													"description": "The type of vulnerability scan.",
+													"type": "string",
 													"enum": [
 														"bola"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
 													"description": "Current lifecycle status of the scan.",
+													"type": "string",
 													"enum": [
 														"created",
 														"scheduled",
@@ -3896,13 +3900,12 @@
 														"finished",
 														"failed"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"target_environment_id": {
 													"description": "The target environment this scan runs against.",
-													"format": "uuid",
 													"type": "string",
+													"format": "uuid",
 													"x-auditable": true
 												}
 											},
@@ -3911,12 +3914,11 @@
 												"target_environment_id",
 												"scan_type",
 												"status"
-											],
-											"type": "object"
+											]
 										},
 										"result_info": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									},
 									"type": "object"
@@ -3924,66 +3926,30 @@
 							]
 						}
 					}
-				},
-				"description": "Successful response. Check the `messages` array for non-fatal\nwarnings that arose during scan creation.\n"
+				}
 			},
 			"4XX": {
+				"description": "Client error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3992,12 +3958,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4007,25 +3973,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4033,12 +4036,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Client error."
+				}
 			}
 		},
 		"security": [
@@ -4050,7 +4051,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Scan",
 		"tags": [
 			"Scans"
 		]

@@ -1,15 +1,20 @@
 {
 	"GET /accounts/{account_id}/browser-extension/config": {
-		"description": "Returns the browser extension configuration for an account.\n\nThis endpoint is currently backed by the scaffolded service response while\nthe runtime configuration surface is being implemented.\n",
 		"operationId": "accounts-browser-extension-config-get",
+		"summary": "Get browser extension configuration",
+		"description": "Returns the browser extension configuration for an account.\n\nThis endpoint is currently backed by the scaffolded service response while\nthe runtime configuration surface is being implemented.\n",
 		"responses": {
 			"200": {
+				"description": "Browser extension configuration response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -17,14 +22,14 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -32,21 +37,19 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
 									"description": "Browser extension configuration payload.",
-									"example": "Hello World!",
-									"type": "string"
+									"type": "string",
+									"example": "Hello World!"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -54,20 +57,22 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Browser extension configuration response."
+				}
 			},
 			"401": {
+				"description": "Authentication failed.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -75,14 +80,14 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -90,19 +95,17 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
 									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -110,20 +113,22 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Authentication failed."
+				}
 			},
 			"403": {
+				"description": "The authenticated user is not authorized to access this account.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -131,14 +136,14 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -146,19 +151,17 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
 									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -166,20 +169,22 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The authenticated user is not authorized to access this account."
+				}
 			},
 			"404": {
+				"description": "Resource not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -187,14 +192,14 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -202,19 +207,17 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
 									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -222,20 +225,22 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Resource not found."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -243,14 +248,14 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -258,19 +263,17 @@
 											"message": {
 												"type": "string"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
 									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -278,12 +281,10 @@
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -291,7 +292,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get browser extension configuration",
 		"tags": [
 			"Browser Extension Config"
 		]

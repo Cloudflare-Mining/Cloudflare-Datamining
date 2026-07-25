@@ -1,51 +1,52 @@
 {
 	"DELETE /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
-		"description": "Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls.",
 		"operationId": "stream-live-inputs-delete-a-live-input",
+		"summary": "Delete a live input",
+		"description": "Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete a live input response.",
 				"content": {
 					"application/json": {}
-				},
-				"description": "Delete a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Delete a live input response failure.",
 				"content": {
 					"application/json": {}
-				},
-				"description": "Delete a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -55,7 +56,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -68,64 +68,65 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
-		"description": "Deletes an output and removes it from the associated live input.",
 		"operationId": "stream-live-inputs-delete-an-output",
+		"summary": "Delete an output",
+		"description": "Deletes an output and removes it from the associated live input.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "output_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for the output.",
+					"type": "string",
 					"example": "baea4d9c515887b80289d5c33cf01145",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete an output response.",
 				"content": {
 					"application/json": {}
-				},
-				"description": "Delete an output response."
+				}
 			},
 			"4XX": {
+				"description": "Delete an output response failure.",
 				"content": {
 					"application/json": {}
-				},
-				"description": "Delete an output response failure."
+				}
 			}
 		},
 		"security": [
@@ -135,7 +136,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete an output",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -148,47 +148,50 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/live_inputs": {
-		"description": "Lists the live inputs created for an account. To get the credentials needed to stream to a specific live input, request a single live input.",
 		"operationId": "stream-live-inputs-list-live-inputs",
+		"summary": "List live inputs",
+		"description": "Lists the live inputs created for an account. To get the credentials needed to stream to a specific live input, request a single live input.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "include_counts",
+				"in": "query",
 				"schema": {
-					"default": false,
 					"description": "Includes the total number of videos associated with the submitted query parameters.",
+					"type": "boolean",
 					"example": true,
-					"type": "boolean"
+					"default": false
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List live inputs response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -197,12 +200,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -212,15 +215,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -229,12 +232,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -244,89 +247,88 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"liveInputs": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"created": {
 																"description": "The date and time the live input was created.",
-																"example": "2014-01-02T02:20:00Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-02T02:20:00Z",
 																"x-auditable": true
 															},
 															"deleteRecordingAfterDays": {
 																"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+																"type": "number",
 																"example": 45,
 																"minimum": 30,
-																"type": "number",
 																"x-auditable": true
 															},
 															"enabled": {
-																"default": true,
 																"description": "Indicates whether the live input is enabled and can accept streams.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
+																"default": true,
 																"x-auditable": true
 															},
 															"meta": {
 																"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+																"type": "object",
 																"example": {
 																	"name": "test stream 1"
-																},
-																"type": "object"
+																}
 															},
 															"modified": {
 																"description": "The date and time the live input was last modified.",
-																"example": "2014-01-02T02:20:00Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-02T02:20:00Z",
 																"x-auditable": true
 															},
 															"uid": {
 																"description": "A unique identifier for a live input.",
+																"type": "string",
 																"example": "66be4bf738797e01e1fca35a7bdecdcd",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															}
 														}
-													},
-													"type": "array"
+													}
 												},
 												"range": {
 													"description": "The total number of remaining live inputs based on cursor position.",
-													"example": 1000,
-													"type": "integer"
+													"type": "integer",
+													"example": 1000
 												},
 												"total": {
 													"description": "The total number of live inputs that match the provided filters.",
-													"example": 35586,
-													"type": "integer"
+													"type": "integer",
+													"example": 35586
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -334,66 +336,30 @@
 							]
 						}
 					}
-				},
-				"description": "List live inputs response."
+				}
 			},
 			"4XX": {
+				"description": "List live inputs response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -402,12 +368,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -417,25 +383,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -443,12 +446,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List live inputs response failure."
+				}
 			}
 		},
 		"security": [
@@ -458,7 +459,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List live inputs",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -472,51 +472,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
-		"description": "Retrieves details of an existing live input.",
 		"operationId": "stream-live-inputs-retrieve-a-live-input",
+		"summary": "Retrieve a live input",
+		"description": "Retrieves details of an existing live input.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve a live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -525,12 +529,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -540,15 +544,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -557,12 +561,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -572,222 +576,222 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Details about a live input.",
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the live input was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"type": "number",
 													"example": 45,
 													"minimum": 30,
-													"type": "number",
 													"x-auditable": true
 												},
 												"enabled": {
-													"default": true,
 													"description": "Indicates whether the live input is enabled and can accept streams.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"keysRotatedAt": {
 													"description": "The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
+													"nullable": true,
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+													"type": "object",
 													"example": {
 														"name": "test stream 1"
-													},
-													"type": "object"
+													}
 												},
 												"modified": {
 													"description": "The date and time the live input was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"preferLowLatency": {
-													"default": false,
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+													"type": "object",
+													"properties": {
+														"allowedOrigins": {
+															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"example.com"
+															]
+														},
+														"hideLiveViewerCount": {
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"mode": {
+															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+															"type": "string",
+															"example": "automatic",
+															"default": "off",
+															"enum": [
+																"off",
+																"automatic"
+															],
+															"x-auditable": true
+														},
+														"requireSignedURLs": {
+															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"timeoutSeconds": {
+															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+															"type": "integer",
+															"default": 0,
+															"x-auditable": true
+														}
+													},
 													"example": {
 														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
-													},
-													"properties": {
-														"allowedOrigins": {
-															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-															"example": [
-																"example.com"
-															],
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"hideLiveViewerCount": {
-															"default": false,
-															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"mode": {
-															"default": "off",
-															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-															"enum": [
-																"off",
-																"automatic"
-															],
-															"example": "automatic",
-															"type": "string",
-															"x-auditable": true
-														},
-														"requireSignedURLs": {
-															"default": false,
-															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"timeoutSeconds": {
-															"default": 0,
-															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmps": {
 													"description": "Details for streaming to an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmpsPlayback": {
 													"description": "Details for playback from an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srt": {
 													"description": "Details for streaming to a live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
-															"example": "srt://live.cloudflare.com:778",
 															"type": "string",
+															"example": "srt://live.cloudflare.com:778",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srtPlayback": {
 													"description": "Details for playback from an live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
 													"description": "The connection status of a live input.",
+													"type": "string",
 													"enum": [
 														null,
 														"connected",
@@ -800,42 +804,40 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
+													"type": "string",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"webRTCPlayback": {
 													"description": "Details for playback from a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -843,66 +845,30 @@
 							]
 						}
 					}
-				},
-				"description": "Retrieve a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Retrieve a live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -911,12 +877,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -926,25 +892,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -952,12 +955,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -967,7 +968,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -981,49 +981,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs": {
-		"description": "Retrieves all outputs associated with a specified live input.",
 		"operationId": "stream-live-inputs-list-all-outputs-associated-with-a-specified-live-input",
+		"summary": "List all outputs associated with a specified live input",
+		"description": "Retrieves all outputs associated with a specified live input.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List all outputs associated with a specified live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1032,12 +1035,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1047,15 +1050,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1064,12 +1067,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1079,58 +1082,57 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"enabled": {
-														"default": true,
 														"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
+														"default": true,
 														"x-auditable": true
 													},
 													"streamKey": {
 														"description": "The streamKey used to authenticate against an output's target.",
-														"example": "uzya-f19y-g2g9-a2ee-51j2",
 														"type": "string",
+														"example": "uzya-f19y-g2g9-a2ee-51j2",
 														"x-sensitive": true
 													},
 													"uid": {
 														"description": "A unique identifier for the output.",
+														"type": "string",
 														"example": "baea4d9c515887b80289d5c33cf01145",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"url": {
 														"description": "The URL an output uses to restream.",
-														"example": "rtmp://a.rtmp.youtube.com/live2",
 														"type": "string",
+														"example": "rtmp://a.rtmp.youtube.com/live2",
 														"x-sensitive": true
 													}
 												}
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
@@ -1138,66 +1140,30 @@
 							]
 						}
 					}
-				},
-				"description": "List all outputs associated with a specified live input response."
+				}
 			},
 			"4XX": {
+				"description": "List all outputs associated with a specified live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1206,12 +1172,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1221,25 +1187,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1247,12 +1250,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List all outputs associated with a specified live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -1262,7 +1263,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List all outputs associated with a specified live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -1276,23 +1276,25 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs": {
-		"description": "Creates a live input, and returns credentials that you or your users can use to stream live video to Cloudflare Stream.",
 		"operationId": "stream-live-inputs-create-a-live-input",
+		"summary": "Create a live input",
+		"description": "Creates a live input, and returns credentials that you or your users can use to stream live video to Cloudflare Stream.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -1304,109 +1306,111 @@
 							},
 							"deleteRecordingAfterDays": {
 								"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+								"type": "number",
 								"example": 45,
 								"minimum": 30,
-								"type": "number",
 								"x-auditable": true
 							},
 							"enabled": {
-								"default": true,
 								"description": "Indicates whether the live input is enabled and can accept streams.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": true,
 								"x-auditable": true
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+								"type": "object",
 								"example": {
 									"name": "test stream 1"
-								},
-								"type": "object"
+								}
 							},
 							"preferLowLatency": {
-								"default": false,
 								"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"recording": {
 								"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+								"type": "object",
+								"properties": {
+									"allowedOrigins": {
+										"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"example.com"
+										]
+									},
+									"hideLiveViewerCount": {
+										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+										"type": "boolean",
+										"example": true,
+										"default": false,
+										"x-auditable": true
+									},
+									"mode": {
+										"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+										"type": "string",
+										"example": "automatic",
+										"default": "off",
+										"enum": [
+											"off",
+											"automatic"
+										],
+										"x-auditable": true
+									},
+									"requireSignedURLs": {
+										"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+										"type": "boolean",
+										"example": true,
+										"default": false,
+										"x-auditable": true
+									},
+									"timeoutSeconds": {
+										"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+										"type": "integer",
+										"default": 0,
+										"x-auditable": true
+									}
+								},
 								"example": {
 									"hideLiveViewerCount": false,
 									"mode": "off",
 									"requireSignedURLs": false,
 									"timeoutSeconds": 0
-								},
-								"properties": {
-									"allowedOrigins": {
-										"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-										"example": [
-											"example.com"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
-									},
-									"hideLiveViewerCount": {
-										"default": false,
-										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-										"example": true,
-										"type": "boolean",
-										"x-auditable": true
-									},
-									"mode": {
-										"default": "off",
-										"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-										"enum": [
-											"off",
-											"automatic"
-										],
-										"example": "automatic",
-										"type": "string",
-										"x-auditable": true
-									},
-									"requireSignedURLs": {
-										"default": false,
-										"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-										"example": true,
-										"type": "boolean",
-										"x-auditable": true
-									},
-									"timeoutSeconds": {
-										"default": 0,
-										"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-										"type": "integer",
-										"x-auditable": true
-									}
-								},
-								"type": "object"
+								}
 							}
 						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1415,12 +1419,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1430,15 +1434,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1447,12 +1451,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1462,222 +1466,222 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Details about a live input.",
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the live input was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"type": "number",
 													"example": 45,
 													"minimum": 30,
-													"type": "number",
 													"x-auditable": true
 												},
 												"enabled": {
-													"default": true,
 													"description": "Indicates whether the live input is enabled and can accept streams.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"keysRotatedAt": {
 													"description": "The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
+													"nullable": true,
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+													"type": "object",
 													"example": {
 														"name": "test stream 1"
-													},
-													"type": "object"
+													}
 												},
 												"modified": {
 													"description": "The date and time the live input was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"preferLowLatency": {
-													"default": false,
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+													"type": "object",
+													"properties": {
+														"allowedOrigins": {
+															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"example.com"
+															]
+														},
+														"hideLiveViewerCount": {
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"mode": {
+															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+															"type": "string",
+															"example": "automatic",
+															"default": "off",
+															"enum": [
+																"off",
+																"automatic"
+															],
+															"x-auditable": true
+														},
+														"requireSignedURLs": {
+															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"timeoutSeconds": {
+															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+															"type": "integer",
+															"default": 0,
+															"x-auditable": true
+														}
+													},
 													"example": {
 														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
-													},
-													"properties": {
-														"allowedOrigins": {
-															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-															"example": [
-																"example.com"
-															],
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"hideLiveViewerCount": {
-															"default": false,
-															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"mode": {
-															"default": "off",
-															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-															"enum": [
-																"off",
-																"automatic"
-															],
-															"example": "automatic",
-															"type": "string",
-															"x-auditable": true
-														},
-														"requireSignedURLs": {
-															"default": false,
-															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"timeoutSeconds": {
-															"default": 0,
-															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmps": {
 													"description": "Details for streaming to an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmpsPlayback": {
 													"description": "Details for playback from an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srt": {
 													"description": "Details for streaming to a live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
-															"example": "srt://live.cloudflare.com:778",
 															"type": "string",
+															"example": "srt://live.cloudflare.com:778",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srtPlayback": {
 													"description": "Details for playback from an live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
 													"description": "The connection status of a live input.",
+													"type": "string",
 													"enum": [
 														null,
 														"connected",
@@ -1690,42 +1694,40 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
+													"type": "string",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"webRTCPlayback": {
 													"description": "Details for playback from a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1733,66 +1735,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Create a live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1801,12 +1767,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1816,25 +1782,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1842,12 +1845,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -1857,7 +1858,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -1870,51 +1870,55 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/disable": {
-		"description": "Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls until enabled.",
 		"operationId": "stream-live-inputs-disable-a-live-input",
+		"summary": "Disable a live input",
+		"description": "Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls until enabled.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Disable a live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1923,12 +1927,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1938,15 +1942,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1955,12 +1959,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1970,222 +1974,222 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Details about a live input.",
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the live input was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"type": "number",
 													"example": 45,
 													"minimum": 30,
-													"type": "number",
 													"x-auditable": true
 												},
 												"enabled": {
-													"default": true,
 													"description": "Indicates whether the live input is enabled and can accept streams.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"keysRotatedAt": {
 													"description": "The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
+													"nullable": true,
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+													"type": "object",
 													"example": {
 														"name": "test stream 1"
-													},
-													"type": "object"
+													}
 												},
 												"modified": {
 													"description": "The date and time the live input was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"preferLowLatency": {
-													"default": false,
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+													"type": "object",
+													"properties": {
+														"allowedOrigins": {
+															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"example.com"
+															]
+														},
+														"hideLiveViewerCount": {
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"mode": {
+															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+															"type": "string",
+															"example": "automatic",
+															"default": "off",
+															"enum": [
+																"off",
+																"automatic"
+															],
+															"x-auditable": true
+														},
+														"requireSignedURLs": {
+															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"timeoutSeconds": {
+															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+															"type": "integer",
+															"default": 0,
+															"x-auditable": true
+														}
+													},
 													"example": {
 														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
-													},
-													"properties": {
-														"allowedOrigins": {
-															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-															"example": [
-																"example.com"
-															],
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"hideLiveViewerCount": {
-															"default": false,
-															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"mode": {
-															"default": "off",
-															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-															"enum": [
-																"off",
-																"automatic"
-															],
-															"example": "automatic",
-															"type": "string",
-															"x-auditable": true
-														},
-														"requireSignedURLs": {
-															"default": false,
-															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"timeoutSeconds": {
-															"default": 0,
-															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmps": {
 													"description": "Details for streaming to an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmpsPlayback": {
 													"description": "Details for playback from an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srt": {
 													"description": "Details for streaming to a live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
-															"example": "srt://live.cloudflare.com:778",
 															"type": "string",
+															"example": "srt://live.cloudflare.com:778",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srtPlayback": {
 													"description": "Details for playback from an live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
 													"description": "The connection status of a live input.",
+													"type": "string",
 													"enum": [
 														null,
 														"connected",
@@ -2198,42 +2202,40 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
+													"type": "string",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"webRTCPlayback": {
 													"description": "Details for playback from a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2241,66 +2243,30 @@
 							]
 						}
 					}
-				},
-				"description": "Disable a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Disable a live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2309,12 +2275,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2324,25 +2290,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2350,12 +2353,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Disable a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -2365,7 +2366,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Disable a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -2376,51 +2376,55 @@
 		"x-forge-require-confirmation": "This operation disables a live input. Active streams to it are dropped."
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/enable": {
-		"description": "Allows a live input to be streamed to and makes the live input accessible to any future API calls.",
 		"operationId": "stream-live-inputs-enable-a-live-input",
+		"summary": "Enable a live input",
+		"description": "Allows a live input to be streamed to and makes the live input accessible to any future API calls.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Enable a live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2429,12 +2433,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2444,15 +2448,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2461,12 +2465,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2476,222 +2480,222 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Details about a live input.",
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the live input was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"type": "number",
 													"example": 45,
 													"minimum": 30,
-													"type": "number",
 													"x-auditable": true
 												},
 												"enabled": {
-													"default": true,
 													"description": "Indicates whether the live input is enabled and can accept streams.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"keysRotatedAt": {
 													"description": "The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
+													"nullable": true,
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+													"type": "object",
 													"example": {
 														"name": "test stream 1"
-													},
-													"type": "object"
+													}
 												},
 												"modified": {
 													"description": "The date and time the live input was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"preferLowLatency": {
-													"default": false,
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+													"type": "object",
+													"properties": {
+														"allowedOrigins": {
+															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"example.com"
+															]
+														},
+														"hideLiveViewerCount": {
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"mode": {
+															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+															"type": "string",
+															"example": "automatic",
+															"default": "off",
+															"enum": [
+																"off",
+																"automatic"
+															],
+															"x-auditable": true
+														},
+														"requireSignedURLs": {
+															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"timeoutSeconds": {
+															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+															"type": "integer",
+															"default": 0,
+															"x-auditable": true
+														}
+													},
 													"example": {
 														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
-													},
-													"properties": {
-														"allowedOrigins": {
-															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-															"example": [
-																"example.com"
-															],
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"hideLiveViewerCount": {
-															"default": false,
-															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"mode": {
-															"default": "off",
-															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-															"enum": [
-																"off",
-																"automatic"
-															],
-															"example": "automatic",
-															"type": "string",
-															"x-auditable": true
-														},
-														"requireSignedURLs": {
-															"default": false,
-															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"timeoutSeconds": {
-															"default": 0,
-															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmps": {
 													"description": "Details for streaming to an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmpsPlayback": {
 													"description": "Details for playback from an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srt": {
 													"description": "Details for streaming to a live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
-															"example": "srt://live.cloudflare.com:778",
 															"type": "string",
+															"example": "srt://live.cloudflare.com:778",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srtPlayback": {
 													"description": "Details for playback from an live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
 													"description": "The connection status of a live input.",
+													"type": "string",
 													"enum": [
 														null,
 														"connected",
@@ -2704,42 +2708,40 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
+													"type": "string",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"webRTCPlayback": {
 													"description": "Details for playback from a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2747,66 +2749,30 @@
 							]
 						}
 					}
-				},
-				"description": "Enable a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Enable a live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2815,12 +2781,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2830,25 +2796,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2856,12 +2859,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Enable a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -2871,7 +2872,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Enable a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -2881,56 +2881,58 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs": {
-		"description": "Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input — one live input can have many outputs.",
 		"operationId": "stream-live-inputs-create-a-new-output,-connected-to-a-live-input",
+		"summary": "Create a new output, connected to a live input",
+		"description": "Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input — one live input can have many outputs.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"enabled": {
-								"default": true,
 								"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": true,
 								"x-auditable": true
 							},
 							"streamKey": {
 								"description": "The streamKey used to authenticate against an output's target.",
-								"example": "uzya-f19y-g2g9-a2ee-51j2",
 								"type": "string",
+								"example": "uzya-f19y-g2g9-a2ee-51j2",
 								"x-sensitive": true
 							},
 							"url": {
 								"description": "The URL an output uses to restream.",
-								"example": "rtmp://a.rtmp.youtube.com/live2",
 								"type": "string",
+								"example": "rtmp://a.rtmp.youtube.com/live2",
 								"x-sensitive": true
 							}
 						},
@@ -2940,26 +2942,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create a new output, connected to a live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2968,12 +2972,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2983,15 +2987,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3000,12 +3004,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3015,55 +3019,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"enabled": {
-													"default": true,
 													"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"streamKey": {
 													"description": "The streamKey used to authenticate against an output's target.",
-													"example": "uzya-f19y-g2g9-a2ee-51j2",
 													"type": "string",
+													"example": "uzya-f19y-g2g9-a2ee-51j2",
 													"x-sensitive": true
 												},
 												"uid": {
 													"description": "A unique identifier for the output.",
+													"type": "string",
 													"example": "baea4d9c515887b80289d5c33cf01145",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"url": {
 													"description": "The URL an output uses to restream.",
-													"example": "rtmp://a.rtmp.youtube.com/live2",
 													"type": "string",
+													"example": "rtmp://a.rtmp.youtube.com/live2",
 													"x-sensitive": true
 												}
 											}
@@ -3074,66 +3076,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create a new output, connected to a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Create a new output, connected to a live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3142,12 +3108,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3157,25 +3123,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3183,12 +3186,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create a new output, connected to a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -3198,7 +3199,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new output, connected to a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -3208,51 +3208,55 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/rotate_keys": {
-		"description": "Rotates the credentials for a live input without changing its identifier. Old credentials are revoked, broadcasts using stale credentials are automatically disconnected shortly after rotation, and the response returns refreshed credentials.",
 		"operationId": "stream-live-inputs-rotate-keys-for-a-live-input",
+		"summary": "Rotate keys for a live input",
+		"description": "Rotates the credentials for a live input without changing its identifier. Old credentials are revoked, broadcasts using stale credentials are automatically disconnected shortly after rotation, and the response returns refreshed credentials.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Rotate keys for a live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3261,12 +3265,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3276,15 +3280,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3293,12 +3297,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3308,222 +3312,222 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Details about a live input.",
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the live input was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"type": "number",
 													"example": 45,
 													"minimum": 30,
-													"type": "number",
 													"x-auditable": true
 												},
 												"enabled": {
-													"default": true,
 													"description": "Indicates whether the live input is enabled and can accept streams.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"keysRotatedAt": {
 													"description": "The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
+													"nullable": true,
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+													"type": "object",
 													"example": {
 														"name": "test stream 1"
-													},
-													"type": "object"
+													}
 												},
 												"modified": {
 													"description": "The date and time the live input was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"preferLowLatency": {
-													"default": false,
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+													"type": "object",
+													"properties": {
+														"allowedOrigins": {
+															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"example.com"
+															]
+														},
+														"hideLiveViewerCount": {
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"mode": {
+															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+															"type": "string",
+															"example": "automatic",
+															"default": "off",
+															"enum": [
+																"off",
+																"automatic"
+															],
+															"x-auditable": true
+														},
+														"requireSignedURLs": {
+															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"timeoutSeconds": {
+															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+															"type": "integer",
+															"default": 0,
+															"x-auditable": true
+														}
+													},
 													"example": {
 														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
-													},
-													"properties": {
-														"allowedOrigins": {
-															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-															"example": [
-																"example.com"
-															],
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"hideLiveViewerCount": {
-															"default": false,
-															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"mode": {
-															"default": "off",
-															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-															"enum": [
-																"off",
-																"automatic"
-															],
-															"example": "automatic",
-															"type": "string",
-															"x-auditable": true
-														},
-														"requireSignedURLs": {
-															"default": false,
-															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"timeoutSeconds": {
-															"default": 0,
-															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmps": {
 													"description": "Details for streaming to an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmpsPlayback": {
 													"description": "Details for playback from an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srt": {
 													"description": "Details for streaming to a live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
-															"example": "srt://live.cloudflare.com:778",
 															"type": "string",
+															"example": "srt://live.cloudflare.com:778",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srtPlayback": {
 													"description": "Details for playback from an live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
 													"description": "The connection status of a live input.",
+													"type": "string",
 													"enum": [
 														null,
 														"connected",
@@ -3536,42 +3540,40 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
+													"type": "string",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"webRTCPlayback": {
 													"description": "Details for playback from a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3579,66 +3581,30 @@
 							]
 						}
 					}
-				},
-				"description": "Rotate keys for a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Rotate keys for a live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3647,12 +3613,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3662,25 +3628,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3688,12 +3691,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rotate keys for a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -3703,7 +3704,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Rotate keys for a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -3713,35 +3713,37 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
-		"description": "Updates a specified live input.",
 		"operationId": "stream-live-inputs-update-a-live-input",
+		"summary": "Update a live input",
+		"description": "Updates a specified live input.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -3753,109 +3755,111 @@
 							},
 							"deleteRecordingAfterDays": {
 								"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+								"type": "number",
 								"example": 45,
 								"minimum": 30,
-								"type": "number",
 								"x-auditable": true
 							},
 							"enabled": {
-								"default": true,
 								"description": "Indicates whether the live input is enabled and can accept streams.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": true,
 								"x-auditable": true
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+								"type": "object",
 								"example": {
 									"name": "test stream 1"
-								},
-								"type": "object"
+								}
 							},
 							"preferLowLatency": {
-								"default": false,
 								"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"recording": {
 								"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+								"type": "object",
+								"properties": {
+									"allowedOrigins": {
+										"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"example.com"
+										]
+									},
+									"hideLiveViewerCount": {
+										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+										"type": "boolean",
+										"example": true,
+										"default": false,
+										"x-auditable": true
+									},
+									"mode": {
+										"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+										"type": "string",
+										"example": "automatic",
+										"default": "off",
+										"enum": [
+											"off",
+											"automatic"
+										],
+										"x-auditable": true
+									},
+									"requireSignedURLs": {
+										"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+										"type": "boolean",
+										"example": true,
+										"default": false,
+										"x-auditable": true
+									},
+									"timeoutSeconds": {
+										"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+										"type": "integer",
+										"default": 0,
+										"x-auditable": true
+									}
+								},
 								"example": {
 									"hideLiveViewerCount": false,
 									"mode": "off",
 									"requireSignedURLs": false,
 									"timeoutSeconds": 0
-								},
-								"properties": {
-									"allowedOrigins": {
-										"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-										"example": [
-											"example.com"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
-									},
-									"hideLiveViewerCount": {
-										"default": false,
-										"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-										"example": true,
-										"type": "boolean",
-										"x-auditable": true
-									},
-									"mode": {
-										"default": "off",
-										"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-										"enum": [
-											"off",
-											"automatic"
-										],
-										"example": "automatic",
-										"type": "string",
-										"x-auditable": true
-									},
-									"requireSignedURLs": {
-										"default": false,
-										"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-										"example": true,
-										"type": "boolean",
-										"x-auditable": true
-									},
-									"timeoutSeconds": {
-										"default": 0,
-										"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-										"type": "integer",
-										"x-auditable": true
-									}
-								},
-								"type": "object"
+								}
 							}
 						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a live input response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3864,12 +3868,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3879,15 +3883,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3896,12 +3900,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3911,222 +3915,222 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Details about a live input.",
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the live input was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"deleteRecordingAfterDays": {
 													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"type": "number",
 													"example": 45,
 													"minimum": 30,
-													"type": "number",
 													"x-auditable": true
 												},
 												"enabled": {
-													"default": true,
 													"description": "Indicates whether the live input is enabled and can accept streams.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"keysRotatedAt": {
 													"description": "The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
-													"nullable": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
+													"nullable": true,
 													"x-auditable": true
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+													"type": "object",
 													"example": {
 														"name": "test stream 1"
-													},
-													"type": "object"
+													}
 												},
 												"modified": {
 													"description": "The date and time the live input was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"preferLowLatency": {
-													"default": false,
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"recording": {
 													"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+													"type": "object",
+													"properties": {
+														"allowedOrigins": {
+															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"example.com"
+															]
+														},
+														"hideLiveViewerCount": {
+															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"mode": {
+															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+															"type": "string",
+															"example": "automatic",
+															"default": "off",
+															"enum": [
+																"off",
+																"automatic"
+															],
+															"x-auditable": true
+														},
+														"requireSignedURLs": {
+															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+															"type": "boolean",
+															"example": true,
+															"default": false,
+															"x-auditable": true
+														},
+														"timeoutSeconds": {
+															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+															"type": "integer",
+															"default": 0,
+															"x-auditable": true
+														}
+													},
 													"example": {
 														"hideLiveViewerCount": false,
 														"mode": "off",
 														"requireSignedURLs": false,
 														"timeoutSeconds": 0
-													},
-													"properties": {
-														"allowedOrigins": {
-															"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
-															"example": [
-																"example.com"
-															],
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"hideLiveViewerCount": {
-															"default": false,
-															"description": "Disables reporting the number of live viewers when this property is set to `true`.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"mode": {
-															"default": "off",
-															"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
-															"enum": [
-																"off",
-																"automatic"
-															],
-															"example": "automatic",
-															"type": "string",
-															"x-auditable": true
-														},
-														"requireSignedURLs": {
-															"default": false,
-															"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
-															"example": true,
-															"type": "boolean",
-															"x-auditable": true
-														},
-														"timeoutSeconds": {
-															"default": 0,
-															"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
-															"type": "integer",
-															"x-auditable": true
-														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmps": {
 													"description": "Details for streaming to an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"rtmpsPlayback": {
 													"description": "Details for playback from an live input using RTMPS.",
+													"type": "object",
 													"properties": {
 														"streamKey": {
 															"description": "The secret key to use for playback via RTMPS.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srt": {
 													"description": "Details for streaming to a live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use when streaming via SRT to a live input.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use when streaming via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
-															"example": "srt://live.cloudflare.com:778",
 															"type": "string",
+															"example": "srt://live.cloudflare.com:778",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"srtPlayback": {
 													"description": "Details for playback from an live input using SRT.",
+													"type": "object",
 													"properties": {
 														"passphrase": {
 															"description": "The secret key to use for playback via SRT.",
-															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"type": "string",
+															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
 															"x-sensitive": true
 														},
 														"streamId": {
 															"description": "The identifier of the live input to use for playback via SRT.",
-															"example": "f256e6ea9341d51eea64c9454659e576",
 															"type": "string",
+															"example": "f256e6ea9341d51eea64c9454659e576",
 															"x-auditable": true
 														},
 														"url": {
 															"description": "The URL used to play live video over SRT.",
-															"example": "rtmps://live.cloudflare.com:443/live/",
 															"type": "string",
+															"example": "rtmps://live.cloudflare.com:443/live/",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"status": {
 													"description": "The connection status of a live input.",
+													"type": "string",
 													"enum": [
 														null,
 														"connected",
@@ -4139,42 +4143,40 @@
 														"new_configuration_accepted"
 													],
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A unique identifier for a live input.",
+													"type": "string",
 													"example": "66be4bf738797e01e1fca35a7bdecdcd",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"webRTC": {
 													"description": "Details for streaming to a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"webRTCPlayback": {
 													"description": "Details for playback from a live input using WebRTC.",
+													"type": "object",
 													"properties": {
 														"url": {
 															"description": "The URL used to play live video over WebRTC.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
 															"x-sensitive": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4182,66 +4184,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update a live input response."
+				}
 			},
 			"4XX": {
+				"description": "Update a live input response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4250,12 +4216,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4265,25 +4231,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4291,12 +4294,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update a live input response failure."
+				}
 			}
 		},
 		"security": [
@@ -4306,7 +4307,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a live input",
 		"tags": [
 			"Stream Live Inputs"
 		],
@@ -4319,56 +4319,58 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
-		"description": "Updates the state of an output.",
 		"operationId": "stream-live-inputs-update-an-output",
+		"summary": "Update an output",
+		"description": "Updates the state of an output.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "output_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for the output.",
+					"type": "string",
 					"example": "baea4d9c515887b80289d5c33cf01145",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "live_input_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A unique identifier for a live input.",
+					"type": "string",
 					"example": "66be4bf738797e01e1fca35a7bdecdcd",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"enabled": {
-								"default": true,
 								"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": true,
 								"x-auditable": true
 							}
 						},
@@ -4377,26 +4379,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update an output response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -4405,12 +4409,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -4420,15 +4424,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -4437,12 +4441,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -4452,55 +4456,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"enabled": {
-													"default": true,
 													"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": true,
 													"x-auditable": true
 												},
 												"streamKey": {
 													"description": "The streamKey used to authenticate against an output's target.",
-													"example": "uzya-f19y-g2g9-a2ee-51j2",
 													"type": "string",
+													"example": "uzya-f19y-g2g9-a2ee-51j2",
 													"x-sensitive": true
 												},
 												"uid": {
 													"description": "A unique identifier for the output.",
+													"type": "string",
 													"example": "baea4d9c515887b80289d5c33cf01145",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"url": {
 													"description": "The URL an output uses to restream.",
-													"example": "rtmp://a.rtmp.youtube.com/live2",
 													"type": "string",
+													"example": "rtmp://a.rtmp.youtube.com/live2",
 													"x-sensitive": true
 												}
 											}
@@ -4511,66 +4513,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update an output response."
+				}
 			},
 			"4XX": {
+				"description": "Update an output response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4579,12 +4545,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4594,25 +4560,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4620,12 +4623,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update an output response failure."
+				}
 			}
 		},
 		"security": [
@@ -4635,7 +4636,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update an output",
 		"tags": [
 			"Stream Live Inputs"
 		],

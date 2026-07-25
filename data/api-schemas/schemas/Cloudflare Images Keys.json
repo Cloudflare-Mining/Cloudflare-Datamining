@@ -1,49 +1,52 @@
 {
 	"DELETE /accounts/{account_id}/images/v1/keys/{signing_key_name}": {
-		"description": "Delete a CF Images signing key with specified name. Returns all keys available.\nWhen the last key is removed, a new default signing key will be generated.\n",
 		"operationId": "cloudflare-images-keys-delete-signing-key",
+		"summary": "Delete Signing Key",
+		"description": "Delete a CF Images signing key with specified name. Returns all keys available.\nWhen the last key is removed, a new default signing key will be generated.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "signing_key_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "someKey",
 					"maxLength": 20,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Signing Key response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -58,15 +61,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -81,7 +84,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -99,11 +102,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
 											],
-											"example": true,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -112,47 +115,46 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"keys": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "Key name.",
+																"type": "string",
 																"example": "default",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
 																"description": "Key value.",
+																"type": "string",
 																"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Signing Key response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Signing Key response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -160,14 +162,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -182,15 +185,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -205,7 +208,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -223,11 +226,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -236,87 +239,59 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"keys": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"name": {
 																		"description": "Key name.",
+																		"type": "string",
 																		"example": "default",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Key value.",
+																		"type": "string",
 																		"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -331,25 +306,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -358,14 +361,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Signing Key response failure"
+				}
 			}
 		},
 		"security": [
@@ -377,7 +378,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Signing Key",
 		"tags": [
 			"Cloudflare Images Keys"
 		],
@@ -388,38 +388,41 @@
 		"x-forge-require-confirmation": "This operation will delete this signing key. This will invalidate any URLs that are signed with this key."
 	},
 	"GET /accounts/{account_id}/images/v1/keys": {
-		"description": "List your CF Images signing keys.",
 		"operationId": "cloudflare-images-keys-list-signing-keys",
+		"summary": "List Signing Keys",
+		"description": "List your CF Images signing keys.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Signing Keys response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -434,15 +437,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -457,7 +460,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -475,11 +478,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
 											],
-											"example": true,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -488,47 +491,46 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"keys": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "Key name.",
+																"type": "string",
 																"example": "default",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
 																"description": "Key value.",
+																"type": "string",
 																"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Signing Keys response"
+				}
 			},
 			"4XX": {
+				"description": "List Signing Keys response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -536,14 +538,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -558,15 +561,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -581,7 +584,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -599,11 +602,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -612,87 +615,59 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"keys": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"name": {
 																		"description": "Key name.",
+																		"type": "string",
 																		"example": "default",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Key value.",
+																		"type": "string",
 																		"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -707,25 +682,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -734,14 +737,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Signing Keys response failure"
+				}
 			}
 		},
 		"security": [
@@ -753,7 +754,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Signing Keys",
 		"tags": [
 			"Cloudflare Images Keys"
 		],
@@ -767,50 +767,53 @@
 		"x-forge-hidden": false
 	},
 	"PUT /accounts/{account_id}/images/v1/keys/{signing_key_name}": {
-		"description": "Create a new CF Images signing key with specified name. Returns all keys available.",
 		"operationId": "cloudflare-images-keys-add-signing-key",
+		"summary": "Create a new Signing Key",
+		"description": "Create a new CF Images signing key with specified name. Returns all keys available.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "signing_key_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "someKey",
 					"maxLength": 20,
 					"pattern": "^[a-zA-Z0-9]$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Add Signing Key response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -825,15 +828,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -848,7 +851,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -866,11 +869,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
 											],
-											"example": true,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -879,47 +882,46 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"keys": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"name": {
 																"description": "Key name.",
+																"type": "string",
 																"example": "default",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"value": {
 																"description": "Key value.",
+																"type": "string",
 																"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Add Signing Key response"
+				}
 			},
 			"4XX": {
+				"description": "Add Signing Key response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -927,14 +929,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -949,15 +952,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -972,7 +975,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -990,11 +993,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
 													],
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												}
 											},
@@ -1003,87 +1006,59 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"keys": {
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"name": {
 																		"description": "Key name.",
+																		"type": "string",
 																		"example": "default",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"value": {
 																		"description": "Key value.",
+																		"type": "string",
 																		"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
+																}
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer",
-																"x-auditable": true
-															},
-															"message": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
 																"type": "integer",
+																"minimum": 1000,
 																"x-auditable": true
 															},
 															"message": {
@@ -1098,25 +1073,53 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
 											],
-											"example": false,
-											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -1125,14 +1128,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Add Signing Key response failure"
+				}
 			}
 		},
 		"security": [
@@ -1144,7 +1145,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new Signing Key",
 		"tags": [
 			"Cloudflare Images Keys"
 		],

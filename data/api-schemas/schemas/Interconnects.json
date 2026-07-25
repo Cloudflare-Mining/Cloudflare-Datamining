@@ -1,19 +1,20 @@
 {
 	"DELETE /accounts/{account_id}/cni/interconnects/{icon}": {
 		"operationId": "delete_interconnect",
+		"summary": "Delete an interconnect object",
 		"parameters": [
 			{
-				"description": "Interconnect name to retrieve information about",
-				"in": "path",
 				"name": "icon",
+				"in": "path",
+				"description": "Interconnect name to retrieve information about",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -42,7 +43,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete an interconnect object",
 		"tags": [
 			"Interconnects"
 		],
@@ -53,46 +53,47 @@
 	},
 	"GET /accounts/{account_id}/cni/interconnects": {
 		"operationId": "list_interconnects",
+		"summary": "List existing interconnects",
 		"parameters": [
 			{
-				"description": "If specified, only show interconnects located at the given site",
-				"in": "query",
 				"name": "site",
+				"in": "query",
+				"description": "If specified, only show interconnects located at the given site",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"description": "If specified, only show interconnects of the given type",
-				"in": "query",
 				"name": "type",
+				"in": "query",
+				"description": "If specified, only show interconnects of the given type",
 				"schema": {
-					"nullable": true,
-					"type": "string"
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
-				"schema": {
-					"format": "int32",
-					"nullable": true,
-					"type": "integer"
-				}
-			},
-			{
 				"in": "query",
-				"name": "limit",
 				"schema": {
-					"minimum": 0,
-					"nullable": true,
-					"type": "integer"
+					"type": "integer",
+					"format": "int32",
+					"nullable": true
 				}
 			},
 			{
-				"in": "path",
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"minimum": 0,
+					"nullable": true
+				}
+			},
+			{
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -102,12 +103,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List of matching interconnect objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"items": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"discriminator": {
 											"mapping": {
 												"direct": "#/components/schemas/nsc_Interconnect_Physical_Body",
@@ -117,6 +122,7 @@
 										},
 										"oneOf": [
 											{
+												"type": "object",
 												"allOf": [
 													{
 														"properties": {
@@ -143,12 +149,13 @@
 													{
 														"properties": {
 															"facility": {
+																"type": "object",
 																"properties": {
 																	"address": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"name": {
 																		"type": "string"
@@ -157,16 +164,15 @@
 																"required": [
 																	"name",
 																	"address"
-																],
-																"type": "object"
+																]
 															},
 															"site": {
 																"description": "A Cloudflare site name.",
 																"type": "string"
 															},
 															"slot_id": {
-																"format": "uuid",
-																"type": "string"
+																"type": "string",
+																"format": "uuid"
 															},
 															"speed": {
 																"type": "string"
@@ -181,10 +187,10 @@
 														"type": "object"
 													}
 												],
-												"title": "Physical",
-												"type": "object"
+												"title": "Physical"
 											},
 											{
+												"type": "object",
 												"allOf": [
 													{
 														"properties": {
@@ -215,6 +221,7 @@
 															},
 															"speed": {
 																"description": "Bandwidth structure as visible through the customer-facing API.",
+																"type": "string",
 																"enum": [
 																	"50M",
 																	"100M",
@@ -228,8 +235,7 @@
 																	"10G",
 																	"20G",
 																	"50G"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -238,28 +244,23 @@
 														"type": "object"
 													}
 												],
-												"title": "GcpPartner",
-												"type": "object"
+												"title": "GcpPartner"
 											}
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"next": {
+									"type": "integer",
 									"format": "int32",
-									"nullable": true,
-									"type": "integer"
+									"nullable": true
 								}
 							},
 							"required": [
 								"items"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of matching interconnect objects"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -275,7 +276,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List existing interconnects",
 		"tags": [
 			"Interconnects"
 		],
@@ -288,19 +288,20 @@
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}": {
 		"operationId": "get_interconnect",
+		"summary": "Get information about an interconnect object",
 		"parameters": [
 			{
-				"description": "Interconnect name to retrieve information about",
-				"in": "path",
 				"name": "icon",
+				"in": "path",
+				"description": "Interconnect name to retrieve information about",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -310,9 +311,11 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Information about the specified interconnect",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"discriminator": {
 								"mapping": {
 									"direct": "#/components/schemas/nsc_Interconnect_Physical_Body",
@@ -322,6 +325,7 @@
 							},
 							"oneOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
 											"properties": {
@@ -348,12 +352,13 @@
 										{
 											"properties": {
 												"facility": {
+													"type": "object",
 													"properties": {
 														"address": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"name": {
 															"type": "string"
@@ -362,16 +367,15 @@
 													"required": [
 														"name",
 														"address"
-													],
-													"type": "object"
+													]
 												},
 												"site": {
 													"description": "A Cloudflare site name.",
 													"type": "string"
 												},
 												"slot_id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"speed": {
 													"type": "string"
@@ -386,10 +390,10 @@
 											"type": "object"
 										}
 									],
-									"title": "Physical",
-									"type": "object"
+									"title": "Physical"
 								},
 								{
+									"type": "object",
 									"allOf": [
 										{
 											"properties": {
@@ -420,6 +424,7 @@
 												},
 												"speed": {
 													"description": "Bandwidth structure as visible through the customer-facing API.",
+													"type": "string",
 													"enum": [
 														"50M",
 														"100M",
@@ -433,8 +438,7 @@
 														"10G",
 														"20G",
 														"50G"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -443,15 +447,12 @@
 											"type": "object"
 										}
 									],
-									"title": "GcpPartner",
-									"type": "object"
+									"title": "GcpPartner"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Information about the specified interconnect"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -470,7 +471,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get information about an interconnect object",
 		"tags": [
 			"Interconnects"
 		],
@@ -483,19 +483,20 @@
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa": {
 		"operationId": "get_interconnect_loa",
+		"summary": "Generate the Letter of Authorization (LOA) for a given interconnect",
 		"parameters": [
 			{
-				"description": "Interconnect name to retrieve information about",
-				"in": "path",
 				"name": "icon",
+				"in": "path",
+				"description": "Interconnect name to retrieve information about",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -524,7 +525,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Generate the Letter of Authorization (LOA) for a given interconnect",
 		"tags": [
 			"Interconnects"
 		],
@@ -537,19 +537,20 @@
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/status": {
 		"operationId": "get_interconnect_status",
+		"summary": "Get the current status of an interconnect object",
 		"parameters": [
 			{
-				"description": "Interconnect name to retrieve information about",
-				"in": "path",
 				"name": "icon",
+				"in": "path",
+				"description": "Interconnect name to retrieve information about",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -559,9 +560,11 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Current interconnect status",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"discriminator": {
 								"propertyName": "state"
 							},
@@ -569,10 +572,10 @@
 								{
 									"properties": {
 										"state": {
+											"type": "string",
 											"enum": [
 												"Pending"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
@@ -584,14 +587,14 @@
 									"properties": {
 										"reason": {
 											"description": "Diagnostic information, if available",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"state": {
+											"type": "string",
 											"enum": [
 												"Down"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
@@ -603,14 +606,14 @@
 									"properties": {
 										"reason": {
 											"description": "Diagnostic information, if available",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"state": {
+											"type": "string",
 											"enum": [
 												"Unhealthy"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
@@ -621,10 +624,10 @@
 								{
 									"properties": {
 										"state": {
+											"type": "string",
 											"enum": [
 												"Healthy"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
@@ -632,12 +635,10 @@
 									],
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Current interconnect status"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -656,7 +657,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get the current status of an interconnect object",
 		"tags": [
 			"Interconnects"
 		],
@@ -669,10 +669,11 @@
 	},
 	"POST /accounts/{account_id}/cni/interconnects": {
 		"operationId": "create_interconnect",
+		"summary": "Create a new interconnect",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Customer account tag",
@@ -681,9 +682,11 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"discriminator": {
 							"mapping": {
 								"direct": "#/components/schemas/nsc_InterconnectCreate_Physical_Body",
@@ -693,6 +696,7 @@
 						},
 						"oneOf": [
 							{
+								"type": "object",
 								"allOf": [
 									{
 										"properties": {
@@ -712,12 +716,12 @@
 									{
 										"properties": {
 											"slot_id": {
-												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"format": "uuid"
 											},
 											"speed": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -726,10 +730,10 @@
 										"type": "object"
 									}
 								],
-								"title": "Physical",
-								"type": "object"
+								"title": "Physical"
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
 										"properties": {
@@ -750,6 +754,7 @@
 										"properties": {
 											"bandwidth": {
 												"description": "Bandwidth structure as visible through the customer-facing API.",
+												"type": "string",
 												"enum": [
 													"50M",
 													"100M",
@@ -763,8 +768,7 @@
 													"10G",
 													"20G",
 													"50G"
-												],
-												"type": "string"
+												]
 											},
 											"pairing_key": {
 												"description": "Pairing key provided by GCP",
@@ -778,21 +782,20 @@
 										"type": "object"
 									}
 								],
-								"title": "GcpPartner",
-								"type": "object"
+								"title": "GcpPartner"
 							}
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Information about the new interconnect",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"discriminator": {
 								"mapping": {
 									"direct": "#/components/schemas/nsc_Interconnect_Physical_Body",
@@ -802,6 +805,7 @@
 							},
 							"oneOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
 											"properties": {
@@ -828,12 +832,13 @@
 										{
 											"properties": {
 												"facility": {
+													"type": "object",
 													"properties": {
 														"address": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"name": {
 															"type": "string"
@@ -842,16 +847,15 @@
 													"required": [
 														"name",
 														"address"
-													],
-													"type": "object"
+													]
 												},
 												"site": {
 													"description": "A Cloudflare site name.",
 													"type": "string"
 												},
 												"slot_id": {
-													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"speed": {
 													"type": "string"
@@ -866,10 +870,10 @@
 											"type": "object"
 										}
 									],
-									"title": "Physical",
-									"type": "object"
+									"title": "Physical"
 								},
 								{
+									"type": "object",
 									"allOf": [
 										{
 											"properties": {
@@ -900,6 +904,7 @@
 												},
 												"speed": {
 													"description": "Bandwidth structure as visible through the customer-facing API.",
+													"type": "string",
 													"enum": [
 														"50M",
 														"100M",
@@ -913,8 +918,7 @@
 														"10G",
 														"20G",
 														"50G"
-													],
-													"type": "string"
+													]
 												}
 											},
 											"required": [
@@ -923,15 +927,12 @@
 											"type": "object"
 										}
 									],
-									"title": "GcpPartner",
-									"type": "object"
+									"title": "GcpPartner"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Information about the new interconnect"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -947,7 +948,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new interconnect",
 		"tags": [
 			"Interconnects"
 		],

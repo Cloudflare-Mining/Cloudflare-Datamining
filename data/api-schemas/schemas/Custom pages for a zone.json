@@ -1,38 +1,42 @@
 {
 	"GET /zones/{zone_identifier}/custom_pages": {
-		"description": "Fetches all the custom pages at the zone level.",
 		"operationId": "custom-pages-for-a-zone-list-custom-pages",
+		"summary": "List custom pages",
+		"description": "Fetches all the custom pages at the zone level.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List custom pages response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -41,12 +45,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -56,15 +60,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -73,12 +77,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -88,136 +92,134 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_on": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"description": {
-														"example": "Basic Challenge",
 														"type": "string",
+														"example": "Basic Challenge",
 														"x-auditable": true
 													},
 													"id": {
-														"example": "basic_challenge",
 														"type": "string",
+														"example": "basic_challenge",
 														"x-auditable": true
 													},
 													"modified_on": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"preview_target": {
-														"example": "block:basic-sec-captcha",
 														"type": "string",
+														"example": "block:basic-sec-captcha",
 														"x-auditable": true
 													},
 													"required_tokens": {
-														"example": [
-															"::CAPTCHA_BOX::"
-														],
+														"type": "array",
 														"items": {
 															"type": "string"
 														},
-														"type": "array",
+														"example": [
+															"::CAPTCHA_BOX::"
+														],
 														"x-auditable": true
 													},
 													"state": {
 														"description": "The custom page state.",
+														"type": "string",
+														"example": "default",
 														"enum": [
 															"default",
 															"customized"
 														],
-														"example": "default",
-														"type": "string",
 														"x-auditable": true
 													},
 													"url": {
-														"default": "",
 														"description": "The URL associated with the custom page.",
-														"example": "http://www.example.com",
-														"format": "uri",
 														"type": "string",
+														"format": "uri",
+														"example": "http://www.example.com",
+														"default": "",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List custom pages response"
+				}
 			},
 			"4XX": {
+				"description": "List custom pages response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -225,16 +227,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -243,12 +247,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -258,15 +262,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -275,12 +279,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -290,185 +294,147 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																},
 																"total_pages": {
 																	"description": "The number of total pages in the entire result set.",
-																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_on": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															"description": {
-																"example": "Basic Challenge",
 																"type": "string",
+																"example": "Basic Challenge",
 																"x-auditable": true
 															},
 															"id": {
-																"example": "basic_challenge",
 																"type": "string",
+																"example": "basic_challenge",
 																"x-auditable": true
 															},
 															"modified_on": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															"preview_target": {
-																"example": "block:basic-sec-captcha",
 																"type": "string",
+																"example": "block:basic-sec-captcha",
 																"x-auditable": true
 															},
 															"required_tokens": {
-																"example": [
-																	"::CAPTCHA_BOX::"
-																],
+																"type": "array",
 																"items": {
 																	"type": "string"
 																},
-																"type": "array",
+																"example": [
+																	"::CAPTCHA_BOX::"
+																],
 																"x-auditable": true
 															},
 															"state": {
 																"description": "The custom page state.",
+																"type": "string",
+																"example": "default",
 																"enum": [
 																	"default",
 																	"customized"
 																],
-																"example": "default",
-																"type": "string",
 																"x-auditable": true
 															},
 															"url": {
-																"default": "",
 																"description": "The URL associated with the custom page.",
-																"example": "http://www.example.com",
-																"format": "uri",
 																"type": "string",
+																"format": "uri",
+																"example": "http://www.example.com",
+																"default": "",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -477,12 +443,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -492,25 +458,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -518,14 +521,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List custom pages response failure"
+				}
 			}
 		},
 		"security": [
@@ -534,7 +535,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List custom pages",
 		"tags": [
 			"Custom pages for a zone"
 		],
@@ -561,15 +561,18 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_identifier}/custom_pages/{identifier}": {
-		"description": "Fetches the details of a custom page.",
 		"operationId": "custom-pages-for-a-zone-get-a-custom-page",
+		"summary": "Get a custom page",
+		"description": "Fetches the details of a custom page.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Error Page Types",
+					"type": "string",
+					"example": "ratelimit_block",
 					"enum": [
 						"1000_errors",
 						"500_errors",
@@ -582,93 +585,92 @@
 						"waf_block",
 						"waf_challenge"
 					],
-					"example": "ratelimit_block",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get a custom page response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"created_on": {
-									"example": "2014-01-01T05:20:00.12345Z",
-									"format": "date-time",
 									"type": "string",
+									"format": "date-time",
+									"example": "2014-01-01T05:20:00.12345Z",
 									"x-auditable": true
 								},
 								"description": {
-									"example": "Basic Challenge",
 									"type": "string",
+									"example": "Basic Challenge",
 									"x-auditable": true
 								},
 								"id": {
-									"example": "basic_challenge",
 									"type": "string",
+									"example": "basic_challenge",
 									"x-auditable": true
 								},
 								"modified_on": {
-									"example": "2014-01-01T05:20:00.12345Z",
-									"format": "date-time",
 									"type": "string",
+									"format": "date-time",
+									"example": "2014-01-01T05:20:00.12345Z",
 									"x-auditable": true
 								},
 								"preview_target": {
-									"example": "block:basic-sec-captcha",
 									"type": "string",
+									"example": "block:basic-sec-captcha",
 									"x-auditable": true
 								},
 								"required_tokens": {
-									"example": [
-										"::CAPTCHA_BOX::"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array",
+									"example": [
+										"::CAPTCHA_BOX::"
+									],
 									"x-auditable": true
 								},
 								"state": {
 									"description": "The custom page state.",
+									"type": "string",
+									"example": "default",
 									"enum": [
 										"default",
 										"customized"
 									],
-									"example": "default",
-									"type": "string",
 									"x-auditable": true
 								},
 								"url": {
-									"default": "",
 									"description": "The URL associated with the custom page.",
-									"example": "http://www.example.com",
-									"format": "uri",
 									"type": "string",
+									"format": "uri",
+									"example": "http://www.example.com",
+									"default": "",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Get a custom page response"
+				}
 			},
 			"4XX": {
+				"description": "Get a custom page response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -676,16 +678,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -694,12 +698,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -709,15 +713,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -726,12 +730,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -741,147 +745,109 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"description": {
-															"example": "Basic Challenge",
 															"type": "string",
+															"example": "Basic Challenge",
 															"x-auditable": true
 														},
 														"id": {
-															"example": "basic_challenge",
 															"type": "string",
+															"example": "basic_challenge",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"preview_target": {
-															"example": "block:basic-sec-captcha",
 															"type": "string",
+															"example": "block:basic-sec-captcha",
 															"x-auditable": true
 														},
 														"required_tokens": {
-															"example": [
-																"::CAPTCHA_BOX::"
-															],
+															"type": "array",
 															"items": {
 																"type": "string"
 															},
-															"type": "array",
+															"example": [
+																"::CAPTCHA_BOX::"
+															],
 															"x-auditable": true
 														},
 														"state": {
 															"description": "The custom page state.",
+															"type": "string",
+															"example": "default",
 															"enum": [
 																"default",
 																"customized"
 															],
-															"example": "default",
-															"type": "string",
 															"x-auditable": true
 														},
 														"url": {
-															"default": "",
 															"description": "The URL associated with the custom page.",
-															"example": "http://www.example.com",
-															"format": "uri",
 															"type": "string",
+															"format": "uri",
+															"example": "http://www.example.com",
+															"default": "",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -890,12 +856,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -905,25 +871,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -931,14 +934,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get a custom page response failure"
+				}
 			}
 		},
 		"security": [
@@ -947,7 +948,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a custom page",
 		"tags": [
 			"Custom pages for a zone"
 		],
@@ -969,72 +969,76 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_identifier}/custom_pages/preview_tokens": {
-		"description": "Creates a signed JWT token used to preview custom pages before they are published. The API gateway rewrites zone-scoped requests to the account-level service endpoint.",
 		"operationId": "custom-pages-for-a-zone-create-preview-token",
+		"summary": "Create a preview token",
+		"description": "Creates a signed JWT token used to preview custom pages before they are published. The API gateway rewrites zone-scoped requests to the account-level service endpoint.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"act": {
 								"description": "The preview action type. Required for request parsing but not used in token generation. Typically set to \"preview\".",
-								"example": "preview",
-								"type": "string"
+								"type": "string",
+								"example": "preview"
 							},
 							"target": {
 								"description": "The target custom page type to preview (e.g. \"block:waf\"). Encoded as the \"endpoint\" claim in the resulting JWT.",
-								"example": "block:waf",
-								"type": "string"
+								"type": "string",
+								"example": "block:waf"
 							},
 							"url": {
 								"description": "The URL of the custom page content to preview. Encoded as the \"zone\" claim in the resulting JWT.",
-								"example": "https://example.com/error.html",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/error.html"
 							}
 						},
 						"required": [
 							"act",
 							"target",
 							"url"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create preview token response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1043,12 +1047,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1058,15 +1062,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1075,12 +1079,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1090,51 +1094,49 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cep_jwt": {
 													"description": "A signed JWT token used to authenticate the preview request.",
-													"example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ6b25lIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9lcnJvci5odG1sIiwiZW5kcG9pbnQiOiJibG9jazp3YWYiLCJleHAiOjE3MTYyMzkwMjJ9.example",
-													"type": "string"
+													"type": "string",
+													"example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ6b25lIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9lcnJvci5odG1sIiwiZW5kcG9pbnQiOiJibG9jazp3YWYiLCJleHAiOjE3MTYyMzkwMjJ9.example"
 												}
 											},
 											"required": [
 												"cep_jwt"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create preview token response"
+				}
 			},
 			"4XX": {
+				"description": "Create preview token response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1142,16 +1144,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1160,12 +1164,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1175,15 +1179,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1192,12 +1196,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1207,100 +1211,62 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"cep_jwt": {
 															"description": "A signed JWT token used to authenticate the preview request.",
-															"example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ6b25lIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9lcnJvci5odG1sIiwiZW5kcG9pbnQiOiJibG9jazp3YWYiLCJleHAiOjE3MTYyMzkwMjJ9.example",
-															"type": "string"
+															"type": "string",
+															"example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ6b25lIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9lcnJvci5odG1sIiwiZW5kcG9pbnQiOiJibG9jazp3YWYiLCJleHAiOjE3MTYyMzkwMjJ9.example"
 														}
 													},
 													"required": [
 														"cep_jwt"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1309,12 +1275,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1324,25 +1290,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1350,14 +1353,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create preview token response failure"
+				}
 			}
 		},
 		"security": [
@@ -1366,7 +1367,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a preview token",
 		"tags": [
 			"Custom pages for a zone"
 		],
@@ -1389,15 +1389,18 @@
 		}
 	},
 	"PUT /zones/{zone_identifier}/custom_pages/{identifier}": {
-		"description": "Updates the configuration of an existing custom page.",
 		"operationId": "custom-pages-for-a-zone-update-a-custom-page",
+		"summary": "Update a custom page",
+		"description": "Updates the configuration of an existing custom page.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Error Page Types",
+					"type": "string",
+					"example": "ratelimit_block",
 					"enum": [
 						"1000_errors",
 						"500_errors",
@@ -1410,45 +1413,44 @@
 						"waf_block",
 						"waf_challenge"
 					],
-					"example": "ratelimit_block",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"state": {
 								"description": "The custom page state.",
+								"type": "string",
+								"example": "default",
 								"enum": [
 									"default",
 									"customized"
 								],
-								"example": "default",
-								"type": "string",
 								"x-auditable": true
 							},
 							"url": {
-								"default": "",
 								"description": "The URL associated with the custom page.",
-								"example": "http://www.example.com",
-								"format": "uri",
 								"type": "string",
+								"format": "uri",
+								"example": "http://www.example.com",
+								"default": "",
 								"x-auditable": true
 							}
 						},
@@ -1458,26 +1460,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update a custom page response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1486,12 +1490,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1501,15 +1505,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1518,12 +1522,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1533,98 +1537,96 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"description": {
-													"example": "Basic Challenge",
 													"type": "string",
+													"example": "Basic Challenge",
 													"x-auditable": true
 												},
 												"id": {
-													"example": "basic_challenge",
 													"type": "string",
+													"example": "basic_challenge",
 													"x-auditable": true
 												},
 												"modified_on": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"preview_target": {
-													"example": "block:basic-sec-captcha",
 													"type": "string",
+													"example": "block:basic-sec-captcha",
 													"x-auditable": true
 												},
 												"required_tokens": {
-													"example": [
-														"::CAPTCHA_BOX::"
-													],
+													"type": "array",
 													"items": {
 														"type": "string"
 													},
-													"type": "array",
+													"example": [
+														"::CAPTCHA_BOX::"
+													],
 													"x-auditable": true
 												},
 												"state": {
 													"description": "The custom page state.",
+													"type": "string",
+													"example": "default",
 													"enum": [
 														"default",
 														"customized"
 													],
-													"example": "default",
-													"type": "string",
 													"x-auditable": true
 												},
 												"url": {
-													"default": "",
 													"description": "The URL associated with the custom page.",
-													"example": "http://www.example.com",
-													"format": "uri",
 													"type": "string",
+													"format": "uri",
+													"example": "http://www.example.com",
+													"default": "",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a custom page response"
+				}
 			},
 			"4XX": {
+				"description": "Update a custom page response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1632,16 +1634,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1650,12 +1654,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1665,15 +1669,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1682,12 +1686,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1697,147 +1701,109 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_on": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"description": {
-															"example": "Basic Challenge",
 															"type": "string",
+															"example": "Basic Challenge",
 															"x-auditable": true
 														},
 														"id": {
-															"example": "basic_challenge",
 															"type": "string",
+															"example": "basic_challenge",
 															"x-auditable": true
 														},
 														"modified_on": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"preview_target": {
-															"example": "block:basic-sec-captcha",
 															"type": "string",
+															"example": "block:basic-sec-captcha",
 															"x-auditable": true
 														},
 														"required_tokens": {
-															"example": [
-																"::CAPTCHA_BOX::"
-															],
+															"type": "array",
 															"items": {
 																"type": "string"
 															},
-															"type": "array",
+															"example": [
+																"::CAPTCHA_BOX::"
+															],
 															"x-auditable": true
 														},
 														"state": {
 															"description": "The custom page state.",
+															"type": "string",
+															"example": "default",
 															"enum": [
 																"default",
 																"customized"
 															],
-															"example": "default",
-															"type": "string",
 															"x-auditable": true
 														},
 														"url": {
-															"default": "",
 															"description": "The URL associated with the custom page.",
-															"example": "http://www.example.com",
-															"format": "uri",
 															"type": "string",
+															"format": "uri",
+															"example": "http://www.example.com",
+															"default": "",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1846,12 +1812,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1861,25 +1827,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1887,14 +1890,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update a custom page response failure"
+				}
 			}
 		},
 		"security": [
@@ -1903,7 +1904,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a custom page",
 		"tags": [
 			"Custom pages for a zone"
 		],

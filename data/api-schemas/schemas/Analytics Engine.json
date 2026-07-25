@@ -1,21 +1,32 @@
 {
 	"GET /accounts/{account_id}/analytics_engine/sql": {
-		"description": "Executes a SQL query against Workers Analytics Engine data. Pass the SQL query as a query parameter. The response uses newline-delimited JSON (NDJSON) by default, or a single JSON object when the query includes a FORMAT JSON clause. Use the POST method for longer queries that may exceed URL length limits.",
 		"operationId": "analytics-engine-sql-query-get",
+		"summary": "Execute an Analytics Engine SQL query via query parameter",
+		"description": "Executes a SQL query against Workers Analytics Engine data. Pass the SQL query as a query parameter. The response uses newline-delimited JSON (NDJSON) by default, or a single JSON object when the query includes a FORMAT JSON clause. Use the POST method for longer queries that may exceed URL length limits.",
 		"parameters": [
 			{
-				"description": "Supply a SQL query to run against your Analytics Engine datasets. Use only SELECT statements. The service validates the query against a restricted SQL grammar before execution.",
-				"in": "query",
 				"name": "query",
+				"in": "query",
+				"description": "Supply a SQL query to run against your Analytics Engine datasets. Use only SELECT statements. The service validates the query against a restricted SQL grammar before execution.",
 				"required": true,
 				"schema": {
-					"example": "SELECT blob1, count() FROM my_dataset WHERE timestamp > NOW() - INTERVAL '1' DAY GROUP BY blob1 ORDER BY count() DESC LIMIT 10",
-					"type": "string"
+					"type": "string",
+					"example": "SELECT blob1, count() FROM my_dataset WHERE timestamp > NOW() - INTERVAL '1' DAY GROUP BY blob1 ORDER BY count() DESC LIMIT 10"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Query executed successfully. Results are returned as newline-delimited JSON (NDJSON) by default. Each line is a JSON object representing one row of results. If the FORMAT JSON clause is used in the query, the response is a single JSON object with data, meta, and rows fields.\n",
+				"headers": {
+					"X-Query-Id": {
+						"description": "Unique identifier for this query execution.",
+						"schema": {
+							"type": "string",
+							"example": "01HXYZ1234ABCDEF5678"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"examples": {
@@ -48,17 +59,19 @@
 						},
 						"schema": {
 							"description": "Response structure when FORMAT JSON is specified in the query. Contains the query result rows, column metadata, and a row count.\n",
+							"type": "object",
 							"properties": {
 								"data": {
 									"description": "Array of result rows. Each row is an object with keys corresponding to the selected columns.\n",
+									"type": "array",
 									"items": {
 										"additionalProperties": true,
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"meta": {
 									"description": "Column metadata describing the name and type of each column in the result set.\n",
+									"type": "array",
 									"items": {
 										"properties": {
 											"name": {
@@ -75,8 +88,7 @@
 											"type"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"rows": {
 									"description": "Total number of rows in the result set.",
@@ -87,8 +99,7 @@
 								"data",
 								"meta",
 								"rows"
-							],
-							"type": "object"
+							]
 						}
 					},
 					"application/x-ndjson": {
@@ -103,19 +114,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Query executed successfully. Results are returned as newline-delimited JSON (NDJSON) by default. Each line is a JSON object representing one row of results. If the FORMAT JSON clause is used in the query, the response is a single JSON object with data, meta, and rows fields.\n",
-				"headers": {
-					"X-Query-Id": {
-						"description": "Unique identifier for this query execution.",
-						"schema": {
-							"example": "01HXYZ1234ABCDEF5678",
-							"type": "string"
-						}
-					}
 				}
 			},
 			"400": {
+				"description": "Bad request. The query parameter or request body is missing or malformed.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -132,10 +134,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Bad request. The query parameter or request body is missing or malformed.\n"
+				}
 			},
 			"403": {
+				"description": "Forbidden. Authentication failed, the account does not have access to Analytics Engine, or the provided token does not have the required permissions. This service returns 403 for all authentication and authorization failures (missing token, invalid token, audience mismatch, account mismatch, or insufficient entitlements).\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -148,10 +150,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Forbidden. Authentication failed, the account does not have access to Analytics Engine, or the provided token does not have the required permissions. This service returns 403 for all authentication and authorization failures (missing token, invalid token, audience mismatch, account mismatch, or insufficient entitlements).\n"
+				}
 			},
 			"422": {
+				"description": "Unprocessable Entity. The SQL query failed validation. Common causes include syntax errors, references to unknown columns, unsupported SQL features (JOINs, non-SELECT statements), type mismatches in expressions, and GROUP BY violations.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -176,10 +178,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Unprocessable Entity. The SQL query failed validation. Common causes include syntax errors, references to unknown columns, unsupported SQL features (JOINs, non-SELECT statements), type mismatches in expressions, and GROUP BY violations.\n"
+				}
 			},
 			"429": {
+				"description": "Too Many Requests. The account has exceeded the concurrent query limit, the global query pool is full, or a resource limit was hit (query too slow, too much memory, result too large).\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -204,10 +206,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Too Many Requests. The account has exceeded the concurrent query limit, the global query pool is full, or a resource limit was hit (query too slow, too much memory, result too large).\n"
+				}
 			},
 			"500": {
+				"description": "Internal Server Error. An unexpected error occurred during query execution. This may indicate a transient backend issue. Retrying the request after a brief delay is recommended.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -220,10 +222,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Internal Server Error. An unexpected error occurred during query execution. This may indicate a transient backend issue. Retrying the request after a brief delay is recommended.\n"
+				}
 			},
 			"503": {
+				"description": "Service Unavailable. The query queue wait timeout expired before a processing slot became available. This occurs under heavy load when per-account or global concurrency limits are saturated. Retry the request after a brief delay.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -236,10 +238,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Service Unavailable. The query queue wait timeout expired before a processing slot became available. This occurs under heavy load when per-account or global concurrency limits are saturated. Retry the request after a brief delay.\n"
+				}
 			},
 			"504": {
+				"description": "Gateway Timeout. The query exceeded the 60-second execution timeout. Simplify the query, narrow the time range, or add more restrictive filters to reduce execution time.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -252,8 +254,7 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Gateway Timeout. The query exceeded the 60-second execution timeout. Simplify the query, narrow the time range, or add more restrictive filters to reduce execution time.\n"
+				}
 			}
 		},
 		"security": [
@@ -261,7 +262,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Execute an Analytics Engine SQL query via query parameter",
 		"tags": [
 			"Analytics Engine"
 		],
@@ -275,9 +275,11 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/analytics_engine/sql": {
-		"description": "Executes a SQL query against Workers Analytics Engine data. Pass the SQL query in the request body as plain text. The response uses newline-delimited JSON (NDJSON) by default, or a single JSON object when the query includes a FORMAT JSON clause. Prefer this method for longer queries that may exceed URL length limits.",
 		"operationId": "analytics-engine-sql-query-post",
+		"summary": "Execute an Analytics Engine SQL query via request body",
+		"description": "Executes a SQL query against Workers Analytics Engine data. Pass the SQL query in the request body as plain text. The response uses newline-delimited JSON (NDJSON) by default, or a single JSON object when the query includes a FORMAT JSON clause. Prefer this method for longer queries that may exceed URL length limits.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"text/plain": {
 					"examples": {
@@ -299,11 +301,20 @@
 						"type": "string"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Query executed successfully. Results are returned as newline-delimited JSON (NDJSON) by default. Each line is a JSON object representing one row of results. If the FORMAT JSON clause is used in the query, the response is a single JSON object with data, meta, and rows fields.\n",
+				"headers": {
+					"X-Query-Id": {
+						"description": "Unique identifier for this query execution.",
+						"schema": {
+							"type": "string",
+							"example": "01HXYZ1234ABCDEF5678"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"examples": {
@@ -336,17 +347,19 @@
 						},
 						"schema": {
 							"description": "Response structure when FORMAT JSON is specified in the query. Contains the query result rows, column metadata, and a row count.\n",
+							"type": "object",
 							"properties": {
 								"data": {
 									"description": "Array of result rows. Each row is an object with keys corresponding to the selected columns.\n",
+									"type": "array",
 									"items": {
 										"additionalProperties": true,
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"meta": {
 									"description": "Column metadata describing the name and type of each column in the result set.\n",
+									"type": "array",
 									"items": {
 										"properties": {
 											"name": {
@@ -363,8 +376,7 @@
 											"type"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"rows": {
 									"description": "Total number of rows in the result set.",
@@ -375,8 +387,7 @@
 								"data",
 								"meta",
 								"rows"
-							],
-							"type": "object"
+							]
 						}
 					},
 					"application/x-ndjson": {
@@ -391,19 +402,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Query executed successfully. Results are returned as newline-delimited JSON (NDJSON) by default. Each line is a JSON object representing one row of results. If the FORMAT JSON clause is used in the query, the response is a single JSON object with data, meta, and rows fields.\n",
-				"headers": {
-					"X-Query-Id": {
-						"description": "Unique identifier for this query execution.",
-						"schema": {
-							"example": "01HXYZ1234ABCDEF5678",
-							"type": "string"
-						}
-					}
 				}
 			},
 			"400": {
+				"description": "Bad request. The query parameter or request body is missing or malformed.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -420,10 +422,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Bad request. The query parameter or request body is missing or malformed.\n"
+				}
 			},
 			"403": {
+				"description": "Forbidden. Authentication failed, the account does not have access to Analytics Engine, or the provided token does not have the required permissions. This service returns 403 for all authentication and authorization failures (missing token, invalid token, audience mismatch, account mismatch, or insufficient entitlements).\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -436,10 +438,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Forbidden. Authentication failed, the account does not have access to Analytics Engine, or the provided token does not have the required permissions. This service returns 403 for all authentication and authorization failures (missing token, invalid token, audience mismatch, account mismatch, or insufficient entitlements).\n"
+				}
 			},
 			"422": {
+				"description": "Unprocessable Entity. The SQL query failed validation. Common causes include syntax errors, references to unknown columns, unsupported SQL features (JOINs, non-SELECT statements), type mismatches in expressions, and GROUP BY violations.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -464,10 +466,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Unprocessable Entity. The SQL query failed validation. Common causes include syntax errors, references to unknown columns, unsupported SQL features (JOINs, non-SELECT statements), type mismatches in expressions, and GROUP BY violations.\n"
+				}
 			},
 			"429": {
+				"description": "Too Many Requests. The account has exceeded the concurrent query limit, the global query pool is full, or a resource limit was hit (query too slow, too much memory, result too large).\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -492,10 +494,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Too Many Requests. The account has exceeded the concurrent query limit, the global query pool is full, or a resource limit was hit (query too slow, too much memory, result too large).\n"
+				}
 			},
 			"500": {
+				"description": "Internal Server Error. An unexpected error occurred during query execution. This may indicate a transient backend issue. Retrying the request after a brief delay is recommended.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -508,10 +510,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Internal Server Error. An unexpected error occurred during query execution. This may indicate a transient backend issue. Retrying the request after a brief delay is recommended.\n"
+				}
 			},
 			"503": {
+				"description": "Service Unavailable. The query queue wait timeout expired before a processing slot became available. This occurs under heavy load when per-account or global concurrency limits are saturated. Retry the request after a brief delay.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -524,10 +526,10 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Service Unavailable. The query queue wait timeout expired before a processing slot became available. This occurs under heavy load when per-account or global concurrency limits are saturated. Retry the request after a brief delay.\n"
+				}
 			},
 			"504": {
+				"description": "Gateway Timeout. The query exceeded the 60-second execution timeout. Simplify the query, narrow the time range, or add more restrictive filters to reduce execution time.\n",
 				"content": {
 					"text/plain": {
 						"examples": {
@@ -540,8 +542,7 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Gateway Timeout. The query exceeded the 60-second execution timeout. Simplify the query, narrow the time range, or add more restrictive filters to reduce execution time.\n"
+				}
 			}
 		},
 		"security": [
@@ -549,7 +550,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Execute an Analytics Engine SQL query via request body",
 		"tags": [
 			"Analytics Engine"
 		],

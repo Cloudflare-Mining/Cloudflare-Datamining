@@ -1,22 +1,26 @@
 {
 	"DELETE /accounts/{account_id}/challenges/widgets/{sitekey}": {
-		"description": "Destroy a Turnstile Widget.",
 		"operationId": "accounts-turnstile-widget-delete",
+		"summary": "Delete a Turnstile Widget",
+		"description": "Destroy a Turnstile Widget.",
 		"responses": {
 			"200": {
+				"description": "Delete Turnstile Widget Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -29,15 +33,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -50,53 +54,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A Turnstile widget's detailed configuration",
+											"type": "object",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"type": "string",
+													"example": "interactive",
 													"enum": [
 														"no_clearance",
 														"jschallenge",
 														"managed",
 														"interactive"
 													],
-													"example": "interactive",
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"deployed_via": {
 													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -104,34 +110,34 @@
 														"api",
 														"unknown"
 													],
-													"example": "wrangler",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"domains": {
-													"example": [
-														"203.0.113.1",
-														"cloudflare.com",
-														"blog.example.com"
-													],
+													"type": "array",
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
 														"type": "string",
 														"x-auditable": true
 													},
-													"maxLength": 10,
-													"type": "array"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"maxLength": 10
 												},
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"last_modified_via": {
 													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -139,64 +145,62 @@
 														"api",
 														"unknown"
 													],
-													"example": "dashboard",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
+													"type": "string",
+													"example": "invisible",
 													"enum": [
 														"non-interactive",
 														"invisible",
 														"managed"
 													],
-													"example": "invisible",
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"type": "string",
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string",
 													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"region": {
-													"default": "world",
 													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+													"type": "string",
+													"default": "world",
 													"enum": [
 														"world",
 														"china"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
-													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"type": "string",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
+													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
@@ -213,65 +217,38 @@
 												"offlabel",
 												"clearance_level",
 												"ephemeral_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Turnstile Widget Response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Turnstile Widget Response Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -284,19 +261,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -304,12 +307,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Turnstile Widget Response Error"
+				}
 			}
 		},
 		"security": [
@@ -321,7 +322,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a Turnstile Widget",
 		"tags": [
 			"Turnstile"
 		],
@@ -335,23 +335,27 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/challenges/widgets": {
-		"description": "Lists all turnstile widgets of an account.",
 		"operationId": "accounts-turnstile-widgets-list",
+		"summary": "List Turnstile Widgets",
+		"description": "Lists all turnstile widgets of an account.",
 		"responses": {
 			"200": {
+				"description": "List Turnstile Widgets",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -364,15 +368,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -385,44 +389,44 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results for the requested service",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"page": {
 													"description": "Current page within paginated list of results",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page of results",
-													"example": 20,
-													"type": "number"
+													"type": "number",
+													"example": 20
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters",
-													"example": 2000,
-													"type": "number"
+													"type": "number",
+													"example": 2000
 												}
 											},
 											"required": [
@@ -430,8 +434,7 @@
 												"per_page",
 												"count",
 												"total_count"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -439,36 +442,40 @@
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
 												"description": "A Turnstile Widgets configuration as it appears in listings",
+												"type": "object",
 												"properties": {
 													"bot_fight_mode": {
 														"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"clearance_level": {
 														"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+														"type": "string",
+														"example": "interactive",
 														"enum": [
 															"no_clearance",
 															"jschallenge",
 															"managed",
 															"interactive"
 														],
-														"example": "interactive",
-														"type": "string",
 														"x-auditable": true
 													},
 													"created_on": {
 														"description": "When the widget was created.",
-														"example": "2014-01-01T05:20:00.123123Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.123123Z",
+														"readOnly": true
 													},
 													"deployed_via": {
 														"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+														"type": "string",
+														"example": "wrangler",
 														"enum": [
 															"wrangler",
 															"dashboard",
@@ -476,34 +483,34 @@
 															"api",
 															"unknown"
 														],
-														"example": "wrangler",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"domains": {
-														"example": [
-															"203.0.113.1",
-															"cloudflare.com",
-															"blog.example.com"
-														],
+														"type": "array",
 														"items": {
 															"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 															"example": "203.0.113.1",
 															"type": "string",
 															"x-auditable": true
 														},
-														"maxLength": 10,
-														"type": "array"
+														"example": [
+															"203.0.113.1",
+															"cloudflare.com",
+															"blog.example.com"
+														],
+														"maxLength": 10
 													},
 													"ephemeral_id": {
 														"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"last_modified_via": {
 														"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+														"type": "string",
+														"example": "dashboard",
 														"enum": [
 															"wrangler",
 															"dashboard",
@@ -511,58 +518,56 @@
 															"api",
 															"unknown"
 														],
-														"example": "dashboard",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"mode": {
 														"description": "Widget Mode",
+														"type": "string",
+														"example": "invisible",
 														"enum": [
 															"non-interactive",
 															"invisible",
 															"managed"
 														],
-														"example": "invisible",
-														"type": "string",
 														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "When the widget was modified.",
-														"example": "2014-01-01T05:20:00.123123Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.123123Z",
+														"readOnly": true
 													},
 													"name": {
 														"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+														"type": "string",
 														"example": "blog.cloudflare.com login form",
 														"maxLength": 254,
 														"minLength": 1,
-														"type": "string",
 														"x-auditable": true
 													},
 													"offlabel": {
 														"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-														"example": false,
 														"type": "boolean",
+														"example": false,
 														"x-auditable": true
 													},
 													"region": {
-														"default": "world",
 														"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+														"type": "string",
+														"default": "world",
 														"enum": [
 															"world",
 															"china"
 														],
-														"type": "string",
 														"x-auditable": true
 													},
 													"sitekey": {
 														"description": "Widget item identifier tag.",
+														"type": "string",
 														"example": "0x4AAF00AAAABn0R22HWm-YUc",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													}
 												},
@@ -578,67 +583,39 @@
 													"offlabel",
 													"clearance_level",
 													"ephemeral_id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Turnstile Widgets"
+				}
 			},
 			"4XX": {
+				"description": "List Turnstile Widgets Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -651,19 +628,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -671,12 +674,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Turnstile Widgets Error"
+				}
 			}
 		},
 		"security": [
@@ -688,7 +689,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Turnstile Widgets",
 		"tags": [
 			"Turnstile"
 		],
@@ -704,23 +704,27 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/challenges/widgets/{sitekey}": {
-		"description": "Show a single challenge widget configuration.",
 		"operationId": "accounts-turnstile-widget-get",
+		"summary": "Turnstile Widget Details",
+		"description": "Show a single challenge widget configuration.",
 		"responses": {
 			"200": {
+				"description": "Turnstile Widget Details Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -733,15 +737,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -754,53 +758,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A Turnstile widget's detailed configuration",
+											"type": "object",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"type": "string",
+													"example": "interactive",
 													"enum": [
 														"no_clearance",
 														"jschallenge",
 														"managed",
 														"interactive"
 													],
-													"example": "interactive",
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"deployed_via": {
 													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -808,34 +814,34 @@
 														"api",
 														"unknown"
 													],
-													"example": "wrangler",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"domains": {
-													"example": [
-														"203.0.113.1",
-														"cloudflare.com",
-														"blog.example.com"
-													],
+													"type": "array",
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
 														"type": "string",
 														"x-auditable": true
 													},
-													"maxLength": 10,
-													"type": "array"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"maxLength": 10
 												},
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"last_modified_via": {
 													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -843,64 +849,62 @@
 														"api",
 														"unknown"
 													],
-													"example": "dashboard",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
+													"type": "string",
+													"example": "invisible",
 													"enum": [
 														"non-interactive",
 														"invisible",
 														"managed"
 													],
-													"example": "invisible",
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"type": "string",
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string",
 													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"region": {
-													"default": "world",
 													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+													"type": "string",
+													"default": "world",
 													"enum": [
 														"world",
 														"china"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
-													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"type": "string",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
+													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
@@ -917,65 +921,38 @@
 												"offlabel",
 												"clearance_level",
 												"ephemeral_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Turnstile Widget Details Response"
+				}
 			},
 			"4XX": {
+				"description": "Turnstile Widget Details Response Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -988,19 +965,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1008,12 +1011,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Turnstile Widget Details Response Error"
+				}
 			}
 		},
 		"security": [
@@ -1025,7 +1026,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Turnstile Widget Details",
 		"tags": [
 			"Turnstile"
 		],
@@ -1041,85 +1041,88 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/challenges/widgets": {
-		"description": "Lists challenge widgets.",
 		"operationId": "accounts-turnstile-widget-create",
+		"summary": "Create a Turnstile Widget",
+		"description": "Lists challenge widgets.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"bot_fight_mode": {
 								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"clearance_level": {
 								"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+								"type": "string",
+								"example": "interactive",
 								"enum": [
 									"no_clearance",
 									"jschallenge",
 									"managed",
 									"interactive"
 								],
-								"example": "interactive",
-								"type": "string",
 								"x-auditable": true
 							},
 							"domains": {
-								"example": [
-									"203.0.113.1",
-									"cloudflare.com",
-									"blog.example.com"
-								],
+								"type": "array",
 								"items": {
 									"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 									"example": "203.0.113.1",
 									"type": "string",
 									"x-auditable": true
 								},
-								"maxLength": 10,
-								"type": "array"
+								"example": [
+									"203.0.113.1",
+									"cloudflare.com",
+									"blog.example.com"
+								],
+								"maxLength": 10
 							},
 							"ephemeral_id": {
 								"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"mode": {
 								"description": "Widget Mode",
+								"type": "string",
+								"example": "invisible",
 								"enum": [
 									"non-interactive",
 									"invisible",
 									"managed"
 								],
-								"example": "invisible",
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+								"type": "string",
 								"example": "blog.cloudflare.com login form",
 								"maxLength": 254,
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							},
 							"offlabel": {
 								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"region": {
-								"default": "world",
 								"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+								"type": "string",
+								"default": "world",
 								"enum": [
 									"world",
 									"china"
 								],
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1127,28 +1130,29 @@
 							"name",
 							"mode",
 							"domains"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Turnstile Widget Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1161,15 +1165,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1182,44 +1186,44 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results for the requested service",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"page": {
 													"description": "Current page within paginated list of results",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page of results",
-													"example": 20,
-													"type": "number"
+													"type": "number",
+													"example": 20
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters",
-													"example": 2000,
-													"type": "number"
+													"type": "number",
+													"example": 2000
 												}
 											},
 											"required": [
@@ -1227,8 +1231,7 @@
 												"per_page",
 												"count",
 												"total_count"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1237,34 +1240,37 @@
 									"properties": {
 										"result": {
 											"description": "A Turnstile widget's detailed configuration",
+											"type": "object",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"type": "string",
+													"example": "interactive",
 													"enum": [
 														"no_clearance",
 														"jschallenge",
 														"managed",
 														"interactive"
 													],
-													"example": "interactive",
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"deployed_via": {
 													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -1272,34 +1278,34 @@
 														"api",
 														"unknown"
 													],
-													"example": "wrangler",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"domains": {
-													"example": [
-														"203.0.113.1",
-														"cloudflare.com",
-														"blog.example.com"
-													],
+													"type": "array",
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
 														"type": "string",
 														"x-auditable": true
 													},
-													"maxLength": 10,
-													"type": "array"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"maxLength": 10
 												},
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"last_modified_via": {
 													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -1307,64 +1313,62 @@
 														"api",
 														"unknown"
 													],
-													"example": "dashboard",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
+													"type": "string",
+													"example": "invisible",
 													"enum": [
 														"non-interactive",
 														"invisible",
 														"managed"
 													],
-													"example": "invisible",
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"type": "string",
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string",
 													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"region": {
-													"default": "world",
 													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+													"type": "string",
+													"default": "world",
 													"enum": [
 														"world",
 														"china"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
-													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"type": "string",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
+													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
@@ -1381,65 +1385,38 @@
 												"offlabel",
 												"clearance_level",
 												"ephemeral_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Turnstile Widget Response"
+				}
 			},
 			"4XX": {
+				"description": "Create Turnstile Widget Response Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1452,19 +1429,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1472,12 +1475,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Turnstile Widget Response Error"
+				}
 			}
 		},
 		"security": [
@@ -1489,7 +1490,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a Turnstile Widget",
 		"tags": [
 			"Turnstile"
 		],
@@ -1503,41 +1503,45 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret": {
-		"description": "Generate a new secret key for this widget. If `invalidate_immediately`\nis set to `false`, the previous secret remains valid for 2 hours.\n\nNote that secrets cannot be rotated again during the grace period.\n",
 		"operationId": "accounts-turnstile-widget-rotate-secret",
+		"summary": "Rotate Secret for a Turnstile Widget",
+		"description": "Generate a new secret key for this widget. If `invalidate_immediately`\nis set to `false`, the previous secret remains valid for 2 hours.\n\nNote that secrets cannot be rotated again during the grace period.\n",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"invalidate_immediately": {
-								"default": false,
 								"description": "If `invalidate_immediately` is set to `false`, the previous secret will\nremain valid for two hours. Otherwise, the secret is immediately\ninvalidated, and requests using it will be rejected.\n",
 								"type": "boolean",
+								"default": false,
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Rotate Secret Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1550,15 +1554,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1571,53 +1575,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A Turnstile widget's detailed configuration",
+											"type": "object",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"type": "string",
+													"example": "interactive",
 													"enum": [
 														"no_clearance",
 														"jschallenge",
 														"managed",
 														"interactive"
 													],
-													"example": "interactive",
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"deployed_via": {
 													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -1625,34 +1631,34 @@
 														"api",
 														"unknown"
 													],
-													"example": "wrangler",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"domains": {
-													"example": [
-														"203.0.113.1",
-														"cloudflare.com",
-														"blog.example.com"
-													],
+													"type": "array",
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
 														"type": "string",
 														"x-auditable": true
 													},
-													"maxLength": 10,
-													"type": "array"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"maxLength": 10
 												},
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"last_modified_via": {
 													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -1660,64 +1666,62 @@
 														"api",
 														"unknown"
 													],
-													"example": "dashboard",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
+													"type": "string",
+													"example": "invisible",
 													"enum": [
 														"non-interactive",
 														"invisible",
 														"managed"
 													],
-													"example": "invisible",
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"type": "string",
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string",
 													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"region": {
-													"default": "world",
 													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+													"type": "string",
+													"default": "world",
 													"enum": [
 														"world",
 														"china"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
-													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"type": "string",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
+													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
@@ -1734,65 +1738,38 @@
 												"offlabel",
 												"clearance_level",
 												"ephemeral_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rotate Secret Response"
+				}
 			},
 			"4XX": {
+				"description": "Rotate Secret Response Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1805,19 +1782,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1825,12 +1828,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Rotate Secret Response Error"
+				}
 			}
 		},
 		"security": [
@@ -1842,7 +1843,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Rotate Secret for a Turnstile Widget",
 		"tags": [
 			"Turnstile"
 		],
@@ -1856,85 +1856,88 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/challenges/widgets/{sitekey}": {
-		"description": "Update the configuration of a widget.",
 		"operationId": "accounts-turnstile-widget-update",
+		"summary": "Update a Turnstile Widget",
+		"description": "Update the configuration of a widget.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"bot_fight_mode": {
 								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"clearance_level": {
 								"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+								"type": "string",
+								"example": "interactive",
 								"enum": [
 									"no_clearance",
 									"jschallenge",
 									"managed",
 									"interactive"
 								],
-								"example": "interactive",
-								"type": "string",
 								"x-auditable": true
 							},
 							"domains": {
-								"example": [
-									"203.0.113.1",
-									"cloudflare.com",
-									"blog.example.com"
-								],
+								"type": "array",
 								"items": {
 									"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 									"example": "203.0.113.1",
 									"type": "string",
 									"x-auditable": true
 								},
-								"maxLength": 10,
-								"type": "array"
+								"example": [
+									"203.0.113.1",
+									"cloudflare.com",
+									"blog.example.com"
+								],
+								"maxLength": 10
 							},
 							"ephemeral_id": {
 								"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"mode": {
 								"description": "Widget Mode",
+								"type": "string",
+								"example": "invisible",
 								"enum": [
 									"non-interactive",
 									"invisible",
 									"managed"
 								],
-								"example": "invisible",
-								"type": "string",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+								"type": "string",
 								"example": "blog.cloudflare.com login form",
 								"maxLength": 254,
 								"minLength": 1,
-								"type": "string",
 								"x-auditable": true
 							},
 							"offlabel": {
 								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-								"example": false,
 								"type": "boolean",
+								"example": false,
 								"x-auditable": true
 							},
 							"region": {
-								"default": "world",
 								"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+								"type": "string",
+								"default": "world",
 								"enum": [
 									"world",
 									"china"
 								],
-								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1942,28 +1945,29 @@
 							"name",
 							"mode",
 							"domains"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Turnstile Widget Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1976,15 +1980,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1997,53 +2001,55 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "A Turnstile widget's detailed configuration",
+											"type": "object",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"clearance_level": {
 													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"type": "string",
+													"example": "interactive",
 													"enum": [
 														"no_clearance",
 														"jschallenge",
 														"managed",
 														"interactive"
 													],
-													"example": "interactive",
-													"type": "string",
 													"x-auditable": true
 												},
 												"created_on": {
 													"description": "When the widget was created.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"deployed_via": {
 													"description": "Origin that created this widget, recorded at creation time and\nimmutable afterward. Server-derived from the create request; not\nclient-settable. Omitted from the response for widgets created\nbefore this field existed.\n",
+													"type": "string",
+													"example": "wrangler",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -2051,34 +2057,34 @@
 														"api",
 														"unknown"
 													],
-													"example": "wrangler",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"domains": {
-													"example": [
-														"203.0.113.1",
-														"cloudflare.com",
-														"blog.example.com"
-													],
+													"type": "array",
 													"items": {
 														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
 														"example": "203.0.113.1",
 														"type": "string",
 														"x-auditable": true
 													},
-													"maxLength": 10,
-													"type": "array"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"maxLength": 10
 												},
 												"ephemeral_id": {
 													"description": "Return the Ephemeral ID in /siteverify (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"last_modified_via": {
 													"description": "Origin of the most recent mutation (create, update, delete, or\nsecret rotation). Server-derived; not client-settable. Omitted for\nwidgets last mutated before this field existed.\n",
+													"type": "string",
+													"example": "dashboard",
 													"enum": [
 														"wrangler",
 														"dashboard",
@@ -2086,64 +2092,62 @@
 														"api",
 														"unknown"
 													],
-													"example": "dashboard",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"mode": {
 													"description": "Widget Mode",
+													"type": "string",
+													"example": "invisible",
 													"enum": [
 														"non-interactive",
 														"invisible",
 														"managed"
 													],
-													"example": "invisible",
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "When the widget was modified.",
-													"example": "2014-01-01T05:20:00.123123Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.123123Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"type": "string",
 													"example": "blog.cloudflare.com login form",
 													"maxLength": 254,
 													"minLength": 1,
-													"type": "string",
 													"x-auditable": true
 												},
 												"offlabel": {
 													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"region": {
-													"default": "world",
 													"description": "Region where this widget can be used. This cannot be changed after creation.\n",
+													"type": "string",
+													"default": "world",
 													"enum": [
 														"world",
 														"china"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"secret": {
 													"description": "Secret key for this widget.",
-													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"type": "string",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
 													"x-sensitive": true
 												},
 												"sitekey": {
 													"description": "Widget item identifier tag.",
+													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm-YUc",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
@@ -2160,65 +2164,38 @@
 												"offlabel",
 												"clearance_level",
 												"ephemeral_id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Turnstile Widget Response"
+				}
 			},
 			"4XX": {
+				"description": "Update Turnstile Widget Response Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2231,19 +2208,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -2251,12 +2254,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Turnstile Widget Response Error"
+				}
 			}
 		},
 		"security": [
@@ -2268,7 +2269,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a Turnstile Widget",
 		"tags": [
 			"Turnstile"
 		],

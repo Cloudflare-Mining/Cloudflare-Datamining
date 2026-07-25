@@ -1,116 +1,121 @@
 {
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report": {
-		"description": "Retrieves a list of summarised aggregate metrics over a given time period.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"operationId": "dns-firewall-analytics-table",
+		"summary": "Table",
+		"description": "Retrieves a list of summarised aggregate metrics over a given time period.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "dns_firewall_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string",
-					"x-auditable": true
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
 				"name": "metrics",
+				"in": "query",
 				"schema": {
 					"description": "A comma-separated list of metrics to query.",
-					"example": "queryCount,uncachedCount",
-					"type": "string"
+					"type": "string",
+					"example": "queryCount,uncachedCount"
 				}
 			},
 			{
-				"in": "query",
 				"name": "dimensions",
+				"in": "query",
 				"schema": {
 					"description": "A comma-separated list of dimensions to group results by.",
-					"example": "queryType",
-					"type": "string"
+					"type": "string",
+					"example": "queryType"
 				}
 			},
 			{
-				"in": "query",
 				"name": "since",
+				"in": "query",
 				"schema": {
 					"description": "Start date and time of requesting data period in ISO 8601 format.",
-					"example": "2023-11-11T12:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-11-11T12:00:00Z"
 				}
 			},
 			{
-				"in": "query",
 				"name": "until",
+				"in": "query",
 				"schema": {
 					"description": "End date and time of requesting data period in ISO 8601 format.",
-					"example": "2023-11-11T13:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-11-11T13:00:00Z"
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"default": 100000,
 					"description": "Limit number of returned metrics.",
+					"type": "integer",
 					"example": 100,
-					"type": "integer"
+					"default": 100000
 				}
 			},
 			{
-				"in": "query",
 				"name": "sort",
+				"in": "query",
 				"schema": {
 					"description": "A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
-					"example": "+responseCode,-queryName",
-					"type": "string"
+					"type": "string",
+					"example": "+responseCode,-queryName"
 				}
 			},
 			{
-				"in": "query",
 				"name": "filters",
+				"in": "query",
 				"schema": {
 					"description": "Segmentation filter in 'attribute operator value' format.",
-					"example": "responseCode==NOERROR,queryType==A",
-					"type": "string"
+					"type": "string",
+					"example": "responseCode==NOERROR,queryType==A"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Table response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -119,12 +124,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -134,15 +139,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -151,12 +156,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -166,59 +171,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"data": {
 															"description": "Array with one row per combination of dimension values.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"dimensions": {
 																		"description": "Array of dimension values, representing the combination of dimension values corresponding to this row.",
+																		"type": "array",
 																		"items": {
 																			"description": "Dimension value.",
 																			"example": "NODATA",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"dimensions"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"data_lag": {
 															"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+															"type": "number",
 															"example": 60,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"max": {
 															"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
@@ -229,68 +234,69 @@
 															"type": "object"
 														},
 														"query": {
+															"type": "object",
 															"properties": {
 																"dimensions": {
 																	"description": "Array of dimension names.",
-																	"example": [
-																		"responseCode",
-																		"queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name.",
 																		"example": "responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"responseCode",
+																		"queryName"
+																	]
 																},
 																"filters": {
 																	"description": "Segmentation filter in 'attribute operator value' format.",
-																	"example": "responseCode==NOERROR,queryType==A",
-																	"type": "string"
+																	"type": "string",
+																	"example": "responseCode==NOERROR,queryType==A"
 																},
 																"limit": {
-																	"default": 100000,
 																	"description": "Limit number of returned metrics.",
+																	"type": "integer",
 																	"example": 100,
-																	"type": "integer"
+																	"default": 100000
 																},
 																"metrics": {
 																	"description": "Array of metric names.",
-																	"example": [
-																		"queryCount",
-																		"responseTimeAvg"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Metric name.",
 																		"example": "queries",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"queryCount",
+																		"responseTimeAvg"
+																	]
 																},
 																"since": {
 																	"description": "Start date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T12:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T12:00:00Z"
 																},
 																"sort": {
 																	"description": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
-																	"example": [
-																		"+responseCode",
-																		"-queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
 																		"example": "+responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"+responseCode",
+																		"-queryName"
+																	]
 																},
 																"until": {
 																	"description": "End date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T13:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T13:00:00Z"
 																}
 															},
 															"required": [
@@ -299,14 +305,13 @@
 																"since",
 																"until",
 																"limit"
-															],
-															"type": "object"
+															]
 														},
 														"rows": {
 															"description": "Total number of rows in the result.",
+															"type": "number",
 															"example": 100,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"totals": {
 															"description": "Total results for metrics across all data (object mapping metric names to values).",
@@ -321,29 +326,28 @@
 														"data_lag",
 														"query",
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"metrics": {
 																		"description": "Array with one item per requested metric. Each item is a single value.",
+																		"type": "array",
 																		"items": {
 																			"description": "Nominal metric value.",
 																			"type": "number"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"metrics"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -351,78 +355,41 @@
 													],
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Table response"
+				}
 			},
 			"4XX": {
+				"description": "Table response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -431,12 +398,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -446,25 +413,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -472,41 +476,42 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"data": {
 															"description": "Array with one row per combination of dimension values.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"dimensions": {
 																		"description": "Array of dimension values, representing the combination of dimension values corresponding to this row.",
+																		"type": "array",
 																		"items": {
 																			"description": "Dimension value.",
 																			"example": "NODATA",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"dimensions"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"data_lag": {
 															"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+															"type": "number",
 															"example": 60,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"max": {
 															"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
@@ -517,68 +522,69 @@
 															"type": "object"
 														},
 														"query": {
+															"type": "object",
 															"properties": {
 																"dimensions": {
 																	"description": "Array of dimension names.",
-																	"example": [
-																		"responseCode",
-																		"queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name.",
 																		"example": "responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"responseCode",
+																		"queryName"
+																	]
 																},
 																"filters": {
 																	"description": "Segmentation filter in 'attribute operator value' format.",
-																	"example": "responseCode==NOERROR,queryType==A",
-																	"type": "string"
+																	"type": "string",
+																	"example": "responseCode==NOERROR,queryType==A"
 																},
 																"limit": {
-																	"default": 100000,
 																	"description": "Limit number of returned metrics.",
+																	"type": "integer",
 																	"example": 100,
-																	"type": "integer"
+																	"default": 100000
 																},
 																"metrics": {
 																	"description": "Array of metric names.",
-																	"example": [
-																		"queryCount",
-																		"responseTimeAvg"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Metric name.",
 																		"example": "queries",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"queryCount",
+																		"responseTimeAvg"
+																	]
 																},
 																"since": {
 																	"description": "Start date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T12:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T12:00:00Z"
 																},
 																"sort": {
 																	"description": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
-																	"example": [
-																		"+responseCode",
-																		"-queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
 																		"example": "+responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"+responseCode",
+																		"-queryName"
+																	]
 																},
 																"until": {
 																	"description": "End date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T13:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T13:00:00Z"
 																}
 															},
 															"required": [
@@ -587,14 +593,13 @@
 																"since",
 																"until",
 																"limit"
-															],
-															"type": "object"
+															]
 														},
 														"rows": {
 															"description": "Total number of rows in the result.",
+															"type": "number",
 															"example": 100,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"totals": {
 															"description": "Total results for metrics across all data (object mapping metric names to values).",
@@ -609,29 +614,28 @@
 														"data_lag",
 														"query",
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"metrics": {
 																		"description": "Array with one item per requested metric. Each item is a single value.",
+																		"type": "array",
 																		"items": {
 																			"description": "Nominal metric value.",
 																			"type": "number"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"metrics"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -639,18 +643,15 @@
 													],
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Table response failure"
+				}
 			}
 		},
 		"security": [
@@ -662,7 +663,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Table",
 		"tags": [
 			"DNS Firewall Analytics"
 		],
@@ -672,104 +672,107 @@
 		]
 	},
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report/bytime": {
-		"description": "Retrieves a list of aggregate metrics grouped by time interval.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"operationId": "dns-firewall-analytics-by-time",
+		"summary": "By Time",
+		"description": "Retrieves a list of aggregate metrics grouped by time interval.\n\nSee [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "dns_firewall_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier.",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string",
-					"x-auditable": true
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
 				"name": "metrics",
+				"in": "query",
 				"schema": {
 					"description": "A comma-separated list of metrics to query.",
-					"example": "queryCount,uncachedCount",
-					"type": "string"
+					"type": "string",
+					"example": "queryCount,uncachedCount"
 				}
 			},
 			{
-				"in": "query",
 				"name": "dimensions",
+				"in": "query",
 				"schema": {
 					"description": "A comma-separated list of dimensions to group results by.",
-					"example": "queryType",
-					"type": "string"
+					"type": "string",
+					"example": "queryType"
 				}
 			},
 			{
-				"in": "query",
 				"name": "since",
+				"in": "query",
 				"schema": {
 					"description": "Start date and time of requesting data period in ISO 8601 format.",
-					"example": "2023-11-11T12:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-11-11T12:00:00Z"
 				}
 			},
 			{
-				"in": "query",
 				"name": "until",
+				"in": "query",
 				"schema": {
 					"description": "End date and time of requesting data period in ISO 8601 format.",
-					"example": "2023-11-11T13:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-11-11T13:00:00Z"
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"default": 100000,
 					"description": "Limit number of returned metrics.",
+					"type": "integer",
 					"example": 100,
-					"type": "integer"
+					"default": 100000
 				}
 			},
 			{
-				"in": "query",
 				"name": "sort",
+				"in": "query",
 				"schema": {
 					"description": "A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
-					"example": "+responseCode,-queryName",
-					"type": "string"
+					"type": "string",
+					"example": "+responseCode,-queryName"
 				}
 			},
 			{
-				"in": "query",
 				"name": "filters",
+				"in": "query",
 				"schema": {
 					"description": "Segmentation filter in 'attribute operator value' format.",
-					"example": "responseCode==NOERROR,queryType==A",
-					"type": "string"
+					"type": "string",
+					"example": "responseCode==NOERROR,queryType==A"
 				}
 			},
 			{
-				"in": "query",
 				"name": "time_delta",
+				"in": "query",
 				"schema": {
 					"description": "Unit of time to group data by.",
+					"type": "string",
+					"example": "hour",
 					"enum": [
 						"all",
 						"auto",
@@ -781,29 +784,31 @@
 						"hour",
 						"dekaminute",
 						"minute"
-					],
-					"example": "hour",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "By Time response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -812,12 +817,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -827,15 +832,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -844,12 +849,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -859,59 +864,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"data": {
 															"description": "Array with one row per combination of dimension values.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"dimensions": {
 																		"description": "Array of dimension values, representing the combination of dimension values corresponding to this row.",
+																		"type": "array",
 																		"items": {
 																			"description": "Dimension value.",
 																			"example": "NODATA",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"dimensions"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"data_lag": {
 															"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+															"type": "number",
 															"example": 60,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"max": {
 															"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
@@ -922,68 +927,69 @@
 															"type": "object"
 														},
 														"query": {
+															"type": "object",
 															"properties": {
 																"dimensions": {
 																	"description": "Array of dimension names.",
-																	"example": [
-																		"responseCode",
-																		"queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name.",
 																		"example": "responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"responseCode",
+																		"queryName"
+																	]
 																},
 																"filters": {
 																	"description": "Segmentation filter in 'attribute operator value' format.",
-																	"example": "responseCode==NOERROR,queryType==A",
-																	"type": "string"
+																	"type": "string",
+																	"example": "responseCode==NOERROR,queryType==A"
 																},
 																"limit": {
-																	"default": 100000,
 																	"description": "Limit number of returned metrics.",
+																	"type": "integer",
 																	"example": 100,
-																	"type": "integer"
+																	"default": 100000
 																},
 																"metrics": {
 																	"description": "Array of metric names.",
-																	"example": [
-																		"queryCount",
-																		"responseTimeAvg"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Metric name.",
 																		"example": "queries",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"queryCount",
+																		"responseTimeAvg"
+																	]
 																},
 																"since": {
 																	"description": "Start date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T12:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T12:00:00Z"
 																},
 																"sort": {
 																	"description": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
-																	"example": [
-																		"+responseCode",
-																		"-queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
 																		"example": "+responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"+responseCode",
+																		"-queryName"
+																	]
 																},
 																"until": {
 																	"description": "End date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T13:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T13:00:00Z"
 																}
 															},
 															"required": [
@@ -992,14 +998,13 @@
 																"since",
 																"until",
 																"limit"
-															],
-															"type": "object"
+															]
 														},
 														"rows": {
 															"description": "Total number of rows in the result.",
+															"type": "number",
 															"example": 100,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"totals": {
 															"description": "Total results for metrics across all data (object mapping metric names to values).",
@@ -1014,16 +1019,17 @@
 														"data_lag",
 														"query",
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"metrics": {
 																		"description": "Array with one item per requested metric. Each item is an array of values, broken down by time interval.",
+																		"type": "array",
 																		"items": {
 																			"description": "Nominal metric values, broken down by time interval.",
 																			"items": {
@@ -1031,21 +1037,21 @@
 																				"type": "number"
 																			},
 																			"type": "array"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"metrics"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"query": {
 															"properties": {
 																"time_delta": {
 																	"description": "Unit of time to group data by.",
+																	"type": "string",
+																	"example": "hour",
 																	"enum": [
 																		"all",
 																		"auto",
@@ -1057,9 +1063,7 @@
 																		"hour",
 																		"dekaminute",
 																		"minute"
-																	],
-																	"example": "hour",
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
@@ -1069,6 +1073,7 @@
 														},
 														"time_intervals": {
 															"description": "Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time.\n",
+															"type": "array",
 															"items": {
 																"description": "Array with exactly two items, representing the start and end time (respectively) of this time interval.",
 																"items": {
@@ -1078,8 +1083,7 @@
 																	"type": "string"
 																},
 																"type": "array"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -1089,78 +1093,41 @@
 													],
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "By Time response"
+				}
 			},
 			"4XX": {
+				"description": "By Time response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1169,12 +1136,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1184,25 +1151,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1210,41 +1214,42 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"data": {
 															"description": "Array with one row per combination of dimension values.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"dimensions": {
 																		"description": "Array of dimension values, representing the combination of dimension values corresponding to this row.",
+																		"type": "array",
 																		"items": {
 																			"description": "Dimension value.",
 																			"example": "NODATA",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"dimensions"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"data_lag": {
 															"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+															"type": "number",
 															"example": 60,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"max": {
 															"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
@@ -1255,68 +1260,69 @@
 															"type": "object"
 														},
 														"query": {
+															"type": "object",
 															"properties": {
 																"dimensions": {
 																	"description": "Array of dimension names.",
-																	"example": [
-																		"responseCode",
-																		"queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name.",
 																		"example": "responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"responseCode",
+																		"queryName"
+																	]
 																},
 																"filters": {
 																	"description": "Segmentation filter in 'attribute operator value' format.",
-																	"example": "responseCode==NOERROR,queryType==A",
-																	"type": "string"
+																	"type": "string",
+																	"example": "responseCode==NOERROR,queryType==A"
 																},
 																"limit": {
-																	"default": 100000,
 																	"description": "Limit number of returned metrics.",
+																	"type": "integer",
 																	"example": 100,
-																	"type": "integer"
+																	"default": 100000
 																},
 																"metrics": {
 																	"description": "Array of metric names.",
-																	"example": [
-																		"queryCount",
-																		"responseTimeAvg"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Metric name.",
 																		"example": "queries",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"queryCount",
+																		"responseTimeAvg"
+																	]
 																},
 																"since": {
 																	"description": "Start date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T12:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T12:00:00Z"
 																},
 																"sort": {
 																	"description": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
-																	"example": [
-																		"+responseCode",
-																		"-queryName"
-																	],
+																	"type": "array",
 																	"items": {
 																		"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
 																		"example": "+responseCode",
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"example": [
+																		"+responseCode",
+																		"-queryName"
+																	]
 																},
 																"until": {
 																	"description": "End date and time of requesting data period in ISO 8601 format.",
-																	"example": "2023-11-11T13:00:00Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"type": "string"
+																	"example": "2023-11-11T13:00:00Z"
 																}
 															},
 															"required": [
@@ -1325,14 +1331,13 @@
 																"since",
 																"until",
 																"limit"
-															],
-															"type": "object"
+															]
 														},
 														"rows": {
 															"description": "Total number of rows in the result.",
+															"type": "number",
 															"example": 100,
-															"minimum": 0,
-															"type": "number"
+															"minimum": 0
 														},
 														"totals": {
 															"description": "Total results for metrics across all data (object mapping metric names to values).",
@@ -1347,16 +1352,17 @@
 														"data_lag",
 														"query",
 														"data"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"data": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"metrics": {
 																		"description": "Array with one item per requested metric. Each item is an array of values, broken down by time interval.",
+																		"type": "array",
 																		"items": {
 																			"description": "Nominal metric values, broken down by time interval.",
 																			"items": {
@@ -1364,21 +1370,21 @@
 																				"type": "number"
 																			},
 																			"type": "array"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
 																	"metrics"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"query": {
 															"properties": {
 																"time_delta": {
 																	"description": "Unit of time to group data by.",
+																	"type": "string",
+																	"example": "hour",
 																	"enum": [
 																		"all",
 																		"auto",
@@ -1390,9 +1396,7 @@
 																		"hour",
 																		"dekaminute",
 																		"minute"
-																	],
-																	"example": "hour",
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
@@ -1402,6 +1406,7 @@
 														},
 														"time_intervals": {
 															"description": "Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time.\n",
+															"type": "array",
 															"items": {
 																"description": "Array with exactly two items, representing the start and end time (respectively) of this time interval.",
 																"items": {
@@ -1411,8 +1416,7 @@
 																	"type": "string"
 																},
 																"type": "array"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
@@ -1422,18 +1426,15 @@
 													],
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "By Time response failure"
+				}
 			}
 		},
 		"security": [
@@ -1445,7 +1446,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "By Time",
 		"tags": [
 			"DNS Firewall Analytics"
 		],

@@ -1,68 +1,72 @@
 {
 	"DELETE /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
-		"description": "Remove a specific Site LAN.",
 		"operationId": "magic-site-lans-delete-lan",
+		"summary": "Delete Site LAN",
+		"description": "Remove a specific Site LAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "lan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Site LAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -75,15 +79,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -96,7 +100,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -114,11 +118,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -126,8 +130,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -145,16 +148,16 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"bond_id": {
-													"example": 2,
-													"type": "integer"
+													"type": "integer",
+													"example": 2
 												},
 												"ha_link": {
 													"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
@@ -162,10 +165,10 @@
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"is_breakout": {
 													"description": "mark true to use this LAN for source-based breakout traffic",
@@ -179,100 +182,100 @@
 													"type": "string"
 												},
 												"nat": {
+													"type": "object",
 													"properties": {
 														"static_prefix": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"routed_subnets": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"nat": {
+																"type": "object",
 																"properties": {
 																	"static_prefix": {
 																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.0/24"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"next_hop": {
 																"description": "A valid IPv4 address.",
-																"example": "192.0.2.1",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.1"
 															},
 															"prefix": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"prefix",
 															"next_hop"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"dhcp_relay": {
+															"type": "object",
 															"properties": {
 																"server_addresses": {
 																	"description": "List of DHCP server IPs.",
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"dhcp_server": {
+															"type": "object",
 															"properties": {
 																"dhcp_options": {
 																	"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+																	"type": "array",
 																	"items": {
 																		"description": "A custom DHCP option to include in DHCP responses.",
-																		"example": {
-																			"code": 66,
-																			"type": "ip",
-																			"value": "10.20.30.40"
-																		},
+																		"type": "object",
 																		"properties": {
 																			"code": {
 																				"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+																				"type": "integer",
 																				"maximum": 254,
-																				"minimum": 1,
-																				"type": "integer"
+																				"minimum": 1
 																			},
 																			"type": {
 																				"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+																				"type": "string",
 																				"enum": [
 																					"text",
 																					"hex",
@@ -280,140 +283,114 @@
 																					"byte",
 																					"short",
 																					"integer"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The option value, interpreted according to the type field.",
 																				"type": "string"
 																			}
 																		},
+																		"example": {
+																			"code": 66,
+																			"type": "ip",
+																			"value": "10.20.30.40"
+																		},
 																		"required": [
 																			"code",
 																			"type",
 																			"value"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
+																		]
+																	}
 																},
 																"dhcp_pool_end": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dhcp_pool_start": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_server": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_servers": {
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																},
 																"reservations": {
-																	"additionalProperties": {
-																		"description": "IP address associated with the MAC address",
-																		"type": "string"
-																	},
 																	"description": "Mapping of MAC addresses to IP addresses",
+																	"type": "object",
 																	"example": {
 																		"00:11:22:33:44:55": "192.0.2.100",
 																		"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 																	},
-																	"type": "object"
+																	"additionalProperties": {
+																		"description": "IP address associated with the MAC address",
+																		"type": "string"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"virtual_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Site LAN response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Site LAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -426,25 +403,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -452,12 +455,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Site LAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -467,7 +468,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Site LAN",
 		"tags": [
 			"Magic Site LANs"
 		],
@@ -492,51 +492,55 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/lans": {
-		"description": "Lists Site LANs associated with an account.",
 		"operationId": "magic-site-lans-list-lans",
+		"summary": "List Site LANs",
+		"description": "Lists Site LANs associated with an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Site LANs response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -549,15 +553,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -570,7 +574,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -588,11 +592,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -600,8 +604,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -619,17 +622,18 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"bond_id": {
-														"example": 2,
-														"type": "integer"
+														"type": "integer",
+														"example": 2
 													},
 													"ha_link": {
 														"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
@@ -637,10 +641,10 @@
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"is_breakout": {
 														"description": "mark true to use this LAN for source-based breakout traffic",
@@ -654,100 +658,100 @@
 														"type": "string"
 													},
 													"nat": {
+														"type": "object",
 														"properties": {
 															"static_prefix": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"physport": {
-														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"example": 1
 													},
 													"routed_subnets": {
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"nat": {
+																	"type": "object",
 																	"properties": {
 																		"static_prefix": {
 																			"description": "A valid CIDR notation representing an IP range.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"example": "192.0.2.0/24"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"next_hop": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"prefix": {
 																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.0/24"
 																}
 															},
 															"required": [
 																"prefix",
 																"next_hop"
-															],
-															"type": "object"
-														},
-														"type": "array"
+															]
+														}
 													},
 													"site_id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"static_addressing": {
 														"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+														"type": "object",
 														"properties": {
 															"address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															"dhcp_relay": {
+																"type": "object",
 																"properties": {
 																	"server_addresses": {
 																		"description": "List of DHCP server IPs.",
+																		"type": "array",
 																		"items": {
 																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"type": "array"
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"dhcp_server": {
+																"type": "object",
 																"properties": {
 																	"dhcp_options": {
 																		"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+																		"type": "array",
 																		"items": {
 																			"description": "A custom DHCP option to include in DHCP responses.",
-																			"example": {
-																				"code": 66,
-																				"type": "ip",
-																				"value": "10.20.30.40"
-																			},
+																			"type": "object",
 																			"properties": {
 																				"code": {
 																					"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+																					"type": "integer",
 																					"maximum": 254,
-																					"minimum": 1,
-																					"type": "integer"
+																					"minimum": 1
 																				},
 																				"type": {
 																					"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+																					"type": "string",
 																					"enum": [
 																						"text",
 																						"hex",
@@ -755,142 +759,115 @@
 																						"byte",
 																						"short",
 																						"integer"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"value": {
 																					"description": "The option value, interpreted according to the type field.",
 																					"type": "string"
 																				}
 																			},
+																			"example": {
+																				"code": 66,
+																				"type": "ip",
+																				"value": "10.20.30.40"
+																			},
 																			"required": [
 																				"code",
 																				"type",
 																				"value"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
+																			]
+																		}
 																	},
 																	"dhcp_pool_end": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.1"
 																	},
 																	"dhcp_pool_start": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.1"
 																	},
 																	"dns_server": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.1"
 																	},
 																	"dns_servers": {
+																		"type": "array",
 																		"items": {
 																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"type": "array"
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
 																	},
 																	"reservations": {
-																		"additionalProperties": {
-																			"description": "IP address associated with the MAC address",
-																			"type": "string"
-																		},
 																		"description": "Mapping of MAC addresses to IP addresses",
+																		"type": "object",
 																		"example": {
 																			"00:11:22:33:44:55": "192.0.2.100",
 																			"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 																		},
-																		"type": "object"
+																		"additionalProperties": {
+																			"description": "IP address associated with the MAC address",
+																			"type": "string"
+																		}
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"secondary_address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															"virtual_address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"address"
-														],
-														"type": "object"
+														]
 													},
 													"vlan_tag": {
 														"description": "VLAN ID. Use zero for untagged.",
-														"example": 42,
 														"type": "integer",
+														"example": 42,
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Site LANs response"
+				}
 			},
 			"4XX": {
+				"description": "List Site LANs response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -903,25 +880,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -929,12 +932,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Site LANs response failure"
+				}
 			}
 		},
 		"security": [
@@ -944,7 +945,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Site LANs",
 		"tags": [
 			"Magic Site LANs"
 		],
@@ -966,63 +966,67 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
-		"description": "Get a specific Site LAN.",
 		"operationId": "magic-site-lans-lan-details",
+		"summary": "Site LAN Details",
+		"description": "Get a specific Site LAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "lan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Site LAN Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1035,15 +1039,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1056,7 +1060,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1074,11 +1078,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1086,8 +1090,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1105,16 +1108,16 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"bond_id": {
-													"example": 2,
-													"type": "integer"
+													"type": "integer",
+													"example": 2
 												},
 												"ha_link": {
 													"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
@@ -1122,10 +1125,10 @@
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"is_breakout": {
 													"description": "mark true to use this LAN for source-based breakout traffic",
@@ -1139,100 +1142,100 @@
 													"type": "string"
 												},
 												"nat": {
+													"type": "object",
 													"properties": {
 														"static_prefix": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"routed_subnets": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"nat": {
+																"type": "object",
 																"properties": {
 																	"static_prefix": {
 																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.0/24"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"next_hop": {
 																"description": "A valid IPv4 address.",
-																"example": "192.0.2.1",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.1"
 															},
 															"prefix": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"prefix",
 															"next_hop"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"dhcp_relay": {
+															"type": "object",
 															"properties": {
 																"server_addresses": {
 																	"description": "List of DHCP server IPs.",
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"dhcp_server": {
+															"type": "object",
 															"properties": {
 																"dhcp_options": {
 																	"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+																	"type": "array",
 																	"items": {
 																		"description": "A custom DHCP option to include in DHCP responses.",
-																		"example": {
-																			"code": 66,
-																			"type": "ip",
-																			"value": "10.20.30.40"
-																		},
+																		"type": "object",
 																		"properties": {
 																			"code": {
 																				"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+																				"type": "integer",
 																				"maximum": 254,
-																				"minimum": 1,
-																				"type": "integer"
+																				"minimum": 1
 																			},
 																			"type": {
 																				"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+																				"type": "string",
 																				"enum": [
 																					"text",
 																					"hex",
@@ -1240,140 +1243,114 @@
 																					"byte",
 																					"short",
 																					"integer"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The option value, interpreted according to the type field.",
 																				"type": "string"
 																			}
 																		},
+																		"example": {
+																			"code": 66,
+																			"type": "ip",
+																			"value": "10.20.30.40"
+																		},
 																		"required": [
 																			"code",
 																			"type",
 																			"value"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
+																		]
+																	}
 																},
 																"dhcp_pool_end": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dhcp_pool_start": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_server": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_servers": {
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																},
 																"reservations": {
-																	"additionalProperties": {
-																		"description": "IP address associated with the MAC address",
-																		"type": "string"
-																	},
 																	"description": "Mapping of MAC addresses to IP addresses",
+																	"type": "object",
 																	"example": {
 																		"00:11:22:33:44:55": "192.0.2.100",
 																		"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 																	},
-																	"type": "object"
+																	"additionalProperties": {
+																		"description": "IP address associated with the MAC address",
+																		"type": "string"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"virtual_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Site LAN Details response"
+				}
 			},
 			"4XX": {
+				"description": "Site LAN Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1386,25 +1363,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1412,12 +1415,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Site LAN Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1427,7 +1428,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Site LAN Details",
 		"tags": [
 			"Magic Site LANs"
 		],
@@ -1454,54 +1454,57 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
-		"description": "Patch a specific Site LAN.",
 		"operationId": "magic-site-lans-patch-lan",
+		"summary": "Patch Site LAN",
+		"description": "Patch a specific Site LAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "lan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"bond_id": {
-								"example": 2,
-								"type": "integer"
+								"type": "integer",
+								"example": 2
 							},
 							"is_breakout": {
 								"description": "mark true to use this LAN for source-based breakout traffic",
@@ -1515,93 +1518,93 @@
 								"type": "string"
 							},
 							"nat": {
+								"type": "object",
 								"properties": {
 									"static_prefix": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"physport": {
-								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"example": 1
 							},
 							"routed_subnets": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"nat": {
+											"type": "object",
 											"properties": {
 												"static_prefix": {
 													"description": "A valid CIDR notation representing an IP range.",
-													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"example": "192.0.2.0/24"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"next_hop": {
 											"description": "A valid IPv4 address.",
-											"example": "192.0.2.1",
-											"type": "string"
+											"type": "string",
+											"example": "192.0.2.1"
 										},
 										"prefix": {
 											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+											"type": "string",
+											"example": "192.0.2.0/24"
 										}
 									},
 									"required": [
 										"prefix",
 										"next_hop"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"static_addressing": {
 								"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+								"type": "object",
 								"properties": {
 									"address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"dhcp_relay": {
+										"type": "object",
 										"properties": {
 											"server_addresses": {
 												"description": "List of DHCP server IPs.",
+												"type": "array",
 												"items": {
 													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"type": "array"
+													"type": "string",
+													"example": "192.0.2.1"
+												}
 											}
-										},
-										"type": "object"
+										}
 									},
 									"dhcp_server": {
+										"type": "object",
 										"properties": {
 											"dhcp_options": {
 												"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+												"type": "array",
 												"items": {
 													"description": "A custom DHCP option to include in DHCP responses.",
-													"example": {
-														"code": 66,
-														"type": "ip",
-														"value": "10.20.30.40"
-													},
+													"type": "object",
 													"properties": {
 														"code": {
 															"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+															"type": "integer",
 															"maximum": 254,
-															"minimum": 1,
-															"type": "integer"
+															"minimum": 1
 														},
 														"type": {
 															"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+															"type": "string",
 															"enum": [
 																"text",
 																"hex",
@@ -1609,107 +1612,108 @@
 																"byte",
 																"short",
 																"integer"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"description": "The option value, interpreted according to the type field.",
 															"type": "string"
 														}
 													},
+													"example": {
+														"code": 66,
+														"type": "ip",
+														"value": "10.20.30.40"
+													},
 													"required": [
 														"code",
 														"type",
 														"value"
-													],
-													"type": "object"
-												},
-												"type": "array"
+													]
+												}
 											},
 											"dhcp_pool_end": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dhcp_pool_start": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dns_server": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dns_servers": {
+												"type": "array",
 												"items": {
 													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"type": "array"
+													"type": "string",
+													"example": "192.0.2.1"
+												}
 											},
 											"reservations": {
-												"additionalProperties": {
-													"description": "IP address associated with the MAC address",
-													"type": "string"
-												},
 												"description": "Mapping of MAC addresses to IP addresses",
+												"type": "object",
 												"example": {
 													"00:11:22:33:44:55": "192.0.2.100",
 													"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 												},
-												"type": "object"
+												"additionalProperties": {
+													"description": "IP address associated with the MAC address",
+													"type": "string"
+												}
 											}
-										},
-										"type": "object"
+										}
 									},
 									"secondary_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"virtual_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
 								},
 								"required": [
 									"address"
-								],
-								"type": "object"
+								]
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
-								"example": 42,
 								"type": "integer",
+								"example": 42,
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Site LAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1722,15 +1726,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1743,7 +1747,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1761,11 +1765,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1773,8 +1777,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1792,16 +1795,16 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"bond_id": {
-													"example": 2,
-													"type": "integer"
+													"type": "integer",
+													"example": 2
 												},
 												"ha_link": {
 													"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
@@ -1809,10 +1812,10 @@
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"is_breakout": {
 													"description": "mark true to use this LAN for source-based breakout traffic",
@@ -1826,100 +1829,100 @@
 													"type": "string"
 												},
 												"nat": {
+													"type": "object",
 													"properties": {
 														"static_prefix": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"routed_subnets": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"nat": {
+																"type": "object",
 																"properties": {
 																	"static_prefix": {
 																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.0/24"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"next_hop": {
 																"description": "A valid IPv4 address.",
-																"example": "192.0.2.1",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.1"
 															},
 															"prefix": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"prefix",
 															"next_hop"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"dhcp_relay": {
+															"type": "object",
 															"properties": {
 																"server_addresses": {
 																	"description": "List of DHCP server IPs.",
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"dhcp_server": {
+															"type": "object",
 															"properties": {
 																"dhcp_options": {
 																	"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+																	"type": "array",
 																	"items": {
 																		"description": "A custom DHCP option to include in DHCP responses.",
-																		"example": {
-																			"code": 66,
-																			"type": "ip",
-																			"value": "10.20.30.40"
-																		},
+																		"type": "object",
 																		"properties": {
 																			"code": {
 																				"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+																				"type": "integer",
 																				"maximum": 254,
-																				"minimum": 1,
-																				"type": "integer"
+																				"minimum": 1
 																			},
 																			"type": {
 																				"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+																				"type": "string",
 																				"enum": [
 																					"text",
 																					"hex",
@@ -1927,140 +1930,114 @@
 																					"byte",
 																					"short",
 																					"integer"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The option value, interpreted according to the type field.",
 																				"type": "string"
 																			}
 																		},
+																		"example": {
+																			"code": 66,
+																			"type": "ip",
+																			"value": "10.20.30.40"
+																		},
 																		"required": [
 																			"code",
 																			"type",
 																			"value"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
+																		]
+																	}
 																},
 																"dhcp_pool_end": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dhcp_pool_start": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_server": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_servers": {
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																},
 																"reservations": {
-																	"additionalProperties": {
-																		"description": "IP address associated with the MAC address",
-																		"type": "string"
-																	},
 																	"description": "Mapping of MAC addresses to IP addresses",
+																	"type": "object",
 																	"example": {
 																		"00:11:22:33:44:55": "192.0.2.100",
 																		"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 																	},
-																	"type": "object"
+																	"additionalProperties": {
+																		"description": "IP address associated with the MAC address",
+																		"type": "string"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"virtual_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Patch Site LAN response"
+				}
 			},
 			"4XX": {
+				"description": "Patch Site LAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2073,25 +2050,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2099,12 +2102,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Site LAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -2114,7 +2115,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Patch Site LAN",
 		"tags": [
 			"Magic Site LANs"
 		],
@@ -2139,42 +2139,45 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/lans": {
-		"description": "Creates a new Site LAN. If the site is in high availability mode, static_addressing is required along with secondary and virtual address.",
 		"operationId": "magic-site-lans-create-lan",
+		"summary": "Create a new Site LAN",
+		"description": "Creates a new Site LAN. If the site is in high availability mode, static_addressing is required along with secondary and virtual address.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"bond_id": {
-								"example": 2,
-								"type": "integer"
+								"type": "integer",
+								"example": 2
 							},
 							"ha_link": {
 								"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
@@ -2192,93 +2195,93 @@
 								"type": "string"
 							},
 							"nat": {
+								"type": "object",
 								"properties": {
 									"static_prefix": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"physport": {
-								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"example": 1
 							},
 							"routed_subnets": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"nat": {
+											"type": "object",
 											"properties": {
 												"static_prefix": {
 													"description": "A valid CIDR notation representing an IP range.",
-													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"example": "192.0.2.0/24"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"next_hop": {
 											"description": "A valid IPv4 address.",
-											"example": "192.0.2.1",
-											"type": "string"
+											"type": "string",
+											"example": "192.0.2.1"
 										},
 										"prefix": {
 											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+											"type": "string",
+											"example": "192.0.2.0/24"
 										}
 									},
 									"required": [
 										"prefix",
 										"next_hop"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"static_addressing": {
 								"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+								"type": "object",
 								"properties": {
 									"address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"dhcp_relay": {
+										"type": "object",
 										"properties": {
 											"server_addresses": {
 												"description": "List of DHCP server IPs.",
+												"type": "array",
 												"items": {
 													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"type": "array"
+													"type": "string",
+													"example": "192.0.2.1"
+												}
 											}
-										},
-										"type": "object"
+										}
 									},
 									"dhcp_server": {
+										"type": "object",
 										"properties": {
 											"dhcp_options": {
 												"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+												"type": "array",
 												"items": {
 													"description": "A custom DHCP option to include in DHCP responses.",
-													"example": {
-														"code": 66,
-														"type": "ip",
-														"value": "10.20.30.40"
-													},
+													"type": "object",
 													"properties": {
 														"code": {
 															"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+															"type": "integer",
 															"maximum": 254,
-															"minimum": 1,
-															"type": "integer"
+															"minimum": 1
 														},
 														"type": {
 															"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+															"type": "string",
 															"enum": [
 																"text",
 																"hex",
@@ -2286,107 +2289,108 @@
 																"byte",
 																"short",
 																"integer"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"description": "The option value, interpreted according to the type field.",
 															"type": "string"
 														}
 													},
+													"example": {
+														"code": 66,
+														"type": "ip",
+														"value": "10.20.30.40"
+													},
 													"required": [
 														"code",
 														"type",
 														"value"
-													],
-													"type": "object"
-												},
-												"type": "array"
+													]
+												}
 											},
 											"dhcp_pool_end": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dhcp_pool_start": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dns_server": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dns_servers": {
+												"type": "array",
 												"items": {
 													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"type": "array"
+													"type": "string",
+													"example": "192.0.2.1"
+												}
 											},
 											"reservations": {
-												"additionalProperties": {
-													"description": "IP address associated with the MAC address",
-													"type": "string"
-												},
 												"description": "Mapping of MAC addresses to IP addresses",
+												"type": "object",
 												"example": {
 													"00:11:22:33:44:55": "192.0.2.100",
 													"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 												},
-												"type": "object"
+												"additionalProperties": {
+													"description": "IP address associated with the MAC address",
+													"type": "string"
+												}
 											}
-										},
-										"type": "object"
+										}
 									},
 									"secondary_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"virtual_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
 								},
 								"required": [
 									"address"
-								],
-								"type": "object"
+								]
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
-								"example": 42,
 								"type": "integer",
+								"example": 42,
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Site LAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2399,15 +2403,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2420,7 +2424,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2438,11 +2442,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2450,8 +2454,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2469,17 +2472,18 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"bond_id": {
-														"example": 2,
-														"type": "integer"
+														"type": "integer",
+														"example": 2
 													},
 													"ha_link": {
 														"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
@@ -2487,10 +2491,10 @@
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"is_breakout": {
 														"description": "mark true to use this LAN for source-based breakout traffic",
@@ -2504,100 +2508,100 @@
 														"type": "string"
 													},
 													"nat": {
+														"type": "object",
 														"properties": {
 															"static_prefix": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"physport": {
-														"example": 1,
-														"type": "integer"
+														"type": "integer",
+														"example": 1
 													},
 													"routed_subnets": {
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"nat": {
+																	"type": "object",
 																	"properties": {
 																		"static_prefix": {
 																			"description": "A valid CIDR notation representing an IP range.",
-																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"example": "192.0.2.0/24"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"next_hop": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"prefix": {
 																	"description": "A valid CIDR notation representing an IP range.",
-																	"example": "192.0.2.0/24",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.0/24"
 																}
 															},
 															"required": [
 																"prefix",
 																"next_hop"
-															],
-															"type": "object"
-														},
-														"type": "array"
+															]
+														}
 													},
 													"site_id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"static_addressing": {
 														"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+														"type": "object",
 														"properties": {
 															"address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															"dhcp_relay": {
+																"type": "object",
 																"properties": {
 																	"server_addresses": {
 																		"description": "List of DHCP server IPs.",
+																		"type": "array",
 																		"items": {
 																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"type": "array"
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"dhcp_server": {
+																"type": "object",
 																"properties": {
 																	"dhcp_options": {
 																		"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+																		"type": "array",
 																		"items": {
 																			"description": "A custom DHCP option to include in DHCP responses.",
-																			"example": {
-																				"code": 66,
-																				"type": "ip",
-																				"value": "10.20.30.40"
-																			},
+																			"type": "object",
 																			"properties": {
 																				"code": {
 																					"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+																					"type": "integer",
 																					"maximum": 254,
-																					"minimum": 1,
-																					"type": "integer"
+																					"minimum": 1
 																				},
 																				"type": {
 																					"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+																					"type": "string",
 																					"enum": [
 																						"text",
 																						"hex",
@@ -2605,142 +2609,115 @@
 																						"byte",
 																						"short",
 																						"integer"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"value": {
 																					"description": "The option value, interpreted according to the type field.",
 																					"type": "string"
 																				}
 																			},
+																			"example": {
+																				"code": 66,
+																				"type": "ip",
+																				"value": "10.20.30.40"
+																			},
 																			"required": [
 																				"code",
 																				"type",
 																				"value"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
+																			]
+																		}
 																	},
 																	"dhcp_pool_end": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.1"
 																	},
 																	"dhcp_pool_start": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.1"
 																	},
 																	"dns_server": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.1"
 																	},
 																	"dns_servers": {
+																		"type": "array",
 																		"items": {
 																			"description": "A valid IPv4 address.",
-																			"example": "192.0.2.1",
-																			"type": "string"
-																		},
-																		"type": "array"
+																			"type": "string",
+																			"example": "192.0.2.1"
+																		}
 																	},
 																	"reservations": {
-																		"additionalProperties": {
-																			"description": "IP address associated with the MAC address",
-																			"type": "string"
-																		},
 																		"description": "Mapping of MAC addresses to IP addresses",
+																		"type": "object",
 																		"example": {
 																			"00:11:22:33:44:55": "192.0.2.100",
 																			"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 																		},
-																		"type": "object"
+																		"additionalProperties": {
+																			"description": "IP address associated with the MAC address",
+																			"type": "string"
+																		}
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"secondary_address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															},
 															"virtual_address": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"address"
-														],
-														"type": "object"
+														]
 													},
 													"vlan_tag": {
 														"description": "VLAN ID. Use zero for untagged.",
-														"example": 42,
 														"type": "integer",
+														"example": 42,
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Site LAN response"
+				}
 			},
 			"4XX": {
+				"description": "Create Site LAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2753,25 +2730,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2779,12 +2782,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Site LAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -2794,7 +2795,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new Site LAN",
 		"tags": [
 			"Magic Site LANs"
 		],
@@ -2814,54 +2814,57 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
-		"description": "Update a specific Site LAN.",
 		"operationId": "magic-site-lans-update-lan",
+		"summary": "Update Site LAN",
+		"description": "Update a specific Site LAN.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "lan_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"bond_id": {
-								"example": 2,
-								"type": "integer"
+								"type": "integer",
+								"example": 2
 							},
 							"is_breakout": {
 								"description": "mark true to use this LAN for source-based breakout traffic",
@@ -2875,93 +2878,93 @@
 								"type": "string"
 							},
 							"nat": {
+								"type": "object",
 								"properties": {
 									"static_prefix": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"physport": {
-								"example": 1,
-								"type": "integer"
+								"type": "integer",
+								"example": 1
 							},
 							"routed_subnets": {
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"nat": {
+											"type": "object",
 											"properties": {
 												"static_prefix": {
 													"description": "A valid CIDR notation representing an IP range.",
-													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"example": "192.0.2.0/24"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"next_hop": {
 											"description": "A valid IPv4 address.",
-											"example": "192.0.2.1",
-											"type": "string"
+											"type": "string",
+											"example": "192.0.2.1"
 										},
 										"prefix": {
 											"description": "A valid CIDR notation representing an IP range.",
-											"example": "192.0.2.0/24",
-											"type": "string"
+											"type": "string",
+											"example": "192.0.2.0/24"
 										}
 									},
 									"required": [
 										"prefix",
 										"next_hop"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"static_addressing": {
 								"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+								"type": "object",
 								"properties": {
 									"address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"dhcp_relay": {
+										"type": "object",
 										"properties": {
 											"server_addresses": {
 												"description": "List of DHCP server IPs.",
+												"type": "array",
 												"items": {
 													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"type": "array"
+													"type": "string",
+													"example": "192.0.2.1"
+												}
 											}
-										},
-										"type": "object"
+										}
 									},
 									"dhcp_server": {
+										"type": "object",
 										"properties": {
 											"dhcp_options": {
 												"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+												"type": "array",
 												"items": {
 													"description": "A custom DHCP option to include in DHCP responses.",
-													"example": {
-														"code": 66,
-														"type": "ip",
-														"value": "10.20.30.40"
-													},
+													"type": "object",
 													"properties": {
 														"code": {
 															"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+															"type": "integer",
 															"maximum": 254,
-															"minimum": 1,
-															"type": "integer"
+															"minimum": 1
 														},
 														"type": {
 															"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+															"type": "string",
 															"enum": [
 																"text",
 																"hex",
@@ -2969,107 +2972,108 @@
 																"byte",
 																"short",
 																"integer"
-															],
-															"type": "string"
+															]
 														},
 														"value": {
 															"description": "The option value, interpreted according to the type field.",
 															"type": "string"
 														}
 													},
+													"example": {
+														"code": 66,
+														"type": "ip",
+														"value": "10.20.30.40"
+													},
 													"required": [
 														"code",
 														"type",
 														"value"
-													],
-													"type": "object"
-												},
-												"type": "array"
+													]
+												}
 											},
 											"dhcp_pool_end": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dhcp_pool_start": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dns_server": {
 												"description": "A valid IPv4 address.",
-												"example": "192.0.2.1",
-												"type": "string"
+												"type": "string",
+												"example": "192.0.2.1"
 											},
 											"dns_servers": {
+												"type": "array",
 												"items": {
 													"description": "A valid IPv4 address.",
-													"example": "192.0.2.1",
-													"type": "string"
-												},
-												"type": "array"
+													"type": "string",
+													"example": "192.0.2.1"
+												}
 											},
 											"reservations": {
-												"additionalProperties": {
-													"description": "IP address associated with the MAC address",
-													"type": "string"
-												},
 												"description": "Mapping of MAC addresses to IP addresses",
+												"type": "object",
 												"example": {
 													"00:11:22:33:44:55": "192.0.2.100",
 													"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 												},
-												"type": "object"
+												"additionalProperties": {
+													"description": "IP address associated with the MAC address",
+													"type": "string"
+												}
 											}
-										},
-										"type": "object"
+										}
 									},
 									"secondary_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									},
 									"virtual_address": {
 										"description": "A valid CIDR notation representing an IP range.",
-										"example": "192.0.2.0/24",
-										"type": "string"
+										"type": "string",
+										"example": "192.0.2.0/24"
 									}
 								},
 								"required": [
 									"address"
-								],
-								"type": "object"
+								]
 							},
 							"vlan_tag": {
 								"description": "VLAN ID. Use zero for untagged.",
-								"example": 42,
 								"type": "integer",
+								"example": 42,
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Site LAN response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3082,15 +3086,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3103,7 +3107,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3121,11 +3125,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3133,8 +3137,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -3152,16 +3155,16 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"bond_id": {
-													"example": 2,
-													"type": "integer"
+													"type": "integer",
+													"example": 2
 												},
 												"ha_link": {
 													"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
@@ -3169,10 +3172,10 @@
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"is_breakout": {
 													"description": "mark true to use this LAN for source-based breakout traffic",
@@ -3186,100 +3189,100 @@
 													"type": "string"
 												},
 												"nat": {
+													"type": "object",
 													"properties": {
 														"static_prefix": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"physport": {
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"routed_subnets": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"nat": {
+																"type": "object",
 																"properties": {
 																	"static_prefix": {
 																		"description": "A valid CIDR notation representing an IP range.",
-																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"example": "192.0.2.0/24"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"next_hop": {
 																"description": "A valid IPv4 address.",
-																"example": "192.0.2.1",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.1"
 															},
 															"prefix": {
 																"description": "A valid CIDR notation representing an IP range.",
-																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"example": "192.0.2.0/24"
 															}
 														},
 														"required": [
 															"prefix",
 															"next_hop"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												},
 												"site_id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"static_addressing": {
 													"description": "If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.",
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"dhcp_relay": {
+															"type": "object",
 															"properties": {
 																"server_addresses": {
 																	"description": "List of DHCP server IPs.",
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"dhcp_server": {
+															"type": "object",
 															"properties": {
 																"dhcp_options": {
 																	"description": "Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.",
+																	"type": "array",
 																	"items": {
 																		"description": "A custom DHCP option to include in DHCP responses.",
-																		"example": {
-																			"code": 66,
-																			"type": "ip",
-																			"value": "10.20.30.40"
-																		},
+																		"type": "object",
 																		"properties": {
 																			"code": {
 																				"description": "DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.",
+																				"type": "integer",
 																				"maximum": 254,
-																				"minimum": 1,
-																				"type": "integer"
+																				"minimum": 1
 																			},
 																			"type": {
 																				"description": "The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. \"01:04:aa:bb:cc\", max 255 bytes). ip: an IPv4 address (e.g. \"10.20.30.40\"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).\n",
+																				"type": "string",
 																				"enum": [
 																					"text",
 																					"hex",
@@ -3287,140 +3290,114 @@
 																					"byte",
 																					"short",
 																					"integer"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"description": "The option value, interpreted according to the type field.",
 																				"type": "string"
 																			}
 																		},
+																		"example": {
+																			"code": 66,
+																			"type": "ip",
+																			"value": "10.20.30.40"
+																		},
 																		"required": [
 																			"code",
 																			"type",
 																			"value"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
+																		]
+																	}
 																},
 																"dhcp_pool_end": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dhcp_pool_start": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_server": {
 																	"description": "A valid IPv4 address.",
-																	"example": "192.0.2.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "192.0.2.1"
 																},
 																"dns_servers": {
+																	"type": "array",
 																	"items": {
 																		"description": "A valid IPv4 address.",
-																		"example": "192.0.2.1",
-																		"type": "string"
-																	},
-																	"type": "array"
+																		"type": "string",
+																		"example": "192.0.2.1"
+																	}
 																},
 																"reservations": {
-																	"additionalProperties": {
-																		"description": "IP address associated with the MAC address",
-																		"type": "string"
-																	},
 																	"description": "Mapping of MAC addresses to IP addresses",
+																	"type": "object",
 																	"example": {
 																		"00:11:22:33:44:55": "192.0.2.100",
 																		"AA:BB:CC:DD:EE:FF": "192.168.1.101"
 																	},
-																	"type": "object"
+																	"additionalProperties": {
+																		"description": "IP address associated with the MAC address",
+																		"type": "string"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"secondary_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														},
 														"virtual_address": {
 															"description": "A valid CIDR notation representing an IP range.",
-															"example": "192.0.2.0/24",
-															"type": "string"
+															"type": "string",
+															"example": "192.0.2.0/24"
 														}
 													},
 													"required": [
 														"address"
-													],
-													"type": "object"
+													]
 												},
 												"vlan_tag": {
 													"description": "VLAN ID. Use zero for untagged.",
-													"example": 42,
 													"type": "integer",
+													"example": 42,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Site LAN response"
+				}
 			},
 			"4XX": {
+				"description": "Update Site LAN response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3433,25 +3410,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3459,12 +3462,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Site LAN response failure"
+				}
 			}
 		},
 		"security": [
@@ -3474,7 +3475,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Site LAN",
 		"tags": [
 			"Magic Site LANs"
 		],

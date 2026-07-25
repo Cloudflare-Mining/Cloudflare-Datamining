@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/billing/spending-limit": {
-		"description": "Remove the spending limit for the account.",
 		"operationId": "aig-billing-delete-spending-limit",
+		"summary": "Delete spending limit",
+		"description": "Remove the spending limit for the account.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -15,11 +16,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Spending limit deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -34,10 +38,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -52,13 +56,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -78,14 +82,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -93,19 +96,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Spending limit deleted."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -120,37 +124,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -165,37 +169,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -210,30 +214,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -245,7 +246,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete spending limit",
 		"tags": [
 			"AI Gateway"
 		],
@@ -269,13 +269,14 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/ai-gateway/billing/topup/config": {
-		"description": "Remove the auto top-up configuration for the account.",
 		"operationId": "aig-billing-delete-topup-config",
+		"summary": "Delete auto top-up configuration",
+		"description": "Remove the auto top-up configuration for the account.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -284,11 +285,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Auto top-up configuration deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -303,10 +307,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -321,13 +325,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -347,14 +351,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -362,19 +365,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Auto top-up configuration deleted."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -389,37 +393,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -434,37 +438,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -479,30 +483,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -514,7 +515,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete auto top-up configuration",
 		"tags": [
 			"AI Gateway"
 		],
@@ -538,13 +538,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/credit-balance": {
-		"description": "Retrieve the current credit balance, payment method info, and top-up configuration.",
 		"operationId": "aig-billing-get-credit-balance",
+		"summary": "Get credit balance",
+		"description": "Retrieve the current credit balance, payment method info, and top-up configuration.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -553,11 +554,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Credit balance retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -572,10 +576,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -590,10 +594,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"balance": {
 											"type": "number"
@@ -605,6 +609,7 @@
 											"type": "boolean"
 										},
 										"payment_method": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"brand": {
@@ -613,30 +618,30 @@
 												"last4": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"topup_config": {
+											"type": "object",
 											"properties": {
 												"amount": {
-													"nullable": true,
-													"type": "number"
+													"type": "number",
+													"nullable": true
 												},
 												"disabledReason": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"error": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"lastFailedAt": {
-													"nullable": true,
-													"type": "number"
+													"type": "number",
+													"nullable": true
 												},
 												"threshold": {
-													"nullable": true,
-													"type": "number"
+													"type": "number",
+													"nullable": true
 												}
 											},
 											"required": [
@@ -645,8 +650,7 @@
 												"error",
 												"disabledReason",
 												"lastFailedAt"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -654,10 +658,10 @@
 										"has_default_payment_method",
 										"payment_method",
 										"topup_config"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -677,14 +681,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -692,19 +695,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Credit balance retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -719,37 +723,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -764,37 +768,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -809,30 +813,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -844,7 +845,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get credit balance",
 		"tags": [
 			"AI Gateway"
 		],
@@ -869,42 +869,46 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-history": {
-		"description": "Retrieve a list of past invoices with pagination, optionally filtered by type.",
 		"operationId": "aig-billing-get-invoice-history",
+		"summary": "Get invoice history",
+		"description": "Retrieve a list of past invoices with pagination, optionally filtered by type.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter invoice type: auto, manual, or all.",
-				"in": "query",
 				"name": "type",
+				"in": "query",
+				"description": "Filter invoice type: auto, manual, or all.",
 				"schema": {
-					"default": "all",
 					"description": "Filter invoice type: auto, manual, or all.",
+					"type": "string",
+					"example": "all",
+					"default": "all",
 					"enum": [
 						"auto",
 						"all",
 						"manual"
-					],
-					"example": "all",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Invoice history retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -919,10 +923,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -937,12 +941,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"invoices": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"amount_due": {
@@ -961,8 +966,8 @@
 														"type": "boolean"
 													},
 													"auto_advance": {
-														"nullable": true,
-														"type": "boolean"
+														"type": "boolean",
+														"nullable": true
 													},
 													"created": {
 														"type": "number"
@@ -974,23 +979,23 @@
 														"type": "string"
 													},
 													"description": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"id": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"invoice_origin": {
 														"type": "string"
 													},
 													"invoice_pdf": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"status": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													}
 												},
 												"required": [
@@ -1000,10 +1005,10 @@
 													"currency"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"pagination": {
+											"type": "object",
 											"properties": {
 												"has_more": {
 													"type": "boolean"
@@ -1023,17 +1028,16 @@
 												"page",
 												"per_page",
 												"total_count"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"invoices",
 										"pagination"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -1053,14 +1057,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1068,19 +1071,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invoice history retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1095,37 +1099,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1140,37 +1144,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1185,30 +1189,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -1220,7 +1221,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get invoice history",
 		"tags": [
 			"AI Gateway"
 		],
@@ -1245,13 +1245,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-preview": {
-		"description": "Retrieve a preview of the upcoming invoice including line items and tax.",
 		"operationId": "aig-billing-get-invoice-preview",
+		"summary": "Get invoice preview",
+		"description": "Retrieve a preview of the upcoming invoice including line items and tax.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1260,11 +1261,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Invoice preview retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1279,10 +1283,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1297,10 +1301,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"amount_due": {
 											"type": "number"
@@ -1318,6 +1322,7 @@
 											"type": "string"
 										},
 										"invoice_lines": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"amount": {
@@ -1327,10 +1332,11 @@
 														"type": "string"
 													},
 													"description": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"period": {
+														"type": "object",
 														"properties": {
 															"end": {
 																"type": "number"
@@ -1342,22 +1348,22 @@
 														"required": [
 															"start",
 															"end"
-														],
-														"type": "object"
+														]
 													},
 													"pretax_credit_amounts": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"amount": {
 																	"type": "number"
 																},
 																"credit_balance_transaction": {
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"discount": {
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"type": {
 																	"type": "string"
@@ -1368,20 +1374,19 @@
 																"type"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"pricing": {
+														"type": "object",
 														"properties": {
 															"unit_amount_decimal": {
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															}
 														},
 														"required": [
 															"unit_amount_decimal"
-														],
-														"type": "object"
+														]
 													},
 													"quantity": {
 														"type": "number"
@@ -1396,8 +1401,7 @@
 													"quantity"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"period_end": {
 											"type": "number"
@@ -1406,14 +1410,14 @@
 											"type": "number"
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"draft",
 												"open",
 												"paid",
 												"uncollectible",
 												"void"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
@@ -1426,10 +1430,10 @@
 										"period_end",
 										"status",
 										"invoice_lines"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -1449,14 +1453,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1464,19 +1467,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invoice preview retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1491,37 +1495,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1536,37 +1540,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1581,30 +1585,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -1616,7 +1617,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get invoice preview",
 		"tags": [
 			"AI Gateway"
 		],
@@ -1641,13 +1641,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/spending-limit": {
-		"description": "Retrieve the current spending limit configuration for the account.",
 		"operationId": "aig-billing-get-spending-limit",
+		"summary": "Get spending limit",
+		"description": "Retrieve the current spending limit configuration for the account.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1656,11 +1657,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Spending limit configuration retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1675,10 +1679,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1693,32 +1697,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"config": {
+											"type": "object",
 											"properties": {
 												"amount": {
-													"nullable": true,
-													"type": "number"
+													"type": "number",
+													"nullable": true
 												},
 												"duration": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"strategy": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												}
 											},
 											"required": [
 												"amount",
 												"duration",
 												"strategy"
-											],
-											"type": "object"
+											]
 										},
 										"enabled": {
 											"type": "boolean"
@@ -1727,10 +1731,10 @@
 									"required": [
 										"enabled",
 										"config"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -1750,14 +1754,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1765,19 +1768,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Spending limit configuration retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1792,37 +1796,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1837,37 +1841,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1882,30 +1886,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -1917,7 +1918,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get spending limit",
 		"tags": [
 			"AI Gateway"
 		],
@@ -1942,13 +1942,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/config": {
-		"description": "Retrieve the current auto top-up threshold, amount, and any error state.",
 		"operationId": "aig-billing-get-topup-config",
+		"summary": "Get auto top-up configuration",
+		"description": "Retrieve the current auto top-up threshold, amount, and any error state.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1957,11 +1958,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Auto top-up configuration retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1976,10 +1980,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1994,30 +1998,30 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"amount": {
-											"nullable": true,
-											"type": "number"
+											"type": "number",
+											"nullable": true
 										},
 										"disabledReason": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"error": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"lastFailedAt": {
-											"nullable": true,
-											"type": "number"
+											"type": "number",
+											"nullable": true
 										},
 										"threshold": {
-											"nullable": true,
-											"type": "number"
+											"type": "number",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -2026,10 +2030,10 @@
 										"error",
 										"disabledReason",
 										"lastFailedAt"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -2049,14 +2053,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2064,19 +2067,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Auto top-up configuration retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2091,37 +2095,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2136,37 +2140,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2181,30 +2185,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -2216,7 +2217,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get auto top-up configuration",
 		"tags": [
 			"AI Gateway"
 		],
@@ -2241,13 +2241,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/limits": {
-		"description": "Retrieve the minimum and maximum allowed top-up amounts (in cents) for this account.",
 		"operationId": "aig-billing-get-topup-limits",
+		"summary": "Get account top-up limits",
+		"description": "Retrieve the minimum and maximum allowed top-up amounts (in cents) for this account.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2256,11 +2257,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Top-up limits retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2275,10 +2279,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2293,33 +2297,33 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"currency": {
 											"description": "ISO 4217 currency code.",
-											"example": "USD",
-											"type": "string"
+											"type": "string",
+											"example": "USD"
 										},
 										"max_cents": {
 											"type": "integer"
 										},
 										"min_cents": {
 											"description": "Minimum allowed top-up amount in cents.",
-											"example": 1000,
-											"type": "integer"
+											"type": "integer",
+											"example": 1000
 										}
 									},
 									"required": [
 										"min_cents",
 										"max_cents",
 										"currency"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -2339,14 +2343,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2354,19 +2357,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Top-up limits retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2381,37 +2385,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2426,37 +2430,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2471,30 +2475,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -2506,7 +2507,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get account top-up limits",
 		"tags": [
 			"AI Gateway"
 		],
@@ -2527,63 +2527,67 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/usage-history": {
-		"description": "Retrieve aggregated usage meter event summaries for the given time range.",
 		"operationId": "aig-billing-get-usage-history",
+		"summary": "Get usage history",
+		"description": "Retrieve aggregated usage meter event summaries for the given time range.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Grouping window for usage data.",
-				"in": "query",
 				"name": "value_grouping_window",
+				"in": "query",
+				"description": "Grouping window for usage data.",
 				"required": true,
 				"schema": {
 					"description": "Grouping window for usage data.",
+					"type": "string",
+					"example": "day",
 					"enum": [
 						"day",
 						"hour"
-					],
-					"example": "day",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Start time as Unix timestamp in milliseconds.",
-				"in": "query",
 				"name": "start_time",
+				"in": "query",
+				"description": "Start time as Unix timestamp in milliseconds.",
 				"schema": {
 					"description": "Start time as Unix timestamp in milliseconds.",
+					"type": "number",
 					"example": 1700000000000,
-					"nullable": true,
-					"type": "number"
+					"nullable": true
 				}
 			},
 			{
-				"description": "End time as Unix timestamp in milliseconds.",
-				"in": "query",
 				"name": "end_time",
+				"in": "query",
+				"description": "End time as Unix timestamp in milliseconds.",
 				"schema": {
 					"description": "End time as Unix timestamp in milliseconds.",
+					"type": "number",
 					"example": 1700086400000,
-					"nullable": true,
-					"type": "number"
+					"nullable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Usage history retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2598,10 +2602,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2616,12 +2620,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"history": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"aggregated_value": {
@@ -2644,16 +2649,15 @@
 													"start_time"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"history"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -2673,14 +2677,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2688,19 +2691,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Usage history retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2715,37 +2719,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2760,37 +2764,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2805,30 +2809,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -2840,7 +2841,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get usage history",
 		"tags": [
 			"AI Gateway"
 		],
@@ -2865,14 +2865,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/spending-limit": {
-		"deprecated": true,
-		"description": "Deprecated: spending limits can no longer be created, enabled, or modified and this endpoint always responds 403. Use the new AI Gateway spend limits instead: https://developers.cloudflare.com/ai-gateway/features/spend-limits/. Existing limits can be removed via DELETE /spending-limit.",
 		"operationId": "aig-billing-set-spending-limit",
+		"summary": "Set spending limit (deprecated)",
+		"description": "Deprecated: spending limits can no longer be created, enabled, or modified and this endpoint always responds 403. Use the new AI Gateway spend limits instead: https://developers.cloudflare.com/ai-gateway/features/spend-limits/. Existing limits can be removed via DELETE /spending-limit.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2880,55 +2880,58 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"amount": {
 								"description": "Spending limit amount in cents (min 100).",
+								"type": "integer",
 								"example": 10000,
-								"minimum": 100,
-								"type": "integer"
+								"minimum": 100
 							},
 							"duration": {
 								"description": "Spending limit duration.",
+								"type": "string",
+								"example": "monthly",
 								"enum": [
 									"daily",
 									"weekly",
 									"monthly"
-								],
-								"example": "monthly",
-								"type": "string"
+								]
 							},
 							"strategy": {
 								"description": "Spending limit strategy.",
+								"type": "string",
+								"example": "fixed",
 								"enum": [
 									"fixed",
 									"sliding"
-								],
-								"example": "fixed",
-								"type": "string"
+								]
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"amount",
 							"strategy",
 							"duration"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Spending limit created.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2943,10 +2946,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2961,13 +2964,13 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -2987,14 +2990,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3002,19 +3004,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Spending limit created."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3029,37 +3032,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3074,37 +3077,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3119,32 +3122,30 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -3154,7 +3155,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set spending limit (deprecated)",
 		"tags": [
 			"AI Gateway"
 		],
@@ -3178,13 +3178,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup": {
-		"description": "Create a credit top-up via Stripe PaymentIntent for the given account.",
 		"operationId": "aig-billing-create-topup",
+		"summary": "Create a top-up",
+		"description": "Create a credit top-up via Stripe PaymentIntent for the given account.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -3192,34 +3193,37 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"amount": {
 								"description": "Top-up amount in cents (min 1000).",
+								"type": "integer",
 								"example": 5000,
-								"minimum": 1000,
-								"type": "integer"
+								"minimum": 1000
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"amount"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Top-up initiated successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3234,10 +3238,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3252,10 +3256,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"brand": {
 											"description": "Card brand (visa, mastercard, etc.).",
@@ -3263,8 +3267,8 @@
 										},
 										"client_secret": {
 											"description": "Stripe PaymentIntent client secret.",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"last4": {
 											"description": "Last 4 digits of card.",
@@ -3283,10 +3287,10 @@
 										"onboarding",
 										"payment_intent_id",
 										"client_secret"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -3306,14 +3310,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3321,19 +3324,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Top-up initiated successfully."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3348,37 +3352,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3393,37 +3397,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3438,30 +3442,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -3473,7 +3474,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a top-up",
 		"tags": [
 			"AI Gateway"
 		],
@@ -3497,13 +3497,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/config": {
-		"description": "Configure auto top-up with a balance threshold and top-up amount.",
 		"operationId": "aig-billing-set-topup-config",
+		"summary": "Set auto top-up configuration",
+		"description": "Configure auto top-up with a balance threshold and top-up amount.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -3511,41 +3512,44 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"amount": {
 								"description": "Auto top-up amount in cents (min 1000).",
+								"type": "integer",
 								"example": 5000,
-								"minimum": 1000,
-								"type": "integer"
+								"minimum": 1000
 							},
 							"threshold": {
 								"description": "Balance threshold in cents that triggers auto top-up (min 500).",
+								"type": "integer",
 								"example": 500,
-								"minimum": 500,
-								"type": "integer"
+								"minimum": 500
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"threshold",
 							"amount"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Auto top-up configuration saved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3560,10 +3564,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3578,10 +3582,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"amount": {
 											"type": "number"
@@ -3593,10 +3597,10 @@
 									"required": [
 										"threshold",
 										"amount"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -3616,14 +3620,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3631,19 +3634,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Auto top-up configuration saved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3658,37 +3662,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3703,37 +3707,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3748,30 +3752,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -3783,7 +3784,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set auto top-up configuration",
 		"tags": [
 			"AI Gateway"
 		],
@@ -3807,13 +3807,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/status": {
-		"description": "Get the payment processing status of a top-up by its invoice ID.",
 		"operationId": "aig-billing-check-topup-status",
+		"summary": "Check top-up status",
+		"description": "Get the payment processing status of a top-up by its invoice ID.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -3821,33 +3822,36 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"payment_intent_id": {
 								"description": "Stripe invoice ID to check status for.",
-								"example": "in_1abc",
-								"type": "string"
+								"type": "string",
+								"example": "in_1abc"
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"payment_intent_id"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Top-up status retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3862,10 +3866,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3880,29 +3884,29 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"payment_intent_id": {
 											"type": "string"
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"completed",
 												"pending"
-											],
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"status",
 										"payment_intent_id"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"has_more": {
 											"type": "boolean"
@@ -3922,14 +3926,13 @@
 										"page",
 										"per_page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3937,19 +3940,20 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Top-up status retrieved."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -3964,37 +3968,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -4009,37 +4013,37 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -4054,30 +4058,27 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -4089,7 +4090,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Check top-up status",
 		"tags": [
 			"AI Gateway"
 		],

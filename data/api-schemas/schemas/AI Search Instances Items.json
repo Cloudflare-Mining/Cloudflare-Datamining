@@ -1,58 +1,62 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
-		"description": "Deletes a file from a managed AI Search instance and triggers a reindex.",
 		"operationId": "ai-search-namespace-instance-delete-item",
+		"summary": "Delete Item.",
+		"description": "Deletes a file from a managed AI Search instance and triggers a reindex.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Item deleted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"key": {
 											"type": "string"
@@ -60,8 +64,7 @@
 									},
 									"required": [
 										"key"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -70,19 +73,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item deleted successfully."
+				}
 			},
 			"400": {
+				"description": "This operation requires a managed instance.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -97,32 +101,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "This operation requires a managed instance."
+				}
 			},
 			"404": {
+				"description": "Item not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -137,25 +141,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item not found."
+				}
 			}
 		},
 		"security": [
@@ -167,7 +168,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Item.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -202,78 +202,80 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
-		"description": "Lists indexed items in an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-list-items",
+		"summary": "Items List.",
+		"description": "Lists indexed items in an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
-					"maxLength": 256,
-					"type": "string"
+					"type": "string",
+					"maxLength": 256
 				}
 			},
 			{
-				"description": "Sort order for items. \"status\" (default) sorts by status priority then last_seen_at. \"modified_at\" sorts by file modification time (most recent first), falling back to created_at.",
-				"in": "query",
 				"name": "sort_by",
+				"in": "query",
+				"description": "Sort order for items. \"status\" (default) sorts by status priority then last_seen_at. \"modified_at\" sorts by file modification time (most recent first), falling back to created_at.",
 				"schema": {
-					"default": "status",
 					"description": "Sort order for items. \"status\" (default) sorts by status priority then last_seen_at. \"modified_at\" sorts by file modification time (most recent first), falling back to created_at.",
+					"type": "string",
+					"default": "status",
 					"enum": [
 						"status",
 						"modified_at"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "status",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"queued",
 						"running",
@@ -281,109 +283,113 @@
 						"error",
 						"skipped",
 						"outdated"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filter items by source_id. Use \"builtin\" for uploaded files, or a source identifier like \"web-crawler:https://example.com\".",
-				"in": "query",
 				"name": "source",
+				"in": "query",
+				"description": "Filter items by source_id. Use \"builtin\" for uploaded files, or a source identifier like \"web-crawler:https://example.com\".",
 				"schema": {
 					"description": "Filter items by source_id. Use \"builtin\" for uploaded files, or a source identifier like \"web-crawler:https://example.com\".",
-					"maxLength": 512,
-					"type": "string"
+					"type": "string",
+					"maxLength": 512
 				}
 			},
 			{
-				"description": "JSON-encoded metadata filter using Vectorize filter syntax. Examples: {\"folder\":\"reports/\"}, {\"timestamp\":{\"$gte\":1700000000000}}, {\"folder\":{\"$in\":[\"docs/\",\"reports/\"]}}",
-				"in": "query",
 				"name": "metadata_filter",
+				"in": "query",
+				"description": "JSON-encoded metadata filter using Vectorize filter syntax. Examples: {\"folder\":\"reports/\"}, {\"timestamp\":{\"$gte\":1700000000000}}, {\"folder\":{\"$in\":[\"docs/\",\"reports/\"]}}",
 				"schema": {
 					"description": "JSON-encoded metadata filter using Vectorize filter syntax. Examples: {\"folder\":\"reports/\"}, {\"timestamp\":{\"$gte\":1700000000000}}, {\"folder\":{\"$in\":[\"docs/\",\"reports/\"]}}",
-					"maxLength": 2048,
-					"type": "string"
+					"type": "string",
+					"maxLength": 2048
 				}
 			},
 			{
-				"description": "Filter items by their unique ID. Returns at most one item.",
-				"in": "query",
 				"name": "item_id",
+				"in": "query",
+				"description": "Filter items by their unique ID. Returns at most one item.",
 				"schema": {
 					"description": "Filter items by their unique ID. Returns at most one item.",
-					"maxLength": 64,
-					"type": "string"
+					"type": "string",
+					"maxLength": 64
 				}
 			},
 			{
-				"description": "Filter items by their exact key (object key / filename). Keys are unique per source, so combine with `source` to disambiguate across data sources.",
-				"in": "query",
 				"name": "key",
+				"in": "query",
+				"description": "Filter items by their exact key (object key / filename). Keys are unique per source, so combine with `source` to disambiguate across data sources.",
 				"schema": {
 					"description": "Filter items by their exact key (object key / filename). Keys are unique per source, so combine with `source` to disambiguate across data sources.",
-					"maxLength": 1024,
-					"type": "string"
+					"type": "string",
+					"maxLength": 1024
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the AI Search items.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"checksum": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"chunks_count": {
+												"type": "integer",
 												"nullable": true,
 												"readOnly": true,
-												"type": "integer",
 												"x-auditable": true
 											},
 											"created_at": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"error": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"file_size": {
+												"type": "number",
 												"nullable": true,
 												"readOnly": true,
-												"type": "number",
 												"x-auditable": true
 											},
 											"id": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"key": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"last_seen_at": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"metadata": {
+												"description": "Built-in, configured filterable, and retained source metadata for the item.",
+												"type": "object",
 												"additionalProperties": {
 													"anyOf": [
 														{
@@ -397,32 +403,31 @@
 														}
 													]
 												},
-												"description": "Built-in, configured filterable, and retained source metadata for the item.",
 												"nullable": true,
-												"readOnly": true,
-												"type": "object"
+												"readOnly": true
 											},
 											"namespace": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"next_action": {
+												"type": "string",
 												"enum": [
 													"INDEX",
 													"DELETE",
 													null
 												],
 												"nullable": true,
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"source_id": {
 												"description": "Identifies which data source this item belongs to. \"builtin\" for uploaded files, \"{type}:{source}\" for external sources, null for legacy items.",
+												"type": "string",
 												"nullable": true,
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"status": {
+												"type": "string",
 												"enum": [
 													"queued",
 													"running",
@@ -431,8 +436,7 @@
 													"skipped",
 													"outdated"
 												],
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											}
 										},
 										"required": [
@@ -450,10 +454,10 @@
 											"created_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -462,10 +466,10 @@
 											"type": "integer"
 										},
 										"per_page": {
+											"type": "integer",
 											"default": 20,
 											"maximum": 50,
-											"minimum": 5,
-											"type": "integer"
+											"minimum": 5
 										},
 										"total_count": {
 											"type": "integer"
@@ -475,8 +479,7 @@
 										"count",
 										"page",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -486,19 +489,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the AI Search items."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -508,10 +512,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -520,32 +524,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -560,32 +564,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -600,25 +604,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -630,7 +631,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Items List.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -661,99 +661,105 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
-		"description": "Retrieves a specific indexed item from an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-get-item",
+		"summary": "Get Item.",
+		"description": "Retrieves a specific indexed item from an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a AI Search Item detail.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"checksum": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"chunks_count": {
+											"type": "integer",
 											"nullable": true,
 											"readOnly": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"file_size": {
+											"type": "number",
 											"nullable": true,
 											"readOnly": true,
-											"type": "number",
 											"x-auditable": true
 										},
 										"id": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"key": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"last_seen_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"metadata": {
+											"description": "Built-in, configured filterable, and retained source metadata for the item.",
+											"type": "object",
 											"additionalProperties": {
 												"anyOf": [
 													{
@@ -767,32 +773,31 @@
 													}
 												]
 											},
-											"description": "Built-in, configured filterable, and retained source metadata for the item.",
 											"nullable": true,
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"namespace": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"next_action": {
+											"type": "string",
 											"enum": [
 												"INDEX",
 												"DELETE",
 												null
 											],
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"source_id": {
 											"description": "Identifies which data source this item belongs to. \"builtin\" for uploaded files, \"{type}:{source}\" for external sources, null for legacy items.",
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -801,8 +806,7 @@
 												"skipped",
 												"outdated"
 											],
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -818,8 +822,7 @@
 										"source_id",
 										"last_seen_at",
 										"created_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -828,19 +831,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a AI Search Item detail."
+				}
 			},
 			"404": {
+				"description": "Job not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -855,32 +859,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -895,25 +899,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -925,7 +926,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Item.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -960,78 +960,82 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/chunks": {
-		"description": "Lists chunks for a specific item in an AI Search instance, including their text content.",
 		"operationId": "ai-search-namespace-instance-list-item-chunks",
+		"summary": "List Item Chunks.",
+		"description": "Lists chunks for a specific item in an AI Search instance, including their text content.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
-				"name": "limit",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
 				"schema": {
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 0,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the AI Search item chunks with text content.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"end_byte": {
@@ -1041,13 +1045,14 @@
 												"type": "string"
 											},
 											"item": {
+												"type": "object",
 												"properties": {
 													"key": {
 														"type": "string"
 													},
 													"metadata": {
-														"additionalProperties": true,
-														"type": "object"
+														"type": "object",
+														"additionalProperties": true
 													},
 													"timestamp": {
 														"type": "number"
@@ -1055,8 +1060,7 @@
 												},
 												"required": [
 													"key"
-												],
-												"type": "object"
+												]
 											},
 											"start_byte": {
 												"type": "number"
@@ -1071,10 +1075,10 @@
 											"item"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -1094,8 +1098,7 @@
 										"total",
 										"limit",
 										"offset"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1105,19 +1108,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the AI Search item chunks with text content."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1127,10 +1131,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -1139,32 +1143,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Item not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1179,32 +1183,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1219,25 +1223,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -1249,7 +1250,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Item Chunks.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -1284,70 +1284,74 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/download": {
-		"description": "Downloads the raw file content for a specific item from the managed AI Search instance storage.",
 		"operationId": "ai-search-namespace-instance-get-item-content",
+		"summary": "Download Item Content.",
+		"description": "Downloads the raw file content for a specific item from the managed AI Search instance storage.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Raw file content.",
 				"content": {
 					"application/octet-stream": {
 						"schema": {
-							"format": "binary",
-							"type": "string"
+							"type": "string",
+							"format": "binary"
 						}
 					}
-				},
-				"description": "Raw file content."
+				}
 			},
 			"400": {
+				"description": "Content download not available for external source items.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1362,32 +1366,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Content download not available for external source items."
+				}
 			},
 			"404": {
+				"description": "Item not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1402,32 +1406,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1442,25 +1446,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -1472,7 +1473,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Download Item Content.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -1507,104 +1507,108 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/logs": {
-		"description": "Lists processing logs for a specific item in an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-logs-item",
+		"summary": "Item Logs.",
+		"description": "Lists processing logs for a specific item in an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
-				"name": "limit",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
 				"schema": {
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"type": "integer",
 					"default": 50,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
 				"schema": {
-					"maxLength": 512,
-					"type": "string"
+					"type": "string",
+					"maxLength": 512
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the AI Search item logs.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"action": {
 												"type": "string"
 											},
 											"chunkCount": {
-												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"nullable": true
 											},
 											"errorType": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"fileKey": {
 												"type": "string"
 											},
 											"message": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"processingTimeMs": {
-												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"nullable": true
 											},
 											"timestamp": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											}
 										},
 										"required": [
@@ -1617,17 +1621,17 @@
 											"errorType"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
 										},
 										"cursor": {
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"per_page": {
 											"type": "integer"
@@ -1641,8 +1645,7 @@
 										"per_page",
 										"cursor",
 										"truncated"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1652,19 +1655,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the AI Search item logs."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1674,10 +1678,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -1686,32 +1690,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Item not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1726,32 +1730,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item not found."
+				}
 			},
 			"503": {
+				"description": "Unable to connect to ai search.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1766,25 +1770,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to connect to ai search."
+				}
 			}
 		},
 		"security": [
@@ -1796,7 +1797,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Item Logs.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -1831,124 +1831,130 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
-		"description": "Syncs an item to an AI Search instance index.",
 		"operationId": "ai-search-namespace-instance-sync-item",
+		"summary": "Sync Item.",
+		"description": "Syncs an item to an AI Search instance index.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "item_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"next_action": {
+								"type": "string",
 								"enum": [
 									"INDEX"
-								],
-								"type": "string"
+								]
 							},
 							"wait_for_completion": {
-								"default": false,
 								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							}
 						},
 						"required": [
 							"next_action"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns a AI Search Item detail.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"checksum": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"chunks_count": {
+											"type": "integer",
 											"nullable": true,
 											"readOnly": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"file_size": {
+											"type": "number",
 											"nullable": true,
 											"readOnly": true,
-											"type": "number",
 											"x-auditable": true
 										},
 										"id": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"key": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"last_seen_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"metadata": {
+											"description": "Built-in, configured filterable, and retained source metadata for the item.",
+											"type": "object",
 											"additionalProperties": {
 												"anyOf": [
 													{
@@ -1962,32 +1968,31 @@
 													}
 												]
 											},
-											"description": "Built-in, configured filterable, and retained source metadata for the item.",
 											"nullable": true,
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"namespace": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"next_action": {
+											"type": "string",
 											"enum": [
 												"INDEX",
 												"DELETE",
 												null
 											],
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"source_id": {
 											"description": "Identifies which data source this item belongs to. \"builtin\" for uploaded files, \"{type}:{source}\" for external sources, null for legacy items.",
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -1996,8 +2001,7 @@
 												"skipped",
 												"outdated"
 											],
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -2013,8 +2017,7 @@
 										"source_id",
 										"last_seen_at",
 										"created_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2023,19 +2026,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a AI Search Item detail."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2045,10 +2049,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -2057,32 +2061,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2097,32 +2101,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"503": {
+				"description": "Unable to sync item.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2137,25 +2141,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to sync item."
+				}
 			}
 		},
 		"security": [
@@ -2167,7 +2168,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Sync Item.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -2206,119 +2206,125 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
-		"description": "Uploads a file to a managed AI Search instance via multipart/form-data.",
 		"operationId": "ai-search-namespace-instance-upload-item",
+		"summary": "Upload Item.",
+		"description": "Uploads a file to a managed AI Search instance via multipart/form-data.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"requestBody": {
 			"content": {
 				"multipart/form-data": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"file": {
 								"description": "The file to upload. Filename must not exceed 128 characters.",
-								"format": "binary",
-								"type": "string"
+								"type": "string",
+								"format": "binary"
 							},
 							"metadata": {
 								"description": "JSON string of custom metadata key-value pairs.",
 								"type": "string"
 							},
 							"wait_for_completion": {
-								"default": false,
 								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							}
 						},
 						"required": [
 							"file"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Item uploaded successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"checksum": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"chunks_count": {
+											"type": "integer",
 											"nullable": true,
 											"readOnly": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"file_size": {
+											"type": "number",
 											"nullable": true,
 											"readOnly": true,
-											"type": "number",
 											"x-auditable": true
 										},
 										"id": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"key": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"last_seen_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"metadata": {
+											"description": "Built-in, configured filterable, and retained source metadata for the item.",
+											"type": "object",
 											"additionalProperties": {
 												"anyOf": [
 													{
@@ -2332,32 +2338,31 @@
 													}
 												]
 											},
-											"description": "Built-in, configured filterable, and retained source metadata for the item.",
 											"nullable": true,
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"namespace": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"next_action": {
+											"type": "string",
 											"enum": [
 												"INDEX",
 												"DELETE",
 												null
 											],
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"source_id": {
 											"description": "Identifies which data source this item belongs to. \"builtin\" for uploaded files, \"{type}:{source}\" for external sources, null for legacy items.",
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -2366,8 +2371,7 @@
 												"skipped",
 												"outdated"
 											],
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -2383,8 +2387,7 @@
 										"source_id",
 										"last_seen_at",
 										"created_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2393,19 +2396,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item uploaded successfully."
+				}
 			},
 			"400": {
+				"description": "Invalid metadata format.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2420,32 +2424,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid metadata format."
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2460,32 +2464,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"409": {
+				"description": "Item key already exist.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2500,32 +2504,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item key already exist."
+				}
 			},
 			"413": {
+				"description": "File exceeds maximum size.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2540,32 +2544,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "File exceeds maximum size."
+				}
 			},
 			"429": {
+				"description": "Item write rate limited.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2580,25 +2584,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item write rate limited."
+				}
 			}
 		},
 		"security": [
@@ -2610,7 +2611,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Upload Item.",
 		"tags": [
 			"AI Search Instances Items"
 		],
@@ -2641,121 +2641,127 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
-		"description": "Creates or updates an indexed item in an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-create-or-update-item",
+		"summary": "Create or Update Item.",
+		"description": "Creates or updates an indexed item in an AI Search instance.",
 		"parameters": [
 			{
-				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
 				"required": true,
 				"schema": {
 					"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+					"type": "string",
 					"example": "my-ai-search",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Namespace name",
-				"example": "my-namespace",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Namespace name",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "my-namespace"
 			}
 		],
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"key": {
 								"description": "Item key / filename. Must not exceed 128 characters.",
 								"type": "string"
 							},
 							"next_action": {
+								"type": "string",
 								"enum": [
 									"INDEX"
-								],
-								"type": "string"
+								]
 							},
 							"wait_for_completion": {
-								"default": false,
 								"description": "Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							}
 						},
 						"required": [
 							"key",
 							"next_action"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns a AI Search Item detail.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"checksum": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"chunks_count": {
+											"type": "integer",
 											"nullable": true,
 											"readOnly": true,
-											"type": "integer",
 											"x-auditable": true
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"file_size": {
+											"type": "number",
 											"nullable": true,
 											"readOnly": true,
-											"type": "number",
 											"x-auditable": true
 										},
 										"id": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"key": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"last_seen_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"metadata": {
+											"description": "Built-in, configured filterable, and retained source metadata for the item.",
+											"type": "object",
 											"additionalProperties": {
 												"anyOf": [
 													{
@@ -2769,32 +2775,31 @@
 													}
 												]
 											},
-											"description": "Built-in, configured filterable, and retained source metadata for the item.",
 											"nullable": true,
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"namespace": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"next_action": {
+											"type": "string",
 											"enum": [
 												"INDEX",
 												"DELETE",
 												null
 											],
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"source_id": {
 											"description": "Identifies which data source this item belongs to. \"builtin\" for uploaded files, \"{type}:{source}\" for external sources, null for legacy items.",
+											"type": "string",
 											"nullable": true,
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"queued",
 												"running",
@@ -2803,8 +2808,7 @@
 												"skipped",
 												"outdated"
 											],
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										}
 									},
 									"required": [
@@ -2820,8 +2824,7 @@
 										"source_id",
 										"last_seen_at",
 										"created_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2830,19 +2833,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a AI Search Item detail."
+				}
 			},
 			"400": {
+				"description": "Filename exceeds maximum length.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2857,32 +2861,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Filename exceeds maximum length."
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2897,32 +2901,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			},
 			"409": {
+				"description": "Item key already exist.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2937,32 +2941,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Item key already exist."
+				}
 			},
 			"503": {
+				"description": "Unable to sync item.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -2977,25 +2981,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unable to sync item."
+				}
 			}
 		},
 		"security": [
@@ -3007,7 +3008,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create or Update Item.",
 		"tags": [
 			"AI Search Instances Items"
 		],

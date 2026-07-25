@@ -1,13 +1,13 @@
 {
 	"GET /accounts/{account_id}/urlscanner/response/{response_id}": {
-		"deprecated": true,
-		"description": "Returns the plain response of the network request.",
 		"operationId": "urlscanner-get-response-text",
+		"summary": "Get raw response",
+		"description": "Returns the plain response of the network request.",
 		"parameters": [
 			{
-				"description": "Response hash.",
-				"in": "path",
 				"name": "response_id",
+				"in": "path",
+				"description": "Response hash.",
 				"required": true,
 				"schema": {
 					"description": "Response hash.",
@@ -15,9 +15,9 @@
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -27,6 +27,7 @@
 		],
 		"responses": {
 			"200": {
+				"description": "When `har.log.entries[].response._cf.contentAvailable` is `true`, use `response._cf.hash` value to fetch the raw response.",
 				"content": {
 					"text/plain": {
 						"schema": {
@@ -34,30 +35,32 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "When `har.log.entries[].response._cf.contentAvailable` is `true`, use `response._cf.hash` value to fetch the raw response."
+				}
 			},
 			"400": {
+				"description": "Invalid params.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid UUID.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan ID is not a valid UUID."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -68,8 +71,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -80,34 +82,35 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid params."
+				}
 			},
 			"404": {
+				"description": "Scan not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan not found.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan not found."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -118,8 +121,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -130,14 +132,13 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -147,7 +148,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get raw response",
 		"tags": [
 			"URL Scanner (Deprecated)"
 		],
@@ -171,14 +171,14 @@
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/responses/methods/get/) instead."
 	},
 	"GET /accounts/{account_id}/urlscanner/scan": {
-		"deprecated": true,
-		"description": "Search scans by date and webpages' requests, including full URL (after redirects), hostname, and path. <br/> A successful scan will appear in search results a few minutes after finishing but may take much longer if the system in under load. By default, only successfully completed scans will appear in search results, unless searching by `scanId`. Please take into account that older scans may be removed from the search index at an unspecified time.",
 		"operationId": "urlscanner-search-scans",
+		"summary": "Search URL scans",
+		"description": "Search scans by date and webpages' requests, including full URL (after redirects), hostname, and path. <br/> A successful scan will appear in search results a few minutes after finishing but may take much longer if the system in under load. By default, only successfully completed scans will appear in search results, unless searching by `scanId`. Please take into account that older scans may be removed from the search index at an unspecified time.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -186,161 +186,161 @@
 				}
 			},
 			{
-				"description": "Scan UUID.",
-				"in": "query",
 				"name": "scan_id",
+				"in": "query",
+				"description": "Scan UUID.",
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Limit the number of objects in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limit the number of objects in the response.",
 				"schema": {
 					"description": "Limit the number of objects in the response.",
-					"example": 100,
-					"type": "integer"
+					"type": "integer",
+					"example": 100
 				}
 			},
 			{
-				"description": "Pagination cursor to get the next set of results.",
-				"in": "query",
 				"name": "next_cursor",
+				"in": "query",
+				"description": "Pagination cursor to get the next set of results.",
 				"schema": {
 					"description": "Pagination cursor to get the next set of results.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans requested after date (inclusive).",
-				"in": "query",
 				"name": "date_start",
+				"in": "query",
+				"description": "Filter scans requested after date (inclusive).",
 				"schema": {
 					"description": "Filter scans requested after date (inclusive).",
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
-				"description": "Filter scans requested before date (inclusive).",
-				"in": "query",
 				"name": "date_end",
+				"in": "query",
+				"description": "Filter scans requested before date (inclusive).",
 				"schema": {
 					"description": "Filter scans requested before date (inclusive).",
-					"format": "date-time",
-					"type": "string"
+					"type": "string",
+					"format": "date-time"
 				}
 			},
 			{
-				"description": "Filter scans by URL of _any_ request made by the webpage",
-				"in": "query",
 				"name": "url",
+				"in": "query",
+				"description": "Filter scans by URL of _any_ request made by the webpage",
 				"schema": {
 					"description": "Filter scans by URL of _any_ request made by the webpage",
-					"example": "https://example.com/?hello",
-					"type": "string"
+					"type": "string",
+					"example": "https://example.com/?hello"
 				}
 			},
 			{
-				"description": "Filter scans by hostname of _any_ request made by the webpage.",
-				"in": "query",
 				"name": "hostname",
+				"in": "query",
+				"description": "Filter scans by hostname of _any_ request made by the webpage.",
 				"schema": {
 					"description": "Filter scans by hostname of _any_ request made by the webpage.",
-					"example": "example.com",
-					"type": "string"
+					"type": "string",
+					"example": "example.com"
 				}
 			},
 			{
-				"description": "Filter scans by url path of _any_ request made by the webpage.",
-				"in": "query",
 				"name": "path",
+				"in": "query",
+				"description": "Filter scans by url path of _any_ request made by the webpage.",
 				"schema": {
 					"description": "Filter scans by url path of _any_ request made by the webpage.",
-					"example": "/samples/subresource-integrity/",
-					"type": "string"
+					"type": "string",
+					"example": "/samples/subresource-integrity/"
 				}
 			},
 			{
-				"description": "Filter scans by IP address (IPv4 or IPv6) of _any_ request made by the webpage.",
-				"in": "query",
 				"name": "ip",
+				"in": "query",
+				"description": "Filter scans by IP address (IPv4 or IPv6) of _any_ request made by the webpage.",
 				"schema": {
 					"description": "Filter scans by IP address (IPv4 or IPv6) of _any_ request made by the webpage.",
-					"example": "1.1.1.1",
-					"type": "string"
+					"type": "string",
+					"example": "1.1.1.1"
 				}
 			},
 			{
-				"description": "Filter scans by hash of any html/js/css request made by the webpage.",
-				"in": "query",
 				"name": "hash",
+				"in": "query",
+				"description": "Filter scans by hash of any html/js/css request made by the webpage.",
 				"schema": {
 					"description": "Filter scans by hash of any html/js/css request made by the webpage.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by submitted or scanned URL",
-				"in": "query",
 				"name": "page_url",
+				"in": "query",
+				"description": "Filter scans by submitted or scanned URL",
 				"schema": {
 					"description": "Filter scans by submitted or scanned URL",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by main page hostname (domain of effective URL).",
-				"in": "query",
 				"name": "page_hostname",
+				"in": "query",
+				"description": "Filter scans by main page hostname (domain of effective URL).",
 				"schema": {
 					"description": "Filter scans by main page hostname (domain of effective URL).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by exact match of effective URL path (also supports suffix search).",
-				"in": "query",
 				"name": "page_path",
+				"in": "query",
+				"description": "Filter scans by exact match of effective URL path (also supports suffix search).",
 				"schema": {
 					"description": "Filter scans by exact match of effective URL path (also supports suffix search).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by main page Autonomous System Number (ASN).",
-				"in": "query",
 				"name": "page_asn",
+				"in": "query",
+				"description": "Filter scans by main page Autonomous System Number (ASN).",
 				"schema": {
 					"description": "Filter scans by main page Autonomous System Number (ASN).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by  main page IP address (IPv4 or IPv6).",
-				"in": "query",
 				"name": "page_ip",
+				"in": "query",
+				"description": "Filter scans by  main page IP address (IPv4 or IPv6).",
 				"schema": {
 					"description": "Filter scans by  main page IP address (IPv4 or IPv6).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Return only scans created by account.",
-				"in": "query",
 				"name": "account_scans",
+				"in": "query",
+				"description": "Return only scans created by account.",
 				"schema": {
 					"description": "Return only scans created by account.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Filter scans by malicious verdict.",
-				"in": "query",
 				"name": "is_malicious",
+				"in": "query",
+				"description": "Filter scans by malicious verdict.",
 				"schema": {
 					"description": "Filter scans by malicious verdict.",
 					"type": "boolean"
@@ -349,43 +349,47 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Search results",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Error",
-												"type": "string"
+												"type": "string",
+												"example": "Error"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "OK",
-												"type": "string"
+												"type": "string",
+												"example": "OK"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"tasks": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"country": {
@@ -398,27 +402,27 @@
 													},
 													"time": {
 														"description": "When scan was submitted (UTC)",
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"url": {
 														"description": "Scan url (after redirects)",
-														"example": "https://www.example.com/",
-														"type": "string"
+														"type": "string",
+														"example": "https://www.example.com/"
 													},
 													"uuid": {
 														"description": "Scan id",
-														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"format": "uuid"
 													},
 													"visibility": {
 														"description": "Submitted visibility status.",
+														"type": "string",
+														"example": "public",
 														"enum": [
 															"public",
 															"unlisted"
-														],
-														"example": "public",
-														"type": "string"
+														]
 													}
 												},
 												"required": [
@@ -430,14 +434,12 @@
 													"visibility"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"tasks"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether search request was successful or not",
@@ -449,34 +451,35 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Search results"
+				}
 			},
 			"400": {
+				"description": "Invalid params.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid UUID.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan ID is not a valid UUID."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -487,8 +490,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -499,14 +501,13 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid params."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -516,7 +517,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Search URL scans",
 		"tags": [
 			"URL Scanner (Deprecated)"
 		],
@@ -540,25 +540,25 @@
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/list/) instead."
 	},
 	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}": {
-		"deprecated": true,
-		"description": "Get URL scan by uuid",
 		"operationId": "urlscanner-get-scan",
+		"summary": "Get URL scan",
+		"description": "Get URL scan by uuid",
 		"parameters": [
 			{
-				"description": "Scan UUID.",
-				"in": "path",
 				"name": "scan_id",
+				"in": "path",
+				"description": "Scan UUID.",
 				"required": true,
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -566,9 +566,9 @@
 				}
 			},
 			{
-				"description": "Whether to return full report (scan summary and network log).",
-				"in": "query",
 				"name": "full",
+				"in": "query",
+				"description": "Whether to return full report (scan summary and network log).",
 				"schema": {
 					"description": "Whether to return full report (scan summary and network log).",
 					"type": "boolean"
@@ -577,69 +577,75 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Scan has finished. It may or may not have been successful.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Error",
-												"type": "string"
+												"type": "string",
+												"example": "Error"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "OK",
-												"type": "string"
+												"type": "string",
+												"example": "OK"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"scan": {
+											"type": "object",
 											"properties": {
 												"asns": {
 													"description": "Dictionary of Autonomous System Numbers where ASN's are the keys",
+													"type": "object",
 													"properties": {
 														"asn": {
 															"description": "ASN's contacted",
+															"type": "object",
 															"properties": {
 																"asn": {
-																	"example": "15133",
-																	"type": "string"
+																	"type": "string",
+																	"example": "15133"
 																},
 																"description": {
-																	"example": "EDGECAST",
-																	"type": "string"
+																	"type": "string",
+																	"example": "EDGECAST"
 																},
 																"location_alpha2": {
-																	"example": "US",
-																	"type": "string"
+																	"type": "string",
+																	"example": "US"
 																},
 																"name": {
-																	"example": "EDGECAST",
-																	"type": "string"
+																	"type": "string",
+																	"example": "EDGECAST"
 																},
 																"org_name": {
-																	"example": "Edgecast Inc.",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Edgecast Inc."
 																}
 															},
 															"required": [
@@ -648,29 +654,28 @@
 																"description",
 																"org_name",
 																"location_alpha2"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"certificates": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"issuer": {
 																"type": "string"
 															},
 															"subjectName": {
-																"example": "rkmod.somee.com",
-																"type": "string"
+																"type": "string",
+																"example": "rkmod.somee.com"
 															},
 															"validFrom": {
-																"example": 1682684400,
-																"type": "number"
+																"type": "number",
+																"example": 1682684400
 															},
 															"validTo": {
-																"example": 1696698000,
-																"type": "number"
+																"type": "number",
+																"example": 1696698000
 															}
 														},
 														"required": [
@@ -680,14 +685,16 @@
 															"validTo"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"domains": {
+													"type": "object",
 													"properties": {
 														"example.com": {
+															"type": "object",
 															"properties": {
 																"categories": {
+																	"type": "object",
 																	"properties": {
 																		"content": {
 																			"items": {
@@ -696,8 +703,8 @@
 																						"type": "integer"
 																					},
 																					"name": {
-																						"example": "Technology",
-																						"type": "string"
+																						"type": "string",
+																						"example": "Technology"
 																					},
 																					"super_category_id": {
 																						"type": "integer"
@@ -712,6 +719,7 @@
 																			"type": "array"
 																		},
 																		"inherited": {
+																			"type": "object",
 																			"properties": {
 																				"content": {
 																					"items": {
@@ -720,8 +728,8 @@
 																								"type": "integer"
 																							},
 																							"name": {
-																								"example": "Technology",
-																								"type": "string"
+																								"type": "string",
+																								"example": "Technology"
 																							},
 																							"super_category_id": {
 																								"type": "integer"
@@ -736,18 +744,19 @@
 																					"type": "array"
 																				},
 																				"from": {
-																					"example": "example.com",
-																					"type": "string"
+																					"type": "string",
+																					"example": "example.com"
 																				},
 																				"risks": {
+																					"type": "array",
 																					"items": {
 																						"properties": {
 																							"id": {
 																								"type": "integer"
 																							},
 																							"name": {
-																								"example": "Technology",
-																								"type": "string"
+																								"type": "string",
+																								"example": "Technology"
 																							},
 																							"super_category_id": {
 																								"type": "integer"
@@ -758,21 +767,20 @@
 																							"name"
 																						],
 																						"type": "object"
-																					},
-																					"type": "array"
+																					}
 																				}
-																			},
-																			"type": "object"
+																			}
 																		},
 																		"risks": {
+																			"type": "array",
 																			"items": {
 																				"properties": {
 																					"id": {
 																						"type": "integer"
 																					},
 																					"name": {
-																						"example": "Technology",
-																						"type": "string"
+																						"type": "string",
+																						"example": "Technology"
 																					},
 																					"super_category_id": {
 																						"type": "integer"
@@ -783,32 +791,31 @@
 																					"name"
 																				],
 																				"type": "object"
-																			},
-																			"type": "array"
+																			}
 																		}
 																	},
 																	"required": [
 																		"inherited"
-																	],
-																	"type": "object"
+																	]
 																},
 																"dns": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"address": {
-																				"example": "93.184.216.34",
-																				"type": "string"
+																				"type": "string",
+																				"example": "93.184.216.34"
 																			},
 																			"dnssec_valid": {
 																				"type": "boolean"
 																			},
 																			"name": {
-																				"example": "example.com",
-																				"type": "string"
+																				"type": "string",
+																				"example": "example.com"
 																			},
 																			"type": {
-																				"example": "A",
-																				"type": "string"
+																				"type": "string",
+																				"example": "A"
 																			}
 																		},
 																		"required": [
@@ -818,22 +825,22 @@
 																			"dnssec_valid"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"name": {
-																	"example": "example.com",
-																	"type": "string"
+																	"type": "string",
+																	"example": "example.com"
 																},
 																"rank": {
+																	"type": "object",
 																	"properties": {
 																		"bucket": {
-																			"example": "500",
-																			"type": "string"
+																			"type": "string",
+																			"example": "500"
 																		},
 																		"name": {
-																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"example": "example.com"
 																		},
 																		"rank": {
 																			"description": "Rank in the Global Radar Rank, if set. See more at https://blog.cloudflare.com/radar-domain-rankings/",
@@ -843,12 +850,11 @@
 																	"required": [
 																		"name",
 																		"bucket"
-																	],
-																	"type": "object"
+																	]
 																},
 																"type": {
-																	"example": "Apex domain",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Apex domain"
 																}
 															},
 															"required": [
@@ -857,92 +863,92 @@
 																"categories",
 																"dns",
 																"rank"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"geo": {
+													"type": "object",
 													"properties": {
 														"continents": {
+															"type": "array",
 															"items": {
 																"description": "GeoIP continent location",
 																"example": "North America",
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"locations": {
+															"type": "array",
 															"items": {
 																"description": "GeoIP country location",
 																"example": "US",
 																"type": "string"
-															},
-															"type": "array"
+															}
 														}
 													},
 													"required": [
 														"locations",
 														"continents"
-													],
-													"type": "object"
+													]
 												},
 												"ips": {
+													"type": "object",
 													"properties": {
 														"ip": {
+															"type": "object",
 															"properties": {
 																"asn": {
-																	"example": "15133",
-																	"type": "string"
+																	"type": "string",
+																	"example": "15133"
 																},
 																"asnDescription": {
-																	"example": "EDGECAST",
-																	"type": "string"
+																	"type": "string",
+																	"example": "EDGECAST"
 																},
 																"asnLocationAlpha2": {
-																	"example": "US",
-																	"type": "string"
+																	"type": "string",
+																	"example": "US"
 																},
 																"asnName": {
-																	"example": "EDGECAST",
-																	"type": "string"
+																	"type": "string",
+																	"example": "EDGECAST"
 																},
 																"asnOrgName": {
-																	"example": "Edgecast Inc.",
-																	"type": "string"
+																	"type": "string",
+																	"example": "Edgecast Inc."
 																},
 																"continent": {
-																	"example": "North America",
-																	"type": "string"
+																	"type": "string",
+																	"example": "North America"
 																},
 																"geonameId": {
-																	"example": "6252001",
-																	"type": "string"
+																	"type": "string",
+																	"example": "6252001"
 																},
 																"ip": {
-																	"example": "2606:2800:220:1:248:1893:25c8:1946",
-																	"type": "string"
+																	"type": "string",
+																	"example": "2606:2800:220:1:248:1893:25c8:1946"
 																},
 																"ipVersion": {
-																	"example": "IPv6",
-																	"type": "string"
+																	"type": "string",
+																	"example": "IPv6"
 																},
 																"latitude": {
-																	"example": "39.76",
-																	"type": "string"
+																	"type": "string",
+																	"example": "39.76"
 																},
 																"locationAlpha2": {
-																	"example": "US",
-																	"type": "string"
+																	"type": "string",
+																	"example": "US"
 																},
 																"locationName": {
-																	"example": "United States",
-																	"type": "string"
+																	"type": "string",
+																	"example": "United States"
 																},
 																"longitude": {
-																	"example": "-98.5",
-																	"type": "string"
+																	"type": "string",
+																	"example": "-98.5"
 																},
 																"subdivision1Name": {
 																	"type": "string"
@@ -967,51 +973,52 @@
 																"asnOrgName",
 																"asnDescription",
 																"asnLocationAlpha2"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"links": {
+													"type": "object",
 													"properties": {
 														"link": {
+															"type": "object",
 															"properties": {
 																"href": {
 																	"description": "Outgoing link detected in the DOM",
-																	"example": "https://www.iana.org/domains/example",
-																	"type": "string"
+																	"type": "string",
+																	"example": "https://www.iana.org/domains/example"
 																},
 																"text": {
-																	"example": "More information...",
-																	"type": "string"
+																	"type": "string",
+																	"example": "More information..."
 																}
 															},
 															"required": [
 																"href",
 																"text"
-															],
-															"type": "object"
+															]
 														}
-													},
-													"type": "object"
+													}
 												},
 												"meta": {
+													"type": "object",
 													"properties": {
 														"processors": {
+															"type": "object",
 															"properties": {
 																"categories": {
+																	"type": "object",
 																	"properties": {
 																		"content": {
 																			"items": {
 																				"properties": {
 																					"id": {
-																						"example": 155,
-																						"type": "integer"
+																						"type": "integer",
+																						"example": 155
 																					},
 																					"name": {
-																						"example": "Technology",
-																						"type": "string"
+																						"type": "string",
+																						"example": "Technology"
 																					},
 																					"super_category_id": {
 																						"type": "integer"
@@ -1026,19 +1033,20 @@
 																			"type": "array"
 																		},
 																		"risks": {
+																			"type": "array",
 																			"items": {
 																				"properties": {
 																					"id": {
-																						"example": 17,
-																						"type": "integer"
+																						"type": "integer",
+																						"example": 17
 																					},
 																					"name": {
-																						"example": "Newly Seen Domains",
-																						"type": "string"
+																						"type": "string",
+																						"example": "Newly Seen Domains"
 																					},
 																					"super_category_id": {
-																						"example": 32,
-																						"type": "integer"
+																						"type": "integer",
+																						"example": 32
 																					}
 																				},
 																				"required": [
@@ -1047,32 +1055,31 @@
 																					"name"
 																				],
 																				"type": "object"
-																			},
-																			"type": "array"
+																			}
 																		}
 																	},
 																	"required": [
 																		"content",
 																		"risks"
-																	],
-																	"type": "object"
+																	]
 																},
 																"phishing": {
+																	"type": "array",
 																	"items": {
 																		"example": "CredentialHarvester",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"rank": {
+																	"type": "object",
 																	"properties": {
 																		"bucket": {
-																			"example": "500",
-																			"type": "string"
+																			"type": "string",
+																			"example": "500"
 																		},
 																		"name": {
-																			"example": "example.com",
-																			"type": "string"
+																			"type": "string",
+																			"example": "example.com"
 																		},
 																		"rank": {
 																			"description": "Rank in the Global Radar Rank, if set. See more at https://blog.cloudflare.com/radar-domain-rankings/",
@@ -1082,36 +1089,37 @@
 																	"required": [
 																		"name",
 																		"bucket"
-																	],
-																	"type": "object"
+																	]
 																},
 																"tech": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"categories": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"groups": {
+																							"type": "array",
 																							"items": {
 																								"type": "integer"
-																							},
-																							"type": "array"
+																							}
 																						},
 																						"id": {
-																							"example": 63,
-																							"type": "integer"
+																							"type": "integer",
+																							"example": 63
 																						},
 																						"name": {
-																							"example": "IAAS",
-																							"type": "string"
+																							"type": "string",
+																							"example": "IAAS"
 																						},
 																						"priority": {
-																							"example": 8,
-																							"type": "integer"
+																							"type": "integer",
+																							"example": 8
 																						},
 																						"slug": {
-																							"example": "iaas",
-																							"type": "string"
+																							"type": "string",
+																							"example": "iaas"
 																						}
 																					},
 																					"required": [
@@ -1122,63 +1130,64 @@
 																						"priority"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"confidence": {
-																				"example": 100,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 100
 																			},
 																			"description": {
 																				"type": "string"
 																			},
 																			"evidence": {
+																				"type": "object",
 																				"properties": {
 																					"impliedBy": {
+																						"type": "array",
 																						"items": {
 																							"type": "string"
-																						},
-																						"type": "array"
+																						}
 																					},
 																					"patterns": {
+																						"type": "array",
 																						"items": {
 																							"properties": {
 																								"confidence": {
-																									"example": 100,
-																									"type": "integer"
+																									"type": "integer",
+																									"example": 100
 																								},
 																								"excludes": {
+																									"type": "array",
 																									"items": {
 																										"type": "string"
-																									},
-																									"type": "array"
+																									}
 																								},
 																								"implies": {
+																									"type": "array",
 																									"items": {
 																										"type": "string"
-																									},
-																									"type": "array"
+																									}
 																								},
 																								"match": {
-																									"example": "ECS",
-																									"type": "string"
+																									"type": "string",
+																									"example": "ECS"
 																								},
 																								"name": {
 																									"description": "Header or Cookie name when set",
-																									"example": "server",
-																									"type": "string"
+																									"type": "string",
+																									"example": "server"
 																								},
 																								"regex": {
-																									"example": "^ECS",
-																									"type": "string"
+																									"type": "string",
+																									"example": "^ECS"
 																								},
 																								"type": {
-																									"example": "headers",
-																									"type": "string"
+																									"type": "string",
+																									"example": "headers"
 																								},
 																								"value": {
-																									"example": "ECS (dcb/7EEE)",
-																									"type": "string"
+																									"type": "string",
+																									"example": "ECS (dcb/7EEE)"
 																								},
 																								"version": {
 																									"type": "string"
@@ -1196,31 +1205,29 @@
 																								"excludes"
 																							],
 																							"type": "object"
-																						},
-																						"type": "array"
+																						}
 																					}
 																				},
 																				"required": [
 																					"patterns",
 																					"impliedBy"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"icon": {
-																				"example": "Amazon ECS.svg",
-																				"type": "string"
+																				"type": "string",
+																				"example": "Amazon ECS.svg"
 																			},
 																			"name": {
-																				"example": "Amazon ECS",
-																				"type": "string"
+																				"type": "string",
+																				"example": "Amazon ECS"
 																			},
 																			"slug": {
-																				"example": "amazon-ecs",
-																				"type": "string"
+																				"type": "string",
+																				"example": "amazon-ecs"
 																			},
 																			"website": {
-																				"example": "https://aws.amazon.com/ecs/",
-																				"type": "string"
+																				"type": "string",
+																				"example": "https://aws.amazon.com/ecs/"
 																			}
 																		},
 																		"required": [
@@ -1233,8 +1240,7 @@
 																			"evidence"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																}
 															},
 															"required": [
@@ -1242,47 +1248,47 @@
 																"categories",
 																"rank",
 																"phishing"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"processors"
-													],
-													"type": "object"
+													]
 												},
 												"page": {
+													"type": "object",
 													"properties": {
 														"asn": {
-															"example": "15133",
-															"type": "string"
+															"type": "string",
+															"example": "15133"
 														},
 														"asnLocationAlpha2": {
-															"example": "US",
-															"type": "string"
+															"type": "string",
+															"example": "US"
 														},
 														"asnname": {
-															"example": "EDGECAST",
-															"type": "string"
+															"type": "string",
+															"example": "EDGECAST"
 														},
 														"console": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"category": {
-																		"example": "network",
-																		"type": "string"
+																		"type": "string",
+																		"example": "network"
 																	},
 																	"text": {
-																		"example": "Failed to load resource: the server responded with a status of 404 (Not Found)",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Failed to load resource: the server responded with a status of 404 (Not Found)"
 																	},
 																	"type": {
-																		"example": "error",
-																		"type": "string"
+																		"type": "string",
+																		"example": "error"
 																	},
 																	"url": {
-																		"example": "http://example.com/favicon.ico",
-																		"type": "string"
+																		"type": "string",
+																		"example": "http://example.com/favicon.ico"
 																	}
 																},
 																"required": [
@@ -1291,34 +1297,34 @@
 																	"category"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"cookies": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"domain": {
-																		"example": "rkmod.somee.com",
-																		"type": "string"
+																		"type": "string",
+																		"example": "rkmod.somee.com"
 																	},
 																	"expires": {
-																		"example": -1,
-																		"type": "number"
+																		"type": "number",
+																		"example": -1
 																	},
 																	"httpOnly": {
 																		"type": "boolean"
 																	},
 																	"name": {
-																		"example": "b",
-																		"type": "string"
+																		"type": "string",
+																		"example": "b"
 																	},
 																	"path": {
-																		"example": "/",
-																		"type": "string"
+																		"type": "string",
+																		"example": "/"
 																	},
 																	"priority": {
-																		"example": "Medium",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Medium"
 																	},
 																	"sameParty": {
 																		"type": "boolean"
@@ -1327,24 +1333,24 @@
 																		"type": "boolean"
 																	},
 																	"session": {
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"size": {
-																		"example": 2,
-																		"type": "number"
+																		"type": "number",
+																		"example": 2
 																	},
 																	"sourcePort": {
-																		"example": 443,
-																		"type": "number"
+																		"type": "number",
+																		"example": 443
 																	},
 																	"sourceScheme": {
-																		"example": "Secure",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Secure"
 																	},
 																	"value": {
-																		"example": "b",
-																		"type": "string"
+																		"type": "string",
+																		"example": "b"
 																	}
 																},
 																"required": [
@@ -1362,31 +1368,31 @@
 																	"sourcePort"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"country": {
-															"example": "United States",
-															"type": "string"
+															"type": "string",
+															"example": "United States"
 														},
 														"countryLocationAlpha2": {
-															"example": "US",
-															"type": "string"
+															"type": "string",
+															"example": "US"
 														},
 														"domain": {
-															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"example": "example.com"
 														},
 														"headers": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"name": {
-																		"example": "Content-Length",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Content-Length"
 																	},
 																	"value": {
-																		"example": "648",
-																		"type": "string"
+																		"type": "string",
+																		"example": "648"
 																	}
 																},
 																"required": [
@@ -1394,25 +1400,26 @@
 																	"value"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"ip": {
-															"example": "2606:2800:220:1:248:1893:25c8:1946",
-															"type": "string"
+															"type": "string",
+															"example": "2606:2800:220:1:248:1893:25c8:1946"
 														},
 														"js": {
+															"type": "object",
 															"properties": {
 																"variables": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"name": {
-																				"example": "checkFrame",
-																				"type": "string"
+																				"type": "string",
+																				"example": "checkFrame"
 																			},
 																			"type": {
-																				"example": "string",
-																				"type": "string"
+																				"type": "string",
+																				"example": "string"
 																			}
 																		},
 																		"required": [
@@ -1420,29 +1427,28 @@
 																			"type"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																}
 															},
 															"required": [
 																"variables"
-															],
-															"type": "object"
+															]
 														},
 														"securityViolations": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"category": {
-																		"example": "csp",
-																		"type": "string"
+																		"type": "string",
+																		"example": "csp"
 																	},
 																	"text": {
-																		"example": "[Report Only] Refused to load the stylesheet 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' because it violates the following Content Security Policy directive: ... ",
-																		"type": "string"
+																		"type": "string",
+																		"example": "[Report Only] Refused to load the stylesheet 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' because it violates the following Content Security Policy directive: ... "
 																	},
 																	"url": {
-																		"example": "http://example.com/",
-																		"type": "string"
+																		"type": "string",
+																		"example": "http://example.com/"
 																	}
 																},
 																"required": [
@@ -1451,12 +1457,11 @@
 																	"url"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"status": {
-															"example": 200,
-															"type": "number"
+															"type": "number",
+															"example": 200
 														},
 														"subdivision1Name": {
 															"type": "string"
@@ -1465,8 +1470,8 @@
 															"type": "string"
 														},
 														"url": {
-															"example": "http://example.com/",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com/"
 														}
 													},
 													"required": [
@@ -1486,83 +1491,83 @@
 														"js",
 														"console",
 														"securityViolations"
-													],
-													"type": "object"
+													]
 												},
 												"performance": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"connectEnd": {
-																"example": 82.59999999403954,
-																"type": "number"
+																"type": "number",
+																"example": 82.59999999403954
 															},
 															"connectStart": {
-																"example": 72.79999999701977,
-																"type": "number"
+																"type": "number",
+																"example": 72.79999999701977
 															},
 															"decodedBodySize": {
-																"example": 1256,
-																"type": "number"
+																"type": "number",
+																"example": 1256
 															},
 															"domComplete": {
-																"example": 306,
-																"type": "number"
+																"type": "number",
+																"example": 306
 															},
 															"domContentLoadedEventEnd": {
-																"example": 305.8999999910593,
-																"type": "number"
+																"type": "number",
+																"example": 305.8999999910593
 															},
 															"domContentLoadedEventStart": {
-																"example": 305.8999999910593,
-																"type": "number"
+																"type": "number",
+																"example": 305.8999999910593
 															},
 															"domInteractive": {
-																"example": 305.8999999910593,
-																"type": "number"
+																"type": "number",
+																"example": 305.8999999910593
 															},
 															"domainLookupEnd": {
-																"example": 72.79999999701977,
-																"type": "number"
+																"type": "number",
+																"example": 72.79999999701977
 															},
 															"domainLookupStart": {
-																"example": 2.199999988079071,
-																"type": "number"
+																"type": "number",
+																"example": 2.199999988079071
 															},
 															"duration": {
-																"example": 306,
-																"type": "number"
+																"type": "number",
+																"example": 306
 															},
 															"encodedBodySize": {
-																"example": 648,
-																"type": "number"
+																"type": "number",
+																"example": 648
 															},
 															"entryType": {
-																"example": "navigation",
-																"type": "string"
+																"type": "string",
+																"example": "navigation"
 															},
 															"fetchStart": {
-																"example": 0.8999999910593033,
-																"type": "number"
+																"type": "number",
+																"example": 0.8999999910593033
 															},
 															"initiatorType": {
-																"example": "navigation",
-																"type": "string"
+																"type": "string",
+																"example": "navigation"
 															},
 															"loadEventEnd": {
-																"example": 306,
-																"type": "number"
+																"type": "number",
+																"example": 306
 															},
 															"loadEventStart": {
-																"example": 306,
-																"type": "number"
+																"type": "number",
+																"example": 306
 															},
 															"name": {
-																"example": "http://example.com/",
-																"type": "string"
+																"type": "string",
+																"example": "http://example.com/"
 															},
 															"nextHopProtocol": {
-																"example": "http/1.1",
-																"type": "string"
+																"type": "string",
+																"example": "http/1.1"
 															},
 															"redirectCount": {
 																"type": "number"
@@ -1574,16 +1579,16 @@
 																"type": "number"
 															},
 															"requestStart": {
-																"example": 82.69999998807907,
-																"type": "number"
+																"type": "number",
+																"example": 82.69999998807907
 															},
 															"responseEnd": {
-																"example": 270.8999999910593,
-																"type": "number"
+																"type": "number",
+																"example": 270.8999999910593
 															},
 															"responseStart": {
-																"example": 265.69999998807907,
-																"type": "number"
+																"type": "number",
+																"example": 265.69999998807907
 															},
 															"secureConnectionStart": {
 																"type": "number"
@@ -1592,12 +1597,12 @@
 																"type": "number"
 															},
 															"transferSize": {
-																"example": 948,
-																"type": "number"
+																"type": "number",
+																"example": 948
 															},
 															"type": {
-																"example": "navigate",
-																"type": "string"
+																"type": "string",
+																"example": "navigate"
 															},
 															"unloadEventEnd": {
 																"type": "number"
@@ -1643,30 +1648,31 @@
 															"redirectCount"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"task": {
+													"type": "object",
 													"properties": {
 														"clientLocation": {
 															"description": "Submitter location",
-															"example": "PT",
-															"type": "string"
+															"type": "string",
+															"example": "PT"
 														},
 														"clientType": {
+															"type": "string",
 															"enum": [
 																"Site",
 																"Automatic",
 																"Api"
-															],
-															"type": "string"
+															]
 														},
 														"effectiveUrl": {
 															"description": "URL of the primary request, after all HTTP redirects",
-															"example": "http://example.com/",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com/"
 														},
 														"errors": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"message": {
@@ -1677,59 +1683,58 @@
 																	"message"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"scannedFrom": {
+															"type": "object",
 															"properties": {
 																"colo": {
 																	"description": "IATA code of Cloudflare datacenter",
-																	"example": "MAD",
-																	"type": "string"
+																	"type": "string",
+																	"example": "MAD"
 																}
 															},
 															"required": [
 																"colo"
-															],
-															"type": "object"
+															]
 														},
 														"status": {
+															"type": "string",
 															"enum": [
 																"Queued",
 																"InProgress",
 																"InPostProcessing",
 																"Finished"
-															],
-															"type": "string"
+															]
 														},
 														"success": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"time": {
-															"example": "2023-05-03T17:05:04.843Z",
-															"type": "string"
+															"type": "string",
+															"example": "2023-05-03T17:05:04.843Z"
 														},
 														"timeEnd": {
-															"example": "2023-05-03T17:05:19.374Z",
-															"type": "string"
+															"type": "string",
+															"example": "2023-05-03T17:05:19.374Z"
 														},
 														"url": {
 															"description": "Submitted URL",
-															"example": "http://example.com",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com"
 														},
 														"uuid": {
 															"description": "Scan ID",
-															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f",
-															"type": "string"
+															"type": "string",
+															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f"
 														},
 														"visibility": {
+															"type": "string",
 															"enum": [
 																"Public",
 																"Unlisted"
-															],
-															"type": "string"
+															]
 														}
 													},
 													"required": [
@@ -1745,27 +1750,29 @@
 														"clientType",
 														"effectiveUrl",
 														"scannedFrom"
-													],
-													"type": "object"
+													]
 												},
 												"verdicts": {
+													"type": "object",
 													"properties": {
 														"overall": {
+															"type": "object",
 															"properties": {
 																"categories": {
+																	"type": "array",
 																	"items": {
 																		"properties": {
 																			"id": {
-																				"example": 117,
-																				"type": "number"
+																				"type": "number",
+																				"example": 117
 																			},
 																			"name": {
-																				"example": "Malware",
-																				"type": "string"
+																				"type": "string",
+																				"example": "Malware"
 																			},
 																			"super_category_id": {
-																				"example": 32,
-																				"type": "number"
+																				"type": "number",
+																				"example": 32
 																			}
 																		},
 																		"required": [
@@ -1774,34 +1781,31 @@
 																			"name"
 																		],
 																		"type": "object"
-																	},
-																	"type": "array"
+																	}
 																},
 																"malicious": {
 																	"description": "At least one of our subsystems marked the site as potentially malicious at the time of the scan.",
-																	"example": true,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": true
 																},
 																"phishing": {
+																	"type": "array",
 																	"items": {
 																		"example": "Credential Harvester",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																}
 															},
 															"required": [
 																"malicious",
 																"categories",
 																"phishing"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"overall"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
@@ -1812,14 +1816,12 @@
 												"certificates",
 												"performance",
 												"verdicts"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"scan"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -1831,19 +1833,20 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan has finished. It may or may not have been successful."
+				}
 			},
 			"202": {
+				"description": "Scan is in progress. Check current status in `result.scan.task.status`. Possible statuses: `Queued`,`InProgress`,`InPostProcessing`,`Finished`.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1854,35 +1857,38 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "In Progress",
-												"type": "string"
+												"type": "string",
+												"example": "In Progress"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"scan": {
+											"type": "object",
 											"properties": {
 												"task": {
+													"type": "object",
 													"properties": {
 														"effectiveUrl": {
-															"example": "http://example.com/",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com/"
 														},
 														"errors": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"message": {
@@ -1893,40 +1899,39 @@
 																	"message"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"location": {
-															"example": "PT",
-															"type": "string"
+															"type": "string",
+															"example": "PT"
 														},
 														"region": {
-															"example": "enam",
-															"type": "string"
+															"type": "string",
+															"example": "enam"
 														},
 														"status": {
-															"example": "InProgress",
-															"type": "string"
+															"type": "string",
+															"example": "InProgress"
 														},
 														"success": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"time": {
-															"example": "2023-05-03T17:05:04.843Z",
-															"type": "string"
+															"type": "string",
+															"example": "2023-05-03T17:05:04.843Z"
 														},
 														"url": {
-															"example": "http://example.com",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com"
 														},
 														"uuid": {
-															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f",
-															"type": "string"
+															"type": "string",
+															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f"
 														},
 														"visibility": {
-															"example": "Public",
-															"type": "string"
+															"type": "string",
+															"example": "Public"
 														}
 													},
 													"required": [
@@ -1940,20 +1945,17 @@
 														"location",
 														"region",
 														"effectiveUrl"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"task"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"scan"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -1965,34 +1967,35 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan is in progress. Check current status in `result.scan.task.status`. Possible statuses: `Queued`,`InProgress`,`InPostProcessing`,`Finished`."
+				}
 			},
 			"400": {
+				"description": "Invalid params.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid UUID.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan ID is not a valid UUID."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2003,8 +2006,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -2015,34 +2017,35 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid params."
+				}
 			},
 			"404": {
+				"description": "Scan not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan not found.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan not found."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2053,8 +2056,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -2065,14 +2067,13 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -2082,7 +2083,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get URL scan",
 		"tags": [
 			"URL Scanner (Deprecated)"
 		],
@@ -2106,25 +2106,25 @@
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/get/) instead."
 	},
 	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}/har": {
-		"deprecated": true,
-		"description": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
 		"operationId": "urlscanner-get-scan-har",
+		"summary": "Get URL scan's HAR",
+		"description": "Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/.",
 		"parameters": [
 			{
-				"description": "Scan UUID.",
-				"in": "path",
 				"name": "scan_id",
+				"in": "path",
+				"description": "Scan UUID.",
 				"required": true,
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2134,121 +2134,129 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the scan's har.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Error",
-												"type": "string"
+												"type": "string",
+												"example": "Error"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "OK",
-												"type": "string"
+												"type": "string",
+												"example": "OK"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"har": {
+											"type": "object",
 											"properties": {
 												"log": {
+													"type": "object",
 													"properties": {
 														"creator": {
+															"type": "object",
 															"properties": {
 																"comment": {
-																	"example": "https://github.com/sitespeedio/chrome-har",
-																	"type": "string"
+																	"type": "string",
+																	"example": "https://github.com/sitespeedio/chrome-har"
 																},
 																"name": {
-																	"example": "chrome-har",
-																	"type": "string"
+																	"type": "string",
+																	"example": "chrome-har"
 																},
 																"version": {
-																	"example": "0.13.1",
-																	"type": "string"
+																	"type": "string",
+																	"example": "0.13.1"
 																}
 															},
 															"required": [
 																"name",
 																"version",
 																"comment"
-															],
-															"type": "object"
+															]
 														},
 														"entries": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"_initialPriority": {
-																		"example": "VeryHigh",
-																		"type": "string"
+																		"type": "string",
+																		"example": "VeryHigh"
 																	},
 																	"_initiator_type": {
-																		"example": "other",
-																		"type": "string"
+																		"type": "string",
+																		"example": "other"
 																	},
 																	"_priority": {
-																		"example": "VeryHigh",
-																		"type": "string"
+																		"type": "string",
+																		"example": "VeryHigh"
 																	},
 																	"_requestId": {
-																		"example": "DDC779F0CB3746BAF283EC1A51B0F2F8",
-																		"type": "string"
+																		"type": "string",
+																		"example": "DDC779F0CB3746BAF283EC1A51B0F2F8"
 																	},
 																	"_requestTime": {
-																		"example": 114135.331081,
-																		"type": "number"
+																		"type": "number",
+																		"example": 114135.331081
 																	},
 																	"_resourceType": {
-																		"example": "document",
-																		"type": "string"
+																		"type": "string",
+																		"example": "document"
 																	},
 																	"cache": {
 																		"type": "object"
 																	},
 																	"connection": {
-																		"example": "33",
-																		"type": "string"
+																		"type": "string",
+																		"example": "33"
 																	},
 																	"pageref": {
-																		"example": "page_1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "page_1"
 																	},
 																	"request": {
+																		"type": "object",
 																		"properties": {
 																			"bodySize": {
 																				"type": "number"
 																			},
 																			"headers": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"name": {
-																							"example": "Upgrade-Insecure-Requests",
-																							"type": "string"
+																							"type": "string",
+																							"example": "Upgrade-Insecure-Requests"
 																						},
 																						"value": {
-																							"example": "1",
-																							"type": "string"
+																							"type": "string",
+																							"example": "1"
 																						}
 																					},
 																					"required": [
@@ -2256,24 +2264,23 @@
 																						"value"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"headersSize": {
-																				"example": 197,
-																				"type": "number"
+																				"type": "number",
+																				"example": 197
 																			},
 																			"httpVersion": {
-																				"example": "http/1.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "http/1.1"
 																			},
 																			"method": {
-																				"example": "GET",
-																				"type": "string"
+																				"type": "string",
+																				"example": "GET"
 																			},
 																			"url": {
-																				"example": "http://example.com/",
-																				"type": "string"
+																				"type": "string",
+																				"example": "http://example.com/"
 																			}
 																		},
 																		"required": [
@@ -2283,32 +2290,32 @@
 																			"bodySize",
 																			"headers",
 																			"httpVersion"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"response": {
+																		"type": "object",
 																		"properties": {
 																			"_transferSize": {
-																				"example": 1071,
-																				"type": "number"
+																				"type": "number",
+																				"example": 1071
 																			},
 																			"bodySize": {
-																				"example": 648,
-																				"type": "number"
+																				"type": "number",
+																				"example": 648
 																			},
 																			"content": {
 																				"properties": {
 																					"compression": {
-																						"example": 608,
-																						"type": "integer"
+																						"type": "integer",
+																						"example": 608
 																					},
 																					"mimeType": {
-																						"example": "text/html",
-																						"type": "string"
+																						"type": "string",
+																						"example": "text/html"
 																					},
 																					"size": {
-																						"example": 1256,
-																						"type": "number"
+																						"type": "number",
+																						"example": 1256
 																					}
 																				},
 																				"required": [
@@ -2318,15 +2325,16 @@
 																				"type": "object"
 																			},
 																			"headers": {
+																				"type": "array",
 																				"items": {
 																					"properties": {
 																						"name": {
-																							"example": "Content-Encoding",
-																							"type": "string"
+																							"type": "string",
+																							"example": "Content-Encoding"
 																						},
 																						"value": {
-																							"example": "gzip",
-																							"type": "string"
+																							"type": "string",
+																							"example": "gzip"
 																						}
 																					},
 																					"required": [
@@ -2334,27 +2342,26 @@
 																						"value"
 																					],
 																					"type": "object"
-																				},
-																				"type": "array"
+																				}
 																			},
 																			"headersSize": {
-																				"example": 423,
-																				"type": "number"
+																				"type": "number",
+																				"example": 423
 																			},
 																			"httpVersion": {
-																				"example": "http/1.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "http/1.1"
 																			},
 																			"redirectURL": {
 																				"type": "string"
 																			},
 																			"status": {
-																				"example": 200,
-																				"type": "number"
+																				"type": "number",
+																				"example": 200
 																			},
 																			"statusText": {
-																				"example": "OK",
-																				"type": "string"
+																				"type": "string",
+																				"example": "OK"
 																			}
 																		},
 																		"required": [
@@ -2367,20 +2374,19 @@
 																			"bodySize",
 																			"headers",
 																			"_transferSize"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"serverIPAddress": {
-																		"example": "2606:2800:220:1:248:1893:25c8:1946",
-																		"type": "string"
+																		"type": "string",
+																		"example": "2606:2800:220:1:248:1893:25c8:1946"
 																	},
 																	"startedDateTime": {
-																		"example": "2023-05-03T17:05:13.196Z",
-																		"type": "string"
+																		"type": "string",
+																		"example": "2023-05-03T17:05:13.196Z"
 																	},
 																	"time": {
-																		"example": 268.64,
-																		"type": "number"
+																		"type": "number",
+																		"example": 268.64
 																	}
 																},
 																"required": [
@@ -2400,40 +2406,40 @@
 																	"_requestTime"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"pages": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"id": {
-																		"example": "page_1",
-																		"type": "string"
+																		"type": "string",
+																		"example": "page_1"
 																	},
 																	"pageTimings": {
+																		"type": "object",
 																		"properties": {
 																			"onContentLoad": {
-																				"example": 305.408,
-																				"type": "number"
+																				"type": "number",
+																				"example": 305.408
 																			},
 																			"onLoad": {
-																				"example": 305.169,
-																				"type": "number"
+																				"type": "number",
+																				"example": 305.169
 																			}
 																		},
 																		"required": [
 																			"onLoad",
 																			"onContentLoad"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"startedDateTime": {
-																		"example": "2023-05-03T17:05:13.195Z",
-																		"type": "string"
+																		"type": "string",
+																		"example": "2023-05-03T17:05:13.195Z"
 																	},
 																	"title": {
-																		"example": "http://example.com/",
-																		"type": "string"
+																		"type": "string",
+																		"example": "http://example.com/"
 																	}
 																},
 																"required": [
@@ -2443,12 +2449,11 @@
 																	"pageTimings"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"version": {
-															"example": "1.2",
-															"type": "string"
+															"type": "string",
+															"example": "1.2"
 														}
 													},
 													"required": [
@@ -2456,20 +2461,17 @@
 														"creator",
 														"pages",
 														"entries"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"log"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"har"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether search request was successful or not",
@@ -2481,19 +2483,20 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the scan's har."
+				}
 			},
 			"202": {
+				"description": "Scan is in progress. Check current status in `result.scan.task.status`. Possible statuses: `Queued`,`InProgress`,`InPostProcessing`,`Finished`.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2504,35 +2507,38 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "In Progress",
-												"type": "string"
+												"type": "string",
+												"example": "In Progress"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"scan": {
+											"type": "object",
 											"properties": {
 												"task": {
+													"type": "object",
 													"properties": {
 														"effectiveUrl": {
-															"example": "http://example.com/",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com/"
 														},
 														"errors": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"message": {
@@ -2543,40 +2549,39 @@
 																	"message"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"location": {
-															"example": "PT",
-															"type": "string"
+															"type": "string",
+															"example": "PT"
 														},
 														"region": {
-															"example": "enam",
-															"type": "string"
+															"type": "string",
+															"example": "enam"
 														},
 														"status": {
-															"example": "InProgress",
-															"type": "string"
+															"type": "string",
+															"example": "InProgress"
 														},
 														"success": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"time": {
-															"example": "2023-05-03T17:05:04.843Z",
-															"type": "string"
+															"type": "string",
+															"example": "2023-05-03T17:05:04.843Z"
 														},
 														"url": {
-															"example": "http://example.com",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com"
 														},
 														"uuid": {
-															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f",
-															"type": "string"
+															"type": "string",
+															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f"
 														},
 														"visibility": {
-															"example": "Public",
-															"type": "string"
+															"type": "string",
+															"example": "Public"
 														}
 													},
 													"required": [
@@ -2590,20 +2595,17 @@
 														"location",
 														"region",
 														"effectiveUrl"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"task"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"scan"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -2615,34 +2617,35 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan is in progress. Check current status in `result.scan.task.status`. Possible statuses: `Queued`,`InProgress`,`InPostProcessing`,`Finished`."
+				}
 			},
 			"400": {
+				"description": "Invalid params.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid UUID.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan ID is not a valid UUID."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2653,8 +2656,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -2665,34 +2667,35 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid params."
+				}
 			},
 			"404": {
+				"description": "Scan not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan not found.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan not found."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2703,8 +2706,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -2715,14 +2717,13 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -2732,7 +2733,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get URL scan's HAR",
 		"tags": [
 			"URL Scanner (Deprecated)"
 		],
@@ -2756,25 +2756,25 @@
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/har/) instead."
 	},
 	"GET /accounts/{account_id}/urlscanner/scan/{scan_id}/screenshot": {
-		"deprecated": true,
-		"description": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
 		"operationId": "urlscanner-get-scan-screenshot",
+		"summary": "Get screenshot",
+		"description": "Get scan's screenshot by resolution (desktop/mobile/tablet).",
 		"parameters": [
 			{
-				"description": "Scan UUID.",
-				"in": "path",
 				"name": "scan_id",
+				"in": "path",
+				"description": "Scan UUID.",
 				"required": true,
 				"schema": {
 					"description": "Scan UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -2782,23 +2782,24 @@
 				}
 			},
 			{
-				"description": "Target device type.",
-				"in": "query",
 				"name": "resolution",
+				"in": "query",
+				"description": "Target device type.",
 				"schema": {
-					"default": "desktop",
 					"description": "Target device type.",
+					"type": "string",
+					"default": "desktop",
 					"enum": [
 						"desktop",
 						"mobile",
 						"tablet"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the scan's requested screenshot.",
 				"content": {
 					"image/png": {
 						"schema": {
@@ -2806,15 +2807,17 @@
 							"type": "string"
 						}
 					}
-				},
-				"description": "Returns the scan's requested screenshot."
+				}
 			},
 			"202": {
+				"description": "Scan is in progress. Check current status in `result.scan.task.status`. Possible statuses: `Queued`,`InProgress`,`InPostProcessing`,`Finished`.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2825,35 +2828,38 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "In Progress",
-												"type": "string"
+												"type": "string",
+												"example": "In Progress"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"scan": {
+											"type": "object",
 											"properties": {
 												"task": {
+													"type": "object",
 													"properties": {
 														"effectiveUrl": {
-															"example": "http://example.com/",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com/"
 														},
 														"errors": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"message": {
@@ -2864,40 +2870,39 @@
 																	"message"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"location": {
-															"example": "PT",
-															"type": "string"
+															"type": "string",
+															"example": "PT"
 														},
 														"region": {
-															"example": "enam",
-															"type": "string"
+															"type": "string",
+															"example": "enam"
 														},
 														"status": {
-															"example": "InProgress",
-															"type": "string"
+															"type": "string",
+															"example": "InProgress"
 														},
 														"success": {
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"time": {
-															"example": "2023-05-03T17:05:04.843Z",
-															"type": "string"
+															"type": "string",
+															"example": "2023-05-03T17:05:04.843Z"
 														},
 														"url": {
-															"example": "http://example.com",
-															"type": "string"
+															"type": "string",
+															"example": "http://example.com"
 														},
 														"uuid": {
-															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f",
-															"type": "string"
+															"type": "string",
+															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f"
 														},
 														"visibility": {
-															"example": "Public",
-															"type": "string"
+															"type": "string",
+															"example": "Public"
 														}
 													},
 													"required": [
@@ -2911,20 +2916,17 @@
 														"location",
 														"region",
 														"effectiveUrl"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"task"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"scan"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -2936,34 +2938,35 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan is in progress. Check current status in `result.scan.task.status`. Possible statuses: `Queued`,`InProgress`,`InPostProcessing`,`Finished`."
+				}
 			},
 			"400": {
+				"description": "Invalid params.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid UUID.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan ID is not a valid UUID."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2974,8 +2977,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -2986,34 +2988,35 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid params."
+				}
 			},
 			"404": {
+				"description": "Scan not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan not found.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan not found."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3024,8 +3027,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -3036,14 +3038,13 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan not found."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -3053,7 +3054,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get screenshot",
 		"tags": [
 			"URL Scanner (Deprecated)"
 		],
@@ -3077,14 +3077,14 @@
 		"x-stainless-deprecation-message": "Use [V2](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/screenshot/) instead."
 	},
 	"POST /accounts/{account_id}/urlscanner/scan": {
-		"deprecated": true,
-		"description": "Submit a URL to scan. You can also set some options, like the visibility level and custom headers. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
 		"operationId": "urlscanner-create-scan",
+		"summary": "Create URL Scan",
+		"description": "Submit a URL to scan. You can also set some options, like the visibility level and custom headers. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -3096,9 +3096,11 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"country": {
 								"description": "Country to geo egress from",
+								"type": "string",
 								"enum": [
 									"AF",
 									"AL",
@@ -3295,21 +3297,18 @@
 									"YE",
 									"ZM",
 									"ZW"
-								],
-								"type": "string"
+								]
 							},
 							"customHeaders": {
+								"description": "Set custom headers.",
+								"type": "object",
 								"additionalProperties": {
 									"type": "string"
-								},
-								"description": "Set custom headers.",
-								"type": "object"
+								}
 							},
 							"screenshotsResolutions": {
-								"default": [
-									"desktop"
-								],
 								"description": "Take multiple screenshots targeting different device types.",
+								"type": "array",
 								"items": {
 									"default": "desktop",
 									"description": "Device resolutions.",
@@ -3320,72 +3319,76 @@
 									],
 									"type": "string"
 								},
-								"type": "array"
+								"default": [
+									"desktop"
+								]
 							},
 							"url": {
-								"example": "https://www.example.com",
-								"type": "string"
+								"type": "string",
+								"example": "https://www.example.com"
 							},
 							"visibility": {
-								"default": "Public",
 								"description": "The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material.",
+								"type": "string",
+								"default": "Public",
 								"enum": [
 									"Public",
 									"Unlisted"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"url"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Scan request accepted successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Submission unsuccessful",
-												"type": "string"
+												"type": "string",
+												"example": "Submission unsuccessful"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Submission successful",
-												"type": "string"
+												"type": "string",
+												"example": "Submission successful"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"time": {
 											"description": "Time when url was submitted for scanning.",
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"url": {
 											"description": "Canonical form of submitted URL. Use this if you want to later search by URL.",
@@ -3393,17 +3396,17 @@
 										},
 										"uuid": {
 											"description": "Scan ID.",
-											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"format": "uuid"
 										},
 										"visibility": {
 											"description": "Submitted visibility status.",
+											"type": "string",
+											"example": "public",
 											"enum": [
 												"public",
 												"unlisted"
-											],
-											"example": "public",
-											"type": "string"
+											]
 										}
 									},
 									"required": [
@@ -3411,8 +3414,7 @@
 										"uuid",
 										"url",
 										"time"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -3423,34 +3425,35 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan request accepted successfully."
+				}
 			},
 			"400": {
+				"description": "Invalid params.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Scan ID is not a valid UUID.",
-												"type": "string"
+												"type": "string",
+												"example": "Scan ID is not a valid UUID."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3461,8 +3464,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"description": "Whether request was successful or not",
@@ -3473,34 +3475,35 @@
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid params."
+				}
 			},
 			"409": {
+				"description": "Scan request denied: hostname was recently scanned.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Submission unsuccessful",
-												"type": "string"
+												"type": "string",
+												"example": "Submission unsuccessful"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3511,33 +3514,35 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"tasks": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"clientLocation": {
 														"description": "Submitter location",
-														"example": "PT",
-														"type": "string"
+														"type": "string",
+														"example": "PT"
 													},
 													"clientType": {
+														"type": "string",
 														"enum": [
 															"Site",
 															"Automatic",
 															"Api"
-														],
-														"type": "string"
+														]
 													},
 													"effectiveUrl": {
 														"description": "URL of the primary request, after all HTTP redirects",
-														"example": "http://example.com/",
-														"type": "string"
+														"type": "string",
+														"example": "http://example.com/"
 													},
 													"errors": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"message": {
@@ -3548,59 +3553,58 @@
 																"message"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"scannedFrom": {
+														"type": "object",
 														"properties": {
 															"colo": {
 																"description": "IATA code of Cloudflare datacenter",
-																"example": "MAD",
-																"type": "string"
+																"type": "string",
+																"example": "MAD"
 															}
 														},
 														"required": [
 															"colo"
-														],
-														"type": "object"
+														]
 													},
 													"status": {
+														"type": "string",
 														"enum": [
 															"Queued",
 															"InProgress",
 															"InPostProcessing",
 															"Finished"
-														],
-														"type": "string"
+														]
 													},
 													"success": {
-														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"example": true
 													},
 													"time": {
-														"example": "2023-05-03T17:05:04.843Z",
-														"type": "string"
+														"type": "string",
+														"example": "2023-05-03T17:05:04.843Z"
 													},
 													"timeEnd": {
-														"example": "2023-05-03T17:05:19.374Z",
-														"type": "string"
+														"type": "string",
+														"example": "2023-05-03T17:05:19.374Z"
 													},
 													"url": {
 														"description": "Submitted URL",
-														"example": "http://example.com",
-														"type": "string"
+														"type": "string",
+														"example": "http://example.com"
 													},
 													"uuid": {
 														"description": "Scan ID",
-														"example": "2ee568d0-bf70-4827-b922-b7088c0f056f",
-														"type": "string"
+														"type": "string",
+														"example": "2ee568d0-bf70-4827-b922-b7088c0f056f"
 													},
 													"visibility": {
+														"type": "string",
 														"enum": [
 															"Public",
 															"Unlisted"
-														],
-														"type": "string"
+														]
 													}
 												},
 												"required": [
@@ -3618,18 +3622,16 @@
 													"scannedFrom"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"tasks"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -3637,34 +3639,35 @@
 								"errors",
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan request denied: hostname was recently scanned."
+				}
 			},
 			"429": {
+				"description": "Scan request denied: rate limited.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "Submission unsuccessful",
-												"type": "string"
+												"type": "string",
+												"example": "Submission unsuccessful"
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3675,26 +3678,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"messages",
 								"errors",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Scan request denied: rate limited."
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -3704,7 +3705,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create URL Scan",
 		"tags": [
 			"URL Scanner (Deprecated)"
 		],

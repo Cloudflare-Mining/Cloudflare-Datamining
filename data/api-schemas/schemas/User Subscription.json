@@ -1,50 +1,52 @@
 {
 	"DELETE /user/subscriptions/{identifier}": {
-		"description": "Deletes a user's subscription.",
 		"operationId": "user-subscription-delete-user-subscription",
+		"summary": "Delete User Subscription",
+		"description": "Deletes a user's subscription.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Subscription identifier tag.",
+					"type": "string",
 					"example": "506e3185e9c882d175a2d0cb0093d9f2",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete User Subscription response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"subscription_id": {
 									"description": "Subscription identifier tag.",
+									"type": "string",
 									"example": "506e3185e9c882d175a2d0cb0093d9f2",
 									"maxLength": 32,
 									"readOnly": true,
-									"type": "string",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Delete User Subscription response"
+				}
 			},
 			"4XX": {
+				"description": "Delete User Subscription response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -53,58 +55,33 @@
 									"properties": {
 										"subscription_id": {
 											"description": "Subscription identifier tag.",
+											"type": "string",
 											"example": "506e3185e9c882d175a2d0cb0093d9f2",
 											"maxLength": 32,
 											"readOnly": true,
-											"type": "string",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -117,25 +94,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -143,14 +146,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete User Subscription response failure"
+				}
 			}
 		},
 		"security": [
@@ -160,7 +161,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete User Subscription",
 		"tags": [
 			"User Subscription"
 		],
@@ -178,25 +178,29 @@
 		"x-forge-hidden": true
 	},
 	"GET /user/subscriptions": {
-		"description": "Lists all of a user's subscriptions.",
 		"operationId": "user-subscription-get-user-subscriptions",
+		"summary": "Get User Subscriptions",
+		"description": "Lists all of a user's subscriptions.",
 		"responses": {
 			"200": {
+				"description": "Get User Subscriptions response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -209,15 +213,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -230,7 +234,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -248,11 +252,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -260,52 +264,53 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"allOf": [
 													{
+														"type": "object",
 														"properties": {
 															"app": {
 																"properties": {
@@ -318,162 +323,164 @@
 															},
 															"component_values": {
 																"description": "The list of add-ons subscribed to.",
+																"type": "array",
 																"items": {
 																	"description": "A component value for a subscription.",
+																	"type": "object",
 																	"properties": {
 																		"default": {
 																			"description": "The default amount assigned.",
-																			"example": 5,
 																			"type": "number",
+																			"example": 5,
 																			"x-auditable": true
 																		},
 																		"display_name": {
 																			"description": "A human-readable version of the component name.",
-																			"example": "Page Rules",
-																			"type": "string"
+																			"type": "string",
+																			"example": "Page Rules"
 																		},
 																		"kind": {
 																			"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
+																			"type": "string",
+																			"example": "sum",
 																			"enum": [
 																				"enum",
 																				"sum",
 																				"usage"
-																			],
-																			"example": "sum",
-																			"type": "string"
+																			]
 																		},
 																		"name": {
 																			"description": "The name of the component value.",
-																			"example": "page_rules",
 																			"type": "string",
+																			"example": "page_rules",
 																			"x-auditable": true
 																		},
 																		"price": {
 																			"description": "The unit price for the component value.",
-																			"example": 5,
 																			"type": "number",
+																			"example": 5,
 																			"x-auditable": true
 																		},
 																		"value": {
 																			"description": "The amount of the component value assigned.",
-																			"example": 20,
 																			"type": "number",
+																			"example": 20,
 																			"x-auditable": true
 																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
+																	}
+																}
 															},
 															"currency": {
 																"description": "The monetary unit in which pricing information is displayed.",
+																"type": "string",
 																"example": "USD",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"current_period_end": {
 																"description": "The end of the current period and also when the next billing is due.",
-																"example": "2014-03-31T12:20:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-03-31T12:20:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"current_period_start": {
 																"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																"example": "2014-05-11T12:20:00Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-05-11T12:20:00Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"frequency": {
 																"description": "How often the subscription is renewed automatically.",
+																"type": "string",
+																"example": "monthly",
 																"enum": [
 																	"weekly",
 																	"monthly",
 																	"quarterly",
 																	"yearly"
 																],
-																"example": "monthly",
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Subscription identifier tag.",
+																"type": "string",
 																"example": "506e3185e9c882d175a2d0cb0093d9f2",
 																"maxLength": 32,
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"price": {
 																"description": "The price of the subscription that will be billed, in US dollars.",
+																"type": "number",
 																"example": 20,
 																"readOnly": true,
-																"type": "number",
 																"x-auditable": true
 															},
 															"rate_plan": {
 																"description": "The rate plan applied to the subscription.",
+																"type": "object",
 																"properties": {
 																	"currency": {
 																		"description": "The currency applied to the rate plan subscription.",
-																		"example": "USD",
 																		"type": "string",
+																		"example": "USD",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"externally_managed": {
 																		"description": "Whether this rate plan is managed externally from Cloudflare.",
-																		"example": false,
 																		"type": "boolean",
+																		"example": false,
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"id": {
 																		"description": "The ID of the rate plan.",
-																		"example": "free",
 																		"type": "string",
+																		"example": "free",
 																		"x-auditable": true
 																	},
 																	"is_contract": {
 																		"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																		"example": false,
 																		"type": "boolean",
+																		"example": false,
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"public_name": {
 																		"description": "The full name of the rate plan.",
-																		"example": "Business Plan",
 																		"type": "string",
+																		"example": "Business Plan",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"scope": {
 																		"description": "The scope that this rate plan applies to.",
-																		"example": "zone",
 																		"type": "string",
+																		"example": "zone",
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"sets": {
 																		"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																		"example": [],
+																		"type": "array",
 																		"items": {
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"type": "array",
+																		"example": [],
 																		"x-stainless-terraform-configurability": "optional"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"state": {
 																"description": "The state that the subscription is in.",
+																"type": "string",
+																"example": "Paid",
 																"enum": [
 																	"Trial",
 																	"Provisioned",
@@ -483,41 +490,36 @@
 																	"Failed",
 																	"Expired"
 																],
-																"example": "Paid",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true
 															},
 															"zone": {
 																"description": "A simple zone object. May have null properties if not a zone subscription.",
+																"type": "object",
 																"properties": {
 																	"id": {
 																		"description": "Identifier",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "The domain name",
+																		"type": "string",
 																		"example": "example.com",
 																		"maxLength": 253,
 																		"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
+														}
 													}
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -525,10 +527,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get User Subscriptions response"
+				}
 			},
 			"4XX": {
+				"description": "Get User Subscriptions response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -536,16 +538,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -558,15 +562,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -579,7 +583,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -597,11 +601,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -609,52 +613,53 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"allOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"app": {
 																		"properties": {
@@ -667,162 +672,164 @@
 																	},
 																	"component_values": {
 																		"description": "The list of add-ons subscribed to.",
+																		"type": "array",
 																		"items": {
 																			"description": "A component value for a subscription.",
+																			"type": "object",
 																			"properties": {
 																				"default": {
 																					"description": "The default amount assigned.",
-																					"example": 5,
 																					"type": "number",
+																					"example": 5,
 																					"x-auditable": true
 																				},
 																				"display_name": {
 																					"description": "A human-readable version of the component name.",
-																					"example": "Page Rules",
-																					"type": "string"
+																					"type": "string",
+																					"example": "Page Rules"
 																				},
 																				"kind": {
 																					"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
+																					"type": "string",
+																					"example": "sum",
 																					"enum": [
 																						"enum",
 																						"sum",
 																						"usage"
-																					],
-																					"example": "sum",
-																					"type": "string"
+																					]
 																				},
 																				"name": {
 																					"description": "The name of the component value.",
-																					"example": "page_rules",
 																					"type": "string",
+																					"example": "page_rules",
 																					"x-auditable": true
 																				},
 																				"price": {
 																					"description": "The unit price for the component value.",
-																					"example": 5,
 																					"type": "number",
+																					"example": 5,
 																					"x-auditable": true
 																				},
 																				"value": {
 																					"description": "The amount of the component value assigned.",
-																					"example": 20,
 																					"type": "number",
+																					"example": 20,
 																					"x-auditable": true
 																				}
-																			},
-																			"type": "object"
-																		},
-																		"type": "array"
+																			}
+																		}
 																	},
 																	"currency": {
 																		"description": "The monetary unit in which pricing information is displayed.",
+																		"type": "string",
 																		"example": "USD",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"current_period_end": {
 																		"description": "The end of the current period and also when the next billing is due.",
-																		"example": "2014-03-31T12:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-03-31T12:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"current_period_start": {
 																		"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-																		"example": "2014-05-11T12:20:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-05-11T12:20:00Z",
+																		"readOnly": true,
 																		"x-auditable": true
 																	},
 																	"frequency": {
 																		"description": "How often the subscription is renewed automatically.",
+																		"type": "string",
+																		"example": "monthly",
 																		"enum": [
 																			"weekly",
 																			"monthly",
 																			"quarterly",
 																			"yearly"
 																		],
-																		"example": "monthly",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Subscription identifier tag.",
+																		"type": "string",
 																		"example": "506e3185e9c882d175a2d0cb0093d9f2",
 																		"maxLength": 32,
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"price": {
 																		"description": "The price of the subscription that will be billed, in US dollars.",
+																		"type": "number",
 																		"example": 20,
 																		"readOnly": true,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"rate_plan": {
 																		"description": "The rate plan applied to the subscription.",
+																		"type": "object",
 																		"properties": {
 																			"currency": {
 																				"description": "The currency applied to the rate plan subscription.",
-																				"example": "USD",
 																				"type": "string",
+																				"example": "USD",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"externally_managed": {
 																				"description": "Whether this rate plan is managed externally from Cloudflare.",
-																				"example": false,
 																				"type": "boolean",
+																				"example": false,
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"id": {
 																				"description": "The ID of the rate plan.",
-																				"example": "free",
 																				"type": "string",
+																				"example": "free",
 																				"x-auditable": true
 																			},
 																			"is_contract": {
 																				"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-																				"example": false,
 																				"type": "boolean",
+																				"example": false,
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"public_name": {
 																				"description": "The full name of the rate plan.",
-																				"example": "Business Plan",
 																				"type": "string",
+																				"example": "Business Plan",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"scope": {
 																				"description": "The scope that this rate plan applies to.",
-																				"example": "zone",
 																				"type": "string",
+																				"example": "zone",
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"sets": {
 																				"description": "The list of sets this rate plan applies to. Returns array of strings.",
-																				"example": [],
+																				"type": "array",
 																				"items": {
 																					"type": "string",
 																					"x-auditable": true
 																				},
-																				"type": "array",
+																				"example": [],
 																				"x-stainless-terraform-configurability": "optional"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"state": {
 																		"description": "The state that the subscription is in.",
+																		"type": "string",
+																		"example": "Paid",
 																		"enum": [
 																			"Trial",
 																			"Provisioned",
@@ -832,41 +839,36 @@
 																			"Failed",
 																			"Expired"
 																		],
-																		"example": "Paid",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"zone": {
 																		"description": "A simple zone object. May have null properties if not a zone subscription.",
+																		"type": "object",
 																		"properties": {
 																			"id": {
 																				"description": "Identifier",
+																				"type": "string",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
 																				"readOnly": true,
-																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"name": {
 																				"description": "The domain name",
+																				"type": "string",
 																				"example": "example.com",
 																				"maxLength": 253,
 																				"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 																				"readOnly": true,
-																				"type": "string",
 																				"x-auditable": true
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
-																},
-																"type": "object"
+																}
 															}
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"type": "object"
@@ -874,48 +876,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -928,25 +905,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -954,14 +957,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get User Subscriptions response failure"
+				}
 			}
 		},
 		"security": [
@@ -971,7 +972,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get User Subscriptions",
 		"tags": [
 			"User Subscription"
 		],
@@ -989,12 +989,15 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /user/subscriptions": {
-		"description": "Creates a user subscription.",
 		"operationId": "user-subscription-create-user-subscription",
+		"summary": "Create User Subscription",
+		"description": "Creates a user subscription.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"app": {
 								"properties": {
@@ -1007,162 +1010,164 @@
 							},
 							"component_values": {
 								"description": "The list of add-ons subscribed to.",
+								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
+									"type": "object",
 									"properties": {
 										"default": {
 											"description": "The default amount assigned.",
-											"example": 5,
 											"type": "number",
+											"example": 5,
 											"x-auditable": true
 										},
 										"display_name": {
 											"description": "A human-readable version of the component name.",
-											"example": "Page Rules",
-											"type": "string"
+											"type": "string",
+											"example": "Page Rules"
 										},
 										"kind": {
 											"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
+											"type": "string",
+											"example": "sum",
 											"enum": [
 												"enum",
 												"sum",
 												"usage"
-											],
-											"example": "sum",
-											"type": "string"
+											]
 										},
 										"name": {
 											"description": "The name of the component value.",
-											"example": "page_rules",
 											"type": "string",
+											"example": "page_rules",
 											"x-auditable": true
 										},
 										"price": {
 											"description": "The unit price for the component value.",
-											"example": 5,
 											"type": "number",
+											"example": 5,
 											"x-auditable": true
 										},
 										"value": {
 											"description": "The amount of the component value assigned.",
-											"example": 20,
 											"type": "number",
+											"example": 20,
 											"x-auditable": true
 										}
-									},
-									"type": "object"
-								},
-								"type": "array"
+									}
+								}
 							},
 							"currency": {
 								"description": "The monetary unit in which pricing information is displayed.",
+								"type": "string",
 								"example": "USD",
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"current_period_end": {
 								"description": "The end of the current period and also when the next billing is due.",
-								"example": "2014-03-31T12:20:00Z",
-								"format": "date-time",
-								"readOnly": true,
 								"type": "string",
+								"format": "date-time",
+								"example": "2014-03-31T12:20:00Z",
+								"readOnly": true,
 								"x-auditable": true
 							},
 							"current_period_start": {
 								"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-								"example": "2014-05-11T12:20:00Z",
-								"format": "date-time",
-								"readOnly": true,
 								"type": "string",
+								"format": "date-time",
+								"example": "2014-05-11T12:20:00Z",
+								"readOnly": true,
 								"x-auditable": true
 							},
 							"frequency": {
 								"description": "How often the subscription is renewed automatically.",
+								"type": "string",
+								"example": "monthly",
 								"enum": [
 									"weekly",
 									"monthly",
 									"quarterly",
 									"yearly"
 								],
-								"example": "monthly",
-								"type": "string",
 								"x-auditable": true
 							},
 							"id": {
 								"description": "Subscription identifier tag.",
+								"type": "string",
 								"example": "506e3185e9c882d175a2d0cb0093d9f2",
 								"maxLength": 32,
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"price": {
 								"description": "The price of the subscription that will be billed, in US dollars.",
+								"type": "number",
 								"example": 20,
 								"readOnly": true,
-								"type": "number",
 								"x-auditable": true
 							},
 							"rate_plan": {
 								"description": "The rate plan applied to the subscription.",
+								"type": "object",
 								"properties": {
 									"currency": {
 										"description": "The currency applied to the rate plan subscription.",
-										"example": "USD",
 										"type": "string",
+										"example": "USD",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"externally_managed": {
 										"description": "Whether this rate plan is managed externally from Cloudflare.",
-										"example": false,
 										"type": "boolean",
+										"example": false,
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"id": {
 										"description": "The ID of the rate plan.",
-										"example": "free",
 										"type": "string",
+										"example": "free",
 										"x-auditable": true
 									},
 									"is_contract": {
 										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-										"example": false,
 										"type": "boolean",
+										"example": false,
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"public_name": {
 										"description": "The full name of the rate plan.",
-										"example": "Business Plan",
 										"type": "string",
+										"example": "Business Plan",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"scope": {
 										"description": "The scope that this rate plan applies to.",
-										"example": "zone",
 										"type": "string",
+										"example": "zone",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"sets": {
 										"description": "The list of sets this rate plan applies to. Returns array of strings.",
-										"example": [],
+										"type": "array",
 										"items": {
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array",
+										"example": [],
 										"x-stainless-terraform-configurability": "optional"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"state": {
 								"description": "The state that the subscription is in.",
+								"type": "string",
+								"example": "Paid",
 								"enum": [
 									"Trial",
 									"Provisioned",
@@ -1172,58 +1177,57 @@
 									"Failed",
 									"Expired"
 								],
-								"example": "Paid",
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"zone": {
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
+								"type": "object",
 								"properties": {
 									"id": {
 										"description": "Identifier",
+										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
 										"readOnly": true,
-										"type": "string",
 										"x-auditable": true
 									},
 									"name": {
 										"description": "The domain name",
+										"type": "string",
 										"example": "example.com",
 										"maxLength": 253,
 										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 										"readOnly": true,
-										"type": "string",
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create User Subscription response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1236,15 +1240,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1257,7 +1261,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1275,11 +1279,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1287,8 +1291,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1306,8 +1309,7 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1320,10 +1322,10 @@
 							]
 						}
 					}
-				},
-				"description": "Create User Subscription response"
+				}
 			},
 			"4XX": {
+				"description": "Create User Subscription response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1331,16 +1333,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1353,15 +1357,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1374,7 +1378,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1392,11 +1396,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1404,8 +1408,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1423,8 +1426,7 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1437,48 +1439,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1491,25 +1468,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1517,14 +1520,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create User Subscription response failure"
+				}
 			}
 		},
 		"security": [
@@ -1534,7 +1535,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create User Subscription",
 		"tags": [
 			"User Subscription"
 		],
@@ -1557,27 +1557,30 @@
 		"x-forge-hidden": true
 	},
 	"PUT /user/subscriptions/{identifier}": {
-		"description": "Updates a user's subscriptions.",
 		"operationId": "user-subscription-update-user-subscription",
+		"summary": "Update User Subscription",
+		"description": "Updates a user's subscriptions.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "identifier",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Subscription identifier tag.",
+					"type": "string",
 					"example": "506e3185e9c882d175a2d0cb0093d9f2",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"app": {
 								"properties": {
@@ -1590,162 +1593,164 @@
 							},
 							"component_values": {
 								"description": "The list of add-ons subscribed to.",
+								"type": "array",
 								"items": {
 									"description": "A component value for a subscription.",
+									"type": "object",
 									"properties": {
 										"default": {
 											"description": "The default amount assigned.",
-											"example": 5,
 											"type": "number",
+											"example": 5,
 											"x-auditable": true
 										},
 										"display_name": {
 											"description": "A human-readable version of the component name.",
-											"example": "Page Rules",
-											"type": "string"
+											"type": "string",
+											"example": "Page Rules"
 										},
 										"kind": {
 											"description": "The type of component value. \"enum\" for discrete values (including boolean on/off toggles where 0=off and 1=on), \"sum\" for countable quantities, \"usage\" for metered billing components.",
+											"type": "string",
+											"example": "sum",
 											"enum": [
 												"enum",
 												"sum",
 												"usage"
-											],
-											"example": "sum",
-											"type": "string"
+											]
 										},
 										"name": {
 											"description": "The name of the component value.",
-											"example": "page_rules",
 											"type": "string",
+											"example": "page_rules",
 											"x-auditable": true
 										},
 										"price": {
 											"description": "The unit price for the component value.",
-											"example": 5,
 											"type": "number",
+											"example": 5,
 											"x-auditable": true
 										},
 										"value": {
 											"description": "The amount of the component value assigned.",
-											"example": 20,
 											"type": "number",
+											"example": 20,
 											"x-auditable": true
 										}
-									},
-									"type": "object"
-								},
-								"type": "array"
+									}
+								}
 							},
 							"currency": {
 								"description": "The monetary unit in which pricing information is displayed.",
+								"type": "string",
 								"example": "USD",
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"current_period_end": {
 								"description": "The end of the current period and also when the next billing is due.",
-								"example": "2014-03-31T12:20:00Z",
-								"format": "date-time",
-								"readOnly": true,
 								"type": "string",
+								"format": "date-time",
+								"example": "2014-03-31T12:20:00Z",
+								"readOnly": true,
 								"x-auditable": true
 							},
 							"current_period_start": {
 								"description": "When the current billing period started. May match initial_period_start if this is the first period.",
-								"example": "2014-05-11T12:20:00Z",
-								"format": "date-time",
-								"readOnly": true,
 								"type": "string",
+								"format": "date-time",
+								"example": "2014-05-11T12:20:00Z",
+								"readOnly": true,
 								"x-auditable": true
 							},
 							"frequency": {
 								"description": "How often the subscription is renewed automatically.",
+								"type": "string",
+								"example": "monthly",
 								"enum": [
 									"weekly",
 									"monthly",
 									"quarterly",
 									"yearly"
 								],
-								"example": "monthly",
-								"type": "string",
 								"x-auditable": true
 							},
 							"id": {
 								"description": "Subscription identifier tag.",
+								"type": "string",
 								"example": "506e3185e9c882d175a2d0cb0093d9f2",
 								"maxLength": 32,
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"price": {
 								"description": "The price of the subscription that will be billed, in US dollars.",
+								"type": "number",
 								"example": 20,
 								"readOnly": true,
-								"type": "number",
 								"x-auditable": true
 							},
 							"rate_plan": {
 								"description": "The rate plan applied to the subscription.",
+								"type": "object",
 								"properties": {
 									"currency": {
 										"description": "The currency applied to the rate plan subscription.",
-										"example": "USD",
 										"type": "string",
+										"example": "USD",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"externally_managed": {
 										"description": "Whether this rate plan is managed externally from Cloudflare.",
-										"example": false,
 										"type": "boolean",
+										"example": false,
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"id": {
 										"description": "The ID of the rate plan.",
-										"example": "free",
 										"type": "string",
+										"example": "free",
 										"x-auditable": true
 									},
 									"is_contract": {
 										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
-										"example": false,
 										"type": "boolean",
+										"example": false,
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"public_name": {
 										"description": "The full name of the rate plan.",
-										"example": "Business Plan",
 										"type": "string",
+										"example": "Business Plan",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"scope": {
 										"description": "The scope that this rate plan applies to.",
-										"example": "zone",
 										"type": "string",
+										"example": "zone",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"sets": {
 										"description": "The list of sets this rate plan applies to. Returns array of strings.",
-										"example": [],
+										"type": "array",
 										"items": {
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array",
+										"example": [],
 										"x-stainless-terraform-configurability": "optional"
 									}
-								},
-								"type": "object"
+								}
 							},
 							"state": {
 								"description": "The state that the subscription is in.",
+								"type": "string",
+								"example": "Paid",
 								"enum": [
 									"Trial",
 									"Provisioned",
@@ -1755,58 +1760,57 @@
 									"Failed",
 									"Expired"
 								],
-								"example": "Paid",
 								"readOnly": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"zone": {
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
+								"type": "object",
 								"properties": {
 									"id": {
 										"description": "Identifier",
+										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
 										"readOnly": true,
-										"type": "string",
 										"x-auditable": true
 									},
 									"name": {
 										"description": "The domain name",
+										"type": "string",
 										"example": "example.com",
 										"maxLength": 253,
 										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 										"readOnly": true,
-										"type": "string",
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update User Subscription response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1819,15 +1823,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1840,7 +1844,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1858,11 +1862,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1870,8 +1874,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1889,8 +1892,7 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1903,10 +1905,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update User Subscription response"
+				}
 			},
 			"4XX": {
+				"description": "Update User Subscription response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1914,16 +1916,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1936,15 +1940,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1957,7 +1961,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1975,11 +1979,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1987,8 +1991,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -2006,8 +2009,7 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -2020,48 +2022,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2074,25 +2051,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2100,14 +2103,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update User Subscription response failure"
+				}
 			}
 		},
 		"security": [
@@ -2117,7 +2118,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update User Subscription",
 		"tags": [
 			"User Subscription"
 		],

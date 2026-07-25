@@ -1,19 +1,20 @@
 {
 	"DELETE /accounts/{account_id}/slurper/jobs/{job_id}": {
-		"description": "Deletes a completed, aborted, or errored R2 Super Slurper migration job. Active jobs cannot be deleted.",
 		"operationId": "slurper-delete-job",
+		"summary": "Delete a job",
+		"description": "Deletes a completed, aborted, or errored R2 Super Slurper migration job. Active jobs cannot be deleted.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -22,24 +23,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Job deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -54,27 +53,31 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
@@ -84,30 +87,25 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job deleted"
+				}
 			},
 			"409": {
+				"description": "Job is still active",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -122,50 +120,50 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Job is still active"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -180,32 +178,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -215,34 +216,34 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a job",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"GET /accounts/{account_id}/slurper/jobs": {
-		"description": "Lists all R2 Super Slurper migration jobs for the account with their status.",
 		"operationId": "slurper-list-jobs",
+		"summary": "List jobs",
+		"description": "Lists all R2 Super Slurper migration jobs for the account with their status.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"maximum": 50,
-					"type": "integer"
+					"type": "integer",
+					"maximum": 50
 				}
 			},
 			{
-				"in": "query",
 				"name": "offset",
+				"in": "query",
 				"schema": {
 					"type": "integer"
 				}
@@ -250,24 +251,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "A list of jobs",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -282,39 +281,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"createdAt": {
 														"type": "string"
 													},
 													"finishedAt": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"id": {
 														"type": "string"
@@ -330,26 +335,26 @@
 																		"type": "string"
 																	},
 																	"endpoint": {
+																		"type": "string",
 																		"format": "uri",
-																		"nullable": true,
-																		"type": "string"
+																		"nullable": true
 																	},
 																	"keys": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"nullable": true,
-																		"type": "array"
+																		"nullable": true
 																	},
 																	"pathPrefix": {
-																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"nullable": true
 																	},
 																	"vendor": {
+																		"type": "string",
 																		"enum": [
 																			"s3"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"title": "S3SourceResponseSchema",
@@ -361,21 +366,21 @@
 																		"type": "string"
 																	},
 																	"keys": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"nullable": true,
-																		"type": "array"
+																		"nullable": true
 																	},
 																	"pathPrefix": {
-																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"nullable": true
 																	},
 																	"vendor": {
+																		"type": "string",
 																		"enum": [
 																			"gcs"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"title": "GCSSourceResponseSchema",
@@ -387,29 +392,29 @@
 																		"type": "string"
 																	},
 																	"jurisdiction": {
+																		"type": "string",
 																		"enum": [
 																			"default",
 																			"eu",
 																			"fedramp"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"keys": {
+																		"type": "array",
 																		"items": {
 																			"type": "string"
 																		},
-																		"nullable": true,
-																		"type": "array"
+																		"nullable": true
 																	},
 																	"pathPrefix": {
-																		"nullable": true,
-																		"type": "string"
+																		"type": "string",
+																		"nullable": true
 																	},
 																	"vendor": {
+																		"type": "string",
 																		"enum": [
 																			"r2"
-																		],
-																		"type": "string"
+																		]
 																	}
 																},
 																"title": "R2SourceResponseSchema",
@@ -418,69 +423,62 @@
 														]
 													},
 													"status": {
+														"type": "string",
 														"enum": [
 															"running",
 															"paused",
 															"aborted",
 															"completed"
-														],
-														"type": "string"
+														]
 													},
 													"target": {
+														"type": "object",
 														"properties": {
 															"bucket": {
 																"type": "string"
 															},
 															"jurisdiction": {
+																"type": "string",
 																"enum": [
 																	"default",
 																	"eu",
 																	"fedramp"
-																],
-																"type": "string"
+																]
 															},
 															"vendor": {
+																"type": "string",
 																"enum": [
 																	"r2"
-																],
-																"type": "string"
+																]
 															}
 														},
-														"title": "R2TargetResponseSchema",
-														"type": "object"
+														"title": "R2TargetResponseSchema"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "A list of jobs"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -495,32 +493,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -530,26 +531,26 @@
 				"api_token": []
 			}
 		],
-		"summary": "List jobs",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}": {
-		"description": "Retrieves detailed status and configuration for a specific R2 Super Slurper migration job.",
 		"operationId": "slurper-get-job",
+		"summary": "Get job details",
+		"description": "Retrieves detailed status and configuration for a specific R2 Super Slurper migration job.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -558,24 +559,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Job details",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -590,38 +589,43 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"createdAt": {
 													"type": "string"
 												},
 												"finishedAt": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
 													"type": "string"
@@ -637,26 +641,26 @@
 																	"type": "string"
 																},
 																"endpoint": {
+																	"type": "string",
 																	"format": "uri",
-																	"nullable": true,
-																	"type": "string"
+																	"nullable": true
 																},
 																"keys": {
+																	"type": "array",
 																	"items": {
 																		"type": "string"
 																	},
-																	"nullable": true,
-																	"type": "array"
+																	"nullable": true
 																},
 																"pathPrefix": {
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"vendor": {
+																	"type": "string",
 																	"enum": [
 																		"s3"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"title": "S3SourceResponseSchema",
@@ -668,21 +672,21 @@
 																	"type": "string"
 																},
 																"keys": {
+																	"type": "array",
 																	"items": {
 																		"type": "string"
 																	},
-																	"nullable": true,
-																	"type": "array"
+																	"nullable": true
 																},
 																"pathPrefix": {
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"vendor": {
+																	"type": "string",
 																	"enum": [
 																		"gcs"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"title": "GCSSourceResponseSchema",
@@ -694,29 +698,29 @@
 																	"type": "string"
 																},
 																"jurisdiction": {
+																	"type": "string",
 																	"enum": [
 																		"default",
 																		"eu",
 																		"fedramp"
-																	],
-																	"type": "string"
+																	]
 																},
 																"keys": {
+																	"type": "array",
 																	"items": {
 																		"type": "string"
 																	},
-																	"nullable": true,
-																	"type": "array"
+																	"nullable": true
 																},
 																"pathPrefix": {
-																	"nullable": true,
-																	"type": "string"
+																	"type": "string",
+																	"nullable": true
 																},
 																"vendor": {
+																	"type": "string",
 																	"enum": [
 																		"r2"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"title": "R2SourceResponseSchema",
@@ -725,67 +729,61 @@
 													]
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"running",
 														"paused",
 														"aborted",
 														"completed"
-													],
-													"type": "string"
+													]
 												},
 												"target": {
+													"type": "object",
 													"properties": {
 														"bucket": {
 															"type": "string"
 														},
 														"jurisdiction": {
+															"type": "string",
 															"enum": [
 																"default",
 																"eu",
 																"fedramp"
-															],
-															"type": "string"
+															]
 														},
 														"vendor": {
+															"type": "string",
 															"enum": [
 																"r2"
-															],
-															"type": "string"
+															]
 														}
 													},
-													"title": "R2TargetResponseSchema",
-													"type": "object"
+													"title": "R2TargetResponseSchema"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job details"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -800,32 +798,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -835,42 +836,42 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get job details",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/logs": {
-		"description": "Gets log entries for an R2 Super Slurper migration job, showing migration status changes, errors, etc.",
 		"operationId": "slurper-get-job-logs",
+		"summary": "Get job logs",
+		"description": "Gets log entries for an R2 Super Slurper migration job, showing migration status changes, errors, etc.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "job_id",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
-				"name": "limit",
+				"name": "job_id",
+				"in": "path",
+				"required": true,
 				"schema": {
-					"maximum": 50,
-					"type": "integer"
+					"type": "string"
 				}
 			},
 			{
+				"name": "limit",
 				"in": "query",
+				"schema": {
+					"type": "integer",
+					"maximum": 50
+				}
+			},
+			{
 				"name": "offset",
+				"in": "query",
 				"schema": {
 					"type": "integer"
 				}
@@ -878,24 +879,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Job logs",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -910,32 +909,38 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"createdAt": {
 														"type": "string"
@@ -944,6 +949,7 @@
 														"type": "string"
 													},
 													"logType": {
+														"type": "string",
 														"enum": [
 															"migrationStart",
 															"migrationComplete",
@@ -960,49 +966,41 @@
 															"importSkippedExcludedContentType",
 															"importSkippedInvalidMedia",
 															"importSkippedRequiresRetrieval"
-														],
-														"type": "string"
+														]
 													},
 													"message": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"objectKey": {
-														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job logs"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -1017,32 +1015,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -1052,26 +1053,26 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get job logs",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/progress": {
-		"description": "Retrieves current progress metrics for an R2 Super Slurper migration job",
 		"operationId": "slurper-get-job-progress",
+		"summary": "Get job progress",
+		"description": "Retrieves current progress metrics for an R2 Super Slurper migration job",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1080,24 +1081,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Job progress",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -1112,31 +1111,36 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"createdAt": {
 													"type": "string"
@@ -1154,47 +1158,41 @@
 													"type": "integer"
 												},
 												"status": {
+													"type": "string",
 													"enum": [
 														"running",
 														"paused",
 														"aborted",
 														"completed"
-													],
-													"type": "string"
+													]
 												},
 												"transferredObjects": {
 													"type": "integer"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job progress"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -1209,32 +1207,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -1244,18 +1245,18 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get job progress",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"POST /accounts/{account_id}/slurper/jobs": {
-		"description": "Creates a new R2 Super Slurper migration job to transfer objects from a source bucket (e.g. S3, GCS, R2) to R2.",
 		"operationId": "slurper-create-job",
+		"summary": "Create a job",
+		"description": "Creates a new R2 Super Slurper migration job to transfer objects from a source bucket (e.g. S3, GCS, R2) to R2.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1263,44 +1264,49 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"overwrite": {
-								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"default": true
 							},
 							"source": {
+								"type": "object",
 								"oneOf": [
 									{
+										"type": "object",
 										"properties": {
 											"bucket": {
 												"type": "string"
 											},
 											"endpoint": {
 												"description": "Custom S3-compatible endpoint that must use https://.",
+												"type": "string",
 												"format": "uri",
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"keys": {
+												"type": "array",
 												"items": {
 													"type": "string"
 												},
 												"maxItems": 10000,
-												"nullable": true,
-												"type": "array"
+												"nullable": true
 											},
 											"pathPrefix": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"region": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"secret": {
+												"type": "object",
 												"properties": {
 													"accessKeyId": {
 														"type": "string"
@@ -1313,41 +1319,41 @@
 												"required": [
 													"accessKeyId",
 													"secretAccessKey"
-												],
-												"type": "object"
+												]
 											},
 											"vendor": {
+												"type": "string",
 												"enum": [
 													"s3"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"vendor",
 											"bucket",
 											"secret"
-										],
-										"type": "object"
+										]
 									},
 									{
+										"type": "object",
 										"properties": {
 											"bucket": {
 												"type": "string"
 											},
 											"keys": {
+												"type": "array",
 												"items": {
 													"type": "string"
 												},
 												"maxItems": 10000,
-												"nullable": true,
-												"type": "array"
+												"nullable": true
 											},
 											"pathPrefix": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"secret": {
+												"type": "object",
 												"properties": {
 													"clientEmail": {
 														"type": "string"
@@ -1360,49 +1366,49 @@
 												"required": [
 													"clientEmail",
 													"privateKey"
-												],
-												"type": "object"
+												]
 											},
 											"vendor": {
+												"type": "string",
 												"enum": [
 													"gcs"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"vendor",
 											"bucket",
 											"secret"
-										],
-										"type": "object"
+										]
 									},
 									{
+										"type": "object",
 										"properties": {
 											"bucket": {
 												"type": "string"
 											},
 											"jurisdiction": {
+												"type": "string",
 												"enum": [
 													"default",
 													"eu",
 													"fedramp"
-												],
-												"type": "string"
+												]
 											},
 											"keys": {
+												"type": "array",
 												"items": {
 													"type": "string"
 												},
 												"maxItems": 10000,
-												"nullable": true,
-												"type": "array"
+												"nullable": true
 											},
 											"pathPrefix": {
-												"nullable": true,
-												"type": "string"
+												"type": "string",
+												"nullable": true
 											},
 											"secret": {
+												"type": "object",
 												"properties": {
 													"accessKeyId": {
 														"type": "string"
@@ -1415,40 +1421,39 @@
 												"required": [
 													"accessKeyId",
 													"secretAccessKey"
-												],
-												"type": "object"
+												]
 											},
 											"vendor": {
+												"type": "string",
 												"enum": [
 													"r2"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
 											"vendor",
 											"bucket",
 											"secret"
-										],
-										"type": "object"
+										]
 									}
-								],
-								"type": "object"
+								]
 							},
 							"target": {
+								"type": "object",
 								"properties": {
 									"bucket": {
 										"type": "string"
 									},
 									"jurisdiction": {
+										"type": "string",
 										"enum": [
 											"default",
 											"eu",
 											"fedramp"
-										],
-										"type": "string"
+										]
 									},
 									"secret": {
+										"type": "object",
 										"properties": {
 											"accessKeyId": {
 												"type": "string"
@@ -1461,50 +1466,44 @@
 										"required": [
 											"accessKeyId",
 											"secretAccessKey"
-										],
-										"type": "object"
+										]
 									},
 									"vendor": {
+										"type": "string",
 										"enum": [
 											"r2"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
 									"vendor",
 									"bucket",
 									"secret"
-								],
-								"type": "object"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Job created",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -1519,65 +1518,64 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job created"
+				}
 			},
 			"409": {
+				"description": "Maximum number of concurrent jobs has been reached",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -1592,50 +1590,50 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Maximum number of concurrent jobs has been reached"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -1650,32 +1648,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -1685,26 +1686,26 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a job",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/abort": {
-		"description": "Cancels a specific R2 Super Slurper migration job. Any objects in the middle of a transfer will finish, but no new objects will start transferring.",
 		"operationId": "slurper-abort-job",
+		"summary": "Abort a job",
+		"description": "Cancels a specific R2 Super Slurper migration job. Any objects in the middle of a transfer will finish, but no new objects will start transferring.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1713,24 +1714,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Job aborted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -1745,27 +1744,31 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
@@ -1775,30 +1778,25 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job aborted"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -1813,32 +1811,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -1848,26 +1849,26 @@
 				"api_token": []
 			}
 		],
-		"summary": "Abort a job",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/pause": {
-		"description": "Pauses a running R2 Super Slurper migration job. The job can be resumed later to continue transferring.",
 		"operationId": "slurper-pause-job",
+		"summary": "Pause a job",
+		"description": "Pauses a running R2 Super Slurper migration job. The job can be resumed later to continue transferring.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1876,24 +1877,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Job paused",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -1908,27 +1907,31 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
@@ -1938,30 +1941,25 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job paused"
+				}
 			},
 			"409": {
+				"description": "Job is not paused",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -1976,50 +1974,50 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Job is not paused"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -2034,32 +2032,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -2069,26 +2070,26 @@
 				"api_token": []
 			}
 		],
-		"summary": "Pause a job",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/resume": {
-		"description": "Resumes a paused R2 Super Slurper migration job, continuing the transfer from where it stopped.",
 		"operationId": "slurper-resume-job",
+		"summary": "Resume a job",
+		"description": "Resumes a paused R2 Super Slurper migration job, continuing the transfer from where it stopped.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "job_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2097,24 +2098,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Job resumed",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -2129,27 +2128,31 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
@@ -2159,30 +2162,25 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Job resumed"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -2197,32 +2195,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -2232,18 +2233,18 @@
 				"api_token": []
 			}
 		],
-		"summary": "Resume a job",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/abortAll": {
-		"description": "Cancels all running R2 Super Slurper migration jobs for the account. Any objects in the middle of a transfer will finish, but no new objects will start transferring.",
 		"operationId": "slurper-abort-all-jobs",
+		"summary": "Abort all jobs",
+		"description": "Cancels all running R2 Super Slurper migration jobs for the account. Any objects in the middle of a transfer will finish, but no new objects will start transferring.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2252,24 +2253,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "All jobs aborted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -2284,27 +2283,31 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
@@ -2314,30 +2317,25 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "All jobs aborted"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -2352,32 +2350,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -2387,18 +2388,18 @@
 				"api_token": []
 			}
 		],
-		"summary": "Abort all jobs",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/source/connectivity-precheck": {
-		"description": "Check whether tokens are valid against the source bucket",
 		"operationId": "slurper-check-source-connectivity",
+		"summary": "Check source connectivity",
+		"description": "Check whether tokens are valid against the source bucket",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2406,38 +2407,42 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"oneOf": [
 							{
+								"type": "object",
 								"properties": {
 									"bucket": {
 										"type": "string"
 									},
 									"endpoint": {
 										"description": "Custom S3-compatible endpoint that must use https://.",
+										"type": "string",
 										"format": "uri",
-										"nullable": true,
-										"type": "string"
+										"nullable": true
 									},
 									"keys": {
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
 										"maxItems": 10000,
-										"nullable": true,
-										"type": "array"
+										"nullable": true
 									},
 									"pathPrefix": {
-										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"nullable": true
 									},
 									"region": {
-										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"nullable": true
 									},
 									"secret": {
+										"type": "object",
 										"properties": {
 											"accessKeyId": {
 												"type": "string"
@@ -2450,41 +2455,41 @@
 										"required": [
 											"accessKeyId",
 											"secretAccessKey"
-										],
-										"type": "object"
+										]
 									},
 									"vendor": {
+										"type": "string",
 										"enum": [
 											"s3"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
 									"vendor",
 									"bucket",
 									"secret"
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"properties": {
 									"bucket": {
 										"type": "string"
 									},
 									"keys": {
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
 										"maxItems": 10000,
-										"nullable": true,
-										"type": "array"
+										"nullable": true
 									},
 									"pathPrefix": {
-										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"nullable": true
 									},
 									"secret": {
+										"type": "object",
 										"properties": {
 											"clientEmail": {
 												"type": "string"
@@ -2497,49 +2502,49 @@
 										"required": [
 											"clientEmail",
 											"privateKey"
-										],
-										"type": "object"
+										]
 									},
 									"vendor": {
+										"type": "string",
 										"enum": [
 											"gcs"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
 									"vendor",
 									"bucket",
 									"secret"
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"properties": {
 									"bucket": {
 										"type": "string"
 									},
 									"jurisdiction": {
+										"type": "string",
 										"enum": [
 											"default",
 											"eu",
 											"fedramp"
-										],
-										"type": "string"
+										]
 									},
 									"keys": {
+										"type": "array",
 										"items": {
 											"type": "string"
 										},
 										"maxItems": 10000,
-										"nullable": true,
-										"type": "array"
+										"nullable": true
 									},
 									"pathPrefix": {
-										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"nullable": true
 									},
 									"secret": {
+										"type": "object",
 										"properties": {
 											"accessKeyId": {
 												"type": "string"
@@ -2552,50 +2557,44 @@
 										"required": [
 											"accessKeyId",
 											"secretAccessKey"
-										],
-										"type": "object"
+										]
 									},
 									"vendor": {
+										"type": "string",
 										"enum": [
 											"r2"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
 									"vendor",
 									"bucket",
 									"secret"
-								],
-								"type": "object"
+								]
 							}
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Source connectivity checked",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -2610,69 +2609,68 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"connectivityStatus": {
+													"type": "string",
 													"enum": [
 														"success",
 														"error"
-													],
-													"type": "string"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Source connectivity checked"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -2687,32 +2685,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -2722,18 +2723,18 @@
 				"api_token": []
 			}
 		],
-		"summary": "Check source connectivity",
 		"tags": [
 			"R2 Super Slurper"
 		]
 	},
 	"PUT /accounts/{account_id}/slurper/target/connectivity-precheck": {
-		"description": "Check whether tokens are valid against the target bucket",
 		"operationId": "slurper-check-target-connectivity",
+		"summary": "Check target connectivity",
+		"description": "Check whether tokens are valid against the target bucket",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2741,22 +2742,25 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"bucket": {
 								"type": "string"
 							},
 							"jurisdiction": {
+								"type": "string",
 								"enum": [
 									"default",
 									"eu",
 									"fedramp"
-								],
-								"type": "string"
+								]
 							},
 							"secret": {
+								"type": "object",
 								"properties": {
 									"accessKeyId": {
 										"type": "string"
@@ -2769,47 +2773,42 @@
 								"required": [
 									"accessKeyId",
 									"secretAccessKey"
-								],
-								"type": "object"
+								]
 							},
 							"vendor": {
+								"type": "string",
 								"enum": [
 									"r2"
-								],
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"vendor",
 							"bucket",
 							"secret"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Target connectivity checked",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
 														"type": "integer",
+														"minimum": 1000,
 														"x-auditable": true
 													},
 													"message": {
@@ -2824,69 +2823,68 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"minLength": 1,
-											"type": "array"
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"type": "string",
 												"x-auditable": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
 											"enum": [
 												true
 											],
-											"type": "boolean",
 											"x-auditable": true
 										}
-									},
-									"type": "object"
+									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"connectivityStatus": {
+													"type": "string",
 													"enum": [
 														"success",
 														"error"
-													],
-													"type": "string"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Target connectivity checked"
+				}
 			},
 			"4XX": {
+				"description": "Failure response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
 												"type": "integer",
+												"minimum": 1000,
 												"x-auditable": true
 											},
 											"message": {
@@ -2901,32 +2899,35 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"minLength": 1,
-									"type": "array"
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"type": "string",
 										"x-auditable": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
 									],
-									"example": false,
-									"type": "boolean",
 									"x-auditable": true
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Failure response"
+				}
 			}
 		},
 		"security": [
@@ -2936,7 +2937,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Check target connectivity",
 		"tags": [
 			"R2 Super Slurper"
 		]

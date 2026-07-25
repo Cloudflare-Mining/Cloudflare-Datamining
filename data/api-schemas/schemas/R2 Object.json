@@ -1,52 +1,53 @@
 {
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/objects": {
-		"description": "Deletes multiple objects from an R2 bucket. Two modes are supported:\n\n1. **Delete by list** (default): Provide a JSON array of object keys in the request body.\n   All listed objects are deleted; per-key errors are reported in the response.\n2. **Delete by prefix**: Provide the `prefix` query parameter (and an empty/no body)\n   to schedule deletion of every object whose key begins with the given prefix.\n   This kicks off an asynchronous prefix-delete job and returns the job descriptor.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"operationId": "r2-delete-objects",
+		"summary": "Delete Objects",
+		"description": "Deletes multiple objects from an R2 bucket. Two modes are supported:\n\n1. **Delete by list** (default): Provide a JSON array of object keys in the request body.\n   All listed objects are deleted; per-key errors are reported in the response.\n2. **Delete by prefix**: Provide the `prefix` query parameter (and an empty/no body)\n   to schedule deletion of every object whose key begins with the given prefix.\n   This kicks off an asynchronous prefix-delete job and returns the job descriptor.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket.",
+					"type": "string",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "header",
 				"name": "cf-r2-jurisdiction",
+				"in": "header",
 				"schema": {
-					"default": "default",
 					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
-					"type": "string",
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			},
 			{
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
 				"schema": {
 					"description": "When set, switches the operation to \"delete by prefix\" mode and asynchronously\ndeletes every object whose key begins with the given prefix. When omitted, the\nrequest body is interpreted as a JSON array of object keys to delete.\n",
 					"type": "string"
@@ -54,34 +55,37 @@
 			}
 		],
 		"requestBody": {
+			"description": "Required for \"delete by list\" mode (when `prefix` query parameter is omitted).\nA JSON array of object keys to delete. Ignored when `prefix` is provided.\n",
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": [
-							"path/to/object-a.txt",
-							"path/to/object-b.txt"
-						],
+						"type": "array",
 						"items": {
 							"type": "string"
 						},
-						"type": "array"
+						"example": [
+							"path/to/object-a.txt",
+							"path/to/object-b.txt"
+						]
 					}
 				}
-			},
-			"description": "Required for \"delete by list\" mode (when `prefix` query parameter is omitted).\nA JSON array of object keys to delete. Ignored when `prefix` is provided.\n"
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Objects response. Body shape depends on the operation mode:\n- \"delete by list\" returns an array of `{ key }` entries for successfully deleted objects;\n- \"delete by prefix\" returns the prefix-delete job descriptor.\n",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -93,14 +97,13 @@
 										],
 										"type": "object",
 										"uniqueItems": true
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"oneOf": [
@@ -108,24 +111,25 @@
 											"description": "Per-key delete results returned in \"delete by list\" mode.",
 											"items": {
 												"description": "Result of a successful object deletion.",
+												"type": "object",
 												"properties": {
 													"key": {
 														"description": "The key (name) of the deleted object.",
-														"example": "path/to/my-object.txt",
-														"type": "string"
+														"type": "string",
+														"example": "path/to/my-object.txt"
 													}
-												},
-												"type": "object"
+												}
 											},
 											"type": "array"
 										},
 										{
 											"description": "Descriptor of an asynchronous prefix-delete job, returned when the bulk\ndelete-objects endpoint is invoked with a `prefix` query parameter.\n",
+											"type": "object",
 											"properties": {
 												"endTime": {
 													"description": "When the job finished, if it has finished.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"id": {
 													"description": "Unique identifier for the prefix-delete job.",
@@ -133,18 +137,19 @@
 												},
 												"jobType": {
 													"description": "The job kind. Always `prefixDelete` for this endpoint.",
+													"type": "string",
 													"enum": [
 														"prefixDelete"
-													],
-													"type": "string"
+													]
 												},
 												"prefixDelete": {
 													"description": "Details specific to the prefix-delete job.",
+													"type": "object",
 													"properties": {
 														"deletedObjects": {
 															"description": "Number of objects deleted by the job so far.",
-															"example": 0,
-															"type": "integer"
+															"type": "integer",
+															"example": 0
 														},
 														"isBucketClear": {
 															"description": "True when the job was created to clear the entire bucket\n(i.e. an empty prefix). Distinguishes bucket-level clear operations\nfrom prefix-specific delete operations.\n",
@@ -152,39 +157,37 @@
 														},
 														"prefix": {
 															"description": "The prefix matched against object keys for deletion.",
-															"example": "path/to/",
-															"type": "string"
+															"type": "string",
+															"example": "path/to/"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"startTime": {
 													"description": "When the job was created.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"status": {
 													"description": "Lifecycle status of the job.",
+													"type": "string",
 													"enum": [
 														"ENQUEUED",
 														"RUNNING",
 														"COMPLETED",
 														"FAILED",
 														"CANCELLED"
-													],
-													"type": "string"
+													]
 												}
-											},
-											"type": "object"
+											}
 										}
 									]
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -192,24 +195,25 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Objects response. Body shape depends on the operation mode:\n- \"delete by list\" returns an array of `{ key }` entries for successfully deleted objects;\n- \"delete by prefix\" returns the prefix-delete job descriptor.\n"
+				}
 			},
 			"4XX": {
+				"description": "Delete Objects response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -221,29 +225,28 @@
 										],
 										"type": "object",
 										"uniqueItems": true
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -251,12 +254,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Objects response failure."
+				}
 			}
 		},
 		"security": [
@@ -264,7 +265,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Objects",
 		"tags": [
 			"R2 Object"
 		],
@@ -273,57 +273,58 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
-		"description": "Deletes an object from an R2 bucket.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"operationId": "r2-delete-object",
+		"summary": "Delete Object",
+		"description": "Deletes an object from an R2 bucket.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket.",
+					"type": "string",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"allowReserved": true,
-				"example": "path/to/my-object.txt",
-				"in": "path",
 				"name": "object_key",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The key (name) of the object to delete. May contain slashes for path-like keys.\nSlashes (`/`) within the key MUST be sent literally and MUST NOT be percent-encoded\n(i.e. `%2F`); other reserved characters should be percent-encoded as usual.\n",
 					"type": "string"
-				}
+				},
+				"allowReserved": true,
+				"example": "path/to/my-object.txt"
 			},
 			{
-				"in": "header",
 				"name": "cf-r2-jurisdiction",
+				"in": "header",
 				"schema": {
-					"default": "default",
 					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
-					"type": "string",
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
@@ -331,18 +332,21 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Object response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -354,24 +358,23 @@
 												],
 												"type": "object",
 												"uniqueItems": true
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
 											"enum": [
 												true
-											],
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -379,21 +382,20 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Result of a successful object deletion.",
+											"type": "object",
 											"properties": {
 												"key": {
 													"description": "The key (name) of the deleted object.",
-													"example": "path/to/my-object.txt",
-													"type": "string"
+													"type": "string",
+													"example": "path/to/my-object.txt"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -401,20 +403,22 @@
 							]
 						}
 					}
-				},
-				"description": "Delete Object response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Object response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -426,29 +430,28 @@
 										],
 										"type": "object",
 										"uniqueItems": true
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -456,12 +459,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Object response failure."
+				}
 			}
 		},
 		"security": [
@@ -469,7 +470,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Object",
 		"tags": [
 			"R2 Object"
 		],
@@ -478,88 +478,89 @@
 		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/objects": {
-		"description": "Lists objects in an R2 bucket. Returns object metadata including key, size, etag, last modified date, HTTP metadata, and custom metadata.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"operationId": "r2-list-objects",
+		"summary": "List Objects",
+		"description": "Lists objects in an R2 bucket. Returns object metadata including key, size, etag, last modified date, HTTP metadata, and custom metadata.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket.",
+					"type": "string",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "header",
 				"name": "cf-r2-jurisdiction",
+				"in": "header",
 				"schema": {
-					"default": "default",
 					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
-					"type": "string",
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Maximum number of objects to return per page.",
+					"type": "integer",
+					"default": 20,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
 				"schema": {
 					"description": "Restricts results to only those objects whose keys begin with the specified prefix.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "delimiter",
+				"in": "query",
 				"schema": {
 					"description": "A single character used to group keys. All keys that contain the delimiter between the prefix and the first occurrence of the delimiter after the prefix are grouped under a single result element.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
 				"schema": {
 					"description": "Pagination cursor received from a previous List Objects call. Used to retrieve the next page of results.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "start_after",
+				"in": "query",
 				"schema": {
 					"description": "Returns objects with keys that come after the specified key in lexicographic order.",
 					"type": "string"
@@ -568,16 +569,19 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List Objects response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -589,143 +593,142 @@
 										],
 										"type": "object",
 										"uniqueItems": true
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"description": "Metadata for an R2 object.",
+										"type": "object",
 										"properties": {
 											"custom_metadata": {
+												"description": "Custom metadata key-value pairs associated with the object.",
+												"type": "object",
+												"example": {},
 												"additionalProperties": {
 													"type": "string"
-												},
-												"description": "Custom metadata key-value pairs associated with the object.",
-												"example": {},
-												"type": "object"
+												}
 											},
 											"etag": {
 												"description": "The entity tag for the object. In JSON list/get responses this is the raw\nhex digest (without surrounding quotes). The HTTP `ETag` response header on\nGet Object follows RFC 7232 and IS wrapped in surrounding double-quotes.\n",
-												"example": "d41d8cd98f00b204e9800998ecf8427e",
-												"type": "string"
+												"type": "string",
+												"example": "d41d8cd98f00b204e9800998ecf8427e"
 											},
 											"http_metadata": {
 												"description": "HTTP metadata associated with an R2 object.",
+												"type": "object",
 												"properties": {
 													"cacheControl": {
 														"description": "Specifies caching behavior for the object.",
-														"example": "max-age=3600",
-														"type": "string"
+														"type": "string",
+														"example": "max-age=3600"
 													},
 													"cacheExpiry": {
 														"description": "The date and time at which the object's cache entry expires.",
-														"example": "2024-12-31T23:59:59Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2024-12-31T23:59:59Z"
 													},
 													"contentDisposition": {
 														"description": "Specifies presentational information for the object.",
-														"example": "attachment; filename=\"example.jpg\"",
-														"type": "string"
+														"type": "string",
+														"example": "attachment; filename=\"example.jpg\""
 													},
 													"contentEncoding": {
 														"description": "Specifies the content encoding applied to the object.",
-														"example": "gzip",
-														"type": "string"
+														"type": "string",
+														"example": "gzip"
 													},
 													"contentLanguage": {
 														"description": "The language of the object content.",
-														"example": "en-US",
-														"type": "string"
+														"type": "string",
+														"example": "en-US"
 													},
 													"contentType": {
 														"description": "The MIME type of the object.",
-														"example": "image/jpeg",
-														"type": "string"
+														"type": "string",
+														"example": "image/jpeg"
 													}
-												},
-												"type": "object"
+												}
 											},
 											"key": {
 												"description": "The object key (name).",
-												"example": "path/to/my-object.txt",
-												"type": "string"
+												"type": "string",
+												"example": "path/to/my-object.txt"
 											},
 											"last_modified": {
 												"description": "The date and time the object was last modified.",
-												"example": "2024-01-15T10:30:00Z",
+												"type": "string",
 												"format": "date-time",
-												"type": "string"
+												"example": "2024-01-15T10:30:00Z"
 											},
 											"size": {
 												"description": "The size of the object in bytes.",
-												"example": 1048576,
-												"type": "integer"
+												"type": "integer",
+												"example": 1048576
 											},
 											"ssec": {
 												"description": "Whether the object is encrypted with a customer-supplied encryption key.",
-												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"example": false
 											},
 											"storage_class": {
-												"default": "Standard",
 												"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+												"type": "string",
+												"default": "Standard",
 												"enum": [
 													"Standard",
 													"InfrequentAccess"
 												],
-												"type": "string",
 												"x-auditable": true
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result_info": {
 									"description": "Pagination information for list objects responses.",
+									"type": "object",
 									"properties": {
 										"cursor": {
 											"description": "Pagination cursor to use in the next List Objects call to retrieve the next page of results.",
-											"example": "eyJrZXkiOiJwYXRoL3RvL215LW9iamVjdC50eHQifQ==",
-											"type": "string"
+											"type": "string",
+											"example": "eyJrZXkiOiJwYXRoL3RvL215LW9iamVjdC50eHQifQ=="
 										},
 										"delimited": {
 											"description": "Common prefixes found when a delimiter is specified. Each entry represents a group\nof keys sharing a common prefix up to the delimiter. Equivalent to S3's `CommonPrefixes`\nin `ListObjectsV2`; the field name differs because of the existing R2 API wire format.\n",
-											"example": [
-												"path/to/",
-												"another/path/"
-											],
+											"type": "array",
 											"items": {
 												"type": "string"
 											},
-											"type": "array"
+											"example": [
+												"path/to/",
+												"another/path/"
+											]
 										},
 										"is_truncated": {
 											"description": "Whether the result was truncated. If true, use the cursor to retrieve the next page.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"per_page": {
 											"description": "The maximum number of objects returned per page.",
-											"example": 20,
-											"type": "integer"
+											"type": "integer",
+											"example": 20
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -733,24 +736,25 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Objects response."
+				}
 			},
 			"4XX": {
+				"description": "List Objects response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -762,29 +766,28 @@
 										],
 										"type": "object",
 										"uniqueItems": true
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -792,12 +795,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Objects response failure."
+				}
 			}
 		},
 		"security": [
@@ -805,7 +806,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Objects",
 		"tags": [
 			"R2 Object"
 		],
@@ -816,72 +816,73 @@
 		}
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
-		"description": "Retrieves an object from an R2 bucket. Returns the object body along with metadata headers.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"operationId": "r2-get-object",
+		"summary": "Get Object",
+		"description": "Retrieves an object from an R2 bucket. Returns the object body along with metadata headers.\n\nFor most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket.",
+					"type": "string",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"allowReserved": true,
-				"example": "path/to/my-object.txt",
-				"in": "path",
 				"name": "object_key",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The key (name) of the object to retrieve. May contain slashes for path-like keys.\nSlashes (`/`) within the key MUST be sent literally and MUST NOT be percent-encoded\n(i.e. `%2F`); other reserved characters should be percent-encoded as usual.\n",
 					"type": "string"
-				}
+				},
+				"allowReserved": true,
+				"example": "path/to/my-object.txt"
 			},
 			{
-				"in": "header",
 				"name": "cf-r2-jurisdiction",
+				"in": "header",
 				"schema": {
-					"default": "default",
 					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
-					"type": "string",
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			},
 			{
-				"in": "header",
 				"name": "If-None-Match",
+				"in": "header",
 				"schema": {
 					"description": "Returns the object only if its ETag does not match the given value.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "header",
 				"name": "If-Modified-Since",
+				"in": "header",
 				"schema": {
 					"description": "Returns the object only if it has been modified since the specified time.\nMust be formatted as an HTTP-date (RFC 7231), e.g. `Tue, 15 Jan 2024 10:30:00 GMT`.\n",
 					"type": "string"
@@ -890,15 +891,6 @@
 		],
 		"responses": {
 			"200": {
-				"content": {
-					"application/octet-stream": {
-						"schema": {
-							"description": "The object body.",
-							"format": "binary",
-							"type": "string"
-						}
-					}
-				},
 				"description": "Get Object response. Returns the object body with metadata headers.",
 				"headers": {
 					"Content-Length": {
@@ -928,14 +920,23 @@
 					"cf-r2-storage-class": {
 						"description": "The storage class of the object.",
 						"schema": {
-							"default": "Standard",
 							"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+							"type": "string",
+							"default": "Standard",
 							"enum": [
 								"Standard",
 								"InfrequentAccess"
 							],
-							"type": "string",
 							"x-auditable": true
+						}
+					}
+				},
+				"content": {
+					"application/octet-stream": {
+						"schema": {
+							"description": "The object body.",
+							"type": "string",
+							"format": "binary"
 						}
 					}
 				}
@@ -944,16 +945,19 @@
 				"description": "Not Modified. Returned when conditional request headers indicate the object has not changed."
 			},
 			"4XX": {
+				"description": "Get Object response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -965,29 +969,28 @@
 										],
 										"type": "object",
 										"uniqueItems": true
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -995,12 +998,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Object response failure."
+				}
 			}
 		},
 		"security": [
@@ -1008,7 +1009,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Object",
 		"tags": [
 			"R2 Object"
 		],
@@ -1019,119 +1019,123 @@
 		}
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
-		"description": "Uploads an object to an R2 bucket. The object body is provided as the request body. Returns metadata about the uploaded object.\n\nThe maximum upload size for this endpoint is 300 MB. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"operationId": "r2-put-object",
+		"summary": "Upload Object",
+		"description": "Uploads an object to an R2 bucket. The object body is provided as the request body. Returns metadata about the uploaded object.\n\nThe maximum upload size for this endpoint is 300 MB. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "bucket_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket.",
+					"type": "string",
 					"example": "example-bucket",
 					"maxLength": 64,
 					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"allowReserved": true,
-				"example": "path/to/my-object.txt",
-				"in": "path",
 				"name": "object_key",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The key (name) to assign to the object. May contain slashes for path-like keys.\nSlashes (`/`) within the key MUST be sent literally and MUST NOT be percent-encoded\n(i.e. `%2F`); other reserved characters should be percent-encoded as usual.\n",
 					"type": "string"
-				}
+				},
+				"allowReserved": true,
+				"example": "path/to/my-object.txt"
 			},
 			{
-				"in": "header",
 				"name": "cf-r2-jurisdiction",
+				"in": "header",
 				"schema": {
-					"default": "default",
 					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
 					"enum": [
 						"default",
 						"eu",
 						"fedramp"
 					],
-					"type": "string",
 					"x-auditable": true,
 					"x-stainless-param": "jurisdiction"
 				}
 			},
 			{
-				"in": "header",
 				"name": "Content-Type",
+				"in": "header",
 				"schema": {
 					"description": "The MIME type of the object being uploaded.",
 					"type": "string"
 				}
 			},
 			{
-				"in": "header",
 				"name": "Content-Length",
+				"in": "header",
 				"schema": {
 					"description": "The size of the object body in bytes.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Storage class for this object. Overrides the bucket default.",
-				"in": "header",
 				"name": "cf-r2-storage-class",
+				"in": "header",
+				"description": "Storage class for this object. Overrides the bucket default.",
 				"schema": {
-					"default": "Standard",
 					"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+					"type": "string",
+					"default": "Standard",
 					"enum": [
 						"Standard",
 						"InfrequentAccess"
 					],
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/octet-stream": {
 					"schema": {
 						"description": "The object body to upload.",
-						"format": "binary",
-						"type": "string"
+						"type": "string",
+						"format": "binary"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Upload Object response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1143,24 +1147,23 @@
 												],
 												"type": "object",
 												"uniqueItems": true
-											},
-											"type": "array"
+											}
 										},
 										"messages": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										},
 										"result": {
 											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
 											"enum": [
 												true
-											],
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1168,52 +1171,51 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Result of a successful object upload.",
+											"type": "object",
 											"properties": {
 												"etag": {
 													"description": "The entity tag for the uploaded object.",
-													"example": "d41d8cd98f00b204e9800998ecf8427e",
-													"type": "string"
+													"type": "string",
+													"example": "d41d8cd98f00b204e9800998ecf8427e"
 												},
 												"key": {
 													"description": "The key (name) of the uploaded object.",
-													"example": "path/to/my-object.txt",
-													"type": "string"
+													"type": "string",
+													"example": "path/to/my-object.txt"
 												},
 												"size": {
 													"description": "The size of the uploaded object in bytes (as a string).",
-													"example": "1048576",
-													"type": "string"
+													"type": "string",
+													"example": "1048576"
 												},
 												"storage_class": {
-													"default": "Standard",
 													"description": "Storage class for newly uploaded objects, unless specified otherwise.",
+													"type": "string",
+													"default": "Standard",
 													"enum": [
 														"Standard",
 														"InfrequentAccess"
 													],
-													"type": "string",
 													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "The date and time the object was uploaded.",
-													"example": "2024-01-15T10:30:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2024-01-15T10:30:00Z"
 												},
 												"version": {
 													"description": "The version UUID of the uploaded object.",
-													"example": "3fd5b4a8-1234-5678-abcd-ef0123456789",
-													"type": "string"
+													"type": "string",
+													"example": "3fd5b4a8-1234-5678-abcd-ef0123456789"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1221,20 +1223,22 @@
 							]
 						}
 					}
-				},
-				"description": "Upload Object response."
+				}
 			},
 			"4XX": {
+				"description": "Upload Object response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -1246,29 +1250,28 @@
 										],
 										"type": "object",
 										"uniqueItems": true
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1276,12 +1279,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Upload Object response failure."
+				}
 			}
 		},
 		"security": [
@@ -1289,7 +1290,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Upload Object",
 		"tags": [
 			"R2 Object"
 		],

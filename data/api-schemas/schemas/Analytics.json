@@ -1,29 +1,30 @@
 {
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise": {
-		"description": "Returns day-wise session and recording analytics data of an App for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date.",
 		"operationId": "get-org-analytics",
+		"summary": "Fetch day-wise session and recording analytics data for an App",
+		"description": "Returns day-wise session and recording analytics data of an App for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The app identifier tag.",
+					"type": "string",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
@@ -36,8 +37,8 @@
 				"in": "query",
 				"name": "start_date",
 				"schema": {
-					"example": "2022-09-01",
-					"type": "string"
+					"type": "string",
+					"example": "2022-09-01"
 				}
 			},
 			{
@@ -50,24 +51,29 @@
 				"in": "query",
 				"name": "end_date",
 				"schema": {
-					"example": "2022-09-22",
-					"type": "string"
+					"type": "string",
+					"example": "2022-09-22"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"data": {
+									"type": "object",
 									"properties": {
 										"recording_stats": {
 											"description": "Recording statistics of an App during the range specified",
+											"type": "object",
 											"properties": {
 												"day_stats": {
 													"description": "Day wise recording stats",
+													"type": "array",
 													"items": {
 														"properties": {
 															"day": {
@@ -83,8 +89,7 @@
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"recording_count": {
 													"description": "Total number of recordings during the range specified",
@@ -94,14 +99,15 @@
 													"description": "Total recording minutes during the range specified",
 													"type": "number"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"session_stats": {
 											"description": "Session statistics of an App during the range specified",
+											"type": "object",
 											"properties": {
 												"day_stats": {
 													"description": "Day wise session stats",
+													"type": "array",
 													"items": {
 														"properties": {
 															"day": {
@@ -117,8 +123,7 @@
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"sessions_count": {
 													"description": "Total number of sessions during the range specified",
@@ -128,21 +133,17 @@
 													"description": "Total session minutes during the range specified",
 													"type": "number"
 												}
-											},
-											"type": "object"
+											}
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "OK"
+				}
 			}
 		},
 		"security": [
@@ -150,7 +151,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch day-wise session and recording analytics data for an App",
 		"tags": [
 			"Analytics",
 			"Organizations"

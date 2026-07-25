@@ -1,11 +1,12 @@
 {
 	"GET /accounts/{account_id}/cni/settings": {
 		"operationId": "get_settings",
+		"summary": "Get the current settings for the active account",
 		"parameters": [
 			{
-				"description": "Account tag to retrieve settings for",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account tag to retrieve settings for",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -14,24 +15,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "The active account settings values",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"default_asn": {
+									"type": "integer",
 									"format": "int32",
-									"minimum": 0,
-									"type": "integer"
+									"minimum": 0
 								}
 							},
 							"required": [
 								"default_asn"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The active account settings values"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -50,7 +51,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get the current settings for the active account",
 		"tags": [
 			"Settings"
 		],
@@ -63,11 +63,12 @@
 	},
 	"PUT /accounts/{account_id}/cni/settings": {
 		"operationId": "update_settings",
+		"summary": "Update the current settings for the active account",
 		"parameters": [
 			{
-				"description": "Account tag to update settings for",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account tag to update settings for",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -75,43 +76,43 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"default_asn": {
+								"type": "integer",
 								"format": "int32",
 								"minimum": 0,
-								"nullable": true,
-								"type": "integer"
+								"nullable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "The active account settings values",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"default_asn": {
+									"type": "integer",
 									"format": "int32",
-									"minimum": 0,
-									"type": "integer"
+									"minimum": 0
 								}
 							},
 							"required": [
 								"default_asn"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The active account settings values"
+				}
 			},
 			"400": {
 				"description": "Bad request"
@@ -130,7 +131,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update the current settings for the active account",
 		"tags": [
 			"Settings"
 		],

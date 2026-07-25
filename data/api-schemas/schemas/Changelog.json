@@ -1,12 +1,13 @@
 {
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}/changelog": {
-		"description": "Returns the audit history for a flag, newest first. Each entry includes the event type and full flag state after the change; `update` entries include a field-level diff. Capped at 200 entries per flag.",
 		"operationId": "flagship_get_flag_changelog",
+		"summary": "Get flag changelog",
+		"description": "Returns the audit history for a flag, newest first. Each entry includes the event type and full flag state after the change; `update` entries include a field-level diff. Capped at 200 entries per flag.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -24,9 +25,9 @@
 				}
 			},
 			{
-				"description": "Flag key (slug).",
-				"in": "path",
 				"name": "flag_key",
+				"in": "path",
+				"description": "Flag key (slug).",
 				"required": true,
 				"schema": {
 					"description": "Flag key (slug).",
@@ -34,18 +35,18 @@
 				}
 			},
 			{
-				"description": "Max items to return (1–200).",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Max items to return (1–200).",
 				"schema": {
 					"description": "Max items to return (1–200).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Pagination cursor from a previous response.",
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from a previous response.",
 				"schema": {
 					"description": "Pagination cursor from a previous response.",
 					"type": "string"
@@ -54,11 +55,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Paginated flag changelog.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -69,10 +73,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -83,26 +87,26 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"oneOf": [
 											{
 												"properties": {
 													"after": {
-														"additionalProperties": false,
+														"type": "object",
 														"properties": {
 															"default_variation": {
 																"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"minLength": 1
 															},
 															"description": {
+																"type": "string",
 																"maxLength": 512,
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"enabled": {
 																"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -110,29 +114,32 @@
 															},
 															"key": {
 																"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+																"type": "string",
 																"maxLength": 64,
 																"minLength": 1,
-																"pattern": "^[a-zA-Z0-9_-]+$",
-																"type": "string"
+																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
 															"rules": {
 																"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+																"type": "array",
 																"items": {
 																	"additionalProperties": false,
 																	"properties": {
 																		"conditions": {
 																			"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+																			"type": "array",
 																			"items": {
 																				"anyOf": [
 																					{
 																						"additionalProperties": false,
 																						"properties": {
 																							"attribute": {
+																								"type": "string",
 																								"maxLength": 64,
-																								"minLength": 1,
-																								"type": "string"
+																								"minLength": 1
 																							},
 																							"operator": {
+																								"type": "string",
 																								"enum": [
 																									"equals",
 																									"not_equals",
@@ -145,8 +152,7 @@
 																									"ends_with",
 																									"in",
 																									"not_in"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"value": {
 																								"oneOf": [
@@ -182,17 +188,19 @@
 																						"additionalProperties": false,
 																						"properties": {
 																							"clauses": {
+																								"type": "array",
 																								"items": {
 																									"anyOf": [
 																										{
 																											"additionalProperties": false,
 																											"properties": {
 																												"attribute": {
+																													"type": "string",
 																													"maxLength": 64,
-																													"minLength": 1,
-																													"type": "string"
+																													"minLength": 1
 																												},
 																												"operator": {
+																													"type": "string",
 																													"enum": [
 																														"equals",
 																														"not_equals",
@@ -205,8 +213,7 @@
 																														"ends_with",
 																														"in",
 																														"not_in"
-																													],
-																													"type": "string"
+																													]
 																												},
 																												"value": {
 																													"oneOf": [
@@ -242,17 +249,19 @@
 																											"additionalProperties": false,
 																											"properties": {
 																												"clauses": {
+																													"type": "array",
 																													"items": {
 																														"anyOf": [
 																															{
 																																"additionalProperties": false,
 																																"properties": {
 																																	"attribute": {
+																																		"type": "string",
 																																		"maxLength": 64,
-																																		"minLength": 1,
-																																		"type": "string"
+																																		"minLength": 1
 																																	},
 																																	"operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"equals",
 																																			"not_equals",
@@ -265,8 +274,7 @@
 																																			"ends_with",
 																																			"in",
 																																			"not_in"
-																																		],
-																																		"type": "string"
+																																		]
 																																	},
 																																	"value": {
 																																		"oneOf": [
@@ -302,17 +310,19 @@
 																																"additionalProperties": false,
 																																"properties": {
 																																	"clauses": {
+																																		"type": "array",
 																																		"items": {
 																																			"anyOf": [
 																																				{
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"attribute": {
+																																							"type": "string",
 																																							"maxLength": 64,
-																																							"minLength": 1,
-																																							"type": "string"
+																																							"minLength": 1
 																																						},
 																																						"operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"equals",
 																																								"not_equals",
@@ -325,8 +335,7 @@
 																																								"ends_with",
 																																								"in",
 																																								"not_in"
-																																							],
-																																							"type": "string"
+																																							]
 																																						},
 																																						"value": {
 																																							"oneOf": [
@@ -362,17 +371,19 @@
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"clauses": {
+																																							"type": "array",
 																																							"items": {
 																																								"anyOf": [
 																																									{
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"attribute": {
+																																												"type": "string",
 																																												"maxLength": 64,
-																																												"minLength": 1,
-																																												"type": "string"
+																																												"minLength": 1
 																																											},
 																																											"operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"equals",
 																																													"not_equals",
@@ -385,8 +396,7 @@
 																																													"ends_with",
 																																													"in",
 																																													"not_in"
-																																												],
-																																												"type": "string"
+																																												]
 																																											},
 																																											"value": {
 																																												"oneOf": [
@@ -422,17 +432,19 @@
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"clauses": {
+																																												"type": "array",
 																																												"items": {
 																																													"anyOf": [
 																																														{
 																																															"additionalProperties": false,
 																																															"properties": {
 																																																"attribute": {
+																																																	"type": "string",
 																																																	"maxLength": 64,
-																																																	"minLength": 1,
-																																																	"type": "string"
+																																																	"minLength": 1
 																																																},
 																																																"operator": {
+																																																	"type": "string",
 																																																	"enum": [
 																																																		"equals",
 																																																		"not_equals",
@@ -445,8 +457,7 @@
 																																																		"ends_with",
 																																																		"in",
 																																																		"not_in"
-																																																	],
-																																																	"type": "string"
+																																																	]
 																																																},
 																																																"value": {
 																																																	"oneOf": [
@@ -482,6 +493,7 @@
 																																															"additionalProperties": false,
 																																															"properties": {
 																																																"clauses": {
+																																																	"type": "array",
 																																																	"items": {
 																																																		"oneOf": [
 																																																			{
@@ -504,15 +516,14 @@
 																																																			}
 																																																		]
 																																																	},
-																																																	"minItems": 1,
-																																																	"type": "array"
+																																																	"minItems": 1
 																																																},
 																																																"logical_operator": {
+																																																	"type": "string",
 																																																	"enum": [
 																																																		"AND",
 																																																		"OR"
-																																																	],
-																																																	"type": "string"
+																																																	]
 																																																}
 																																															},
 																																															"required": [
@@ -523,15 +534,14 @@
 																																														}
 																																													]
 																																												},
-																																												"minItems": 1,
-																																												"type": "array"
+																																												"minItems": 1
 																																											},
 																																											"logical_operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"AND",
 																																													"OR"
-																																												],
-																																												"type": "string"
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -542,15 +552,14 @@
 																																									}
 																																								]
 																																							},
-																																							"minItems": 1,
-																																							"type": "array"
+																																							"minItems": 1
 																																						},
 																																						"logical_operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"AND",
 																																								"OR"
-																																							],
-																																							"type": "string"
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -561,15 +570,14 @@
 																																				}
 																																			]
 																																		},
-																																		"minItems": 1,
-																																		"type": "array"
+																																		"minItems": 1
 																																	},
 																																	"logical_operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"AND",
 																																			"OR"
-																																		],
-																																		"type": "string"
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -580,15 +588,14 @@
 																															}
 																														]
 																													},
-																													"minItems": 1,
-																													"type": "array"
+																													"minItems": 1
 																												},
 																												"logical_operator": {
+																													"type": "string",
 																													"enum": [
 																														"AND",
 																														"OR"
-																													],
-																													"type": "string"
+																													]
 																												}
 																											},
 																											"required": [
@@ -599,15 +606,14 @@
 																										}
 																									]
 																								},
-																								"minItems": 1,
-																								"type": "array"
+																								"minItems": 1
 																							},
 																							"logical_operator": {
+																								"type": "string",
 																								"enum": [
 																									"AND",
 																									"OR"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -617,38 +623,37 @@
 																						"type": "object"
 																					}
 																				]
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"priority": {
 																			"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-																			"minimum": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"minimum": 1
 																		},
 																		"rollout": {
+																			"type": "object",
 																			"additionalProperties": false,
 																			"properties": {
 																				"attribute": {
 																					"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-																					"minLength": 1,
-																					"type": "string"
+																					"type": "string",
+																					"minLength": 1
 																				},
 																				"percentage": {
 																					"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																					"type": "number",
 																					"maximum": 100,
-																					"minimum": 0,
-																					"type": "number"
+																					"minimum": 0
 																				}
 																			},
 																			"required": [
 																				"percentage"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"serve_variation": {
 																			"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-																			"minLength": 1,
-																			"type": "string"
+																			"type": "string",
+																			"minLength": 1
 																		}
 																	},
 																	"required": [
@@ -657,18 +662,17 @@
 																		"serve_variation"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															},
 															"type": {
 																"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+																"type": "string",
 																"enum": [
 																	"boolean",
 																	"string",
 																	"number",
 																	"json"
-																],
-																"type": "string"
+																]
 															},
 															"updated_at": {
 																"type": "string"
@@ -677,6 +681,8 @@
 																"type": "string"
 															},
 															"variations": {
+																"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+																"type": "object",
 																"additionalProperties": {
 																	"oneOf": [
 																		{
@@ -698,25 +704,23 @@
 																			"type": "array"
 																		}
 																	]
-																},
-																"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-																"type": "object"
+																}
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"key",
 															"default_variation",
 															"variations",
 															"rules",
 															"enabled"
-														],
-														"type": "object"
+														]
 													},
 													"event": {
+														"type": "string",
 														"enum": [
 															"create"
-														],
-														"type": "string"
+														]
 													},
 													"flag_key": {
 														"type": "string"
@@ -732,17 +736,17 @@
 											{
 												"properties": {
 													"after": {
-														"additionalProperties": false,
+														"type": "object",
 														"properties": {
 															"default_variation": {
 																"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"minLength": 1
 															},
 															"description": {
+																"type": "string",
 																"maxLength": 512,
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"enabled": {
 																"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -750,29 +754,32 @@
 															},
 															"key": {
 																"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+																"type": "string",
 																"maxLength": 64,
 																"minLength": 1,
-																"pattern": "^[a-zA-Z0-9_-]+$",
-																"type": "string"
+																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
 															"rules": {
 																"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+																"type": "array",
 																"items": {
 																	"additionalProperties": false,
 																	"properties": {
 																		"conditions": {
 																			"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+																			"type": "array",
 																			"items": {
 																				"anyOf": [
 																					{
 																						"additionalProperties": false,
 																						"properties": {
 																							"attribute": {
+																								"type": "string",
 																								"maxLength": 64,
-																								"minLength": 1,
-																								"type": "string"
+																								"minLength": 1
 																							},
 																							"operator": {
+																								"type": "string",
 																								"enum": [
 																									"equals",
 																									"not_equals",
@@ -785,8 +792,7 @@
 																									"ends_with",
 																									"in",
 																									"not_in"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"value": {
 																								"oneOf": [
@@ -822,17 +828,19 @@
 																						"additionalProperties": false,
 																						"properties": {
 																							"clauses": {
+																								"type": "array",
 																								"items": {
 																									"anyOf": [
 																										{
 																											"additionalProperties": false,
 																											"properties": {
 																												"attribute": {
+																													"type": "string",
 																													"maxLength": 64,
-																													"minLength": 1,
-																													"type": "string"
+																													"minLength": 1
 																												},
 																												"operator": {
+																													"type": "string",
 																													"enum": [
 																														"equals",
 																														"not_equals",
@@ -845,8 +853,7 @@
 																														"ends_with",
 																														"in",
 																														"not_in"
-																													],
-																													"type": "string"
+																													]
 																												},
 																												"value": {
 																													"oneOf": [
@@ -882,17 +889,19 @@
 																											"additionalProperties": false,
 																											"properties": {
 																												"clauses": {
+																													"type": "array",
 																													"items": {
 																														"anyOf": [
 																															{
 																																"additionalProperties": false,
 																																"properties": {
 																																	"attribute": {
+																																		"type": "string",
 																																		"maxLength": 64,
-																																		"minLength": 1,
-																																		"type": "string"
+																																		"minLength": 1
 																																	},
 																																	"operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"equals",
 																																			"not_equals",
@@ -905,8 +914,7 @@
 																																			"ends_with",
 																																			"in",
 																																			"not_in"
-																																		],
-																																		"type": "string"
+																																		]
 																																	},
 																																	"value": {
 																																		"oneOf": [
@@ -942,17 +950,19 @@
 																																"additionalProperties": false,
 																																"properties": {
 																																	"clauses": {
+																																		"type": "array",
 																																		"items": {
 																																			"anyOf": [
 																																				{
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"attribute": {
+																																							"type": "string",
 																																							"maxLength": 64,
-																																							"minLength": 1,
-																																							"type": "string"
+																																							"minLength": 1
 																																						},
 																																						"operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"equals",
 																																								"not_equals",
@@ -965,8 +975,7 @@
 																																								"ends_with",
 																																								"in",
 																																								"not_in"
-																																							],
-																																							"type": "string"
+																																							]
 																																						},
 																																						"value": {
 																																							"oneOf": [
@@ -1002,17 +1011,19 @@
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"clauses": {
+																																							"type": "array",
 																																							"items": {
 																																								"anyOf": [
 																																									{
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"attribute": {
+																																												"type": "string",
 																																												"maxLength": 64,
-																																												"minLength": 1,
-																																												"type": "string"
+																																												"minLength": 1
 																																											},
 																																											"operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"equals",
 																																													"not_equals",
@@ -1025,8 +1036,7 @@
 																																													"ends_with",
 																																													"in",
 																																													"not_in"
-																																												],
-																																												"type": "string"
+																																												]
 																																											},
 																																											"value": {
 																																												"oneOf": [
@@ -1062,17 +1072,19 @@
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"clauses": {
+																																												"type": "array",
 																																												"items": {
 																																													"anyOf": [
 																																														{
 																																															"additionalProperties": false,
 																																															"properties": {
 																																																"attribute": {
+																																																	"type": "string",
 																																																	"maxLength": 64,
-																																																	"minLength": 1,
-																																																	"type": "string"
+																																																	"minLength": 1
 																																																},
 																																																"operator": {
+																																																	"type": "string",
 																																																	"enum": [
 																																																		"equals",
 																																																		"not_equals",
@@ -1085,8 +1097,7 @@
 																																																		"ends_with",
 																																																		"in",
 																																																		"not_in"
-																																																	],
-																																																	"type": "string"
+																																																	]
 																																																},
 																																																"value": {
 																																																	"oneOf": [
@@ -1122,6 +1133,7 @@
 																																															"additionalProperties": false,
 																																															"properties": {
 																																																"clauses": {
+																																																	"type": "array",
 																																																	"items": {
 																																																		"oneOf": [
 																																																			{
@@ -1144,15 +1156,14 @@
 																																																			}
 																																																		]
 																																																	},
-																																																	"minItems": 1,
-																																																	"type": "array"
+																																																	"minItems": 1
 																																																},
 																																																"logical_operator": {
+																																																	"type": "string",
 																																																	"enum": [
 																																																		"AND",
 																																																		"OR"
-																																																	],
-																																																	"type": "string"
+																																																	]
 																																																}
 																																															},
 																																															"required": [
@@ -1163,15 +1174,14 @@
 																																														}
 																																													]
 																																												},
-																																												"minItems": 1,
-																																												"type": "array"
+																																												"minItems": 1
 																																											},
 																																											"logical_operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"AND",
 																																													"OR"
-																																												],
-																																												"type": "string"
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -1182,15 +1192,14 @@
 																																									}
 																																								]
 																																							},
-																																							"minItems": 1,
-																																							"type": "array"
+																																							"minItems": 1
 																																						},
 																																						"logical_operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"AND",
 																																								"OR"
-																																							],
-																																							"type": "string"
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -1201,15 +1210,14 @@
 																																				}
 																																			]
 																																		},
-																																		"minItems": 1,
-																																		"type": "array"
+																																		"minItems": 1
 																																	},
 																																	"logical_operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"AND",
 																																			"OR"
-																																		],
-																																		"type": "string"
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -1220,15 +1228,14 @@
 																															}
 																														]
 																													},
-																													"minItems": 1,
-																													"type": "array"
+																													"minItems": 1
 																												},
 																												"logical_operator": {
+																													"type": "string",
 																													"enum": [
 																														"AND",
 																														"OR"
-																													],
-																													"type": "string"
+																													]
 																												}
 																											},
 																											"required": [
@@ -1239,15 +1246,14 @@
 																										}
 																									]
 																								},
-																								"minItems": 1,
-																								"type": "array"
+																								"minItems": 1
 																							},
 																							"logical_operator": {
+																								"type": "string",
 																								"enum": [
 																									"AND",
 																									"OR"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -1257,38 +1263,37 @@
 																						"type": "object"
 																					}
 																				]
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"priority": {
 																			"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-																			"minimum": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"minimum": 1
 																		},
 																		"rollout": {
+																			"type": "object",
 																			"additionalProperties": false,
 																			"properties": {
 																				"attribute": {
 																					"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-																					"minLength": 1,
-																					"type": "string"
+																					"type": "string",
+																					"minLength": 1
 																				},
 																				"percentage": {
 																					"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																					"type": "number",
 																					"maximum": 100,
-																					"minimum": 0,
-																					"type": "number"
+																					"minimum": 0
 																				}
 																			},
 																			"required": [
 																				"percentage"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"serve_variation": {
 																			"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-																			"minLength": 1,
-																			"type": "string"
+																			"type": "string",
+																			"minLength": 1
 																		}
 																	},
 																	"required": [
@@ -1297,18 +1302,17 @@
 																		"serve_variation"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															},
 															"type": {
 																"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+																"type": "string",
 																"enum": [
 																	"boolean",
 																	"string",
 																	"number",
 																	"json"
-																],
-																"type": "string"
+																]
 															},
 															"updated_at": {
 																"type": "string"
@@ -1317,6 +1321,8 @@
 																"type": "string"
 															},
 															"variations": {
+																"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+																"type": "object",
 																"additionalProperties": {
 																	"oneOf": [
 																		{
@@ -1338,25 +1344,23 @@
 																			"type": "array"
 																		}
 																	]
-																},
-																"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-																"type": "object"
+																}
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"key",
 															"default_variation",
 															"variations",
 															"rules",
 															"enabled"
-														],
-														"type": "object"
+														]
 													},
 													"event": {
+														"type": "string",
 														"enum": [
 															"delete"
-														],
-														"type": "string"
+														]
 													},
 													"flag_key": {
 														"type": "string"
@@ -1372,17 +1376,17 @@
 											{
 												"properties": {
 													"after": {
-														"additionalProperties": false,
+														"type": "object",
 														"properties": {
 															"default_variation": {
 																"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"minLength": 1
 															},
 															"description": {
+																"type": "string",
 																"maxLength": 512,
-																"nullable": true,
-																"type": "string"
+																"nullable": true
 															},
 															"enabled": {
 																"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -1390,29 +1394,32 @@
 															},
 															"key": {
 																"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+																"type": "string",
 																"maxLength": 64,
 																"minLength": 1,
-																"pattern": "^[a-zA-Z0-9_-]+$",
-																"type": "string"
+																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
 															"rules": {
 																"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+																"type": "array",
 																"items": {
 																	"additionalProperties": false,
 																	"properties": {
 																		"conditions": {
 																			"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+																			"type": "array",
 																			"items": {
 																				"anyOf": [
 																					{
 																						"additionalProperties": false,
 																						"properties": {
 																							"attribute": {
+																								"type": "string",
 																								"maxLength": 64,
-																								"minLength": 1,
-																								"type": "string"
+																								"minLength": 1
 																							},
 																							"operator": {
+																								"type": "string",
 																								"enum": [
 																									"equals",
 																									"not_equals",
@@ -1425,8 +1432,7 @@
 																									"ends_with",
 																									"in",
 																									"not_in"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"value": {
 																								"oneOf": [
@@ -1462,17 +1468,19 @@
 																						"additionalProperties": false,
 																						"properties": {
 																							"clauses": {
+																								"type": "array",
 																								"items": {
 																									"anyOf": [
 																										{
 																											"additionalProperties": false,
 																											"properties": {
 																												"attribute": {
+																													"type": "string",
 																													"maxLength": 64,
-																													"minLength": 1,
-																													"type": "string"
+																													"minLength": 1
 																												},
 																												"operator": {
+																													"type": "string",
 																													"enum": [
 																														"equals",
 																														"not_equals",
@@ -1485,8 +1493,7 @@
 																														"ends_with",
 																														"in",
 																														"not_in"
-																													],
-																													"type": "string"
+																													]
 																												},
 																												"value": {
 																													"oneOf": [
@@ -1522,17 +1529,19 @@
 																											"additionalProperties": false,
 																											"properties": {
 																												"clauses": {
+																													"type": "array",
 																													"items": {
 																														"anyOf": [
 																															{
 																																"additionalProperties": false,
 																																"properties": {
 																																	"attribute": {
+																																		"type": "string",
 																																		"maxLength": 64,
-																																		"minLength": 1,
-																																		"type": "string"
+																																		"minLength": 1
 																																	},
 																																	"operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"equals",
 																																			"not_equals",
@@ -1545,8 +1554,7 @@
 																																			"ends_with",
 																																			"in",
 																																			"not_in"
-																																		],
-																																		"type": "string"
+																																		]
 																																	},
 																																	"value": {
 																																		"oneOf": [
@@ -1582,17 +1590,19 @@
 																																"additionalProperties": false,
 																																"properties": {
 																																	"clauses": {
+																																		"type": "array",
 																																		"items": {
 																																			"anyOf": [
 																																				{
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"attribute": {
+																																							"type": "string",
 																																							"maxLength": 64,
-																																							"minLength": 1,
-																																							"type": "string"
+																																							"minLength": 1
 																																						},
 																																						"operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"equals",
 																																								"not_equals",
@@ -1605,8 +1615,7 @@
 																																								"ends_with",
 																																								"in",
 																																								"not_in"
-																																							],
-																																							"type": "string"
+																																							]
 																																						},
 																																						"value": {
 																																							"oneOf": [
@@ -1642,17 +1651,19 @@
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"clauses": {
+																																							"type": "array",
 																																							"items": {
 																																								"anyOf": [
 																																									{
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"attribute": {
+																																												"type": "string",
 																																												"maxLength": 64,
-																																												"minLength": 1,
-																																												"type": "string"
+																																												"minLength": 1
 																																											},
 																																											"operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"equals",
 																																													"not_equals",
@@ -1665,8 +1676,7 @@
 																																													"ends_with",
 																																													"in",
 																																													"not_in"
-																																												],
-																																												"type": "string"
+																																												]
 																																											},
 																																											"value": {
 																																												"oneOf": [
@@ -1702,17 +1712,19 @@
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"clauses": {
+																																												"type": "array",
 																																												"items": {
 																																													"anyOf": [
 																																														{
 																																															"additionalProperties": false,
 																																															"properties": {
 																																																"attribute": {
+																																																	"type": "string",
 																																																	"maxLength": 64,
-																																																	"minLength": 1,
-																																																	"type": "string"
+																																																	"minLength": 1
 																																																},
 																																																"operator": {
+																																																	"type": "string",
 																																																	"enum": [
 																																																		"equals",
 																																																		"not_equals",
@@ -1725,8 +1737,7 @@
 																																																		"ends_with",
 																																																		"in",
 																																																		"not_in"
-																																																	],
-																																																	"type": "string"
+																																																	]
 																																																},
 																																																"value": {
 																																																	"oneOf": [
@@ -1762,6 +1773,7 @@
 																																															"additionalProperties": false,
 																																															"properties": {
 																																																"clauses": {
+																																																	"type": "array",
 																																																	"items": {
 																																																		"oneOf": [
 																																																			{
@@ -1784,15 +1796,14 @@
 																																																			}
 																																																		]
 																																																	},
-																																																	"minItems": 1,
-																																																	"type": "array"
+																																																	"minItems": 1
 																																																},
 																																																"logical_operator": {
+																																																	"type": "string",
 																																																	"enum": [
 																																																		"AND",
 																																																		"OR"
-																																																	],
-																																																	"type": "string"
+																																																	]
 																																																}
 																																															},
 																																															"required": [
@@ -1803,15 +1814,14 @@
 																																														}
 																																													]
 																																												},
-																																												"minItems": 1,
-																																												"type": "array"
+																																												"minItems": 1
 																																											},
 																																											"logical_operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"AND",
 																																													"OR"
-																																												],
-																																												"type": "string"
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -1822,15 +1832,14 @@
 																																									}
 																																								]
 																																							},
-																																							"minItems": 1,
-																																							"type": "array"
+																																							"minItems": 1
 																																						},
 																																						"logical_operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"AND",
 																																								"OR"
-																																							],
-																																							"type": "string"
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -1841,15 +1850,14 @@
 																																				}
 																																			]
 																																		},
-																																		"minItems": 1,
-																																		"type": "array"
+																																		"minItems": 1
 																																	},
 																																	"logical_operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"AND",
 																																			"OR"
-																																		],
-																																		"type": "string"
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -1860,15 +1868,14 @@
 																															}
 																														]
 																													},
-																													"minItems": 1,
-																													"type": "array"
+																													"minItems": 1
 																												},
 																												"logical_operator": {
+																													"type": "string",
 																													"enum": [
 																														"AND",
 																														"OR"
-																													],
-																													"type": "string"
+																													]
 																												}
 																											},
 																											"required": [
@@ -1879,15 +1886,14 @@
 																										}
 																									]
 																								},
-																								"minItems": 1,
-																								"type": "array"
+																								"minItems": 1
 																							},
 																							"logical_operator": {
+																								"type": "string",
 																								"enum": [
 																									"AND",
 																									"OR"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -1897,38 +1903,37 @@
 																						"type": "object"
 																					}
 																				]
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"priority": {
 																			"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-																			"minimum": 1,
-																			"type": "integer"
+																			"type": "integer",
+																			"minimum": 1
 																		},
 																		"rollout": {
+																			"type": "object",
 																			"additionalProperties": false,
 																			"properties": {
 																				"attribute": {
 																					"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-																					"minLength": 1,
-																					"type": "string"
+																					"type": "string",
+																					"minLength": 1
 																				},
 																				"percentage": {
 																					"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																					"type": "number",
 																					"maximum": 100,
-																					"minimum": 0,
-																					"type": "number"
+																					"minimum": 0
 																				}
 																			},
 																			"required": [
 																				"percentage"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"serve_variation": {
 																			"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-																			"minLength": 1,
-																			"type": "string"
+																			"type": "string",
+																			"minLength": 1
 																		}
 																	},
 																	"required": [
@@ -1937,18 +1942,17 @@
 																		"serve_variation"
 																	],
 																	"type": "object"
-																},
-																"type": "array"
+																}
 															},
 															"type": {
 																"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+																"type": "string",
 																"enum": [
 																	"boolean",
 																	"string",
 																	"number",
 																	"json"
-																],
-																"type": "string"
+																]
 															},
 															"updated_at": {
 																"type": "string"
@@ -1957,6 +1961,8 @@
 																"type": "string"
 															},
 															"variations": {
+																"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+																"type": "object",
 																"additionalProperties": {
 																	"oneOf": [
 																		{
@@ -1978,21 +1984,20 @@
 																			"type": "array"
 																		}
 																	]
-																},
-																"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-																"type": "object"
+																}
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"key",
 															"default_variation",
 															"variations",
 															"rules",
 															"enabled"
-														],
-														"type": "object"
+														]
 													},
 													"diff": {
+														"type": "object",
 														"additionalProperties": {
 															"properties": {
 																"from": {
@@ -2041,14 +2046,13 @@
 																}
 															},
 															"type": "object"
-														},
-														"type": "object"
+														}
 													},
 													"event": {
+														"type": "string",
 														"enum": [
 															"update"
-														],
-														"type": "string"
+														]
 													},
 													"flag_key": {
 														"type": "string"
@@ -2063,27 +2067,26 @@
 												"type": "object"
 											}
 										]
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"description": "Number of items returned in this page.",
-											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"minimum": 0
 										},
 										"cursor": {
 											"description": "Cursor to pass back to fetch the next page, or null when this is the last page.",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"required": [
 										"count",
 										"cursor"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2095,20 +2098,22 @@
 								"result_info",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Paginated flag changelog."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2116,13 +2121,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2130,17 +2135,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2151,20 +2154,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2172,13 +2177,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2186,17 +2191,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2207,20 +2210,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2228,13 +2233,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2242,17 +2247,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2263,20 +2266,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2284,13 +2289,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2298,17 +2303,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2319,20 +2322,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2340,13 +2345,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2354,17 +2359,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2375,20 +2378,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2396,13 +2401,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2410,17 +2415,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2431,12 +2434,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -2448,7 +2449,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get flag changelog",
 		"tags": [
 			"Changelog"
 		],

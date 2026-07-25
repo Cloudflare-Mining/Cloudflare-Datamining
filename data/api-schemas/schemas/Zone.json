@@ -1,17 +1,18 @@
 {
 	"DELETE /zones/{zone_id}": {
-		"description": "Deletes an existing zone.",
 		"operationId": "zones-0-delete",
+		"summary": "Delete Zone",
+		"description": "Deletes an existing zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
@@ -22,19 +23,22 @@
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Zone response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -47,15 +51,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -68,93 +72,66 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"maxLength": 32
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Zone response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Zone response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -167,19 +144,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -187,12 +190,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Zone response failure."
+				}
 			}
 		},
 		"security": [
@@ -204,7 +205,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Zone",
 		"tags": [
 			"Zone"
 		],
@@ -227,10 +227,18 @@
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones": {
-		"description": "Lists, searches, sorts, and filters your zones. Listing zones across more than 500 accounts\nis currently not allowed.\n",
 		"operationId": "zones-get",
+		"summary": "List Zones",
+		"description": "Lists, searches, sorts, and filters your zones. Listing zones across more than 500 accounts\nis currently not allowed.\n",
 		"parameters": [
 			{
+				"name": "name",
+				"in": "query",
+				"schema": {
+					"description": "A domain name. Optional filter operators can be provided to extend refine the search:\n  * `equal` (default)\n  * `not_equal`\n  * `starts_with`\n  * `ends_with`\n  * `contains`\n  * `starts_with_case_sensitive`\n  * `ends_with_case_sensitive`\n  * `contains_case_sensitive`\n",
+					"type": "string",
+					"maxLength": 253
+				},
 				"examples": {
 					"Basic Query": {
 						"summary": "Simple Query",
@@ -248,35 +256,28 @@
 						"summary": "Starts With Query",
 						"value": "starts_with:dev"
 					}
-				},
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "A domain name. Optional filter operators can be provided to extend refine the search:\n  * `equal` (default)\n  * `not_equal`\n  * `starts_with`\n  * `ends_with`\n  * `contains`\n  * `starts_with_case_sensitive`\n  * `ends_with_case_sensitive`\n  * `contains_case_sensitive`\n",
-					"maxLength": 253,
-					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "status",
+				"in": "query",
 				"schema": {
 					"description": "Specify a zone status to filter by.",
+					"type": "string",
 					"enum": [
 						"initializing",
 						"pending",
 						"active",
 						"moved"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"explode": false,
-				"in": "query",
 				"name": "type",
+				"in": "query",
 				"schema": {
 					"description": "Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type \"internal\" are excluded from the results.",
+					"type": "array",
 					"items": {
 						"enum": [
 							"full",
@@ -285,20 +286,27 @@
 							"internal"
 						],
 						"type": "string"
-					},
-					"type": "array"
+					}
 				},
+				"explode": false,
 				"style": "form"
 			},
 			{
-				"in": "query",
 				"name": "account.id",
+				"in": "query",
 				"schema": {
 					"description": "Filter by an account ID.",
 					"type": "string"
 				}
 			},
 			{
+				"name": "account.name",
+				"in": "query",
+				"schema": {
+					"description": "An account Name. Optional filter operators can be provided to extend refine the search:\n  * `equal` (default)\n  * `not_equal`\n  * `starts_with`\n  * `ends_with`\n  * `contains`\n  * `starts_with_case_sensitive`\n  * `ends_with_case_sensitive`\n  * `contains_case_sensitive`\n",
+					"type": "string",
+					"maxLength": 253
+				},
 				"examples": {
 					"Basic Query": {
 						"summary": "Simple Query",
@@ -308,94 +316,89 @@
 						"summary": "Contains Query",
 						"value": "contains:Test"
 					}
-				},
-				"in": "query",
-				"name": "account.name",
-				"schema": {
-					"description": "An account Name. Optional filter operators can be provided to extend refine the search:\n  * `equal` (default)\n  * `not_equal`\n  * `starts_with`\n  * `ends_with`\n  * `contains`\n  * `starts_with_case_sensitive`\n  * `ends_with_case_sensitive`\n  * `contains_case_sensitive`\n",
-					"maxLength": 253,
-					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Number of zones per page.",
+					"type": "number",
+					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "number"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
 					"description": "Field to order zones by.",
+					"type": "string",
+					"example": "status",
 					"enum": [
 						"name",
 						"status",
 						"account.id",
 						"account.name",
 						"plan.id"
-					],
-					"example": "status",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
 					"description": "Direction to order zones.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "match",
+				"in": "query",
 				"schema": {
-					"default": "all",
 					"description": "Whether to match all search requirements or at least one (any).",
+					"type": "string",
+					"default": "all",
 					"enum": [
 						"any",
 						"all"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Zones response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -408,15 +411,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -429,326 +432,327 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results for the requested service.",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"page": {
 													"description": "Current page within paginated list of results.",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page of results.",
-													"example": 20,
-													"type": "number"
+													"type": "number",
+													"example": 20
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters.",
-													"example": 2000,
-													"type": "number"
+													"type": "number",
+													"example": 2000
 												},
 												"total_pages": {
 													"description": "Total number of pages",
-													"example": 100,
-													"type": "number"
+													"type": "number",
+													"example": 100
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"account": {
 														"description": "The account the zone belongs to.",
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"type": "string"
+																"maxLength": 32
 															},
 															"name": {
 																"description": "The name of the account.",
-																"example": "Example Account Name",
-																"type": "string"
+																"type": "string",
+																"example": "Example Account Name"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"activated_on": {
 														"description": "The last time proof of ownership was detected and the zone was made\nactive.",
-														"example": "2014-01-02T00:01:00.12345Z",
+														"type": "string",
 														"format": "date-time",
+														"example": "2014-01-02T00:01:00.12345Z",
 														"nullable": true,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"cname_suffix": {
 														"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
-														"example": "cdn.cloudflare.com",
-														"type": "string"
+														"type": "string",
+														"example": "cdn.cloudflare.com"
 													},
 													"created_on": {
 														"description": "When the zone was created.",
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"development_mode": {
 														"description": "The interval (in seconds) from when development mode expires\n(positive integer) or last expired (negative integer) for the\ndomain. If development mode has never been enabled, this value is 0.",
+														"type": "number",
 														"example": 7200,
-														"readOnly": true,
-														"type": "number"
+														"readOnly": true
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
-														"type": "string"
+														"maxLength": 32
 													},
 													"meta": {
 														"description": "Metadata about the zone.",
+														"type": "object",
 														"properties": {
 															"cdn_only": {
 																"description": "The zone is only configured for CDN.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"custom_certificate_quota": {
 																"description": "Number of Custom Certificates the zone can have.",
-																"example": 1,
-																"type": "integer"
+																"type": "integer",
+																"example": 1
 															},
 															"dns_only": {
 																"description": "The zone is only configured for DNS.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"foundation_dns": {
 																"description": "The zone is setup with Foundation DNS.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"page_rule_quota": {
 																"description": "Number of Page Rules a zone can have.",
-																"example": 100,
-																"type": "integer"
+																"type": "integer",
+																"example": 100
 															},
 															"phishing_detected": {
 																"description": "The zone has been flagged for phishing.",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"step": {
-																"example": 2,
-																"type": "integer"
+																"type": "integer",
+																"example": 2
 															}
-														},
-														"type": "object"
+														}
 													},
 													"modified_on": {
 														"description": "When the zone was last modified.",
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"name": {
 														"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+														"type": "string",
 														"example": "example.com",
 														"maxLength": 253,
 														"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-														"type": "string",
 														"x-auditable": true
 													},
 													"name_servers": {
 														"description": "The name servers Cloudflare assigns to a zone.",
+														"type": "array",
+														"items": {
+															"format": "hostname",
+															"type": "string"
+														},
 														"example": [
 															"bob.ns.cloudflare.com",
 															"lola.ns.cloudflare.com"
 														],
+														"readOnly": true
+													},
+													"original_dnshost": {
+														"description": "DNS host at the time of switching to Cloudflare.",
+														"type": "string",
+														"example": "NameCheap",
+														"maxLength": 50,
+														"nullable": true,
+														"readOnly": true
+													},
+													"original_name_servers": {
+														"description": "Original name servers before moving to Cloudflare.",
+														"type": "array",
 														"items": {
 															"format": "hostname",
 															"type": "string"
 														},
-														"readOnly": true,
-														"type": "array"
-													},
-													"original_dnshost": {
-														"description": "DNS host at the time of switching to Cloudflare.",
-														"example": "NameCheap",
-														"maxLength": 50,
-														"nullable": true,
-														"readOnly": true,
-														"type": "string"
-													},
-													"original_name_servers": {
-														"description": "Original name servers before moving to Cloudflare.",
 														"example": [
 															"ns1.originaldnshost.com",
 															"ns2.originaldnshost.com"
 														],
-														"items": {
-															"format": "hostname",
-															"type": "string"
-														},
 														"nullable": true,
-														"readOnly": true,
-														"type": "array"
+														"readOnly": true
 													},
 													"original_registrar": {
 														"description": "Registrar for the domain at the time of switching to Cloudflare.",
+														"type": "string",
 														"example": "GoDaddy",
 														"nullable": true,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"owner": {
 														"description": "The owner of the zone.",
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"type": "string"
+																"maxLength": 32
 															},
 															"name": {
 																"description": "Name of the owner.",
-																"example": "Example Org",
-																"type": "string"
+																"type": "string",
+																"example": "Example Org"
 															},
 															"type": {
 																"description": "The type of owner.",
-																"example": "organization",
-																"type": "string"
+																"type": "string",
+																"example": "organization"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"paused": {
-														"default": false,
 														"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-														"type": "boolean"
+														"type": "boolean",
+														"default": false
 													},
 													"permissions": {
-														"deprecated": true,
 														"description": "Legacy permissions based on legacy user membership information.",
+														"type": "array",
 														"items": {
 															"example": "#worker:read",
 															"type": "string"
 														},
-														"type": "array",
+														"deprecated": true,
 														"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 													},
 													"plan": {
-														"deprecated": true,
 														"description": "A Zones subscription information.",
+														"deprecated": true,
 														"properties": {
 															"can_subscribe": {
 																"description": "States if the subscription can be activated.",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"currency": {
 																"description": "The denomination of the customer.",
-																"example": "USD",
-																"type": "string"
+																"type": "string",
+																"example": "USD"
 															},
 															"externally_managed": {
 																"description": "If this Zone is managed by another company.",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"frequency": {
 																"description": "How often the customer is billed.",
-																"example": "monthly",
-																"type": "string"
+																"type": "string",
+																"example": "monthly"
 															},
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"type": "string"
+																"maxLength": 32
 															},
 															"is_subscribed": {
 																"description": "States if the subscription active.",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"legacy_discount": {
 																"description": "If the legacy discount applies to this Zone.",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"legacy_id": {
 																"description": "The legacy name of the plan.",
-																"example": "free",
-																"type": "string"
+																"type": "string",
+																"example": "free"
 															},
 															"name": {
 																"description": "Name of the owner.",
-																"example": "Example Org",
-																"type": "string"
+																"type": "string",
+																"example": "Example Org"
 															},
 															"price": {
 																"description": "How much the customer is paying.",
-																"example": 10.99,
-																"type": "number"
+																"type": "number",
+																"example": 10.99
 															}
 														},
 														"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 													},
 													"status": {
 														"description": "The zone status on Cloudflare.",
+														"type": "string",
+														"example": "active",
 														"enum": [
 															"initializing",
 															"pending",
 															"active",
 															"moved"
 														],
-														"example": "active",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"tenant": {
 														"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
 														"properties": {
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"type": "string"
+																"maxLength": 32
 															},
 															"name": {
 																"description": "The name of the Tenant account.",
-																"example": "Example Account Name",
-																"type": "string"
+																"type": "string",
+																"example": "Example Account Name"
 															}
 														}
 													},
@@ -757,43 +761,43 @@
 														"properties": {
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"type": "string"
+																"maxLength": 32
 															}
 														}
 													},
 													"type": {
-														"default": "full",
 														"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+														"type": "string",
+														"example": "full",
+														"default": "full",
 														"enum": [
 															"full",
 															"partial",
 															"secondary",
 															"internal"
-														],
-														"example": "full",
-														"type": "string"
+														]
 													},
 													"vanity_name_servers": {
-														"default": [],
 														"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
-														"example": [
-															"ns1.example.com",
-															"ns2.example.com"
-														],
+														"type": "array",
 														"items": {
 															"format": "hostname",
 															"maxLength": 253,
 															"type": "string"
 														},
-														"type": "array"
+														"example": [
+															"ns1.example.com",
+															"ns2.example.com"
+														],
+														"default": []
 													},
 													"verification_key": {
 														"description": "Verification key for partial zone setup.",
+														"type": "string",
 														"example": "284344499-1084221259",
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													}
 												},
 												"required": [
@@ -811,65 +815,38 @@
 													"modified_on",
 													"activated_on",
 													"plan"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Zones response."
+				}
 			},
 			"4XX": {
+				"description": "List Zones response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -882,19 +859,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -902,12 +905,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Zones response failure."
+				}
 			}
 		},
 		"security": [
@@ -919,7 +920,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Zones",
 		"tags": [
 			"Zone"
 		],
@@ -931,36 +931,39 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}": {
-		"description": "Retrieves detailed information about a specific zone identified by its zone ID.\n\nReturns zone configuration, status, nameservers, and associated metadata.\n",
 		"operationId": "zones-0-get",
+		"summary": "Zone Details",
+		"description": "Retrieves detailed information about a specific zone identified by its zone ID.\n\nReturns zone configuration, status, nameservers, and associated metadata.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Zone Details response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -973,15 +976,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -994,291 +997,291 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account": {
 													"description": "The account the zone belongs to.",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "The name of the account.",
-															"example": "Example Account Name",
-															"type": "string"
+															"type": "string",
+															"example": "Example Account Name"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"activated_on": {
 													"description": "The last time proof of ownership was detected and the zone was made\nactive.",
-													"example": "2014-01-02T00:01:00.12345Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2014-01-02T00:01:00.12345Z",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"cname_suffix": {
 													"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
-													"example": "cdn.cloudflare.com",
-													"type": "string"
+													"type": "string",
+													"example": "cdn.cloudflare.com"
 												},
 												"created_on": {
 													"description": "When the zone was created.",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"development_mode": {
 													"description": "The interval (in seconds) from when development mode expires\n(positive integer) or last expired (negative integer) for the\ndomain. If development mode has never been enabled, this value is 0.",
+													"type": "number",
 													"example": 7200,
-													"readOnly": true,
-													"type": "number"
+													"readOnly": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"maxLength": 32
 												},
 												"meta": {
 													"description": "Metadata about the zone.",
+													"type": "object",
 													"properties": {
 														"cdn_only": {
 															"description": "The zone is only configured for CDN.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"custom_certificate_quota": {
 															"description": "Number of Custom Certificates the zone can have.",
-															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"example": 1
 														},
 														"dns_only": {
 															"description": "The zone is only configured for DNS.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"foundation_dns": {
 															"description": "The zone is setup with Foundation DNS.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"page_rule_quota": {
 															"description": "Number of Page Rules a zone can have.",
-															"example": 100,
-															"type": "integer"
+															"type": "integer",
+															"example": 100
 														},
 														"phishing_detected": {
 															"description": "The zone has been flagged for phishing.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"step": {
-															"example": 2,
-															"type": "integer"
+															"type": "integer",
+															"example": 2
 														}
-													},
-													"type": "object"
+													}
 												},
 												"modified_on": {
 													"description": "When the zone was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+													"type": "string",
 													"example": "example.com",
 													"maxLength": 253,
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"name_servers": {
 													"description": "The name servers Cloudflare assigns to a zone.",
+													"type": "array",
+													"items": {
+														"format": "hostname",
+														"type": "string"
+													},
 													"example": [
 														"bob.ns.cloudflare.com",
 														"lola.ns.cloudflare.com"
 													],
+													"readOnly": true
+												},
+												"original_dnshost": {
+													"description": "DNS host at the time of switching to Cloudflare.",
+													"type": "string",
+													"example": "NameCheap",
+													"maxLength": 50,
+													"nullable": true,
+													"readOnly": true
+												},
+												"original_name_servers": {
+													"description": "Original name servers before moving to Cloudflare.",
+													"type": "array",
 													"items": {
 														"format": "hostname",
 														"type": "string"
 													},
-													"readOnly": true,
-													"type": "array"
-												},
-												"original_dnshost": {
-													"description": "DNS host at the time of switching to Cloudflare.",
-													"example": "NameCheap",
-													"maxLength": 50,
-													"nullable": true,
-													"readOnly": true,
-													"type": "string"
-												},
-												"original_name_servers": {
-													"description": "Original name servers before moving to Cloudflare.",
 													"example": [
 														"ns1.originaldnshost.com",
 														"ns2.originaldnshost.com"
 													],
-													"items": {
-														"format": "hostname",
-														"type": "string"
-													},
 													"nullable": true,
-													"readOnly": true,
-													"type": "array"
+													"readOnly": true
 												},
 												"original_registrar": {
 													"description": "Registrar for the domain at the time of switching to Cloudflare.",
+													"type": "string",
 													"example": "GoDaddy",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"owner": {
 													"description": "The owner of the zone.",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "Name of the owner.",
-															"example": "Example Org",
-															"type": "string"
+															"type": "string",
+															"example": "Example Org"
 														},
 														"type": {
 															"description": "The type of owner.",
-															"example": "organization",
-															"type": "string"
+															"type": "string",
+															"example": "organization"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"paused": {
-													"default": false,
 													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"permissions": {
-													"deprecated": true,
 													"description": "Legacy permissions based on legacy user membership information.",
+													"type": "array",
 													"items": {
 														"example": "#worker:read",
 														"type": "string"
 													},
-													"type": "array",
+													"deprecated": true,
 													"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 												},
 												"plan": {
-													"deprecated": true,
 													"description": "A Zones subscription information.",
+													"deprecated": true,
 													"properties": {
 														"can_subscribe": {
 															"description": "States if the subscription can be activated.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"currency": {
 															"description": "The denomination of the customer.",
-															"example": "USD",
-															"type": "string"
+															"type": "string",
+															"example": "USD"
 														},
 														"externally_managed": {
 															"description": "If this Zone is managed by another company.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"frequency": {
 															"description": "How often the customer is billed.",
-															"example": "monthly",
-															"type": "string"
+															"type": "string",
+															"example": "monthly"
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"is_subscribed": {
 															"description": "States if the subscription active.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"legacy_discount": {
 															"description": "If the legacy discount applies to this Zone.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"legacy_id": {
 															"description": "The legacy name of the plan.",
-															"example": "free",
-															"type": "string"
+															"type": "string",
+															"example": "free"
 														},
 														"name": {
 															"description": "Name of the owner.",
-															"example": "Example Org",
-															"type": "string"
+															"type": "string",
+															"example": "Example Org"
 														},
 														"price": {
 															"description": "How much the customer is paying.",
-															"example": 10.99,
-															"type": "number"
+															"type": "number",
+															"example": 10.99
 														}
 													},
 													"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
+													"type": "string",
+													"example": "active",
 													"enum": [
 														"initializing",
 														"pending",
 														"active",
 														"moved"
 													],
-													"example": "active",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"tenant": {
 													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "The name of the Tenant account.",
-															"example": "Example Account Name",
-															"type": "string"
+															"type": "string",
+															"example": "Example Account Name"
 														}
 													}
 												},
@@ -1287,43 +1290,43 @@
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														}
 													}
 												},
 												"type": {
-													"default": "full",
 													"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+													"type": "string",
+													"example": "full",
+													"default": "full",
 													"enum": [
 														"full",
 														"partial",
 														"secondary",
 														"internal"
-													],
-													"example": "full",
-													"type": "string"
+													]
 												},
 												"vanity_name_servers": {
-													"default": [],
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
-													"example": [
-														"ns1.example.com",
-														"ns2.example.com"
-													],
+													"type": "array",
 													"items": {
 														"format": "hostname",
 														"maxLength": 253,
 														"type": "string"
 													},
-													"type": "array"
+													"example": [
+														"ns1.example.com",
+														"ns2.example.com"
+													],
+													"default": []
 												},
 												"verification_key": {
 													"description": "Verification key for partial zone setup.",
+													"type": "string",
 													"example": "284344499-1084221259",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												}
 											},
 											"required": [
@@ -1341,8 +1344,7 @@
 												"modified_on",
 												"activated_on",
 												"plan"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1350,55 +1352,30 @@
 							]
 						}
 					}
-				},
-				"description": "Zone Details response."
+				}
 			},
 			"4XX": {
+				"description": "Zone Details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1411,19 +1388,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -1431,12 +1434,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Zone Details response failure."
+				}
 			}
 		},
 		"security": [
@@ -1448,7 +1449,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Zone Details",
 		"tags": [
 			"Zone"
 		],
@@ -1509,93 +1509,96 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}": {
-		"description": "Edits a zone. Only one zone property can be changed at a time.",
 		"operationId": "zones-0-patch",
+		"summary": "Edit Zone",
+		"description": "Edits a zone. Only one zone property can be changed at a time.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": {
-							"paused": true
-						},
+						"type": "object",
 						"properties": {
 							"paused": {
-								"default": false,
 								"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"plan": {
 								"description": "(Deprecated) Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee Zone Plans.\n",
+								"type": "object",
 								"properties": {
 									"id": {
 										"description": "Identifier",
+										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"type": "string"
+										"maxLength": 32
 									}
-								},
-								"type": "object"
+								}
 							},
 							"type": {
 								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial\nzone is typically a partner-hosted zone or a CNAME setup. This\nparameter is only available to Enterprise customers or if it has\nbeen explicitly enabled on a zone.\n",
+								"type": "string",
+								"example": "full",
 								"enum": [
 									"full",
 									"partial",
 									"secondary",
 									"internal"
-								],
-								"example": "full",
-								"type": "string"
+								]
 							},
 							"vanity_name_servers": {
-								"default": [],
 								"description": "An array of domains used for custom name servers. This is only\navailable for Business and Enterprise plans.",
-								"example": [
-									"ns1.example.com",
-									"ns2.example.com"
-								],
+								"type": "array",
 								"items": {
 									"format": "hostname",
 									"maxLength": 253,
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"ns1.example.com",
+									"ns2.example.com"
+								],
+								"default": []
 							}
 						},
-						"type": "object"
+						"example": {
+							"paused": true
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Edit Zone response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1608,15 +1611,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1629,291 +1632,291 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account": {
 													"description": "The account the zone belongs to.",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "The name of the account.",
-															"example": "Example Account Name",
-															"type": "string"
+															"type": "string",
+															"example": "Example Account Name"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"activated_on": {
 													"description": "The last time proof of ownership was detected and the zone was made\nactive.",
-													"example": "2014-01-02T00:01:00.12345Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2014-01-02T00:01:00.12345Z",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"cname_suffix": {
 													"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
-													"example": "cdn.cloudflare.com",
-													"type": "string"
+													"type": "string",
+													"example": "cdn.cloudflare.com"
 												},
 												"created_on": {
 													"description": "When the zone was created.",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"development_mode": {
 													"description": "The interval (in seconds) from when development mode expires\n(positive integer) or last expired (negative integer) for the\ndomain. If development mode has never been enabled, this value is 0.",
+													"type": "number",
 													"example": 7200,
-													"readOnly": true,
-													"type": "number"
+													"readOnly": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"maxLength": 32
 												},
 												"meta": {
 													"description": "Metadata about the zone.",
+													"type": "object",
 													"properties": {
 														"cdn_only": {
 															"description": "The zone is only configured for CDN.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"custom_certificate_quota": {
 															"description": "Number of Custom Certificates the zone can have.",
-															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"example": 1
 														},
 														"dns_only": {
 															"description": "The zone is only configured for DNS.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"foundation_dns": {
 															"description": "The zone is setup with Foundation DNS.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"page_rule_quota": {
 															"description": "Number of Page Rules a zone can have.",
-															"example": 100,
-															"type": "integer"
+															"type": "integer",
+															"example": 100
 														},
 														"phishing_detected": {
 															"description": "The zone has been flagged for phishing.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"step": {
-															"example": 2,
-															"type": "integer"
+															"type": "integer",
+															"example": 2
 														}
-													},
-													"type": "object"
+													}
 												},
 												"modified_on": {
 													"description": "When the zone was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+													"type": "string",
 													"example": "example.com",
 													"maxLength": 253,
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"name_servers": {
 													"description": "The name servers Cloudflare assigns to a zone.",
+													"type": "array",
+													"items": {
+														"format": "hostname",
+														"type": "string"
+													},
 													"example": [
 														"bob.ns.cloudflare.com",
 														"lola.ns.cloudflare.com"
 													],
+													"readOnly": true
+												},
+												"original_dnshost": {
+													"description": "DNS host at the time of switching to Cloudflare.",
+													"type": "string",
+													"example": "NameCheap",
+													"maxLength": 50,
+													"nullable": true,
+													"readOnly": true
+												},
+												"original_name_servers": {
+													"description": "Original name servers before moving to Cloudflare.",
+													"type": "array",
 													"items": {
 														"format": "hostname",
 														"type": "string"
 													},
-													"readOnly": true,
-													"type": "array"
-												},
-												"original_dnshost": {
-													"description": "DNS host at the time of switching to Cloudflare.",
-													"example": "NameCheap",
-													"maxLength": 50,
-													"nullable": true,
-													"readOnly": true,
-													"type": "string"
-												},
-												"original_name_servers": {
-													"description": "Original name servers before moving to Cloudflare.",
 													"example": [
 														"ns1.originaldnshost.com",
 														"ns2.originaldnshost.com"
 													],
-													"items": {
-														"format": "hostname",
-														"type": "string"
-													},
 													"nullable": true,
-													"readOnly": true,
-													"type": "array"
+													"readOnly": true
 												},
 												"original_registrar": {
 													"description": "Registrar for the domain at the time of switching to Cloudflare.",
+													"type": "string",
 													"example": "GoDaddy",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"owner": {
 													"description": "The owner of the zone.",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "Name of the owner.",
-															"example": "Example Org",
-															"type": "string"
+															"type": "string",
+															"example": "Example Org"
 														},
 														"type": {
 															"description": "The type of owner.",
-															"example": "organization",
-															"type": "string"
+															"type": "string",
+															"example": "organization"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"paused": {
-													"default": false,
 													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"permissions": {
-													"deprecated": true,
 													"description": "Legacy permissions based on legacy user membership information.",
+													"type": "array",
 													"items": {
 														"example": "#worker:read",
 														"type": "string"
 													},
-													"type": "array",
+													"deprecated": true,
 													"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 												},
 												"plan": {
-													"deprecated": true,
 													"description": "A Zones subscription information.",
+													"deprecated": true,
 													"properties": {
 														"can_subscribe": {
 															"description": "States if the subscription can be activated.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"currency": {
 															"description": "The denomination of the customer.",
-															"example": "USD",
-															"type": "string"
+															"type": "string",
+															"example": "USD"
 														},
 														"externally_managed": {
 															"description": "If this Zone is managed by another company.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"frequency": {
 															"description": "How often the customer is billed.",
-															"example": "monthly",
-															"type": "string"
+															"type": "string",
+															"example": "monthly"
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"is_subscribed": {
 															"description": "States if the subscription active.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"legacy_discount": {
 															"description": "If the legacy discount applies to this Zone.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"legacy_id": {
 															"description": "The legacy name of the plan.",
-															"example": "free",
-															"type": "string"
+															"type": "string",
+															"example": "free"
 														},
 														"name": {
 															"description": "Name of the owner.",
-															"example": "Example Org",
-															"type": "string"
+															"type": "string",
+															"example": "Example Org"
 														},
 														"price": {
 															"description": "How much the customer is paying.",
-															"example": 10.99,
-															"type": "number"
+															"type": "number",
+															"example": 10.99
 														}
 													},
 													"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
+													"type": "string",
+													"example": "active",
 													"enum": [
 														"initializing",
 														"pending",
 														"active",
 														"moved"
 													],
-													"example": "active",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"tenant": {
 													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "The name of the Tenant account.",
-															"example": "Example Account Name",
-															"type": "string"
+															"type": "string",
+															"example": "Example Account Name"
 														}
 													}
 												},
@@ -1922,43 +1925,43 @@
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														}
 													}
 												},
 												"type": {
-													"default": "full",
 													"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+													"type": "string",
+													"example": "full",
+													"default": "full",
 													"enum": [
 														"full",
 														"partial",
 														"secondary",
 														"internal"
-													],
-													"example": "full",
-													"type": "string"
+													]
 												},
 												"vanity_name_servers": {
-													"default": [],
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
-													"example": [
-														"ns1.example.com",
-														"ns2.example.com"
-													],
+													"type": "array",
 													"items": {
 														"format": "hostname",
 														"maxLength": 253,
 														"type": "string"
 													},
-													"type": "array"
+													"example": [
+														"ns1.example.com",
+														"ns2.example.com"
+													],
+													"default": []
 												},
 												"verification_key": {
 													"description": "Verification key for partial zone setup.",
+													"type": "string",
 													"example": "284344499-1084221259",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												}
 											},
 											"required": [
@@ -1976,8 +1979,7 @@
 												"modified_on",
 												"activated_on",
 												"plan"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1985,55 +1987,30 @@
 							]
 						}
 					}
-				},
-				"description": "Edit Zone response."
+				}
 			},
 			"4XX": {
+				"description": "Edit Zone response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2046,19 +2023,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -2066,12 +2069,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Edit Zone response failure."
+				}
 			}
 		},
 		"security": [
@@ -2083,7 +2084,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Edit Zone",
 		"tags": [
 			"Zone"
 		],
@@ -2101,70 +2101,73 @@
 		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones": {
-		"description": "Creates a new zone (domain) in your Cloudflare account.\n\nThe zone is created in a pending state and must be activated by updating your domain's\nnameservers to point to Cloudflare, or by completing the verification process for partial\n(CNAME) setups.\n",
 		"operationId": "zones-post",
+		"summary": "Create Zone",
+		"description": "Creates a new zone (domain) in your Cloudflare account.\n\nThe zone is created in a pending state and must be activated by updating your domain's\nnameservers to point to Cloudflare, or by completing the verification process for partial\n(CNAME) setups.\n",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"account": {
+								"type": "object",
 								"properties": {
 									"id": {
 										"description": "Identifier",
+										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"type": "string"
+										"maxLength": 32
 									}
-								},
-								"type": "object"
+								}
 							},
 							"name": {
 								"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+								"type": "string",
 								"example": "example.com",
 								"maxLength": 253,
 								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-								"type": "string",
 								"x-auditable": true
 							},
 							"type": {
-								"default": "full",
 								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+								"type": "string",
+								"example": "full",
+								"default": "full",
 								"enum": [
 									"full",
 									"partial",
 									"secondary",
 									"internal"
-								],
-								"example": "full",
-								"type": "string"
+								]
 							}
 						},
 						"required": [
 							"name",
 							"account"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Zone response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2177,15 +2180,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2198,291 +2201,291 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account": {
 													"description": "The account the zone belongs to.",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "The name of the account.",
-															"example": "Example Account Name",
-															"type": "string"
+															"type": "string",
+															"example": "Example Account Name"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"activated_on": {
 													"description": "The last time proof of ownership was detected and the zone was made\nactive.",
-													"example": "2014-01-02T00:01:00.12345Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2014-01-02T00:01:00.12345Z",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"cname_suffix": {
 													"description": "Allows the customer to use a custom apex.\n*Tenants Only Configuration*.",
-													"example": "cdn.cloudflare.com",
-													"type": "string"
+													"type": "string",
+													"example": "cdn.cloudflare.com"
 												},
 												"created_on": {
 													"description": "When the zone was created.",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"development_mode": {
 													"description": "The interval (in seconds) from when development mode expires\n(positive integer) or last expired (negative integer) for the\ndomain. If development mode has never been enabled, this value is 0.",
+													"type": "number",
 													"example": 7200,
-													"readOnly": true,
-													"type": "number"
+													"readOnly": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"maxLength": 32
 												},
 												"meta": {
 													"description": "Metadata about the zone.",
+													"type": "object",
 													"properties": {
 														"cdn_only": {
 															"description": "The zone is only configured for CDN.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"custom_certificate_quota": {
 															"description": "Number of Custom Certificates the zone can have.",
-															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"example": 1
 														},
 														"dns_only": {
 															"description": "The zone is only configured for DNS.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"foundation_dns": {
 															"description": "The zone is setup with Foundation DNS.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"page_rule_quota": {
 															"description": "Number of Page Rules a zone can have.",
-															"example": 100,
-															"type": "integer"
+															"type": "integer",
+															"example": 100
 														},
 														"phishing_detected": {
 															"description": "The zone has been flagged for phishing.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"step": {
-															"example": 2,
-															"type": "integer"
+															"type": "integer",
+															"example": 2
 														}
-													},
-													"type": "object"
+													}
 												},
 												"modified_on": {
 													"description": "When the zone was last modified.",
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"name": {
 													"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
+													"type": "string",
 													"example": "example.com",
 													"maxLength": 253,
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-													"type": "string",
 													"x-auditable": true
 												},
 												"name_servers": {
 													"description": "The name servers Cloudflare assigns to a zone.",
+													"type": "array",
+													"items": {
+														"format": "hostname",
+														"type": "string"
+													},
 													"example": [
 														"bob.ns.cloudflare.com",
 														"lola.ns.cloudflare.com"
 													],
+													"readOnly": true
+												},
+												"original_dnshost": {
+													"description": "DNS host at the time of switching to Cloudflare.",
+													"type": "string",
+													"example": "NameCheap",
+													"maxLength": 50,
+													"nullable": true,
+													"readOnly": true
+												},
+												"original_name_servers": {
+													"description": "Original name servers before moving to Cloudflare.",
+													"type": "array",
 													"items": {
 														"format": "hostname",
 														"type": "string"
 													},
-													"readOnly": true,
-													"type": "array"
-												},
-												"original_dnshost": {
-													"description": "DNS host at the time of switching to Cloudflare.",
-													"example": "NameCheap",
-													"maxLength": 50,
-													"nullable": true,
-													"readOnly": true,
-													"type": "string"
-												},
-												"original_name_servers": {
-													"description": "Original name servers before moving to Cloudflare.",
 													"example": [
 														"ns1.originaldnshost.com",
 														"ns2.originaldnshost.com"
 													],
-													"items": {
-														"format": "hostname",
-														"type": "string"
-													},
 													"nullable": true,
-													"readOnly": true,
-													"type": "array"
+													"readOnly": true
 												},
 												"original_registrar": {
 													"description": "Registrar for the domain at the time of switching to Cloudflare.",
+													"type": "string",
 													"example": "GoDaddy",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"owner": {
 													"description": "The owner of the zone.",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "Name of the owner.",
-															"example": "Example Org",
-															"type": "string"
+															"type": "string",
+															"example": "Example Org"
 														},
 														"type": {
 															"description": "The type of owner.",
-															"example": "organization",
-															"type": "string"
+															"type": "string",
+															"example": "organization"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"paused": {
-													"default": false,
 													"description": "Indicates whether the zone is only using Cloudflare DNS services. A\ntrue value means the zone will not receive security or performance\nbenefits.\n",
-													"type": "boolean"
+													"type": "boolean",
+													"default": false
 												},
 												"permissions": {
-													"deprecated": true,
 													"description": "Legacy permissions based on legacy user membership information.",
+													"type": "array",
 													"items": {
 														"example": "#worker:read",
 														"type": "string"
 													},
-													"type": "array",
+													"deprecated": true,
 													"x-stainless-deprecation-message": "This has been replaced by Account memberships."
 												},
 												"plan": {
-													"deprecated": true,
 													"description": "A Zones subscription information.",
+													"deprecated": true,
 													"properties": {
 														"can_subscribe": {
 															"description": "States if the subscription can be activated.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"currency": {
 															"description": "The denomination of the customer.",
-															"example": "USD",
-															"type": "string"
+															"type": "string",
+															"example": "USD"
 														},
 														"externally_managed": {
 															"description": "If this Zone is managed by another company.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"frequency": {
 															"description": "How often the customer is billed.",
-															"example": "monthly",
-															"type": "string"
+															"type": "string",
+															"example": "monthly"
 														},
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"is_subscribed": {
 															"description": "States if the subscription active.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"legacy_discount": {
 															"description": "If the legacy discount applies to this Zone.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"legacy_id": {
 															"description": "The legacy name of the plan.",
-															"example": "free",
-															"type": "string"
+															"type": "string",
+															"example": "free"
 														},
 														"name": {
 															"description": "Name of the owner.",
-															"example": "Example Org",
-															"type": "string"
+															"type": "string",
+															"example": "Example Org"
 														},
 														"price": {
 															"description": "How much the customer is paying.",
-															"example": 10.99,
-															"type": "number"
+															"type": "number",
+															"example": 10.99
 														}
 													},
 													"x-stainless-deprecation-message": "Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/)."
 												},
 												"status": {
 													"description": "The zone status on Cloudflare.",
+													"type": "string",
+													"example": "active",
 													"enum": [
 														"initializing",
 														"pending",
 														"active",
 														"moved"
 													],
-													"example": "active",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"tenant": {
 													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														},
 														"name": {
 															"description": "The name of the Tenant account.",
-															"example": "Example Account Name",
-															"type": "string"
+															"type": "string",
+															"example": "Example Account Name"
 														}
 													}
 												},
@@ -2491,43 +2494,43 @@
 													"properties": {
 														"id": {
 															"description": "Identifier",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"type": "string"
+															"maxLength": 32
 														}
 													}
 												},
 												"type": {
-													"default": "full",
 													"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
+													"type": "string",
+													"example": "full",
+													"default": "full",
 													"enum": [
 														"full",
 														"partial",
 														"secondary",
 														"internal"
-													],
-													"example": "full",
-													"type": "string"
+													]
 												},
 												"vanity_name_servers": {
-													"default": [],
 													"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
-													"example": [
-														"ns1.example.com",
-														"ns2.example.com"
-													],
+													"type": "array",
 													"items": {
 														"format": "hostname",
 														"maxLength": 253,
 														"type": "string"
 													},
-													"type": "array"
+													"example": [
+														"ns1.example.com",
+														"ns2.example.com"
+													],
+													"default": []
 												},
 												"verification_key": {
 													"description": "Verification key for partial zone setup.",
+													"type": "string",
 													"example": "284344499-1084221259",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												}
 											},
 											"required": [
@@ -2545,8 +2548,7 @@
 												"modified_on",
 												"activated_on",
 												"plan"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2554,55 +2556,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create Zone response."
+				}
 			},
 			"4XX": {
+				"description": "Create Zone response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2615,19 +2592,45 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
@@ -2635,12 +2638,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Zone response failure."
+				}
 			}
 		},
 		"security": [
@@ -2652,7 +2653,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Zone",
 		"tags": [
 			"Zone"
 		],
@@ -2665,31 +2665,33 @@
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/environments/{environment_id}/purge_cache": {
-		"description": "Purge cached content scoped to a specific environment. Supports the same purge types as the zone-level endpoint (purge everything, by URL, by tag, host, or prefix).\n\n### Availability and limits\nPlease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
 		"operationId": "zone-environment-purge",
+		"summary": "Purge Cached Content by Environment",
+		"description": "Purge cached content scoped to a specific environment. Supports the same purge types as the zone-level endpoint (purge everything, by URL, by tag, host, or prefix).\n\n### Availability and limits\nPlease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"in": "path",
 				"name": "environment_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -2762,93 +2764,116 @@
 					"schema": {
 						"anyOf": [
 							{
+								"type": "object",
 								"properties": {
 									"tags": {
 										"description": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/).",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
 										"example": [
 											"a-cache-tag",
 											"another-cache-tag"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge by tags",
-								"type": "object"
+								"title": "Purge by tags"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"hosts": {
 										"description": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/).",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
 										"example": [
 											"www.example.com",
 											"images.example.com"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge by hostnames",
-								"type": "object"
+								"title": "Purge by hostnames"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"prefixes": {
 										"description": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/).",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
 										"example": [
 											"www.example.com/foo",
 											"images.example.com/bar/baz"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge by prefixes",
-								"type": "object"
+								"title": "Purge by prefixes"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"purge_everything": {
 										"description": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/).",
-										"example": true,
 										"type": "boolean",
+										"example": true,
 										"x-auditable": true
 									}
 								},
-								"title": "Purge everything",
-								"type": "object"
+								"title": "Purge everything"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"files": {
 										"description": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/).",
-										"example": [
-											"http://www.example.com/css/styles.css",
-											"http://www.example.com/js/index.js"
-										],
+										"type": "array",
 										"items": {
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array"
+										"example": [
+											"http://www.example.com/css/styles.css",
+											"http://www.example.com/js/index.js"
+										]
 									}
 								},
-								"title": "Purge files",
-								"type": "object"
+								"title": "Purge files"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"files": {
 										"description": "For more information on purging files with URL and headers, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/).",
+										"type": "array",
+										"items": {
+											"properties": {
+												"headers": {
+													"type": "object",
+													"example": {
+														"CF-Device-Type": "desktop",
+														"CF-IPCountry": "US"
+													},
+													"additionalProperties": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"url": {
+													"type": "string",
+													"example": "http://www.example.com/cat_picture.jpg",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
 										"example": [
 											{
 												"headers": {
@@ -2866,53 +2891,31 @@
 												},
 												"url": "http://www.example.com/dog_picture.jpg"
 											}
-										],
-										"items": {
-											"properties": {
-												"headers": {
-													"additionalProperties": {
-														"type": "string",
-														"x-auditable": true
-													},
-													"example": {
-														"CF-Device-Type": "desktop",
-														"CF-IPCountry": "US"
-													},
-													"type": "object"
-												},
-												"url": {
-													"example": "http://www.example.com/cat_picture.jpg",
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge files with URL and headers",
-								"type": "object"
+								"title": "Purge files with URL and headers"
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Request to purge cached content successful.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -2925,15 +2928,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -2946,53 +2949,53 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true,
 									"properties": {
 										"id": {
+											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
-											"maxLength": 32,
-											"type": "string"
+											"maxLength": 32
 										}
 									},
 									"required": [
 										"id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Request to purge cached content successful."
+				}
 			},
 			"4XX": {
+				"description": "Request to purge cached content failed.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3005,15 +3008,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3026,78 +3029,52 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"maxLength": 32
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										},
 										"success": {
 											"description": "Indicates the API call's success or failure.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3110,19 +3087,45 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicates the API call's success or failure.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -3130,14 +3133,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Request to purge cached content failed."
+				}
 			}
 		},
 		"security": [
@@ -3149,7 +3150,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Purge Cached Content by Environment",
 		"tags": [
 			"Zone"
 		],
@@ -3163,21 +3163,23 @@
 		}
 	},
 	"POST /zones/{zone_id}/purge_cache": {
-		"description": "### Purge All Cached Content\nRemoves ALL files from Cloudflare's cache. All tiers can purge everything.\n```\n{\"purge_everything\": true}\n```\n\n### Purge Cached Content by URL\nGranularly removes one or more files from Cloudflare's cache by specifying URLs. All tiers can purge by URL.\n\nTo purge files with custom cache keys, include the headers used to compute the cache key as in the example. If you have a device type or geo in your cache key, you will need to include the CF-Device-Type or CF-IPCountry headers. If you have lang in your cache key, you will need to include the Accept-Language header.\n\n**NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.\n\nSingle file purge example with files:\n```\n{\"files\": [\"http://www.example.com/css/styles.css\", \"http://www.example.com/js/index.js\"]}\n```\nSingle file purge example with url and header pairs:\n```\n{\"files\": [{\"url\": \"http://www.example.com/cat_picture.jpg\", \"headers\": {\"CF-IPCountry\": \"US\", \"CF-Device-Type\": \"desktop\", \"Accept-Language\": \"zh-CN\"}}, {\"url\": \"http://www.example.com/dog_picture.jpg\", \"headers\": {\"CF-IPCountry\": \"EU\", \"CF-Device-Type\": \"mobile\", \"Accept-Language\": \"en-US\"}}]}\n```\n\n### Purge Cached Content by Tag, Host or Prefix\nGranularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\nFlex purge with tags:\n```\n{\"tags\": [\"a-cache-tag\", \"another-cache-tag\"]}\n```\nFlex purge with hosts:\n```\n{\"hosts\": [\"www.example.com\", \"images.example.com\"]}\n```\nFlex purge with prefixes:\n```\n{\"prefixes\": [\"www.example.com/foo\", \"images.example.com/bar/baz\"]}\n```\n\n### Availability and limits\nPlease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
 		"operationId": "zone-purge",
+		"summary": "Purge Cached Content",
+		"description": "### Purge All Cached Content\nRemoves ALL files from Cloudflare's cache. All tiers can purge everything.\n```\n{\"purge_everything\": true}\n```\n\n### Purge Cached Content by URL\nGranularly removes one or more files from Cloudflare's cache by specifying URLs. All tiers can purge by URL.\n\nTo purge files with custom cache keys, include the headers used to compute the cache key as in the example. If you have a device type or geo in your cache key, you will need to include the CF-Device-Type or CF-IPCountry headers. If you have lang in your cache key, you will need to include the Accept-Language header.\n\n**NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.\n\nSingle file purge example with files:\n```\n{\"files\": [\"http://www.example.com/css/styles.css\", \"http://www.example.com/js/index.js\"]}\n```\nSingle file purge example with url and header pairs:\n```\n{\"files\": [{\"url\": \"http://www.example.com/cat_picture.jpg\", \"headers\": {\"CF-IPCountry\": \"US\", \"CF-Device-Type\": \"desktop\", \"Accept-Language\": \"zh-CN\"}}, {\"url\": \"http://www.example.com/dog_picture.jpg\", \"headers\": {\"CF-IPCountry\": \"EU\", \"CF-Device-Type\": \"mobile\", \"Accept-Language\": \"en-US\"}}]}\n```\n\n### Purge Cached Content by Tag, Host or Prefix\nGranularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\nFlex purge with tags:\n```\n{\"tags\": [\"a-cache-tag\", \"another-cache-tag\"]}\n```\nFlex purge with hosts:\n```\n{\"hosts\": [\"www.example.com\", \"images.example.com\"]}\n```\nFlex purge with prefixes:\n```\n{\"prefixes\": [\"www.example.com/foo\", \"images.example.com/bar/baz\"]}\n```\n\n### Availability and limits\nPlease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -3250,93 +3252,116 @@
 					"schema": {
 						"anyOf": [
 							{
+								"type": "object",
 								"properties": {
 									"tags": {
 										"description": "For more information on cache tags and purging by tags, please refer to [purge by cache-tags documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/).",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
 										"example": [
 											"a-cache-tag",
 											"another-cache-tag"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge by tags",
-								"type": "object"
+								"title": "Purge by tags"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"hosts": {
 										"description": "For more information purging by hostnames, please refer to [purge by hostname documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/).",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
 										"example": [
 											"www.example.com",
 											"images.example.com"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge by hostnames",
-								"type": "object"
+								"title": "Purge by hostnames"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"prefixes": {
 										"description": "For more information on purging by prefixes, please refer to [purge by prefix documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/).",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
 										"example": [
 											"www.example.com/foo",
 											"images.example.com/bar/baz"
-										],
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge by prefixes",
-								"type": "object"
+								"title": "Purge by prefixes"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"purge_everything": {
 										"description": "For more information, please refer to [purge everything documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/).",
-										"example": true,
 										"type": "boolean",
+										"example": true,
 										"x-auditable": true
 									}
 								},
-								"title": "Purge everything",
-								"type": "object"
+								"title": "Purge everything"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"files": {
 										"description": "For more information on purging files, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/).",
-										"example": [
-											"http://www.example.com/css/styles.css",
-											"http://www.example.com/js/index.js"
-										],
+										"type": "array",
 										"items": {
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array"
+										"example": [
+											"http://www.example.com/css/styles.css",
+											"http://www.example.com/js/index.js"
+										]
 									}
 								},
-								"title": "Purge files",
-								"type": "object"
+								"title": "Purge files"
 							},
 							{
+								"type": "object",
 								"properties": {
 									"files": {
 										"description": "For more information on purging files with URL and headers, please refer to [purge by single-file documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/).",
+										"type": "array",
+										"items": {
+											"properties": {
+												"headers": {
+													"type": "object",
+													"example": {
+														"CF-Device-Type": "desktop",
+														"CF-IPCountry": "US"
+													},
+													"additionalProperties": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"url": {
+													"type": "string",
+													"example": "http://www.example.com/cat_picture.jpg",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
 										"example": [
 											{
 												"headers": {
@@ -3354,53 +3379,31 @@
 												},
 												"url": "http://www.example.com/dog_picture.jpg"
 											}
-										],
-										"items": {
-											"properties": {
-												"headers": {
-													"additionalProperties": {
-														"type": "string",
-														"x-auditable": true
-													},
-													"example": {
-														"CF-Device-Type": "desktop",
-														"CF-IPCountry": "US"
-													},
-													"type": "object"
-												},
-												"url": {
-													"example": "http://www.example.com/cat_picture.jpg",
-													"type": "string",
-													"x-auditable": true
-												}
-											},
-											"type": "object"
-										},
-										"type": "array"
+										]
 									}
 								},
-								"title": "Purge files with URL and headers",
-								"type": "object"
+								"title": "Purge files with URL and headers"
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Request to purge cached content successful.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -3413,15 +3416,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -3434,53 +3437,53 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true,
 									"properties": {
 										"id": {
+											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
-											"maxLength": 32,
-											"type": "string"
+											"maxLength": 32
 										}
 									},
 									"required": [
 										"id"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"description": "Indicates the API call's success or failure.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Request to purge cached content successful."
+				}
 			},
 			"4XX": {
+				"description": "Request to purge cached content failed.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3493,15 +3496,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3514,78 +3517,52 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"type": "string"
+													"maxLength": 32
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										},
 										"success": {
 											"description": "Indicates the API call's success or failure.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3598,19 +3575,45 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicates the API call's success or failure.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -3618,14 +3621,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Request to purge cached content failed."
+				}
 			}
 		},
 		"security": [
@@ -3637,7 +3638,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Purge Cached Content",
 		"tags": [
 			"Zone"
 		],
@@ -3651,40 +3651,44 @@
 		}
 	},
 	"PUT /zones/{zone_id}/activation_check": {
-		"description": "Triggeres a new activation check for a PENDING Zone. This can be\ntriggered every 5 min for paygo/ent customers, every hour for FREE\nZones.",
 		"operationId": "put-zones-zone_id-activation_check",
+		"summary": "Rerun the Activation Check",
+		"description": "Triggeres a new activation check for a PENDING Zone. This can be\ntriggered every 5 min for paygo/ent customers, every hour for FREE\nZones.",
 		"parameters": [
 			{
-				"description": "Zone ID",
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
+				"description": "Zone ID",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3693,12 +3697,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3708,15 +3712,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3725,12 +3729,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3740,40 +3744,38 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier.",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3781,68 +3783,32 @@
 							]
 						}
 					}
-				},
-				"description": "Successful Response"
+				}
 			},
 			"4XX": {
+				"description": "Client Error",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3851,12 +3817,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3866,25 +3832,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3892,14 +3895,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Client Error"
+				}
 			}
 		},
 		"security": [
@@ -3911,7 +3912,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Rerun the Activation Check",
 		"tags": [
 			"Zone"
 		],

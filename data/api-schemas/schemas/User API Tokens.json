@@ -1,43 +1,47 @@
 {
 	"DELETE /user/tokens/{token_id}": {
-		"description": "Destroy a token.",
 		"operationId": "user-api-tokens-delete-token",
+		"summary": "Delete Token",
+		"description": "Destroy a token.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "token_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Token identifier tag.",
+					"type": "string",
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Token response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -46,12 +50,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -61,15 +65,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -78,12 +82,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -93,109 +97,71 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Token response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Token response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -204,12 +170,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -219,25 +185,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -245,12 +248,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Token response failure"
+				}
 			}
 		},
 		"security": [
@@ -258,7 +259,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Token",
 		"tags": [
 			"User API Tokens"
 		],
@@ -278,41 +278,42 @@
 		}
 	},
 	"GET /user/tokens": {
-		"description": "List all access tokens you created. Results include active, disabled, and recently-expired tokens when include_expired is set to true.",
 		"operationId": "user-api-tokens-list-tokens",
+		"summary": "List Tokens",
+		"description": "List all access tokens you created. Results include active, disabled, and recently-expired tokens when include_expired is set to true.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results.",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Maximum number of results per page.",
+					"type": "number",
+					"default": 20,
 					"maximum": 50,
-					"minimum": 5,
-					"type": "number"
+					"minimum": 5
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
 					"description": "Direction to order results.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
@@ -320,28 +321,31 @@
 				"in": "query",
 				"name": "include_expired",
 				"schema": {
-					"default": false,
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Tokens response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -350,12 +354,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -365,15 +369,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -382,12 +386,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -397,65 +401,97 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"condition": {
+														"type": "object",
 														"properties": {
 															"request_ip": {
 																"description": "Client IP restrictions.",
+																"type": "object",
+																"properties": {
+																	"in": {
+																		"description": "List of IPv4/IPv6 CIDR addresses.",
+																		"type": "array",
+																		"items": {
+																			"description": "IPv4/IPv6 CIDR.",
+																			"example": "199.27.128.0/21",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"example": [
+																			"199.27.128.0/21",
+																			"2400:cb00::/32"
+																		]
+																	},
+																	"not_in": {
+																		"description": "List of IPv4/IPv6 CIDR addresses.",
+																		"type": "array",
+																		"items": {
+																			"description": "IPv4/IPv6 CIDR.",
+																			"example": "199.27.128.0/21",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"example": [
+																			"199.27.128.0/21",
+																			"2400:cb00::/32"
+																		]
+																	}
+																},
 																"example": {
 																	"in": [
 																		"123.123.123.0/24",
@@ -465,119 +501,130 @@
 																		"123.123.123.100/24",
 																		"2606:4700:4700::/48"
 																	]
-																},
-																"properties": {
-																	"in": {
-																		"description": "List of IPv4/IPv6 CIDR addresses.",
-																		"example": [
-																			"199.27.128.0/21",
-																			"2400:cb00::/32"
-																		],
-																		"items": {
-																			"description": "IPv4/IPv6 CIDR.",
-																			"example": "199.27.128.0/21",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": "array"
-																	},
-																	"not_in": {
-																		"description": "List of IPv4/IPv6 CIDR addresses.",
-																		"example": [
-																			"199.27.128.0/21",
-																			"2400:cb00::/32"
-																		],
-																		"items": {
-																			"description": "IPv4/IPv6 CIDR.",
-																			"example": "199.27.128.0/21",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": "array"
-																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
+														}
 													},
 													"expires_on": {
 														"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-														"example": "2020-01-01T00:00:00Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2020-01-01T00:00:00Z",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Token identifier tag.",
+														"type": "string",
 														"example": "ed17574386854bf78a67040be0a770b0",
 														"maxLength": 32,
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true
 													},
 													"issued_on": {
 														"description": "The time on which the token was created.",
-														"example": "2018-07-01T05:20:00Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2018-07-01T05:20:00Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"last_used_on": {
 														"description": "Last time the token was used.",
-														"example": "2020-01-02T12:34:00Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2020-01-02T12:34:00Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "Last time the token was modified.",
-														"example": "2018-07-02T05:20:00Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2018-07-02T05:20:00Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"name": {
 														"description": "Token name.",
+														"type": "string",
 														"example": "readonly token",
 														"maxLength": 120,
-														"type": "string",
 														"x-auditable": true
 													},
 													"not_before": {
 														"description": "The time before which the token MUST NOT be accepted for processing.",
-														"example": "2018-07-01T05:20:00Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2018-07-01T05:20:00Z",
 														"x-auditable": true
 													},
 													"policies": {
 														"description": "List of access policies assigned to the token.",
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"effect": {
 																	"description": "Allow or deny operations against the resources.",
+																	"type": "string",
+																	"example": "allow",
 																	"enum": [
 																		"allow",
 																		"deny"
 																	],
-																	"example": "allow",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"id": {
 																	"description": "Policy identifier.",
+																	"type": "string",
 																	"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																	"readOnly": true,
-																	"type": "string",
 																	"x-auditable": true,
 																	"x-stainless-terraform-always-send": true
 																},
 																"permission_groups": {
 																	"description": "A set of permission groups that are specified to the policy.",
+																	"type": "array",
+																	"items": {
+																		"description": "A named group of permissions that map to a group of operations against resources.",
+																		"type": "object",
+																		"properties": {
+																			"id": {
+																				"description": "Identifier of the permission group.",
+																				"type": "string",
+																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																				"x-auditable": true
+																			},
+																			"meta": {
+																				"description": "Attributes associated to the permission group.",
+																				"type": "object",
+																				"example": {
+																					"label": "load_balancer_admin",
+																					"scopes": "com.cloudflare.api.account"
+																				},
+																				"properties": {
+																					"key": {
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"value": {
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				}
+																			},
+																			"name": {
+																				"description": "Name of the permission group.",
+																				"type": "string",
+																				"example": "Load Balancer",
+																				"readOnly": true,
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"id"
+																		]
+																	},
 																	"example": [
 																		{
 																			"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -595,48 +642,7 @@
 																			},
 																			"name": "Magic Network Monitoring"
 																		}
-																	],
-																	"items": {
-																		"description": "A named group of permissions that map to a group of operations against resources.",
-																		"properties": {
-																			"id": {
-																				"description": "Identifier of the permission group.",
-																				"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"meta": {
-																				"description": "Attributes associated to the permission group.",
-																				"example": {
-																					"label": "load_balancer_admin",
-																					"scopes": "com.cloudflare.api.account"
-																				},
-																				"properties": {
-																					"key": {
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"value": {
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"type": "object"
-																			},
-																			"name": {
-																				"description": "Name of the permission group.",
-																				"example": "Load Balancer",
-																				"readOnly": true,
-																				"type": "string",
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"id"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
+																	]
 																},
 																"resources": {
 																	"description": "A list of resource names that the policy applies to.",
@@ -658,23 +664,23 @@
 																	},
 																	"oneOf": [
 																		{
+																			"description": "Map of simple string resource permissions",
+																			"type": "object",
 																			"additionalProperties": {
 																				"description": "Simple permission string like \"*\"",
 																				"type": "string"
-																			},
-																			"description": "Map of simple string resource permissions",
-																			"type": "object"
+																			}
 																		},
 																		{
+																			"description": "Map of nested resource permissions",
+																			"type": "object",
 																			"additionalProperties": {
 																				"additionalProperties": {
 																					"type": "string"
 																				},
 																				"description": "Nested permission object",
 																				"type": "object"
-																			},
-																			"description": "Map of nested resource permissions",
-																			"type": "object"
+																			}
 																		}
 																	],
 																	"x-auditable": true
@@ -686,27 +692,23 @@
 																"permission_groups",
 																"resources"
 															],
-															"title": "Policy with Permission Groups and Resources",
-															"type": "object"
-														},
-														"type": "array"
+															"title": "Policy with Permission Groups and Resources"
+														}
 													},
 													"status": {
 														"description": "Status of the token.",
+														"type": "string",
+														"example": "active",
 														"enum": [
 															"active",
 															"disabled",
 															"expired"
 														],
-														"example": "active",
-														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -715,66 +717,30 @@
 							"title": "Response with a list of tokens"
 						}
 					}
-				},
-				"description": "List Tokens response"
+				}
 			},
 			"4XX": {
+				"description": "List Tokens response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -783,12 +749,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -798,25 +764,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -824,12 +827,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Tokens response failure"
+				}
 			}
 		},
 		"security": [
@@ -837,7 +838,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Tokens",
 		"tags": [
 			"User API Tokens"
 		],
@@ -858,40 +858,44 @@
 		}
 	},
 	"GET /user/tokens/{token_id}": {
-		"description": "Get information about a specific token.",
 		"operationId": "user-api-tokens-token-details",
+		"summary": "Token Details",
+		"description": "Get information about a specific token.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "token_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Token identifier tag.",
+					"type": "string",
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Token Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -900,12 +904,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -915,15 +919,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -932,12 +936,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -947,35 +951,66 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"condition": {
+													"type": "object",
 													"properties": {
 														"request_ip": {
 															"description": "Client IP restrictions.",
+															"type": "object",
+															"properties": {
+																"in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"type": "array",
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	]
+																},
+																"not_in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"type": "array",
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	]
+																}
+															},
 															"example": {
 																"in": [
 																	"123.123.123.0/24",
@@ -985,119 +1020,130 @@
 																	"123.123.123.100/24",
 																	"2606:4700:4700::/48"
 																]
-															},
-															"properties": {
-																"in": {
-																	"description": "List of IPv4/IPv6 CIDR addresses.",
-																	"example": [
-																		"199.27.128.0/21",
-																		"2400:cb00::/32"
-																	],
-																	"items": {
-																		"description": "IPv4/IPv6 CIDR.",
-																		"example": "199.27.128.0/21",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": "array"
-																},
-																"not_in": {
-																	"description": "List of IPv4/IPv6 CIDR addresses.",
-																	"example": [
-																		"199.27.128.0/21",
-																		"2400:cb00::/32"
-																	],
-																	"items": {
-																		"description": "IPv4/IPv6 CIDR.",
-																		"example": "199.27.128.0/21",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": "array"
-																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"expires_on": {
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-													"example": "2020-01-01T00:00:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2020-01-01T00:00:00Z",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Token identifier tag.",
+													"type": "string",
 													"example": "ed17574386854bf78a67040be0a770b0",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"issued_on": {
 													"description": "The time on which the token was created.",
-													"example": "2018-07-01T05:20:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2018-07-01T05:20:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"last_used_on": {
 													"description": "Last time the token was used.",
-													"example": "2020-01-02T12:34:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2020-01-02T12:34:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Last time the token was modified.",
-													"example": "2018-07-02T05:20:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2018-07-02T05:20:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Token name.",
+													"type": "string",
 													"example": "readonly token",
 													"maxLength": 120,
-													"type": "string",
 													"x-auditable": true
 												},
 												"not_before": {
 													"description": "The time before which the token MUST NOT be accepted for processing.",
-													"example": "2018-07-01T05:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2018-07-01T05:20:00Z",
 													"x-auditable": true
 												},
 												"policies": {
 													"description": "List of access policies assigned to the token.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"effect": {
 																"description": "Allow or deny operations against the resources.",
+																"type": "string",
+																"example": "allow",
 																"enum": [
 																	"allow",
 																	"deny"
 																],
-																"example": "allow",
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Policy identifier.",
+																"type": "string",
 																"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-always-send": true
 															},
 															"permission_groups": {
 																"description": "A set of permission groups that are specified to the policy.",
+																"type": "array",
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the permission group.",
+																			"type": "string",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"type": "object",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"value": {
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			}
+																		},
+																		"name": {
+																			"description": "Name of the permission group.",
+																			"type": "string",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id"
+																	]
+																},
 																"example": [
 																	{
 																		"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -1115,48 +1161,7 @@
 																		},
 																		"name": "Magic Network Monitoring"
 																	}
-																],
-																"items": {
-																	"description": "A named group of permissions that map to a group of operations against resources.",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier of the permission group.",
-																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"meta": {
-																			"description": "Attributes associated to the permission group.",
-																			"example": {
-																				"label": "load_balancer_admin",
-																				"scopes": "com.cloudflare.api.account"
-																			},
-																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"value": {
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"name": {
-																			"description": "Name of the permission group.",
-																			"example": "Load Balancer",
-																			"readOnly": true,
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"id"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																]
 															},
 															"resources": {
 																"description": "A list of resource names that the policy applies to.",
@@ -1178,23 +1183,23 @@
 																},
 																"oneOf": [
 																	{
+																		"description": "Map of simple string resource permissions",
+																		"type": "object",
 																		"additionalProperties": {
 																			"description": "Simple permission string like \"*\"",
 																			"type": "string"
-																		},
-																		"description": "Map of simple string resource permissions",
-																		"type": "object"
+																		}
 																	},
 																	{
+																		"description": "Map of nested resource permissions",
+																		"type": "object",
 																		"additionalProperties": {
 																			"additionalProperties": {
 																				"type": "string"
 																			},
 																			"description": "Nested permission object",
 																			"type": "object"
-																		},
-																		"description": "Map of nested resource permissions",
-																		"type": "object"
+																		}
 																	}
 																],
 																"x-auditable": true
@@ -1206,25 +1211,22 @@
 															"permission_groups",
 															"resources"
 														],
-														"title": "Policy with Permission Groups and Resources",
-														"type": "object"
-													},
-													"type": "array"
+														"title": "Policy with Permission Groups and Resources"
+													}
 												},
 												"status": {
 													"description": "Status of the token.",
+													"type": "string",
+													"example": "active",
 													"enum": [
 														"active",
 														"disabled",
 														"expired"
 													],
-													"example": "active",
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1233,66 +1235,30 @@
 							"title": "Response with a single token"
 						}
 					}
-				},
-				"description": "Token Details response"
+				}
 			},
 			"4XX": {
+				"description": "Token Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1301,12 +1267,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1316,25 +1282,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1342,12 +1345,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Token Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1355,7 +1356,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Token Details",
 		"tags": [
 			"User API Tokens"
 		],
@@ -1376,45 +1376,49 @@
 		}
 	},
 	"GET /user/tokens/permission_groups": {
-		"description": "Find all available permission groups for API Tokens.",
 		"operationId": "permission-groups-list-permission-groups",
+		"summary": "List Token Permission Groups",
+		"description": "Find all available permission groups for API Tokens.",
 		"parameters": [
 			{
-				"description": "Filter by the name of the permission group.\nThe value must be URL-encoded.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Filter by the name of the permission group.\nThe value must be URL-encoded.",
 				"schema": {
-					"example": "Account%20Settings%20Write",
-					"type": "string"
+					"type": "string",
+					"example": "Account%20Settings%20Write"
 				}
 			},
 			{
-				"description": "Filter by the scope of the permission group.\nThe value must be URL-encoded.",
-				"in": "query",
 				"name": "scope",
+				"in": "query",
+				"description": "Filter by the scope of the permission group.\nThe value must be URL-encoded.",
 				"schema": {
-					"example": "com.cloudflare.api.account.zone",
-					"type": "string"
+					"type": "string",
+					"example": "com.cloudflare.api.account.zone"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Token Permission Groups response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1423,12 +1427,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1438,15 +1442,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1455,12 +1459,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1470,59 +1474,107 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"category": {
+														"description": "Product category that this permission group belongs to.",
+														"type": "string",
+														"enum": [
+															"developer_platform",
+															"ai_and_machine_learning",
+															"dns_and_zones",
+															"app_security",
+															"rules_and_configuration",
+															"cloudflare_one_and_zero_trust",
+															"analytics_and_logs",
+															"network_services",
+															"media",
+															"email_and_messaging",
+															"cache_and_performance",
+															"account_and_billing",
+															"other"
+														],
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Public ID.",
+														"type": "string",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "Permission Group Name",
+														"type": "string",
+														"x-auditable": true
+													},
+													"scopes": {
+														"description": "Resources to which the Permission Group is scoped",
+														"type": "array",
+														"items": {
+															"enum": [
+																"com.cloudflare.api.account",
+																"com.cloudflare.api.account.zone",
+																"com.cloudflare.api.user",
+																"com.cloudflare.edge.r2.bucket"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													}
+												},
+												"type": "object"
+											},
 											"example": [
 												{
 													"category": "account_and_billing",
@@ -1580,57 +1632,7 @@
 														"com.cloudflare.api.account"
 													]
 												}
-											],
-											"items": {
-												"properties": {
-													"category": {
-														"description": "Product category that this permission group belongs to.",
-														"enum": [
-															"developer_platform",
-															"ai_and_machine_learning",
-															"dns_and_zones",
-															"app_security",
-															"rules_and_configuration",
-															"cloudflare_one_and_zero_trust",
-															"analytics_and_logs",
-															"network_services",
-															"media",
-															"email_and_messaging",
-															"cache_and_performance",
-															"account_and_billing",
-															"other"
-														],
-														"type": "string",
-														"x-auditable": true
-													},
-													"id": {
-														"description": "Public ID.",
-														"type": "string",
-														"x-auditable": true
-													},
-													"name": {
-														"description": "Permission Group Name",
-														"type": "string",
-														"x-auditable": true
-													},
-													"scopes": {
-														"description": "Resources to which the Permission Group is scoped",
-														"items": {
-															"enum": [
-																"com.cloudflare.api.account",
-																"com.cloudflare.api.account.zone",
-																"com.cloudflare.api.user",
-																"com.cloudflare.edge.r2.bucket"
-															],
-															"type": "string",
-															"x-auditable": true
-														},
-														"type": "array"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+											]
 										}
 									},
 									"type": "object"
@@ -1638,66 +1640,30 @@
 							]
 						}
 					}
-				},
-				"description": "List Token Permission Groups response"
+				}
 			},
 			"4XX": {
+				"description": "List Token Permission Groups response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1706,12 +1672,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1721,25 +1687,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1747,12 +1750,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Token Permission Groups response failure"
+				}
 			}
 		},
 		"security": [
@@ -1760,7 +1761,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Token Permission Groups",
 		"tags": [
 			"User API Tokens"
 		],
@@ -1781,25 +1781,29 @@
 		}
 	},
 	"GET /user/tokens/verify": {
-		"description": "Test whether a token works.",
 		"operationId": "user-api-tokens-verify-token",
+		"summary": "Verify Token",
+		"description": "Test whether a token works.",
 		"responses": {
 			"200": {
+				"description": "Verify Token response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1808,12 +1812,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1823,15 +1827,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1840,12 +1844,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1855,26 +1859,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1882,35 +1884,35 @@
 											"properties": {
 												"expires_on": {
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-													"example": "2020-01-01T00:00:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2020-01-01T00:00:00Z",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Token identifier tag.",
+													"type": "string",
 													"example": "ed17574386854bf78a67040be0a770b0",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"not_before": {
 													"description": "The time before which the token MUST NOT be accepted for processing.",
-													"example": "2018-07-01T05:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2018-07-01T05:20:00Z",
 													"x-auditable": true
 												},
 												"status": {
 													"description": "Status of the token.",
+													"type": "string",
+													"example": "active",
 													"enum": [
 														"active",
 														"disabled",
 														"expired"
 													],
-													"example": "active",
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -1926,66 +1928,30 @@
 							]
 						}
 					}
-				},
-				"description": "Verify Token response"
+				}
 			},
 			"4XX": {
+				"description": "Verify Token response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1994,12 +1960,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2009,25 +1975,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2035,12 +2038,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Verify Token response failure"
+				}
 			}
 		},
 		"security": [
@@ -2048,7 +2049,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Verify Token",
 		"tags": [
 			"User API Tokens"
 		],
@@ -2060,17 +2060,52 @@
 		}
 	},
 	"POST /user/tokens": {
-		"description": "Create a new access token.",
 		"operationId": "user-api-tokens-create-token",
+		"summary": "Create Token",
+		"description": "Create a new access token.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"condition": {
+								"type": "object",
 								"properties": {
 									"request_ip": {
 										"description": "Client IP restrictions.",
+										"type": "object",
+										"properties": {
+											"in": {
+												"description": "List of IPv4/IPv6 CIDR addresses.",
+												"type": "array",
+												"items": {
+													"description": "IPv4/IPv6 CIDR.",
+													"example": "199.27.128.0/21",
+													"type": "string",
+													"x-auditable": true
+												},
+												"example": [
+													"199.27.128.0/21",
+													"2400:cb00::/32"
+												]
+											},
+											"not_in": {
+												"description": "List of IPv4/IPv6 CIDR addresses.",
+												"type": "array",
+												"items": {
+													"description": "IPv4/IPv6 CIDR.",
+													"example": "199.27.128.0/21",
+													"type": "string",
+													"x-auditable": true
+												},
+												"example": [
+													"199.27.128.0/21",
+													"2400:cb00::/32"
+												]
+											}
+										},
 										"example": {
 											"in": [
 												"123.123.123.0/24",
@@ -2080,87 +2115,98 @@
 												"123.123.123.100/24",
 												"2606:4700:4700::/48"
 											]
-										},
-										"properties": {
-											"in": {
-												"description": "List of IPv4/IPv6 CIDR addresses.",
-												"example": [
-													"199.27.128.0/21",
-													"2400:cb00::/32"
-												],
-												"items": {
-													"description": "IPv4/IPv6 CIDR.",
-													"example": "199.27.128.0/21",
-													"type": "string",
-													"x-auditable": true
-												},
-												"type": "array"
-											},
-											"not_in": {
-												"description": "List of IPv4/IPv6 CIDR addresses.",
-												"example": [
-													"199.27.128.0/21",
-													"2400:cb00::/32"
-												],
-												"items": {
-													"description": "IPv4/IPv6 CIDR.",
-													"example": "199.27.128.0/21",
-													"type": "string",
-													"x-auditable": true
-												},
-												"type": "array"
-											}
-										},
-										"type": "object"
+										}
 									}
-								},
-								"type": "object"
+								}
 							},
 							"expires_on": {
 								"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-								"example": "2020-01-01T00:00:00Z",
-								"format": "date-time",
 								"type": "string",
+								"format": "date-time",
+								"example": "2020-01-01T00:00:00Z",
 								"x-auditable": true
 							},
 							"name": {
 								"description": "Token name.",
+								"type": "string",
 								"example": "readonly token",
 								"maxLength": 120,
-								"type": "string",
 								"x-auditable": true
 							},
 							"not_before": {
 								"description": "The time before which the token MUST NOT be accepted for processing.",
-								"example": "2018-07-01T05:20:00Z",
-								"format": "date-time",
 								"type": "string",
+								"format": "date-time",
+								"example": "2018-07-01T05:20:00Z",
 								"x-auditable": true
 							},
 							"policies": {
 								"description": "List of access policies assigned to the token.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"effect": {
 											"description": "Allow or deny operations against the resources.",
+											"type": "string",
+											"example": "allow",
 											"enum": [
 												"allow",
 												"deny"
 											],
-											"example": "allow",
-											"type": "string",
 											"x-auditable": true
 										},
 										"id": {
 											"description": "Policy identifier.",
+											"type": "string",
 											"example": "f267e341f3dd4697bd3b9f71dd96247f",
 											"readOnly": true,
-											"type": "string",
 											"x-auditable": true,
 											"x-stainless-terraform-always-send": true
 										},
 										"permission_groups": {
 											"description": "A set of permission groups that are specified to the policy.",
+											"type": "array",
+											"items": {
+												"description": "A named group of permissions that map to a group of operations against resources.",
+												"type": "object",
+												"properties": {
+													"id": {
+														"description": "Identifier of the permission group.",
+														"type": "string",
+														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+														"x-auditable": true
+													},
+													"meta": {
+														"description": "Attributes associated to the permission group.",
+														"type": "object",
+														"example": {
+															"label": "load_balancer_admin",
+															"scopes": "com.cloudflare.api.account"
+														},
+														"properties": {
+															"key": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"value": {
+																"type": "string",
+																"x-auditable": true
+															}
+														}
+													},
+													"name": {
+														"description": "Name of the permission group.",
+														"type": "string",
+														"example": "Load Balancer",
+														"readOnly": true,
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id"
+												]
+											},
 											"example": [
 												{
 													"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -2178,48 +2224,7 @@
 													},
 													"name": "Magic Network Monitoring"
 												}
-											],
-											"items": {
-												"description": "A named group of permissions that map to a group of operations against resources.",
-												"properties": {
-													"id": {
-														"description": "Identifier of the permission group.",
-														"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-														"type": "string",
-														"x-auditable": true
-													},
-													"meta": {
-														"description": "Attributes associated to the permission group.",
-														"example": {
-															"label": "load_balancer_admin",
-															"scopes": "com.cloudflare.api.account"
-														},
-														"properties": {
-															"key": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"value": {
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
-													},
-													"name": {
-														"description": "Name of the permission group.",
-														"example": "Load Balancer",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													}
-												},
-												"required": [
-													"id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+											]
 										},
 										"resources": {
 											"description": "A list of resource names that the policy applies to.",
@@ -2241,23 +2246,23 @@
 											},
 											"oneOf": [
 												{
+													"description": "Map of simple string resource permissions",
+													"type": "object",
 													"additionalProperties": {
 														"description": "Simple permission string like \"*\"",
 														"type": "string"
-													},
-													"description": "Map of simple string resource permissions",
-													"type": "object"
+													}
 												},
 												{
+													"description": "Map of nested resource permissions",
+													"type": "object",
 													"additionalProperties": {
 														"additionalProperties": {
 															"type": "string"
 														},
 														"description": "Nested permission object",
 														"type": "object"
-													},
-													"description": "Map of nested resource permissions",
-													"type": "object"
+													}
 												}
 											],
 											"x-auditable": true
@@ -2269,39 +2274,38 @@
 										"permission_groups",
 										"resources"
 									],
-									"title": "Policy with Permission Groups and Resources",
-									"type": "object"
-								},
-								"type": "array"
+									"title": "Policy with Permission Groups and Resources"
+								}
 							}
 						},
 						"required": [
 							"name",
 							"policies"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Token response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2310,12 +2314,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2325,15 +2329,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2342,12 +2346,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2357,37 +2361,68 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"condition": {
+															"type": "object",
 															"properties": {
 																"request_ip": {
 																	"description": "Client IP restrictions.",
+																	"type": "object",
+																	"properties": {
+																		"in": {
+																			"description": "List of IPv4/IPv6 CIDR addresses.",
+																			"type": "array",
+																			"items": {
+																				"description": "IPv4/IPv6 CIDR.",
+																				"example": "199.27.128.0/21",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"example": [
+																				"199.27.128.0/21",
+																				"2400:cb00::/32"
+																			]
+																		},
+																		"not_in": {
+																			"description": "List of IPv4/IPv6 CIDR addresses.",
+																			"type": "array",
+																			"items": {
+																				"description": "IPv4/IPv6 CIDR.",
+																				"example": "199.27.128.0/21",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"example": [
+																				"199.27.128.0/21",
+																				"2400:cb00::/32"
+																			]
+																		}
+																	},
 																	"example": {
 																		"in": [
 																			"123.123.123.0/24",
@@ -2397,119 +2432,130 @@
 																			"123.123.123.100/24",
 																			"2606:4700:4700::/48"
 																		]
-																	},
-																	"properties": {
-																		"in": {
-																			"description": "List of IPv4/IPv6 CIDR addresses.",
-																			"example": [
-																				"199.27.128.0/21",
-																				"2400:cb00::/32"
-																			],
-																			"items": {
-																				"description": "IPv4/IPv6 CIDR.",
-																				"example": "199.27.128.0/21",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": "array"
-																		},
-																		"not_in": {
-																			"description": "List of IPv4/IPv6 CIDR addresses.",
-																			"example": [
-																				"199.27.128.0/21",
-																				"2400:cb00::/32"
-																			],
-																			"items": {
-																				"description": "IPv4/IPv6 CIDR.",
-																				"example": "199.27.128.0/21",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"type": "object"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														},
 														"expires_on": {
 															"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-															"example": "2020-01-01T00:00:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2020-01-01T00:00:00Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Token identifier tag.",
+															"type": "string",
 															"example": "ed17574386854bf78a67040be0a770b0",
 															"maxLength": 32,
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true
 														},
 														"issued_on": {
 															"description": "The time on which the token was created.",
-															"example": "2018-07-01T05:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2018-07-01T05:20:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"last_used_on": {
 															"description": "Last time the token was used.",
-															"example": "2020-01-02T12:34:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2020-01-02T12:34:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last time the token was modified.",
-															"example": "2018-07-02T05:20:00Z",
-															"format": "date-time",
-															"readOnly": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2018-07-02T05:20:00Z",
+															"readOnly": true,
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Token name.",
+															"type": "string",
 															"example": "readonly token",
 															"maxLength": 120,
-															"type": "string",
 															"x-auditable": true
 														},
 														"not_before": {
 															"description": "The time before which the token MUST NOT be accepted for processing.",
-															"example": "2018-07-01T05:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2018-07-01T05:20:00Z",
 															"x-auditable": true
 														},
 														"policies": {
 															"description": "List of access policies assigned to the token.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"effect": {
 																		"description": "Allow or deny operations against the resources.",
+																		"type": "string",
+																		"example": "allow",
 																		"enum": [
 																			"allow",
 																			"deny"
 																		],
-																		"example": "allow",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"id": {
 																		"description": "Policy identifier.",
+																		"type": "string",
 																		"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																		"readOnly": true,
-																		"type": "string",
 																		"x-auditable": true,
 																		"x-stainless-terraform-always-send": true
 																	},
 																	"permission_groups": {
 																		"description": "A set of permission groups that are specified to the policy.",
+																		"type": "array",
+																		"items": {
+																			"description": "A named group of permissions that map to a group of operations against resources.",
+																			"type": "object",
+																			"properties": {
+																				"id": {
+																					"description": "Identifier of the permission group.",
+																					"type": "string",
+																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																					"x-auditable": true
+																				},
+																				"meta": {
+																					"description": "Attributes associated to the permission group.",
+																					"type": "object",
+																					"example": {
+																						"label": "load_balancer_admin",
+																						"scopes": "com.cloudflare.api.account"
+																					},
+																					"properties": {
+																						"key": {
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"value": {
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					}
+																				},
+																				"name": {
+																					"description": "Name of the permission group.",
+																					"type": "string",
+																					"example": "Load Balancer",
+																					"readOnly": true,
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"id"
+																			]
+																		},
 																		"example": [
 																			{
 																				"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -2527,48 +2573,7 @@
 																				},
 																				"name": "Magic Network Monitoring"
 																			}
-																		],
-																		"items": {
-																			"description": "A named group of permissions that map to a group of operations against resources.",
-																			"properties": {
-																				"id": {
-																					"description": "Identifier of the permission group.",
-																					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"meta": {
-																					"description": "Attributes associated to the permission group.",
-																					"example": {
-																						"label": "load_balancer_admin",
-																						"scopes": "com.cloudflare.api.account"
-																					},
-																					"properties": {
-																						"key": {
-																							"type": "string",
-																							"x-auditable": true
-																						},
-																						"value": {
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"type": "object"
-																				},
-																				"name": {
-																					"description": "Name of the permission group.",
-																					"example": "Load Balancer",
-																					"readOnly": true,
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"required": [
-																				"id"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
+																		]
 																	},
 																	"resources": {
 																		"description": "A list of resource names that the policy applies to.",
@@ -2590,23 +2595,23 @@
 																		},
 																		"oneOf": [
 																			{
+																				"description": "Map of simple string resource permissions",
+																				"type": "object",
 																				"additionalProperties": {
 																					"description": "Simple permission string like \"*\"",
 																					"type": "string"
-																				},
-																				"description": "Map of simple string resource permissions",
-																				"type": "object"
+																				}
 																			},
 																			{
+																				"description": "Map of nested resource permissions",
+																				"type": "object",
 																				"additionalProperties": {
 																					"additionalProperties": {
 																						"type": "string"
 																					},
 																					"description": "Nested permission object",
 																					"type": "object"
-																				},
-																				"description": "Map of nested resource permissions",
-																				"type": "object"
+																				}
 																			}
 																		],
 																		"x-auditable": true
@@ -2618,35 +2623,32 @@
 																	"permission_groups",
 																	"resources"
 																],
-																"title": "Policy with Permission Groups and Resources",
-																"type": "object"
-															},
-															"type": "array"
+																"title": "Policy with Permission Groups and Resources"
+															}
 														},
 														"status": {
 															"description": "Status of the token.",
+															"type": "string",
+															"example": "active",
 															"enum": [
 																"active",
 																"disabled",
 																"expired"
 															],
-															"example": "active",
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
 														"value": {
 															"description": "The token value.",
+															"type": "string",
 															"example": "8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T",
 															"maxLength": 80,
 															"minLength": 40,
 															"readOnly": true,
-															"type": "string",
 															"x-sensitive": true
 														}
 													}
@@ -2661,66 +2663,30 @@
 							"title": "Response of a create request with a single token"
 						}
 					}
-				},
-				"description": "Create Token response"
+				}
 			},
 			"4XX": {
+				"description": "Create Token response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2729,12 +2695,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2744,25 +2710,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2770,12 +2773,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Token response failure"
+				}
 			}
 		},
 		"security": [
@@ -2783,7 +2784,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create Token",
 		"tags": [
 			"User API Tokens"
 		],
@@ -2803,34 +2803,69 @@
 		}
 	},
 	"PUT /user/tokens/{token_id}": {
-		"description": "Update an existing token.",
 		"operationId": "user-api-tokens-update-token",
+		"summary": "Update Token",
+		"description": "Update an existing token.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "token_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Token identifier tag.",
+					"type": "string",
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"condition": {
+										"type": "object",
 										"properties": {
 											"request_ip": {
 												"description": "Client IP restrictions.",
+												"type": "object",
+												"properties": {
+													"in": {
+														"description": "List of IPv4/IPv6 CIDR addresses.",
+														"type": "array",
+														"items": {
+															"description": "IPv4/IPv6 CIDR.",
+															"example": "199.27.128.0/21",
+															"type": "string",
+															"x-auditable": true
+														},
+														"example": [
+															"199.27.128.0/21",
+															"2400:cb00::/32"
+														]
+													},
+													"not_in": {
+														"description": "List of IPv4/IPv6 CIDR addresses.",
+														"type": "array",
+														"items": {
+															"description": "IPv4/IPv6 CIDR.",
+															"example": "199.27.128.0/21",
+															"type": "string",
+															"x-auditable": true
+														},
+														"example": [
+															"199.27.128.0/21",
+															"2400:cb00::/32"
+														]
+													}
+												},
 												"example": {
 													"in": [
 														"123.123.123.0/24",
@@ -2840,119 +2875,130 @@
 														"123.123.123.100/24",
 														"2606:4700:4700::/48"
 													]
-												},
-												"properties": {
-													"in": {
-														"description": "List of IPv4/IPv6 CIDR addresses.",
-														"example": [
-															"199.27.128.0/21",
-															"2400:cb00::/32"
-														],
-														"items": {
-															"description": "IPv4/IPv6 CIDR.",
-															"example": "199.27.128.0/21",
-															"type": "string",
-															"x-auditable": true
-														},
-														"type": "array"
-													},
-													"not_in": {
-														"description": "List of IPv4/IPv6 CIDR addresses.",
-														"example": [
-															"199.27.128.0/21",
-															"2400:cb00::/32"
-														],
-														"items": {
-															"description": "IPv4/IPv6 CIDR.",
-															"example": "199.27.128.0/21",
-															"type": "string",
-															"x-auditable": true
-														},
-														"type": "array"
-													}
-												},
-												"type": "object"
+												}
 											}
-										},
-										"type": "object"
+										}
 									},
 									"expires_on": {
 										"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-										"example": "2020-01-01T00:00:00Z",
-										"format": "date-time",
 										"type": "string",
+										"format": "date-time",
+										"example": "2020-01-01T00:00:00Z",
 										"x-auditable": true
 									},
 									"id": {
 										"description": "Token identifier tag.",
+										"type": "string",
 										"example": "ed17574386854bf78a67040be0a770b0",
 										"maxLength": 32,
 										"readOnly": true,
-										"type": "string",
 										"x-auditable": true
 									},
 									"issued_on": {
 										"description": "The time on which the token was created.",
-										"example": "2018-07-01T05:20:00Z",
-										"format": "date-time",
-										"readOnly": true,
 										"type": "string",
+										"format": "date-time",
+										"example": "2018-07-01T05:20:00Z",
+										"readOnly": true,
 										"x-auditable": true
 									},
 									"last_used_on": {
 										"description": "Last time the token was used.",
-										"example": "2020-01-02T12:34:00Z",
-										"format": "date-time",
-										"readOnly": true,
 										"type": "string",
+										"format": "date-time",
+										"example": "2020-01-02T12:34:00Z",
+										"readOnly": true,
 										"x-auditable": true
 									},
 									"modified_on": {
 										"description": "Last time the token was modified.",
-										"example": "2018-07-02T05:20:00Z",
-										"format": "date-time",
-										"readOnly": true,
 										"type": "string",
+										"format": "date-time",
+										"example": "2018-07-02T05:20:00Z",
+										"readOnly": true,
 										"x-auditable": true
 									},
 									"name": {
 										"description": "Token name.",
+										"type": "string",
 										"example": "readonly token",
 										"maxLength": 120,
-										"type": "string",
 										"x-auditable": true
 									},
 									"not_before": {
 										"description": "The time before which the token MUST NOT be accepted for processing.",
-										"example": "2018-07-01T05:20:00Z",
-										"format": "date-time",
 										"type": "string",
+										"format": "date-time",
+										"example": "2018-07-01T05:20:00Z",
 										"x-auditable": true
 									},
 									"policies": {
 										"description": "List of access policies assigned to the token.",
+										"type": "array",
 										"items": {
+											"type": "object",
 											"properties": {
 												"effect": {
 													"description": "Allow or deny operations against the resources.",
+													"type": "string",
+													"example": "allow",
 													"enum": [
 														"allow",
 														"deny"
 													],
-													"example": "allow",
-													"type": "string",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Policy identifier.",
+													"type": "string",
 													"example": "f267e341f3dd4697bd3b9f71dd96247f",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-always-send": true
 												},
 												"permission_groups": {
 													"description": "A set of permission groups that are specified to the policy.",
+													"type": "array",
+													"items": {
+														"description": "A named group of permissions that map to a group of operations against resources.",
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "Identifier of the permission group.",
+																"type": "string",
+																"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																"x-auditable": true
+															},
+															"meta": {
+																"description": "Attributes associated to the permission group.",
+																"type": "object",
+																"example": {
+																	"label": "load_balancer_admin",
+																	"scopes": "com.cloudflare.api.account"
+																},
+																"properties": {
+																	"key": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"value": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																}
+															},
+															"name": {
+																"description": "Name of the permission group.",
+																"type": "string",
+																"example": "Load Balancer",
+																"readOnly": true,
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id"
+														]
+													},
 													"example": [
 														{
 															"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -2970,48 +3016,7 @@
 															},
 															"name": "Magic Network Monitoring"
 														}
-													],
-													"items": {
-														"description": "A named group of permissions that map to a group of operations against resources.",
-														"properties": {
-															"id": {
-																"description": "Identifier of the permission group.",
-																"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																"type": "string",
-																"x-auditable": true
-															},
-															"meta": {
-																"description": "Attributes associated to the permission group.",
-																"example": {
-																	"label": "load_balancer_admin",
-																	"scopes": "com.cloudflare.api.account"
-																},
-																"properties": {
-																	"key": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"value": {
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															},
-															"name": {
-																"description": "Name of the permission group.",
-																"example": "Load Balancer",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"id"
-														],
-														"type": "object"
-													},
-													"type": "array"
+													]
 												},
 												"resources": {
 													"description": "A list of resource names that the policy applies to.",
@@ -3033,23 +3038,23 @@
 													},
 													"oneOf": [
 														{
+															"description": "Map of simple string resource permissions",
+															"type": "object",
 															"additionalProperties": {
 																"description": "Simple permission string like \"*\"",
 																"type": "string"
-															},
-															"description": "Map of simple string resource permissions",
-															"type": "object"
+															}
 														},
 														{
+															"description": "Map of nested resource permissions",
+															"type": "object",
 															"additionalProperties": {
 																"additionalProperties": {
 																	"type": "string"
 																},
 																"description": "Nested permission object",
 																"type": "object"
-															},
-															"description": "Map of nested resource permissions",
-															"type": "object"
+															}
 														}
 													],
 													"x-auditable": true
@@ -3061,25 +3066,22 @@
 												"permission_groups",
 												"resources"
 											],
-											"title": "Policy with Permission Groups and Resources",
-											"type": "object"
-										},
-										"type": "array"
+											"title": "Policy with Permission Groups and Resources"
+										}
 									},
 									"status": {
 										"description": "Status of the token.",
+										"type": "string",
+										"example": "active",
 										"enum": [
 											"active",
 											"disabled",
 											"expired"
 										],
-										"example": "active",
-										"type": "string",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									}
-								},
-								"type": "object"
+								}
 							},
 							{
 								"type": "object"
@@ -3094,26 +3096,28 @@
 						"title": "Token defined in a request body"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Token response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3122,12 +3126,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3137,15 +3141,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3154,12 +3158,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3169,35 +3173,66 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"condition": {
+													"type": "object",
 													"properties": {
 														"request_ip": {
 															"description": "Client IP restrictions.",
+															"type": "object",
+															"properties": {
+																"in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"type": "array",
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	]
+																},
+																"not_in": {
+																	"description": "List of IPv4/IPv6 CIDR addresses.",
+																	"type": "array",
+																	"items": {
+																		"description": "IPv4/IPv6 CIDR.",
+																		"example": "199.27.128.0/21",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"199.27.128.0/21",
+																		"2400:cb00::/32"
+																	]
+																}
+															},
 															"example": {
 																"in": [
 																	"123.123.123.0/24",
@@ -3207,119 +3242,130 @@
 																	"123.123.123.100/24",
 																	"2606:4700:4700::/48"
 																]
-															},
-															"properties": {
-																"in": {
-																	"description": "List of IPv4/IPv6 CIDR addresses.",
-																	"example": [
-																		"199.27.128.0/21",
-																		"2400:cb00::/32"
-																	],
-																	"items": {
-																		"description": "IPv4/IPv6 CIDR.",
-																		"example": "199.27.128.0/21",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": "array"
-																},
-																"not_in": {
-																	"description": "List of IPv4/IPv6 CIDR addresses.",
-																	"example": [
-																		"199.27.128.0/21",
-																		"2400:cb00::/32"
-																	],
-																	"items": {
-																		"description": "IPv4/IPv6 CIDR.",
-																		"example": "199.27.128.0/21",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": "array"
-																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												},
 												"expires_on": {
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-													"example": "2020-01-01T00:00:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2020-01-01T00:00:00Z",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Token identifier tag.",
+													"type": "string",
 													"example": "ed17574386854bf78a67040be0a770b0",
 													"maxLength": 32,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"issued_on": {
 													"description": "The time on which the token was created.",
-													"example": "2018-07-01T05:20:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2018-07-01T05:20:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"last_used_on": {
 													"description": "Last time the token was used.",
-													"example": "2020-01-02T12:34:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2020-01-02T12:34:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Last time the token was modified.",
-													"example": "2018-07-02T05:20:00Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2018-07-02T05:20:00Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
 													"description": "Token name.",
+													"type": "string",
 													"example": "readonly token",
 													"maxLength": 120,
-													"type": "string",
 													"x-auditable": true
 												},
 												"not_before": {
 													"description": "The time before which the token MUST NOT be accepted for processing.",
-													"example": "2018-07-01T05:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2018-07-01T05:20:00Z",
 													"x-auditable": true
 												},
 												"policies": {
 													"description": "List of access policies assigned to the token.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"effect": {
 																"description": "Allow or deny operations against the resources.",
+																"type": "string",
+																"example": "allow",
 																"enum": [
 																	"allow",
 																	"deny"
 																],
-																"example": "allow",
-																"type": "string",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Policy identifier.",
+																"type": "string",
 																"example": "f267e341f3dd4697bd3b9f71dd96247f",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-always-send": true
 															},
 															"permission_groups": {
 																"description": "A set of permission groups that are specified to the policy.",
+																"type": "array",
+																"items": {
+																	"description": "A named group of permissions that map to a group of operations against resources.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the permission group.",
+																			"type": "string",
+																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+																			"x-auditable": true
+																		},
+																		"meta": {
+																			"description": "Attributes associated to the permission group.",
+																			"type": "object",
+																			"example": {
+																				"label": "load_balancer_admin",
+																				"scopes": "com.cloudflare.api.account"
+																			},
+																			"properties": {
+																				"key": {
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"value": {
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			}
+																		},
+																		"name": {
+																			"description": "Name of the permission group.",
+																			"type": "string",
+																			"example": "Load Balancer",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id"
+																	]
+																},
 																"example": [
 																	{
 																		"id": "c8fed203ed3043cba015a93ad1616f1f",
@@ -3337,48 +3383,7 @@
 																		},
 																		"name": "Magic Network Monitoring"
 																	}
-																],
-																"items": {
-																	"description": "A named group of permissions that map to a group of operations against resources.",
-																	"properties": {
-																		"id": {
-																			"description": "Identifier of the permission group.",
-																			"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"meta": {
-																			"description": "Attributes associated to the permission group.",
-																			"example": {
-																				"label": "load_balancer_admin",
-																				"scopes": "com.cloudflare.api.account"
-																			},
-																			"properties": {
-																				"key": {
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"value": {
-																					"type": "string",
-																					"x-auditable": true
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"name": {
-																			"description": "Name of the permission group.",
-																			"example": "Load Balancer",
-																			"readOnly": true,
-																			"type": "string",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"id"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
+																]
 															},
 															"resources": {
 																"description": "A list of resource names that the policy applies to.",
@@ -3400,23 +3405,23 @@
 																},
 																"oneOf": [
 																	{
+																		"description": "Map of simple string resource permissions",
+																		"type": "object",
 																		"additionalProperties": {
 																			"description": "Simple permission string like \"*\"",
 																			"type": "string"
-																		},
-																		"description": "Map of simple string resource permissions",
-																		"type": "object"
+																		}
 																	},
 																	{
+																		"description": "Map of nested resource permissions",
+																		"type": "object",
 																		"additionalProperties": {
 																			"additionalProperties": {
 																				"type": "string"
 																			},
 																			"description": "Nested permission object",
 																			"type": "object"
-																		},
-																		"description": "Map of nested resource permissions",
-																		"type": "object"
+																		}
 																	}
 																],
 																"x-auditable": true
@@ -3428,25 +3433,22 @@
 															"permission_groups",
 															"resources"
 														],
-														"title": "Policy with Permission Groups and Resources",
-														"type": "object"
-													},
-													"type": "array"
+														"title": "Policy with Permission Groups and Resources"
+													}
 												},
 												"status": {
 													"description": "Status of the token.",
+													"type": "string",
+													"example": "active",
 													"enum": [
 														"active",
 														"disabled",
 														"expired"
 													],
-													"example": "active",
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3455,66 +3457,30 @@
 							"title": "Response with a single token"
 						}
 					}
-				},
-				"description": "Update Token response"
+				}
 			},
 			"4XX": {
+				"description": "Update Token response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3523,12 +3489,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3538,25 +3504,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3564,12 +3567,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Token response failure"
+				}
 			}
 		},
 		"security": [
@@ -3577,7 +3578,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Token",
 		"tags": [
 			"User API Tokens"
 		],
@@ -3597,50 +3597,54 @@
 		}
 	},
 	"PUT /user/tokens/{token_id}/value": {
-		"description": "Roll the token secret.",
 		"operationId": "user-api-tokens-roll-token",
+		"summary": "Roll Token",
+		"description": "Roll the token secret.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "token_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Token identifier tag.",
+					"type": "string",
 					"example": "ed17574386854bf78a67040be0a770b0",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"type": "object"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Roll Token response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3649,12 +3653,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3664,15 +3668,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3681,12 +3685,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3696,36 +3700,34 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "The token value.",
+											"type": "string",
 											"example": "8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T",
 											"maxLength": 80,
 											"minLength": 40,
 											"readOnly": true,
-											"type": "string",
 											"x-sensitive": true
 										}
 									},
@@ -3734,66 +3736,30 @@
 							]
 						}
 					}
-				},
-				"description": "Roll Token response"
+				}
 			},
 			"4XX": {
+				"description": "Roll Token response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3802,12 +3768,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3817,25 +3783,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3843,12 +3846,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Roll Token response failure"
+				}
 			}
 		},
 		"security": [
@@ -3856,7 +3857,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Roll Token",
 		"tags": [
 			"User API Tokens"
 		],

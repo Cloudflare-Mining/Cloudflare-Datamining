@@ -1,35 +1,37 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs": {
-		"description": "Deletes gateway log entries matching the specified criteria.",
 		"operationId": "aig-config-delete-gateway-logs",
+		"summary": "Delete Gateway Logs",
+		"description": "Deletes gateway log entries matching the specified criteria.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "order_by",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"default": "created_at",
 					"enum": [
 						"created_at",
@@ -43,29 +45,30 @@
 						"tokens_out",
 						"duration",
 						"feedback"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "order_by_direction",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"default": "asc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "filters",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
 						"properties": {
 							"key": {
+								"type": "string",
 								"enum": [
 									"id",
 									"created_at",
@@ -91,20 +94,20 @@
 									"compatibilityMode",
 									"dlp_action",
 									"user_agent"
-								],
-								"type": "string"
+								]
 							},
 							"operator": {
+								"type": "string",
 								"enum": [
 									"eq",
 									"neq",
 									"contains",
 									"lt",
 									"gt"
-								],
-								"type": "string"
+								]
 							},
 							"value": {
+								"type": "array",
 								"items": {
 									"anyOf": [
 										{
@@ -118,8 +121,7 @@
 											"type": "boolean"
 										}
 									]
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
@@ -128,26 +130,27 @@
 							"value"
 						],
 						"type": "object"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 10000,
 					"maximum": 10000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns if the delete was successful",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"success": {
 									"type": "boolean"
@@ -155,19 +158,20 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns if the delete was successful"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -178,27 +182,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -210,7 +211,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Gateway Logs",
 		"tags": [
 			"AI Gateway Logs"
 		],
@@ -234,62 +234,64 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs": {
-		"description": "Lists request/response log entries for the AI gateway with filtering and pagination.",
 		"operationId": "aig-config-list-gateway-logs",
+		"summary": "List Gateway Logs",
+		"description": "Lists request/response log entries for the AI gateway with filtering and pagination.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 50,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "order_by",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"default": "created_at",
 					"enum": [
 						"created_at",
@@ -298,29 +300,30 @@
 						"model_type",
 						"success",
 						"cached"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "order_by_direction",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"default": "desc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "filters",
+				"in": "query",
 				"schema": {
+					"type": "array",
 					"items": {
 						"properties": {
 							"key": {
+								"type": "string",
 								"enum": [
 									"id",
 									"created_at",
@@ -346,20 +349,20 @@
 									"compatibilityMode",
 									"dlp_action",
 									"user_agent"
-								],
-								"type": "string"
+								]
 							},
 							"operator": {
+								"type": "string",
 								"enum": [
 									"eq",
 									"neq",
 									"contains",
 									"lt",
 									"gt"
-								],
-								"type": "string"
+								]
 							},
 							"value": {
+								"type": "array",
 								"items": {
 									"anyOf": [
 										{
@@ -373,8 +376,7 @@
 											"type": "boolean"
 										}
 									]
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
@@ -383,130 +385,129 @@
 							"value"
 						],
 						"type": "object"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"in": "query",
 				"name": "meta_info",
+				"in": "query",
 				"schema": {
 					"type": "boolean"
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
+					"type": "string",
 					"deprecated": true,
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "start_date",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "end_date",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "min_cost",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "max_cost",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "min_tokens_in",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "max_tokens_in",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "min_tokens_out",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "max_tokens_out",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "min_total_tokens",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "max_total_tokens",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "min_duration",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "max_duration",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "number"
+					"type": "number",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "feedback",
+				"in": "query",
 				"schema": {
 					"anyOf": [
 						{
@@ -532,69 +533,72 @@
 				}
 			},
 			{
-				"in": "query",
 				"name": "success",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "boolean"
+					"type": "boolean",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "cached",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "boolean"
+					"type": "boolean",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "model",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "string"
+					"type": "string",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "model_type",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "string"
+					"type": "string",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "provider",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "string"
+					"type": "string",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "request_content_type",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "string"
+					"type": "string",
+					"deprecated": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "response_content_type",
+				"in": "query",
 				"schema": {
-					"deprecated": true,
-					"type": "string"
+					"type": "string",
+					"deprecated": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of Gateway Logs",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"cached": {
@@ -604,8 +608,8 @@
 												"type": "number"
 											},
 											"created_at": {
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"custom_cost": {
 												"type": "boolean"
@@ -650,12 +654,12 @@
 												"type": "boolean"
 											},
 											"tokens_in": {
-												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"nullable": true
 											},
 											"tokens_out": {
-												"nullable": true,
-												"type": "integer"
+												"type": "integer",
+												"nullable": true
 											}
 										},
 										"required": [
@@ -671,10 +675,10 @@
 											"tokens_out"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -718,8 +722,7 @@
 										"total_count": {
 											"type": "number"
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -729,19 +732,20 @@
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of Gateway Logs"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -752,27 +756,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -784,7 +785,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Gateway Logs",
 		"tags": [
 			"AI Gateway Logs"
 		],
@@ -809,48 +809,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}": {
-		"description": "Retrieves detailed information for a specific AI Gateway log entry.",
 		"operationId": "aig-config-get-gateway-log-detail",
+		"summary": "Get Gateway Log Detail",
+		"description": "Retrieves detailed information for a specific AI Gateway log entry.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the log details",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"cached": {
 											"type": "boolean"
@@ -859,8 +863,8 @@
 											"type": "number"
 										},
 										"created_at": {
-											"format": "date-time",
-											"type": "string"
+											"type": "string",
+											"format": "date-time"
 										},
 										"custom_cost": {
 											"type": "boolean"
@@ -923,12 +927,12 @@
 											"type": "boolean"
 										},
 										"tokens_in": {
-											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"nullable": true
 										},
 										"tokens_out": {
-											"nullable": true,
-											"type": "integer"
+											"type": "integer",
+											"nullable": true
 										}
 									},
 									"required": [
@@ -942,8 +946,7 @@
 										"cached",
 										"tokens_in",
 										"tokens_out"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -952,28 +955,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the log details"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -981,8 +985,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -991,12 +994,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1008,7 +1009,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Gateway Log Detail",
 		"tags": [
 			"AI Gateway Logs"
 		],
@@ -1033,67 +1033,71 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/request": {
-		"description": "Retrieves the original request payload for an AI Gateway log entry.",
 		"operationId": "aig-config-get-gateway-log-request",
+		"summary": "Get Gateway Log Request",
+		"description": "Retrieves the original request payload for an AI Gateway log entry.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the request body from a specific log",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object"
 						}
 					}
-				},
-				"description": "Returns the request body from a specific log"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -1101,8 +1105,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1111,12 +1114,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1128,7 +1129,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Gateway Log Request",
 		"tags": [
 			"AI Gateway Logs"
 		],
@@ -1153,67 +1153,71 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/response": {
-		"description": "Retrieves the response payload for an AI Gateway log entry.",
 		"operationId": "aig-config-get-gateway-log-response",
+		"summary": "Get Gateway Log Response",
+		"description": "Retrieves the response payload for an AI Gateway log entry.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the response body from a specific log",
 				"content": {
 					"application/json": {
 						"schema": {
 							"type": "object"
 						}
 					}
-				},
-				"description": "Returns the response body from a specific log"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -1221,8 +1225,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1231,12 +1234,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1248,7 +1249,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Gateway Log Response",
 		"tags": [
 			"AI Gateway Logs"
 		],
@@ -1273,38 +1273,39 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}": {
-		"description": "Updates metadata for an AI Gateway log entry.",
 		"operationId": "aig-config-patch-gateway-log",
+		"summary": "Patch Gateway Log",
+		"description": "Updates metadata for an AI Gateway log entry.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "gateway_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "gateway id",
+					"type": "string",
 					"example": "my-gateway",
 					"maxLength": 64,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "0d37909e38d3e99c29fa2cd343ac421a",
-					"type": "string"
+					"type": "string",
+					"example": "0d37909e38d3e99c29fa2cd343ac421a"
 				}
 			}
 		],
@@ -1312,14 +1313,16 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"feedback": {
+								"type": "number",
 								"maximum": 1,
 								"minimum": -1,
-								"nullable": true,
-								"type": "number"
+								"nullable": true
 							},
 							"metadata": {
+								"type": "object",
 								"additionalProperties": {
 									"anyOf": [
 										{
@@ -1333,26 +1336,26 @@
 										}
 									]
 								},
-								"nullable": true,
-								"type": "object"
+								"nullable": true
 							},
 							"score": {
+								"type": "number",
 								"maximum": 100,
 								"minimum": 0,
-								"nullable": true,
-								"type": "number"
+								"nullable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the log details",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
 									"type": "object"
@@ -1364,28 +1367,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the log details"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -1393,8 +1397,7 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1403,12 +1406,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1420,7 +1421,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Patch Gateway Log",
 		"tags": [
 			"AI Gateway Logs"
 		],

@@ -1,48 +1,51 @@
 {
 	"DELETE /accounts/{account_id}/rum/site_info/{site_id}": {
-		"description": "Deletes an existing Web Analytics site.",
 		"operationId": "web-analytics-delete-site",
+		"summary": "Delete a Web Analytics site",
+		"description": "Deletes an existing Web Analytics site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Deleted Web Analytics site identifier.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -55,15 +58,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -76,33 +79,32 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -110,66 +112,30 @@
 							]
 						}
 					}
-				},
-				"description": "Deleted Web Analytics site identifier."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -178,12 +144,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -193,25 +159,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -219,12 +222,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -234,7 +235,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a Web Analytics site",
 		"tags": [
 			"Web Analytics"
 		],
@@ -253,59 +253,62 @@
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
-		"description": "Deletes an existing rule from a Web Analytics ruleset.",
 		"operationId": "web-analytics-delete-rule",
+		"summary": "Delete a Web Analytics rule",
+		"description": "Deletes an existing rule from a Web Analytics ruleset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "ruleset_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "rule_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics rule identifier.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Deleted Web Analytics rule identifier.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -318,15 +321,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -339,33 +342,32 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "The Web Analytics rule identifier.",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"type": "string",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -373,66 +375,30 @@
 							]
 						}
 					}
-				},
-				"description": "Deleted Web Analytics rule identifier."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -441,12 +407,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -456,25 +422,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -482,12 +485,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -497,7 +498,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a Web Analytics rule",
 		"tags": [
 			"Web Analytics"
 		],
@@ -513,49 +513,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/{site_id}": {
-		"description": "Retrieves a Web Analytics site.",
 		"operationId": "web-analytics-get-site",
+		"summary": "Get a Web Analytics site",
+		"description": "Retrieves a Web Analytics site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Web Analytics site.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -568,15 +571,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -589,140 +592,139 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"auto_install": {
 													"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"created": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"rules": {
 													"description": "A list of rules.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
-																"example": "example.com",
 																"type": "string",
+																"example": "example.com",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"type": "string",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
-																"example": [
-																	"*"
-																],
+																"type": "array",
 																"items": {
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"example": [
+																	"*"
+																]
 															},
 															"priority": {
-																"example": 1000,
 																"type": "number",
+																"example": 1000,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"ruleset": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether the ruleset is enabled.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"type": "string",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														},
 														"zone_name": {
-															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"example": "example.com"
 														},
 														"zone_tag": {
 															"description": "The zone identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"x-auditable": true
 												},
 												"site_token": {
 													"description": "The Web Analytics site token.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"x-auditable": true
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
-													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"type": "string",
+													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -730,66 +732,30 @@
 							]
 						}
 					}
-				},
-				"description": "Web Analytics site."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -798,12 +764,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -813,25 +779,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -839,12 +842,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -854,7 +855,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get a Web Analytics site",
 		"tags": [
 			"Web Analytics"
 		],
@@ -873,68 +873,71 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/list": {
-		"description": "Lists all Web Analytics sites of an account.",
 		"operationId": "web-analytics-list-sites",
+		"summary": "List Web Analytics sites",
+		"description": "Lists all Web Analytics sites of an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
 					"description": "Number of items to return per page of results.",
-					"example": 10,
-					"type": "number"
+					"type": "number",
+					"example": 10
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"description": "Current page within the paginated list of results.",
-					"example": 1,
-					"type": "number"
+					"type": "number",
+					"example": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "order_by",
+				"in": "query",
 				"schema": {
 					"description": "The property used to sort the list of results.",
+					"type": "string",
+					"example": "host",
 					"enum": [
 						"host",
 						"created"
-					],
-					"example": "host",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of Web Analytics sites.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -947,15 +950,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -968,174 +971,173 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"auto_install": {
 														"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
 														"x-auditable": true
 													},
 													"created": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"rules": {
 														"description": "A list of rules.",
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"created": {
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"readOnly": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true,
 																	"x-auditable": true
 																},
 																"host": {
 																	"description": "The hostname the rule will be applied to.",
-																	"example": "example.com",
 																	"type": "string",
+																	"example": "example.com",
 																	"x-auditable": true
 																},
 																"id": {
 																	"description": "The Web Analytics rule identifier.",
-																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"type": "string",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																	"x-auditable": true
 																},
 																"inclusive": {
 																	"description": "Whether the rule includes or excludes traffic from being measured.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"is_paused": {
 																	"description": "Whether the rule is paused or not.",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"paths": {
 																	"description": "The paths the rule will be applied to.",
-																	"example": [
-																		"*"
-																	],
+																	"type": "array",
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"example": [
+																		"*"
+																	]
 																},
 																"priority": {
-																	"example": 1000,
 																	"type": "number",
+																	"example": 1000,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
-														},
-														"type": "array"
+															}
+														}
 													},
 													"ruleset": {
+														"type": "object",
 														"properties": {
 															"enabled": {
 																"description": "Whether the ruleset is enabled.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"id": {
 																"description": "The Web Analytics ruleset identifier.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"type": "string",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"x-auditable": true
 															},
 															"zone_name": {
-																"example": "example.com",
-																"type": "string"
+																"type": "string",
+																"example": "example.com"
 															},
 															"zone_tag": {
 																"description": "The zone identifier.",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"site_tag": {
 														"description": "The Web Analytics site identifier.",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"type": "string",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"x-auditable": true
 													},
 													"site_token": {
 														"description": "The Web Analytics site token.",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"type": "string",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"x-auditable": true
 													},
 													"snippet": {
 														"description": "Encoded JavaScript snippet.",
-														"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 														"type": "string",
+														"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										},
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "The total number of items on the current page.",
-													"example": 10,
-													"type": "integer"
+													"type": "integer",
+													"example": 10
 												},
 												"page": {
 													"description": "Current page within the paginated list of results.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
 													"description": "The maximum number of items to return per page of results.",
-													"example": 10,
-													"type": "integer"
+													"type": "integer",
+													"example": 10
 												},
 												"total_count": {
 													"description": "The total number of items.",
-													"example": 25,
-													"type": "integer"
+													"type": "integer",
+													"example": 25
 												},
 												"total_pages": {
 													"description": "The total number of pages.",
+													"type": "integer",
 													"example": 3,
-													"nullable": true,
-													"type": "integer"
+													"nullable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1143,66 +1145,30 @@
 							]
 						}
 					}
-				},
-				"description": "List of Web Analytics sites."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1211,12 +1177,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1226,25 +1192,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1252,12 +1255,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -1267,7 +1268,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Web Analytics sites",
 		"tags": [
 			"Web Analytics"
 		],
@@ -1286,46 +1286,49 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/site_tag/list": {
-		"description": "Returns all site tags for an account as an array of site tag strings. This endpoint returns all results without pagination.\n",
 		"operationId": "web-analytics-list-site-tags",
+		"summary": "List Web Analytics site tags",
+		"description": "Returns all site tags for an account as an array of site tag strings. This endpoint returns all results without pagination.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "When true, includes sites that are disabled or paused.",
-				"in": "query",
 				"name": "all",
+				"in": "query",
+				"description": "When true, includes sites that are disabled or paused.",
 				"schema": {
-					"example": false,
-					"type": "boolean"
+					"type": "boolean",
+					"example": false
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of Web Analytics site tags.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1338,15 +1341,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1359,32 +1362,31 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "List of Web Analytics site tag identifiers.",
+											"type": "array",
 											"items": {
 												"description": "The Web Analytics site identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"x-auditable": true
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
@@ -1392,66 +1394,30 @@
 							]
 						}
 					}
-				},
-				"description": "List of Web Analytics site tags."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1460,12 +1426,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1475,25 +1441,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1501,12 +1504,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -1516,7 +1517,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Web Analytics site tags",
 		"tags": [
 			"Web Analytics"
 		],
@@ -1531,49 +1531,52 @@
 		}
 	},
 	"GET /accounts/{account_id}/rum/site_info/validate/{hostname}": {
-		"description": "Validates that the provided hostname is well-formed, does not contain wildcards, and has a valid TLD. Returns an empty result on success.\n",
 		"operationId": "web-analytics-validate-site-hostname",
+		"summary": "Validate a Web Analytics site hostname",
+		"description": "Validates that the provided hostname is well-formed, does not contain wildcards, and has a valid TLD. Returns an empty result on success.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "The hostname to validate (e.g. example.com). The `pattern` below validates the hostname's structure (label syntax) only. In addition, the hostname must end in a valid public suffix (TLD). For the list of valid suffixes and how it is used, see the Public Suffix List: https://wiki.mozilla.org/Public_Suffix_List/Use_Cases\n",
-				"in": "path",
 				"name": "hostname",
+				"in": "path",
+				"description": "The hostname to validate (e.g. example.com). The `pattern` below validates the hostname's structure (label syntax) only. In addition, the hostname must end in a valid public suffix (TLD). For the list of valid suffixes and how it is used, see the Public Suffix List: https://wiki.mozilla.org/Public_Suffix_List/Use_Cases\n",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example.com",
 					"maxLength": 253,
-					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9]?)\\.){1,}([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9]?){2,}$",
-					"type": "string"
+					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9]?)\\.){1,}([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9]?){2,}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Hostname is valid.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1586,15 +1589,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1607,20 +1610,19 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1634,66 +1636,30 @@
 							]
 						}
 					}
-				},
-				"description": "Hostname is valid."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1702,12 +1668,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1717,25 +1683,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1743,12 +1746,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -1758,7 +1759,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Validate a Web Analytics site hostname",
 		"tags": [
 			"Web Analytics"
 		],
@@ -1773,37 +1773,40 @@
 		}
 	},
 	"GET /accounts/{account_id}/rum/site_info/zone_tag/list": {
-		"description": "Returns all zone tags associated with Web Analytics sites for an account. These can be used to filter or exclude zones in the zone selection input. This endpoint returns all results without pagination.\n",
 		"operationId": "web-analytics-list-zone-tags",
+		"summary": "List Web Analytics zone tags",
+		"description": "Returns all zone tags associated with Web Analytics sites for an account. These can be used to filter or exclude zones in the zone selection input. This endpoint returns all results without pagination.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of zone tags.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1816,15 +1819,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1837,32 +1840,31 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "List of zone tag identifiers associated with Web Analytics sites.",
+											"type": "array",
 											"items": {
 												"description": "The zone identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
 												"x-auditable": true
-											},
-											"type": "array"
+											}
 										}
 									},
 									"type": "object"
@@ -1870,66 +1872,30 @@
 							]
 						}
 					}
-				},
-				"description": "List of zone tags."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1938,12 +1904,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1953,25 +1919,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1979,12 +1982,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -1994,7 +1995,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Web Analytics zone tags",
 		"tags": [
 			"Web Analytics"
 		],
@@ -2009,48 +2009,51 @@
 		}
 	},
 	"GET /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
-		"description": "Lists all the rules in a Web Analytics ruleset.",
 		"operationId": "web-analytics-list-rules",
+		"summary": "List rules in Web Analytics ruleset",
+		"description": "Lists all the rules in a Web Analytics ruleset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "ruleset_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of Web Analytics rules in the ruleset.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2063,15 +2066,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2084,109 +2087,108 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"rules": {
 													"description": "A list of rules.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
-																"example": "example.com",
 																"type": "string",
+																"example": "example.com",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"type": "string",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
-																"example": [
-																	"*"
-																],
+																"type": "array",
 																"items": {
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"example": [
+																	"*"
+																]
 															},
 															"priority": {
-																"example": 1000,
 																"type": "number",
+																"example": 1000,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"ruleset": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether the ruleset is enabled.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"type": "string",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														},
 														"zone_name": {
-															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"example": "example.com"
 														},
 														"zone_tag": {
 															"description": "The zone identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2194,66 +2196,30 @@
 							]
 						}
 					}
-				},
-				"description": "List of Web Analytics rules in the ruleset."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2262,12 +2228,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2277,25 +2243,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2303,12 +2306,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -2318,7 +2319,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List rules in Web Analytics ruleset",
 		"tags": [
 			"Web Analytics"
 		],
@@ -2334,37 +2334,40 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/rum": {
-		"description": "Retrieves RUM status for a zone.",
 		"operationId": "web-analytics-get-rum-status",
+		"summary": "Get RUM status for a zone",
+		"description": "Retrieves RUM status for a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Rum Status.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2377,15 +2380,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2398,42 +2401,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"editable": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
-													"example": "rum",
 													"type": "string",
+													"example": "rum",
 													"x-auditable": true
 												},
 												"value": {
 													"description": "Current state of RUM. Returns On, Off, or Manual.",
-													"example": "on",
 													"type": "string",
+													"example": "on",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2441,66 +2443,30 @@
 							]
 						}
 					}
-				},
-				"description": "Rum Status."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2509,12 +2475,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2524,25 +2490,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2550,12 +2553,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -2565,7 +2566,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get RUM status for a zone",
 		"tags": [
 			"Web Analytics"
 		],
@@ -2584,54 +2584,57 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/settings/rum": {
-		"description": "Toggles RUM on/off for an existing zone.",
 		"operationId": "web-analytics-toggle-rum",
+		"summary": "Toggle RUM on/off for a zone",
+		"description": "Toggles RUM on/off for an existing zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"value": {
 								"description": "Value can either be On or Off.",
-								"example": "on",
-								"type": "string"
+								"type": "string",
+								"example": "on"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Rum toggled on/off for an existing zone.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2644,15 +2647,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2665,42 +2668,41 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"editable": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
-													"example": "rum",
 													"type": "string",
+													"example": "rum",
 													"x-auditable": true
 												},
 												"value": {
 													"description": "Current state of RUM. Returns On, Off, or Manual.",
-													"example": "on",
 													"type": "string",
+													"example": "on",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -2708,66 +2710,30 @@
 							]
 						}
 					}
-				},
-				"description": "Rum toggled on/off for an existing zone."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2776,12 +2742,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2791,25 +2757,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2817,12 +2820,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -2832,7 +2833,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Toggle RUM on/off for a zone",
 		"tags": [
 			"Web Analytics"
 		],
@@ -2850,67 +2850,70 @@
 		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/rum/site_info": {
-		"description": "Creates a new Web Analytics site.",
 		"operationId": "web-analytics-create-site",
+		"summary": "Create a Web Analytics site",
+		"description": "Creates a new Web Analytics site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"auto_install": {
 								"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							},
 							"host": {
 								"description": "The hostname to use for gray-clouded sites.",
-								"example": "example.com",
 								"type": "string",
+								"example": "example.com",
 								"x-auditable": true
 							},
 							"zone_tag": {
 								"description": "The zone identifier.",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"type": "string",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Created Web Analytics site.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2923,15 +2926,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2944,140 +2947,139 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"auto_install": {
 													"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"created": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"rules": {
 													"description": "A list of rules.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
-																"example": "example.com",
 																"type": "string",
+																"example": "example.com",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"type": "string",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
-																"example": [
-																	"*"
-																],
+																"type": "array",
 																"items": {
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"example": [
+																	"*"
+																]
 															},
 															"priority": {
-																"example": 1000,
 																"type": "number",
+																"example": 1000,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"ruleset": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether the ruleset is enabled.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"type": "string",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														},
 														"zone_name": {
-															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"example": "example.com"
 														},
 														"zone_tag": {
 															"description": "The zone identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"x-auditable": true
 												},
 												"site_token": {
 													"description": "The Web Analytics site token.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"x-auditable": true
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
-													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"type": "string",
+													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3085,66 +3087,30 @@
 							]
 						}
 					}
-				},
-				"description": "Created Web Analytics site."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3153,12 +3119,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3168,25 +3134,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3194,12 +3197,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -3209,7 +3210,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a Web Analytics site",
 		"tags": [
 			"Web Analytics"
 		],
@@ -3228,83 +3228,86 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rule": {
-		"description": "Creates a new rule in a Web Analytics ruleset.",
 		"operationId": "web-analytics-create-rule",
+		"summary": "Create a Web Analytics rule",
+		"description": "Creates a new rule in a Web Analytics ruleset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "ruleset_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"host": {
-								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"example": "example.com"
 							},
 							"inclusive": {
 								"description": "Whether the rule includes or excludes traffic from being measured.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							},
 							"is_paused": {
 								"description": "Whether the rule is paused or not.",
-								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"example": false
 							},
 							"paths": {
-								"example": [
-									"*"
-								],
+								"type": "array",
 								"items": {
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"*"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Created Web Analytics rule.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3317,15 +3320,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3338,74 +3341,73 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"host": {
 													"description": "The hostname the rule will be applied to.",
-													"example": "example.com",
 													"type": "string",
+													"example": "example.com",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "The Web Analytics rule identifier.",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"type": "string",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												},
 												"inclusive": {
 													"description": "Whether the rule includes or excludes traffic from being measured.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"is_paused": {
 													"description": "Whether the rule is paused or not.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"paths": {
 													"description": "The paths the rule will be applied to.",
-													"example": [
-														"*"
-													],
+													"type": "array",
 													"items": {
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"example": [
+														"*"
+													]
 												},
 												"priority": {
-													"example": 1000,
 													"type": "number",
+													"example": 1000,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3413,66 +3415,30 @@
 							]
 						}
 					}
-				},
-				"description": "Created Web Analytics rule."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3481,12 +3447,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3496,25 +3462,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3522,12 +3525,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -3537,7 +3538,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a Web Analytics rule",
 		"tags": [
 			"Web Analytics"
 		],
@@ -3553,106 +3553,109 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
-		"description": "Modifies one or more rules in a Web Analytics ruleset with a single request.",
 		"operationId": "web-analytics-modify-rules",
+		"summary": "Update Web Analytics rules",
+		"description": "Modifies one or more rules in a Web Analytics ruleset with a single request.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "ruleset_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"delete_rules": {
 								"description": "A list of rule identifiers to delete.",
+								"type": "array",
 								"items": {
 									"description": "The Web Analytics rule identifier.",
-									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 									"type": "string",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							},
 							"rules": {
 								"description": "A list of rules to create or update.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"host": {
-											"example": "example.com",
-											"type": "string"
+											"type": "string",
+											"example": "example.com"
 										},
 										"id": {
 											"description": "The Web Analytics rule identifier.",
-											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"type": "string",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 											"x-auditable": true
 										},
 										"inclusive": {
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										},
 										"is_paused": {
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										},
 										"paths": {
-											"example": [
-												"*"
-											],
+											"type": "array",
 											"items": {
 												"type": "string"
 											},
-											"type": "array"
+											"example": [
+												"*"
+											]
 										}
 									},
 									"type": "object"
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "List of modified Web Analytics rules.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3665,15 +3668,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -3686,109 +3689,108 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"rules": {
 													"description": "A list of rules.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
-																"example": "example.com",
 																"type": "string",
+																"example": "example.com",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"type": "string",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
-																"example": [
-																	"*"
-																],
+																"type": "array",
 																"items": {
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"example": [
+																	"*"
+																]
 															},
 															"priority": {
-																"example": 1000,
 																"type": "number",
+																"example": 1000,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"ruleset": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether the ruleset is enabled.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"type": "string",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														},
 														"zone_name": {
-															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"example": "example.com"
 														},
 														"zone_tag": {
 															"description": "The zone identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -3796,66 +3798,30 @@
 							]
 						}
 					}
-				},
-				"description": "List of modified Web Analytics rules."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3864,12 +3830,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3879,25 +3845,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3905,12 +3908,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -3920,7 +3921,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Web Analytics rules",
 		"tags": [
 			"Web Analytics"
 		],
@@ -3939,55 +3939,58 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/rum/site_info/{site_id}": {
-		"description": "Updates an existing Web Analytics site.",
 		"operationId": "web-analytics-update-site",
+		"summary": "Update a Web Analytics site",
+		"description": "Updates an existing Web Analytics site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"auto_install": {
 								"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Enables or disables RUM. This option can be used only when auto_install is set to true.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
 								"x-auditable": true
 							},
 							"host": {
 								"description": "The hostname to use for gray-clouded sites.",
-								"example": "example.com",
 								"type": "string",
+								"example": "example.com",
 								"x-auditable": true
 							},
 							"lite": {
@@ -3997,32 +4000,32 @@
 							},
 							"zone_tag": {
 								"description": "The zone identifier.",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"type": "string",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Updated Web Analytics site.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4035,15 +4038,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4056,140 +4059,139 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"auto_install": {
 													"description": "If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"created": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"rules": {
 													"description": "A list of rules.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true,
 																"x-auditable": true
 															},
 															"host": {
 																"description": "The hostname the rule will be applied to.",
-																"example": "example.com",
 																"type": "string",
+																"example": "example.com",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "The Web Analytics rule identifier.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"type": "string",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"x-auditable": true
 															},
 															"inclusive": {
 																"description": "Whether the rule includes or excludes traffic from being measured.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"is_paused": {
 																"description": "Whether the rule is paused or not.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"paths": {
 																"description": "The paths the rule will be applied to.",
-																"example": [
-																	"*"
-																],
+																"type": "array",
 																"items": {
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"example": [
+																	"*"
+																]
 															},
 															"priority": {
-																"example": 1000,
 																"type": "number",
+																"example": 1000,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"ruleset": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether the ruleset is enabled.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														},
 														"id": {
 															"description": "The Web Analytics ruleset identifier.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"type": "string",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"x-auditable": true
 														},
 														"zone_name": {
-															"example": "example.com",
-															"type": "string"
+															"type": "string",
+															"example": "example.com"
 														},
 														"zone_tag": {
 															"description": "The zone identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"site_tag": {
 													"description": "The Web Analytics site identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"x-auditable": true
 												},
 												"site_token": {
 													"description": "The Web Analytics site token.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"x-auditable": true
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
-													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"type": "string",
+													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4197,66 +4199,30 @@
 							]
 						}
 					}
-				},
-				"description": "Updated Web Analytics site."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4265,12 +4231,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4280,25 +4246,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4306,12 +4309,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -4321,7 +4322,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a Web Analytics site",
 		"tags": [
 			"Web Analytics"
 		],
@@ -4340,94 +4340,97 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
-		"description": "Updates a rule in a Web Analytics ruleset.",
 		"operationId": "web-analytics-update-rule",
+		"summary": "Update a Web Analytics rule",
+		"description": "Updates a rule in a Web Analytics ruleset.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "ruleset_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "rule_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics rule identifier.",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"host": {
-								"example": "example.com",
-								"type": "string"
+								"type": "string",
+								"example": "example.com"
 							},
 							"inclusive": {
 								"description": "Whether the rule includes or excludes traffic from being measured.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							},
 							"is_paused": {
 								"description": "Whether the rule is paused or not.",
-								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"example": false
 							},
 							"paths": {
-								"example": [
-									"*"
-								],
+								"type": "array",
 								"items": {
 									"type": "string"
 								},
-								"type": "array"
+								"example": [
+									"*"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Updated Web Analytics rule.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4440,15 +4443,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -4461,74 +4464,73 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"host": {
 													"description": "The hostname the rule will be applied to.",
-													"example": "example.com",
 													"type": "string",
+													"example": "example.com",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "The Web Analytics rule identifier.",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"type": "string",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"x-auditable": true
 												},
 												"inclusive": {
 													"description": "Whether the rule includes or excludes traffic from being measured.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"is_paused": {
 													"description": "Whether the rule is paused or not.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
 													"x-auditable": true
 												},
 												"paths": {
 													"description": "The paths the rule will be applied to.",
-													"example": [
-														"*"
-													],
+													"type": "array",
 													"items": {
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"example": [
+														"*"
+													]
 												},
 												"priority": {
-													"example": 1000,
 													"type": "number",
+													"example": 1000,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -4536,66 +4538,30 @@
 							]
 						}
 					}
-				},
-				"description": "Updated Web Analytics rule."
+				}
 			},
 			"4XX": {
+				"description": "Failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -4604,12 +4570,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -4619,25 +4585,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -4645,12 +4648,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failure response."
+				}
 			}
 		},
 		"security": [
@@ -4660,7 +4661,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a Web Analytics rule",
 		"tags": [
 			"Web Analytics"
 		],

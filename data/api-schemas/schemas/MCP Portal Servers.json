@@ -1,53 +1,59 @@
 {
 	"DELETE /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
-		"description": "Deletes an MCP portal from the account.",
 		"operationId": "mcp-portals-api-delete-servers",
+		"summary": "Delete a MCP Server",
+		"description": "Deletes an MCP portal from the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "a86a8f5c339544d7bdc89926de14fb8c",
-					"type": "string"
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "server id",
+					"type": "string",
 					"example": "my-mcp-server",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the Object if it was successfully deleted",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"auth_config_summary": {
 											"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+											"type": "object",
 											"properties": {
 												"auth_mode": {
+													"type": "string",
 													"enum": [
 														"dcr",
 														"manual"
-													],
-													"type": "string"
+													]
 												},
 												"client_secret_version": {
 													"type": "number"
 												},
 												"config": {
+													"type": "object",
 													"properties": {
 														"authorization_endpoint": {
 															"type": "string"
@@ -64,22 +70,22 @@
 														"token_endpoint": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"has_client_secret": {
 													"type": "boolean"
 												},
 												"registration_info": {
+													"type": "object",
 													"properties": {
 														"client_id": {
 															"type": "string"
 														},
 														"redirect_uris": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"scope": {
 															"type": "string"
@@ -87,42 +93,41 @@
 														"token_endpoint_auth_method": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"auth_type": {
+											"type": "string",
+											"example": "unauthenticated",
 											"enum": [
 												"oauth",
 												"bearer",
 												"unauthenticated"
-											],
-											"example": "unauthenticated",
-											"type": "string"
+											]
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"created_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"description": {
+											"type": "string",
 											"example": "This is one remote mcp server",
 											"maxLength": 512,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"error_details": {
+											"type": "object",
 											"properties": {
 												"cause": {
 													"description": "Underlying error message",
@@ -145,94 +150,94 @@
 													"type": "number"
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"hostname": {
-											"example": "https://example.com/mcp",
+											"type": "string",
 											"format": "uri",
-											"type": "string"
+											"example": "https://example.com/mcp"
 										},
 										"id": {
 											"description": "server id",
+											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
 											"minLength": 1,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 										},
 										"is_shared_oauth_callback_enabled": {
-											"default": false,
 											"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
-											"type": "boolean"
+											"type": "boolean",
+											"default": false
 										},
 										"last_successful_sync": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"last_synced": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"name": {
+											"type": "string",
 											"example": "My MCP Server",
-											"maxLength": 350,
-											"type": "string"
+											"maxLength": 350
 										},
 										"prompts": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"default": false,
 											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"type": "boolean",
 											"example": false,
-											"type": "boolean"
+											"default": false
 										},
 										"status": {
-											"default": "waiting",
 											"description": "Current sync state of the server",
+											"type": "string",
+											"example": "ready",
+											"default": "waiting",
 											"enum": [
 												"waiting",
 												"ready",
 												"stale",
 												"error"
 											],
-											"example": "ready",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"tools": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"updated_prompts": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -248,17 +253,17 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"updated_tools": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -274,8 +279,7 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -285,8 +289,7 @@
 										"auth_type",
 										"tools",
 										"prompts"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -295,28 +298,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the Object if it was successfully deleted"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -324,25 +328,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -354,7 +355,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a MCP Server",
 		"tags": [
 			"MCP Portal Servers"
 		],
@@ -374,40 +374,41 @@
 		}
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers": {
-		"description": "Lists all MCP portals configured for the account.",
 		"operationId": "mcp-portals-api-list-servers",
+		"summary": "List MCP Servers",
+		"description": "Lists all MCP portals configured for the account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "a86a8f5c339544d7bdc89926de14fb8c",
-					"type": "string"
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 1,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
+					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "search",
+				"in": "query",
 				"schema": {
 					"description": "Search by id, name",
 					"type": "string"
@@ -416,27 +417,32 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List objects",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"auth_config_summary": {
 												"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+												"type": "object",
 												"properties": {
 													"auth_mode": {
+														"type": "string",
 														"enum": [
 															"dcr",
 															"manual"
-														],
-														"type": "string"
+														]
 													},
 													"client_secret_version": {
 														"type": "number"
 													},
 													"config": {
+														"type": "object",
 														"properties": {
 															"authorization_endpoint": {
 																"type": "string"
@@ -453,22 +459,22 @@
 															"token_endpoint": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"has_client_secret": {
 														"type": "boolean"
 													},
 													"registration_info": {
+														"type": "object",
 														"properties": {
 															"client_id": {
 																"type": "string"
 															},
 															"redirect_uris": {
+																"type": "array",
 																"items": {
 																	"type": "string"
-																},
-																"type": "array"
+																}
 															},
 															"scope": {
 																"type": "string"
@@ -476,42 +482,41 @@
 															"token_endpoint_auth_method": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
-												"readOnly": true,
-												"type": "object"
+												"readOnly": true
 											},
 											"auth_type": {
+												"type": "string",
+												"example": "unauthenticated",
 												"enum": [
 													"oauth",
 													"bearer",
 													"unauthenticated"
-												],
-												"example": "unauthenticated",
-												"type": "string"
+												]
 											},
 											"created_at": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"created_by": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"description": {
+												"type": "string",
 												"example": "This is one remote mcp server",
 												"maxLength": 512,
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"error": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"error_details": {
+												"type": "object",
 												"properties": {
 													"cause": {
 														"description": "Underlying error message",
@@ -534,94 +539,94 @@
 														"type": "number"
 													}
 												},
-												"readOnly": true,
-												"type": "object"
+												"readOnly": true
 											},
 											"hostname": {
-												"example": "https://example.com/mcp",
+												"type": "string",
 												"format": "uri",
-												"type": "string"
+												"example": "https://example.com/mcp"
 											},
 											"id": {
 												"description": "server id",
+												"type": "string",
 												"example": "my-mcp-server",
 												"maxLength": 32,
 												"minLength": 1,
-												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string"
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 											},
 											"is_shared_oauth_callback_enabled": {
-												"default": false,
 												"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
-												"type": "boolean"
+												"type": "boolean",
+												"default": false
 											},
 											"last_successful_sync": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"last_synced": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"modified_at": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"modified_by": {
-												"readOnly": true,
-												"type": "string"
+												"type": "string",
+												"readOnly": true
 											},
 											"name": {
+												"type": "string",
 												"example": "My MCP Server",
-												"maxLength": 350,
-												"type": "string"
+												"maxLength": 350
 											},
 											"prompts": {
+												"type": "array",
 												"items": {
 													"additionalProperties": {},
 													"type": "object"
 												},
-												"readOnly": true,
-												"type": "array"
+												"readOnly": true
 											},
 											"secure_web_gateway": {
-												"default": false,
 												"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+												"type": "boolean",
 												"example": false,
-												"type": "boolean"
+												"default": false
 											},
 											"status": {
-												"default": "waiting",
 												"description": "Current sync state of the server",
+												"type": "string",
+												"example": "ready",
+												"default": "waiting",
 												"enum": [
 													"waiting",
 													"ready",
 													"stale",
 													"error"
 												],
-												"example": "ready",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"tools": {
+												"type": "array",
 												"items": {
 													"additionalProperties": {},
 													"type": "object"
 												},
-												"readOnly": true,
-												"type": "array"
+												"readOnly": true
 											},
 											"updated_prompts": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"alias": {
+															"type": "string",
 															"example": "my-custom-alias",
 															"maxLength": 40,
-															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-															"type": "string"
+															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 														},
 														"description": {
 															"type": "string"
@@ -637,17 +642,17 @@
 														"name"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"updated_tools": {
+												"type": "array",
 												"items": {
 													"properties": {
 														"alias": {
+															"type": "string",
 															"example": "my-custom-alias",
 															"maxLength": 40,
-															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-															"type": "string"
+															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 														},
 														"description": {
 															"type": "string"
@@ -663,8 +668,7 @@
 														"name"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -676,8 +680,7 @@
 											"prompts"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -686,19 +689,20 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List objects"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -709,27 +713,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			}
 		},
 		"security": [
@@ -741,7 +742,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List MCP Servers",
 		"tags": [
 			"MCP Portal Servers"
 		],
@@ -762,54 +762,60 @@
 		}
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
-		"description": "Retrieves gateway configuration for MCP portals.",
 		"operationId": "mcp-portals-api-fetch-servers",
+		"summary": "Read the details of a MCP Server",
+		"description": "Retrieves gateway configuration for MCP portals.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "a86a8f5c339544d7bdc89926de14fb8c",
-					"type": "string"
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
 				}
 			},
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "server id",
+					"type": "string",
 					"example": "my-mcp-server",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a single object if found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"auth_config_summary": {
 											"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+											"type": "object",
 											"properties": {
 												"auth_mode": {
+													"type": "string",
 													"enum": [
 														"dcr",
 														"manual"
-													],
-													"type": "string"
+													]
 												},
 												"client_secret_version": {
 													"type": "number"
 												},
 												"config": {
+													"type": "object",
 													"properties": {
 														"authorization_endpoint": {
 															"type": "string"
@@ -826,22 +832,22 @@
 														"token_endpoint": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"has_client_secret": {
 													"type": "boolean"
 												},
 												"registration_info": {
+													"type": "object",
 													"properties": {
 														"client_id": {
 															"type": "string"
 														},
 														"redirect_uris": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"scope": {
 															"type": "string"
@@ -849,42 +855,41 @@
 														"token_endpoint_auth_method": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"auth_type": {
+											"type": "string",
+											"example": "unauthenticated",
 											"enum": [
 												"oauth",
 												"bearer",
 												"unauthenticated"
-											],
-											"example": "unauthenticated",
-											"type": "string"
+											]
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"created_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"description": {
+											"type": "string",
 											"example": "This is one remote mcp server",
 											"maxLength": 512,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"error_details": {
+											"type": "object",
 											"properties": {
 												"cause": {
 													"description": "Underlying error message",
@@ -907,94 +912,94 @@
 													"type": "number"
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"hostname": {
-											"example": "https://example.com/mcp",
+											"type": "string",
 											"format": "uri",
-											"type": "string"
+											"example": "https://example.com/mcp"
 										},
 										"id": {
 											"description": "server id",
+											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
 											"minLength": 1,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 										},
 										"is_shared_oauth_callback_enabled": {
-											"default": false,
 											"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
-											"type": "boolean"
+											"type": "boolean",
+											"default": false
 										},
 										"last_successful_sync": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"last_synced": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"name": {
+											"type": "string",
 											"example": "My MCP Server",
-											"maxLength": 350,
-											"type": "string"
+											"maxLength": 350
 										},
 										"prompts": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"default": false,
 											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"type": "boolean",
 											"example": false,
-											"type": "boolean"
+											"default": false
 										},
 										"status": {
-											"default": "waiting",
 											"description": "Current sync state of the server",
+											"type": "string",
+											"example": "ready",
+											"default": "waiting",
 											"enum": [
 												"waiting",
 												"ready",
 												"stale",
 												"error"
 											],
-											"example": "ready",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"tools": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"updated_prompts": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -1010,17 +1015,17 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"updated_tools": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -1036,8 +1041,7 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -1047,8 +1051,7 @@
 										"auth_type",
 										"tools",
 										"prompts"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1057,28 +1060,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a single object if found"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -1086,25 +1090,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1116,7 +1117,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Read the details of a MCP Server",
 		"tags": [
 			"MCP Portal Servers"
 		],
@@ -1137,16 +1137,17 @@
 		}
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers": {
-		"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
 		"operationId": "mcp-portals-api-create-servers",
+		"summary": "Create a new MCP Server",
+		"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "a86a8f5c339544d7bdc89926de14fb8c",
-					"type": "string"
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
 				}
 			}
 		],
@@ -1154,19 +1155,20 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"auth_credentials": {
 								"type": "string",
 								"x-sensitive": true
 							},
 							"auth_type": {
+								"type": "string",
+								"example": "unauthenticated",
 								"enum": [
 									"oauth",
 									"bearer",
 									"unauthenticated"
-								],
-								"example": "unauthenticated",
-								"type": "string"
+								]
 							},
 							"client_secret": {
 								"description": "Pre-registered OAuth client_secret. Write-only - accepted on create/update when auth_credentials.auth_mode is 'manual'. Stored AES-GCM-encrypted in server_oauth_secrets; never returned by read endpoints.",
@@ -1175,48 +1177,49 @@
 								"x-sensitive": true
 							},
 							"description": {
+								"type": "string",
 								"example": "This is one remote mcp server",
 								"maxLength": 512,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"hostname": {
-								"example": "https://example.com/mcp",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/mcp"
 							},
 							"id": {
 								"description": "server id",
+								"type": "string",
 								"example": "my-mcp-server",
 								"maxLength": 32,
 								"minLength": 1,
-								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-								"type": "string"
+								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 							},
 							"is_shared_oauth_callback_enabled": {
-								"default": false,
 								"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"name": {
+								"type": "string",
 								"example": "My MCP Server",
-								"maxLength": 350,
-								"type": "string"
+								"maxLength": 350
 							},
 							"secure_web_gateway": {
-								"default": false,
 								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+								"type": "boolean",
 								"example": false,
-								"type": "boolean"
+								"default": false
 							},
 							"updated_prompts": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
-											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
 											"type": "string"
@@ -1232,17 +1235,17 @@
 										"name"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"updated_tools": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
-											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
 											"type": "string"
@@ -1258,8 +1261,7 @@
 										"name"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							}
 						},
 						"required": [
@@ -1267,34 +1269,38 @@
 							"name",
 							"hostname",
 							"auth_type"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"201": {
+				"description": "Returns the created Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"auth_config_summary": {
 											"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+											"type": "object",
 											"properties": {
 												"auth_mode": {
+													"type": "string",
 													"enum": [
 														"dcr",
 														"manual"
-													],
-													"type": "string"
+													]
 												},
 												"client_secret_version": {
 													"type": "number"
 												},
 												"config": {
+													"type": "object",
 													"properties": {
 														"authorization_endpoint": {
 															"type": "string"
@@ -1311,22 +1317,22 @@
 														"token_endpoint": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"has_client_secret": {
 													"type": "boolean"
 												},
 												"registration_info": {
+													"type": "object",
 													"properties": {
 														"client_id": {
 															"type": "string"
 														},
 														"redirect_uris": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"scope": {
 															"type": "string"
@@ -1334,42 +1340,41 @@
 														"token_endpoint_auth_method": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"auth_type": {
+											"type": "string",
+											"example": "unauthenticated",
 											"enum": [
 												"oauth",
 												"bearer",
 												"unauthenticated"
-											],
-											"example": "unauthenticated",
-											"type": "string"
+											]
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"created_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"description": {
+											"type": "string",
 											"example": "This is one remote mcp server",
 											"maxLength": 512,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"error_details": {
+											"type": "object",
 											"properties": {
 												"cause": {
 													"description": "Underlying error message",
@@ -1392,94 +1397,94 @@
 													"type": "number"
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"hostname": {
-											"example": "https://example.com/mcp",
+											"type": "string",
 											"format": "uri",
-											"type": "string"
+											"example": "https://example.com/mcp"
 										},
 										"id": {
 											"description": "server id",
+											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
 											"minLength": 1,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 										},
 										"is_shared_oauth_callback_enabled": {
-											"default": false,
 											"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
-											"type": "boolean"
+											"type": "boolean",
+											"default": false
 										},
 										"last_successful_sync": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"last_synced": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"name": {
+											"type": "string",
 											"example": "My MCP Server",
-											"maxLength": 350,
-											"type": "string"
+											"maxLength": 350
 										},
 										"prompts": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"default": false,
 											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"type": "boolean",
 											"example": false,
-											"type": "boolean"
+											"default": false
 										},
 										"status": {
-											"default": "waiting",
 											"description": "Current sync state of the server",
+											"type": "string",
+											"example": "ready",
+											"default": "waiting",
 											"enum": [
 												"waiting",
 												"ready",
 												"stale",
 												"error"
 											],
-											"example": "ready",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"tools": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"updated_prompts": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -1495,17 +1500,17 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"updated_tools": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -1521,8 +1526,7 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -1532,8 +1536,7 @@
 										"auth_type",
 										"tools",
 										"prompts"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1542,35 +1545,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -1579,25 +1583,22 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -1609,7 +1610,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a new MCP Server",
 		"tags": [
 			"MCP Portal Servers"
 		],
@@ -1629,44 +1629,49 @@
 		}
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync": {
-		"description": "Syncs an MCP server's capabilities and returns the updated server state, including any connection errors.",
 		"operationId": "mcp-portals-api-sync-server",
+		"summary": "Sync MCP Server Capabilities",
+		"description": "Syncs an MCP server's capabilities and returns the updated server state, including any connection errors.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "portal id",
+					"type": "string",
 					"example": "my-mcp-portal",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "a86a8f5c339544d7bdc89926de14fb8c",
-					"type": "string"
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Sync completed. Check result.status and result.error_details for outcome.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"error": {
 											"type": "string"
 										},
 										"error_details": {
+											"type": "object",
 											"properties": {
 												"cause": {
 													"description": "Underlying error message",
@@ -1689,20 +1694,18 @@
 													"type": "number"
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"status": {
+											"type": "string",
 											"enum": [
 												"waiting",
 												"ready",
 												"stale",
 												"error"
-											],
-											"type": "string"
+											]
 										}
-									},
-									"type": "object"
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1711,28 +1714,29 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Sync completed. Check result.status and result.error_details for outcome."
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -1740,25 +1744,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -1770,7 +1771,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Sync MCP Server Capabilities",
 		"tags": [
 			"MCP Portal Servers"
 		],
@@ -1790,29 +1790,30 @@
 		}
 	},
 	"PUT /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
-		"description": "Updates an MCP portal configuration.",
 		"operationId": "mcp-portals-api-update-servers",
+		"summary": "Update a MCP Server",
+		"description": "Updates an MCP portal configuration.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "server id",
+					"type": "string",
 					"example": "my-mcp-server",
 					"maxLength": 32,
 					"minLength": 1,
-					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "a86a8f5c339544d7bdc89926de14fb8c",
-					"type": "string"
+					"type": "string",
+					"example": "a86a8f5c339544d7bdc89926de14fb8c"
 				}
 			}
 		],
@@ -1820,6 +1821,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"auth_credentials": {
 								"type": "string",
@@ -1832,35 +1834,36 @@
 								"x-sensitive": true
 							},
 							"description": {
+								"type": "string",
 								"example": "This is one remote mcp server",
 								"maxLength": 512,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"is_shared_oauth_callback_enabled": {
-								"default": false,
 								"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"name": {
+								"type": "string",
 								"example": "My MCP Server",
-								"maxLength": 350,
-								"type": "string"
+								"maxLength": 350
 							},
 							"secure_web_gateway": {
-								"default": false,
 								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+								"type": "boolean",
 								"example": false,
-								"type": "boolean"
+								"default": false
 							},
 							"updated_prompts": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
-											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
 											"type": "string"
@@ -1876,17 +1879,17 @@
 										"name"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"updated_tools": {
+								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
-											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
 											"type": "string"
@@ -1902,37 +1905,40 @@
 										"name"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated Object",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"auth_config_summary": {
 											"description": "Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode (dcr|manual), has_client_secret, client_secret_version, and the OAuth endpoints + client_id for manual servers. Never includes the secret value.",
+											"type": "object",
 											"properties": {
 												"auth_mode": {
+													"type": "string",
 													"enum": [
 														"dcr",
 														"manual"
-													],
-													"type": "string"
+													]
 												},
 												"client_secret_version": {
 													"type": "number"
 												},
 												"config": {
+													"type": "object",
 													"properties": {
 														"authorization_endpoint": {
 															"type": "string"
@@ -1949,22 +1955,22 @@
 														"token_endpoint": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												},
 												"has_client_secret": {
 													"type": "boolean"
 												},
 												"registration_info": {
+													"type": "object",
 													"properties": {
 														"client_id": {
 															"type": "string"
 														},
 														"redirect_uris": {
+															"type": "array",
 															"items": {
 																"type": "string"
-															},
-															"type": "array"
+															}
 														},
 														"scope": {
 															"type": "string"
@@ -1972,42 +1978,41 @@
 														"token_endpoint_auth_method": {
 															"type": "string"
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"auth_type": {
+											"type": "string",
+											"example": "unauthenticated",
 											"enum": [
 												"oauth",
 												"bearer",
 												"unauthenticated"
-											],
-											"example": "unauthenticated",
-											"type": "string"
+											]
 										},
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"created_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"description": {
+											"type": "string",
 											"example": "This is one remote mcp server",
 											"maxLength": 512,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"error": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"error_details": {
+											"type": "object",
 											"properties": {
 												"cause": {
 													"description": "Underlying error message",
@@ -2030,94 +2035,94 @@
 													"type": "number"
 												}
 											},
-											"readOnly": true,
-											"type": "object"
+											"readOnly": true
 										},
 										"hostname": {
-											"example": "https://example.com/mcp",
+											"type": "string",
 											"format": "uri",
-											"type": "string"
+											"example": "https://example.com/mcp"
 										},
 										"id": {
 											"description": "server id",
+											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
 											"minLength": 1,
-											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 										},
 										"is_shared_oauth_callback_enabled": {
-											"default": false,
 											"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
-											"type": "boolean"
+											"type": "boolean",
+											"default": false
 										},
 										"last_successful_sync": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"last_synced": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"modified_by": {
-											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"readOnly": true
 										},
 										"name": {
+											"type": "string",
 											"example": "My MCP Server",
-											"maxLength": 350,
-											"type": "string"
+											"maxLength": 350
 										},
 										"prompts": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"default": false,
 											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"type": "boolean",
 											"example": false,
-											"type": "boolean"
+											"default": false
 										},
 										"status": {
-											"default": "waiting",
 											"description": "Current sync state of the server",
+											"type": "string",
+											"example": "ready",
+											"default": "waiting",
 											"enum": [
 												"waiting",
 												"ready",
 												"stale",
 												"error"
 											],
-											"example": "ready",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"tools": {
+											"type": "array",
 											"items": {
 												"additionalProperties": {},
 												"type": "object"
 											},
-											"readOnly": true,
-											"type": "array"
+											"readOnly": true
 										},
 										"updated_prompts": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -2133,17 +2138,17 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"updated_tools": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
-														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$",
-														"type": "string"
+														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
 														"type": "string"
@@ -2159,8 +2164,7 @@
 													"name"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -2170,8 +2174,7 @@
 										"auth_type",
 										"tools",
 										"prompts"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2180,35 +2183,36 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated Object"
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
-												"type": "number"
+												"type": "number",
+												"example": 7001
 											},
 											"message": {
-												"example": "Input Validation Error",
-												"type": "string"
+												"type": "string",
+												"example": "Input Validation Error"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"example": "body",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -2217,41 +2221,41 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"404": {
+				"description": "Not Found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
-												"type": "number"
+												"type": "number",
+												"example": 7002
 											},
 											"message": {
-												"example": "Not Found",
-												"type": "string"
+												"type": "string",
+												"example": "Not Found"
 											}
 										},
 										"required": [
@@ -2259,25 +2263,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not Found"
+				}
 			}
 		},
 		"security": [
@@ -2289,7 +2290,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a MCP Server",
 		"tags": [
 			"MCP Portal Servers"
 		],

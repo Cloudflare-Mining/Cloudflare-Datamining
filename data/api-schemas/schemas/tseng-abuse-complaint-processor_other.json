@@ -1,96 +1,97 @@
 {
 	"GET /accounts/{account_id}/abuse-reports": {
-		"description": "List the abuse reports for a given account",
 		"operationId": "ListAbuseReports",
+		"summary": "List abuse reports",
+		"description": "List the abuse reports for a given account",
 		"parameters": [
 			{
-				"description": "Cloudflare Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "Where in pagination to start listing abuse reports",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Where in pagination to start listing abuse reports",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"description": "How many abuse reports per page to list",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "How many abuse reports per page to list",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"description": "A property to sort by, followed by the order (id, cdate, domain, type, status)",
-				"example": "cdate,desc",
-				"in": "query",
 				"name": "sort",
+				"in": "query",
+				"description": "A property to sort by, followed by the order (id, cdate, domain, type, status)",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "cdate,desc"
 			},
 			{
-				"description": "Filter by domain name related to the abuse report",
-				"example": "example.com",
-				"in": "query",
 				"name": "domain",
+				"in": "query",
+				"description": "Filter by domain name related to the abuse report",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "example.com"
 			},
 			{
-				"description": "Returns reports created before the specified date",
-				"example": "2009-11-10T23:00:00Z",
-				"in": "query",
 				"name": "created_before",
+				"in": "query",
+				"description": "Returns reports created before the specified date",
 				"schema": {
 					"description": "Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-					"example": "2009-11-10T23:00:00Z",
-					"type": "string"
-				}
+					"type": "string",
+					"example": "2009-11-10T23:00:00Z"
+				},
+				"example": "2009-11-10T23:00:00Z"
 			},
 			{
-				"description": "Returns reports created after the specified date",
-				"example": "2009-11-10T23:00:00Z",
-				"in": "query",
 				"name": "created_after",
+				"in": "query",
+				"description": "Returns reports created after the specified date",
 				"schema": {
 					"description": "Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-					"example": "2009-11-10T23:00:00Z",
-					"type": "string"
-				}
+					"type": "string",
+					"example": "2009-11-10T23:00:00Z"
+				},
+				"example": "2009-11-10T23:00:00Z"
 			},
 			{
-				"description": "Filter by the status of the report.",
-				"example": "denied",
-				"in": "query",
 				"name": "status",
+				"in": "query",
+				"description": "Filter by the status of the report.",
 				"schema": {
 					"description": "An enum value that represents the status of an abuse record",
+					"type": "string",
 					"enum": [
 						"accepted",
 						"in_review"
-					],
-					"type": "string"
-				}
+					]
+				},
+				"example": "denied"
 			},
 			{
-				"description": "Filter by the type of the report.",
-				"example": "denied",
-				"in": "query",
 				"name": "type",
+				"in": "query",
+				"description": "Filter by the type of the report.",
 				"schema": {
 					"description": "The abuse report type",
+					"type": "string",
 					"enum": [
 						"PHISH",
 						"GEN",
@@ -101,36 +102,40 @@
 						"REG_WHO",
 						"NCSEI",
 						"NETWORK"
-					],
-					"type": "string"
-				}
+					]
+				},
+				"example": "denied"
 			},
 			{
-				"description": "Filter reports that have any mitigations in the given status.",
-				"example": "active",
-				"in": "query",
 				"name": "mitigation_status",
+				"in": "query",
+				"description": "Filter reports that have any mitigations in the given status.",
 				"schema": {
 					"description": "The status of a mitigation",
+					"type": "string",
 					"enum": [
 						"pending",
 						"active",
 						"in_review",
 						"cancelled",
 						"removed"
-					],
-					"type": "string"
-				}
+					]
+				},
+				"example": "active"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Abuse report list successful",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -138,13 +143,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -152,20 +157,21 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"reports": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"cdate": {
 														"description": "Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-														"example": "2009-11-10T23:00:00Z",
-														"type": "string"
+														"type": "string",
+														"example": "2009-11-10T23:00:00Z"
 													},
 													"domain": {
 														"description": "Domain that relates to the report.",
@@ -181,6 +187,7 @@
 													},
 													"mitigation_summary": {
 														"description": "A summary of the mitigations related to this report.",
+														"type": "object",
 														"properties": {
 															"accepted_url_count": {
 																"description": "How many of the reported URLs were confirmed as abusive.",
@@ -209,8 +216,7 @@
 															"active_count",
 															"in_review_count",
 															"external_host_notified"
-														],
-														"type": "object"
+														]
 													},
 													"original_work": {
 														"description": "Original work / Targeted brand in the alleged abuse.",
@@ -218,14 +224,15 @@
 													},
 													"status": {
 														"description": "An enum value that represents the status of an abuse record",
+														"type": "string",
 														"enum": [
 															"accepted",
 															"in_review"
-														],
-														"type": "string"
+														]
 													},
 													"submitter": {
 														"description": "Information about the submitter of the report.",
+														"type": "object",
 														"properties": {
 															"company": {
 																"type": "string"
@@ -239,11 +246,11 @@
 															"telephone": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													},
 													"type": {
 														"description": "The abuse report type",
+														"type": "string",
 														"enum": [
 															"PHISH",
 															"GEN",
@@ -254,14 +261,13 @@
 															"REG_WHO",
 															"NCSEI",
 															"NETWORK"
-														],
-														"type": "string"
+														]
 													},
 													"urls": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
 												},
 												"required": [
@@ -271,18 +277,16 @@
 													"type",
 													"status",
 													"mitigation_summary"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"reports"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -306,8 +310,7 @@
 										"count",
 										"total_count",
 										"total_pages"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -315,14 +318,13 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Abuse report list successful"
+				}
 			},
 			"401": {
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -330,27 +332,13 @@
 							"oneOf": [
 								{
 									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
-									"example": {
-										"errors": [
-											{
-												"code": 10000,
-												"message": "Authentication error"
-											}
-										],
-										"messages": [],
-										"result": null,
-										"success": false
-									},
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Cloudflare API error details.",
-											"example": [
-												{
-													"code": 10000,
-													"message": "Authentication error"
-												}
-											],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"oneOf": [
@@ -368,15 +356,20 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
 										},
 										"messages": {
 											"description": "Informational messages.",
-											"example": [],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"message": {
 														"type": "string"
@@ -384,81 +377,93 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"description": "Always null for this error response.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the request succeeded.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
 									"example": {
 										"err_code": "unknown_err",
 										"error_code": "unknown_err",
 										"msg": "Not entitled to use feature: Abuse Report API",
 										"result": "error"
 									},
-									"properties": {
-										"err_code": {
-											"description": "Machine-readable error code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"error_code": {
-											"description": "Legacy alias for err_code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"msg": {
-											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
-											"example": "Not entitled to use feature: Abuse Report API",
-											"type": "string"
-										},
-										"result": {
-											"description": "The result is 'error' for an error response.",
-											"example": "error",
-											"type": "string"
-										}
-									},
 									"required": [
 										"result",
 										"msg",
 										"err_code",
 										"error_code"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+				}
 			},
 			"500": {
+				"description": "Failed to retrieve abuse reports",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -466,13 +471,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -480,10 +485,8 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -491,12 +494,10 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to retrieve abuse reports"
+				}
 			}
 		},
 		"security": [
@@ -504,7 +505,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List abuse reports",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -518,24 +518,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/appeals/eligibility": {
-		"description": "Returns whether the report is currently appealable, along with the signals behind that decision: whether it already has an open appeal, how many appeals have been submitted against it, and whether it has at least one mitigation that an appeal could reverse.",
 		"operationId": "CheckAppealEligibility",
+		"summary": "Check whether a report can be appealed",
+		"description": "Returns whether the report is currently appealable, along with the signals behind that decision: whether it already has an open appeal, how many appeals have been submitted against it, and whether it has at least one mitigation that an appeal could reverse.",
 		"parameters": [
 			{
-				"description": "Cloudflare Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "Abuse Report ID",
-				"in": "path",
 				"name": "report_id",
+				"in": "path",
+				"description": "Abuse Report ID",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -544,12 +545,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Appeal eligibility for the report",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -557,13 +562,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -571,12 +576,11 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"appeal_count": {
 											"description": "Number of appeals submitted against the report so far.",
@@ -605,8 +609,7 @@
 										"has_open_appeal",
 										"appeal_count",
 										"max_appeals"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -614,14 +617,13 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Appeal eligibility for the report"
+				}
 			},
 			"401": {
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -629,27 +631,13 @@
 							"oneOf": [
 								{
 									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
-									"example": {
-										"errors": [
-											{
-												"code": 10000,
-												"message": "Authentication error"
-											}
-										],
-										"messages": [],
-										"result": null,
-										"success": false
-									},
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Cloudflare API error details.",
-											"example": [
-												{
-													"code": 10000,
-													"message": "Authentication error"
-												}
-											],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"oneOf": [
@@ -667,15 +655,20 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
 										},
 										"messages": {
 											"description": "Informational messages.",
-											"example": [],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"message": {
 														"type": "string"
@@ -683,81 +676,93 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"description": "Always null for this error response.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the request succeeded.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
 									"example": {
 										"err_code": "unknown_err",
 										"error_code": "unknown_err",
 										"msg": "Not entitled to use feature: Abuse Report API",
 										"result": "error"
 									},
-									"properties": {
-										"err_code": {
-											"description": "Machine-readable error code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"error_code": {
-											"description": "Legacy alias for err_code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"msg": {
-											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
-											"example": "Not entitled to use feature: Abuse Report API",
-											"type": "string"
-										},
-										"result": {
-											"description": "The result is 'error' for an error response.",
-											"example": "error",
-											"type": "string"
-										}
-									},
 									"required": [
 										"result",
 										"msg",
 										"err_code",
 										"error_code"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+				}
 			},
 			"404": {
+				"description": "The report was not found, or does not support appeals.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -765,10 +770,8 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -776,20 +779,22 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The report was not found, or does not support appeals."
+				}
 			},
 			"500": {
+				"description": "Failed to check appeal eligibility.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -797,10 +802,8 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -808,12 +811,10 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to check appeal eligibility."
+				}
 			}
 		},
 		"security": [
@@ -821,7 +822,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Check whether a report can be appealed",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -835,41 +835,42 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/emails": {
-		"description": "List emails sent to the customer for an abuse report. Returns all successful customer emails sent for the specified abuse report. Does not include emails sent to hosts or submitters.",
 		"operationId": "ListEmails",
+		"summary": "List abuse report emails",
+		"description": "List emails sent to the customer for an abuse report. Returns all successful customer emails sent for the specified abuse report. Does not include emails sent to hosts or submitters.",
 		"parameters": [
 			{
-				"description": "Cloudflare Account ID",
-				"in": "path",
 				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
-				}
-			},
-			{
-				"description": "Abuse Report ID",
 				"in": "path",
+				"description": "Cloudflare Account ID",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
 				"name": "report_id",
+				"in": "path",
+				"description": "Abuse Report ID",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Page number to retrieve (default 1)",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Page number to retrieve (default 1)",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of emails per page (default 20, max 100)",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of emails per page (default 20, max 100)",
 				"schema": {
 					"type": "integer"
 				}
@@ -877,12 +878,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "List abuse report emails successful",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -890,13 +895,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -904,16 +909,17 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"emails": {
+											"type": "array",
 											"items": {
 												"description": "An email sent to the customer for an abuse report.",
+												"type": "object",
 												"properties": {
 													"body": {
 														"description": "Body content of the email.",
@@ -929,8 +935,8 @@
 													},
 													"sent_at": {
 														"description": "When the email was sent. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-														"example": "2009-11-10T23:00:00Z",
-														"type": "string"
+														"type": "string",
+														"example": "2009-11-10T23:00:00Z"
 													},
 													"subject": {
 														"description": "Subject line of the email.",
@@ -943,18 +949,16 @@
 													"body",
 													"recipient",
 													"sent_at"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"emails"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -978,8 +982,7 @@
 										"count",
 										"total_count",
 										"total_pages"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -987,20 +990,22 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List abuse report emails successful"
+				}
 			},
 			"400": {
+				"description": "Bad request - invalid parameters or report not found",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1008,13 +1013,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1022,10 +1027,8 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1033,14 +1036,13 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request - invalid parameters or report not found"
+				}
 			},
 			"401": {
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1048,27 +1050,13 @@
 							"oneOf": [
 								{
 									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
-									"example": {
-										"errors": [
-											{
-												"code": 10000,
-												"message": "Authentication error"
-											}
-										],
-										"messages": [],
-										"result": null,
-										"success": false
-									},
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Cloudflare API error details.",
-											"example": [
-												{
-													"code": 10000,
-													"message": "Authentication error"
-												}
-											],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"oneOf": [
@@ -1086,15 +1074,20 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
 										},
 										"messages": {
 											"description": "Informational messages.",
-											"example": [],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"message": {
 														"type": "string"
@@ -1102,81 +1095,93 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"description": "Always null for this error response.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the request succeeded.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
 									"example": {
 										"err_code": "unknown_err",
 										"error_code": "unknown_err",
 										"msg": "Not entitled to use feature: Abuse Report API",
 										"result": "error"
 									},
-									"properties": {
-										"err_code": {
-											"description": "Machine-readable error code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"error_code": {
-											"description": "Legacy alias for err_code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"msg": {
-											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
-											"example": "Not entitled to use feature: Abuse Report API",
-											"type": "string"
-										},
-										"result": {
-											"description": "The result is 'error' for an error response.",
-											"example": "error",
-											"type": "string"
-										}
-									},
 									"required": [
 										"result",
 										"msg",
 										"err_code",
 										"error_code"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+				}
 			},
 			"500": {
+				"description": "Failed to list abuse report emails",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1184,13 +1189,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1198,10 +1203,8 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1209,12 +1212,10 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to list abuse report emails"
+				}
 			}
 		},
 		"security": [
@@ -1222,7 +1223,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List abuse report emails",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -1236,51 +1236,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/mitigations": {
-		"description": "List mitigations done to remediate the abuse report.",
 		"operationId": "ListMitigations",
+		"summary": "List abuse report mitigations",
+		"description": "List mitigations done to remediate the abuse report.",
 		"parameters": [
 			{
-				"description": "Cloudflare Account ID",
-				"in": "path",
 				"name": "account_id",
-				"required": true,
-				"schema": {
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
-				}
-			},
-			{
-				"description": "Abuse Report ID",
 				"in": "path",
+				"description": "Cloudflare Account ID",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
 				"name": "report_id",
+				"in": "path",
+				"description": "Abuse Report ID",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"description": "Where in pagination to start listing abuse reports",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Where in pagination to start listing abuse reports",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"description": "How many abuse reports per page to list",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "How many abuse reports per page to list",
 				"schema": {
 					"type": "integer"
 				}
 			},
 			{
-				"description": "A property to sort by, followed by the order",
-				"example": "type,desc",
-				"in": "query",
 				"name": "sort",
+				"in": "query",
+				"description": "A property to sort by, followed by the order",
 				"schema": {
+					"type": "string",
 					"enum": [
 						"type,asc",
 						"type,desc",
@@ -1290,16 +1291,17 @@
 						"status,desc",
 						"entity_type,asc",
 						"entity_type,desc"
-					],
-					"type": "string"
-				}
+					]
+				},
+				"example": "type,desc"
 			},
 			{
-				"description": "Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_block.",
-				"in": "query",
 				"name": "type",
+				"in": "query",
+				"description": "Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_block.",
 				"schema": {
 					"description": "The type of mitigation applied to a reported entity.",
+					"type": "string",
 					"enum": [
 						"account_suspend",
 						"copyright_interstitial",
@@ -1321,71 +1323,74 @@
 						"stream_block_account",
 						"user_suspend",
 						"workers_takedown_by_zone_id"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Returns mitigations that were dispatched before the given date",
-				"example": "2009-11-10T23:00:00Z",
-				"in": "query",
 				"name": "effective_before",
+				"in": "query",
+				"description": "Returns mitigations that were dispatched before the given date",
 				"schema": {
 					"description": "Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-					"example": "2009-11-10T23:00:00Z",
-					"type": "string"
-				}
+					"type": "string",
+					"example": "2009-11-10T23:00:00Z"
+				},
+				"example": "2009-11-10T23:00:00Z"
 			},
 			{
-				"description": "Returns mitigation that were dispatched after the given date",
-				"example": "2009-11-10T23:00:00Z",
-				"in": "query",
 				"name": "effective_after",
+				"in": "query",
+				"description": "Returns mitigation that were dispatched after the given date",
 				"schema": {
 					"description": "Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-					"example": "2009-11-10T23:00:00Z",
-					"type": "string"
-				}
+					"type": "string",
+					"example": "2009-11-10T23:00:00Z"
+				},
+				"example": "2009-11-10T23:00:00Z"
 			},
 			{
-				"description": "Filter by the status of the mitigation.",
-				"in": "query",
 				"name": "status",
+				"in": "query",
+				"description": "Filter by the status of the mitigation.",
 				"schema": {
 					"description": "The status of a mitigation",
+					"type": "string",
 					"enum": [
 						"pending",
 						"active",
 						"in_review",
 						"cancelled",
 						"removed"
-					],
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filter by the type of entity the mitigation impacts.",
-				"in": "query",
 				"name": "entity_type",
+				"in": "query",
+				"description": "Filter by the type of entity the mitigation impacts.",
 				"schema": {
 					"description": "The type of entity targeted by a mitigation.",
+					"type": "string",
 					"enum": [
 						"url_pattern",
 						"account",
 						"zone"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List abuse report mitigations successful",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1393,13 +1398,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1407,32 +1412,33 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"mitigations": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"effective_date": {
 														"description": "Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-														"example": "2009-11-10T23:00:00Z",
-														"type": "string"
+														"type": "string",
+														"example": "2009-11-10T23:00:00Z"
 													},
 													"entity_id": {
 														"type": "string"
 													},
 													"entity_type": {
 														"description": "The type of entity targeted by a mitigation.",
+														"type": "string",
 														"enum": [
 															"url_pattern",
 															"account",
 															"zone"
-														],
-														"type": "string"
+														]
 													},
 													"id": {
 														"description": "ID of remediation.",
@@ -1440,17 +1446,18 @@
 													},
 													"status": {
 														"description": "The status of a mitigation",
+														"type": "string",
 														"enum": [
 															"pending",
 															"active",
 															"in_review",
 															"cancelled",
 															"removed"
-														],
-														"type": "string"
+														]
 													},
 													"type": {
 														"description": "The type of mitigation applied to a reported entity.",
+														"type": "string",
 														"enum": [
 															"account_suspend",
 															"copyright_interstitial",
@@ -1472,8 +1479,7 @@
 															"stream_block_account",
 															"user_suspend",
 															"workers_takedown_by_zone_id"
-														],
-														"type": "string"
+														]
 													}
 												},
 												"required": [
@@ -1483,18 +1489,16 @@
 													"status",
 													"entity_type",
 													"entity_id"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"required": [
 										"mitigations"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -1518,8 +1522,7 @@
 										"count",
 										"total_count",
 										"total_pages"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1527,14 +1530,13 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List abuse report mitigations successful"
+				}
 			},
 			"401": {
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1542,27 +1544,13 @@
 							"oneOf": [
 								{
 									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
-									"example": {
-										"errors": [
-											{
-												"code": 10000,
-												"message": "Authentication error"
-											}
-										],
-										"messages": [],
-										"result": null,
-										"success": false
-									},
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Cloudflare API error details.",
-											"example": [
-												{
-													"code": 10000,
-													"message": "Authentication error"
-												}
-											],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"oneOf": [
@@ -1580,15 +1568,20 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
 										},
 										"messages": {
 											"description": "Informational messages.",
-											"example": [],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"message": {
 														"type": "string"
@@ -1596,81 +1589,93 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"description": "Always null for this error response.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the request succeeded.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
 									"example": {
 										"err_code": "unknown_err",
 										"error_code": "unknown_err",
 										"msg": "Not entitled to use feature: Abuse Report API",
 										"result": "error"
 									},
-									"properties": {
-										"err_code": {
-											"description": "Machine-readable error code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"error_code": {
-											"description": "Legacy alias for err_code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"msg": {
-											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
-											"example": "Not entitled to use feature: Abuse Report API",
-											"type": "string"
-										},
-										"result": {
-											"description": "The result is 'error' for an error response.",
-											"example": "error",
-											"type": "string"
-										}
-									},
 									"required": [
 										"result",
 										"msg",
 										"err_code",
 										"error_code"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+				}
 			},
 			"500": {
+				"description": "Failed to list abuse report mitigations",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1678,13 +1683,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1692,10 +1697,8 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -1703,12 +1706,10 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to list abuse report mitigations"
+				}
 			}
 		},
 		"security": [
@@ -1716,7 +1717,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List abuse report mitigations",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -1730,24 +1730,25 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_param}": {
-		"description": "Retrieve the details of an abuse report.",
 		"operationId": "GetAbuseReport",
+		"summary": "Abuse Report Details",
+		"description": "Retrieve the details of an abuse report.",
 		"parameters": [
 			{
-				"description": "Cloudflare Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "Identifier of the abuse report",
-				"in": "path",
 				"name": "report_param",
+				"in": "path",
+				"description": "Identifier of the abuse report",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1756,12 +1757,16 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Report submitted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"oneOf": [
@@ -1779,13 +1784,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1793,17 +1798,16 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"cdate": {
 											"description": "Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-											"example": "2009-11-10T23:00:00Z",
-											"type": "string"
+											"type": "string",
+											"example": "2009-11-10T23:00:00Z"
 										},
 										"domain": {
 											"description": "Domain that relates to the report.",
@@ -1819,6 +1823,7 @@
 										},
 										"mitigation_summary": {
 											"description": "A summary of the mitigations related to this report.",
+											"type": "object",
 											"properties": {
 												"accepted_url_count": {
 													"description": "How many of the reported URLs were confirmed as abusive.",
@@ -1847,8 +1852,7 @@
 												"active_count",
 												"in_review_count",
 												"external_host_notified"
-											],
-											"type": "object"
+											]
 										},
 										"original_work": {
 											"description": "Original work / Targeted brand in the alleged abuse.",
@@ -1856,14 +1860,15 @@
 										},
 										"status": {
 											"description": "An enum value that represents the status of an abuse record",
+											"type": "string",
 											"enum": [
 												"accepted",
 												"in_review"
-											],
-											"type": "string"
+											]
 										},
 										"submitter": {
 											"description": "Information about the submitter of the report.",
+											"type": "object",
 											"properties": {
 												"company": {
 													"type": "string"
@@ -1877,11 +1882,11 @@
 												"telephone": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"type": {
 											"description": "The abuse report type",
+											"type": "string",
 											"enum": [
 												"PHISH",
 												"GEN",
@@ -1892,14 +1897,13 @@
 												"REG_WHO",
 												"NCSEI",
 												"NETWORK"
-											],
-											"type": "string"
+											]
 										},
 										"urls": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -1909,8 +1913,7 @@
 										"type",
 										"status",
 										"mitigation_summary"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1919,20 +1922,22 @@
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Report submitted successfully"
+				}
 			},
 			"400": {
+				"description": "Report submitted with an error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"oneOf": [
@@ -1950,13 +1955,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1964,17 +1969,16 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"cdate": {
 											"description": "Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-											"example": "2009-11-10T23:00:00Z",
-											"type": "string"
+											"type": "string",
+											"example": "2009-11-10T23:00:00Z"
 										},
 										"domain": {
 											"description": "Domain that relates to the report.",
@@ -1990,6 +1994,7 @@
 										},
 										"mitigation_summary": {
 											"description": "A summary of the mitigations related to this report.",
+											"type": "object",
 											"properties": {
 												"accepted_url_count": {
 													"description": "How many of the reported URLs were confirmed as abusive.",
@@ -2018,8 +2023,7 @@
 												"active_count",
 												"in_review_count",
 												"external_host_notified"
-											],
-											"type": "object"
+											]
 										},
 										"original_work": {
 											"description": "Original work / Targeted brand in the alleged abuse.",
@@ -2027,14 +2031,15 @@
 										},
 										"status": {
 											"description": "An enum value that represents the status of an abuse record",
+											"type": "string",
 											"enum": [
 												"accepted",
 												"in_review"
-											],
-											"type": "string"
+											]
 										},
 										"submitter": {
 											"description": "Information about the submitter of the report.",
+											"type": "object",
 											"properties": {
 												"company": {
 													"type": "string"
@@ -2048,11 +2053,11 @@
 												"telephone": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"type": {
 											"description": "The abuse report type",
+											"type": "string",
 											"enum": [
 												"PHISH",
 												"GEN",
@@ -2063,14 +2068,13 @@
 												"REG_WHO",
 												"NCSEI",
 												"NETWORK"
-											],
-											"type": "string"
+											]
 										},
 										"urls": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -2080,8 +2084,7 @@
 										"type",
 										"status",
 										"mitigation_summary"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2090,14 +2093,13 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Report submitted with an error"
+				}
 			},
 			"401": {
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2105,27 +2107,13 @@
 							"oneOf": [
 								{
 									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
-									"example": {
-										"errors": [
-											{
-												"code": 10000,
-												"message": "Authentication error"
-											}
-										],
-										"messages": [],
-										"result": null,
-										"success": false
-									},
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Cloudflare API error details.",
-											"example": [
-												{
-													"code": 10000,
-													"message": "Authentication error"
-												}
-											],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"oneOf": [
@@ -2143,15 +2131,20 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
 										},
 										"messages": {
 											"description": "Informational messages.",
-											"example": [],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"message": {
 														"type": "string"
@@ -2159,81 +2152,93 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"description": "Always null for this error response.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the request succeeded.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
 									"example": {
 										"err_code": "unknown_err",
 										"error_code": "unknown_err",
 										"msg": "Not entitled to use feature: Abuse Report API",
 										"result": "error"
 									},
-									"properties": {
-										"err_code": {
-											"description": "Machine-readable error code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"error_code": {
-											"description": "Legacy alias for err_code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"msg": {
-											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
-											"example": "Not entitled to use feature: Abuse Report API",
-											"type": "string"
-										},
-										"result": {
-											"description": "The result is 'error' for an error response.",
-											"example": "error",
-											"type": "string"
-										}
-									},
 									"required": [
 										"result",
 										"msg",
 										"err_code",
 										"error_code"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+				}
 			},
 			"500": {
+				"description": "Report submitted with an error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"oneOf": [
@@ -2251,13 +2256,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2265,17 +2270,16 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"cdate": {
 											"description": "Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-											"example": "2009-11-10T23:00:00Z",
-											"type": "string"
+											"type": "string",
+											"example": "2009-11-10T23:00:00Z"
 										},
 										"domain": {
 											"description": "Domain that relates to the report.",
@@ -2291,6 +2295,7 @@
 										},
 										"mitigation_summary": {
 											"description": "A summary of the mitigations related to this report.",
+											"type": "object",
 											"properties": {
 												"accepted_url_count": {
 													"description": "How many of the reported URLs were confirmed as abusive.",
@@ -2319,8 +2324,7 @@
 												"active_count",
 												"in_review_count",
 												"external_host_notified"
-											],
-											"type": "object"
+											]
 										},
 										"original_work": {
 											"description": "Original work / Targeted brand in the alleged abuse.",
@@ -2328,14 +2332,15 @@
 										},
 										"status": {
 											"description": "An enum value that represents the status of an abuse record",
+											"type": "string",
 											"enum": [
 												"accepted",
 												"in_review"
-											],
-											"type": "string"
+											]
 										},
 										"submitter": {
 											"description": "Information about the submitter of the report.",
+											"type": "object",
 											"properties": {
 												"company": {
 													"type": "string"
@@ -2349,11 +2354,11 @@
 												"telephone": {
 													"type": "string"
 												}
-											},
-											"type": "object"
+											}
 										},
 										"type": {
 											"description": "The abuse report type",
+											"type": "string",
 											"enum": [
 												"PHISH",
 												"GEN",
@@ -2364,14 +2369,13 @@
 												"REG_WHO",
 												"NCSEI",
 												"NETWORK"
-											],
-											"type": "string"
+											]
 										},
 										"urls": {
+											"type": "array",
 											"items": {
 												"type": "string"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
@@ -2381,8 +2385,7 @@
 										"type",
 										"status",
 										"mitigation_summary"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2391,12 +2394,10 @@
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Report submitted with an error"
+				}
 			}
 		},
 		"security": [
@@ -2404,7 +2405,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Abuse Report Details",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -2418,24 +2418,25 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
-		"description": "Request a review for mitigations on an account.",
 		"operationId": "RequestReview",
+		"summary": "Request review on mitigations",
+		"description": "Request a review for mitigations on an account.",
 		"parameters": [
 			{
-				"description": "Cloudflare Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "Abuse Report ID",
-				"in": "path",
 				"name": "report_id",
+				"in": "path",
+				"description": "Abuse Report ID",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2443,26 +2444,18 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "Submit an appeal for a report. Provide either a list of mitigations to appeal, or an appeal type with its supporting details, but not both. When type is \"counter_notice\", the counter-notice details are required.",
-						"oneOf": [
-							{
-								"required": [
-									"appeals"
-								]
-							},
-							{
-								"required": [
-									"type"
-								]
-							}
-						],
+						"type": "object",
 						"properties": {
 							"appeals": {
 								"description": "List of mitigations to appeal.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"id": {
 											"description": "ID of the mitigation to appeal.",
@@ -2470,24 +2463,23 @@
 										},
 										"reason": {
 											"description": "Reason why the customer is appealing.",
+											"type": "string",
+											"example": "misclassified",
 											"enum": [
 												"removed",
 												"misclassified"
-											],
-											"example": "misclassified",
-											"type": "string"
+											]
 										}
 									},
 									"required": [
 										"id",
 										"reason"
-									],
-									"type": "object"
-								},
-								"type": "array"
+									]
+								}
 							},
 							"data": {
 								"description": "Counter-notice details supporting an appeal.",
+								"type": "object",
 								"properties": {
 									"city": {
 										"type": "string"
@@ -2502,8 +2494,8 @@
 										"type": "string"
 									},
 									"email": {
-										"format": "email",
-										"type": "string"
+										"type": "string",
+										"format": "email"
 									},
 									"full_name": {
 										"type": "string"
@@ -2527,11 +2519,11 @@
 										"type": "string"
 									},
 									"urls": {
+										"type": "array",
 										"items": {
 											"format": "uri",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"zip_code": {
 										"type": "string"
@@ -2550,33 +2542,46 @@
 									"perjury_attestation",
 									"jurisdiction_consent",
 									"signature"
-								],
-								"type": "object"
+								]
 							},
 							"type": {
 								"description": "The type of appeal being submitted.",
+								"type": "string",
+								"example": "counter_notice",
 								"enum": [
 									"counter_notice",
 									"content_removed"
-								],
-								"example": "counter_notice",
-								"type": "string"
+								]
 							}
 						},
-						"type": "object"
+						"oneOf": [
+							{
+								"required": [
+									"appeals"
+								]
+							},
+							{
+								"required": [
+									"type"
+								]
+							}
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Mitigation appeals received",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2584,13 +2589,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2598,30 +2603,30 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"effective_date": {
 												"description": "Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
-												"example": "2009-11-10T23:00:00Z",
-												"type": "string"
+												"type": "string",
+												"example": "2009-11-10T23:00:00Z"
 											},
 											"entity_id": {
 												"type": "string"
 											},
 											"entity_type": {
 												"description": "The type of entity targeted by a mitigation.",
+												"type": "string",
 												"enum": [
 													"url_pattern",
 													"account",
 													"zone"
-												],
-												"type": "string"
+												]
 											},
 											"id": {
 												"description": "ID of remediation.",
@@ -2629,17 +2634,18 @@
 											},
 											"status": {
 												"description": "The status of a mitigation",
+												"type": "string",
 												"enum": [
 													"pending",
 													"active",
 													"in_review",
 													"cancelled",
 													"removed"
-												],
-												"type": "string"
+												]
 											},
 											"type": {
 												"description": "The type of mitigation applied to a reported entity.",
+												"type": "string",
 												"enum": [
 													"account_suspend",
 													"copyright_interstitial",
@@ -2661,8 +2667,7 @@
 													"stream_block_account",
 													"user_suspend",
 													"workers_takedown_by_zone_id"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -2672,12 +2677,11 @@
 											"status",
 											"entity_type",
 											"entity_id"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -2701,8 +2705,7 @@
 										"count",
 										"total_count",
 										"total_pages"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2711,14 +2714,13 @@
 							"required": [
 								"success",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Mitigation appeals received"
+				}
 			},
 			"401": {
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nedit permission required for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2726,27 +2728,13 @@
 							"oneOf": [
 								{
 									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
-									"example": {
-										"errors": [
-											{
-												"code": 10000,
-												"message": "Authentication error"
-											}
-										],
-										"messages": [],
-										"result": null,
-										"success": false
-									},
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Cloudflare API error details.",
-											"example": [
-												{
-													"code": 10000,
-													"message": "Authentication error"
-												}
-											],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"oneOf": [
@@ -2764,15 +2752,20 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
 										},
 										"messages": {
 											"description": "Informational messages.",
-											"example": [],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"message": {
 														"type": "string"
@@ -2780,81 +2773,93 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"description": "Always null for this error response.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the request succeeded.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
 									"example": {
 										"err_code": "unknown_err",
 										"error_code": "unknown_err",
 										"msg": "Not entitled to use feature: Abuse Report API",
 										"result": "error"
 									},
-									"properties": {
-										"err_code": {
-											"description": "Machine-readable error code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"error_code": {
-											"description": "Legacy alias for err_code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"msg": {
-											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
-											"example": "Not entitled to use feature: Abuse Report API",
-											"type": "string"
-										},
-										"result": {
-											"description": "The result is 'error' for an error response.",
-											"example": "error",
-											"type": "string"
-										}
-									},
 									"required": [
 										"result",
 										"msg",
 										"err_code",
 										"error_code"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nedit permission required for this account."
+				}
 			},
 			"500": {
+				"description": "Failed to request review on delayed action.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2862,13 +2867,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2876,10 +2881,8 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"type": "boolean"
@@ -2887,12 +2890,10 @@
 							},
 							"required": [
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Failed to request review on delayed action."
+				}
 			}
 		},
 		"security": [
@@ -2900,7 +2901,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Request review on mitigations",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -2913,24 +2913,25 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
-		"description": "Submit an abuse report of a particular type.\n\nRequires the abuse-reports entitlement on the account (Enterprise\naccounts have it by default; other accounts must request access) and an\nAPI token with the `Account > Abuse Reports > Edit` permission. If the\naccount is not entitled, the request is rejected with an HTTP `401`\nresponse (see below).",
 		"operationId": "SubmitAbuseReport",
+		"summary": "Submit an abuse report",
+		"description": "Submit an abuse report of a particular type.\n\nRequires the abuse-reports entitlement on the account (Enterprise\naccounts have it by default; other accounts must request access) and an\nAPI token with the `Account > Abuse Reports > Edit` permission. If the\naccount is not entitled, the request is rejected with an HTTP `401`\nresponse (see below).",
 		"parameters": [
 			{
-				"description": "Cloudflare Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare Account ID",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			},
 			{
-				"description": "The report type to be submitted. Example: abuse_general",
-				"in": "path",
 				"name": "report_param",
+				"in": "path",
+				"description": "The report type to be submitted. Example: abuse_general",
 				"required": true,
 				"schema": {
 					"description": "The report type for submitted reports.",
@@ -2939,6 +2940,7 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -2957,8 +2959,10 @@
 						},
 						"oneOf": [
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -2966,15 +2970,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -2986,33 +2990,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3025,8 +3029,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3037,54 +3040,54 @@
 											},
 											"address1": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"agent_name": {
 												"description": "The name of the copyright holder. Text not exceeding 60 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 60,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"agree": {
 												"description": "Can be `0` for false or `1` for true. Must be value: 1 for DMCA reports",
+												"type": "integer",
 												"enum": [
 													1
-												],
-												"type": "integer"
+												]
 											},
 											"city": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"country": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"host_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send"
-												],
-												"type": "string"
+												]
 											},
 											"original_work": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send"
-												],
-												"type": "string"
+												]
 											},
 											"signature": {
 												"description": "Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports",
@@ -3092,9 +3095,9 @@
 											},
 											"state": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											}
 										},
 										"required": [
@@ -3111,12 +3114,13 @@
 										],
 										"title": "DMCA Report"
 									}
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -3124,15 +3128,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3144,33 +3148,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3183,8 +3187,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3195,41 +3198,41 @@
 											},
 											"host_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send"
-												],
-												"type": "string"
+												]
 											},
 											"justification": {
 												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"type": "string",
 												"maxLength": 5000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send"
-												],
-												"type": "string"
+												]
 											},
 											"trademark_number": {
 												"description": "Text not exceeding 1000 characters",
+												"type": "string",
 												"maxLength": 1000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"trademark_office": {
 												"description": "Text not exceeding 1000 characters",
+												"type": "string",
 												"maxLength": 1000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"trademark_symbol": {
 												"description": "Text not exceeding 1000 characters",
+												"type": "string",
 												"maxLength": 1000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											}
 										},
 										"required": [
@@ -3242,12 +3245,13 @@
 										],
 										"title": "Trademark Report"
 									}
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -3255,15 +3259,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3275,33 +3279,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3314,8 +3318,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3330,25 +3333,25 @@
 											},
 											"host_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											},
 											"justification": {
 												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"type": "string",
 												"maxLength": 5000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											},
 											"ports_protocols": {
 												"description": "A comma separated list of ports and protocols e.g. 80/TCP, 22/UDP. The total size of the field should not exceed 2000 characters. Each individual port/protocol should not exceed 100 characters. The list should not have more than 30 unique ports and protocols.",
@@ -3366,12 +3369,13 @@
 										],
 										"title": "General Report"
 									}
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -3379,15 +3383,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3399,33 +3403,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3438,8 +3442,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3450,31 +3453,31 @@
 											},
 											"host_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											},
 											"justification": {
 												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"type": "string",
 												"maxLength": 5000,
-												"minLength": 20,
-												"type": "string"
+												"minLength": 20
 											},
 											"original_work": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -3484,12 +3487,13 @@
 										],
 										"title": "Phishing Report"
 									}
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -3497,15 +3501,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3517,33 +3521,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3556,8 +3560,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3568,40 +3571,40 @@
 											},
 											"country": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"host_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											},
 											"justification": {
 												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"type": "string",
 												"maxLength": 5000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"ncmec_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon",
 													"none"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -3612,12 +3615,13 @@
 										],
 										"title": "Children Abuse Report"
 									}
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -3625,15 +3629,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3645,33 +3649,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3684,8 +3688,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3696,25 +3699,25 @@
 											},
 											"host_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											},
 											"justification": {
 												"description": "A detailed description of the infringement, including any necessary access details and the exact steps needed to view the content, not exceeding 5000 characters.\n",
+												"type": "string",
 												"maxLength": 5000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -3724,12 +3727,13 @@
 										],
 										"title": "Threat Report"
 									}
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -3737,15 +3741,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3757,33 +3761,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3796,8 +3800,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3808,20 +3811,21 @@
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon",
 													"none"
-												],
-												"type": "string"
+												]
 											},
 											"reg_who_request": {
 												"description": "RDP-mandated fields for registrar WHOIS data disclosure requests.",
+												"type": "object",
 												"properties": {
 													"reg_who_authorization_statement": {
 														"description": "Optional authorization statement or power of attorney per RDP 10.2.1.3.",
-														"maxLength": 5000,
-														"type": "string"
+														"type": "string",
+														"maxLength": 5000
 													},
 													"reg_who_good_faith_affirmation": {
 														"description": "Affirmation that the request is made in good faith per RDP 10.2.4. Must be true.",
@@ -3833,19 +3837,20 @@
 													},
 													"reg_who_legal_basis": {
 														"description": "Legal rights and rationale for the request per RDP 10.2.3. Required for all WHOIS requests.",
-														"maxLength": 5000,
-														"type": "string"
+														"type": "string",
+														"maxLength": 5000
 													},
 													"reg_who_request_type": {
 														"description": "The type of WHOIS data request per RDP procedure.",
+														"type": "string",
 														"enum": [
 															"disclosure",
 															"invalid_whois"
-														],
-														"type": "string"
+														]
 													},
 													"reg_who_requested_data_elements": {
 														"description": "The specific WHOIS data elements being requested per RDP 10.2.2. Required for all WHOIS requests.",
+														"type": "array",
 														"items": {
 															"enum": [
 																"registrant_name",
@@ -3869,17 +3874,16 @@
 															"type": "string"
 														},
 														"maxItems": 17,
-														"minItems": 1,
-														"type": "array"
+														"minItems": 1
 													},
 													"reg_who_requestor_type": {
 														"description": "The nature of the requestor per RDP 10.2.1.2.",
+														"type": "string",
 														"enum": [
 															"government",
 															"corporation",
 															"individual"
-														],
-														"type": "string"
+														]
 													}
 												},
 												"required": [
@@ -3888,8 +3892,7 @@
 													"reg_who_legal_basis",
 													"reg_who_good_faith_affirmation",
 													"reg_who_lawful_processing_agreement"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"required": [
@@ -3897,12 +3900,13 @@
 										],
 										"title": "Registrar Whois Report"
 									}
-								],
-								"type": "object"
+								]
 							},
 							{
+								"type": "object",
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"act": {
 												"description": "The report type for submitted reports.",
@@ -3910,15 +3914,15 @@
 											},
 											"comments": {
 												"description": "Any additional comments about the infringement not exceeding 2000 characters",
+												"type": "string",
 												"maxLength": 2000,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"company": {
 												"description": "Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 100,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"email": {
 												"description": "A valid email of the abuse reporter. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3930,33 +3934,33 @@
 											},
 											"name": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"reported_country": {
 												"description": "Text containing 2 characters",
+												"type": "string",
 												"maxLength": 2,
-												"minLength": 2,
-												"type": "string"
+												"minLength": 2
 											},
 											"reported_user_agent": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"tele": {
 												"description": "Text not exceeding 20 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
+												"type": "string",
 												"maxLength": 20,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"title": {
 												"description": "Text not exceeding 255 characters",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"urls": {
 												"description": "A list of valid URLs separated by ‘\\n’ (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).",
@@ -3969,8 +3973,7 @@
 											"email2",
 											"name",
 											"urls"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
@@ -3981,17 +3984,17 @@
 											},
 											"country": {
 												"description": "Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/).\n",
+												"type": "string",
 												"maxLength": 255,
-												"minLength": 1,
-												"type": "string"
+												"minLength": 1
 											},
 											"host_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon"
-												],
-												"type": "string"
+												]
 											},
 											"ncsei_subject_representation": {
 												"description": "If the submitter is the target of NCSEI in the URLs of the abuse report.",
@@ -3999,12 +4002,12 @@
 											},
 											"owner_notification": {
 												"description": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.\n",
+												"type": "string",
 												"enum": [
 													"send",
 													"send-anon",
 													"none"
-												],
-												"type": "string"
+												]
 											}
 										},
 										"required": [
@@ -4014,26 +4017,27 @@
 										],
 										"title": "NCSEI Report"
 									}
-								],
-								"type": "object"
+								]
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Report submitted successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"abuse_rand": {
 									"description": "The identifier for the submitted abuse report.",
 									"type": "string"
 								},
 								"request": {
+									"type": "object",
 									"properties": {
 										"act": {
 											"description": "The report type for submitted reports.",
@@ -4042,8 +4046,7 @@
 									},
 									"required": [
 										"act"
-									],
-									"type": "object"
+									]
 								},
 								"result": {
 									"description": "The result should be 'success' for successful response",
@@ -4054,19 +4057,20 @@
 								"request",
 								"result",
 								"abuse_rand"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Report submitted successfully"
+				}
 			},
 			"400": {
+				"description": "Report submitted with an error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"err_code": {
+									"type": "string",
 									"oneOf": [
 										{
 											"description": "Report has invalid type",
@@ -4184,10 +4188,10 @@
 											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
 											"type": "string"
 										}
-									],
-									"type": "string"
+									]
 								},
 								"error_code": {
+									"type": "string",
 									"oneOf": [
 										{
 											"description": "Report has invalid type",
@@ -4305,14 +4309,14 @@
 											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
 											"type": "string"
 										}
-									],
-									"type": "string"
+									]
 								},
 								"msg": {
 									"description": "The error message for the error",
 									"type": "string"
 								},
 								"request": {
+									"type": "object",
 									"properties": {
 										"act": {
 											"description": "The report type for submitted reports.",
@@ -4321,8 +4325,7 @@
 									},
 									"required": [
 										"act"
-									],
-									"type": "object"
+									]
 								},
 								"result": {
 									"description": "The result should be 'error' for successful response",
@@ -4335,14 +4338,13 @@
 								"msg",
 								"err_code",
 								"error_code"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Report submitted with an error"
+				}
 			},
 			"401": {
+				"description": "The request is not authorized to submit abuse reports. Missing or\ninvalid credentials may be rejected with the standard Cloudflare API\nauthentication error. If credentials are valid, this is most commonly\nbecause the account does not have the abuse-reports entitlement\n(Enterprise accounts have it by default; other accounts must request\naccess), or because the API token is missing the\n`Account > Abuse Reports > Edit` permission. Entitlement failures\nreturn the message `Not entitled to use feature: Abuse Report API`.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4350,27 +4352,13 @@
 							"oneOf": [
 								{
 									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
-									"example": {
-										"errors": [
-											{
-												"code": 10000,
-												"message": "Authentication error"
-											}
-										],
-										"messages": [],
-										"result": null,
-										"success": false
-									},
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "Cloudflare API error details.",
-											"example": [
-												{
-													"code": 10000,
-													"message": "Authentication error"
-												}
-											],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"code": {
 														"oneOf": [
@@ -4388,15 +4376,20 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											]
 										},
 										"messages": {
 											"description": "Informational messages.",
-											"example": [],
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"message": {
 														"type": "string"
@@ -4404,80 +4397,91 @@
 												},
 												"required": [
 													"message"
-												],
-												"type": "object"
+												]
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"description": "Always null for this error response.",
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the request succeeded.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
+									},
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"type": "object",
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"type": "string",
+											"example": "unknown_err"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"type": "string",
+											"example": "Not entitled to use feature: Abuse Report API"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"type": "string",
+											"example": "error"
+										}
+									},
 									"example": {
 										"err_code": "unknown_err",
 										"error_code": "unknown_err",
 										"msg": "Not entitled to use feature: Abuse Report API",
 										"result": "error"
 									},
-									"properties": {
-										"err_code": {
-											"description": "Machine-readable error code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"error_code": {
-											"description": "Legacy alias for err_code.",
-											"example": "unknown_err",
-											"type": "string"
-										},
-										"msg": {
-											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
-											"example": "Not entitled to use feature: Abuse Report API",
-											"type": "string"
-										},
-										"result": {
-											"description": "The result is 'error' for an error response.",
-											"example": "error",
-											"type": "string"
-										}
-									},
 									"required": [
 										"result",
 										"msg",
 										"err_code",
 										"error_code"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "The request is not authorized to submit abuse reports. Missing or\ninvalid credentials may be rejected with the standard Cloudflare API\nauthentication error. If credentials are valid, this is most commonly\nbecause the account does not have the abuse-reports entitlement\n(Enterprise accounts have it by default; other accounts must request\naccess), or because the API token is missing the\n`Account > Abuse Reports > Edit` permission. Entitlement failures\nreturn the message `Not entitled to use feature: Abuse Report API`."
+				}
 			},
 			"500": {
+				"description": "Report submitted with an error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"err_code": {
+									"type": "string",
 									"oneOf": [
 										{
 											"description": "Report has invalid type",
@@ -4595,10 +4599,10 @@
 											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
 											"type": "string"
 										}
-									],
-									"type": "string"
+									]
 								},
 								"error_code": {
+									"type": "string",
 									"oneOf": [
 										{
 											"description": "Report has invalid type",
@@ -4716,14 +4720,14 @@
 											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
 											"type": "string"
 										}
-									],
-									"type": "string"
+									]
 								},
 								"msg": {
 									"description": "The error message for the error",
 									"type": "string"
 								},
 								"request": {
+									"type": "object",
 									"properties": {
 										"act": {
 											"description": "The report type for submitted reports.",
@@ -4732,8 +4736,7 @@
 									},
 									"required": [
 										"act"
-									],
-									"type": "object"
+									]
 								},
 								"result": {
 									"description": "The result should be 'error' for successful response",
@@ -4746,12 +4749,10 @@
 								"msg",
 								"err_code",
 								"error_code"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Report submitted with an error"
+				}
 			}
 		},
 		"security": [
@@ -4759,7 +4760,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Submit an abuse report",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],

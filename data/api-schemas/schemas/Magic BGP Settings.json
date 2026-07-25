@@ -1,38 +1,42 @@
 {
 	"GET /accounts/{account_id}/magic/bgp/settings": {
-		"description": "Gets the BGP settings for an account, including the default ASN and redistribution configuration.",
 		"operationId": "magic-bgp-get-settings",
+		"summary": "Get BGP Settings",
+		"description": "Gets the BGP settings for an account, including the default ASN and redistribution configuration.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get BGP Settings response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -45,15 +49,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -66,7 +70,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -84,11 +88,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -96,8 +100,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -115,26 +118,27 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cloudflare_asn": {
 													"description": "Route advertisements from Cloudflare to ramps in this account will use this ASN.",
-													"example": 13335,
+													"type": "integer",
 													"format": "uint32",
-													"minimum": 1,
-													"type": "integer"
+													"example": 13335,
+													"minimum": 1
 												},
 												"modified_on": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"redistribute": {
 													"description": "Per-source toggles controlling which route sources are redistributed into BGP. Each property enables redistribution for one route source.",
+													"type": "object",
 													"properties": {
 														"static:wan": {
 															"description": "Redistribute static WAN routes into BGP",
@@ -143,25 +147,23 @@
 													},
 													"required": [
 														"static:wan"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"cloudflare_asn",
 												"redistribute"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get BGP Settings response"
+				}
 			},
 			"4XX": {
+				"description": "Get BGP Settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -169,16 +171,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -191,15 +195,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -212,7 +216,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -230,11 +234,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -242,8 +246,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -261,26 +264,27 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"cloudflare_asn": {
 															"description": "Route advertisements from Cloudflare to ramps in this account will use this ASN.",
-															"example": 13335,
+															"type": "integer",
 															"format": "uint32",
-															"minimum": 1,
-															"type": "integer"
+															"example": 13335,
+															"minimum": 1
 														},
 														"modified_on": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"redistribute": {
 															"description": "Per-source toggles controlling which route sources are redistributed into BGP. Each property enables redistribution for one route source.",
+															"type": "object",
 															"properties": {
 																"static:wan": {
 																	"description": "Redistribute static WAN routes into BGP",
@@ -289,63 +293,36 @@
 															},
 															"required": [
 																"static:wan"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"cloudflare_asn",
 														"redistribute"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -358,25 +335,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -384,14 +387,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get BGP Settings response failure"
+				}
 			}
 		},
 		"security": [
@@ -401,7 +402,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get BGP Settings",
 		"tags": [
 			"Magic BGP Settings"
 		],
@@ -418,68 +418,72 @@
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/magic/bgp/settings": {
-		"description": "Modifies the BGP settings for an account, including the default ASN and redistribution configuration.",
 		"operationId": "magic-bgp-update-settings",
+		"summary": "Update BGP Settings",
+		"description": "Modifies the BGP settings for an account, including the default ASN and redistribution configuration.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"cloudflare_asn": {
 								"description": "Route advertisements from Cloudflare to ramps in this account will use this ASN.",
-								"example": 13335,
+								"type": "integer",
 								"format": "uint32",
-								"minimum": 1,
-								"type": "integer"
+								"example": 13335,
+								"minimum": 1
 							},
 							"redistribute": {
 								"description": "Per-source toggles controlling which route sources are redistributed into BGP. Each property enables redistribution for one route source.",
+								"type": "object",
 								"properties": {
 									"static:wan": {
 										"description": "Redistribute static WAN routes into BGP",
 										"type": "boolean"
 									}
-								},
-								"type": "object"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update BGP Settings response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -492,15 +496,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -513,7 +517,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -531,11 +535,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -543,8 +547,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -562,26 +565,27 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"cloudflare_asn": {
 													"description": "Route advertisements from Cloudflare to ramps in this account will use this ASN.",
-													"example": 13335,
+													"type": "integer",
 													"format": "uint32",
-													"minimum": 1,
-													"type": "integer"
+													"example": 13335,
+													"minimum": 1
 												},
 												"modified_on": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"redistribute": {
 													"description": "Per-source toggles controlling which route sources are redistributed into BGP. Each property enables redistribution for one route source.",
+													"type": "object",
 													"properties": {
 														"static:wan": {
 															"description": "Redistribute static WAN routes into BGP",
@@ -590,25 +594,23 @@
 													},
 													"required": [
 														"static:wan"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"cloudflare_asn",
 												"redistribute"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update BGP Settings response"
+				}
 			},
 			"4XX": {
+				"description": "Update BGP Settings response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -616,16 +618,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -638,15 +642,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -659,7 +663,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -677,11 +681,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -689,8 +693,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -708,26 +711,27 @@
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"cloudflare_asn": {
 															"description": "Route advertisements from Cloudflare to ramps in this account will use this ASN.",
-															"example": 13335,
+															"type": "integer",
 															"format": "uint32",
-															"minimum": 1,
-															"type": "integer"
+															"example": 13335,
+															"minimum": 1
 														},
 														"modified_on": {
-															"format": "date-time",
-															"type": "string"
+															"type": "string",
+															"format": "date-time"
 														},
 														"redistribute": {
 															"description": "Per-source toggles controlling which route sources are redistributed into BGP. Each property enables redistribution for one route source.",
+															"type": "object",
 															"properties": {
 																"static:wan": {
 																	"description": "Redistribute static WAN routes into BGP",
@@ -736,63 +740,36 @@
 															},
 															"required": [
 																"static:wan"
-															],
-															"type": "object"
+															]
 														}
 													},
 													"required": [
 														"cloudflare_asn",
 														"redistribute"
-													],
-													"type": "object"
+													]
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -805,25 +782,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -831,14 +834,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update BGP Settings response failure"
+				}
 			}
 		},
 		"security": [
@@ -848,7 +849,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update BGP Settings",
 		"tags": [
 			"Magic BGP Settings"
 		],

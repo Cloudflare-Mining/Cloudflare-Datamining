@@ -1,192 +1,197 @@
 {
 	"GET /radar/bgp/hijacks/events": {
-		"description": "Retrieves the BGP hijack events.",
 		"operationId": "radar-get-bgp-hijacks-events",
+		"summary": "Get BGP hijack events",
+		"description": "Retrieves the BGP hijack events.",
 		"parameters": [
 			{
-				"description": "Current page number, starting from 1.",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Current page number, starting from 1.",
 				"schema": {
-					"default": 1,
 					"description": "Current page number, starting from 1.",
+					"type": "integer",
+					"default": 1,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Number of entries per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of entries per page.",
 				"schema": {
-					"default": 50,
 					"description": "Number of entries per page.",
+					"type": "integer",
+					"default": 50,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "The unique identifier of a event.",
-				"in": "query",
 				"name": "eventId",
+				"in": "query",
+				"description": "The unique identifier of a event.",
 				"schema": {
 					"description": "The unique identifier of a event.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The potential hijacker AS of a BGP hijack event.",
-				"in": "query",
 				"name": "hijackerAsn",
+				"in": "query",
+				"description": "The potential hijacker AS of a BGP hijack event.",
 				"schema": {
 					"description": "The potential hijacker AS of a BGP hijack event.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The potential victim AS of a BGP hijack event.",
-				"in": "query",
 				"name": "victimAsn",
+				"in": "query",
+				"description": "The potential victim AS of a BGP hijack event.",
 				"schema": {
 					"description": "The potential victim AS of a BGP hijack event.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The potential hijacker or victim AS of a BGP hijack event.",
-				"in": "query",
 				"name": "involvedAsn",
+				"in": "query",
+				"description": "The potential hijacker or victim AS of a BGP hijack event.",
 				"schema": {
 					"description": "The potential hijacker or victim AS of a BGP hijack event.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The country code of the potential hijacker or victim AS of a BGP hijack event.",
-				"in": "query",
 				"name": "involvedCountry",
+				"in": "query",
+				"description": "The country code of the potential hijacker or victim AS of a BGP hijack event.",
 				"schema": {
 					"description": "The country code of the potential hijacker or victim AS of a BGP hijack event.",
+					"type": "string",
 					"example": "PT",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
 				"schema": {
-					"example": "1.1.1.0/24",
-					"type": "string"
+					"type": "string",
+					"example": "1.1.1.0/24"
 				}
 			},
 			{
-				"description": "Filters events by minimum confidence score (1-4 low, 5-7 mid, 8+ high).",
-				"in": "query",
 				"name": "minConfidence",
+				"in": "query",
+				"description": "Filters events by minimum confidence score (1-4 low, 5-7 mid, 8+ high).",
 				"schema": {
 					"description": "Filters events by minimum confidence score (1-4 low, 5-7 mid, 8+ high).",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Filters events by maximum confidence score (1-4 low, 5-7 mid, 8+ high).",
-				"in": "query",
 				"name": "maxConfidence",
+				"in": "query",
+				"description": "Filters events by maximum confidence score (1-4 low, 5-7 mid, 8+ high).",
 				"schema": {
 					"description": "Filters events by maximum confidence score (1-4 low, 5-7 mid, 8+ high).",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
 				"schema": {
 					"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
+					"type": "string",
 					"example": "7d",
-					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
-					"type": "string"
+					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Sorts results by the specified field.",
-				"in": "query",
 				"name": "sortBy",
+				"in": "query",
+				"description": "Sorts results by the specified field.",
 				"schema": {
 					"description": "Sorts results by the specified field.",
+					"type": "string",
+					"example": "TIME",
 					"enum": [
 						"ID",
 						"TIME",
 						"CONFIDENCE"
-					],
-					"example": "TIME",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Sort order.",
-				"in": "query",
 				"name": "sortOrder",
+				"in": "query",
+				"description": "Sort order.",
 				"schema": {
 					"description": "Sort order.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"ASC",
 						"DESC"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asn_info": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn": {
@@ -205,10 +210,10 @@
 													"country_code"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"events": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"confidence_score": {
@@ -248,21 +253,22 @@
 														"type": "integer"
 													},
 													"peer_asns": {
+														"type": "array",
 														"items": {
 															"type": "integer"
-														},
-														"type": "array"
+														}
 													},
 													"peer_ip_count": {
 														"type": "integer"
 													},
 													"prefixes": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"tags": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"name": {
@@ -277,20 +283,19 @@
 																"score"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"victim_asns": {
+														"type": "array",
 														"items": {
 															"type": "integer"
-														},
-														"type": "array"
+														}
 													},
 													"victim_countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													}
 												},
 												"required": [
@@ -314,8 +319,7 @@
 													"tags"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"total_monitors": {
 											"type": "integer"
@@ -325,10 +329,10 @@
 										"asn_info",
 										"events",
 										"total_monitors"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -348,31 +352,31 @@
 										"total_count",
 										"page",
 										"per_page"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"result_info",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -383,27 +387,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -413,7 +414,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get BGP hijack events",
 		"tags": [
 			"Radar BGP"
 		],
@@ -433,98 +433,99 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/ips/timeseries": {
-		"description": "Retrieves time series data for the announced IP space count, represented as the number of IPv4 /24s and IPv6 /48s, for a given ASN.",
 		"operationId": "radar-get-bgp-ips-timeseries",
+		"summary": "Get announced IP address space time series",
+		"description": "Retrieves time series data for the announced IP space count, represented as the number of IPv4 /24s and IPv6 /48s, for a given ASN.",
 		"parameters": [
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "15169"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"schema": {
 					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-					"example": "US",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "US"
 				}
 			},
 			{
-				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
-				"in": "query",
 				"name": "ipVersion",
+				"in": "query",
+				"description": "Filters results by IP version (Ipv4 vs. IPv6).",
 				"schema": {
 					"description": "Filters results by IP version (Ipv4 vs. IPv6).",
-					"example": "IPv4",
+					"type": "array",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -532,63 +533,70 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": "IPv4"
 				}
 			},
 			{
-				"description": "Includes data delay meta information.",
-				"in": "query",
 				"name": "includeDelay",
+				"in": "query",
+				"description": "Includes data delay meta information.",
 				"schema": {
 					"description": "Includes data delay meta information.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
 											"description": "Metadata for the results.",
+											"type": "object",
 											"properties": {
 												"aggInterval": {
 													"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+													"type": "string",
 													"enum": [
 														"FIFTEEN_MINUTES",
 														"ONE_HOUR",
 														"ONE_DAY",
 														"ONE_WEEK",
 														"ONE_MONTH"
-													],
-													"type": "string"
+													]
 												},
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -615,19 +623,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -635,27 +643,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -668,8 +675,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -679,23 +685,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -703,12 +709,13 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"delay": {
+													"type": "object",
 													"properties": {
 														"asn_data": {
+															"type": "object",
 															"properties": {
 																"delaySecs": {
 																	"type": "number"
@@ -720,6 +727,7 @@
 																	"type": "boolean"
 																},
 																"latest": {
+																	"type": "object",
 																	"properties": {
 																		"entries_count": {
 																			"type": "number"
@@ -735,8 +743,7 @@
 																		"timestamp",
 																		"path",
 																		"entries_count"
-																	],
-																	"type": "object"
+																	]
 																}
 															},
 															"required": [
@@ -744,10 +751,10 @@
 																"delayStr",
 																"healthy",
 																"latest"
-															],
-															"type": "object"
+															]
 														},
 														"country_data": {
+															"type": "object",
 															"properties": {
 																"delaySecs": {
 																	"type": "number"
@@ -759,6 +766,7 @@
 																	"type": "boolean"
 																},
 																"latest": {
+																	"type": "object",
 																	"properties": {
 																		"count": {
 																			"type": "number"
@@ -770,8 +778,7 @@
 																	"required": [
 																		"timestamp",
 																		"count"
-																	],
-																	"type": "object"
+																	]
 																}
 															},
 															"required": [
@@ -779,8 +786,7 @@
 																"delayStr",
 																"healthy",
 																"latest"
-															],
-															"type": "object"
+															]
 														},
 														"healthy": {
 															"type": "boolean"
@@ -794,16 +800,16 @@
 														"healthy",
 														"asn_data",
 														"country_data"
-													],
-													"type": "object"
+													]
 												},
 												"lastUpdated": {
 													"description": "Timestamp of the last dataset update.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"normalization": {
 													"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+													"type": "string",
 													"enum": [
 														"PERCENTAGE",
 														"MIN0_MAX",
@@ -813,20 +819,20 @@
 														"ROLLING_AVERAGE",
 														"OVERLAPPED_PERCENTAGE",
 														"RATIO"
-													],
-													"type": "string"
+													]
 												},
 												"units": {
 													"description": "Measurement units for the results.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"name": {
-																"example": "*",
-																"type": "string"
+																"type": "string",
+																"example": "*"
 															},
 															"value": {
-																"example": "requests",
-																"type": "string"
+																"type": "string",
+																"example": "requests"
 															}
 														},
 														"required": [
@@ -834,8 +840,7 @@
 															"value"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
@@ -845,72 +850,71 @@
 												"lastUpdated",
 												"units",
 												"aggInterval"
-											],
-											"type": "object"
+											]
 										},
 										"serie_0": {
+											"type": "object",
 											"properties": {
 												"ipv4": {
+													"type": "array",
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
 														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"ipv6": {
+													"type": "array",
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
 														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"timestamps": {
+													"type": "array",
 													"items": {
 														"format": "date-time",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"timestamps",
 												"ipv4",
 												"ipv6"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"serie_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -921,27 +925,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -951,7 +952,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get announced IP address space time series",
 		"tags": [
 			"Radar BGP"
 		],
@@ -971,97 +971,102 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/ips/top/ases": {
-		"description": "Returns the top-N autonomous systems by announced IP space at the nearest 8-hour RIB boundary at or before the requested date. The snapped boundary is returned as `anchor_ts`.",
 		"operationId": "radar-get-bgp-ips-top-ases",
+		"summary": "Get top ASes by announced IP space",
+		"description": "Returns the top-N autonomous systems by announced IP space at the nearest 8-hour RIB boundary at or before the requested date. The snapped boundary is returned as `anchor_ts`.",
 		"parameters": [
 			{
-				"description": "Filters results by the specified datetime (ISO 8601).",
-				"in": "query",
 				"name": "date",
+				"in": "query",
+				"description": "Filters results by the specified datetime (ISO 8601).",
 				"schema": {
 					"description": "Filters results by the specified datetime (ISO 8601).",
-					"example": "2024-09-19T00:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2024-09-19T00:00:00Z"
 				}
 			},
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"maximum": 50,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Ranking metric: IPv4 /24 count or IPv6 /48 count.",
-				"in": "query",
 				"name": "metric",
+				"in": "query",
+				"description": "Ranking metric: IPv4 /24 count or IPv6 /48 count.",
 				"schema": {
 					"description": "Ranking metric: IPv4 /24 count or IPv6 /48 count.",
+					"type": "string",
+					"example": "v4_24s",
 					"enum": [
 						"v4_24s",
 						"v6_48s"
-					],
-					"example": "v4_24s",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Optional ISO 3166-1 alpha-2 country filter. Omit for global top-N.",
-				"in": "query",
 				"name": "country",
+				"in": "query",
+				"description": "Optional ISO 3166-1 alpha-2 country filter. Omit for global top-N.",
 				"schema": {
 					"description": "Optional ISO 3166-1 alpha-2 country filter. Omit for global top-N.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"anchorTs": {
-											"example": "2026-04-18T16:00:00.000Z",
+											"type": "string",
 											"format": "date-time",
-											"type": "string"
+											"example": "2026-04-18T16:00:00.000Z"
 										},
 										"asns": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn": {
-														"example": 749,
-														"type": "integer"
+														"type": "integer",
+														"example": 749
 													},
 													"v4_24s": {
-														"example": 875649,
-														"type": "integer"
+														"type": "integer",
+														"example": 875649
 													},
 													"v6_48s": {
 														"type": "integer"
@@ -1073,17 +1078,16 @@
 													"v6_48s"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"country": {
+											"type": "string",
 											"example": "US",
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"metric": {
-											"example": "v4_24s",
-											"type": "string"
+											"type": "string",
+											"example": "v4_24s"
 										}
 									},
 									"required": [
@@ -1091,30 +1095,30 @@
 										"metric",
 										"country",
 										"asns"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1125,27 +1129,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -1155,7 +1156,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top ASes by announced IP space",
 		"tags": [
 			"Radar BGP"
 		],
@@ -1175,111 +1175,114 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/leaks/events": {
-		"description": "Retrieves the BGP route leak events.",
 		"operationId": "radar-get-bgp-route-leak-events",
+		"summary": "Get BGP route leak events",
+		"description": "Retrieves the BGP route leak events.",
 		"parameters": [
 			{
-				"description": "Current page number, starting from 1.",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Current page number, starting from 1.",
 				"schema": {
-					"default": 1,
 					"description": "Current page number, starting from 1.",
+					"type": "integer",
+					"default": 1,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Number of entries per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of entries per page.",
 				"schema": {
-					"default": 50,
 					"description": "Number of entries per page.",
+					"type": "integer",
+					"default": 50,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "The unique identifier of a event.",
-				"in": "query",
 				"name": "eventId",
+				"in": "query",
+				"description": "The unique identifier of a event.",
 				"schema": {
 					"description": "The unique identifier of a event.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The leaking AS of a route leak event.",
-				"in": "query",
 				"name": "leakAsn",
+				"in": "query",
+				"description": "The leaking AS of a route leak event.",
 				"schema": {
 					"description": "The leaking AS of a route leak event.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "ASN that is causing or affected by a route leak event.",
-				"in": "query",
 				"name": "involvedAsn",
+				"in": "query",
+				"description": "ASN that is causing or affected by a route leak event.",
 				"schema": {
 					"description": "ASN that is causing or affected by a route leak event.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Country code of a involved ASN in a route leak event.",
-				"in": "query",
 				"name": "involvedCountry",
+				"in": "query",
+				"description": "Country code of a involved ASN in a route leak event.",
 				"schema": {
 					"description": "Country code of a involved ASN in a route leak event.",
+					"type": "string",
 					"example": "PT",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
 				"schema": {
 					"description": "Filters results by a relative date range ending at the current time. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`), e.g. `7d`. Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `3dcontrol` covers days -10 to -7, `7dcontrol` covers days -14 to -7, `28dcontrol` covers days -56 to -28, and `10dcontrol` covers days -24 to -14). Mutually exclusive with `dateStart`/`dateEnd`.",
+					"type": "string",
 					"example": "7d",
-					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
-					"type": "string"
+					"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Sorts results by the specified field.",
-				"in": "query",
 				"name": "sortBy",
+				"in": "query",
+				"description": "Sorts results by the specified field.",
 				"schema": {
 					"description": "Sorts results by the specified field.",
+					"type": "string",
+					"example": "TIME",
 					"enum": [
 						"ID",
 						"LEAKS",
@@ -1287,49 +1290,51 @@
 						"PREFIXES",
 						"ORIGINS",
 						"TIME"
-					],
-					"example": "TIME",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Sort order.",
-				"in": "query",
 				"name": "sortOrder",
+				"in": "query",
+				"description": "Sort order.",
 				"schema": {
 					"description": "Sort order.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"ASC",
 						"DESC"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asn_info": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn": {
@@ -1348,17 +1353,17 @@
 													"country_code"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"events": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"countries": {
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"detected_ts": {
 														"type": "string"
@@ -1376,10 +1381,10 @@
 														"type": "integer"
 													},
 													"leak_seg": {
+														"type": "array",
 														"items": {
 															"type": "integer"
-														},
-														"type": "array"
+														}
 													},
 													"leak_type": {
 														"type": "integer"
@@ -1416,17 +1421,16 @@
 													"countries"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"asn_info",
 										"events"
-									],
-									"type": "object"
+									]
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "integer"
@@ -1446,31 +1450,31 @@
 										"total_count",
 										"page",
 										"per_page"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"result_info",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1481,27 +1485,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -1511,7 +1512,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get BGP route leak events",
 		"tags": [
 			"Radar BGP"
 		],
@@ -1531,40 +1531,43 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/routes/ases": {
-		"description": "Retrieves all ASes in the current global routing tables with routing statistics.",
 		"operationId": "radar-get-bgp-routes-asns",
+		"summary": "List ASes from global routing tables",
+		"description": "Retrieves all ASes in the current global routing tables with routing statistics.",
 		"parameters": [
 			{
-				"description": "Filters results by location. Specify an alpha-2 location code.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Sorts results by the specified field.",
-				"in": "query",
 				"name": "sortBy",
+				"in": "query",
+				"description": "Sorts results by the specified field.",
 				"schema": {
 					"description": "Sorts results by the specified field.",
+					"type": "string",
+					"example": "ipv4",
 					"enum": [
 						"cone",
 						"pfxs",
@@ -1573,49 +1576,51 @@
 						"rpki_valid",
 						"rpki_invalid",
 						"rpki_unknown"
-					],
-					"example": "ipv4",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Sort order.",
-				"in": "query",
 				"name": "sortOrder",
+				"in": "query",
+				"description": "Sort order.",
 				"schema": {
 					"description": "Sort order.",
+					"type": "string",
+					"example": "desc",
 					"enum": [
 						"ASC",
 						"DESC"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asns": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn": {
@@ -1627,8 +1632,8 @@
 													},
 													"country": {
 														"description": "Alpha-2 code for the AS's registration country.",
-														"example": "US",
-														"type": "string"
+														"type": "string",
+														"example": "US"
 													},
 													"ipv4Count": {
 														"description": "Number of IPv4 addresses originated by the AS.",
@@ -1636,8 +1641,8 @@
 													},
 													"ipv6Count": {
 														"description": "Number of IPv6 addresses originated by the AS.",
-														"example": "1.21e24",
-														"type": "string"
+														"type": "string",
+														"example": "1.21e24"
 													},
 													"name": {
 														"description": "Name of the AS.",
@@ -1673,20 +1678,20 @@
 													"rpkiUnknown"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"meta": {
+											"type": "object",
 											"properties": {
 												"dataTime": {
 													"description": "The timestamp of when the data is generated.",
-													"example": "2024-06-03T14:00:00",
-													"type": "string"
+													"type": "string",
+													"example": "2024-06-03T14:00:00"
 												},
 												"queryTime": {
 													"description": "The timestamp of the query.",
-													"example": "2024-06-03T14:00:00",
-													"type": "string"
+													"type": "string",
+													"example": "2024-06-03T14:00:00"
 												},
 												"totalPeers": {
 													"description": "Total number of route collector peers used to generate this data.",
@@ -1697,37 +1702,36 @@
 												"dataTime",
 												"queryTime",
 												"totalPeers"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"asns",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1738,27 +1742,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -1768,7 +1769,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List ASes from global routing tables",
 		"tags": [
 			"Radar BGP"
 		],
@@ -1788,59 +1788,64 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/routes/moas": {
-		"description": "Retrieves all Multi-Origin AS (MOAS) prefixes in the global routing tables.",
 		"operationId": "radar-get-bgp-pfx2as-moas",
+		"summary": "Get Multi-Origin AS (MOAS) prefixes",
+		"description": "Retrieves all Multi-Origin AS (MOAS) prefixes in the global routing tables.",
 		"parameters": [
 			{
-				"description": "Lookup MOASes originated by the given ASN.",
-				"in": "query",
 				"name": "origin",
+				"in": "query",
+				"description": "Lookup MOASes originated by the given ASN.",
 				"schema": {
 					"description": "Lookup MOASes originated by the given ASN.",
 					"type": "integer"
 				}
 			},
 			{
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
 				"schema": {
-					"example": "1.1.1.0/24",
-					"type": "string"
+					"type": "string",
+					"example": "1.1.1.0/24"
 				}
 			},
 			{
-				"description": "Lookup only RPKI invalid MOASes.",
-				"in": "query",
 				"name": "invalid_only",
+				"in": "query",
+				"description": "Lookup only RPKI invalid MOASes.",
 				"schema": {
 					"description": "Lookup only RPKI invalid MOASes.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"data_time": {
 													"type": "string"
@@ -1856,13 +1861,14 @@
 												"data_time",
 												"query_time",
 												"total_peers"
-											],
-											"type": "object"
+											]
 										},
 										"moas": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"origins": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"origin": {
@@ -1881,8 +1887,7 @@
 																"rpki_validation"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"prefix": {
 														"type": "string"
@@ -1893,37 +1898,36 @@
 													"origins"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"moas",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1934,27 +1938,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -1964,7 +1965,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Multi-Origin AS (MOAS) prefixes",
 		"tags": [
 			"Radar BGP"
 		],
@@ -1984,75 +1984,80 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/routes/pfx2as": {
-		"description": "Retrieves the prefix-to-ASN mapping from global routing tables.",
 		"operationId": "radar-get-bgp-pfx2as",
+		"summary": "Get prefix-to-ASN mapping",
+		"description": "Retrieves the prefix-to-ASN mapping from global routing tables.",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
 				"schema": {
-					"example": "1.1.1.0/24",
-					"type": "string"
+					"type": "string",
+					"example": "1.1.1.0/24"
 				}
 			},
 			{
-				"description": "Lookup prefixes originated by the given ASN.",
-				"in": "query",
 				"name": "origin",
+				"in": "query",
+				"description": "Lookup prefixes originated by the given ASN.",
 				"schema": {
 					"description": "Lookup prefixes originated by the given ASN.",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Return only results with matching rpki status: valid, invalid or unknown.",
-				"in": "query",
 				"name": "rpkiStatus",
+				"in": "query",
+				"description": "Return only results with matching rpki status: valid, invalid or unknown.",
 				"schema": {
 					"description": "Return only results with matching rpki status: valid, invalid or unknown.",
+					"type": "string",
+					"example": "INVALID",
 					"enum": [
 						"VALID",
 						"INVALID",
 						"UNKNOWN"
-					],
-					"example": "INVALID",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Return only results with the longest prefix match for the given prefix. For example, specify a /32 prefix to lookup the origin ASN for an IPv4 address.",
-				"in": "query",
 				"name": "longestPrefixMatch",
+				"in": "query",
+				"description": "Return only results with the longest prefix match for the given prefix. For example, specify a /32 prefix to lookup the origin ASN for an IPv4 address.",
 				"schema": {
 					"description": "Return only results with the longest prefix match for the given prefix. For example, specify a /32 prefix to lookup the origin ASN for an IPv4 address.",
-					"example": "true",
-					"type": "boolean"
+					"type": "boolean",
+					"example": "true"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"data_time": {
 													"type": "string"
@@ -2068,10 +2073,10 @@
 												"data_time",
 												"query_time",
 												"total_peers"
-											],
-											"type": "object"
+											]
 										},
 										"prefix_origins": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"origin": {
@@ -2094,37 +2099,36 @@
 													"rpki_validation"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"prefix_origins",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2135,27 +2139,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -2165,7 +2166,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get prefix-to-ASN mapping",
 		"tags": [
 			"Radar BGP"
 		],
@@ -2185,43 +2185,49 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/routes/realtime": {
-		"description": "Retrieves real-time BGP routes for a prefix, using public real-time data collectors (RouteViews and RIPE RIS).",
 		"operationId": "radar-get-bgp-routes-realtime",
+		"summary": "Get real-time BGP routes for a prefix",
+		"description": "Retrieves real-time BGP routes for a prefix, using public real-time data collectors (RouteViews and RIPE RIS).",
 		"parameters": [
 			{
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
 				"schema": {
-					"example": "1.1.1.0/24",
-					"type": "string"
+					"type": "string",
+					"example": "1.1.1.0/24"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"asn_info": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"as_name": {
@@ -2253,10 +2259,10 @@
 															"org_name"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"collectors": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"collector": {
@@ -2298,14 +2304,14 @@
 															"peers_v6_count"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"data_time": {
 													"description": "The most recent data timestamp for from the real-time sources.",
 													"type": "string"
 												},
 												"prefix_origins": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"origin": {
@@ -2342,8 +2348,7 @@
 															"visibility"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"query_time": {
 													"description": "The timestamp of this query.",
@@ -2356,18 +2361,18 @@
 												"prefix_origins",
 												"data_time",
 												"query_time"
-											],
-											"type": "object"
+											]
 										},
 										"routes": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"as_path": {
 														"description": "AS-level path for this route, from collector to origin.",
+														"type": "array",
 														"items": {
 															"type": "integer"
-														},
-														"type": "array"
+														}
 													},
 													"collector": {
 														"description": "Public collector ID for this route.",
@@ -2375,10 +2380,10 @@
 													},
 													"communities": {
 														"description": "BGP community values.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"prefix": {
 														"description": "IP prefix of this query.",
@@ -2397,37 +2402,36 @@
 													"communities"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"routes",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2438,27 +2442,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -2468,7 +2469,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get real-time BGP routes for a prefix",
 		"tags": [
 			"Radar BGP"
 		],
@@ -2488,55 +2488,60 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/routes/stats": {
-		"description": "Retrieves the BGP routing table stats.",
 		"operationId": "radar-get-bgp-routes-stats",
+		"summary": "Get BGP routing table stats ",
+		"description": "Retrieves the BGP routing table stats.",
 		"parameters": [
 			{
-				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
-					"example": 174,
-					"type": "integer"
+					"type": "integer",
+					"example": 174
 				}
 			},
 			{
-				"description": "Filters results by location. Specify an alpha-2 location code.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify an alpha-2 location code.",
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
+					"type": "string",
 					"example": "US",
 					"maxLength": 2,
-					"minLength": 2,
-					"type": "string"
+					"minLength": 2
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"data_time": {
 													"type": "string"
@@ -2552,10 +2557,10 @@
 												"data_time",
 												"query_time",
 												"total_peers"
-											],
-											"type": "object"
+											]
 										},
 										"stats": {
+											"type": "object",
 											"properties": {
 												"distinct_origins": {
 													"type": "integer"
@@ -2631,37 +2636,36 @@
 												"routes_valid",
 												"routes_valid_ipv4",
 												"routes_valid_ipv6"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"stats",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2672,27 +2676,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -2702,7 +2703,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get BGP routing table stats ",
 		"tags": [
 			"Radar BGP"
 		],
@@ -2722,76 +2722,82 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/rpki/aspa/changes": {
-		"description": "Retrieves ASPA (Autonomous System Provider Authorization) changes over time. Returns daily aggregated changes including additions, removals, and modifications of ASPA objects.",
 		"operationId": "radar-get-bgp-rpki-aspa-changes",
+		"summary": "Get ASPA changes over time",
+		"description": "Retrieves ASPA (Autonomous System Provider Authorization) changes over time. Returns daily aggregated changes including additions, removals, and modifications of ASPA objects.",
 		"parameters": [
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filter changes involving this ASN (as customer or provider).",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filter changes involving this ASN (as customer or provider).",
 				"schema": {
 					"description": "Filter changes involving this ASN (as customer or provider).",
-					"example": 13335,
-					"type": "integer"
+					"type": "integer",
+					"example": 13335
 				}
 			},
 			{
-				"description": "Include ASN metadata (name, country) in response.",
-				"in": "query",
 				"name": "includeAsnInfo",
+				"in": "query",
+				"description": "Include ASN metadata (name, country) in response.",
 				"schema": {
 					"description": "Include ASN metadata (name, country) in response.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asnInfo": {
+											"type": "object",
 											"properties": {
 												"13335": {
+													"type": "object",
 													"properties": {
 														"asn": {
 															"description": "ASN number.",
@@ -2810,16 +2816,15 @@
 														"asn",
 														"name",
 														"country"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"13335"
-											],
-											"type": "object"
+											]
 										},
 										"changes": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"customersAdded": {
@@ -2832,10 +2837,11 @@
 													},
 													"date": {
 														"description": "Date of the changes in ISO 8601 format.",
-														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"format": "date-time"
 													},
 													"entries": {
+														"type": "array",
 														"items": {
 															"properties": {
 																"customerAsn": {
@@ -2843,20 +2849,20 @@
 																	"type": "integer"
 																},
 																"providers": {
+																	"type": "array",
 																	"items": {
 																		"description": "Provider ASNs involved in the change.",
 																		"type": "integer"
-																	},
-																	"type": "array"
+																	}
 																},
 																"type": {
+																	"type": "string",
 																	"enum": [
 																		"CustomerAdded",
 																		"CustomerRemoved",
 																		"ProvidersAdded",
 																		"ProvidersRemoved"
-																	],
-																	"type": "string"
+																	]
 																}
 															},
 															"required": [
@@ -2865,8 +2871,7 @@
 																"providers"
 															],
 															"type": "object"
-														},
-														"type": "array"
+														}
 													},
 													"providersAdded": {
 														"description": "Number of providers added to existing objects.",
@@ -2891,57 +2896,56 @@
 													"entries"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"meta": {
+											"type": "object",
 											"properties": {
 												"dataTime": {
 													"description": "Timestamp of the underlying data.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"queryTime": {
 													"description": "Timestamp when the query was executed.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
 												"dataTime",
 												"queryTime"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"changes",
 										"asnInfo",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -2952,27 +2956,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -2982,7 +2983,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ASPA changes over time",
 		"tags": [
 			"Radar BGP"
 		],
@@ -3002,75 +3002,81 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/rpki/aspa/snapshot": {
-		"description": "Retrieves current or historical ASPA (Autonomous System Provider Authorization) objects. ASPA objects define which ASNs are authorized upstream providers for a customer ASN.",
 		"operationId": "radar-get-bgp-rpki-aspa-snapshot",
+		"summary": "Get ASPA objects snapshot",
+		"description": "Retrieves current or historical ASPA (Autonomous System Provider Authorization) objects. ASPA objects define which ASNs are authorized upstream providers for a customer ASN.",
 		"parameters": [
 			{
-				"description": "Filter by customer ASN (the ASN publishing the ASPA object).",
-				"in": "query",
 				"name": "customerAsn",
+				"in": "query",
+				"description": "Filter by customer ASN (the ASN publishing the ASPA object).",
 				"schema": {
 					"description": "Filter by customer ASN (the ASN publishing the ASPA object).",
-					"example": 13335,
-					"type": "integer"
+					"type": "integer",
+					"example": 13335
 				}
 			},
 			{
-				"description": "Filter by provider ASN (an authorized upstream provider in ASPA objects).",
-				"in": "query",
 				"name": "providerAsn",
+				"in": "query",
+				"description": "Filter by provider ASN (an authorized upstream provider in ASPA objects).",
 				"schema": {
 					"description": "Filter by provider ASN (an authorized upstream provider in ASPA objects).",
-					"example": 174,
-					"type": "integer"
+					"type": "integer",
+					"example": 174
 				}
 			},
 			{
-				"description": "Filters results by the specified datetime (ISO 8601).",
-				"in": "query",
 				"name": "date",
+				"in": "query",
+				"description": "Filters results by the specified datetime (ISO 8601).",
 				"schema": {
 					"description": "Filters results by the specified datetime (ISO 8601).",
-					"example": "2024-09-19T00:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2024-09-19T00:00:00Z"
 				}
 			},
 			{
-				"description": "Include ASN metadata (name, country) in response.",
-				"in": "query",
 				"name": "includeAsnInfo",
+				"in": "query",
+				"description": "Include ASN metadata (name, country) in response.",
 				"schema": {
 					"description": "Include ASN metadata (name, country) in response.",
 					"type": "boolean"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asnInfo": {
+											"type": "object",
 											"properties": {
 												"13335": {
+													"type": "object",
 													"properties": {
 														"asn": {
 															"description": "ASN number.",
@@ -3089,16 +3095,15 @@
 														"asn",
 														"name",
 														"country"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"13335"
-											],
-											"type": "object"
+											]
 										},
 										"aspaObjects": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"customerAsn": {
@@ -3106,11 +3111,11 @@
 														"type": "integer"
 													},
 													"providers": {
+														"type": "array",
 														"items": {
 															"description": "Authorized provider ASNs.",
 															"type": "integer"
-														},
-														"type": "array"
+														}
 													}
 												},
 												"required": [
@@ -3118,20 +3123,20 @@
 													"providers"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"meta": {
+											"type": "object",
 											"properties": {
 												"dataTime": {
 													"description": "Timestamp of the underlying data.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"queryTime": {
 													"description": "Timestamp when the query was executed.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"totalCount": {
 													"description": "Total number of ASPA objects.",
@@ -3142,38 +3147,37 @@
 												"dataTime",
 												"queryTime",
 												"totalCount"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"aspaObjects",
 										"asnInfo",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3184,27 +3188,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -3214,7 +3215,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ASPA objects snapshot",
 		"tags": [
 			"Radar BGP"
 		],
@@ -3234,51 +3234,52 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/rpki/aspa/timeseries": {
-		"description": "Retrieves ASPA (Autonomous System Provider Authorization) object count over time. Supports filtering by RIR or location (country code) to generate multiple named series. If no RIR or location filter is specified, returns total count.",
 		"operationId": "radar-get-bgp-rpki-aspa-timeseries",
+		"summary": "Get ASPA count time series",
+		"description": "Retrieves ASPA (Autonomous System Provider Authorization) object count over time. Supports filtering by RIR or location (country code) to generate multiple named series. If no RIR or location filter is specified, returns total count.",
 		"parameters": [
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filter by Regional Internet Registry (RIR). Multiple RIRs generate multiple series.",
-				"in": "query",
 				"name": "rir",
+				"in": "query",
+				"description": "Filter by Regional Internet Registry (RIR). Multiple RIRs generate multiple series.",
 				"schema": {
 					"description": "Filter by Regional Internet Registry (RIR). Multiple RIRs generate multiple series.",
-					"example": "RIPE_NCC",
+					"type": "array",
 					"items": {
 						"enum": [
 							"RIPE_NCC",
@@ -3289,117 +3290,120 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": "RIPE_NCC"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"schema": {
 					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-					"example": "US",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "US"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"dataTime": {
 													"description": "Timestamp of the underlying data.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"queryTime": {
 													"description": "Timestamp when the query was executed.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
 												"dataTime",
 												"queryTime"
-											],
-											"type": "object"
+											]
 										},
 										"serie_0": {
+											"type": "object",
 											"properties": {
 												"timestamps": {
+													"type": "array",
 													"items": {
 														"format": "date-time",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"values": {
+													"type": "array",
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
 														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"timestamps",
 												"values"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"serie_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3410,27 +3414,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -3440,7 +3441,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get ASPA count time series",
 		"tags": [
 			"Radar BGP"
 		],
@@ -3460,38 +3460,41 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/rpki/roas/timeseries": {
-		"description": "Retrieves RPKI ROA (Route Origin Authorization) validation ratios over time. Returns the selected metric as a time series. Supports filtering by ASN or location (country code) — multiple values of the same filter type produce one series per value. If no ASN or location is specified, returns the global aggregate.",
 		"operationId": "radar-get-bgp-rpki-roas-timeseries",
+		"summary": "Get RPKI ROA deployment time series",
+		"description": "Retrieves RPKI ROA (Route Origin Authorization) validation ratios over time. Returns the selected metric as a time series. Supports filtering by ASN or location (country code) — multiple values of the same filter type produce one series per value. If no ASN or location is specified, returns the global aggregate.",
 		"parameters": [
 			{
-				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
 				"schema": {
 					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Which RPKI ROA validation metric to return. validPfxsRatio = ratio of RPKI-valid prefixes (IPv4+IPv6 combined). validPfxsV4Ratio / validPfxsV6Ratio = same, split by IP version. validIpsRatio = ratio of RPKI-valid address space (IPv4 /24s + IPv6 /48s). validIpsV4Ratio / validIpsV6Ratio = same, split by IP version.",
-				"in": "query",
 				"name": "metric",
+				"in": "query",
+				"description": "Which RPKI ROA validation metric to return. validPfxsRatio = ratio of RPKI-valid prefixes (IPv4+IPv6 combined). validPfxsV4Ratio / validPfxsV6Ratio = same, split by IP version. validIpsRatio = ratio of RPKI-valid address space (IPv4 /24s + IPv6 /48s). validIpsV4Ratio / validIpsV6Ratio = same, split by IP version.",
 				"schema": {
-					"default": "validPfxsRatio",
 					"description": "Which RPKI ROA validation metric to return. validPfxsRatio = ratio of RPKI-valid prefixes (IPv4+IPv6 combined). validPfxsV4Ratio / validPfxsV6Ratio = same, split by IP version. validIpsRatio = ratio of RPKI-valid address space (IPv4 /24s + IPv6 /48s). validIpsV4Ratio / validIpsV6Ratio = same, split by IP version.",
+					"type": "string",
+					"example": "validPfxsRatio",
+					"default": "validPfxsRatio",
 					"enum": [
 						"validPfxsRatio",
 						"validPfxsV4Ratio",
@@ -3499,145 +3502,146 @@
 						"validIpsRatio",
 						"validIpsV4Ratio",
 						"validIpsV6Ratio"
-					],
-					"example": "validPfxsRatio",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System Number. Specify one or more ASNs. Multiple values generate one series per ASN.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System Number. Specify one or more ASNs. Multiple values generate one series per ASN.",
 				"schema": {
 					"description": "Filters results by Autonomous System Number. Specify one or more ASNs. Multiple values generate one series per ASN.",
-					"example": "13335",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "13335"
 				}
 			},
 			{
-				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-				"in": "query",
 				"name": "location",
+				"in": "query",
+				"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
 				"schema": {
 					"description": "Filters results by location. Specify a comma-separated list of alpha-2 location codes.",
-					"example": "US",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "US"
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"dataTime": {
 													"description": "Timestamp of the underlying data.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												},
 												"queryTime": {
 													"description": "Timestamp when the query was executed.",
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
 												"dataTime",
 												"queryTime"
-											],
-											"type": "object"
+											]
 										},
 										"serie_0": {
+											"type": "object",
 											"properties": {
 												"timestamps": {
+													"type": "array",
 													"items": {
 														"format": "date-time",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"values": {
+													"type": "array",
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
 														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"timestamps",
 												"values"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"serie_0",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3648,27 +3652,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -3678,7 +3679,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get RPKI ROA deployment time series",
 		"tags": [
 			"Radar BGP"
 		],
@@ -3698,101 +3698,102 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/timeseries": {
-		"description": "Retrieves BGP updates over time. When requesting updates for an autonomous system, only BGP updates of type announcement are returned.",
 		"operationId": "radar-get-bgp-timeseries",
+		"summary": "Get BGP time series",
+		"description": "Retrieves BGP updates over time. When requesting updates for an autonomous system, only BGP updates of type announcement are returned.",
 		"parameters": [
 			{
-				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
-				"in": "query",
 				"name": "aggInterval",
+				"in": "query",
+				"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
 				"schema": {
 					"description": "Aggregation interval of the results (e.g., in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/). When omitted, the interval is auto-selected from the requested date range; finer intervals are only available for shorter ranges. If the requested interval is too granular for the date range, the request is rejected.",
+					"type": "string",
+					"example": "1h",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
-					],
-					"example": "1h",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by BGP network prefix.",
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
+				"description": "Filters results by BGP network prefix.",
 				"schema": {
 					"description": "Filters results by BGP network prefix.",
-					"example": "1.1.1.0/24",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "1.1.1.0/24"
 				}
 			},
 			{
-				"description": "Filters results by BGP update type.",
-				"in": "query",
 				"name": "updateType",
+				"in": "query",
+				"description": "Filters results by BGP update type.",
 				"schema": {
 					"description": "Filters results by BGP update type.",
-					"example": "ANNOUNCEMENT",
+					"type": "array",
 					"items": {
 						"enum": [
 							"ANNOUNCEMENT",
@@ -3800,64 +3801,71 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": "ANNOUNCEMENT"
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "15169"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"aggInterval": {
+													"type": "string",
 													"enum": [
 														"15m",
 														"1h",
 														"1d",
 														"1w"
-													],
-													"type": "string"
+													]
 												},
 												"confidenceInfo": {
+													"type": "object",
 													"properties": {
 														"annotations": {
+															"type": "array",
 															"items": {
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
 																		"description": "Data source for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"ALL",
 																			"AI_BOTS",
@@ -3884,19 +3892,19 @@
 																			"ROBOTS_TXT",
 																			"SPEED",
 																			"WORKERS_AI"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
 																	},
 																	"endDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"eventType": {
 																		"description": "Event type for annotations.",
+																		"type": "string",
 																		"enum": [
 																			"EVENT",
 																			"GENERAL",
@@ -3904,27 +3912,26 @@
 																			"PARTIAL_PROJECTION",
 																			"PIPELINE",
 																			"TRAFFIC_ANOMALY"
-																		],
-																		"type": "string"
+																		]
 																	},
 																	"isInstantaneous": {
 																		"description": "Whether event is a single point in time or a time range.",
 																		"type": "boolean"
 																	},
 																	"linkedUrl": {
-																		"format": "uri",
-																		"type": "string"
+																		"type": "string",
+																		"format": "uri"
 																	},
 																	"startDate": {
-																		"format": "date-time",
-																		"type": "string"
+																		"type": "string",
+																		"format": "date-time"
 																	},
 																	"tags": {
+																		"type": "array",
 																		"items": {
 																			"example": "BOT_CLASS",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	}
 																},
 																"required": [
@@ -3937,8 +3944,7 @@
 																	"isInstantaneous"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"level": {
 															"description": "Provides an indication of how much confidence Cloudflare has in the data.",
@@ -3948,23 +3954,23 @@
 													"required": [
 														"level",
 														"annotations"
-													],
-													"type": "object"
+													]
 												},
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -3972,12 +3978,11 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"lastUpdated": {
-													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"format": "date-time"
 												}
 											},
 											"required": [
@@ -3985,62 +3990,61 @@
 												"dateRange",
 												"aggInterval",
 												"lastUpdated"
-											],
-											"type": "object"
+											]
 										},
 										"serie_0": {
+											"type": "object",
 											"properties": {
 												"timestamps": {
+													"type": "array",
 													"items": {
 														"format": "date-time",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												},
 												"values": {
+													"type": "array",
 													"items": {
 														"description": "A numeric string.",
 														"example": "10",
 														"pattern": "^-?\\d+(\\.\\d+)?$",
 														"type": "string"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"timestamps",
 												"values"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"meta",
 										"serie_0"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -4051,27 +4055,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -4081,7 +4082,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get BGP time series",
 		"tags": [
 			"Radar BGP"
 		],
@@ -4101,111 +4101,112 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/top/ases": {
-		"description": "Retrieves the top autonomous systems by BGP updates (announcements only).",
 		"operationId": "radar-get-bgp-top-ases",
+		"summary": "Get top ASes by BGP updates",
+		"description": "Retrieves the top autonomous systems by BGP updates (announcements only).",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "15169"
 				}
 			},
 			{
-				"description": "Filters results by BGP network prefix.",
-				"in": "query",
 				"name": "prefix",
+				"in": "query",
+				"description": "Filters results by BGP network prefix.",
 				"schema": {
 					"description": "Filters results by BGP network prefix.",
-					"example": "1.1.1.0/24",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "1.1.1.0/24"
 				}
 			},
 			{
-				"description": "Filters results by BGP update type.",
-				"in": "query",
 				"name": "updateType",
+				"in": "query",
+				"description": "Filters results by BGP update type.",
 				"schema": {
 					"description": "Filters results by BGP update type.",
-					"example": "ANNOUNCEMENT",
+					"type": "array",
 					"items": {
 						"enum": [
 							"ANNOUNCEMENT",
@@ -4213,48 +4214,53 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": "ANNOUNCEMENT"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -4262,30 +4268,29 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"dateRange"
-											],
-											"type": "object"
+											]
 										},
 										"top_0": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"ASName": {
-														"example": "Apple-Engineering",
-														"type": "string"
+														"type": "string",
+														"example": "Apple-Engineering"
 													},
 													"asn": {
-														"example": 714,
-														"type": "integer"
+														"type": "integer",
+														"example": 714
 													},
 													"value": {
 														"description": "Percentage of updates by this AS out of the total updates by all autonomous systems.",
-														"example": "0.73996",
-														"type": "string"
+														"type": "string",
+														"example": "0.73996"
 													}
 												},
 												"required": [
@@ -4294,37 +4299,36 @@
 													"value"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"meta",
 										"top_0"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -4335,27 +4339,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -4365,7 +4366,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top ASes by BGP updates",
 		"tags": [
 			"Radar BGP"
 		],
@@ -4385,53 +4385,58 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/top/ases/prefixes": {
-		"description": "Retrieves the full list of autonomous systems on the global routing table ordered by announced prefixes count. The data comes from public BGP MRT data archives and updates every 2 hours.",
 		"operationId": "radar-get-bgp-top-asns-by-prefixes",
+		"summary": "Get top ASes by prefix count",
+		"description": "Retrieves the full list of autonomous systems on the global routing table ordered by announced prefixes count. The data comes from public BGP MRT data archives and updates every 2 hours.",
 		"parameters": [
 			{
-				"description": "Alpha-2 country code.",
-				"in": "query",
 				"name": "country",
+				"in": "query",
+				"description": "Alpha-2 country code.",
 				"schema": {
 					"description": "Alpha-2 country code.",
-					"example": "NZ",
-					"type": "string"
+					"type": "string",
+					"example": "NZ"
 				}
 			},
 			{
-				"description": "Maximum number of ASes to return.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of ASes to return.",
 				"schema": {
 					"description": "Maximum number of ASes to return.",
-					"example": 10,
-					"type": "integer"
+					"type": "integer",
+					"example": 10
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"asns": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"asn": {
@@ -4454,10 +4459,10 @@
 													"pfxs_count"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"meta": {
+											"type": "object",
 											"properties": {
 												"data_time": {
 													"type": "string"
@@ -4473,49 +4478,45 @@
 												"data_time",
 												"query_time",
 												"total_peers"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"asns",
 										"meta"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -4525,7 +4526,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top ASes by prefix count",
 		"tags": [
 			"Radar BGP"
 		],
@@ -4545,98 +4545,99 @@
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/top/prefixes": {
-		"description": "Retrieves the top network prefixes by BGP updates.",
 		"operationId": "radar-get-bgp-top-prefixes",
+		"summary": "Get top prefixes by BGP updates",
+		"description": "Retrieves the top network prefixes by BGP updates.",
 		"parameters": [
 			{
-				"description": "Limits the number of objects returned in the response.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limits the number of objects returned in the response.",
 				"schema": {
-					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
+					"type": "integer",
 					"example": 5,
+					"default": 5,
 					"exclusiveMinimum": true,
-					"minimum": 0,
-					"type": "integer"
+					"minimum": 0
 				}
 			},
 			{
-				"description": "Array of names used to label the series in the response.",
-				"in": "query",
 				"name": "name",
+				"in": "query",
+				"description": "Array of names used to label the series in the response.",
 				"schema": {
 					"description": "Array of names used to label the series in the response.",
+					"type": "array",
 					"items": {
 						"example": "main_series",
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			},
 			{
-				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-				"in": "query",
 				"name": "dateRange",
+				"in": "query",
+				"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"schema": {
 					"description": "Filters results by relative date range ending at the current time, with each value producing a separate series. Use `<n>d` for days (up to `364d`) or `<n>w` for weeks (up to `52w`). Append `control` to request the equivalent previous period for comparison: the comparison window is shifted back by the current window's length rounded up to a whole number of weeks, so it keeps the same weekday alignment and does not overlap the current window (e.g. `7dcontrol` covers days -14 to -7, `10dcontrol` covers days -24 to -14). For example, pass `7d` and `7dcontrol` to compare this week with the previous week. All series must resolve to the same duration as the main series; relative ranges (including `control`) satisfy this automatically. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"example": "7d",
+					"type": "array",
 					"items": {
 						"example": "7d",
 						"pattern": "^((([1-9]|[1-9][0-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-4])[d](control)?)|(([1-9]|[1-4][0-9]|5[0-2])[w](control)?))$",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "7d"
 				}
 			},
 			{
-				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "Start of the date range. Alternative to `dateRange`; provide together with `dateEnd`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-				"in": "query",
 				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
 				"schema": {
 					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`. When requesting comparison series, every series must resolve to the same duration as the main series. Each `dateStart`/`dateEnd` is floored to the nearest 15 minutes before evaluation, so windows whose durations match only before alignment may be rejected.",
-					"example": "2023-09-01T11:41:33.782Z",
+					"type": "array",
 					"items": {
 						"format": "date-time",
 						"type": "string"
 					},
-					"type": "array"
+					"example": "2023-09-01T11:41:33.782Z"
 				}
 			},
 			{
-				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-				"in": "query",
 				"name": "asn",
+				"in": "query",
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"schema": {
 					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": "15169"
 				}
 			},
 			{
-				"description": "Filters results by BGP update type.",
-				"in": "query",
 				"name": "updateType",
+				"in": "query",
+				"description": "Filters results by BGP update type.",
 				"schema": {
 					"description": "Filters results by BGP update type.",
-					"example": "ANNOUNCEMENT",
+					"type": "array",
 					"items": {
 						"enum": [
 							"ANNOUNCEMENT",
@@ -4644,48 +4645,53 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": "ANNOUNCEMENT"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"meta": {
+											"type": "object",
 											"properties": {
 												"dateRange": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"endTime": {
 																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-17T10:22:57.555Z"
 															},
 															"startTime": {
 																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2022-09-16T10:22:57.555Z"
 															}
 														},
 														"required": [
@@ -4693,27 +4699,26 @@
 															"endTime"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
 											},
 											"required": [
 												"dateRange"
-											],
-											"type": "object"
+											]
 										},
 										"top_0": {
+											"type": "array",
 											"items": {
 												"properties": {
 													"prefix": {
-														"example": "2804:77cc:8000::/33",
-														"type": "string"
+														"type": "string",
+														"example": "2804:77cc:8000::/33"
 													},
 													"value": {
 														"description": "A numeric string.",
+														"type": "string",
 														"example": "10",
-														"pattern": "^-?\\d+(\\.\\d+)?$",
-														"type": "string"
+														"pattern": "^-?\\d+(\\.\\d+)?$"
 													}
 												},
 												"required": [
@@ -4721,37 +4726,36 @@
 													"value"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										}
 									},
 									"required": [
 										"meta",
 										"top_0"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -4762,27 +4766,24 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			}
 		},
 		"security": [
@@ -4792,7 +4793,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get top prefixes by BGP updates",
 		"tags": [
 			"Radar BGP"
 		],

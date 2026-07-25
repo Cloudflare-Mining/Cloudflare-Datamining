@@ -1,51 +1,55 @@
 {
 	"DELETE /accounts/{account_id}/calls/turn_keys/{key_id}": {
-		"description": "Deletes a TURN key from Cloudflare Calls",
 		"operationId": "calls-delete-turn-key",
+		"summary": "Delete TURN key",
+		"description": "Deletes a TURN key from Cloudflare Calls",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "key_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a item.",
+					"type": "string",
 					"example": "2a95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"minLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete TURN key response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -54,12 +58,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -69,15 +73,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -86,12 +90,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -101,74 +105,71 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"modified": {
 													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"name": {
-													"default": "",
 													"description": "A short description of Calls app, not shown to end users.",
-													"example": "production-realtime-app",
 													"type": "string",
+													"example": "production-realtime-app",
+													"default": "",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
+													"type": "string",
 													"example": "2a95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete TURN key response"
+				}
 			},
 			"4XX": {
+				"description": "Delete TURN key response failure",
 				"content": {
 					"application/json": {}
-				},
-				"description": "Delete TURN key response failure"
+				}
 			}
 		},
 		"security": [
@@ -176,7 +177,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete TURN key",
 		"tags": [
 			"Calls TURN Keys"
 		],
@@ -189,37 +189,40 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/calls/turn_keys": {
-		"description": "Lists all TURN keys in the Cloudflare account",
 		"operationId": "calls-turn-key-list",
+		"summary": "List TURN Keys",
+		"description": "Lists all TURN keys in the Cloudflare account",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List TURN key response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -228,12 +231,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -243,15 +246,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -260,12 +263,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -275,126 +278,89 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created": {
 														"description": "The date and time the item was created.",
-														"example": "2014-01-02T02:20:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2014-01-02T02:20:00Z"
 													},
 													"modified": {
 														"description": "The date and time the item was last modified.",
-														"example": "2014-01-02T02:20:00Z",
+														"type": "string",
 														"format": "date-time",
-														"type": "string"
+														"example": "2014-01-02T02:20:00Z"
 													},
 													"name": {
-														"default": "",
 														"description": "A short description of Calls app, not shown to end users.",
-														"example": "production-realtime-app",
 														"type": "string",
+														"example": "production-realtime-app",
+														"default": "",
 														"x-auditable": true
 													},
 													"uid": {
 														"description": "A Cloudflare-generated unique identifier for a item.",
+														"type": "string",
 														"example": "2a95132c15732412d22c1476fa83f27a",
 														"maxLength": 32,
 														"minLength": 32,
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List TURN key response"
+				}
 			},
 			"4XX": {
+				"description": "List TURN key response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -403,12 +369,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -418,25 +384,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -444,12 +447,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List TURN key response failure"
+				}
 			}
 		},
 		"security": [
@@ -457,7 +458,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List TURN Keys",
 		"tags": [
 			"Calls TURN Keys"
 		],
@@ -471,52 +471,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/calls/turn_keys/{key_id}": {
-		"description": "Fetches details for a single TURN key.",
 		"operationId": "calls-retrieve-turn-key-details",
+		"summary": "Retrieve TURN key details",
+		"description": "Fetches details for a single TURN key.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "key_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a item.",
+					"type": "string",
 					"example": "2a95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"minLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Retrieve TURN key details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -525,12 +529,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -540,15 +544,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -557,12 +561,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -572,126 +576,88 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"modified": {
 													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"name": {
-													"default": "",
 													"description": "A short description of Calls app, not shown to end users.",
-													"example": "production-realtime-app",
 													"type": "string",
+													"example": "production-realtime-app",
+													"default": "",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
+													"type": "string",
 													"example": "2a95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Retrieve TURN key details response"
+				}
 			},
 			"4XX": {
+				"description": "Retrieve TURN key details failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -700,12 +666,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -715,25 +681,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -741,12 +744,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Retrieve TURN key details failure"
+				}
 			}
 		},
 		"security": [
@@ -754,7 +755,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve TURN key details",
 		"tags": [
 			"Calls TURN Keys"
 		],
@@ -768,58 +768,62 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/calls/turn_keys": {
-		"description": "Creates a new Cloudflare Calls TURN key.",
 		"operationId": "calls-turn-key-create",
+		"summary": "Create a new TURN key",
+		"description": "Creates a new Cloudflare Calls TURN key.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
-								"default": "",
 								"description": "A short description of a TURN key, not shown to end users.",
-								"example": "my-turn-key",
 								"type": "string",
+								"example": "my-turn-key",
+								"default": "",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Created a new TURN key",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -828,12 +832,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -843,15 +847,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -860,12 +864,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -875,76 +879,73 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"key": {
 													"description": "Bearer token",
+													"type": "string",
 													"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
 													"maxLength": 64,
 													"minLength": 64,
-													"type": "string",
 													"x-sensitive": true
 												},
 												"modified": {
 													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"name": {
-													"default": "",
 													"description": "A short description of a TURN key, not shown to end users.",
-													"example": "my-turn-key",
 													"type": "string",
+													"example": "my-turn-key",
+													"default": "",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
+													"type": "string",
 													"example": "2a95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Created a new TURN key"
+				}
 			}
 		},
 		"security": [
@@ -952,7 +953,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new TURN key",
 		"tags": [
 			"Calls TURN Keys"
 		],
@@ -965,71 +965,75 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/calls/turn_keys/{key_id}": {
-		"description": "Edit details for a single TURN key.",
 		"operationId": "calls-update-turn-key",
+		"summary": "Edit TURN key details",
+		"description": "Edit details for a single TURN key.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "key_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "A Cloudflare-generated unique identifier for a item.",
+					"type": "string",
 					"example": "2a95132c15732412d22c1476fa83f27a",
 					"maxLength": 32,
 					"minLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
-								"default": "",
 								"description": "A short description of a TURN key, not shown to end users.",
-								"example": "my-turn-key",
 								"type": "string",
+								"example": "my-turn-key",
+								"default": "",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Edit TURN key details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1038,12 +1042,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1053,15 +1057,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1070,12 +1074,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1085,126 +1089,88 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
 													"description": "The date and time the item was created.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"modified": {
 													"description": "The date and time the item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
+													"type": "string",
 													"format": "date-time",
-													"type": "string"
+													"example": "2014-01-02T02:20:00Z"
 												},
 												"name": {
-													"default": "",
 													"description": "A short description of Calls app, not shown to end users.",
-													"example": "production-realtime-app",
 													"type": "string",
+													"example": "production-realtime-app",
+													"default": "",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
+													"type": "string",
 													"example": "2a95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
 													"minLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Edit TURN key details response"
+				}
 			},
 			"4XX": {
+				"description": "Edit TURN key details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1213,12 +1179,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1228,25 +1194,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1254,12 +1257,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Edit TURN key details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1267,7 +1268,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Edit TURN key details",
 		"tags": [
 			"Calls TURN Keys"
 		],

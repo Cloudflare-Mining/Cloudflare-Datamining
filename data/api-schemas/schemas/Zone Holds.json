@@ -1,48 +1,52 @@
 {
 	"DELETE /zones/{zone_id}/hold": {
-		"description": "Stop enforcement of a zone hold on the zone, permanently or temporarily, allowing the\ncreation and activation of zones with this zone's hostname.\nExisting zone holds can be removed from CDN-only zones when `hold_after` is not provided.\nActive holds are automatically disabled when a zone transitions to CDN-only mode.",
 		"operationId": "zones-0-hold-delete",
+		"summary": "Remove Zone Hold",
+		"description": "Stop enforcement of a zone hold on the zone, permanently or temporarily, allowing the\ncreation and activation of zones with this zone's hostname.\nExisting zone holds can be removed from CDN-only zones when `hold_after` is not provided.\nActive holds are automatically disabled when a zone transitions to CDN-only mode.",
 		"parameters": [
 			{
-				"description": "Zone ID",
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
+				"description": "Zone ID",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "If `hold_after` is provided, the hold will be temporarily disabled,\nthen automatically re-enabled by the system at the time specified\nin this RFC3339-formatted timestamp. Otherwise, the hold will be\ndisabled indefinitely. `hold_after` cannot be provided for CDN-only zones.",
-				"example": "2023-01-31T15:56:36+00:00",
-				"in": "query",
 				"name": "hold_after",
+				"in": "query",
+				"description": "If `hold_after` is provided, the hold will be temporarily disabled,\nthen automatically re-enabled by the system at the time specified\nin this RFC3339-formatted timestamp. Otherwise, the hold will be\ndisabled indefinitely. `hold_after` cannot be provided for CDN-only zones.",
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "2023-01-31T15:56:36+00:00"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -55,15 +59,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -76,7 +80,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -94,11 +98,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -106,8 +110,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -123,26 +126,25 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"hold": {
-													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"example": false
 												},
 												"hold_after": {
 													"type": "string"
 												},
 												"include_subdomains": {
-													"example": false,
-													"type": "string"
+													"type": "string",
+													"example": false
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -150,68 +152,32 @@
 							]
 						}
 					}
-				},
-				"description": "Successful Response"
+				}
 			},
 			"4XX": {
+				"description": "Client Error",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -220,12 +186,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -235,25 +201,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -261,14 +264,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Client Error"
+				}
 			}
 		},
 		"security": [
@@ -280,7 +281,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Remove Zone Hold",
 		"tags": [
 			"Zone Holds"
 		],
@@ -292,40 +292,44 @@
 		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/hold": {
-		"description": "Retrieve whether the zone is subject to a zone hold, and metadata about the hold.",
 		"operationId": "zones-0-hold-get",
+		"summary": "Get Zone Hold",
+		"description": "Retrieve whether the zone is subject to a zone hold, and metadata about the hold.",
 		"parameters": [
 			{
-				"description": "Zone ID",
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
+				"description": "Zone ID",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -338,15 +342,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -359,7 +363,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -377,11 +381,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -389,8 +393,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -406,27 +409,26 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"hold": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"hold_after": {
-													"example": "2023-01-31T15:56:36+00:00",
-													"type": "string"
+													"type": "string",
+													"example": "2023-01-31T15:56:36+00:00"
 												},
 												"include_subdomains": {
-													"example": false,
-													"type": "string"
+													"type": "string",
+													"example": false
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -434,68 +436,32 @@
 							]
 						}
 					}
-				},
-				"description": "Successful Response"
+				}
 			},
 			"4XX": {
+				"description": "Client Error",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -504,12 +470,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -519,25 +485,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -545,14 +548,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Client Error"
+				}
 			}
 		},
 		"security": [
@@ -564,7 +565,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Zone Hold",
 		"tags": [
 			"Zone Holds"
 		],
@@ -614,124 +614,90 @@
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/hold/{zone_name}": {
-		"description": "Retrieve whether a given hostname is subject to a zone hold, and metadata about the hold.\nThis endpoint checks whether the given hostname (or any of its ancestor domains) is blocked\nby an active zone hold. If a hold with `include_subdomains` is active on an ancestor domain,\nthat hold is returned. This endpoint is used internally by SSL/COMS to check hold status\nduring zone activation.",
 		"operationId": "zones-0-hold-zone-name-get",
+		"summary": "Get Zone Hold by Zone Name",
+		"description": "Retrieve whether a given hostname is subject to a zone hold, and metadata about the hold.\nThis endpoint checks whether the given hostname (or any of its ancestor domains) is blocked\nby an active zone hold. If a hold with `include_subdomains` is active on an ancestor domain,\nthat hold is returned. This endpoint is used internally by SSL/COMS to check hold status\nduring zone activation.",
 		"parameters": [
 			{
-				"description": "Zone identifier. Consumed by the API gateway for routing; the backend\nhandler does not use this value directly.",
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
+				"description": "Zone identifier. Consumed by the API gateway for routing; the backend\nhandler does not use this value directly.",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "The hostname to check for a zone hold. May be a subdomain (e.g. `subdomain.example.com`)\nor an apex domain (e.g. `example.com`). The service checks the hostname and its ancestor\ndomains for active holds with `include_subdomains` enabled.",
-				"in": "path",
 				"name": "zone_name",
+				"in": "path",
+				"description": "The hostname to check for a zone hold. May be a subdomain (e.g. `subdomain.example.com`)\nor an apex domain (e.g. `example.com`). The service checks the hostname and its ancestor\ndomains for active holds with `include_subdomains` enabled.",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "subdomain.example.com",
 					"maxLength": 253,
-					"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$",
-					"type": "string"
+					"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"hold": {
 									"description": "Whether the hostname is currently subject to a zone hold.",
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								},
 								"hold_after": {
 									"description": "The RFC3339-formatted timestamp at which the hold will be automatically\nre-enabled, if the hold was temporarily disabled. Null if the hold is\npermanently enabled or not set.",
-									"example": "2023-01-31T15:56:36+00:00",
+									"type": "string",
 									"format": "date-time",
-									"nullable": true,
-									"type": "string"
+									"example": "2023-01-31T15:56:36+00:00",
+									"nullable": true
 								},
 								"include_subdomains": {
 									"description": "Whether the hold extends to block subdomains of the held zone.",
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Successful Response"
+				}
 			},
 			"4XX": {
+				"description": "Client Error",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -740,12 +706,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -755,25 +721,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -781,18 +784,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Client Error"
+				}
 			}
 		},
 		"security": [],
-		"summary": "Get Zone Hold by Zone Name",
 		"tags": [
 			"Zone Holds"
 		],
@@ -839,65 +839,69 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/hold": {
-		"description": "Update the `hold_after` and/or `include_subdomains` values on an existing zone hold.\nThe hold is enabled if the `hold_after` date-time value is in the past.\nExisting zone holds can be removed from CDN-only zones by setting `hold_after` to `null`.\nOther zone hold updates cannot be made on CDN-only zones.\nActive holds are automatically disabled when a zone transitions to CDN-only mode.",
 		"operationId": "zones-0-hold-patch",
+		"summary": "Update Zone Hold",
+		"description": "Update the `hold_after` and/or `include_subdomains` values on an existing zone hold.\nThe hold is enabled if the `hold_after` date-time value is in the past.\nExisting zone holds can be removed from CDN-only zones by setting `hold_after` to `null`.\nOther zone hold updates cannot be made on CDN-only zones.\nActive holds are automatically disabled when a zone transitions to CDN-only mode.",
 		"parameters": [
 			{
-				"description": "Zone ID",
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
+				"description": "Zone ID",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"hold_after": {
-								"default": "",
 								"description": "If `hold_after` is provided and future-dated, the hold will be temporarily disabled,\nthen automatically re-enabled by the system at the time specified\nin this RFC3339-formatted timestamp. A past-dated `hold_after` value will have\nno effect on an existing, enabled hold. Providing an empty string will set its value\nto the current time. Providing `null` will disable the hold indefinitely.",
+								"type": "string",
 								"example": "2023-01-31T15:56:36+00:00",
-								"nullable": true,
-								"type": "string"
+								"default": "",
+								"nullable": true
 							},
 							"include_subdomains": {
-								"default": false,
 								"description": "If `true`, the zone hold will extend to block any subdomain of the given zone, as well\nas SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname\n'example.com' and include_subdomains=true will block 'example.com',\n'staging.example.com', 'api.staging.example.com', etc.",
+								"type": "boolean",
 								"example": true,
-								"type": "boolean"
+								"default": false
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -910,15 +914,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -931,7 +935,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -949,11 +953,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -961,8 +965,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -978,26 +981,25 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"hold": {
-													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"example": false
 												},
 												"hold_after": {
 													"type": "string"
 												},
 												"include_subdomains": {
-													"example": false,
-													"type": "string"
+													"type": "string",
+													"example": false
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1005,68 +1007,32 @@
 							]
 						}
 					}
-				},
-				"description": "Successful Response"
+				}
 			},
 			"4XX": {
+				"description": "Client Error",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1075,12 +1041,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1090,25 +1056,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1116,14 +1119,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Client Error"
+				}
 			}
 		},
 		"security": [
@@ -1135,7 +1136,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Zone Hold",
 		"tags": [
 			"Zone Holds"
 		],
@@ -1155,49 +1155,53 @@
 		}
 	},
 	"POST /zones/{zone_id}/hold": {
-		"description": "Enforce a zone hold on the zone, blocking the creation and activation of zones with this zone's hostname.\nZone holds cannot be enabled on CDN-only zones.",
 		"operationId": "zones-0-hold-post",
+		"summary": "Create Zone Hold",
+		"description": "Enforce a zone hold on the zone, blocking the creation and activation of zones with this zone's hostname.\nZone holds cannot be enabled on CDN-only zones.",
 		"parameters": [
 			{
-				"description": "Zone ID",
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
+				"description": "Zone ID",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "If provided, the zone hold will extend to block any subdomain of the given zone, as well\nas SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname\n'example.com' and include_subdomains=true will block 'example.com',\n'staging.example.com', 'api.staging.example.com', etc.",
-				"example": true,
-				"in": "query",
 				"name": "include_subdomains",
+				"in": "query",
+				"description": "If provided, the zone hold will extend to block any subdomain of the given zone, as well\nas SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname\n'example.com' and include_subdomains=true will block 'example.com',\n'staging.example.com', 'api.staging.example.com', etc.",
 				"schema": {
 					"type": "boolean"
-				}
+				},
+				"example": true
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1210,15 +1214,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1231,7 +1235,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1249,11 +1253,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1261,8 +1265,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1278,27 +1281,26 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"hold": {
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"hold_after": {
-													"example": "2023-01-31T15:56:36+00:00",
-													"type": "string"
+													"type": "string",
+													"example": "2023-01-31T15:56:36+00:00"
 												},
 												"include_subdomains": {
-													"example": true,
-													"type": "string"
+													"type": "string",
+													"example": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1306,68 +1308,32 @@
 							]
 						}
 					}
-				},
-				"description": "Successful Response"
+				}
 			},
 			"4XX": {
+				"description": "Client Error",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1376,12 +1342,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1391,25 +1357,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1417,14 +1420,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Client Error"
+				}
 			}
 		},
 		"security": [
@@ -1436,7 +1437,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Zone Hold",
 		"tags": [
 			"Zone Holds"
 		],

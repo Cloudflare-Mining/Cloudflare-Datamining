@@ -1,54 +1,59 @@
 {
 	"DELETE /accounts/{account_id}/gateway/lists/{list_id}": {
-		"description": "Deletes a Zero Trust list.",
 		"operationId": "zero-trust-lists-delete-zero-trust-list",
+		"summary": "Delete Zero Trust list",
+		"description": "Deletes a Zero Trust list.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "list_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Zero Trust list response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -61,15 +66,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -82,26 +87,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -111,31 +114,34 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Zero Trust list response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Zero Trust list response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -148,15 +154,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -169,26 +175,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -198,53 +202,27 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -257,26 +235,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -284,15 +288,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Zero Trust list response failure."
+				}
 			}
 		},
 		"security": [
@@ -302,7 +303,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
 		],
@@ -312,24 +312,27 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/lists": {
-		"description": "Fetch all Zero Trust lists for an account.",
 		"operationId": "zero-trust-lists-list-zero-trust-lists",
+		"summary": "List Zero Trust lists",
+		"description": "Fetch all Zero Trust lists for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "type",
+				"in": "query",
 				"schema": {
 					"description": "Specify the list type.",
+					"type": "string",
+					"example": "SERIAL",
 					"enum": [
 						"SERIAL",
 						"URL",
@@ -341,29 +344,31 @@
 						"DEVICE",
 						"AAGUID"
 					],
-					"example": "SERIAL",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Zero Trust lists response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -376,15 +381,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -397,125 +402,127 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"count": {
 														"description": "Indicate the number of items in the list.",
+														"type": "number",
 														"example": 20,
 														"readOnly": true,
-														"type": "number",
 														"x-stainless-terraform-configurability": "computed"
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"description": {
 														"description": "Provide the list description.",
-														"example": "The serial numbers for administrators",
 														"type": "string",
+														"example": "The serial numbers for administrators",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"id": {
 														"description": "Identify the API resource with a UUID.",
+														"type": "string",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
-														"type": "string",
 														"x-auditable": true
 													},
 													"items": {
 														"description": "Provide the list items.",
+														"type": "array",
 														"items": {
 															"properties": {
 																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
+																	"type": "string",
 																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"readOnly": true
 																},
 																"description": {
 																	"description": "Provide the list item description (optional).",
+																	"type": "string",
 																	"example": "Austin office IP",
-																	"minimum": 0,
-																	"type": "string"
+																	"minimum": 0
 																},
 																"value": {
 																	"description": "Specify the item value.",
-																	"example": "8GE8721REF",
 																	"type": "string",
+																	"example": "8GE8721REF",
 																	"x-auditable": true
 																}
 															},
 															"type": "object"
 														},
-														"type": "array",
 														"x-stainless-collection-type": "set"
 													},
 													"name": {
 														"description": "Specify the list name.",
-														"example": "Admin Serial Numbers",
 														"type": "string",
+														"example": "Admin Serial Numbers",
 														"x-auditable": true
 													},
 													"type": {
 														"description": "Specify the list type.",
+														"type": "string",
+														"example": "SERIAL",
 														"enum": [
 															"SERIAL",
 															"URL",
@@ -527,49 +534,48 @@
 															"DEVICE",
 															"AAGUID"
 														],
-														"example": "SERIAL",
-														"type": "string",
 														"x-auditable": true
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Zero Trust lists response."
+				}
 			},
 			"4XX": {
+				"description": "List Zero Trust lists response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -582,15 +588,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -603,125 +609,127 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"count": {
 																"description": "Indicate the number of items in the list.",
+																"type": "number",
 																"example": 20,
 																"readOnly": true,
-																"type": "number",
 																"x-stainless-terraform-configurability": "computed"
 															},
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "Provide the list description.",
-																"example": "The serial numbers for administrators",
 																"type": "string",
+																"example": "The serial numbers for administrators",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
 																"description": "Identify the API resource with a UUID.",
+																"type": "string",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
-																"type": "string",
 																"x-auditable": true
 															},
 															"items": {
 																"description": "Provide the list items.",
+																"type": "array",
 																"items": {
 																	"properties": {
 																		"created_at": {
-																			"example": "2014-01-01T05:20:00.12345Z",
+																			"type": "string",
 																			"format": "date-time",
-																			"readOnly": true,
-																			"type": "string"
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"readOnly": true
 																		},
 																		"description": {
 																			"description": "Provide the list item description (optional).",
+																			"type": "string",
 																			"example": "Austin office IP",
-																			"minimum": 0,
-																			"type": "string"
+																			"minimum": 0
 																		},
 																		"value": {
 																			"description": "Specify the item value.",
-																			"example": "8GE8721REF",
 																			"type": "string",
+																			"example": "8GE8721REF",
 																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
 																},
-																"type": "array",
 																"x-stainless-collection-type": "set"
 															},
 															"name": {
 																"description": "Specify the list name.",
-																"example": "Admin Serial Numbers",
 																"type": "string",
+																"example": "Admin Serial Numbers",
 																"x-auditable": true
 															},
 															"type": {
 																"description": "Specify the list type.",
+																"type": "string",
+																"example": "SERIAL",
 																"enum": [
 																	"SERIAL",
 																	"URL",
@@ -733,71 +741,41 @@
 																	"DEVICE",
 																	"AAGUID"
 																],
-																"example": "SERIAL",
-																"type": "string",
 																"x-auditable": true
 															},
 															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -810,26 +788,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -837,15 +841,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Zero Trust lists response failure."
+				}
 			}
 		},
 		"security": [
@@ -855,7 +856,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Zero Trust lists",
 		"tags": [
 			"Zero Trust lists"
 		],
@@ -865,49 +865,54 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}": {
-		"description": "Fetch a single Zero Trust list.",
 		"operationId": "zero-trust-lists-zero-trust-list-details",
+		"summary": "Get Zero Trust list details",
+		"description": "Fetch a single Zero Trust list.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "list_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Zero Trust list details response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -920,15 +925,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -941,94 +946,95 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Indicate the number of items in the list.",
+													"type": "number",
 													"example": 20,
 													"readOnly": true,
-													"type": "number",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "Provide the list description.",
-													"example": "The serial numbers for administrators",
 													"type": "string",
+													"example": "The serial numbers for administrators",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Identify the API resource with a UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
 													"description": "Provide the list items.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "Provide the list item description (optional).",
+																"type": "string",
 																"example": "Austin office IP",
-																"minimum": 0,
-																"type": "string"
+																"minimum": 0
 															},
 															"value": {
 																"description": "Specify the item value.",
-																"example": "8GE8721REF",
 																"type": "string",
+																"example": "8GE8721REF",
 																"x-auditable": true
 															}
 														},
 														"type": "object"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
 													"description": "Specify the list name.",
-													"example": "Admin Serial Numbers",
 													"type": "string",
+													"example": "Admin Serial Numbers",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "Specify the list type.",
+													"type": "string",
+													"example": "SERIAL",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -1040,48 +1046,48 @@
 														"DEVICE",
 														"AAGUID"
 													],
-													"example": "SERIAL",
-													"type": "string",
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
 							],
-							"type": "object",
 							"x-auditable": true
 						}
 					}
-				},
-				"description": "Get Zero Trust list details response."
+				}
 			},
 			"4XX": {
+				"description": "Get Zero Trust list details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1094,15 +1100,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1115,94 +1121,95 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the number of items in the list.",
+															"type": "number",
 															"example": 20,
 															"readOnly": true,
-															"type": "number",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "Provide the list description.",
-															"example": "The serial numbers for administrators",
 															"type": "string",
+															"example": "The serial numbers for administrators",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "Identify the API resource with a UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
 															"description": "Provide the list items.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"description": {
 																		"description": "Provide the list item description (optional).",
+																		"type": "string",
 																		"example": "Austin office IP",
-																		"minimum": 0,
-																		"type": "string"
+																		"minimum": 0
 																	},
 																	"value": {
 																		"description": "Specify the item value.",
-																		"example": "8GE8721REF",
 																		"type": "string",
+																		"example": "8GE8721REF",
 																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
 															"description": "Specify the list name.",
-															"example": "Admin Serial Numbers",
 															"type": "string",
+															"example": "Admin Serial Numbers",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "Specify the list type.",
+															"type": "string",
+															"example": "SERIAL",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -1214,70 +1221,41 @@
 																"DEVICE",
 																"AAGUID"
 															],
-															"example": "SERIAL",
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
 									],
-									"type": "object",
 									"x-auditable": true
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1290,26 +1268,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1317,15 +1321,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Zero Trust list details response failure."
+				}
 			}
 		},
 		"security": [
@@ -1335,55 +1336,59 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zero Trust list details",
 		"tags": [
 			"Zero Trust lists"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}/items": {
-		"description": "Fetch all items in a single Zero Trust list.",
 		"operationId": "zero-trust-lists-zero-trust-list-items",
+		"summary": "Get Zero Trust list items",
+		"description": "Fetch all items in a single Zero Trust list.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "list_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Zero Trust list items response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1396,15 +1401,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1417,85 +1422,83 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Provide the list items.",
+											"type": "array",
 											"items": {
 												"properties": {
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"description": {
 														"description": "Provide the list item description (optional).",
+														"type": "string",
 														"example": "Austin office IP",
-														"minimum": 0,
-														"type": "string"
+														"minimum": 0
 													},
 													"value": {
 														"description": "Specify the item value.",
-														"example": "8GE8721REF",
 														"type": "string",
+														"example": "8GE8721REF",
 														"x-auditable": true
 													}
 												},
 												"type": "object"
 											},
-											"type": "array",
 											"x-stainless-collection-type": "set"
 										}
 									},
@@ -1504,58 +1507,61 @@
 								{
 									"properties": {
 										"result_info": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Shows the total results returned based on your search parameters.",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"page": {
 													"description": "Show the current page within paginated list of results.",
-													"example": 1,
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Show the number of results per page of results.",
-													"example": 20,
-													"type": "number"
+													"type": "number",
+													"example": 20
 												},
 												"total_count": {
 													"description": "Show the total results available without any search parameters.",
-													"example": 2000,
-													"type": "number"
+													"type": "number",
+													"example": 2000
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Zero Trust list items response."
+				}
 			},
 			"4XX": {
+				"description": "Get Zero Trust list items response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1568,15 +1574,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1589,85 +1595,83 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "Provide the list items.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "Provide the list item description (optional).",
+																"type": "string",
 																"example": "Austin office IP",
-																"minimum": 0,
-																"type": "string"
+																"minimum": 0
 															},
 															"value": {
 																"description": "Specify the item value.",
-																"example": "8GE8721REF",
 																"type": "string",
+																"example": "8GE8721REF",
 																"x-auditable": true
 															}
 														},
 														"type": "object"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												}
 											},
@@ -1676,80 +1680,54 @@
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Shows the total results returned based on your search parameters.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Show the current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Show the number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Show the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1762,26 +1740,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1789,15 +1793,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Zero Trust list items response failure."
+				}
 			}
 		},
 		"security": [
@@ -1807,99 +1808,103 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zero Trust list items",
 		"tags": [
 			"Zero Trust lists"
 		]
 	},
 	"PATCH /accounts/{account_id}/gateway/lists/{list_id}": {
-		"description": "Appends or removes an item from a configured Zero Trust list.",
 		"operationId": "zero-trust-lists-patch-zero-trust-list",
+		"summary": "Patch Zero Trust list.",
+		"description": "Appends or removes an item from a configured Zero Trust list.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "list_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"append": {
 								"description": "Add items to the list.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"description": {
 											"description": "Provide the list item description (optional).",
+											"type": "string",
 											"example": "Austin office IP",
-											"minimum": 0,
-											"type": "string"
+											"minimum": 0
 										},
 										"value": {
 											"description": "Specify the item value.",
-											"example": "8GE8721REF",
 											"type": "string",
+											"example": "8GE8721REF",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"remove": {
 								"description": "Lists of item values you want to remove.",
+								"type": "array",
 								"items": {
 									"description": "Specify the item value.",
-									"example": "8GE8721REF",
 									"type": "string",
+									"example": "8GE8721REF",
 									"x-auditable": true
-								},
-								"type": "array"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Zero Trust list response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1912,15 +1917,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1933,94 +1938,95 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Indicate the number of items in the list.",
+													"type": "number",
 													"example": 20,
 													"readOnly": true,
-													"type": "number",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "Provide the list description.",
-													"example": "The serial numbers for administrators",
 													"type": "string",
+													"example": "The serial numbers for administrators",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Identify the API resource with a UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
 													"description": "Provide the list items.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "Provide the list item description (optional).",
+																"type": "string",
 																"example": "Austin office IP",
-																"minimum": 0,
-																"type": "string"
+																"minimum": 0
 															},
 															"value": {
 																"description": "Specify the item value.",
-																"example": "8GE8721REF",
 																"type": "string",
+																"example": "8GE8721REF",
 																"x-auditable": true
 															}
 														},
 														"type": "object"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
 													"description": "Specify the list name.",
-													"example": "Admin Serial Numbers",
 													"type": "string",
+													"example": "Admin Serial Numbers",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "Specify the list type.",
+													"type": "string",
+													"example": "SERIAL",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -2032,48 +2038,48 @@
 														"DEVICE",
 														"AAGUID"
 													],
-													"example": "SERIAL",
-													"type": "string",
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
 							],
-							"type": "object",
 							"x-auditable": true
 						}
 					}
-				},
-				"description": "Patch Zero Trust list response."
+				}
 			},
 			"4XX": {
+				"description": "Patch Zero Trust list response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2086,15 +2092,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2107,94 +2113,95 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the number of items in the list.",
+															"type": "number",
 															"example": 20,
 															"readOnly": true,
-															"type": "number",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "Provide the list description.",
-															"example": "The serial numbers for administrators",
 															"type": "string",
+															"example": "The serial numbers for administrators",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "Identify the API resource with a UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
 															"description": "Provide the list items.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"description": {
 																		"description": "Provide the list item description (optional).",
+																		"type": "string",
 																		"example": "Austin office IP",
-																		"minimum": 0,
-																		"type": "string"
+																		"minimum": 0
 																	},
 																	"value": {
 																		"description": "Specify the item value.",
-																		"example": "8GE8721REF",
 																		"type": "string",
+																		"example": "8GE8721REF",
 																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
 															"description": "Specify the list name.",
-															"example": "Admin Serial Numbers",
 															"type": "string",
+															"example": "Admin Serial Numbers",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "Specify the list type.",
+															"type": "string",
+															"example": "SERIAL",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -2206,70 +2213,41 @@
 																"DEVICE",
 																"AAGUID"
 															],
-															"example": "SERIAL",
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
 									],
-									"type": "object",
 									"x-auditable": true
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2282,26 +2260,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2309,15 +2313,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Zero Trust list response failure."
+				}
 			}
 		},
 		"security": [
@@ -2327,7 +2328,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Patch Zero Trust list.",
 		"tags": [
 			"Zero Trust lists"
 		],
@@ -2337,62 +2337,67 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/gateway/lists": {
-		"description": "Creates a new Zero Trust list.",
 		"operationId": "zero-trust-lists-create-zero-trust-list",
+		"summary": "Create Zero Trust list",
+		"description": "Creates a new Zero Trust list.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Provide the list description.",
-								"example": "The serial numbers for administrators",
 								"type": "string",
+								"example": "The serial numbers for administrators",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"items": {
 								"description": "Add items to the list.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"description": {
 											"description": "Provide the list item description (optional).",
+											"type": "string",
 											"example": "Austin office IP",
-											"minimum": 0,
-											"type": "string"
+											"minimum": 0
 										},
 										"value": {
 											"description": "Specify the item value.",
-											"example": "8GE8721REF",
 											"type": "string",
+											"example": "8GE8721REF",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"name": {
 								"description": "Specify the list name.",
-								"example": "Admin Serial Numbers",
 								"type": "string",
+								"example": "Admin Serial Numbers",
 								"x-auditable": true
 							},
 							"type": {
 								"description": "Specify the list type.",
+								"type": "string",
+								"example": "SERIAL",
 								"enum": [
 									"SERIAL",
 									"URL",
@@ -2404,38 +2409,38 @@
 									"DEVICE",
 									"AAGUID"
 								],
-								"example": "SERIAL",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"name",
 							"type"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Zero Trust list response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2448,15 +2453,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2469,87 +2474,88 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "Provide the list description.",
-													"example": "The serial numbers for administrators",
 													"type": "string",
+													"example": "The serial numbers for administrators",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Identify the API resource with a UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
 													"description": "Provide the list items.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "Provide the list item description (optional).",
+																"type": "string",
 																"example": "Austin office IP",
-																"minimum": 0,
-																"type": "string"
+																"minimum": 0
 															},
 															"value": {
 																"description": "Specify the item value.",
-																"example": "8GE8721REF",
 																"type": "string",
+																"example": "8GE8721REF",
 																"x-auditable": true
 															}
 														},
 														"type": "object"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
 													"description": "Specify the list name.",
-													"example": "Admin Serial Numbers",
 													"type": "string",
+													"example": "Admin Serial Numbers",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "Specify the list type.",
+													"type": "string",
+													"example": "SERIAL",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -2561,47 +2567,47 @@
 														"DEVICE",
 														"AAGUID"
 													],
-													"example": "SERIAL",
-													"type": "string",
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Zero Trust list response."
+				}
 			},
 			"4XX": {
+				"description": "Create Zero Trust list response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2614,15 +2620,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2635,87 +2641,88 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "Provide the list description.",
-															"example": "The serial numbers for administrators",
 															"type": "string",
+															"example": "The serial numbers for administrators",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "Identify the API resource with a UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
 															"description": "Provide the list items.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"description": {
 																		"description": "Provide the list item description (optional).",
+																		"type": "string",
 																		"example": "Austin office IP",
-																		"minimum": 0,
-																		"type": "string"
+																		"minimum": 0
 																	},
 																	"value": {
 																		"description": "Specify the item value.",
-																		"example": "8GE8721REF",
 																		"type": "string",
+																		"example": "8GE8721REF",
 																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
 															"description": "Specify the list name.",
-															"example": "Admin Serial Numbers",
 															"type": "string",
+															"example": "Admin Serial Numbers",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "Specify the list type.",
+															"type": "string",
+															"example": "SERIAL",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -2727,69 +2734,40 @@
 																"DEVICE",
 																"AAGUID"
 															],
-															"example": "SERIAL",
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2802,26 +2780,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2829,15 +2833,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Zero Trust list response failure."
+				}
 			}
 		},
 		"security": [
@@ -2847,63 +2848,67 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/lists/upload": {
-		"description": "Create a new Zero Trust list by uploading a CSV file. The file must be `text/csv` or `text/plain` and cannot exceed 2 MB. The operation is processed asynchronously. Use the returned operation ID to poll for status.",
 		"operationId": "zero-trust-lists-create-zero-trust-list-from-csv",
+		"summary": "Create Zero Trust list from CSV",
+		"description": "Create a new Zero Trust list by uploading a CSV file. The file must be `text/csv` or `text/plain` and cannot exceed 2 MB. The operation is processed asynchronously. Use the returned operation ID to poll for status.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"multipart/form-data": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"file": {
 								"description": "The CSV file containing list items. Must be `text/csv` or `text/plain` and cannot exceed 2 MB.",
-								"format": "binary",
-								"type": "string"
+								"type": "string",
+								"format": "binary"
 							}
 						},
 						"required": [
 							"file"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Zero Trust list from CSV response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2916,15 +2921,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2937,48 +2942,50 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"data": {
+													"type": "object",
 													"properties": {
 														"description": {
 															"description": "Provide the list description.",
-															"example": "The serial numbers for administrators",
 															"type": "string",
+															"example": "The serial numbers for administrators",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"list_type": {
 															"description": "Specify the list type.",
+															"type": "string",
+															"example": "SERIAL",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -2990,92 +2997,91 @@
 																"DEVICE",
 																"AAGUID"
 															],
-															"example": "SERIAL",
-															"type": "string",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "Specify the list name.",
-															"example": "Admin Serial Numbers",
 															"type": "string",
+															"example": "Admin Serial Numbers",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"id": {
 													"description": "Identify the API resource with a UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"operation_type": {
 													"description": "The type of operation.",
+													"type": "string",
+													"example": "create_list",
 													"enum": [
 														"create_list"
-													],
-													"example": "create_list",
-													"type": "string"
+													]
 												},
 												"processing_error": {
 													"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"result": {
 													"description": "The result of the operation. Only present when the operation has completed successfully.",
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"status": {
 													"description": "The status of the operation.",
+													"type": "string",
+													"example": "pending",
 													"enum": [
 														"pending",
 														"active",
 														"failed",
 														"complete"
-													],
-													"example": "pending",
-													"type": "string"
+													]
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Zero Trust list from CSV response."
+				}
 			},
 			"4XX": {
+				"description": "Create Zero Trust list from CSV response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3088,15 +3094,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3109,48 +3115,50 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"data": {
+															"type": "object",
 															"properties": {
 																"description": {
 																	"description": "Provide the list description.",
-																	"example": "The serial numbers for administrators",
 																	"type": "string",
+																	"example": "The serial numbers for administrators",
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"list_type": {
 																	"description": "Specify the list type.",
+																	"type": "string",
+																	"example": "SERIAL",
 																	"enum": [
 																		"SERIAL",
 																		"URL",
@@ -3162,114 +3170,84 @@
 																		"DEVICE",
 																		"AAGUID"
 																	],
-																	"example": "SERIAL",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "Specify the list name.",
-																	"example": "Admin Serial Numbers",
 																	"type": "string",
+																	"example": "Admin Serial Numbers",
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"id": {
 															"description": "Identify the API resource with a UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"operation_type": {
 															"description": "The type of operation.",
+															"type": "string",
+															"example": "create_list",
 															"enum": [
 																"create_list"
-															],
-															"example": "create_list",
-															"type": "string"
+															]
 														},
 														"processing_error": {
 															"description": "A human-readable error message if the operation failed. Only present when the operation status is `failed`.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"result": {
 															"description": "The result of the operation. Only present when the operation has completed successfully.",
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"status": {
 															"description": "The status of the operation.",
+															"type": "string",
+															"example": "pending",
 															"enum": [
 																"pending",
 																"active",
 																"failed",
 																"complete"
-															],
-															"example": "pending",
-															"type": "string"
+															]
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3282,26 +3260,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3309,15 +3313,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Zero Trust list from CSV response failure."
+				}
 			}
 		},
 		"security": [
@@ -3327,105 +3328,109 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create Zero Trust list from CSV",
 		"tags": [
 			"Zero Trust lists"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/lists/{list_id}": {
-		"description": "Updates a configured Zero Trust list. Skips updating list items if not included in the payload. A non empty list items will overwrite the existing list.",
 		"operationId": "zero-trust-lists-update-zero-trust-list",
+		"summary": "Update Zero Trust list",
+		"description": "Updates a configured Zero Trust list. Skips updating list items if not included in the payload. A non empty list items will overwrite the existing list.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "list_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identify the API resource with a UUID.",
+					"type": "string",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Provide the list description.",
-								"example": "The serial numbers for administrators",
 								"type": "string",
+								"example": "The serial numbers for administrators",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"items": {
 								"description": "Add items to the list.",
+								"type": "array",
 								"items": {
 									"properties": {
 										"description": {
 											"description": "Provide the list item description (optional).",
+											"type": "string",
 											"example": "Austin office IP",
-											"minimum": 0,
-											"type": "string"
+											"minimum": 0
 										},
 										"value": {
 											"description": "Specify the item value.",
-											"example": "8GE8721REF",
 											"type": "string",
+											"example": "8GE8721REF",
 											"x-auditable": true
 										}
 									},
 									"type": "object"
 								},
-								"type": "array",
 								"x-stainless-collection-type": "set"
 							},
 							"name": {
 								"description": "Specify the list name.",
-								"example": "Admin Serial Numbers",
 								"type": "string",
+								"example": "Admin Serial Numbers",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Zero Trust list response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3438,15 +3443,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3459,94 +3464,95 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Indicate the number of items in the list.",
+													"type": "number",
 													"example": 20,
 													"readOnly": true,
-													"type": "number",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"description": {
 													"description": "Provide the list description.",
-													"example": "The serial numbers for administrators",
 													"type": "string",
+													"example": "The serial numbers for administrators",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Identify the API resource with a UUID.",
+													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"type": "string",
 													"x-auditable": true
 												},
 												"items": {
 													"description": "Provide the list items.",
+													"type": "array",
 													"items": {
 														"properties": {
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"description": {
 																"description": "Provide the list item description (optional).",
+																"type": "string",
 																"example": "Austin office IP",
-																"minimum": 0,
-																"type": "string"
+																"minimum": 0
 															},
 															"value": {
 																"description": "Specify the item value.",
-																"example": "8GE8721REF",
 																"type": "string",
+																"example": "8GE8721REF",
 																"x-auditable": true
 															}
 														},
 														"type": "object"
 													},
-													"type": "array",
 													"x-stainless-collection-type": "set"
 												},
 												"name": {
 													"description": "Specify the list name.",
-													"example": "Admin Serial Numbers",
 													"type": "string",
+													"example": "Admin Serial Numbers",
 													"x-auditable": true
 												},
 												"type": {
 													"description": "Specify the list type.",
+													"type": "string",
+													"example": "SERIAL",
 													"enum": [
 														"SERIAL",
 														"URL",
@@ -3558,48 +3564,48 @@
 														"DEVICE",
 														"AAGUID"
 													],
-													"example": "SERIAL",
-													"type": "string",
 													"x-auditable": true
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
 							],
-							"type": "object",
 							"x-auditable": true
 						}
 					}
-				},
-				"description": "Update Zero Trust list response."
+				}
 			},
 			"4XX": {
+				"description": "Update Zero Trust list response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3612,15 +3618,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3633,94 +3639,95 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the number of items in the list.",
+															"type": "number",
 															"example": 20,
 															"readOnly": true,
-															"type": "number",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"description": {
 															"description": "Provide the list description.",
-															"example": "The serial numbers for administrators",
 															"type": "string",
+															"example": "The serial numbers for administrators",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "Identify the API resource with a UUID.",
+															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"type": "string",
 															"x-auditable": true
 														},
 														"items": {
 															"description": "Provide the list items.",
+															"type": "array",
 															"items": {
 																"properties": {
 																	"created_at": {
-																		"example": "2014-01-01T05:20:00.12345Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"readOnly": true
 																	},
 																	"description": {
 																		"description": "Provide the list item description (optional).",
+																		"type": "string",
 																		"example": "Austin office IP",
-																		"minimum": 0,
-																		"type": "string"
+																		"minimum": 0
 																	},
 																	"value": {
 																		"description": "Specify the item value.",
-																		"example": "8GE8721REF",
 																		"type": "string",
+																		"example": "8GE8721REF",
 																		"x-auditable": true
 																	}
 																},
 																"type": "object"
 															},
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														},
 														"name": {
 															"description": "Specify the list name.",
-															"example": "Admin Serial Numbers",
 															"type": "string",
+															"example": "Admin Serial Numbers",
 															"x-auditable": true
 														},
 														"type": {
 															"description": "Specify the list type.",
+															"type": "string",
+															"example": "SERIAL",
 															"enum": [
 																"SERIAL",
 																"URL",
@@ -3732,70 +3739,41 @@
 																"DEVICE",
 																"AAGUID"
 															],
-															"example": "SERIAL",
-															"type": "string",
 															"x-auditable": true
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
 									],
-									"type": "object",
 									"x-auditable": true
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3808,26 +3786,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3835,15 +3839,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Zero Trust list response failure."
+				}
 			}
 		},
 		"security": [
@@ -3853,7 +3854,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
 		],

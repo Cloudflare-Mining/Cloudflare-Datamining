@@ -1,37 +1,41 @@
 {
 	"GET /zones/{zone_id}/ai-security/custom-topics": {
-		"description": "Get the AI Security for Apps custom topic categories for a zone.",
 		"operationId": "ai-security-custom-topics-get",
+		"summary": "Get AI Security for Apps Custom Topics",
+		"description": "Get the AI Security for Apps custom topic categories for a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines the zone.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get AI Security for Apps custom topics response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -44,15 +48,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -65,7 +69,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -85,11 +89,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -97,8 +101,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -117,44 +120,43 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"topics": {
 													"description": "Custom topic categories for AI Security for Apps content detection.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"label": {
 																"description": "Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens.",
+																"type": "string",
 																"example": "credit-cards",
 																"maxLength": 20,
 																"minLength": 2,
-																"pattern": "^[a-z0-9-]+$",
-																"type": "string"
+																"pattern": "^[a-z0-9-]+$"
 															},
 															"topic": {
 																"description": "Description of the topic category. Must contain only printable ASCII characters.",
+																"type": "string",
 																"example": "credit card numbers",
 																"maxLength": 50,
-																"minLength": 2,
-																"type": "string"
+																"minLength": 2
 															}
 														},
 														"required": [
 															"label",
 															"topic"
-														],
-														"type": "object"
+														]
 													},
-													"maxItems": 20,
-													"type": "array"
+													"maxItems": 20
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -162,10 +164,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get AI Security for Apps custom topics response."
+				}
 			},
 			"4XX": {
+				"description": "Get AI Security for Apps custom topics failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -173,16 +175,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -195,15 +199,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -216,7 +220,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -236,11 +240,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -248,8 +252,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -268,44 +271,43 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"topics": {
 															"description": "Custom topic categories for AI Security for Apps content detection.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"label": {
 																		"description": "Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens.",
+																		"type": "string",
 																		"example": "credit-cards",
 																		"maxLength": 20,
 																		"minLength": 2,
-																		"pattern": "^[a-z0-9-]+$",
-																		"type": "string"
+																		"pattern": "^[a-z0-9-]+$"
 																	},
 																	"topic": {
 																		"description": "Description of the topic category. Must contain only printable ASCII characters.",
+																		"type": "string",
 																		"example": "credit card numbers",
 																		"maxLength": 50,
-																		"minLength": 2,
-																		"type": "string"
+																		"minLength": 2
 																	}
 																},
 																"required": [
 																	"label",
 																	"topic"
-																],
-																"type": "object"
+																]
 															},
-															"maxItems": 20,
-															"type": "array"
+															"maxItems": 20
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -313,48 +315,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 13900,
 													"message": "internal server error"
 												}
 											],
-											"minItems": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -367,25 +344,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minItems": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -393,14 +396,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get AI Security for Apps custom topics failure response."
+				}
 			}
 		},
 		"security": [
@@ -410,44 +411,47 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get AI Security for Apps Custom Topics",
 		"tags": [
 			"AI Security for Apps"
 		]
 	},
 	"GET /zones/{zone_id}/ai-security/settings": {
-		"description": "Get whether AI Security for Apps is enabled or disabled for a zone.",
 		"operationId": "ai-security-settings-get",
+		"summary": "Get AI Security for Apps Status",
+		"description": "Get whether AI Security for Apps is enabled or disabled for a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines the zone.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get AI Security for Apps status response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -460,15 +464,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -481,7 +485,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -501,11 +505,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -513,8 +517,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -533,21 +536,20 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "AI Security for Apps enablement status for a zone.",
+											"type": "object",
 											"properties": {
 												"enabled": {
 													"description": "Whether AI Security for Apps is enabled on the zone.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -555,10 +557,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get AI Security for Apps status response."
+				}
 			},
 			"4XX": {
+				"description": "Get AI Security for Apps status failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -566,16 +568,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -588,15 +592,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -609,7 +613,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -629,11 +633,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -641,8 +645,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -661,21 +664,20 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "AI Security for Apps enablement status for a zone.",
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether AI Security for Apps is enabled on the zone.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -683,48 +685,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 13900,
 													"message": "internal server error"
 												}
 											],
-											"minItems": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -737,25 +714,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minItems": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -763,14 +766,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get AI Security for Apps status failure response."
+				}
 			}
 		},
 		"security": [
@@ -780,85 +781,88 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get AI Security for Apps Status",
 		"tags": [
 			"AI Security for Apps"
 		]
 	},
 	"PUT /zones/{zone_id}/ai-security/custom-topics": {
-		"description": "Set the AI Security for Apps custom topic categories for a zone.\n\nA maximum of 20 custom topics can be configured per zone.\nEach topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens.\nEach topic description must be 2–50 printable ASCII characters.\n\nChanges can take up to a minute to propagate to the zone.\n",
 		"operationId": "ai-security-custom-topics-put",
+		"summary": "Set AI Security for Apps Custom Topics",
+		"description": "Set the AI Security for Apps custom topic categories for a zone.\n\nA maximum of 20 custom topics can be configured per zone.\nEach topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens.\nEach topic description must be 2–50 printable ASCII characters.\n\nChanges can take up to a minute to propagate to the zone.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines the zone.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"topics": {
 								"description": "Custom topic categories for AI Security for Apps content detection.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"label": {
 											"description": "Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens.",
+											"type": "string",
 											"example": "credit-cards",
 											"maxLength": 20,
 											"minLength": 2,
-											"pattern": "^[a-z0-9-]+$",
-											"type": "string"
+											"pattern": "^[a-z0-9-]+$"
 										},
 										"topic": {
 											"description": "Description of the topic category. Must contain only printable ASCII characters.",
+											"type": "string",
 											"example": "credit card numbers",
 											"maxLength": 50,
-											"minLength": 2,
-											"type": "string"
+											"minLength": 2
 										}
 									},
 									"required": [
 										"label",
 										"topic"
-									],
-									"type": "object"
+									]
 								},
-								"maxItems": 20,
-								"type": "array"
+								"maxItems": 20
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Set AI Security for Apps custom topics response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -871,15 +875,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -892,7 +896,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -912,11 +916,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -924,8 +928,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -944,44 +947,43 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"topics": {
 													"description": "Custom topic categories for AI Security for Apps content detection.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"label": {
 																"description": "Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens.",
+																"type": "string",
 																"example": "credit-cards",
 																"maxLength": 20,
 																"minLength": 2,
-																"pattern": "^[a-z0-9-]+$",
-																"type": "string"
+																"pattern": "^[a-z0-9-]+$"
 															},
 															"topic": {
 																"description": "Description of the topic category. Must contain only printable ASCII characters.",
+																"type": "string",
 																"example": "credit card numbers",
 																"maxLength": 50,
-																"minLength": 2,
-																"type": "string"
+																"minLength": 2
 															}
 														},
 														"required": [
 															"label",
 															"topic"
-														],
-														"type": "object"
+														]
 													},
-													"maxItems": 20,
-													"type": "array"
+													"maxItems": 20
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -989,10 +991,10 @@
 							]
 						}
 					}
-				},
-				"description": "Set AI Security for Apps custom topics response."
+				}
 			},
 			"4XX": {
+				"description": "Set AI Security for Apps custom topics failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1000,16 +1002,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1022,15 +1026,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1043,7 +1047,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1063,11 +1067,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1075,8 +1079,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1095,44 +1098,43 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"topics": {
 															"description": "Custom topic categories for AI Security for Apps content detection.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"label": {
 																		"description": "Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens.",
+																		"type": "string",
 																		"example": "credit-cards",
 																		"maxLength": 20,
 																		"minLength": 2,
-																		"pattern": "^[a-z0-9-]+$",
-																		"type": "string"
+																		"pattern": "^[a-z0-9-]+$"
 																	},
 																	"topic": {
 																		"description": "Description of the topic category. Must contain only printable ASCII characters.",
+																		"type": "string",
 																		"example": "credit card numbers",
 																		"maxLength": 50,
-																		"minLength": 2,
-																		"type": "string"
+																		"minLength": 2
 																	}
 																},
 																"required": [
 																	"label",
 																	"topic"
-																],
-																"type": "object"
+																]
 															},
-															"maxItems": 20,
-															"type": "array"
+															"maxItems": 20
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -1140,48 +1142,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 13900,
 													"message": "internal server error"
 												}
 											],
-											"minItems": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1194,25 +1171,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minItems": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1220,14 +1223,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Set AI Security for Apps custom topics failure response."
+				}
 			}
 		},
 		"security": [
@@ -1237,62 +1238,65 @@
 				"api_token": []
 			}
 		],
-		"summary": "Set AI Security for Apps Custom Topics",
 		"tags": [
 			"AI Security for Apps"
 		]
 	},
 	"PUT /zones/{zone_id}/ai-security/settings": {
-		"description": "Enable or disable AI Security for Apps for a zone.\n\nChanges can take up to a minute to propagate to the zone.\n",
 		"operationId": "ai-security-settings-put",
+		"summary": "Set AI Security for Apps Status",
+		"description": "Enable or disable AI Security for Apps for a zone.\n\nChanges can take up to a minute to propagate to the zone.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Defines the zone.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
+					"maxLength": 32
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"description": "AI Security for Apps enablement status for a zone.",
+						"type": "object",
 						"properties": {
 							"enabled": {
 								"description": "Whether AI Security for Apps is enabled on the zone.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Set AI Security for Apps status response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1305,15 +1309,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1326,7 +1330,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1346,11 +1350,11 @@
 												},
 												"success": {
 													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1358,8 +1362,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1378,21 +1381,20 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "AI Security for Apps enablement status for a zone.",
+											"type": "object",
 											"properties": {
 												"enabled": {
 													"description": "Whether AI Security for Apps is enabled on the zone.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -1400,10 +1402,10 @@
 							]
 						}
 					}
-				},
-				"description": "Set AI Security for Apps status response."
+				}
 			},
 			"4XX": {
+				"description": "Set AI Security for Apps status failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1411,16 +1413,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1433,15 +1437,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1454,7 +1458,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1474,11 +1478,11 @@
 														},
 														"success": {
 															"description": "Defines whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1486,8 +1490,7 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
@@ -1506,21 +1509,20 @@
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "AI Security for Apps enablement status for a zone.",
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether AI Security for Apps is enabled on the zone.",
-															"example": true,
-															"type": "boolean"
+															"type": "boolean",
+															"example": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
@@ -1528,48 +1530,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 13900,
 													"message": "internal server error"
 												}
 											],
-											"minItems": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1582,25 +1559,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minItems": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1608,14 +1611,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Set AI Security for Apps status failure response."
+				}
 			}
 		},
 		"security": [
@@ -1625,7 +1626,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Set AI Security for Apps Status",
 		"tags": [
 			"AI Security for Apps"
 		]

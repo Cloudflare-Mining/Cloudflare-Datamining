@@ -1,18 +1,19 @@
 {
 	"DELETE /zones/{zone_id}/managed_headers": {
-		"description": "Disables all Managed Transforms.",
 		"operationId": "deleteManagedTransforms",
+		"summary": "Delete Managed Transforms",
+		"description": "Disables all Managed Transforms.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique ID of the zone.",
+					"type": "string",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "Zone ID",
-					"type": "string"
+					"title": "Zone ID"
 				}
 			}
 		],
@@ -21,103 +22,105 @@
 				"description": "An empty response."
 			},
 			"4XX": {
+				"description": "A failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
 									"description": "A response object.",
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "A list of error messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Errors",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Messages",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"result": {
@@ -126,8 +129,8 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"title": "Success",
-											"type": "boolean"
+											"type": "boolean",
+											"title": "Success"
 										}
 									},
 									"required": [
@@ -136,8 +139,7 @@
 										"errors",
 										"messages"
 									],
-									"title": "Response",
-									"type": "object"
+									"title": "Response"
 								},
 								{
 									"properties": {
@@ -156,8 +158,7 @@
 							]
 						}
 					}
-				},
-				"description": "A failure response."
+				}
 			}
 		},
 		"security": [
@@ -173,7 +174,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Managed Transforms",
 		"tags": [
 			"Managed Transforms"
 		],
@@ -208,121 +208,124 @@
 		}
 	},
 	"GET /zones/{zone_id}/managed_headers": {
-		"description": "Fetches a list of all Managed Transforms.",
 		"operationId": "listManagedTransforms",
+		"summary": "List Managed Transforms",
+		"description": "Fetches a list of all Managed Transforms.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique ID of the zone.",
+					"type": "string",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "Zone ID",
-					"type": "string"
+					"title": "Zone ID"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "A Managed Transforms response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
 									"description": "A response object.",
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "A list of error messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Errors",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Messages",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"result": {
@@ -331,8 +334,8 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"title": "Success",
-											"type": "boolean"
+											"type": "boolean",
+											"title": "Success"
 										}
 									},
 									"required": [
@@ -341,8 +344,7 @@
 										"errors",
 										"messages"
 									],
-									"title": "Response",
-									"type": "object"
+									"title": "Response"
 								},
 								{
 									"properties": {
@@ -353,23 +355,27 @@
 										},
 										"result": {
 											"description": "A Managed Transforms object.",
+											"type": "object",
 											"properties": {
 												"managed_request_headers": {
 													"description": "The list of Managed Request Transforms.",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A Managed Transform object.",
+																"type": "object",
 																"properties": {
 																	"conflicts_with": {
 																		"description": "The Managed Transforms that this Managed Transform conflicts with.",
+																		"type": "array",
 																		"items": {
 																			"allOf": [
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
+																					"type": "string",
 																					"minLength": 1,
-																					"title": "Transform ID",
-																					"type": "string"
+																					"title": "Transform ID"
 																				},
 																				{
 																					"example": "add_true_client_ip_headers"
@@ -379,7 +385,6 @@
 																		"minItems": 1,
 																		"readOnly": true,
 																		"title": "Conflicts With",
-																		"type": "array",
 																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
@@ -387,25 +392,25 @@
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
+																		"type": "boolean",
 																		"example": true,
-																		"title": "Enabled",
-																		"type": "boolean"
+																		"title": "Enabled"
 																	},
 																	"has_conflict": {
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
+																		"type": "boolean",
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has Conflict",
-																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
+																		"type": "string",
 																		"minLength": 1,
-																		"title": "Transform ID",
-																		"type": "string"
+																		"title": "Transform ID"
 																	}
 																},
 																"required": [
@@ -413,8 +418,7 @@
 																	"enabled",
 																	"has_conflict"
 																],
-																"title": "Managed Transform",
-																"type": "object"
+																"title": "Managed Transform"
 															},
 															{
 																"properties": {
@@ -426,25 +430,27 @@
 														]
 													},
 													"title": "Managed Request Transforms",
-													"type": "array",
 													"uniqueItems": true
 												},
 												"managed_response_headers": {
 													"description": "The list of Managed Response Transforms.",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A Managed Transform object.",
+																"type": "object",
 																"properties": {
 																	"conflicts_with": {
 																		"description": "The Managed Transforms that this Managed Transform conflicts with.",
+																		"type": "array",
 																		"items": {
 																			"allOf": [
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
+																					"type": "string",
 																					"minLength": 1,
-																					"title": "Transform ID",
-																					"type": "string"
+																					"title": "Transform ID"
 																				},
 																				{
 																					"example": "add_true_client_ip_headers"
@@ -454,7 +460,6 @@
 																		"minItems": 1,
 																		"readOnly": true,
 																		"title": "Conflicts With",
-																		"type": "array",
 																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
@@ -462,25 +467,25 @@
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
+																		"type": "boolean",
 																		"example": true,
-																		"title": "Enabled",
-																		"type": "boolean"
+																		"title": "Enabled"
 																	},
 																	"has_conflict": {
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
+																		"type": "boolean",
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has Conflict",
-																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
+																		"type": "string",
 																		"minLength": 1,
-																		"title": "Transform ID",
-																		"type": "string"
+																		"title": "Transform ID"
 																	}
 																},
 																"required": [
@@ -488,8 +493,7 @@
 																	"enabled",
 																	"has_conflict"
 																],
-																"title": "Managed Transform",
-																"type": "object"
+																"title": "Managed Transform"
 															},
 															{
 																"properties": {
@@ -501,7 +505,6 @@
 														]
 													},
 													"title": "Managed Response Transforms",
-													"type": "array",
 													"uniqueItems": true
 												}
 											},
@@ -509,8 +512,7 @@
 												"managed_request_headers",
 												"managed_response_headers"
 											],
-											"title": "Managed Transforms",
-											"type": "object"
+											"title": "Managed Transforms"
 										},
 										"success": {
 											"enum": [
@@ -522,107 +524,108 @@
 							]
 						}
 					}
-				},
-				"description": "A Managed Transforms response."
+				}
 			},
 			"4XX": {
+				"description": "A failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
 									"description": "A response object.",
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "A list of error messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Errors",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Messages",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"result": {
@@ -631,8 +634,8 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"title": "Success",
-											"type": "boolean"
+											"type": "boolean",
+											"title": "Success"
 										}
 									},
 									"required": [
@@ -641,8 +644,7 @@
 										"errors",
 										"messages"
 									],
-									"title": "Response",
-									"type": "object"
+									"title": "Response"
 								},
 								{
 									"properties": {
@@ -661,8 +663,7 @@
 							]
 						}
 					}
-				},
-				"description": "A failure response."
+				}
 			}
 		},
 		"security": [
@@ -678,7 +679,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Managed Transforms",
 		"tags": [
 			"Managed Transforms"
 		],
@@ -734,19 +734,20 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/managed_headers": {
-		"description": "Updates the status of one or more Managed Transforms.",
 		"operationId": "updateManagedTransforms",
+		"summary": "Update Managed Transforms",
+		"description": "Updates the status of one or more Managed Transforms.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The unique ID of the zone.",
+					"type": "string",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
-					"title": "Zone ID",
-					"type": "string"
+					"title": "Zone ID"
 				}
 			}
 		],
@@ -755,23 +756,27 @@
 				"application/json": {
 					"schema": {
 						"description": "A Managed Transforms patch object. Both fields are optional; only the sections provided will be updated.",
+						"type": "object",
 						"properties": {
 							"managed_request_headers": {
 								"description": "The list of Managed Request Transforms.",
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
 											"description": "A Managed Transform object.",
+											"type": "object",
 											"properties": {
 												"conflicts_with": {
 													"description": "The Managed Transforms that this Managed Transform conflicts with.",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "The human-readable identifier of the Managed Transform.",
+																"type": "string",
 																"minLength": 1,
-																"title": "Transform ID",
-																"type": "string"
+																"title": "Transform ID"
 															},
 															{
 																"example": "add_true_client_ip_headers"
@@ -781,7 +786,6 @@
 													"minItems": 1,
 													"readOnly": true,
 													"title": "Conflicts With",
-													"type": "array",
 													"uniqueItems": true,
 													"x-stainless-skip": [
 														"terraform"
@@ -789,25 +793,25 @@
 												},
 												"enabled": {
 													"description": "Whether the Managed Transform is enabled.",
+													"type": "boolean",
 													"example": true,
-													"title": "Enabled",
-													"type": "boolean"
+													"title": "Enabled"
 												},
 												"has_conflict": {
 													"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
+													"type": "boolean",
 													"example": false,
 													"readOnly": true,
 													"title": "Has Conflict",
-													"type": "boolean",
 													"x-stainless-skip": [
 														"terraform"
 													]
 												},
 												"id": {
 													"description": "The human-readable identifier of the Managed Transform.",
+													"type": "string",
 													"minLength": 1,
-													"title": "Transform ID",
-													"type": "string"
+													"title": "Transform ID"
 												}
 											},
 											"required": [
@@ -815,8 +819,7 @@
 												"enabled",
 												"has_conflict"
 											],
-											"title": "Managed Transform",
-											"type": "object"
+											"title": "Managed Transform"
 										},
 										{
 											"properties": {
@@ -828,25 +831,27 @@
 									]
 								},
 								"title": "Managed Request Transforms",
-								"type": "array",
 								"uniqueItems": true
 							},
 							"managed_response_headers": {
 								"description": "The list of Managed Response Transforms.",
+								"type": "array",
 								"items": {
 									"allOf": [
 										{
 											"description": "A Managed Transform object.",
+											"type": "object",
 											"properties": {
 												"conflicts_with": {
 													"description": "The Managed Transforms that this Managed Transform conflicts with.",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "The human-readable identifier of the Managed Transform.",
+																"type": "string",
 																"minLength": 1,
-																"title": "Transform ID",
-																"type": "string"
+																"title": "Transform ID"
 															},
 															{
 																"example": "add_true_client_ip_headers"
@@ -856,7 +861,6 @@
 													"minItems": 1,
 													"readOnly": true,
 													"title": "Conflicts With",
-													"type": "array",
 													"uniqueItems": true,
 													"x-stainless-skip": [
 														"terraform"
@@ -864,25 +868,25 @@
 												},
 												"enabled": {
 													"description": "Whether the Managed Transform is enabled.",
+													"type": "boolean",
 													"example": true,
-													"title": "Enabled",
-													"type": "boolean"
+													"title": "Enabled"
 												},
 												"has_conflict": {
 													"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
+													"type": "boolean",
 													"example": false,
 													"readOnly": true,
 													"title": "Has Conflict",
-													"type": "boolean",
 													"x-stainless-skip": [
 														"terraform"
 													]
 												},
 												"id": {
 													"description": "The human-readable identifier of the Managed Transform.",
+													"type": "string",
 													"minLength": 1,
-													"title": "Transform ID",
-													"type": "string"
+													"title": "Transform ID"
 												}
 											},
 											"required": [
@@ -890,8 +894,7 @@
 												"enabled",
 												"has_conflict"
 											],
-											"title": "Managed Transform",
-											"type": "object"
+											"title": "Managed Transform"
 										},
 										{
 											"properties": {
@@ -903,12 +906,10 @@
 									]
 								},
 								"title": "Managed Response Transforms",
-								"type": "array",
 								"uniqueItems": true
 							}
 						},
-						"title": "Managed Transforms Patch",
-						"type": "object"
+						"title": "Managed Transforms Patch"
 					}
 				}
 			},
@@ -916,103 +917,105 @@
 		},
 		"responses": {
 			"200": {
+				"description": "A Managed Transforms response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
 									"description": "A response object.",
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "A list of error messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Errors",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Messages",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"result": {
@@ -1021,8 +1024,8 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"title": "Success",
-											"type": "boolean"
+											"type": "boolean",
+											"title": "Success"
 										}
 									},
 									"required": [
@@ -1031,8 +1034,7 @@
 										"errors",
 										"messages"
 									],
-									"title": "Response",
-									"type": "object"
+									"title": "Response"
 								},
 								{
 									"properties": {
@@ -1043,23 +1045,27 @@
 										},
 										"result": {
 											"description": "A Managed Transforms object.",
+											"type": "object",
 											"properties": {
 												"managed_request_headers": {
 													"description": "The list of Managed Request Transforms.",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A Managed Transform object.",
+																"type": "object",
 																"properties": {
 																	"conflicts_with": {
 																		"description": "The Managed Transforms that this Managed Transform conflicts with.",
+																		"type": "array",
 																		"items": {
 																			"allOf": [
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
+																					"type": "string",
 																					"minLength": 1,
-																					"title": "Transform ID",
-																					"type": "string"
+																					"title": "Transform ID"
 																				},
 																				{
 																					"example": "add_true_client_ip_headers"
@@ -1069,7 +1075,6 @@
 																		"minItems": 1,
 																		"readOnly": true,
 																		"title": "Conflicts With",
-																		"type": "array",
 																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
@@ -1077,25 +1082,25 @@
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
+																		"type": "boolean",
 																		"example": true,
-																		"title": "Enabled",
-																		"type": "boolean"
+																		"title": "Enabled"
 																	},
 																	"has_conflict": {
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
+																		"type": "boolean",
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has Conflict",
-																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
+																		"type": "string",
 																		"minLength": 1,
-																		"title": "Transform ID",
-																		"type": "string"
+																		"title": "Transform ID"
 																	}
 																},
 																"required": [
@@ -1103,8 +1108,7 @@
 																	"enabled",
 																	"has_conflict"
 																],
-																"title": "Managed Transform",
-																"type": "object"
+																"title": "Managed Transform"
 															},
 															{
 																"properties": {
@@ -1116,25 +1120,27 @@
 														]
 													},
 													"title": "Managed Request Transforms",
-													"type": "array",
 													"uniqueItems": true
 												},
 												"managed_response_headers": {
 													"description": "The list of Managed Response Transforms.",
+													"type": "array",
 													"items": {
 														"allOf": [
 															{
 																"description": "A Managed Transform object.",
+																"type": "object",
 																"properties": {
 																	"conflicts_with": {
 																		"description": "The Managed Transforms that this Managed Transform conflicts with.",
+																		"type": "array",
 																		"items": {
 																			"allOf": [
 																				{
 																					"description": "The human-readable identifier of the Managed Transform.",
+																					"type": "string",
 																					"minLength": 1,
-																					"title": "Transform ID",
-																					"type": "string"
+																					"title": "Transform ID"
 																				},
 																				{
 																					"example": "add_true_client_ip_headers"
@@ -1144,7 +1150,6 @@
 																		"minItems": 1,
 																		"readOnly": true,
 																		"title": "Conflicts With",
-																		"type": "array",
 																		"uniqueItems": true,
 																		"x-stainless-skip": [
 																			"terraform"
@@ -1152,25 +1157,25 @@
 																	},
 																	"enabled": {
 																		"description": "Whether the Managed Transform is enabled.",
+																		"type": "boolean",
 																		"example": true,
-																		"title": "Enabled",
-																		"type": "boolean"
+																		"title": "Enabled"
 																	},
 																	"has_conflict": {
 																		"description": "Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.",
+																		"type": "boolean",
 																		"example": false,
 																		"readOnly": true,
 																		"title": "Has Conflict",
-																		"type": "boolean",
 																		"x-stainless-skip": [
 																			"terraform"
 																		]
 																	},
 																	"id": {
 																		"description": "The human-readable identifier of the Managed Transform.",
+																		"type": "string",
 																		"minLength": 1,
-																		"title": "Transform ID",
-																		"type": "string"
+																		"title": "Transform ID"
 																	}
 																},
 																"required": [
@@ -1178,8 +1183,7 @@
 																	"enabled",
 																	"has_conflict"
 																],
-																"title": "Managed Transform",
-																"type": "object"
+																"title": "Managed Transform"
 															},
 															{
 																"properties": {
@@ -1191,7 +1195,6 @@
 														]
 													},
 													"title": "Managed Response Transforms",
-													"type": "array",
 													"uniqueItems": true
 												}
 											},
@@ -1199,8 +1202,7 @@
 												"managed_request_headers",
 												"managed_response_headers"
 											],
-											"title": "Managed Transforms",
-											"type": "object"
+											"title": "Managed Transforms"
 										},
 										"success": {
 											"enum": [
@@ -1212,107 +1214,108 @@
 							]
 						}
 					}
-				},
-				"description": "A Managed Transforms response."
+				}
 			},
 			"4XX": {
+				"description": "A failure response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
 									"description": "A response object.",
+									"type": "object",
 									"properties": {
 										"errors": {
 											"description": "A list of error messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Errors",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"messages": {
 											"description": "A list of warning messages.",
+											"type": "array",
 											"items": {
 												"description": "A message.",
+												"type": "object",
 												"properties": {
 													"code": {
 														"description": "A unique code for this message.",
+														"type": "integer",
 														"example": 10000,
-														"title": "Code",
-														"type": "integer"
+														"title": "Code"
 													},
 													"message": {
 														"description": "A text description of this message.",
+														"type": "string",
 														"example": "something bad happened",
 														"minLength": 1,
-														"title": "Description",
-														"type": "string"
+														"title": "Description"
 													},
 													"source": {
 														"description": "The source of this message.",
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "A JSON pointer to the field that is the source of the message.",
+																"type": "string",
 																"example": "/rules/0/action",
 																"minLength": 1,
-																"title": "Pointer",
-																"type": "string"
+																"title": "Pointer"
 															}
 														},
 														"required": [
 															"pointer"
 														],
-														"title": "Source",
-														"type": "object"
+														"title": "Source"
 													}
 												},
 												"required": [
 													"message"
 												],
-												"title": "Message",
-												"type": "object"
+												"title": "Message"
 											},
 											"title": "Messages",
-											"type": "array",
 											"uniqueItems": true
 										},
 										"result": {
@@ -1321,8 +1324,8 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"title": "Success",
-											"type": "boolean"
+											"type": "boolean",
+											"title": "Success"
 										}
 									},
 									"required": [
@@ -1331,8 +1334,7 @@
 										"errors",
 										"messages"
 									],
-									"title": "Response",
-									"type": "object"
+									"title": "Response"
 								},
 								{
 									"properties": {
@@ -1351,8 +1353,7 @@
 							]
 						}
 					}
-				},
-				"description": "A failure response."
+				}
 			}
 		},
 		"security": [
@@ -1368,7 +1369,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Managed Transforms",
 		"tags": [
 			"Managed Transforms"
 		],

@@ -1,38 +1,42 @@
 {
 	"GET /zones/{zone_id}/precursor": {
-		"description": "Retrieve a zone's Precursor configuration: the zone-level\n`default_mode` and the ordered list of `enforcement_rules`.\n",
 		"operationId": "precursor-for-a-zone-get-config",
+		"summary": "Get Zone Precursor Config",
+		"description": "Retrieve a zone's Precursor configuration: the zone-level\n`default_mode` and the ordered list of `enforcement_rules`.\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Precursor config response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -41,12 +45,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -56,15 +60,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -73,12 +77,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -88,30 +92,94 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
+											"properties": {
+												"default_mode": {
+													"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
+													"type": "string",
+													"example": "off",
+													"default": "off",
+													"enum": [
+														"off",
+														"min-friction",
+														"max-security"
+													],
+													"x-auditable": true
+												},
+												"enforcement_rules": {
+													"description": "The ordered list of enforcement rules for the zone.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"description": {
+																"description": "An informative description of the rule.",
+																"type": "string",
+																"example": "Ease friction on the login path",
+																"default": "",
+																"x-auditable": true
+															},
+															"enabled": {
+																"description": "Whether the rule is active.",
+																"type": "boolean",
+																"example": true,
+																"default": true,
+																"x-auditable": true
+															},
+															"expression": {
+																"description": "The filter expression that determines which requests the rule matches.",
+																"type": "string",
+																"example": "http.request.uri.path eq \"/login\"",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "The read-only identifier that Cloudflare assigns to the rule.",
+																"type": "string",
+																"example": "3a03d665bac043e3a684e0d385a4b1e2",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"mode": {
+																"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
+																"type": "string",
+																"example": "max-security",
+																"enum": [
+																	"min-friction",
+																	"max-security"
+																],
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"expression",
+															"mode"
+														],
+														"title": "Enforcement Rule"
+													}
+												}
+											},
 											"example": {
 												"default_mode": "min-friction",
 												"enforcement_rules": [
@@ -124,73 +192,7 @@
 												]
 											},
 											"minProperties": 1,
-											"properties": {
-												"default_mode": {
-													"default": "off",
-													"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
-													"enum": [
-														"off",
-														"min-friction",
-														"max-security"
-													],
-													"example": "off",
-													"type": "string",
-													"x-auditable": true
-												},
-												"enforcement_rules": {
-													"description": "The ordered list of enforcement rules for the zone.",
-													"items": {
-														"properties": {
-															"description": {
-																"default": "",
-																"description": "An informative description of the rule.",
-																"example": "Ease friction on the login path",
-																"type": "string",
-																"x-auditable": true
-															},
-															"enabled": {
-																"default": true,
-																"description": "Whether the rule is active.",
-																"example": true,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"expression": {
-																"description": "The filter expression that determines which requests the rule matches.",
-																"example": "http.request.uri.path eq \"/login\"",
-																"type": "string",
-																"x-auditable": true
-															},
-															"id": {
-																"description": "The read-only identifier that Cloudflare assigns to the rule.",
-																"example": "3a03d665bac043e3a684e0d385a4b1e2",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"mode": {
-																"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
-																"enum": [
-																	"min-friction",
-																	"max-security"
-																],
-																"example": "max-security",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"expression",
-															"mode"
-														],
-														"title": "Enforcement Rule",
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"title": "Precursor Config",
-											"type": "object"
+											"title": "Precursor Config"
 										}
 									},
 									"type": "object"
@@ -198,10 +200,10 @@
 							]
 						}
 					}
-				},
-				"description": "Precursor config response."
+				}
 			},
 			"4XX": {
+				"description": "Precursor config response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -209,16 +211,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -227,12 +231,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -242,15 +246,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -259,12 +263,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -274,30 +278,94 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
+													"properties": {
+														"default_mode": {
+															"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
+															"type": "string",
+															"example": "off",
+															"default": "off",
+															"enum": [
+																"off",
+																"min-friction",
+																"max-security"
+															],
+															"x-auditable": true
+														},
+														"enforcement_rules": {
+															"description": "The ordered list of enforcement rules for the zone.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"description": {
+																		"description": "An informative description of the rule.",
+																		"type": "string",
+																		"example": "Ease friction on the login path",
+																		"default": "",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether the rule is active.",
+																		"type": "boolean",
+																		"example": true,
+																		"default": true,
+																		"x-auditable": true
+																	},
+																	"expression": {
+																		"description": "The filter expression that determines which requests the rule matches.",
+																		"type": "string",
+																		"example": "http.request.uri.path eq \"/login\"",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The read-only identifier that Cloudflare assigns to the rule.",
+																		"type": "string",
+																		"example": "3a03d665bac043e3a684e0d385a4b1e2",
+																		"readOnly": true,
+																		"x-auditable": true
+																	},
+																	"mode": {
+																		"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
+																		"type": "string",
+																		"example": "max-security",
+																		"enum": [
+																			"min-friction",
+																			"max-security"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"expression",
+																	"mode"
+																],
+																"title": "Enforcement Rule"
+															}
+														}
+													},
 													"example": {
 														"default_mode": "min-friction",
 														"enforcement_rules": [
@@ -310,73 +378,7 @@
 														]
 													},
 													"minProperties": 1,
-													"properties": {
-														"default_mode": {
-															"default": "off",
-															"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
-															"enum": [
-																"off",
-																"min-friction",
-																"max-security"
-															],
-															"example": "off",
-															"type": "string",
-															"x-auditable": true
-														},
-														"enforcement_rules": {
-															"description": "The ordered list of enforcement rules for the zone.",
-															"items": {
-																"properties": {
-																	"description": {
-																		"default": "",
-																		"description": "An informative description of the rule.",
-																		"example": "Ease friction on the login path",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"default": true,
-																		"description": "Whether the rule is active.",
-																		"example": true,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"expression": {
-																		"description": "The filter expression that determines which requests the rule matches.",
-																		"example": "http.request.uri.path eq \"/login\"",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "The read-only identifier that Cloudflare assigns to the rule.",
-																		"example": "3a03d665bac043e3a684e0d385a4b1e2",
-																		"readOnly": true,
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"mode": {
-																		"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
-																		"enum": [
-																			"min-friction",
-																			"max-security"
-																		],
-																		"example": "max-security",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"expression",
-																	"mode"
-																],
-																"title": "Enforcement Rule",
-																"type": "object"
-															},
-															"type": "array"
-														}
-													},
-													"title": "Precursor Config",
-													"type": "object"
+													"title": "Precursor Config"
 												}
 											},
 											"type": "object"
@@ -384,59 +386,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -445,12 +411,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -460,25 +426,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -486,14 +489,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Precursor config response failure."
+				}
 			}
 		},
 		"security": [
@@ -505,7 +506,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Zone Precursor Config",
 		"tags": [
 			"Precursor"
 		],
@@ -517,23 +517,25 @@
 		}
 	},
 	"PUT /zones/{zone_id}/precursor": {
-		"description": "Updates the Precursor configuration for a zone.\n\n`default_mode` sets the zone-level enforcement mode. `enforcement_rules`\nis the ordered list of rules that override enforcement for matching\nrequests.\n\nThis is a partial update: only the fields present in the request body\nare changed.\n\n- Sending an empty array (`[]`) clears all enforcement rules.\n- At least one of `default_mode` or `enforcement_rules` must be present;\n  an empty body (`{}`) is rejected with `400`.\n- Rule `id` is read-only (assigned by Cloudflare) and ignored on input.\n- Rule `mode` must be `min-friction` or `max-security` (`off` is not a\n  valid rule mode; use `default_mode` to disable enforcement).\n",
 		"operationId": "precursor-for-a-zone-update-config",
+		"summary": "Update Zone Precursor Config",
+		"description": "Updates the Precursor configuration for a zone.\n\n`default_mode` sets the zone-level enforcement mode. `enforcement_rules`\nis the ordered list of rules that override enforcement for matching\nrequests.\n\nThis is a partial update: only the fields present in the request body\nare changed.\n\n- Sending an empty array (`[]`) clears all enforcement rules.\n- At least one of `default_mode` or `enforcement_rules` must be present;\n  an empty body (`{}`) is rejected with `400`.\n- Rule `id` is read-only (assigned by Cloudflare) and ignored on input.\n- Rule `mode` must be `min-friction` or `max-security` (`off` is not a\n  valid rule mode; use `default_mode` to disable enforcement).\n",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -578,6 +580,72 @@
 						}
 					},
 					"schema": {
+						"type": "object",
+						"properties": {
+							"default_mode": {
+								"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
+								"type": "string",
+								"example": "off",
+								"default": "off",
+								"enum": [
+									"off",
+									"min-friction",
+									"max-security"
+								],
+								"x-auditable": true
+							},
+							"enforcement_rules": {
+								"description": "The ordered list of enforcement rules for the zone.",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"description": {
+											"description": "An informative description of the rule.",
+											"type": "string",
+											"example": "Ease friction on the login path",
+											"default": "",
+											"x-auditable": true
+										},
+										"enabled": {
+											"description": "Whether the rule is active.",
+											"type": "boolean",
+											"example": true,
+											"default": true,
+											"x-auditable": true
+										},
+										"expression": {
+											"description": "The filter expression that determines which requests the rule matches.",
+											"type": "string",
+											"example": "http.request.uri.path eq \"/login\"",
+											"x-auditable": true
+										},
+										"id": {
+											"description": "The read-only identifier that Cloudflare assigns to the rule.",
+											"type": "string",
+											"example": "3a03d665bac043e3a684e0d385a4b1e2",
+											"readOnly": true,
+											"x-auditable": true
+										},
+										"mode": {
+											"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
+											"type": "string",
+											"example": "max-security",
+											"enum": [
+												"min-friction",
+												"max-security"
+											],
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"expression",
+										"mode"
+									],
+									"title": "Enforcement Rule"
+								}
+							}
+						},
 						"example": {
 							"default_mode": "min-friction",
 							"enforcement_rules": [
@@ -590,95 +658,31 @@
 							]
 						},
 						"minProperties": 1,
-						"properties": {
-							"default_mode": {
-								"default": "off",
-								"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
-								"enum": [
-									"off",
-									"min-friction",
-									"max-security"
-								],
-								"example": "off",
-								"type": "string",
-								"x-auditable": true
-							},
-							"enforcement_rules": {
-								"description": "The ordered list of enforcement rules for the zone.",
-								"items": {
-									"properties": {
-										"description": {
-											"default": "",
-											"description": "An informative description of the rule.",
-											"example": "Ease friction on the login path",
-											"type": "string",
-											"x-auditable": true
-										},
-										"enabled": {
-											"default": true,
-											"description": "Whether the rule is active.",
-											"example": true,
-											"type": "boolean",
-											"x-auditable": true
-										},
-										"expression": {
-											"description": "The filter expression that determines which requests the rule matches.",
-											"example": "http.request.uri.path eq \"/login\"",
-											"type": "string",
-											"x-auditable": true
-										},
-										"id": {
-											"description": "The read-only identifier that Cloudflare assigns to the rule.",
-											"example": "3a03d665bac043e3a684e0d385a4b1e2",
-											"readOnly": true,
-											"type": "string",
-											"x-auditable": true
-										},
-										"mode": {
-											"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
-											"enum": [
-												"min-friction",
-												"max-security"
-											],
-											"example": "max-security",
-											"type": "string",
-											"x-auditable": true
-										}
-									},
-									"required": [
-										"expression",
-										"mode"
-									],
-									"title": "Enforcement Rule",
-									"type": "object"
-								},
-								"type": "array"
-							}
-						},
-						"title": "Precursor Config",
-						"type": "object"
+						"title": "Precursor Config"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Precursor response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -687,12 +691,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -702,15 +706,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -719,12 +723,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -734,30 +738,94 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
+											"properties": {
+												"default_mode": {
+													"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
+													"type": "string",
+													"example": "off",
+													"default": "off",
+													"enum": [
+														"off",
+														"min-friction",
+														"max-security"
+													],
+													"x-auditable": true
+												},
+												"enforcement_rules": {
+													"description": "The ordered list of enforcement rules for the zone.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"description": {
+																"description": "An informative description of the rule.",
+																"type": "string",
+																"example": "Ease friction on the login path",
+																"default": "",
+																"x-auditable": true
+															},
+															"enabled": {
+																"description": "Whether the rule is active.",
+																"type": "boolean",
+																"example": true,
+																"default": true,
+																"x-auditable": true
+															},
+															"expression": {
+																"description": "The filter expression that determines which requests the rule matches.",
+																"type": "string",
+																"example": "http.request.uri.path eq \"/login\"",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "The read-only identifier that Cloudflare assigns to the rule.",
+																"type": "string",
+																"example": "3a03d665bac043e3a684e0d385a4b1e2",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"mode": {
+																"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
+																"type": "string",
+																"example": "max-security",
+																"enum": [
+																	"min-friction",
+																	"max-security"
+																],
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"expression",
+															"mode"
+														],
+														"title": "Enforcement Rule"
+													}
+												}
+											},
 											"example": {
 												"default_mode": "min-friction",
 												"enforcement_rules": [
@@ -770,73 +838,7 @@
 												]
 											},
 											"minProperties": 1,
-											"properties": {
-												"default_mode": {
-													"default": "off",
-													"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
-													"enum": [
-														"off",
-														"min-friction",
-														"max-security"
-													],
-													"example": "off",
-													"type": "string",
-													"x-auditable": true
-												},
-												"enforcement_rules": {
-													"description": "The ordered list of enforcement rules for the zone.",
-													"items": {
-														"properties": {
-															"description": {
-																"default": "",
-																"description": "An informative description of the rule.",
-																"example": "Ease friction on the login path",
-																"type": "string",
-																"x-auditable": true
-															},
-															"enabled": {
-																"default": true,
-																"description": "Whether the rule is active.",
-																"example": true,
-																"type": "boolean",
-																"x-auditable": true
-															},
-															"expression": {
-																"description": "The filter expression that determines which requests the rule matches.",
-																"example": "http.request.uri.path eq \"/login\"",
-																"type": "string",
-																"x-auditable": true
-															},
-															"id": {
-																"description": "The read-only identifier that Cloudflare assigns to the rule.",
-																"example": "3a03d665bac043e3a684e0d385a4b1e2",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"mode": {
-																"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
-																"enum": [
-																	"min-friction",
-																	"max-security"
-																],
-																"example": "max-security",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"expression",
-															"mode"
-														],
-														"title": "Enforcement Rule",
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"title": "Precursor Config",
-											"type": "object"
+											"title": "Precursor Config"
 										}
 									},
 									"type": "object"
@@ -844,10 +846,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update Precursor response."
+				}
 			},
 			"4XX": {
+				"description": "Update Precursor response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -855,16 +857,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -873,12 +877,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -888,15 +892,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -905,12 +909,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -920,30 +924,94 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
+													"properties": {
+														"default_mode": {
+															"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
+															"type": "string",
+															"example": "off",
+															"default": "off",
+															"enum": [
+																"off",
+																"min-friction",
+																"max-security"
+															],
+															"x-auditable": true
+														},
+														"enforcement_rules": {
+															"description": "The ordered list of enforcement rules for the zone.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"description": {
+																		"description": "An informative description of the rule.",
+																		"type": "string",
+																		"example": "Ease friction on the login path",
+																		"default": "",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Whether the rule is active.",
+																		"type": "boolean",
+																		"example": true,
+																		"default": true,
+																		"x-auditable": true
+																	},
+																	"expression": {
+																		"description": "The filter expression that determines which requests the rule matches.",
+																		"type": "string",
+																		"example": "http.request.uri.path eq \"/login\"",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "The read-only identifier that Cloudflare assigns to the rule.",
+																		"type": "string",
+																		"example": "3a03d665bac043e3a684e0d385a4b1e2",
+																		"readOnly": true,
+																		"x-auditable": true
+																	},
+																	"mode": {
+																		"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
+																		"type": "string",
+																		"example": "max-security",
+																		"enum": [
+																			"min-friction",
+																			"max-security"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"expression",
+																	"mode"
+																],
+																"title": "Enforcement Rule"
+															}
+														}
+													},
 													"example": {
 														"default_mode": "min-friction",
 														"enforcement_rules": [
@@ -956,73 +1024,7 @@
 														]
 													},
 													"minProperties": 1,
-													"properties": {
-														"default_mode": {
-															"default": "off",
-															"description": "The zone-level Precursor enforcement mode applied to requests that do\nnot match a more specific enforcement rule.\n",
-															"enum": [
-																"off",
-																"min-friction",
-																"max-security"
-															],
-															"example": "off",
-															"type": "string",
-															"x-auditable": true
-														},
-														"enforcement_rules": {
-															"description": "The ordered list of enforcement rules for the zone.",
-															"items": {
-																"properties": {
-																	"description": {
-																		"default": "",
-																		"description": "An informative description of the rule.",
-																		"example": "Ease friction on the login path",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"default": true,
-																		"description": "Whether the rule is active.",
-																		"example": true,
-																		"type": "boolean",
-																		"x-auditable": true
-																	},
-																	"expression": {
-																		"description": "The filter expression that determines which requests the rule matches.",
-																		"example": "http.request.uri.path eq \"/login\"",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "The read-only identifier that Cloudflare assigns to the rule.",
-																		"example": "3a03d665bac043e3a684e0d385a4b1e2",
-																		"readOnly": true,
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"mode": {
-																		"description": "The override mode Precursor applies to requests matching an enforcement\nrule. Unlike `default_mode`, this cannot be `off`.\n",
-																		"enum": [
-																			"min-friction",
-																			"max-security"
-																		],
-																		"example": "max-security",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"expression",
-																	"mode"
-																],
-																"title": "Enforcement Rule",
-																"type": "object"
-															},
-															"type": "array"
-														}
-													},
-													"title": "Precursor Config",
-													"type": "object"
+													"title": "Precursor Config"
 												}
 											},
 											"type": "object"
@@ -1030,59 +1032,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1091,12 +1057,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1106,25 +1072,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1132,14 +1135,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Precursor response failure."
+				}
 			}
 		},
 		"security": [
@@ -1151,7 +1152,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Zone Precursor Config",
 		"tags": [
 			"Precursor"
 		],

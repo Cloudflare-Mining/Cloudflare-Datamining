@@ -1,12 +1,13 @@
 {
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicatorTypes/create": {
-		"description": "Creates a new indicator type and initializes its dedicated Durable Object",
 		"operationId": "post_IndicatorTypeCreate",
+		"summary": "Create a new indicator type",
+		"description": "Creates a new indicator type and initializes its dedicated Durable Object",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset ID.",
@@ -28,6 +29,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Optional description for the indicator type",
@@ -35,74 +37,77 @@
 							},
 							"indicatorType": {
 								"description": "The indicator type to create (e.g., 'DOMAIN', 'IP', 'URL', 'HASH', 'EMAIL')",
+								"type": "string",
 								"maxLength": 50,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							}
 						},
 						"required": [
 							"indicatorType"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Indicator type created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"durableObjectId": {
-									"example": "account:123:DOMAIN",
-									"type": "string"
+									"type": "string",
+									"example": "account:123:DOMAIN"
 								},
 								"indicatorType": {
-									"example": "DOMAIN",
-									"type": "string"
+									"type": "string",
+									"example": "DOMAIN"
 								},
 								"message": {
-									"example": "Indicator type created successfully",
-									"type": "string"
+									"type": "string",
+									"example": "Indicator type created successfully"
 								}
 							},
 							"required": [
 								"indicatorType",
 								"message",
 								"durableObjectId"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Indicator type created successfully"
+				}
 			},
 			"400": {
+				"description": "Bad Request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"content": {
 									"properties": {
 										"application/json": {
+											"type": "object",
 											"properties": {
 												"schema": {
+													"type": "object",
 													"properties": {
 														"errors": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"message": {
-																		"example": "An error occurred.",
-																		"type": "string"
+																		"type": "string",
+																		"example": "An error occurred."
 																	}
 																},
 																"required": [
 																	"message"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"result": {
 															"type": "object"
@@ -115,14 +120,12 @@
 														"result",
 														"success",
 														"errors"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"schema"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -131,45 +134,47 @@
 									"type": "object"
 								},
 								"description": {
-									"example": "Bad Request.",
-									"type": "string"
+									"type": "string",
+									"example": "Bad Request."
 								}
 							},
 							"required": [
 								"description",
 								"content"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request"
+				}
 			},
 			"500": {
+				"description": "Internal Server Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"content": {
 									"properties": {
 										"application/json": {
+											"type": "object",
 											"properties": {
 												"schema": {
+													"type": "object",
 													"properties": {
 														"errors": {
+															"type": "array",
 															"items": {
 																"properties": {
 																	"message": {
-																		"example": "An error occurred.",
-																		"type": "string"
+																		"type": "string",
+																		"example": "An error occurred."
 																	}
 																},
 																"required": [
 																	"message"
 																],
 																"type": "object"
-															},
-															"type": "array"
+															}
 														},
 														"result": {
 															"type": "object"
@@ -182,14 +187,12 @@
 														"result",
 														"success",
 														"errors"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"required": [
 												"schema"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
@@ -198,19 +201,17 @@
 									"type": "object"
 								},
 								"description": {
-									"example": "Bad Request.",
-									"type": "string"
+									"type": "string",
+									"example": "Bad Request."
 								}
 							},
 							"required": [
 								"description",
 								"content"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal Server Error"
+				}
 			}
 		},
 		"security": [
@@ -218,7 +219,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new indicator type",
 		"tags": [
 			"Indicators"
 		],

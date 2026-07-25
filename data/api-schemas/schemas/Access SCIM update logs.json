@@ -1,93 +1,90 @@
 {
 	"GET /accounts/{account_id}/access/logs/scim/updates": {
-		"description": "Lists Access SCIM update logs that maintain a record of updates made to User and Group resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM).",
 		"operationId": "access-scim-update-logs-list-access-scim-update-logs",
+		"summary": "List Access SCIM update logs",
+		"description": "Lists Access SCIM update logs that maintain a record of updates made to User and Group resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "limit",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "The maximum number of update logs to retrieve.",
+					"type": "integer",
 					"example": 10,
-					"type": "integer"
+					"default": 20
 				}
 			},
 			{
-				"example": "desc",
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
-					"default": "desc",
 					"description": "The chronological order used to sort the logs.",
+					"type": "string",
+					"example": "desc",
+					"default": "desc",
 					"enum": [
 						"desc",
 						"asc"
-					],
-					"example": "desc",
-					"type": "string"
-				}
+					]
+				},
+				"example": "desc"
 			},
 			{
-				"in": "query",
 				"name": "since",
+				"in": "query",
 				"schema": {
 					"description": "the timestamp of the earliest update log.",
-					"example": "2025-01-01T00:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2025-01-01T00:00:00Z"
 				}
 			},
 			{
-				"in": "query",
 				"name": "until",
+				"in": "query",
 				"schema": {
 					"description": "the timestamp of the most-recent update log.",
-					"example": "2025-01-02T00:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2025-01-02T00:00:00Z"
 				}
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "idp_id",
+				"in": "query",
 				"required": true,
 				"schema": {
 					"description": "The unique Id of the IdP that has SCIM enabled.",
-					"example": [
-						"df7e2w5f-02b7-4d9d-af26-8d1988fca630",
-						"0194ae2c-efcf-7cfb-8884-055f1a161fa5"
-					],
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"df7e2w5f-02b7-4d9d-af26-8d1988fca630",
+						"0194ae2c-efcf-7cfb-8884-055f1a161fa5"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "status",
+				"in": "query",
 				"schema": {
 					"description": "The status of the SCIM request.",
-					"example": [
-						"FAILURE",
-						"SUCCESS"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"FAILURE",
@@ -95,20 +92,20 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"FAILURE",
+						"SUCCESS"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "resource_type",
+				"in": "query",
 				"schema": {
 					"description": "The resource type of the SCIM request.",
-					"example": [
-						"USER",
-						"GROUP"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"USER",
@@ -116,20 +113,20 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"USER",
+						"GROUP"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "request_method",
+				"in": "query",
 				"schema": {
 					"description": "The request method of the SCIM request.",
-					"example": [
-						"DELETE",
-						"PATCH"
-					],
+					"type": "array",
 					"items": {
 						"enum": [
 							"DELETE",
@@ -139,112 +136,119 @@
 						],
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"DELETE",
+						"PATCH"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "resource_user_email",
+				"in": "query",
 				"schema": {
 					"description": "The email address of the SCIM User resource. Pass once for a single\nlookup (`?resource_user_email=A`) or repeat the parameter\n(`?resource_user_email=A&resource_user_email=B`) to filter by multiple\nemails in one request.",
-					"example": [
-						"john.smith@example.com"
-					],
+					"type": "array",
 					"items": {
 						"format": "email",
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"john.smith@example.com"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "resource_group_name",
+				"in": "query",
 				"schema": {
 					"description": "The display name of the SCIM Group resource. Pass once for a single\nlookup (`?resource_group_name=A`) or repeat the parameter\n(`?resource_group_name=A&resource_group_name=B`) to filter by multiple\ngroup names in one request.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
 					"example": [
 						"ALL_EMPLOYEES"
-					],
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "cf_resource_id",
+				"in": "query",
 				"schema": {
 					"description": "The unique Cloudflare-generated Id of the SCIM resource. Pass once for\na single lookup (`?cf_resource_id=A`) or repeat the parameter\n(`?cf_resource_id=A&cf_resource_id=B`) to filter by multiple resources\nin one request.",
-					"example": [
-						"bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
-					],
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
-				"explode": true,
-				"in": "query",
 				"name": "idp_resource_id",
+				"in": "query",
 				"schema": {
 					"description": "The IdP-generated Id of the SCIM resource. Pass once for a single\nlookup (`?idp_resource_id=A`) or repeat the parameter\n(`?idp_resource_id=A&idp_resource_id=B`) to filter by multiple\nresources in one request.",
-					"example": [
-						"all_employees"
-					],
+					"type": "array",
 					"items": {
 						"type": "string"
 					},
-					"type": "array"
+					"example": [
+						"all_employees"
+					]
 				},
+				"explode": true,
 				"style": "form"
 			},
 			{
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Page number of results.",
-					"type": "integer"
+					"type": "integer",
+					"default": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Number of results per page.",
-					"maximum": 1000,
-					"type": "integer"
+					"type": "integer",
+					"default": 20,
+					"maximum": 1000
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Access SCIM update logs response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -253,12 +257,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -268,15 +272,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -285,12 +289,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -300,128 +304,126 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"cf_resource_id": {
 														"description": "The unique Cloudflare-generated Id of the SCIM resource.",
-														"example": "bd97ef8d-7986-43e3-9ee0-c25dda33e4b0",
-														"type": "string"
+														"type": "string",
+														"example": "bd97ef8d-7986-43e3-9ee0-c25dda33e4b0"
 													},
 													"error_description": {
 														"description": "The error message which is generated when the status of the SCIM request is 'FAILURE'.",
-														"example": "Invalid JSON body",
-														"type": "string"
+														"type": "string",
+														"example": "Invalid JSON body"
 													},
 													"idp_id": {
 														"description": "The unique Id of the IdP that has SCIM enabled.",
-														"example": "df7e2w5f-02b7-4d9d-af26-8d1988fca630",
-														"type": "string"
+														"type": "string",
+														"example": "df7e2w5f-02b7-4d9d-af26-8d1988fca630"
 													},
 													"idp_resource_id": {
 														"description": "The IdP-generated Id of the SCIM resource.",
-														"example": "all_employees",
-														"type": "string"
+														"type": "string",
+														"example": "all_employees"
 													},
 													"logged_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"request_body": {
 														"description": "The JSON-encoded string body of the SCIM request.",
-														"example": "{}}",
-														"type": "string"
+														"type": "string",
+														"example": "{}}"
 													},
 													"request_method": {
 														"description": "The request method of the SCIM request.",
-														"example": "DELETE",
-														"type": "string"
+														"type": "string",
+														"example": "DELETE"
 													},
 													"resource_group_name": {
 														"description": "The display name of the SCIM Group resource if it exists.",
-														"example": "ALL_EMPLOYEES",
-														"type": "string"
+														"type": "string",
+														"example": "ALL_EMPLOYEES"
 													},
 													"resource_type": {
 														"description": "The resource type of the SCIM request.",
-														"example": "GROUP",
-														"type": "string"
+														"type": "string",
+														"example": "GROUP"
 													},
 													"resource_user_email": {
 														"description": "The email address of the SCIM User resource if it exists.",
-														"example": "john.smith@example.com",
+														"type": "string",
 														"format": "email",
-														"type": "string"
+														"example": "john.smith@example.com"
 													},
 													"status": {
 														"description": "The status of the SCIM request.",
-														"example": "FAILURE",
-														"type": "string"
+														"type": "string",
+														"example": "FAILURE"
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -429,66 +431,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get Access SCIM update logs response"
+				}
 			},
 			"4XX": {
+				"description": "Get Access SCIM update logs response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -497,12 +463,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -512,25 +478,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -538,12 +541,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Access SCIM update logs response failure"
+				}
 			}
 		},
 		"security": [
@@ -552,7 +553,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Access SCIM update logs",
 		"tags": [
 			"Access SCIM update logs"
 		],

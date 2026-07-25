@@ -1,24 +1,28 @@
 {
 	"GET /user": {
-		"description": "Retrieves detailed information about the currently authenticated user, including email, name, and account memberships.",
 		"operationId": "user-user-details",
+		"summary": "User Details",
+		"description": "Retrieves detailed information about the currently authenticated user, including email, name, and account memberships.",
 		"responses": {
 			"200": {
+				"description": "User Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -27,12 +31,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -42,15 +46,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -59,12 +63,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -74,188 +78,186 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"betas": {
 													"description": "Lists the betas that the user is participating in.",
+													"type": "array",
 													"items": {
 														"description": "User feature flag",
 														"example": "zone_level_access_beta",
 														"type": "string"
 													},
-													"readOnly": true,
-													"type": "array"
+													"readOnly": true
 												},
 												"country": {
 													"description": "The country in which the user lives.",
+													"type": "string",
 													"example": "US",
 													"maxLength": 30,
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"email": {
 													"description": "Current email address of the user.",
-													"example": "alice@example.com",
+													"type": "string",
 													"format": "email",
-													"readOnly": true,
-													"type": "string"
+													"example": "alice@example.com",
+													"readOnly": true
 												},
 												"first_name": {
 													"description": "User's first name",
+													"type": "string",
 													"example": "John",
 													"maxLength": 60,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"has_business_zones": {
-													"default": false,
 													"description": "Indicates whether user has any business zones",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"has_enterprise_zones": {
-													"default": false,
 													"description": "Indicates whether user has any enterprise zones",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"has_pro_zones": {
-													"default": false,
 													"description": "Indicates whether user has any pro zones",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"id": {
 													"description": "Identifier of the user.",
+													"type": "string",
 													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"last_name": {
 													"description": "User's last name",
+													"type": "string",
 													"example": "Appleseed",
 													"maxLength": 60,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"organizations": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "Organization name.",
+																"type": "string",
 																"example": "Cloudflare, Inc.",
 																"maxLength": 100,
-																"type": "string",
 																"x-auditable": true
 															},
 															"permissions": {
 																"description": "Access permissions for this User.",
+																"type": "array",
 																"items": {
 																	"example": "#zones:read",
 																	"maxLength": 160,
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"readOnly": true,
-																"type": "array"
+																"readOnly": true
 															},
 															"roles": {
 																"description": "List of roles that a user has within an organization.",
+																"type": "array",
 																"items": {
 																	"example": "All Privileges - Super Administrator",
 																	"maxLength": 120,
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"readOnly": true,
-																"type": "array"
+																"readOnly": true
 															},
 															"status": {
 																"description": "Whether the user is a member of the organization or has an invitation pending.",
+																"type": "string",
+																"example": "member",
 																"enum": [
 																	"member",
 																	"invited"
 																],
-																"example": "member",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"suspended": {
-													"default": false,
 													"description": "Indicates whether user has been suspended",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"telephone": {
 													"description": "User's telephone number",
+													"type": "string",
 													"example": "+1 123-123-1234",
 													"maxLength": 20,
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"two_factor_authentication_enabled": {
-													"default": false,
 													"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"two_factor_authentication_locked": {
-													"default": false,
 													"description": "Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"zipcode": {
 													"description": "The zipcode or postal code where the user lives.",
+													"type": "string",
 													"example": "12345",
 													"maxLength": 20,
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												}
 											},
 											"required": [
 												"id",
 												"email"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -263,66 +265,30 @@
 							]
 						}
 					}
-				},
-				"description": "User Details response"
+				}
 			},
 			"4XX": {
+				"description": "User Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -331,12 +297,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -346,25 +312,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -372,12 +375,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "User Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -386,7 +387,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "User Details",
 		"tags": [
 			"User"
 		],
@@ -407,23 +407,28 @@
 		}
 	},
 	"GET /user/tenants": {
-		"description": "Retrieves list of tenants the authenticated user / method has access to.",
 		"operationId": "User_listUserTenants",
+		"summary": "List user tenants",
+		"description": "Retrieves list of tenants the authenticated user / method has access to.",
 		"responses": {
 			"200": {
+				"description": "The request has succeeded.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"type": "object"
 									},
-									"maxItems": 0,
-									"type": "array"
+									"maxItems": 0
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -435,32 +440,33 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"description": "References an Organization in the Cloudflare data model.",
+										"type": "object",
 										"properties": {
 											"create_time": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"id": {
 												"allOf": [
 													{
+														"type": "string",
 														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID",
-														"type": "string"
+														"title": "Organization ID"
 													}
 												],
 												"readOnly": true
 											},
 											"meta": {
+												"type": "object",
 												"additionalProperties": {
 													"type": "object"
 												},
@@ -469,6 +475,7 @@
 														"allOf": [
 															{
 																"description": "Enable features for Organizations.",
+																"type": "object",
 																"properties": {
 																	"account_creation": {
 																		"type": "string"
@@ -492,48 +499,47 @@
 																	"account_migration",
 																	"account_mobility",
 																	"sub_org_creation"
-																],
-																"type": "object"
+																]
 															}
 														]
 													},
 													"hierarchy_tags": {
 														"description": "Ordered chain of organization tags from the root organization down to\n(and including) this organization itself. Root organizations return a\nsingle-element array containing their own tag; sub-organizations return\n`[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for\nconstructing authorization scopes that need to cover every ancestor\nin the hierarchy.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"managed_by": {
 														"type": "string"
 													}
 												},
-												"readOnly": true,
-												"type": "object"
+												"readOnly": true
 											},
 											"name": {
 												"type": "string"
 											},
 											"parent": {
+												"type": "object",
 												"properties": {
 													"id": {
+														"type": "string",
 														"example": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
 														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID",
-														"type": "string"
+														"title": "Organization ID"
 													},
 													"name": {
-														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"readOnly": true
 													}
 												},
 												"required": [
 													"id",
 													"name"
-												],
-												"type": "object"
+												]
 											},
 											"profile": {
+												"type": "object",
 												"properties": {
 													"business_address": {
 														"type": "string"
@@ -557,8 +563,7 @@
 													"business_phone",
 													"business_address",
 													"external_metadata"
-												],
-												"type": "object"
+												]
 											}
 										},
 										"required": [
@@ -566,16 +571,14 @@
 											"name",
 											"create_time",
 											"meta"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -583,20 +586,22 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "The request has succeeded."
+				}
 			},
 			"4XX": {
+				"description": "An unexpected error response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -608,13 +613,13 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
 												"type": "integer"
@@ -626,31 +631,27 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "An unexpected error response."
+				}
 			}
 		},
 		"security": [
@@ -659,7 +660,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List user tenants",
 		"tags": [
 			"User"
 		],
@@ -673,73 +673,77 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /user": {
-		"description": "Edit part of your user details.",
 		"operationId": "user-edit-user",
+		"summary": "Edit User",
+		"description": "Edit part of your user details.",
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"country": {
 								"description": "The country in which the user lives.",
+								"type": "string",
 								"example": "US",
 								"maxLength": 30,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"first_name": {
 								"description": "User's first name",
+								"type": "string",
 								"example": "John",
 								"maxLength": 60,
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"last_name": {
 								"description": "User's last name",
+								"type": "string",
 								"example": "Appleseed",
 								"maxLength": 60,
 								"nullable": true,
-								"type": "string",
 								"x-auditable": true
 							},
 							"telephone": {
 								"description": "User's telephone number",
+								"type": "string",
 								"example": "+1 123-123-1234",
 								"maxLength": 20,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"zipcode": {
 								"description": "The zipcode or postal code where the user lives.",
+								"type": "string",
 								"example": "12345",
 								"maxLength": 20,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							}
 						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Edit User response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -748,12 +752,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -763,15 +767,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -780,12 +784,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -795,188 +799,186 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"betas": {
 													"description": "Lists the betas that the user is participating in.",
+													"type": "array",
 													"items": {
 														"description": "User feature flag",
 														"example": "zone_level_access_beta",
 														"type": "string"
 													},
-													"readOnly": true,
-													"type": "array"
+													"readOnly": true
 												},
 												"country": {
 													"description": "The country in which the user lives.",
+													"type": "string",
 													"example": "US",
 													"maxLength": 30,
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"email": {
 													"description": "Current email address of the user.",
-													"example": "alice@example.com",
+													"type": "string",
 													"format": "email",
-													"readOnly": true,
-													"type": "string"
+													"example": "alice@example.com",
+													"readOnly": true
 												},
 												"first_name": {
 													"description": "User's first name",
+													"type": "string",
 													"example": "John",
 													"maxLength": 60,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"has_business_zones": {
-													"default": false,
 													"description": "Indicates whether user has any business zones",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"has_enterprise_zones": {
-													"default": false,
 													"description": "Indicates whether user has any enterprise zones",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"has_pro_zones": {
-													"default": false,
 													"description": "Indicates whether user has any pro zones",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"id": {
 													"description": "Identifier of the user.",
+													"type": "string",
 													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"last_name": {
 													"description": "User's last name",
+													"type": "string",
 													"example": "Appleseed",
 													"maxLength": 60,
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"organizations": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "Identifier",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
 																"minLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "Organization name.",
+																"type": "string",
 																"example": "Cloudflare, Inc.",
 																"maxLength": 100,
-																"type": "string",
 																"x-auditable": true
 															},
 															"permissions": {
 																"description": "Access permissions for this User.",
+																"type": "array",
 																"items": {
 																	"example": "#zones:read",
 																	"maxLength": 160,
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"readOnly": true,
-																"type": "array"
+																"readOnly": true
 															},
 															"roles": {
 																"description": "List of roles that a user has within an organization.",
+																"type": "array",
 																"items": {
 																	"example": "All Privileges - Super Administrator",
 																	"maxLength": 120,
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"readOnly": true,
-																"type": "array"
+																"readOnly": true
 															},
 															"status": {
 																"description": "Whether the user is a member of the organization or has an invitation pending.",
+																"type": "string",
+																"example": "member",
 																"enum": [
 																	"member",
 																	"invited"
 																],
-																"example": "member",
-																"type": "string",
 																"x-auditable": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												},
 												"suspended": {
-													"default": false,
 													"description": "Indicates whether user has been suspended",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"telephone": {
 													"description": "User's telephone number",
+													"type": "string",
 													"example": "+1 123-123-1234",
 													"maxLength": 20,
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"two_factor_authentication_enabled": {
-													"default": false,
 													"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"two_factor_authentication_locked": {
-													"default": false,
 													"description": "Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.",
-													"readOnly": true,
-													"type": "boolean"
+													"type": "boolean",
+													"default": false,
+													"readOnly": true
 												},
 												"zipcode": {
 													"description": "The zipcode or postal code where the user lives.",
+													"type": "string",
 													"example": "12345",
 													"maxLength": 20,
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												}
 											},
 											"required": [
 												"id",
 												"email"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -984,66 +986,30 @@
 							]
 						}
 					}
-				},
-				"description": "Edit User response"
+				}
 			},
 			"4XX": {
+				"description": "Edit User response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1052,12 +1018,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1067,25 +1033,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1093,12 +1096,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Edit User response failure"
+				}
 			}
 		},
 		"security": [
@@ -1110,7 +1111,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Edit User",
 		"tags": [
 			"User"
 		],

@@ -1,11 +1,12 @@
 {
 	"GET /accounts/{account_id}/intel/asn/{asn}": {
-		"description": "Gets an overview of the Autonomous System Number (ASN) and a list of subnets for it.",
 		"operationId": "asn-intelligence-get-asn-overview",
+		"summary": "Get ASN Overview.",
+		"description": "Gets an overview of the Autonomous System Number (ASN) and a list of subnets for it.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "asn",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "integer",
@@ -13,36 +14,40 @@
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get ASN Overview response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -51,12 +56,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -66,15 +71,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -83,12 +88,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -98,26 +103,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -128,31 +131,33 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get ASN Overview response."
+				}
 			},
 			"4XX": {
+				"description": "Get ASN Overview response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -161,12 +166,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -176,15 +181,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -193,12 +198,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -208,26 +213,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -238,52 +241,26 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -296,22 +273,48 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -319,14 +322,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get ASN Overview response failure."
+				}
 			}
 		},
 		"security": [
@@ -338,7 +339,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get ASN Overview.",
 		"tags": [
 			"ASN Intelligence"
 		],
@@ -348,12 +348,13 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/asn/{asn}/subnets": {
-		"description": "Get ASN Subnets.",
 		"operationId": "asn-intelligence-get-asn-subnets",
+		"summary": "Get ASN Subnets",
+		"description": "Get ASN Subnets.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "asn",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "integer",
@@ -361,24 +362,26 @@
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get ASN Subnets response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"asn": {
 									"type": "integer",
@@ -386,40 +389,39 @@
 								},
 								"count": {
 									"description": "Total results returned based on your search parameters.",
-									"example": 1,
-									"type": "number"
+									"type": "number",
+									"example": 1
 								},
 								"ip_count_total": {
 									"type": "integer"
 								},
 								"page": {
 									"description": "Current page within paginated list of results.",
-									"example": 1,
-									"type": "number"
+									"type": "number",
+									"example": 1
 								},
 								"per_page": {
 									"description": "Number of results per page of results.",
-									"example": 20,
-									"type": "number"
+									"type": "number",
+									"example": 20
 								},
 								"subnets": {
-									"example": [
-										"192.0.2.0/24",
-										"2001:DB8::/32"
-									],
+									"type": "array",
 									"items": {
 										"type": "string"
 									},
-									"type": "array"
+									"example": [
+										"192.0.2.0/24",
+										"2001:DB8::/32"
+									]
 								}
-							},
-							"type": "object"
+							}
 						}
 					}
-				},
-				"description": "Get ASN Subnets response."
+				}
 			},
 			"4XX": {
+				"description": "Get ASN Subnets response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -432,78 +434,53 @@
 										},
 										"count": {
 											"description": "Total results returned based on your search parameters.",
-											"example": 1,
-											"type": "number"
+											"type": "number",
+											"example": 1
 										},
 										"ip_count_total": {
 											"type": "integer"
 										},
 										"page": {
 											"description": "Current page within paginated list of results.",
-											"example": 1,
-											"type": "number"
+											"type": "number",
+											"example": 1
 										},
 										"per_page": {
 											"description": "Number of results per page of results.",
-											"example": 20,
-											"type": "number"
+											"type": "number",
+											"example": 20
 										},
 										"subnets": {
-											"example": [
-												"192.0.2.0/24",
-												"2001:DB8::/32"
-											],
+											"type": "array",
 											"items": {
 												"type": "string"
 											},
-											"type": "array"
+											"example": [
+												"192.0.2.0/24",
+												"2001:DB8::/32"
+											]
 										}
 									},
 									"type": "object"
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -516,22 +493,48 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": false,
-											"type": "boolean"
+											"type": "boolean",
+											"example": false
 										}
 									},
 									"required": [
@@ -539,14 +542,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get ASN Subnets response failure."
+				}
 			}
 		},
 		"security": [
@@ -558,7 +559,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get ASN Subnets",
 		"tags": [
 			"ASN Intelligence"
 		],

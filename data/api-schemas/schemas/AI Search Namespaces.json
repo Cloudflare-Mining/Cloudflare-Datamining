@@ -1,60 +1,64 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}": {
-		"description": "Permanently delete a namespace. The namespace must be empty (no instances), and the default namespace cannot be deleted.",
 		"operationId": "ai-search-delete-namespace",
+		"summary": "Delete a namespace",
+		"description": "Permanently delete a namespace. The namespace must be empty (no instances), and the default namespace cannot be deleted.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "path",
 				"name": "name",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "production",
-					"type": "string"
+					"type": "string",
+					"example": "production"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Namespace deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
-									"additionalProperties": false,
-									"type": "object"
+									"type": "object",
+									"additionalProperties": false
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace deleted."
+				}
 			},
 			"400": {
+				"description": "Namespace not empty.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -69,32 +73,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace not empty."
+				}
 			},
 			"404": {
+				"description": "Namespace not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -109,25 +113,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace not found."
+				}
 			}
 		},
 		"security": [
@@ -139,7 +140,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -166,80 +166,84 @@
 		"x-forge-require-confirmation": "This operation permanently deletes the namespace."
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces": {
-		"description": "List namespaces in the account, including their descriptions and creation times.",
 		"operationId": "ai-search-list-namespaces",
+		"summary": "List namespaces",
+		"description": "List namespaces in the account, including their descriptions and creation times.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Page number (1-indexed).",
-				"in": "query",
 				"name": "page",
+				"in": "query",
+				"description": "Page number (1-indexed).",
 				"schema": {
-					"default": 1,
 					"description": "Page number (1-indexed).",
+					"type": "integer",
 					"example": 1,
-					"minimum": 1,
-					"type": "integer"
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Number of results per page.",
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
 				"schema": {
-					"default": 20,
 					"description": "Number of results per page.",
+					"type": "integer",
 					"example": 20,
+					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"description": "Filter namespaces whose name or description contains this string (case-insensitive).",
-				"in": "query",
 				"name": "search",
+				"in": "query",
+				"description": "Filter namespaces whose name or description contains this string (case-insensitive).",
 				"schema": {
 					"description": "Filter namespaces whose name or description contains this string (case-insensitive).",
+					"type": "string",
 					"example": "prod",
-					"maxLength": 256,
-					"type": "string"
+					"maxLength": 256
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List of namespaces.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
+												"type": "string",
 												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+												"readOnly": true
 											},
 											"description": {
 												"description": "Optional description for the namespace. Max 256 characters.",
+												"type": "string",
 												"example": "Production environment",
 												"maxLength": 256,
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"name": {
+												"type": "string",
 												"example": "production",
-												"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-												"type": "string"
+												"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
 											}
 										},
 										"required": [
@@ -247,10 +251,10 @@
 											"created_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"type": "number"
@@ -270,33 +274,33 @@
 										"per_page",
 										"count",
 										"total_count"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result",
 								"result_info"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List of namespaces."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -306,10 +310,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -318,25 +322,22 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			}
 		},
 		"security": [
@@ -348,7 +349,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List namespaces",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -368,83 +368,87 @@
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}": {
-		"description": "Retrieve a namespace and its description.",
 		"operationId": "ai-search-fetch-namespace",
+		"summary": "Get a namespace",
+		"description": "Retrieve a namespace and its description.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "path",
 				"name": "name",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "production",
-					"type": "string"
+					"type": "string",
+					"example": "production"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Namespace details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"description": {
 											"description": "Optional description for the namespace. Max 256 characters.",
+											"type": "string",
 											"example": "Production environment",
 											"maxLength": 256,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"name": {
+											"type": "string",
 											"example": "production",
-											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-											"type": "string"
+											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
 										}
 									},
 									"required": [
 										"name",
 										"created_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace details."
+				}
 			},
 			"404": {
+				"description": "Namespace not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -459,25 +463,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace not found."
+				}
 			}
 		},
 		"security": [
@@ -489,7 +490,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -515,38 +515,39 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' with --destination-namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces).",
 		"operationId": "ai-search-move-instance",
+		"summary": "Move an instance to a different namespace.",
+		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' with --destination-namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"description": "Current namespace of the instance.",
-				"in": "path",
 				"name": "name",
+				"in": "path",
+				"description": "Current namespace of the instance.",
 				"required": true,
 				"schema": {
 					"description": "Current namespace of the instance.",
-					"example": "production",
-					"type": "string"
+					"type": "string",
+					"example": "production"
 				}
 			},
 			{
-				"description": "Instance id.",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Instance id.",
 				"required": true,
 				"schema": {
 					"description": "Instance id.",
-					"example": "my-blog",
-					"type": "string"
+					"type": "string",
+					"example": "my-blog"
 				}
 			}
 		],
@@ -554,55 +555,58 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"new_namespace": {
 								"description": "Target namespace to move the instance into.",
+								"type": "string",
 								"example": "staging",
-								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-								"type": "string"
+								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
 							}
 						},
 						"required": [
 							"new_namespace"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Instance moved.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
-									"additionalProperties": false,
-									"type": "object"
+									"type": "object",
+									"additionalProperties": false
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Instance moved."
+				}
 			},
 			"400": {
+				"description": "Ai search with this name already exist.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -617,32 +621,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search with this name already exist."
+				}
 			},
 			"404": {
+				"description": "Ai search not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -657,25 +661,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Ai search not found."
+				}
 			}
 		},
 		"security": [
@@ -687,7 +688,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Move an instance to a different namespace.",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -722,16 +722,17 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces": {
-		"description": "Create a namespace for organizing AI Search instances.",
 		"operationId": "ai-search-create-namespace",
+		"summary": "Create a namespace",
+		"description": "Create a namespace for organizing AI Search instances.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			}
 		],
@@ -739,82 +740,85 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Optional description for the namespace. Max 256 characters.",
+								"type": "string",
 								"example": "Production environment",
 								"maxLength": 256,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"name": {
-								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-								"type": "string"
+								"type": "string",
+								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"201": {
+				"description": "Namespace created.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"description": {
 											"description": "Optional description for the namespace. Max 256 characters.",
+											"type": "string",
 											"example": "Production environment",
 											"maxLength": 256,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"name": {
+											"type": "string",
 											"example": "production",
-											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-											"type": "string"
+											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
 										}
 									},
 									"required": [
 										"name",
 										"created_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace created."
+				}
 			},
 			"400": {
+				"description": "Input Validation Error",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -824,10 +828,10 @@
 												"type": "string"
 											},
 											"path": {
+												"type": "array",
 												"items": {
 													"type": "string"
-												},
-												"type": "array"
+												}
 											}
 										},
 										"required": [
@@ -836,32 +840,32 @@
 											"path"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Input Validation Error"
+				}
 			},
 			"403": {
+				"description": "Max namespaces reached.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -876,32 +880,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Max namespaces reached."
+				}
 			},
 			"409": {
+				"description": "Namespace already exists.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -916,25 +920,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace already exists."
+				}
 			}
 		},
 		"security": [
@@ -946,7 +947,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],
@@ -973,25 +973,26 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}": {
-		"description": "Update the description of an existing namespace. The default namespace cannot be modified.",
 		"operationId": "ai-search-update-namespace",
+		"summary": "Update a namespace",
+		"description": "Update the description of an existing namespace. The default namespace cannot be modified.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
-					"type": "string"
+					"type": "string",
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22"
 				}
 			},
 			{
-				"in": "path",
 				"name": "name",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "production",
-					"type": "string"
+					"type": "string",
+					"example": "production"
 				}
 			}
 		],
@@ -999,75 +1000,78 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"description": {
 								"description": "Optional description for the namespace. Max 256 characters.",
+								"type": "string",
 								"example": "Production environment",
 								"maxLength": 256,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated namespace.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"created_at": {
+											"type": "string",
 											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
+											"readOnly": true
 										},
 										"description": {
 											"description": "Optional description for the namespace. Max 256 characters.",
+											"type": "string",
 											"example": "Production environment",
 											"maxLength": 256,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"name": {
+											"type": "string",
 											"example": "production",
-											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-											"type": "string"
+											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
 										}
 									},
 									"required": [
 										"name",
 										"created_at"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated namespace."
+				}
 			},
 			"400": {
+				"description": "Cannot modify default namespace.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1082,32 +1086,32 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Cannot modify default namespace."
+				}
 			},
 			"404": {
+				"description": "Namespace not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
@@ -1122,25 +1126,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										false
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Namespace not found."
+				}
 			}
 		},
 		"security": [
@@ -1152,7 +1153,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update a namespace",
 		"tags": [
 			"AI Search Namespaces"
 		],

@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
-		"description": "Delete a category by its identifier.",
 		"operationId": "delete_CategoryDelete",
+		"summary": "Deletes a category",
+		"description": "Delete a category by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,56 +15,58 @@
 				}
 			},
 			{
-				"description": "Category UUID.",
-				"in": "path",
 				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
 				"required": true,
 				"schema": {
 					"description": "Category UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns the uuid of the deleted category.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the uuid of the deleted category."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -76,12 +79,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -89,7 +90,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Deletes a category",
 		"tags": [
 			"Category"
 		],
@@ -98,13 +98,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
-		"description": "List categories across one or more datasets for the account.",
 		"operationId": "get_CategoryList",
+		"summary": "Lists categories across multiple datasets",
+		"description": "List categories across one or more datasets for the account.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -112,53 +113,55 @@
 				}
 			},
 			{
-				"description": "Array of dataset IDs to query categories from. If not provided, uses the default dataset.",
-				"in": "query",
 				"name": "datasetIds",
+				"in": "query",
+				"description": "Array of dataset IDs to query categories from. If not provided, uses the default dataset.",
 				"schema": {
 					"description": "Array of dataset IDs to query categories from. If not provided, uses the default dataset.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of categories.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"killChain": {
 										"type": "number"
 									},
 									"mitreAttack": {
+										"type": "array",
 										"items": {
 											"example": "T1234",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"mitreCapec": {
+										"type": "array",
 										"items": {
 											"example": "123",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"name": {
-										"example": "name",
-										"type": "string"
+										"type": "string",
+										"example": "name"
 									},
 									"shortname": {
-										"example": "shortname",
-										"type": "string"
+										"type": "string",
+										"example": "shortname"
 									},
 									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
 									}
 								},
 								"required": [
@@ -167,32 +170,32 @@
 									"killChain"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns a list of categories."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -205,12 +208,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -218,7 +219,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists categories across multiple datasets",
 		"tags": [
 			"Category"
 		],
@@ -228,13 +228,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
-		"description": "Retrieve a single category by its identifier.",
 		"operationId": "get_CategoryRead",
+		"summary": "Reads a category",
+		"description": "Retrieve a single category by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -242,83 +243,85 @@
 				}
 			},
 			{
-				"description": "Category UUID.",
-				"in": "path",
 				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
 				"required": true,
 				"schema": {
 					"description": "Category UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a category.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"killChain": {
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": "T1234",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": "123",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"name": {
-									"example": "name",
-									"type": "string"
+									"type": "string",
+									"example": "name"
 								},
 								"shortname": {
-									"example": "shortname",
-									"type": "string"
+									"type": "string",
+									"example": "shortname"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"killChain"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a category."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -331,12 +334,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -344,7 +345,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Reads a category",
 		"tags": [
 			"Category"
 		],
@@ -354,13 +354,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/catalog": {
-		"description": "List all categories stored in the account catalog.",
 		"operationId": "get_CategoryListComplete",
+		"summary": "Lists categories",
+		"description": "List all categories stored in the account catalog.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -370,39 +371,41 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of categories.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "array",
 							"items": {
 								"properties": {
 									"killChain": {
 										"type": "number"
 									},
 									"mitreAttack": {
+										"type": "array",
 										"items": {
 											"example": "T1234",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"mitreCapec": {
+										"type": "array",
 										"items": {
 											"example": "123",
 											"type": "string"
-										},
-										"type": "array"
+										}
 									},
 									"name": {
-										"example": "name",
-										"type": "string"
+										"type": "string",
+										"example": "name"
 									},
 									"shortname": {
-										"example": "shortname",
-										"type": "string"
+										"type": "string",
+										"example": "shortname"
 									},
 									"uuid": {
-										"example": "12345678-1234-1234-1234-1234567890ab",
-										"type": "string"
+										"type": "string",
+										"example": "12345678-1234-1234-1234-1234567890ab"
 									}
 								},
 								"required": [
@@ -411,32 +414,32 @@
 									"killChain"
 								],
 								"type": "object"
-							},
-							"type": "array"
+							}
 						}
 					}
-				},
-				"description": "Returns a list of categories."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -449,12 +452,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -462,7 +463,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists categories",
 		"tags": [
 			"Category"
 		],
@@ -472,53 +472,56 @@
 		]
 	},
 	"GET /accounts/{account_id}/resource-library/categories": {
-		"description": "List application categories.",
 		"operationId": "getCategories",
+		"summary": "List application categories",
+		"description": "List application categories.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "023e105f4ecef8ad9ca31a8372d0c353"
 			},
 			{
-				"description": "Limit of number of results to return.",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Limit of number of results to return.",
 				"schema": {
-					"default": 25,
-					"type": "integer"
+					"type": "integer",
+					"default": 25
 				}
 			},
 			{
-				"description": "Offset of results to return.",
-				"in": "query",
 				"name": "offset",
+				"in": "query",
+				"description": "Offset of results to return.",
 				"schema": {
-					"default": 0,
-					"type": "integer"
+					"type": "integer",
+					"default": 0
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get all application categories response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -527,12 +530,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -542,15 +545,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -559,12 +562,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -574,49 +577,50 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Returns the list of categories.",
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created_at": {
 														"description": "Returns the category creation time.",
-														"example": "2025-01-01T00:00:00Z",
-														"type": "string"
+														"type": "string",
+														"example": "2025-01-01T00:00:00Z"
 													},
 													"description": {
 														"description": "Returns the category description.",
-														"example": "Category description",
-														"type": "string"
+														"type": "string",
+														"example": "Category description"
 													},
 													"id": {
 														"description": "Returns the category ID.",
-														"example": "12345678-1234-1234-1234-123456789012",
-														"type": "string"
+														"type": "string",
+														"example": "12345678-1234-1234-1234-123456789012"
 													},
 													"name": {
 														"description": "Returns the category name.",
-														"example": "Category name",
-														"type": "string"
+														"type": "string",
+														"example": "Category name"
 													}
 												},
 												"required": [
@@ -624,10 +628,8 @@
 													"description",
 													"id",
 													"name"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
@@ -635,10 +637,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get all application categories response."
+				}
 			},
 			"4XX": {
+				"description": "Get application categories response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -646,14 +648,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -662,12 +665,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -677,15 +680,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -694,12 +697,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -709,49 +712,50 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicates whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"description": "Returns the list of categories.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created_at": {
 																"description": "Returns the category creation time.",
-																"example": "2025-01-01T00:00:00Z",
-																"type": "string"
+																"type": "string",
+																"example": "2025-01-01T00:00:00Z"
 															},
 															"description": {
 																"description": "Returns the category description.",
-																"example": "Category description",
-																"type": "string"
+																"type": "string",
+																"example": "Category description"
 															},
 															"id": {
 																"description": "Returns the category ID.",
-																"example": "12345678-1234-1234-1234-123456789012",
-																"type": "string"
+																"type": "string",
+																"example": "12345678-1234-1234-1234-123456789012"
 															},
 															"name": {
 																"description": "Returns the category name.",
-																"example": "Category name",
-																"type": "string"
+																"type": "string",
+																"example": "Category name"
 															}
 														},
 														"required": [
@@ -759,10 +763,8 @@
 															"description",
 															"id",
 															"name"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"type": "object"
@@ -770,59 +772,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -831,12 +797,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -846,25 +812,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -872,14 +875,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get application categories response failure."
+				}
 			}
 		},
 		"security": [
@@ -891,7 +892,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List application categories",
 		"tags": [
 			"Category"
 		],
@@ -900,45 +900,48 @@
 		"x-fern-sdk-method-name": "categories"
 	},
 	"GET /accounts/{account_id}/resource-library/categories/{id}": {
-		"description": "Get application category by ID.",
 		"operationId": "getCategoryById",
+		"summary": "Get application category",
+		"description": "Get application category by ID.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "023e105f4ecef8ad9ca31a8372d0c353"
 			},
 			{
-				"description": "Application category ID.",
-				"example": "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
-				"in": "path",
 				"name": "id",
+				"in": "path",
+				"description": "Application category ID.",
 				"required": true,
 				"schema": {
 					"type": "string"
-				}
+				},
+				"example": "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0"
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get application category by id response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -947,12 +950,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -962,15 +965,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -979,12 +982,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -994,47 +997,47 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"description": "Returns the category creation time.",
-													"example": "2025-01-01T00:00:00Z",
-													"type": "string"
+													"type": "string",
+													"example": "2025-01-01T00:00:00Z"
 												},
 												"description": {
 													"description": "Returns the category description.",
-													"example": "Category description",
-													"type": "string"
+													"type": "string",
+													"example": "Category description"
 												},
 												"id": {
 													"description": "Returns the category ID.",
-													"example": "12345678-1234-1234-1234-123456789012",
-													"type": "string"
+													"type": "string",
+													"example": "12345678-1234-1234-1234-123456789012"
 												},
 												"name": {
 													"description": "Returns the category name.",
-													"example": "Category name",
-													"type": "string"
+													"type": "string",
+													"example": "Category name"
 												}
 											},
 											"required": [
@@ -1042,8 +1045,7 @@
 												"description",
 												"id",
 												"name"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -1051,10 +1053,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get application category by id response."
+				}
 			},
 			"4XX": {
+				"description": "Get application category by id response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1062,14 +1064,15 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1078,12 +1081,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1093,15 +1096,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1110,12 +1113,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1125,47 +1128,47 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicates whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"created_at": {
 															"description": "Returns the category creation time.",
-															"example": "2025-01-01T00:00:00Z",
-															"type": "string"
+															"type": "string",
+															"example": "2025-01-01T00:00:00Z"
 														},
 														"description": {
 															"description": "Returns the category description.",
-															"example": "Category description",
-															"type": "string"
+															"type": "string",
+															"example": "Category description"
 														},
 														"id": {
 															"description": "Returns the category ID.",
-															"example": "12345678-1234-1234-1234-123456789012",
-															"type": "string"
+															"type": "string",
+															"example": "12345678-1234-1234-1234-123456789012"
 														},
 														"name": {
 															"description": "Returns the category name.",
-															"example": "Category name",
-															"type": "string"
+															"type": "string",
+															"example": "Category name"
 														}
 													},
 													"required": [
@@ -1173,8 +1176,7 @@
 														"description",
 														"id",
 														"name"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
@@ -1182,59 +1184,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1243,12 +1209,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1258,25 +1224,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1284,14 +1287,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get application category by id response failure."
+				}
 			}
 		},
 		"security": [
@@ -1303,7 +1304,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get application category",
 		"tags": [
 			"Category"
 		],
@@ -1312,13 +1312,14 @@
 		"x-fern-sdk-method-name": "id"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
-		"description": "Update an existing category by its identifier.",
 		"operationId": "patch_CategoryUpdate",
+		"summary": "Updates a category",
+		"description": "Update an existing category by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1326,14 +1327,14 @@
 				}
 			},
 			{
-				"description": "Category UUID.",
-				"in": "path",
 				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
 				"required": true,
 				"schema": {
 					"description": "Category UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -1341,104 +1342,106 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"killChain": {
 								"type": "number"
 							},
 							"mitreAttack": {
+								"type": "array",
 								"items": {
 									"example": "T1234",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"mitreCapec": {
+								"type": "array",
 								"items": {
 									"example": "123",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"name": {
-								"example": "name",
-								"type": "string"
+								"type": "string",
+								"example": "name"
 							},
 							"shortname": {
-								"example": "shortname",
-								"type": "string"
+								"type": "string",
+								"example": "shortname"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated category.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"killChain": {
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": "T1234",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": "123",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"name": {
-									"example": "name",
-									"type": "string"
+									"type": "string",
+									"example": "name"
 								},
 								"shortname": {
-									"example": "shortname",
-									"type": "string"
+									"type": "string",
+									"example": "shortname"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"killChain"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated category."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1451,12 +1454,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1464,7 +1465,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates a category",
 		"tags": [
 			"Category"
 		],
@@ -1473,13 +1473,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
-		"description": "Update an existing category by its identifier.",
 		"operationId": "post_CategoryUpdate",
+		"summary": "Updates a category",
+		"description": "Update an existing category by its identifier.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1487,14 +1488,14 @@
 				}
 			},
 			{
-				"description": "Category UUID.",
-				"in": "path",
 				"name": "category_id",
+				"in": "path",
+				"description": "Category UUID.",
 				"required": true,
 				"schema": {
 					"description": "Category UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
@@ -1502,104 +1503,106 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"killChain": {
 								"type": "number"
 							},
 							"mitreAttack": {
+								"type": "array",
 								"items": {
 									"example": "T1234",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"mitreCapec": {
+								"type": "array",
 								"items": {
 									"example": "123",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"name": {
-								"example": "name",
-								"type": "string"
+								"type": "string",
+								"example": "name"
 							},
 							"shortname": {
-								"example": "shortname",
-								"type": "string"
+								"type": "string",
+								"example": "shortname"
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the updated category.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"killChain": {
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": "T1234",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": "123",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"name": {
-									"example": "name",
-									"type": "string"
+									"type": "string",
+									"example": "name"
 								},
 								"shortname": {
-									"example": "shortname",
-									"type": "string"
+									"type": "string",
+									"example": "shortname"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"killChain"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the updated category."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1612,12 +1615,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1625,7 +1626,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Updates a category",
 		"tags": [
 			"Category"
 		],
@@ -1635,13 +1635,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
-		"description": "Create a new event category for the account.",
 		"operationId": "post_CategoryCreate",
+		"summary": "Creates a new category",
+		"description": "Create a new event category for the account.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -1653,108 +1654,110 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"killChain": {
 								"type": "number"
 							},
 							"mitreAttack": {
+								"type": "array",
 								"items": {
 									"example": "T1234",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"mitreCapec": {
+								"type": "array",
 								"items": {
 									"example": "123",
 									"type": "string"
-								},
-								"type": "array"
+								}
 							},
 							"name": {
-								"example": "name",
-								"type": "string"
+								"type": "string",
+								"example": "name"
 							},
 							"shortname": {
-								"example": "shortname",
-								"type": "string"
+								"type": "string",
+								"example": "shortname"
 							}
 						},
 						"required": [
 							"name",
 							"killChain"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Returns the created category.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"killChain": {
 									"type": "number"
 								},
 								"mitreAttack": {
+									"type": "array",
 									"items": {
 										"example": "T1234",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"mitreCapec": {
+									"type": "array",
 									"items": {
 										"example": "123",
 										"type": "string"
-									},
-									"type": "array"
+									}
 								},
 								"name": {
-									"example": "name",
-									"type": "string"
+									"type": "string",
+									"example": "name"
 								},
 								"shortname": {
-									"example": "shortname",
-									"type": "string"
+									"type": "string",
+									"example": "shortname"
 								},
 								"uuid": {
-									"example": "12345678-1234-1234-1234-1234567890ab",
-									"type": "string"
+									"type": "string",
+									"example": "12345678-1234-1234-1234-1234567890ab"
 								}
 							},
 							"required": [
 								"uuid",
 								"name",
 								"killChain"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns the created category."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -1767,12 +1770,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -1780,7 +1781,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Creates a new category",
 		"tags": [
 			"Category"
 		],

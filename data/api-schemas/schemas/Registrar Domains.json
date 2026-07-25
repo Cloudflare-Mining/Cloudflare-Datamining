@@ -1,39 +1,42 @@
 {
 	"GET /accounts/{account_id}/registrar/domains": {
-		"deprecated": true,
-		"description": "List domains handled by Registrar.",
 		"operationId": "registrar-domains-list-domains",
+		"summary": "List domains",
+		"description": "List domains handled by Registrar.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List domains response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -46,15 +49,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -67,7 +70,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -87,11 +90,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -99,176 +102,180 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {},
-													"nullable": true,
-													"type": "array"
+													"nullable": true
 												},
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"allOf": [
 													{
+														"type": "object",
 														"properties": {
 															"available": {
 																"description": "Shows if a domain is available for transferring into Cloudflare Registrar.",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"can_register": {
 																"description": "Indicates if the domain can be registered as a new domain.",
-																"example": false,
-																"type": "boolean"
+																"type": "boolean",
+																"example": false
 															},
 															"created_at": {
 																"description": "Shows time of creation.",
-																"example": "2018-08-28T17:26:26Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2018-08-28T17:26:26Z"
 															},
 															"current_registrar": {
 																"description": "Shows name of current registrar.",
-																"example": "Cloudflare",
-																"type": "string"
+																"type": "string",
+																"example": "Cloudflare"
 															},
 															"expires_at": {
 																"description": "Shows when domain name registration expires.",
-																"example": "2019-08-28T23:59:59Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2019-08-28T23:59:59Z"
 															},
 															"id": {
 																"description": "Domain identifier.",
+																"type": "string",
 																"example": "ea95132c15732412d22c1476fa83f27a",
 																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"locked": {
 																"description": "Shows whether a registrar lock is in place for a domain.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"registrant_contact": {
+																"description": "Shows contact information for domain registrant.",
 																"allOf": [
 																	{
+																		"type": "object",
 																		"allOf": [
 																			{
+																				"type": "object",
 																				"properties": {
 																					"address": {
 																						"description": "Address.",
-																						"example": "123 Sesame St.",
-																						"type": "string"
+																						"type": "string",
+																						"example": "123 Sesame St."
 																					},
 																					"address2": {
 																						"description": "Optional address line for unit, floor, suite, etc.",
-																						"example": "Suite 430",
-																						"type": "string"
+																						"type": "string",
+																						"example": "Suite 430"
 																					},
 																					"city": {
 																						"description": "City.",
-																						"example": "Austin",
-																						"type": "string"
+																						"type": "string",
+																						"example": "Austin"
 																					},
 																					"country": {
 																						"description": "The country in which the user lives.",
+																						"type": "string",
 																						"example": "US",
 																						"maxLength": 30,
-																						"nullable": true,
-																						"type": "string"
+																						"nullable": true
 																					},
 																					"email": {
 																						"description": "The contact email address of the user.",
+																						"type": "string",
 																						"example": "user@example.com",
-																						"maxLength": 90,
-																						"type": "string"
+																						"maxLength": 90
 																					},
 																					"fax": {
 																						"description": "Contact fax number.",
-																						"example": "123-867-5309",
-																						"type": "string"
+																						"type": "string",
+																						"example": "123-867-5309"
 																					},
 																					"first_name": {
 																						"description": "User's first name",
+																						"type": "string",
 																						"example": "John",
 																						"maxLength": 60,
-																						"nullable": true,
-																						"type": "string"
+																						"nullable": true
 																					},
 																					"id": {
 																						"description": "Contact Identifier.",
+																						"type": "string",
 																						"example": "ea95132c15732412d22c1476fa83f27a",
 																						"maxLength": 32,
-																						"readOnly": true,
-																						"type": "string"
+																						"readOnly": true
 																					},
 																					"last_name": {
 																						"description": "User's last name",
+																						"type": "string",
 																						"example": "Appleseed",
 																						"maxLength": 60,
-																						"nullable": true,
-																						"type": "string"
+																						"nullable": true
 																					},
 																					"organization": {
 																						"description": "Name of organization.",
-																						"example": "Cloudflare, Inc.",
-																						"type": "string"
+																						"type": "string",
+																						"example": "Cloudflare, Inc."
 																					},
 																					"phone": {
 																						"description": "User's telephone number",
+																						"type": "string",
 																						"example": "+1 123-123-1234",
 																						"maxLength": 20,
-																						"nullable": true,
-																						"type": "string"
+																						"nullable": true
 																					},
 																					"state": {
 																						"description": "State.",
-																						"example": "TX",
-																						"type": "string"
+																						"type": "string",
+																						"example": "TX"
 																					},
 																					"zip": {
 																						"description": "The zipcode or postal code where the user lives.",
+																						"type": "string",
 																						"example": "12345",
 																						"maxLength": 20,
-																						"nullable": true,
-																						"type": "string"
+																						"nullable": true
 																					}
 																				},
 																				"required": [
@@ -281,39 +288,38 @@
 																					"country",
 																					"phone",
 																					"organization"
-																				],
-																				"type": "object"
+																				]
 																			}
-																		],
-																		"type": "object"
+																		]
 																	}
-																],
-																"description": "Shows contact information for domain registrant."
+																]
 															},
 															"registry_statuses": {
 																"description": "A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).",
-																"example": "ok,serverTransferProhibited",
-																"type": "string"
+																"type": "string",
+																"example": "ok,serverTransferProhibited"
 															},
 															"supported_tld": {
 																"description": "Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.",
-																"example": true,
-																"type": "boolean"
+																"type": "boolean",
+																"example": true
 															},
 															"transfer_in": {
 																"description": "Statuses for domain transfers into Cloudflare Registrar.",
 																"properties": {
 																	"accept_foa": {
 																		"description": "Form of authorization has been accepted by the registrant.",
+																		"type": "string",
+																		"example": "needed",
 																		"enum": [
 																			"needed",
 																			"ok"
-																		],
-																		"example": "needed",
-																		"type": "string"
+																		]
 																	},
 																	"approve_transfer": {
 																		"description": "Shows transfer status with the registry.",
+																		"type": "string",
+																		"example": "unknown",
 																		"enum": [
 																			"needed",
 																			"ok",
@@ -321,74 +327,69 @@
 																			"trying",
 																			"rejected",
 																			"unknown"
-																		],
-																		"example": "unknown",
-																		"type": "string"
+																		]
 																	},
 																	"can_cancel_transfer": {
 																		"description": "Indicates if cancellation is still possible.",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"disable_privacy": {
 																		"description": "Privacy guards are disabled at the foreign registrar.",
+																		"type": "string",
+																		"example": "ok",
 																		"enum": [
 																			"needed",
 																			"ok",
 																			"unknown"
-																		],
-																		"example": "ok",
-																		"type": "string"
+																		]
 																	},
 																	"enter_auth_code": {
 																		"description": "Auth code has been entered and verified.",
+																		"type": "string",
+																		"example": "needed",
 																		"enum": [
 																			"needed",
 																			"ok",
 																			"pending",
 																			"trying",
 																			"rejected"
-																		],
-																		"example": "needed",
-																		"type": "string"
+																		]
 																	},
 																	"unlock_domain": {
 																		"description": "Domain is unlocked at the foreign registrar.",
+																		"type": "string",
+																		"example": "ok",
 																		"enum": [
 																			"needed",
 																			"ok",
 																			"pending",
 																			"trying",
 																			"unknown"
-																		],
-																		"example": "ok",
-																		"type": "string"
+																		]
 																	}
 																}
 															},
 															"updated_at": {
 																"description": "Last updated.",
-																"example": "2018-08-28T17:26:26Z",
+																"type": "string",
 																"format": "date-time",
-																"type": "string"
+																"example": "2018-08-28T17:26:26Z"
 															}
-														},
-														"type": "object"
+														}
 													}
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List domains response"
+				}
 			},
 			"4XX": {
+				"description": "List domains response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -396,16 +397,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -418,15 +421,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -439,7 +442,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -459,11 +462,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -471,176 +474,180 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "array",
 															"items": {},
-															"nullable": true,
-															"type": "array"
+															"nullable": true
 														},
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"allOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"available": {
 																		"description": "Shows if a domain is available for transferring into Cloudflare Registrar.",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"can_register": {
 																		"description": "Indicates if the domain can be registered as a new domain.",
-																		"example": false,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": false
 																	},
 																	"created_at": {
 																		"description": "Shows time of creation.",
-																		"example": "2018-08-28T17:26:26Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"type": "string"
+																		"example": "2018-08-28T17:26:26Z"
 																	},
 																	"current_registrar": {
 																		"description": "Shows name of current registrar.",
-																		"example": "Cloudflare",
-																		"type": "string"
+																		"type": "string",
+																		"example": "Cloudflare"
 																	},
 																	"expires_at": {
 																		"description": "Shows when domain name registration expires.",
-																		"example": "2019-08-28T23:59:59Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"type": "string"
+																		"example": "2019-08-28T23:59:59Z"
 																	},
 																	"id": {
 																		"description": "Domain identifier.",
+																		"type": "string",
 																		"example": "ea95132c15732412d22c1476fa83f27a",
 																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
+																		"readOnly": true
 																	},
 																	"locked": {
 																		"description": "Shows whether a registrar lock is in place for a domain.",
-																		"example": false,
 																		"type": "boolean",
+																		"example": false,
 																		"x-auditable": true
 																	},
 																	"registrant_contact": {
+																		"description": "Shows contact information for domain registrant.",
 																		"allOf": [
 																			{
+																				"type": "object",
 																				"allOf": [
 																					{
+																						"type": "object",
 																						"properties": {
 																							"address": {
 																								"description": "Address.",
-																								"example": "123 Sesame St.",
-																								"type": "string"
+																								"type": "string",
+																								"example": "123 Sesame St."
 																							},
 																							"address2": {
 																								"description": "Optional address line for unit, floor, suite, etc.",
-																								"example": "Suite 430",
-																								"type": "string"
+																								"type": "string",
+																								"example": "Suite 430"
 																							},
 																							"city": {
 																								"description": "City.",
-																								"example": "Austin",
-																								"type": "string"
+																								"type": "string",
+																								"example": "Austin"
 																							},
 																							"country": {
 																								"description": "The country in which the user lives.",
+																								"type": "string",
 																								"example": "US",
 																								"maxLength": 30,
-																								"nullable": true,
-																								"type": "string"
+																								"nullable": true
 																							},
 																							"email": {
 																								"description": "The contact email address of the user.",
+																								"type": "string",
 																								"example": "user@example.com",
-																								"maxLength": 90,
-																								"type": "string"
+																								"maxLength": 90
 																							},
 																							"fax": {
 																								"description": "Contact fax number.",
-																								"example": "123-867-5309",
-																								"type": "string"
+																								"type": "string",
+																								"example": "123-867-5309"
 																							},
 																							"first_name": {
 																								"description": "User's first name",
+																								"type": "string",
 																								"example": "John",
 																								"maxLength": 60,
-																								"nullable": true,
-																								"type": "string"
+																								"nullable": true
 																							},
 																							"id": {
 																								"description": "Contact Identifier.",
+																								"type": "string",
 																								"example": "ea95132c15732412d22c1476fa83f27a",
 																								"maxLength": 32,
-																								"readOnly": true,
-																								"type": "string"
+																								"readOnly": true
 																							},
 																							"last_name": {
 																								"description": "User's last name",
+																								"type": "string",
 																								"example": "Appleseed",
 																								"maxLength": 60,
-																								"nullable": true,
-																								"type": "string"
+																								"nullable": true
 																							},
 																							"organization": {
 																								"description": "Name of organization.",
-																								"example": "Cloudflare, Inc.",
-																								"type": "string"
+																								"type": "string",
+																								"example": "Cloudflare, Inc."
 																							},
 																							"phone": {
 																								"description": "User's telephone number",
+																								"type": "string",
 																								"example": "+1 123-123-1234",
 																								"maxLength": 20,
-																								"nullable": true,
-																								"type": "string"
+																								"nullable": true
 																							},
 																							"state": {
 																								"description": "State.",
-																								"example": "TX",
-																								"type": "string"
+																								"type": "string",
+																								"example": "TX"
 																							},
 																							"zip": {
 																								"description": "The zipcode or postal code where the user lives.",
+																								"type": "string",
 																								"example": "12345",
 																								"maxLength": 20,
-																								"nullable": true,
-																								"type": "string"
+																								"nullable": true
 																							}
 																						},
 																						"required": [
@@ -653,39 +660,38 @@
 																							"country",
 																							"phone",
 																							"organization"
-																						],
-																						"type": "object"
+																						]
 																					}
-																				],
-																				"type": "object"
+																				]
 																			}
-																		],
-																		"description": "Shows contact information for domain registrant."
+																		]
 																	},
 																	"registry_statuses": {
 																		"description": "A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).",
-																		"example": "ok,serverTransferProhibited",
-																		"type": "string"
+																		"type": "string",
+																		"example": "ok,serverTransferProhibited"
 																	},
 																	"supported_tld": {
 																		"description": "Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.",
-																		"example": true,
-																		"type": "boolean"
+																		"type": "boolean",
+																		"example": true
 																	},
 																	"transfer_in": {
 																		"description": "Statuses for domain transfers into Cloudflare Registrar.",
 																		"properties": {
 																			"accept_foa": {
 																				"description": "Form of authorization has been accepted by the registrant.",
+																				"type": "string",
+																				"example": "needed",
 																				"enum": [
 																					"needed",
 																					"ok"
-																				],
-																				"example": "needed",
-																				"type": "string"
+																				]
 																			},
 																			"approve_transfer": {
 																				"description": "Shows transfer status with the registry.",
+																				"type": "string",
+																				"example": "unknown",
 																				"enum": [
 																					"needed",
 																					"ok",
@@ -693,112 +699,82 @@
 																					"trying",
 																					"rejected",
 																					"unknown"
-																				],
-																				"example": "unknown",
-																				"type": "string"
+																				]
 																			},
 																			"can_cancel_transfer": {
 																				"description": "Indicates if cancellation is still possible.",
-																				"example": true,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"example": true
 																			},
 																			"disable_privacy": {
 																				"description": "Privacy guards are disabled at the foreign registrar.",
+																				"type": "string",
+																				"example": "ok",
 																				"enum": [
 																					"needed",
 																					"ok",
 																					"unknown"
-																				],
-																				"example": "ok",
-																				"type": "string"
+																				]
 																			},
 																			"enter_auth_code": {
 																				"description": "Auth code has been entered and verified.",
+																				"type": "string",
+																				"example": "needed",
 																				"enum": [
 																					"needed",
 																					"ok",
 																					"pending",
 																					"trying",
 																					"rejected"
-																				],
-																				"example": "needed",
-																				"type": "string"
+																				]
 																			},
 																			"unlock_domain": {
 																				"description": "Domain is unlocked at the foreign registrar.",
+																				"type": "string",
+																				"example": "ok",
 																				"enum": [
 																					"needed",
 																					"ok",
 																					"pending",
 																					"trying",
 																					"unknown"
-																				],
-																				"example": "ok",
-																				"type": "string"
+																				]
 																			}
 																		}
 																	},
 																	"updated_at": {
 																		"description": "Last updated.",
-																		"example": "2018-08-28T17:26:26Z",
+																		"type": "string",
 																		"format": "date-time",
-																		"type": "string"
+																		"example": "2018-08-28T17:26:26Z"
 																	}
-																},
-																"type": "object"
+																}
 															}
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minItems": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -811,25 +787,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minItems": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -837,16 +839,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List domains response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -854,7 +855,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List domains",
 		"tags": [
 			"Registrar Domains"
 		],
@@ -862,51 +862,54 @@
 		"x-stainless-deprecation-message": "This operation is deprecated and will reach end of life on September 27, 2026. Use the new Registrar API endpoints (domain-search, domain-check, registrations) instead. Refer to https://developers.cloudflare.com/fundamentals/api/reference/deprecations/ for details."
 	},
 	"GET /accounts/{account_id}/registrar/domains/{domain_name}": {
-		"deprecated": true,
-		"description": "Show individual domain.",
 		"operationId": "registrar-domains-get-domain",
+		"summary": "Get domain",
+		"description": "Show individual domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "domain_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get domain response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -919,15 +922,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -940,7 +943,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -960,11 +963,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -972,19 +975,17 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -996,10 +997,10 @@
 							]
 						}
 					}
-				},
-				"description": "Get domain response"
+				}
 			},
 			"4XX": {
+				"description": "Get domain response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1007,16 +1008,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1029,15 +1032,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1050,7 +1053,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1070,11 +1073,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1082,19 +1085,17 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
-															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1106,48 +1107,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minItems": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1160,25 +1136,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minItems": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1186,16 +1188,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get domain response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -1203,7 +1204,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get domain",
 		"tags": [
 			"Registrar Domains"
 		],
@@ -1211,85 +1211,88 @@
 		"x-stainless-deprecation-message": "This operation is deprecated and will reach end of life on September 27, 2026. Use the new Registrar API endpoints (domain-search, domain-check, registrations) instead. Refer to https://developers.cloudflare.com/fundamentals/api/reference/deprecations/ for details."
 	},
 	"PUT /accounts/{account_id}/registrar/domains/{domain_name}": {
-		"deprecated": true,
-		"description": "Update individual domain.",
 		"operationId": "registrar-domains-update-domain",
+		"summary": "Update domain",
+		"description": "Update individual domain.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "domain_name",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
-					"example": "example.com",
 					"type": "string",
+					"example": "example.com",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"auto_renew": {
 										"description": "Auto-renew controls whether subscription is automatically renewed upon domain expiration.",
-										"example": true,
 										"type": "boolean",
+										"example": true,
 										"x-auditable": true
 									},
 									"locked": {
 										"description": "Shows whether a registrar lock is in place for a domain.",
-										"example": false,
 										"type": "boolean",
+										"example": false,
 										"x-auditable": true
 									},
 									"privacy": {
 										"description": "Privacy option controls redacting WHOIS information.",
-										"example": true,
 										"type": "boolean",
+										"example": true,
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							}
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update domain response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1302,15 +1305,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1323,7 +1326,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1343,11 +1346,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1355,19 +1358,17 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1379,10 +1380,10 @@
 							]
 						}
 					}
-				},
-				"description": "Update domain response"
+				}
 			},
 			"4XX": {
+				"description": "Update domain response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1390,16 +1391,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1412,15 +1415,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1433,7 +1436,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1453,11 +1456,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1465,19 +1468,17 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
-															"nullable": true,
-															"type": "object"
+															"type": "object",
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1489,48 +1490,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minItems": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1543,25 +1519,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minItems": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1569,16 +1571,15 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update domain response failure"
+				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_email": [],
@@ -1586,7 +1587,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update domain",
 		"tags": [
 			"Registrar Domains"
 		],

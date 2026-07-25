@@ -1,49 +1,52 @@
 {
 	"POST /accounts/{account_id}/stream/clip": {
-		"description": "Clips a video based on the specified start and end times provided in seconds.",
 		"operationId": "stream-video-clipping-clip-videos-given-a-start-and-end-time",
+		"summary": "Clip videos given a start and end time",
+		"description": "Clips a video based on the specified start and end times provided in seconds.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"allowedOrigins": {
 								"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
-								"example": [
-									"example.com"
-								],
+								"type": "array",
 								"items": {
 									"type": "string",
 									"x-auditable": true
 								},
-								"type": "array"
+								"example": [
+									"example.com"
+								]
 							},
 							"clippedFromVideoUID": {
 								"description": "The unique video identifier (UID).",
+								"type": "string",
 								"example": "023e105f4ecef8ad9ca31a8372d0c353",
 								"maxLength": 32,
-								"type": "string",
 								"x-auditable": true
 							},
 							"creator": {
 								"description": "A user-defined identifier for the media creator.",
+								"type": "string",
 								"example": "creator-id_abcde12345",
 								"maxLength": 64,
-								"type": "string",
 								"x-auditable": true
 							},
 							"endTimeSeconds": {
@@ -53,34 +56,34 @@
 							},
 							"input": {
 								"description": "A video's URL. Preferred over 'url'.",
-								"example": "https://example.com/myvideo.mp4",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/myvideo.mp4"
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
+								"type": "object",
 								"example": {
 									"name": "video12345.mp4"
-								},
-								"type": "object"
+								}
 							},
 							"name": {
 								"description": "A name for the video.",
-								"example": "myvideo.mp4",
-								"type": "string"
+								"type": "string",
+								"example": "myvideo.mp4"
 							},
 							"requireSignedURLs": {
-								"default": false,
 								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"scheduledDeletion": {
 								"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
-								"example": "2014-01-02T02:20:00Z",
-								"format": "date-time",
 								"type": "string",
+								"format": "date-time",
+								"example": "2014-01-02T02:20:00Z",
 								"x-auditable": true
 							},
 							"startTimeSeconds": {
@@ -89,61 +92,62 @@
 								"x-auditable": true
 							},
 							"thumbnailTimestampPct": {
-								"default": 0,
 								"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+								"type": "number",
 								"example": 0.529241,
+								"default": 0,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number",
 								"x-auditable": true
 							},
 							"url": {
 								"description": "A video's URL (legacy field, use 'input' instead).",
-								"example": "https://example.com/myvideo.mp4",
+								"type": "string",
 								"format": "uri",
-								"type": "string"
+								"example": "https://example.com/myvideo.mp4"
 							},
 							"watermark": {
+								"type": "object",
 								"properties": {
 									"uid": {
 										"description": "The unique identifier for the watermark profile.",
+										"type": "string",
 										"example": "ea95132c15732412d22c1476fa83f27a",
 										"maxLength": 32,
-										"type": "string",
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							}
 						},
 						"required": [
 							"clippedFromVideoUID",
 							"startTimeSeconds",
 							"endTimeSeconds"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Clip videos given a start and end time response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -152,12 +156,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -167,15 +171,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -184,12 +188,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -199,59 +203,58 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"allowedOrigins": {
 													"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
-													"example": [
-														"example.com"
-													],
+													"type": "array",
 													"items": {
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"example": [
+														"example.com"
+													]
 												},
 												"clippedFrom": {
 													"description": "The unique identifier of the source video this video was clipped from.",
-													"example": "ea95132c15732412d22c1476fa83f27a",
-													"type": "string"
+													"type": "string",
+													"example": "ea95132c15732412d22c1476fa83f27a"
 												},
 												"created": {
 													"description": "The date and time the media item was created.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"creator": {
 													"description": "A user-defined identifier for the media creator.",
+													"type": "string",
 													"example": "creator-id_abcde12345",
 													"maxLength": 64,
-													"type": "string",
 													"x-auditable": true
 												},
 												"duration": {
@@ -260,6 +263,7 @@
 													"x-auditable": true
 												},
 												"input": {
+													"type": "object",
 													"properties": {
 														"height": {
 															"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
@@ -271,122 +275,121 @@
 															"type": "integer",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"liveInput": {
 													"description": "The live input ID used to upload a video with Stream Live.",
+													"type": "string",
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
+													"type": "integer",
 													"maximum": 36000,
 													"minimum": 1,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"maxSizeBytes": {
 													"description": "The maximum size in bytes for the video upload.",
-													"format": "int64",
-													"type": "integer"
+													"type": "integer",
+													"format": "int64"
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
+													"type": "object",
 													"example": {
 														"name": "video12345.mp4"
-													},
-													"type": "object"
+													}
 												},
 												"modified": {
 													"description": "The date and time the media item was last modified.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"playback": {
+													"type": "object",
 													"properties": {
 														"dash": {
 															"description": "DASH Media Presentation Description for the video.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
 															"x-auditable": true
 														},
 														"hls": {
 															"description": "The HLS manifest for the video.",
-															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
 															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"preview": {
 													"description": "The video's preview page URI. This field is omitted until encoding is complete.",
-													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
-													"format": "uri",
 													"type": "string",
+													"format": "uri",
+													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
 													"x-auditable": true
 												},
 												"publicDetails": {
 													"description": "Public details for the video including title, share link, channel link, and logo.",
+													"type": "object",
 													"properties": {
 														"channel_link": {
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"logo": {
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"media_id": {
 															"type": "integer"
 														},
 														"share_link": {
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														},
 														"title": {
-															"nullable": true,
-															"type": "string"
+															"type": "string",
+															"nullable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"readyToStream": {
 													"description": "Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
 													"x-auditable": true
 												},
 												"readyToStreamAt": {
 													"description": "Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"requireSignedURLs": {
-													"default": false,
 													"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"scheduledDeletion": {
 													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"size": {
 													"description": "The size of the media item in bytes.",
-													"example": 4190963,
 													"type": "number",
+													"example": 4190963,
 													"x-auditable": true
 												},
 												"status": {
@@ -394,24 +397,26 @@
 													"properties": {
 														"errorReasonCode": {
 															"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
-															"example": "ERR_NON_VIDEO",
 															"type": "string",
+															"example": "ERR_NON_VIDEO",
 															"x-auditable": true
 														},
 														"errorReasonText": {
 															"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
-															"example": "The file was not recognized as a valid video file.",
 															"type": "string",
+															"example": "The file was not recognized as a valid video file.",
 															"x-auditable": true
 														},
 														"pctComplete": {
 															"description": "Indicates the progress as a percentage between 0 and 100.",
-															"example": "45",
 															"type": "string",
+															"example": "45",
 															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the processing status for all quality levels for a video.",
+															"type": "string",
+															"example": "inprogress",
 															"enum": [
 																"pendingupload",
 																"downloading",
@@ -421,62 +426,61 @@
 																"error",
 																"live-inprogress"
 															],
-															"example": "inprogress",
-															"type": "string",
 															"x-auditable": true
 														}
 													}
 												},
 												"thumbnail": {
 													"description": "The media item's thumbnail URI. This field is omitted until encoding is complete.",
-													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
-													"format": "uri",
 													"type": "string",
+													"format": "uri",
+													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
 													"x-auditable": true
 												},
 												"thumbnailTimestampPct": {
-													"default": 0,
 													"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+													"type": "number",
 													"example": 0.529241,
+													"default": 0,
 													"maximum": 1,
 													"minimum": 0,
-													"type": "number",
 													"x-auditable": true
 												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
+													"type": "string",
 													"example": "ea95132c15732412d22c1476fa83f27a",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"uploadExpiry": {
 													"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"uploaded": {
 													"description": "The date and time the media item was uploaded.",
-													"example": "2014-01-02T02:20:00Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
 												"watermark": {
+													"type": "object",
 													"properties": {
 														"created": {
 															"description": "The date and a time a watermark profile was created.",
-															"example": "2014-01-02T02:20:00Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-02T02:20:00Z",
 															"x-auditable": true
 														},
 														"downloadedFrom": {
 															"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
-															"example": "https://company.com/logo.png",
 															"type": "string",
+															"example": "https://company.com/logo.png",
 															"x-auditable": true
 														},
 														"height": {
@@ -485,57 +489,57 @@
 															"x-auditable": true
 														},
 														"name": {
-															"default": "",
 															"description": "A short description of the watermark profile.",
-															"example": "Marketing Videos",
 															"type": "string",
+															"example": "Marketing Videos",
+															"default": "",
 															"x-auditable": true
 														},
 														"opacity": {
-															"default": 1,
 															"description": "The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.",
+															"type": "number",
 															"example": 0.75,
+															"default": 1,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number",
 															"x-auditable": true
 														},
 														"padding": {
-															"default": 0.05,
 															"description": "The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.",
+															"type": "number",
 															"example": 0.1,
+															"default": 0.05,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number",
 															"x-auditable": true
 														},
 														"position": {
-															"default": "upperRight",
 															"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
-															"example": "center",
 															"type": "string",
+															"example": "center",
+															"default": "upperRight",
 															"x-auditable": true
 														},
 														"scale": {
-															"default": 0.15,
 															"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.",
+															"type": "number",
 															"example": 0.1,
+															"default": 0.15,
 															"maximum": 1,
 															"minimum": 0,
-															"type": "number",
 															"x-auditable": true
 														},
 														"size": {
 															"description": "The size of the image in bytes.",
-															"example": 29472,
 															"type": "number",
+															"example": 29472,
 															"x-auditable": true
 														},
 														"uid": {
 															"description": "The unique identifier for a watermark profile.",
+															"type": "string",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"width": {
@@ -543,11 +547,9 @@
 															"type": "integer",
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
@@ -555,66 +557,30 @@
 							]
 						}
 					}
-				},
-				"description": "Clip videos given a start and end time response."
+				}
 			},
 			"4XX": {
+				"description": "Clip videos given a start and end time response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -623,12 +589,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -638,25 +604,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -664,12 +667,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Clip videos given a start and end time response failure."
+				}
 			}
 		},
 		"security": [
@@ -679,7 +680,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Clip videos given a start and end time",
 		"tags": [
 			"Stream Video Clipping"
 		],

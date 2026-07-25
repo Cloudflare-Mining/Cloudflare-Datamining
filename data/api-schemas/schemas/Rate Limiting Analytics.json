@@ -1,235 +1,238 @@
 {
 	"GET /zones/{zone_id}/rate_limit_analytics": {
-		"description": "Returns rate limiting analytics for a zone over the specified time period.\nThe time period divides into time segments of a given length. Each segment\ncontains total action counts and action counts broken down by colo.",
 		"operationId": "rate-limit-analytics-get-zone-analytics",
+		"summary": "Get Rate Limiting Analytics",
+		"description": "Returns rate limiting analytics for a zone over the specified time period.\nThe time period divides into time segments of a given length. Each segment\ncontains total action counts and action counts broken down by colo.",
 		"parameters": [
 			{
-				"description": "Identifier of the zone.",
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
+				"description": "Identifier of the zone.",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			},
 			{
-				"description": "The start of the queried time period. Time must be rounded to the time\nsegment boundary and formatted as RFC 3339.",
-				"in": "query",
 				"name": "since",
+				"in": "query",
+				"description": "The start of the queried time period. Time must be rounded to the time\nsegment boundary and formatted as RFC 3339.",
 				"required": true,
 				"schema": {
-					"example": "2024-01-01T00:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2024-01-01T00:00:00Z"
 				}
 			},
 			{
-				"description": "The exclusive end of the queried time period. Time must be rounded to the\ntime segment boundary and formatted as RFC 3339.",
-				"in": "query",
 				"name": "until",
+				"in": "query",
+				"description": "The exclusive end of the queried time period. Time must be rounded to the\ntime segment boundary and formatted as RFC 3339.",
 				"required": true,
 				"schema": {
-					"example": "2024-01-02T00:00:00Z",
+					"type": "string",
 					"format": "date-time",
-					"type": "string"
+					"example": "2024-01-02T00:00:00Z"
 				}
 			},
 			{
-				"description": "Length (in seconds) of each time segment dividing the entire time period.\nAccepted values are 60 (minute), 3600 (hour), 86400 (day), and 2592000 (month).",
-				"in": "query",
 				"name": "time_delta",
+				"in": "query",
+				"description": "Length (in seconds) of each time segment dividing the entire time period.\nAccepted values are 60 (minute), 3600 (hour), 86400 (day), and 2592000 (month).",
 				"required": true,
 				"schema": {
+					"type": "integer",
+					"example": 3600,
 					"enum": [
 						60,
 						3600,
 						86400,
 						2592000
-					],
-					"example": 3600,
-					"type": "integer"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Rate limiting analytics for a zone.",
+							"type": "object",
 							"properties": {
 								"labels": {
-									"additionalProperties": {
-										"type": "string"
-									},
 									"description": "Mapping from rule ID to human-readable description of the rule.",
+									"type": "object",
 									"example": {
 										"123e4567-e89b-12d3-a456-426655440000": "block login brute force on /login",
 										"66698345-bc87-d312-a456-937482934748": "rate limit whole site"
 									},
-									"type": "object"
+									"additionalProperties": {
+										"type": "string"
+									}
 								},
 								"since": {
 									"description": "Start of the queried time period formatted as RFC 3339.",
-									"example": "2024-01-01T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2024-01-01T00:00:00Z"
 								},
 								"time_delta": {
 									"description": "Length (in seconds) of the time segments dividing the entire time period.",
+									"type": "integer",
+									"example": 3600,
 									"enum": [
 										60,
 										3600,
 										86400,
 										2592000
-									],
-									"example": 3600,
-									"type": "integer"
+									]
 								},
 								"timeseries": {
 									"description": "Time series with analytics data for each time segment.",
+									"type": "array",
 									"items": {
 										"description": "Analytics data for a single time segment.",
+										"type": "object",
 										"properties": {
 											"rules": {
+												"description": "Contains rule-level analytics for this time segment.",
+												"type": "object",
 												"additionalProperties": {
 													"description": "Action totals and per-colo action counts for a particular rule.",
+													"type": "object",
 													"properties": {
 														"actions": {
 															"description": "Rate limiting action counts broken down by action type.",
+															"type": "object",
 															"properties": {
 																"all": {
 																	"description": "Count of rule actions of any type triggered.",
-																	"example": 700,
+																	"type": "integer",
 																	"format": "int64",
-																	"type": "integer"
+																	"example": 700
 																},
 																"allow": {
 																	"description": "Count of allow rule actions triggered.",
-																	"example": 500,
+																	"type": "integer",
 																	"format": "int64",
-																	"type": "integer"
+																	"example": 500
 																},
 																"ban": {
 																	"description": "Count of ban rule actions triggered.",
-																	"example": 50,
+																	"type": "integer",
 																	"format": "int64",
-																	"type": "integer"
+																	"example": 50
 																},
 																"error": {
 																	"description": "Count of error rule actions triggered.",
-																	"example": 50,
+																	"type": "integer",
 																	"format": "int64",
-																	"type": "integer"
+																	"example": 50
 																},
 																"simulate": {
 																	"description": "Count of simulate rule actions triggered.",
-																	"example": 100,
+																	"type": "integer",
 																	"format": "int64",
-																	"type": "integer"
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														},
 														"colos": {
+															"description": "Maps each colo name to its action counters.",
+															"type": "object",
 															"additionalProperties": {
 																"description": "Action counters for a single colo.",
+																"type": "object",
 																"properties": {
 																	"actions": {
 																		"description": "Rate limiting action counts broken down by action type.",
+																		"type": "object",
 																		"properties": {
 																			"all": {
 																				"description": "Count of rule actions of any type triggered.",
-																				"example": 700,
+																				"type": "integer",
 																				"format": "int64",
-																				"type": "integer"
+																				"example": 700
 																			},
 																			"allow": {
 																				"description": "Count of allow rule actions triggered.",
-																				"example": 500,
+																				"type": "integer",
 																				"format": "int64",
-																				"type": "integer"
+																				"example": 500
 																			},
 																			"ban": {
 																				"description": "Count of ban rule actions triggered.",
-																				"example": 50,
+																				"type": "integer",
 																				"format": "int64",
-																				"type": "integer"
+																				"example": 50
 																			},
 																			"error": {
 																				"description": "Count of error rule actions triggered.",
-																				"example": 50,
+																				"type": "integer",
 																				"format": "int64",
-																				"type": "integer"
+																				"example": 50
 																			},
 																			"simulate": {
 																				"description": "Count of simulate rule actions triggered.",
-																				"example": 100,
+																				"type": "integer",
 																				"format": "int64",
-																				"type": "integer"
+																				"example": 100
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
 																	"actions"
-																],
-																"type": "object"
-															},
-															"description": "Maps each colo name to its action counters.",
-															"type": "object"
+																]
+															}
 														},
 														"versions": {
 															"description": "Number of active versions of the rate limit rule.",
-															"example": 1,
-															"type": "integer"
+															"type": "integer",
+															"example": 1
 														}
 													},
 													"required": [
 														"versions",
 														"actions",
 														"colos"
-													],
-													"type": "object"
-												},
-												"description": "Contains rule-level analytics for this time segment.",
-												"type": "object"
+													]
+												}
 											},
 											"since": {
 												"description": "Start of the time segment formatted as RFC 3339.",
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											},
 											"until": {
 												"description": "Exclusive end of the time segment formatted as RFC 3339.",
-												"format": "date-time",
-												"type": "string"
+												"type": "string",
+												"format": "date-time"
 											}
 										},
 										"required": [
 											"since",
 											"until",
 											"rules"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"until": {
 									"description": "Exclusive end of the queried time period formatted as RFC 3339.",
-									"example": "2024-01-02T00:00:00Z",
+									"type": "string",
 									"format": "date-time",
-									"type": "string"
+									"example": "2024-01-02T00:00:00Z"
 								},
 								"zone_id": {
 									"description": "Numeric ID of the zone.",
-									"example": 123,
+									"type": "integer",
 									"format": "int64",
-									"type": "integer"
+									"example": 123
 								}
 							},
 							"required": [
@@ -238,24 +241,26 @@
 								"time_delta",
 								"labels",
 								"timeseries"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"400": {
+				"description": "Bad request. Invalid or missing parameters.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -264,18 +269,18 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -284,42 +289,42 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request. Invalid or missing parameters."
+				}
 			},
 			"401": {
+				"description": "Unauthorized. Missing or invalid authentication credentials.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -328,18 +333,18 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -348,42 +353,42 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized. Missing or invalid authentication credentials."
+				}
 			},
 			"403": {
+				"description": "Forbidden. Insufficient permissions for the requested resource.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -392,18 +397,18 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -412,42 +417,42 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden. Insufficient permissions for the requested resource."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -456,18 +461,18 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
+										]
 									},
-									"minItems": 1,
-									"type": "array"
+									"minItems": 1
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"message": {
 												"type": "string"
@@ -476,30 +481,26 @@
 										"required": [
 											"code",
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -511,7 +512,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Rate Limiting Analytics",
 		"tags": [
 			"Rate Limiting Analytics"
 		],

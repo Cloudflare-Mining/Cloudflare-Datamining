@@ -1,56 +1,60 @@
 {
 	"DELETE /accounts/{account_id}/magic/sites/{site_id}": {
-		"description": "Remove a specific Site.",
 		"operationId": "magic-sites-delete-site",
+		"summary": "Delete Site",
+		"description": "Remove a specific Site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Site response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -63,15 +67,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -84,7 +88,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -102,11 +106,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -114,8 +118,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -133,17 +136,17 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"x-auditable": true
 												},
 												"description": {
@@ -151,103 +154,77 @@
 												},
 												"ha_mode": {
 													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"location": {
 													"description": "Location of site in latitude and longitude.",
+													"type": "object",
 													"properties": {
 														"lat": {
 															"description": "Latitude",
-															"example": 37.6192,
 															"type": "string",
+															"example": 37.6192,
 															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
-															"example": 122.3816,
 															"type": "string",
+															"example": 122.3816,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "The name of the site.",
-													"example": "site_1",
 													"type": "string",
+													"example": "site_1",
 													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"type": "string",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Site response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Site response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -260,25 +237,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -286,12 +289,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Site response failure"
+				}
 			}
 		},
 		"security": [
@@ -301,7 +302,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete Site",
 		"tags": [
 			"Magic Sites"
 		],
@@ -326,50 +326,54 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites": {
-		"description": "Lists Sites associated with an account. Use connectorid query param to return sites where connectorid matches either site.ConnectorID or site.SecondaryConnectorID.",
 		"operationId": "magic-sites-list-sites",
+		"summary": "List Sites",
+		"description": "Lists Sites associated with an account. Use connectorid query param to return sites where connectorid matches either site.ConnectorID or site.SecondaryConnectorID.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "connectorid",
+				"in": "query",
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Sites response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -382,15 +386,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -403,7 +407,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -421,11 +425,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -433,8 +437,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -452,18 +455,19 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"connector_id": {
 														"description": "Magic Connector identifier tag.",
-														"example": "ac60d3d0435248289d446cedd870bcf4",
 														"type": "string",
+														"example": "ac60d3d0435248289d446cedd870bcf4",
 														"x-auditable": true
 													},
 													"description": {
@@ -471,105 +475,78 @@
 													},
 													"ha_mode": {
 														"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-														"example": true,
-														"type": "boolean"
+														"type": "boolean",
+														"example": true
 													},
 													"id": {
 														"description": "Identifier",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
+														"readOnly": true
 													},
 													"location": {
 														"description": "Location of site in latitude and longitude.",
+														"type": "object",
 														"properties": {
 															"lat": {
 																"description": "Latitude",
-																"example": 37.6192,
 																"type": "string",
+																"example": 37.6192,
 																"x-auditable": true
 															},
 															"lon": {
 																"description": "Longitude",
-																"example": 122.3816,
 																"type": "string",
+																"example": 122.3816,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"name": {
 														"description": "The name of the site.",
-														"example": "site_1",
 														"type": "string",
+														"example": "site_1",
 														"x-auditable": true
 													},
 													"secondary_connector_id": {
 														"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-														"example": "8d67040d3835dbcf46ce29da440dc482",
 														"type": "string",
+														"example": "8d67040d3835dbcf46ce29da440dc482",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Sites response"
+				}
 			},
 			"4XX": {
+				"description": "List Sites response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -582,25 +559,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -608,12 +611,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Sites response failure"
+				}
 			}
 		},
 		"security": [
@@ -623,7 +624,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Sites",
 		"tags": [
 			"Magic Sites"
 		],
@@ -645,37 +645,38 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}": {
-		"description": "Get a specific Site.",
 		"operationId": "magic-sites-site-details",
+		"summary": "Site Details",
+		"description": "Get a specific Site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
 				"in": "path",
-				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
-				"in": "header",
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
 				"name": "x-magic-new-hc-target",
+				"in": "header",
+				"description": "If true, the health check target in the response body will be presented using the new object format. Defaults to false.",
 				"schema": {
 					"type": "boolean"
 				}
@@ -683,21 +684,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Site Details response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -710,15 +714,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -731,7 +735,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -749,11 +753,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -761,8 +765,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -780,17 +783,17 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"x-auditable": true
 												},
 												"description": {
@@ -798,103 +801,77 @@
 												},
 												"ha_mode": {
 													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"location": {
 													"description": "Location of site in latitude and longitude.",
+													"type": "object",
 													"properties": {
 														"lat": {
 															"description": "Latitude",
-															"example": 37.6192,
 															"type": "string",
+															"example": 37.6192,
 															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
-															"example": 122.3816,
 															"type": "string",
+															"example": 122.3816,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "The name of the site.",
-													"example": "site_1",
 													"type": "string",
+													"example": "site_1",
 													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"type": "string",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Site Details response"
+				}
 			},
 			"4XX": {
+				"description": "Site Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -907,25 +884,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -933,12 +936,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Site Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -948,7 +949,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Site Details",
 		"tags": [
 			"Magic Sites"
 		],
@@ -975,43 +975,46 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}": {
-		"description": "Patch a specific Site.",
 		"operationId": "magic-sites-patch-site",
+		"summary": "Patch Site",
+		"description": "Patch a specific Site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"connector_id": {
 								"description": "Magic Connector identifier tag.",
-								"example": "ac60d3d0435248289d446cedd870bcf4",
 								"type": "string",
+								"example": "ac60d3d0435248289d446cedd870bcf4",
 								"x-auditable": true
 							},
 							"description": {
@@ -1019,58 +1022,59 @@
 							},
 							"location": {
 								"description": "Location of site in latitude and longitude.",
+								"type": "object",
 								"properties": {
 									"lat": {
 										"description": "Latitude",
-										"example": 37.6192,
 										"type": "string",
+										"example": 37.6192,
 										"x-auditable": true
 									},
 									"lon": {
 										"description": "Longitude",
-										"example": 122.3816,
 										"type": "string",
+										"example": 122.3816,
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							},
 							"name": {
 								"description": "The name of the site.",
-								"example": "site_1",
 								"type": "string",
+								"example": "site_1",
 								"x-auditable": true
 							},
 							"secondary_connector_id": {
 								"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-								"example": "8d67040d3835dbcf46ce29da440dc482",
 								"type": "string",
+								"example": "8d67040d3835dbcf46ce29da440dc482",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Patch Site response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1083,15 +1087,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1104,7 +1108,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1122,11 +1126,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1134,8 +1138,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1153,17 +1156,17 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"x-auditable": true
 												},
 												"description": {
@@ -1171,103 +1174,77 @@
 												},
 												"ha_mode": {
 													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"location": {
 													"description": "Location of site in latitude and longitude.",
+													"type": "object",
 													"properties": {
 														"lat": {
 															"description": "Latitude",
-															"example": 37.6192,
 															"type": "string",
+															"example": 37.6192,
 															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
-															"example": 122.3816,
 															"type": "string",
+															"example": 122.3816,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "The name of the site.",
-													"example": "site_1",
 													"type": "string",
+													"example": "site_1",
 													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"type": "string",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Patch Site response"
+				}
 			},
 			"4XX": {
+				"description": "Patch Site response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1280,25 +1257,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1306,12 +1309,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Patch Site response failure"
+				}
 			}
 		},
 		"security": [
@@ -1321,7 +1322,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Patch Site",
 		"tags": [
 			"Magic Sites"
 		],
@@ -1346,31 +1346,34 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/sites": {
-		"description": "Creates a new Site",
 		"operationId": "magic-sites-create-site",
+		"summary": "Create a new Site",
+		"description": "Creates a new Site",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"connector_id": {
 								"description": "Magic Connector identifier tag.",
-								"example": "ac60d3d0435248289d446cedd870bcf4",
 								"type": "string",
+								"example": "ac60d3d0435248289d446cedd870bcf4",
 								"x-auditable": true
 							},
 							"description": {
@@ -1378,66 +1381,67 @@
 							},
 							"ha_mode": {
 								"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"example": true
 							},
 							"location": {
 								"description": "Location of site in latitude and longitude.",
+								"type": "object",
 								"properties": {
 									"lat": {
 										"description": "Latitude",
-										"example": 37.6192,
 										"type": "string",
+										"example": 37.6192,
 										"x-auditable": true
 									},
 									"lon": {
 										"description": "Longitude",
-										"example": 122.3816,
 										"type": "string",
+										"example": 122.3816,
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							},
 							"name": {
 								"description": "The name of the site.",
-								"example": "site_1",
 								"type": "string",
+								"example": "site_1",
 								"x-auditable": true
 							},
 							"secondary_connector_id": {
 								"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-								"example": "8d67040d3835dbcf46ce29da440dc482",
 								"type": "string",
+								"example": "8d67040d3835dbcf46ce29da440dc482",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Site response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1450,15 +1454,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1471,7 +1475,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1489,11 +1493,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1501,8 +1505,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1520,17 +1523,17 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"x-auditable": true
 												},
 												"description": {
@@ -1538,103 +1541,77 @@
 												},
 												"ha_mode": {
 													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"location": {
 													"description": "Location of site in latitude and longitude.",
+													"type": "object",
 													"properties": {
 														"lat": {
 															"description": "Latitude",
-															"example": 37.6192,
 															"type": "string",
+															"example": 37.6192,
 															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
-															"example": 122.3816,
 															"type": "string",
+															"example": 122.3816,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "The name of the site.",
-													"example": "site_1",
 													"type": "string",
+													"example": "site_1",
 													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"type": "string",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Site response"
+				}
 			},
 			"4XX": {
+				"description": "Create Site response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -1647,25 +1624,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1673,12 +1676,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Site response failure"
+				}
 			}
 		},
 		"security": [
@@ -1688,7 +1689,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a new Site",
 		"tags": [
 			"Magic Sites"
 		],
@@ -1708,43 +1708,46 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}": {
-		"description": "Update a specific Site.",
 		"operationId": "magic-sites-update-site",
+		"summary": "Update Site",
+		"description": "Update a specific Site.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "site_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"connector_id": {
 								"description": "Magic Connector identifier tag.",
-								"example": "ac60d3d0435248289d446cedd870bcf4",
 								"type": "string",
+								"example": "ac60d3d0435248289d446cedd870bcf4",
 								"x-auditable": true
 							},
 							"description": {
@@ -1752,58 +1755,59 @@
 							},
 							"location": {
 								"description": "Location of site in latitude and longitude.",
+								"type": "object",
 								"properties": {
 									"lat": {
 										"description": "Latitude",
-										"example": 37.6192,
 										"type": "string",
+										"example": 37.6192,
 										"x-auditable": true
 									},
 									"lon": {
 										"description": "Longitude",
-										"example": 122.3816,
 										"type": "string",
+										"example": 122.3816,
 										"x-auditable": true
 									}
-								},
-								"type": "object"
+								}
 							},
 							"name": {
 								"description": "The name of the site.",
-								"example": "site_1",
 								"type": "string",
+								"example": "site_1",
 								"x-auditable": true
 							},
 							"secondary_connector_id": {
 								"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-								"example": "8d67040d3835dbcf46ce29da440dc482",
 								"type": "string",
+								"example": "8d67040d3835dbcf46ce29da440dc482",
 								"x-auditable": true
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Site response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1816,15 +1820,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1837,7 +1841,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1855,11 +1859,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1867,8 +1871,7 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -1886,17 +1889,17 @@
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"connector_id": {
 													"description": "Magic Connector identifier tag.",
-													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"type": "string",
+													"example": "ac60d3d0435248289d446cedd870bcf4",
 													"x-auditable": true
 												},
 												"description": {
@@ -1904,103 +1907,77 @@
 												},
 												"ha_mode": {
 													"description": "Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"id": {
 													"description": "Identifier",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"location": {
 													"description": "Location of site in latitude and longitude.",
+													"type": "object",
 													"properties": {
 														"lat": {
 															"description": "Latitude",
-															"example": 37.6192,
 															"type": "string",
+															"example": 37.6192,
 															"x-auditable": true
 														},
 														"lon": {
 															"description": "Longitude",
-															"example": 122.3816,
 															"type": "string",
+															"example": 122.3816,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"name": {
 													"description": "The name of the site.",
-													"example": "site_1",
 													"type": "string",
+													"example": "site_1",
 													"x-auditable": true
 												},
 												"secondary_connector_id": {
 													"description": "Magic Connector identifier tag. Used when high availability mode is on.",
-													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"type": "string",
+													"example": "8d67040d3835dbcf46ce29da440dc482",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update Site response"
+				}
 			},
 			"4XX": {
+				"description": "Update Site response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -2013,25 +1990,51 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2039,12 +2042,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Site response failure"
+				}
 			}
 		},
 		"security": [
@@ -2054,7 +2055,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update Site",
 		"tags": [
 			"Magic Sites"
 		],

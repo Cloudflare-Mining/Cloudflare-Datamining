@@ -1,19 +1,20 @@
 {
 	"POST /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items": {
-		"description": "Create one or more items in a collection. Supports single item (data field) or bulk creation (data array). Item data is validated against the collection schema.",
 		"operationId": "post_ItemCreate",
+		"summary": "Create item(s)",
+		"description": "Create one or more items in a collection. Supports single item (data field) or bulk creation (data array). Item data is validated against the collection schema.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
 				}
 			},
 			{
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -28,9 +29,9 @@
 							{
 								"properties": {
 									"data": {
-										"additionalProperties": true,
 										"description": "Single item data matching collection schema",
-										"type": "object"
+										"type": "object",
+										"additionalProperties": true
 									}
 								},
 								"required": [
@@ -42,13 +43,13 @@
 								"properties": {
 									"data": {
 										"description": "Array of items to create (max 1000)",
+										"type": "array",
 										"items": {
 											"additionalProperties": true,
 											"type": "object"
 										},
 										"maxItems": 1000,
-										"minItems": 1,
-										"type": "array"
+										"minItems": 1
 									}
 								},
 								"required": [
@@ -63,6 +64,7 @@
 		},
 		"responses": {
 			"201": {
+				"description": "Item(s) created successfully",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -70,13 +72,14 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created_at": {
 													"type": "string"
 												},
 												"data": {
-													"additionalProperties": true,
-													"type": "object"
+													"type": "object",
+													"additionalProperties": true
 												},
 												"id": {
 													"type": "string"
@@ -90,14 +93,13 @@
 												"data",
 												"created_at",
 												"updated_at"
-											],
-											"type": "object"
+											]
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												true
-											],
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -109,13 +111,15 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"errors": {
+													"type": "array",
 													"items": {
 														"properties": {
 															"data": {
-																"additionalProperties": true,
-																"type": "object"
+																"type": "object",
+																"additionalProperties": true
 															},
 															"error": {
 																"type": "string"
@@ -130,8 +134,7 @@
 															"data"
 														],
 														"type": "object"
-													},
-													"type": "array"
+													}
 												},
 												"failed": {
 													"type": "number"
@@ -142,14 +145,13 @@
 											},
 											"required": [
 												"inserted"
-											],
-											"type": "object"
+											]
 										},
 										"success": {
+											"type": "boolean",
 											"enum": [
 												true
-											],
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -161,8 +163,7 @@
 							]
 						}
 					}
-				},
-				"description": "Item(s) created successfully"
+				}
 			},
 			"400": {
 				"description": "Validation error"
@@ -176,7 +177,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create item(s)",
 		"tags": [
 			"Collections - Items"
 		],
@@ -185,13 +185,14 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/search": {
-		"description": "Search collection items with advanced filtering. Supports operators (eq, neq, gt, lt, gte, lte, contains, is_empty, is_not_empty) and AND/OR logic for complex queries.",
 		"operationId": "post_ItemSearch",
+		"summary": "Search items (advanced filtering)",
+		"description": "Search collection items with advanced filtering. Supports operators (eq, neq, gt, lt, gte, lte, contains, is_empty, is_not_empty) and AND/OR logic for complex queries.",
 		"parameters": [
 			{
-				"description": "Account ID",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -199,9 +200,9 @@
 				}
 			},
 			{
-				"description": "Collection UUID",
-				"in": "path",
 				"name": "collection_id",
+				"in": "path",
+				"description": "Collection UUID",
 				"required": true,
 				"schema": {
 					"description": "Collection UUID",
@@ -213,12 +214,14 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"cursor": {
 								"type": "string"
 							},
 							"filter": {
 								"description": "Recursive filter supporting AND/OR nesting of conditions. Can be either a leaf condition (field/op/value) or a logical group (and/or array of nested filters).",
+								"type": "object",
 								"oneOf": [
 									{
 										"description": "Leaf filter condition",
@@ -229,6 +232,7 @@
 											},
 											"op": {
 												"description": "Comparison operator",
+												"type": "string",
 												"enum": [
 													"eq",
 													"neq",
@@ -239,8 +243,7 @@
 													"contains",
 													"is_empty",
 													"is_not_empty"
-												],
-												"type": "string"
+												]
 											},
 											"value": {
 												"description": "Value to compare against (not needed for is_empty/is_not_empty)"
@@ -256,12 +259,12 @@
 										"properties": {
 											"and": {
 												"description": "All conditions must match (AND logic). Each item can recursively contain more filters.",
+												"type": "array",
 												"items": {
 													"description": "Nested filter (can be a leaf condition or another AND/OR group)",
 													"type": "object"
 												},
-												"minItems": 1,
-												"type": "array"
+												"minItems": 1
 											}
 										},
 										"required": [
@@ -273,12 +276,12 @@
 										"properties": {
 											"or": {
 												"description": "At least one condition must match (OR logic). Each item can recursively contain more filters.",
+												"type": "array",
 												"items": {
 													"description": "Nested filter (can be a leaf condition or another AND/OR group)",
 													"type": "object"
 												},
-												"minItems": 1,
-												"type": "array"
+												"minItems": 1
 											}
 										},
 										"required": [
@@ -286,56 +289,58 @@
 										],
 										"type": "object"
 									}
-								],
-								"type": "object"
+								]
 							},
 							"limit": {
+								"type": "integer",
 								"default": 20,
 								"maximum": 100,
-								"minimum": 1,
-								"type": "integer"
+								"minimum": 1
 							},
 							"q": {
 								"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
+								"type": "string",
 								"maxLength": 500,
-								"minLength": 1,
-								"type": "string"
+								"minLength": 1
 							},
 							"sort": {
+								"type": "object",
 								"properties": {
 									"field": {
 										"description": "Column name to sort by",
 										"type": "string"
 									},
 									"order": {
+										"type": "string",
 										"default": "asc",
 										"enum": [
 											"asc",
 											"desc"
-										],
-										"type": "string"
+										]
 									}
 								},
 								"required": [
 									"field"
-								],
-								"type": "object"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
 			}
 		},
 		"responses": {
 			"200": {
+				"description": "Items matching search criteria",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"pagination": {
+									"type": "object",
 									"properties": {
 										"cursors": {
+											"type": "object",
 											"properties": {
 												"current": {
 													"type": "string"
@@ -344,12 +349,12 @@
 													"type": "string"
 												},
 												"next": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"prev": {
-													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												}
 											},
 											"required": [
@@ -357,8 +362,7 @@
 												"current",
 												"prev",
 												"next"
-											],
-											"type": "object"
+											]
 										},
 										"limit": {
 											"type": "number"
@@ -375,18 +379,18 @@
 										"limit",
 										"total",
 										"cursors"
-									],
-									"type": "object"
+									]
 								},
 								"result": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"created_at": {
 												"type": "string"
 											},
 											"data": {
-												"additionalProperties": true,
-												"type": "object"
+												"type": "object",
+												"additionalProperties": true
 											},
 											"id": {
 												"type": "string"
@@ -402,26 +406,23 @@
 											"updated_at"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"success": {
+									"type": "boolean",
 									"enum": [
 										true
-									],
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"result",
 								"pagination"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Items matching search criteria"
+				}
 			},
 			"400": {
 				"description": "Invalid filter syntax or cursor"
@@ -435,7 +436,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Search items (advanced filtering)",
 		"tags": [
 			"Collections - Items"
 		],

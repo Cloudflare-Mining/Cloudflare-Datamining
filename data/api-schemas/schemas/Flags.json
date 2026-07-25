@@ -1,12 +1,13 @@
 {
 	"DELETE /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
-		"description": "Deletes a flag permanently. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone.",
 		"operationId": "flagship_delete_flag",
+		"summary": "Delete flag",
+		"description": "Deletes a flag permanently. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -14,9 +15,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -24,9 +25,9 @@
 				}
 			},
 			{
-				"description": "Flag key (slug).",
-				"in": "path",
 				"name": "flag_key",
+				"in": "path",
+				"description": "Flag key (slug).",
 				"required": true,
 				"schema": {
 					"description": "Flag key (slug).",
@@ -36,11 +37,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Flag deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -51,10 +55,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -65,10 +69,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"key": {
 											"type": "string"
@@ -76,8 +80,7 @@
 									},
 									"required": [
 										"key"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -88,20 +91,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag deleted."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -109,13 +114,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -123,17 +128,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -144,20 +147,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -165,13 +170,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -179,17 +184,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -200,20 +203,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -221,13 +226,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -235,17 +240,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -256,20 +259,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -277,13 +282,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -291,17 +296,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -312,20 +315,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -333,13 +338,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -347,17 +352,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -368,20 +371,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -389,13 +394,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -403,17 +408,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -424,12 +427,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -441,7 +442,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete flag",
 		"tags": [
 			"Flags"
 		],
@@ -465,13 +465,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags": {
-		"description": "Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page.",
 		"operationId": "flagship_list_flags",
+		"summary": "List flags",
+		"description": "Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -479,9 +480,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -489,18 +490,18 @@
 				}
 			},
 			{
-				"description": "Max items to return (1–200).",
-				"in": "query",
 				"name": "limit",
+				"in": "query",
+				"description": "Max items to return (1–200).",
 				"schema": {
 					"description": "Max items to return (1–200).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Pagination cursor from a previous response.",
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
+				"description": "Pagination cursor from a previous response.",
 				"schema": {
 					"description": "Pagination cursor from a previous response.",
 					"type": "string"
@@ -509,11 +510,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Paginated list of flags.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -524,10 +528,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -538,22 +542,22 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
-										"additionalProperties": false,
+										"type": "object",
 										"properties": {
 											"default_variation": {
 												"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-												"minLength": 1,
-												"type": "string"
+												"type": "string",
+												"minLength": 1
 											},
 											"description": {
+												"type": "string",
 												"maxLength": 512,
-												"nullable": true,
-												"type": "string"
+												"nullable": true
 											},
 											"enabled": {
 												"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -561,29 +565,32 @@
 											},
 											"key": {
 												"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+												"type": "string",
 												"maxLength": 64,
 												"minLength": 1,
-												"pattern": "^[a-zA-Z0-9_-]+$",
-												"type": "string"
+												"pattern": "^[a-zA-Z0-9_-]+$"
 											},
 											"rules": {
 												"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+												"type": "array",
 												"items": {
 													"additionalProperties": false,
 													"properties": {
 														"conditions": {
 															"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
 																		"additionalProperties": false,
 																		"properties": {
 																			"attribute": {
+																				"type": "string",
 																				"maxLength": 64,
-																				"minLength": 1,
-																				"type": "string"
+																				"minLength": 1
 																			},
 																			"operator": {
+																				"type": "string",
 																				"enum": [
 																					"equals",
 																					"not_equals",
@@ -596,8 +603,7 @@
 																					"ends_with",
 																					"in",
 																					"not_in"
-																				],
-																				"type": "string"
+																				]
 																			},
 																			"value": {
 																				"oneOf": [
@@ -633,17 +639,19 @@
 																		"additionalProperties": false,
 																		"properties": {
 																			"clauses": {
+																				"type": "array",
 																				"items": {
 																					"anyOf": [
 																						{
 																							"additionalProperties": false,
 																							"properties": {
 																								"attribute": {
+																									"type": "string",
 																									"maxLength": 64,
-																									"minLength": 1,
-																									"type": "string"
+																									"minLength": 1
 																								},
 																								"operator": {
+																									"type": "string",
 																									"enum": [
 																										"equals",
 																										"not_equals",
@@ -656,8 +664,7 @@
 																										"ends_with",
 																										"in",
 																										"not_in"
-																									],
-																									"type": "string"
+																									]
 																								},
 																								"value": {
 																									"oneOf": [
@@ -693,17 +700,19 @@
 																							"additionalProperties": false,
 																							"properties": {
 																								"clauses": {
+																									"type": "array",
 																									"items": {
 																										"anyOf": [
 																											{
 																												"additionalProperties": false,
 																												"properties": {
 																													"attribute": {
+																														"type": "string",
 																														"maxLength": 64,
-																														"minLength": 1,
-																														"type": "string"
+																														"minLength": 1
 																													},
 																													"operator": {
+																														"type": "string",
 																														"enum": [
 																															"equals",
 																															"not_equals",
@@ -716,8 +725,7 @@
 																															"ends_with",
 																															"in",
 																															"not_in"
-																														],
-																														"type": "string"
+																														]
 																													},
 																													"value": {
 																														"oneOf": [
@@ -753,17 +761,19 @@
 																												"additionalProperties": false,
 																												"properties": {
 																													"clauses": {
+																														"type": "array",
 																														"items": {
 																															"anyOf": [
 																																{
 																																	"additionalProperties": false,
 																																	"properties": {
 																																		"attribute": {
+																																			"type": "string",
 																																			"maxLength": 64,
-																																			"minLength": 1,
-																																			"type": "string"
+																																			"minLength": 1
 																																		},
 																																		"operator": {
+																																			"type": "string",
 																																			"enum": [
 																																				"equals",
 																																				"not_equals",
@@ -776,8 +786,7 @@
 																																				"ends_with",
 																																				"in",
 																																				"not_in"
-																																			],
-																																			"type": "string"
+																																			]
 																																		},
 																																		"value": {
 																																			"oneOf": [
@@ -813,17 +822,19 @@
 																																	"additionalProperties": false,
 																																	"properties": {
 																																		"clauses": {
+																																			"type": "array",
 																																			"items": {
 																																				"anyOf": [
 																																					{
 																																						"additionalProperties": false,
 																																						"properties": {
 																																							"attribute": {
+																																								"type": "string",
 																																								"maxLength": 64,
-																																								"minLength": 1,
-																																								"type": "string"
+																																								"minLength": 1
 																																							},
 																																							"operator": {
+																																								"type": "string",
 																																								"enum": [
 																																									"equals",
 																																									"not_equals",
@@ -836,8 +847,7 @@
 																																									"ends_with",
 																																									"in",
 																																									"not_in"
-																																								],
-																																								"type": "string"
+																																								]
 																																							},
 																																							"value": {
 																																								"oneOf": [
@@ -873,17 +883,19 @@
 																																						"additionalProperties": false,
 																																						"properties": {
 																																							"clauses": {
+																																								"type": "array",
 																																								"items": {
 																																									"anyOf": [
 																																										{
 																																											"additionalProperties": false,
 																																											"properties": {
 																																												"attribute": {
+																																													"type": "string",
 																																													"maxLength": 64,
-																																													"minLength": 1,
-																																													"type": "string"
+																																													"minLength": 1
 																																												},
 																																												"operator": {
+																																													"type": "string",
 																																													"enum": [
 																																														"equals",
 																																														"not_equals",
@@ -896,8 +908,7 @@
 																																														"ends_with",
 																																														"in",
 																																														"not_in"
-																																													],
-																																													"type": "string"
+																																													]
 																																												},
 																																												"value": {
 																																													"oneOf": [
@@ -933,6 +944,7 @@
 																																											"additionalProperties": false,
 																																											"properties": {
 																																												"clauses": {
+																																													"type": "array",
 																																													"items": {
 																																														"oneOf": [
 																																															{
@@ -955,15 +967,14 @@
 																																															}
 																																														]
 																																													},
-																																													"minItems": 1,
-																																													"type": "array"
+																																													"minItems": 1
 																																												},
 																																												"logical_operator": {
+																																													"type": "string",
 																																													"enum": [
 																																														"AND",
 																																														"OR"
-																																													],
-																																													"type": "string"
+																																													]
 																																												}
 																																											},
 																																											"required": [
@@ -974,15 +985,14 @@
 																																										}
 																																									]
 																																								},
-																																								"minItems": 1,
-																																								"type": "array"
+																																								"minItems": 1
 																																							},
 																																							"logical_operator": {
+																																								"type": "string",
 																																								"enum": [
 																																									"AND",
 																																									"OR"
-																																								],
-																																								"type": "string"
+																																								]
 																																							}
 																																						},
 																																						"required": [
@@ -993,15 +1003,14 @@
 																																					}
 																																				]
 																																			},
-																																			"minItems": 1,
-																																			"type": "array"
+																																			"minItems": 1
 																																		},
 																																		"logical_operator": {
+																																			"type": "string",
 																																			"enum": [
 																																				"AND",
 																																				"OR"
-																																			],
-																																			"type": "string"
+																																			]
 																																		}
 																																	},
 																																	"required": [
@@ -1012,15 +1021,14 @@
 																																}
 																															]
 																														},
-																														"minItems": 1,
-																														"type": "array"
+																														"minItems": 1
 																													},
 																													"logical_operator": {
+																														"type": "string",
 																														"enum": [
 																															"AND",
 																															"OR"
-																														],
-																														"type": "string"
+																														]
 																													}
 																												},
 																												"required": [
@@ -1031,15 +1039,14 @@
 																											}
 																										]
 																									},
-																									"minItems": 1,
-																									"type": "array"
+																									"minItems": 1
 																								},
 																								"logical_operator": {
+																									"type": "string",
 																									"enum": [
 																										"AND",
 																										"OR"
-																									],
-																									"type": "string"
+																									]
 																								}
 																							},
 																							"required": [
@@ -1050,15 +1057,14 @@
 																						}
 																					]
 																				},
-																				"minItems": 1,
-																				"type": "array"
+																				"minItems": 1
 																			},
 																			"logical_operator": {
+																				"type": "string",
 																				"enum": [
 																					"AND",
 																					"OR"
-																				],
-																				"type": "string"
+																				]
 																			}
 																		},
 																		"required": [
@@ -1068,38 +1074,37 @@
 																		"type": "object"
 																	}
 																]
-															},
-															"type": "array"
+															}
 														},
 														"priority": {
 															"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-															"minimum": 1,
-															"type": "integer"
+															"type": "integer",
+															"minimum": 1
 														},
 														"rollout": {
+															"type": "object",
 															"additionalProperties": false,
 															"properties": {
 																"attribute": {
 																	"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-																	"minLength": 1,
-																	"type": "string"
+																	"type": "string",
+																	"minLength": 1
 																},
 																"percentage": {
 																	"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																	"type": "number",
 																	"maximum": 100,
-																	"minimum": 0,
-																	"type": "number"
+																	"minimum": 0
 																}
 															},
 															"required": [
 																"percentage"
-															],
-															"type": "object"
+															]
 														},
 														"serve_variation": {
 															"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-															"minLength": 1,
-															"type": "string"
+															"type": "string",
+															"minLength": 1
 														}
 													},
 													"required": [
@@ -1108,18 +1113,17 @@
 														"serve_variation"
 													],
 													"type": "object"
-												},
-												"type": "array"
+												}
 											},
 											"type": {
 												"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+												"type": "string",
 												"enum": [
 													"boolean",
 													"string",
 													"number",
 													"json"
-												],
-												"type": "string"
+												]
 											},
 											"updated_at": {
 												"type": "string"
@@ -1128,6 +1132,8 @@
 												"type": "string"
 											},
 											"variations": {
+												"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+												"type": "object",
 												"additionalProperties": {
 													"oneOf": [
 														{
@@ -1149,40 +1155,37 @@
 															"type": "array"
 														}
 													]
-												},
-												"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-												"type": "object"
+												}
 											}
 										},
+										"additionalProperties": false,
 										"required": [
 											"key",
 											"default_variation",
 											"variations",
 											"rules",
 											"enabled"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result_info": {
+									"type": "object",
 									"properties": {
 										"count": {
 											"description": "Number of items returned in this page.",
-											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"minimum": 0
 										},
 										"cursor": {
 											"description": "Cursor to pass back to fetch the next page, or null when this is the last page.",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										}
 									},
 									"required": [
 										"count",
 										"cursor"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -1194,20 +1197,22 @@
 								"result_info",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Paginated list of flags."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1215,13 +1220,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1229,17 +1234,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1250,20 +1253,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1271,13 +1276,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1285,17 +1290,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1306,20 +1309,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1327,13 +1332,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1341,17 +1346,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1362,20 +1365,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1383,13 +1388,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1397,17 +1402,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1418,20 +1421,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1439,13 +1444,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1453,17 +1458,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1474,20 +1477,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1495,13 +1500,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -1509,17 +1514,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -1530,12 +1533,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -1547,7 +1548,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List flags",
 		"tags": [
 			"Flags"
 		],
@@ -1572,13 +1572,14 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
-		"description": "Returns the full flag definition including rules, variations, and audit fields.",
 		"operationId": "flagship_get_flag",
+		"summary": "Get flag",
+		"description": "Returns the full flag definition including rules, variations, and audit fields.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -1586,9 +1587,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -1596,9 +1597,9 @@
 				}
 			},
 			{
-				"description": "Flag key (slug).",
-				"in": "path",
 				"name": "flag_key",
+				"in": "path",
+				"description": "Flag key (slug).",
 				"required": true,
 				"schema": {
 					"description": "Flag key (slug).",
@@ -1608,11 +1609,14 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Flag details.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1623,10 +1627,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -1637,21 +1641,20 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"additionalProperties": false,
+									"type": "object",
 									"properties": {
 										"default_variation": {
 											"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-											"minLength": 1,
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										},
 										"description": {
+											"type": "string",
 											"maxLength": 512,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"enabled": {
 											"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -1659,29 +1662,32 @@
 										},
 										"key": {
 											"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+											"type": "string",
 											"maxLength": 64,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z0-9_-]+$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										},
 										"rules": {
 											"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+											"type": "array",
 											"items": {
 												"additionalProperties": false,
 												"properties": {
 													"conditions": {
 														"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
 																	"additionalProperties": false,
 																	"properties": {
 																		"attribute": {
+																			"type": "string",
 																			"maxLength": 64,
-																			"minLength": 1,
-																			"type": "string"
+																			"minLength": 1
 																		},
 																		"operator": {
+																			"type": "string",
 																			"enum": [
 																				"equals",
 																				"not_equals",
@@ -1694,8 +1700,7 @@
 																				"ends_with",
 																				"in",
 																				"not_in"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"value": {
 																			"oneOf": [
@@ -1731,17 +1736,19 @@
 																	"additionalProperties": false,
 																	"properties": {
 																		"clauses": {
+																			"type": "array",
 																			"items": {
 																				"anyOf": [
 																					{
 																						"additionalProperties": false,
 																						"properties": {
 																							"attribute": {
+																								"type": "string",
 																								"maxLength": 64,
-																								"minLength": 1,
-																								"type": "string"
+																								"minLength": 1
 																							},
 																							"operator": {
+																								"type": "string",
 																								"enum": [
 																									"equals",
 																									"not_equals",
@@ -1754,8 +1761,7 @@
 																									"ends_with",
 																									"in",
 																									"not_in"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"value": {
 																								"oneOf": [
@@ -1791,17 +1797,19 @@
 																						"additionalProperties": false,
 																						"properties": {
 																							"clauses": {
+																								"type": "array",
 																								"items": {
 																									"anyOf": [
 																										{
 																											"additionalProperties": false,
 																											"properties": {
 																												"attribute": {
+																													"type": "string",
 																													"maxLength": 64,
-																													"minLength": 1,
-																													"type": "string"
+																													"minLength": 1
 																												},
 																												"operator": {
+																													"type": "string",
 																													"enum": [
 																														"equals",
 																														"not_equals",
@@ -1814,8 +1822,7 @@
 																														"ends_with",
 																														"in",
 																														"not_in"
-																													],
-																													"type": "string"
+																													]
 																												},
 																												"value": {
 																													"oneOf": [
@@ -1851,17 +1858,19 @@
 																											"additionalProperties": false,
 																											"properties": {
 																												"clauses": {
+																													"type": "array",
 																													"items": {
 																														"anyOf": [
 																															{
 																																"additionalProperties": false,
 																																"properties": {
 																																	"attribute": {
+																																		"type": "string",
 																																		"maxLength": 64,
-																																		"minLength": 1,
-																																		"type": "string"
+																																		"minLength": 1
 																																	},
 																																	"operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"equals",
 																																			"not_equals",
@@ -1874,8 +1883,7 @@
 																																			"ends_with",
 																																			"in",
 																																			"not_in"
-																																		],
-																																		"type": "string"
+																																		]
 																																	},
 																																	"value": {
 																																		"oneOf": [
@@ -1911,17 +1919,19 @@
 																																"additionalProperties": false,
 																																"properties": {
 																																	"clauses": {
+																																		"type": "array",
 																																		"items": {
 																																			"anyOf": [
 																																				{
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"attribute": {
+																																							"type": "string",
 																																							"maxLength": 64,
-																																							"minLength": 1,
-																																							"type": "string"
+																																							"minLength": 1
 																																						},
 																																						"operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"equals",
 																																								"not_equals",
@@ -1934,8 +1944,7 @@
 																																								"ends_with",
 																																								"in",
 																																								"not_in"
-																																							],
-																																							"type": "string"
+																																							]
 																																						},
 																																						"value": {
 																																							"oneOf": [
@@ -1971,17 +1980,19 @@
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"clauses": {
+																																							"type": "array",
 																																							"items": {
 																																								"anyOf": [
 																																									{
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"attribute": {
+																																												"type": "string",
 																																												"maxLength": 64,
-																																												"minLength": 1,
-																																												"type": "string"
+																																												"minLength": 1
 																																											},
 																																											"operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"equals",
 																																													"not_equals",
@@ -1994,8 +2005,7 @@
 																																													"ends_with",
 																																													"in",
 																																													"not_in"
-																																												],
-																																												"type": "string"
+																																												]
 																																											},
 																																											"value": {
 																																												"oneOf": [
@@ -2031,6 +2041,7 @@
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"clauses": {
+																																												"type": "array",
 																																												"items": {
 																																													"oneOf": [
 																																														{
@@ -2053,15 +2064,14 @@
 																																														}
 																																													]
 																																												},
-																																												"minItems": 1,
-																																												"type": "array"
+																																												"minItems": 1
 																																											},
 																																											"logical_operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"AND",
 																																													"OR"
-																																												],
-																																												"type": "string"
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -2072,15 +2082,14 @@
 																																									}
 																																								]
 																																							},
-																																							"minItems": 1,
-																																							"type": "array"
+																																							"minItems": 1
 																																						},
 																																						"logical_operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"AND",
 																																								"OR"
-																																							],
-																																							"type": "string"
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -2091,15 +2100,14 @@
 																																				}
 																																			]
 																																		},
-																																		"minItems": 1,
-																																		"type": "array"
+																																		"minItems": 1
 																																	},
 																																	"logical_operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"AND",
 																																			"OR"
-																																		],
-																																		"type": "string"
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -2110,15 +2118,14 @@
 																															}
 																														]
 																													},
-																													"minItems": 1,
-																													"type": "array"
+																													"minItems": 1
 																												},
 																												"logical_operator": {
+																													"type": "string",
 																													"enum": [
 																														"AND",
 																														"OR"
-																													],
-																													"type": "string"
+																													]
 																												}
 																											},
 																											"required": [
@@ -2129,15 +2136,14 @@
 																										}
 																									]
 																								},
-																								"minItems": 1,
-																								"type": "array"
+																								"minItems": 1
 																							},
 																							"logical_operator": {
+																								"type": "string",
 																								"enum": [
 																									"AND",
 																									"OR"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -2148,15 +2154,14 @@
 																					}
 																				]
 																			},
-																			"minItems": 1,
-																			"type": "array"
+																			"minItems": 1
 																		},
 																		"logical_operator": {
+																			"type": "string",
 																			"enum": [
 																				"AND",
 																				"OR"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -2166,38 +2171,37 @@
 																	"type": "object"
 																}
 															]
-														},
-														"type": "array"
+														}
 													},
 													"priority": {
 														"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1
 													},
 													"rollout": {
+														"type": "object",
 														"additionalProperties": false,
 														"properties": {
 															"attribute": {
 																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"minLength": 1
 															},
 															"percentage": {
 																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"type": "number",
 																"maximum": 100,
-																"minimum": 0,
-																"type": "number"
+																"minimum": 0
 															}
 														},
 														"required": [
 															"percentage"
-														],
-														"type": "object"
+														]
 													},
 													"serve_variation": {
 														"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-														"minLength": 1,
-														"type": "string"
+														"type": "string",
+														"minLength": 1
 													}
 												},
 												"required": [
@@ -2206,18 +2210,17 @@
 													"serve_variation"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"type": {
 											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+											"type": "string",
 											"enum": [
 												"boolean",
 												"string",
 												"number",
 												"json"
-											],
-											"type": "string"
+											]
 										},
 										"updated_at": {
 											"type": "string"
@@ -2226,6 +2229,8 @@
 											"type": "string"
 										},
 										"variations": {
+											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+											"type": "object",
 											"additionalProperties": {
 												"oneOf": [
 													{
@@ -2247,19 +2252,17 @@
 														"type": "array"
 													}
 												]
-											},
-											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-											"type": "object"
+											}
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"key",
 										"default_variation",
 										"variations",
 										"rules",
 										"enabled"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -2270,20 +2273,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag details."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2291,13 +2296,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2305,17 +2310,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2326,20 +2329,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2347,13 +2352,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2361,17 +2366,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2382,20 +2385,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2403,13 +2408,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2417,17 +2422,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2438,20 +2441,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2459,13 +2464,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2473,17 +2478,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2494,20 +2497,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2515,13 +2520,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2529,17 +2534,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2550,20 +2553,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2571,13 +2576,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -2585,17 +2590,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -2606,12 +2609,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -2623,7 +2624,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get flag",
 		"tags": [
 			"Flags"
 		],
@@ -2648,13 +2648,14 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/flags": {
-		"description": "Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted.",
 		"operationId": "flagship_create_flag",
+		"summary": "Create flag",
+		"description": "Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -2662,9 +2663,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -2673,20 +2674,21 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"default_variation": {
 								"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							},
 							"description": {
+								"type": "string",
 								"maxLength": 512,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"enabled": {
 								"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -2694,29 +2696,32 @@
 							},
 							"key": {
 								"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
-								"pattern": "^[a-zA-Z0-9_-]+$",
-								"type": "string"
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							},
 							"rules": {
 								"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+								"type": "array",
 								"items": {
 									"additionalProperties": false,
 									"properties": {
 										"conditions": {
 											"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
 														"additionalProperties": false,
 														"properties": {
 															"attribute": {
+																"type": "string",
 																"maxLength": 64,
-																"minLength": 1,
-																"type": "string"
+																"minLength": 1
 															},
 															"operator": {
+																"type": "string",
 																"enum": [
 																	"equals",
 																	"not_equals",
@@ -2729,8 +2734,7 @@
 																	"ends_with",
 																	"in",
 																	"not_in"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"oneOf": [
@@ -2766,17 +2770,19 @@
 														"additionalProperties": false,
 														"properties": {
 															"clauses": {
+																"type": "array",
 																"items": {
 																	"anyOf": [
 																		{
 																			"additionalProperties": false,
 																			"properties": {
 																				"attribute": {
+																					"type": "string",
 																					"maxLength": 64,
-																					"minLength": 1,
-																					"type": "string"
+																					"minLength": 1
 																				},
 																				"operator": {
+																					"type": "string",
 																					"enum": [
 																						"equals",
 																						"not_equals",
@@ -2789,8 +2795,7 @@
 																						"ends_with",
 																						"in",
 																						"not_in"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"value": {
 																					"oneOf": [
@@ -2826,17 +2831,19 @@
 																			"additionalProperties": false,
 																			"properties": {
 																				"clauses": {
+																					"type": "array",
 																					"items": {
 																						"anyOf": [
 																							{
 																								"additionalProperties": false,
 																								"properties": {
 																									"attribute": {
+																										"type": "string",
 																										"maxLength": 64,
-																										"minLength": 1,
-																										"type": "string"
+																										"minLength": 1
 																									},
 																									"operator": {
+																										"type": "string",
 																										"enum": [
 																											"equals",
 																											"not_equals",
@@ -2849,8 +2856,7 @@
 																											"ends_with",
 																											"in",
 																											"not_in"
-																										],
-																										"type": "string"
+																										]
 																									},
 																									"value": {
 																										"oneOf": [
@@ -2886,17 +2892,19 @@
 																								"additionalProperties": false,
 																								"properties": {
 																									"clauses": {
+																										"type": "array",
 																										"items": {
 																											"anyOf": [
 																												{
 																													"additionalProperties": false,
 																													"properties": {
 																														"attribute": {
+																															"type": "string",
 																															"maxLength": 64,
-																															"minLength": 1,
-																															"type": "string"
+																															"minLength": 1
 																														},
 																														"operator": {
+																															"type": "string",
 																															"enum": [
 																																"equals",
 																																"not_equals",
@@ -2909,8 +2917,7 @@
 																																"ends_with",
 																																"in",
 																																"not_in"
-																															],
-																															"type": "string"
+																															]
 																														},
 																														"value": {
 																															"oneOf": [
@@ -2946,17 +2953,19 @@
 																													"additionalProperties": false,
 																													"properties": {
 																														"clauses": {
+																															"type": "array",
 																															"items": {
 																																"anyOf": [
 																																	{
 																																		"additionalProperties": false,
 																																		"properties": {
 																																			"attribute": {
+																																				"type": "string",
 																																				"maxLength": 64,
-																																				"minLength": 1,
-																																				"type": "string"
+																																				"minLength": 1
 																																			},
 																																			"operator": {
+																																				"type": "string",
 																																				"enum": [
 																																					"equals",
 																																					"not_equals",
@@ -2969,8 +2978,7 @@
 																																					"ends_with",
 																																					"in",
 																																					"not_in"
-																																				],
-																																				"type": "string"
+																																				]
 																																			},
 																																			"value": {
 																																				"oneOf": [
@@ -3006,17 +3014,19 @@
 																																		"additionalProperties": false,
 																																		"properties": {
 																																			"clauses": {
+																																				"type": "array",
 																																				"items": {
 																																					"anyOf": [
 																																						{
 																																							"additionalProperties": false,
 																																							"properties": {
 																																								"attribute": {
+																																									"type": "string",
 																																									"maxLength": 64,
-																																									"minLength": 1,
-																																									"type": "string"
+																																									"minLength": 1
 																																								},
 																																								"operator": {
+																																									"type": "string",
 																																									"enum": [
 																																										"equals",
 																																										"not_equals",
@@ -3029,8 +3039,7 @@
 																																										"ends_with",
 																																										"in",
 																																										"not_in"
-																																									],
-																																									"type": "string"
+																																									]
 																																								},
 																																								"value": {
 																																									"oneOf": [
@@ -3066,6 +3075,7 @@
 																																							"additionalProperties": false,
 																																							"properties": {
 																																								"clauses": {
+																																									"type": "array",
 																																									"items": {
 																																										"oneOf": [
 																																											{
@@ -3088,15 +3098,14 @@
 																																											}
 																																										]
 																																									},
-																																									"minItems": 1,
-																																									"type": "array"
+																																									"minItems": 1
 																																								},
 																																								"logical_operator": {
+																																									"type": "string",
 																																									"enum": [
 																																										"AND",
 																																										"OR"
-																																									],
-																																									"type": "string"
+																																									]
 																																								}
 																																							},
 																																							"required": [
@@ -3107,15 +3116,14 @@
 																																						}
 																																					]
 																																				},
-																																				"minItems": 1,
-																																				"type": "array"
+																																				"minItems": 1
 																																			},
 																																			"logical_operator": {
+																																				"type": "string",
 																																				"enum": [
 																																					"AND",
 																																					"OR"
-																																				],
-																																				"type": "string"
+																																				]
 																																			}
 																																		},
 																																		"required": [
@@ -3126,15 +3134,14 @@
 																																	}
 																																]
 																															},
-																															"minItems": 1,
-																															"type": "array"
+																															"minItems": 1
 																														},
 																														"logical_operator": {
+																															"type": "string",
 																															"enum": [
 																																"AND",
 																																"OR"
-																															],
-																															"type": "string"
+																															]
 																														}
 																													},
 																													"required": [
@@ -3145,15 +3152,14 @@
 																												}
 																											]
 																										},
-																										"minItems": 1,
-																										"type": "array"
+																										"minItems": 1
 																									},
 																									"logical_operator": {
+																										"type": "string",
 																										"enum": [
 																											"AND",
 																											"OR"
-																										],
-																										"type": "string"
+																										]
 																									}
 																								},
 																								"required": [
@@ -3164,15 +3170,14 @@
 																							}
 																						]
 																					},
-																					"minItems": 1,
-																					"type": "array"
+																					"minItems": 1
 																				},
 																				"logical_operator": {
+																					"type": "string",
 																					"enum": [
 																						"AND",
 																						"OR"
-																					],
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"required": [
@@ -3183,15 +3188,14 @@
 																		}
 																	]
 																},
-																"minItems": 1,
-																"type": "array"
+																"minItems": 1
 															},
 															"logical_operator": {
+																"type": "string",
 																"enum": [
 																	"AND",
 																	"OR"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -3201,38 +3205,37 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"priority": {
 											"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-											"minimum": 1,
-											"type": "integer"
+											"type": "integer",
+											"minimum": 1
 										},
 										"rollout": {
+											"type": "object",
 											"additionalProperties": false,
 											"properties": {
 												"attribute": {
 													"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"minLength": 1
 												},
 												"percentage": {
 													"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+													"type": "number",
 													"maximum": 100,
-													"minimum": 0,
-													"type": "number"
+													"minimum": 0
 												}
 											},
 											"required": [
 												"percentage"
-											],
-											"type": "object"
+											]
 										},
 										"serve_variation": {
 											"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-											"minLength": 1,
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -3241,20 +3244,21 @@
 										"serve_variation"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"type": {
 								"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+								"type": "string",
 								"enum": [
 									"boolean",
 									"string",
 									"number",
 									"json"
-								],
-								"type": "string"
+								]
 							},
 							"variations": {
+								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+								"type": "object",
 								"additionalProperties": {
 									"oneOf": [
 										{
@@ -3276,31 +3280,31 @@
 											"type": "array"
 										}
 									]
-								},
-								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-								"type": "object"
+								}
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"key",
 							"default_variation",
 							"variations",
 							"rules",
 							"enabled"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"201": {
+				"description": "Flag created.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3311,10 +3315,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -3325,21 +3329,20 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"additionalProperties": false,
+									"type": "object",
 									"properties": {
 										"default_variation": {
 											"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-											"minLength": 1,
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										},
 										"description": {
+											"type": "string",
 											"maxLength": 512,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"enabled": {
 											"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -3347,29 +3350,32 @@
 										},
 										"key": {
 											"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+											"type": "string",
 											"maxLength": 64,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z0-9_-]+$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										},
 										"rules": {
 											"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+											"type": "array",
 											"items": {
 												"additionalProperties": false,
 												"properties": {
 													"conditions": {
 														"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
 																	"additionalProperties": false,
 																	"properties": {
 																		"attribute": {
+																			"type": "string",
 																			"maxLength": 64,
-																			"minLength": 1,
-																			"type": "string"
+																			"minLength": 1
 																		},
 																		"operator": {
+																			"type": "string",
 																			"enum": [
 																				"equals",
 																				"not_equals",
@@ -3382,8 +3388,7 @@
 																				"ends_with",
 																				"in",
 																				"not_in"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"value": {
 																			"oneOf": [
@@ -3419,17 +3424,19 @@
 																	"additionalProperties": false,
 																	"properties": {
 																		"clauses": {
+																			"type": "array",
 																			"items": {
 																				"anyOf": [
 																					{
 																						"additionalProperties": false,
 																						"properties": {
 																							"attribute": {
+																								"type": "string",
 																								"maxLength": 64,
-																								"minLength": 1,
-																								"type": "string"
+																								"minLength": 1
 																							},
 																							"operator": {
+																								"type": "string",
 																								"enum": [
 																									"equals",
 																									"not_equals",
@@ -3442,8 +3449,7 @@
 																									"ends_with",
 																									"in",
 																									"not_in"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"value": {
 																								"oneOf": [
@@ -3479,17 +3485,19 @@
 																						"additionalProperties": false,
 																						"properties": {
 																							"clauses": {
+																								"type": "array",
 																								"items": {
 																									"anyOf": [
 																										{
 																											"additionalProperties": false,
 																											"properties": {
 																												"attribute": {
+																													"type": "string",
 																													"maxLength": 64,
-																													"minLength": 1,
-																													"type": "string"
+																													"minLength": 1
 																												},
 																												"operator": {
+																													"type": "string",
 																													"enum": [
 																														"equals",
 																														"not_equals",
@@ -3502,8 +3510,7 @@
 																														"ends_with",
 																														"in",
 																														"not_in"
-																													],
-																													"type": "string"
+																													]
 																												},
 																												"value": {
 																													"oneOf": [
@@ -3539,17 +3546,19 @@
 																											"additionalProperties": false,
 																											"properties": {
 																												"clauses": {
+																													"type": "array",
 																													"items": {
 																														"anyOf": [
 																															{
 																																"additionalProperties": false,
 																																"properties": {
 																																	"attribute": {
+																																		"type": "string",
 																																		"maxLength": 64,
-																																		"minLength": 1,
-																																		"type": "string"
+																																		"minLength": 1
 																																	},
 																																	"operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"equals",
 																																			"not_equals",
@@ -3562,8 +3571,7 @@
 																																			"ends_with",
 																																			"in",
 																																			"not_in"
-																																		],
-																																		"type": "string"
+																																		]
 																																	},
 																																	"value": {
 																																		"oneOf": [
@@ -3599,17 +3607,19 @@
 																																"additionalProperties": false,
 																																"properties": {
 																																	"clauses": {
+																																		"type": "array",
 																																		"items": {
 																																			"anyOf": [
 																																				{
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"attribute": {
+																																							"type": "string",
 																																							"maxLength": 64,
-																																							"minLength": 1,
-																																							"type": "string"
+																																							"minLength": 1
 																																						},
 																																						"operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"equals",
 																																								"not_equals",
@@ -3622,8 +3632,7 @@
 																																								"ends_with",
 																																								"in",
 																																								"not_in"
-																																							],
-																																							"type": "string"
+																																							]
 																																						},
 																																						"value": {
 																																							"oneOf": [
@@ -3659,17 +3668,19 @@
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"clauses": {
+																																							"type": "array",
 																																							"items": {
 																																								"anyOf": [
 																																									{
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"attribute": {
+																																												"type": "string",
 																																												"maxLength": 64,
-																																												"minLength": 1,
-																																												"type": "string"
+																																												"minLength": 1
 																																											},
 																																											"operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"equals",
 																																													"not_equals",
@@ -3682,8 +3693,7 @@
 																																													"ends_with",
 																																													"in",
 																																													"not_in"
-																																												],
-																																												"type": "string"
+																																												]
 																																											},
 																																											"value": {
 																																												"oneOf": [
@@ -3719,6 +3729,7 @@
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"clauses": {
+																																												"type": "array",
 																																												"items": {
 																																													"oneOf": [
 																																														{
@@ -3741,15 +3752,14 @@
 																																														}
 																																													]
 																																												},
-																																												"minItems": 1,
-																																												"type": "array"
+																																												"minItems": 1
 																																											},
 																																											"logical_operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"AND",
 																																													"OR"
-																																												],
-																																												"type": "string"
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -3760,15 +3770,14 @@
 																																									}
 																																								]
 																																							},
-																																							"minItems": 1,
-																																							"type": "array"
+																																							"minItems": 1
 																																						},
 																																						"logical_operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"AND",
 																																								"OR"
-																																							],
-																																							"type": "string"
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -3779,15 +3788,14 @@
 																																				}
 																																			]
 																																		},
-																																		"minItems": 1,
-																																		"type": "array"
+																																		"minItems": 1
 																																	},
 																																	"logical_operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"AND",
 																																			"OR"
-																																		],
-																																		"type": "string"
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -3798,15 +3806,14 @@
 																															}
 																														]
 																													},
-																													"minItems": 1,
-																													"type": "array"
+																													"minItems": 1
 																												},
 																												"logical_operator": {
+																													"type": "string",
 																													"enum": [
 																														"AND",
 																														"OR"
-																													],
-																													"type": "string"
+																													]
 																												}
 																											},
 																											"required": [
@@ -3817,15 +3824,14 @@
 																										}
 																									]
 																								},
-																								"minItems": 1,
-																								"type": "array"
+																								"minItems": 1
 																							},
 																							"logical_operator": {
+																								"type": "string",
 																								"enum": [
 																									"AND",
 																									"OR"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -3836,15 +3842,14 @@
 																					}
 																				]
 																			},
-																			"minItems": 1,
-																			"type": "array"
+																			"minItems": 1
 																		},
 																		"logical_operator": {
+																			"type": "string",
 																			"enum": [
 																				"AND",
 																				"OR"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -3854,38 +3859,37 @@
 																	"type": "object"
 																}
 															]
-														},
-														"type": "array"
+														}
 													},
 													"priority": {
 														"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1
 													},
 													"rollout": {
+														"type": "object",
 														"additionalProperties": false,
 														"properties": {
 															"attribute": {
 																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"minLength": 1
 															},
 															"percentage": {
 																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"type": "number",
 																"maximum": 100,
-																"minimum": 0,
-																"type": "number"
+																"minimum": 0
 															}
 														},
 														"required": [
 															"percentage"
-														],
-														"type": "object"
+														]
 													},
 													"serve_variation": {
 														"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-														"minLength": 1,
-														"type": "string"
+														"type": "string",
+														"minLength": 1
 													}
 												},
 												"required": [
@@ -3894,18 +3898,17 @@
 													"serve_variation"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"type": {
 											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+											"type": "string",
 											"enum": [
 												"boolean",
 												"string",
 												"number",
 												"json"
-											],
-											"type": "string"
+											]
 										},
 										"updated_at": {
 											"type": "string"
@@ -3914,6 +3917,8 @@
 											"type": "string"
 										},
 										"variations": {
+											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+											"type": "object",
 											"additionalProperties": {
 												"oneOf": [
 													{
@@ -3935,19 +3940,17 @@
 														"type": "array"
 													}
 												]
-											},
-											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-											"type": "object"
+											}
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"key",
 										"default_variation",
 										"variations",
 										"rules",
 										"enabled"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -3958,20 +3961,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Flag created."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -3979,13 +3984,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -3993,17 +3998,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -4014,20 +4017,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4035,13 +4040,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4049,17 +4054,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -4070,20 +4073,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4091,13 +4096,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4105,17 +4110,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -4126,20 +4129,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4147,13 +4152,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4161,17 +4166,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -4182,20 +4185,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4203,13 +4208,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4217,17 +4222,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -4238,20 +4241,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4259,13 +4264,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -4273,17 +4278,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -4294,12 +4297,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -4311,7 +4312,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create flag",
 		"tags": [
 			"Flags"
 		],
@@ -4335,13 +4335,14 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
-		"description": "Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry.",
 		"operationId": "flagship_update_flag",
+		"summary": "Update flag",
+		"description": "Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry.",
 		"parameters": [
 			{
-				"description": "Cloudflare account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID.",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID.",
@@ -4349,9 +4350,9 @@
 				}
 			},
 			{
-				"description": "App identifier.",
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
+				"description": "App identifier.",
 				"required": true,
 				"schema": {
 					"description": "App identifier.",
@@ -4359,9 +4360,9 @@
 				}
 			},
 			{
-				"description": "Flag key (slug).",
-				"in": "path",
 				"name": "flag_key",
+				"in": "path",
+				"description": "Flag key (slug).",
 				"required": true,
 				"schema": {
 					"description": "Flag key (slug).",
@@ -4370,20 +4371,21 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
 							"default_variation": {
 								"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-								"minLength": 1,
-								"type": "string"
+								"type": "string",
+								"minLength": 1
 							},
 							"description": {
+								"type": "string",
 								"maxLength": 512,
-								"nullable": true,
-								"type": "string"
+								"nullable": true
 							},
 							"enabled": {
 								"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -4391,29 +4393,32 @@
 							},
 							"key": {
 								"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+								"type": "string",
 								"maxLength": 64,
 								"minLength": 1,
-								"pattern": "^[a-zA-Z0-9_-]+$",
-								"type": "string"
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							},
 							"rules": {
 								"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+								"type": "array",
 								"items": {
 									"additionalProperties": false,
 									"properties": {
 										"conditions": {
 											"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+											"type": "array",
 											"items": {
 												"anyOf": [
 													{
 														"additionalProperties": false,
 														"properties": {
 															"attribute": {
+																"type": "string",
 																"maxLength": 64,
-																"minLength": 1,
-																"type": "string"
+																"minLength": 1
 															},
 															"operator": {
+																"type": "string",
 																"enum": [
 																	"equals",
 																	"not_equals",
@@ -4426,8 +4431,7 @@
 																	"ends_with",
 																	"in",
 																	"not_in"
-																],
-																"type": "string"
+																]
 															},
 															"value": {
 																"oneOf": [
@@ -4463,17 +4467,19 @@
 														"additionalProperties": false,
 														"properties": {
 															"clauses": {
+																"type": "array",
 																"items": {
 																	"anyOf": [
 																		{
 																			"additionalProperties": false,
 																			"properties": {
 																				"attribute": {
+																					"type": "string",
 																					"maxLength": 64,
-																					"minLength": 1,
-																					"type": "string"
+																					"minLength": 1
 																				},
 																				"operator": {
+																					"type": "string",
 																					"enum": [
 																						"equals",
 																						"not_equals",
@@ -4486,8 +4492,7 @@
 																						"ends_with",
 																						"in",
 																						"not_in"
-																					],
-																					"type": "string"
+																					]
 																				},
 																				"value": {
 																					"oneOf": [
@@ -4523,17 +4528,19 @@
 																			"additionalProperties": false,
 																			"properties": {
 																				"clauses": {
+																					"type": "array",
 																					"items": {
 																						"anyOf": [
 																							{
 																								"additionalProperties": false,
 																								"properties": {
 																									"attribute": {
+																										"type": "string",
 																										"maxLength": 64,
-																										"minLength": 1,
-																										"type": "string"
+																										"minLength": 1
 																									},
 																									"operator": {
+																										"type": "string",
 																										"enum": [
 																											"equals",
 																											"not_equals",
@@ -4546,8 +4553,7 @@
 																											"ends_with",
 																											"in",
 																											"not_in"
-																										],
-																										"type": "string"
+																										]
 																									},
 																									"value": {
 																										"oneOf": [
@@ -4583,17 +4589,19 @@
 																								"additionalProperties": false,
 																								"properties": {
 																									"clauses": {
+																										"type": "array",
 																										"items": {
 																											"anyOf": [
 																												{
 																													"additionalProperties": false,
 																													"properties": {
 																														"attribute": {
+																															"type": "string",
 																															"maxLength": 64,
-																															"minLength": 1,
-																															"type": "string"
+																															"minLength": 1
 																														},
 																														"operator": {
+																															"type": "string",
 																															"enum": [
 																																"equals",
 																																"not_equals",
@@ -4606,8 +4614,7 @@
 																																"ends_with",
 																																"in",
 																																"not_in"
-																															],
-																															"type": "string"
+																															]
 																														},
 																														"value": {
 																															"oneOf": [
@@ -4643,17 +4650,19 @@
 																													"additionalProperties": false,
 																													"properties": {
 																														"clauses": {
+																															"type": "array",
 																															"items": {
 																																"anyOf": [
 																																	{
 																																		"additionalProperties": false,
 																																		"properties": {
 																																			"attribute": {
+																																				"type": "string",
 																																				"maxLength": 64,
-																																				"minLength": 1,
-																																				"type": "string"
+																																				"minLength": 1
 																																			},
 																																			"operator": {
+																																				"type": "string",
 																																				"enum": [
 																																					"equals",
 																																					"not_equals",
@@ -4666,8 +4675,7 @@
 																																					"ends_with",
 																																					"in",
 																																					"not_in"
-																																				],
-																																				"type": "string"
+																																				]
 																																			},
 																																			"value": {
 																																				"oneOf": [
@@ -4703,17 +4711,19 @@
 																																		"additionalProperties": false,
 																																		"properties": {
 																																			"clauses": {
+																																				"type": "array",
 																																				"items": {
 																																					"anyOf": [
 																																						{
 																																							"additionalProperties": false,
 																																							"properties": {
 																																								"attribute": {
+																																									"type": "string",
 																																									"maxLength": 64,
-																																									"minLength": 1,
-																																									"type": "string"
+																																									"minLength": 1
 																																								},
 																																								"operator": {
+																																									"type": "string",
 																																									"enum": [
 																																										"equals",
 																																										"not_equals",
@@ -4726,8 +4736,7 @@
 																																										"ends_with",
 																																										"in",
 																																										"not_in"
-																																									],
-																																									"type": "string"
+																																									]
 																																								},
 																																								"value": {
 																																									"oneOf": [
@@ -4763,6 +4772,7 @@
 																																							"additionalProperties": false,
 																																							"properties": {
 																																								"clauses": {
+																																									"type": "array",
 																																									"items": {
 																																										"oneOf": [
 																																											{
@@ -4785,15 +4795,14 @@
 																																											}
 																																										]
 																																									},
-																																									"minItems": 1,
-																																									"type": "array"
+																																									"minItems": 1
 																																								},
 																																								"logical_operator": {
+																																									"type": "string",
 																																									"enum": [
 																																										"AND",
 																																										"OR"
-																																									],
-																																									"type": "string"
+																																									]
 																																								}
 																																							},
 																																							"required": [
@@ -4804,15 +4813,14 @@
 																																						}
 																																					]
 																																				},
-																																				"minItems": 1,
-																																				"type": "array"
+																																				"minItems": 1
 																																			},
 																																			"logical_operator": {
+																																				"type": "string",
 																																				"enum": [
 																																					"AND",
 																																					"OR"
-																																				],
-																																				"type": "string"
+																																				]
 																																			}
 																																		},
 																																		"required": [
@@ -4823,15 +4831,14 @@
 																																	}
 																																]
 																															},
-																															"minItems": 1,
-																															"type": "array"
+																															"minItems": 1
 																														},
 																														"logical_operator": {
+																															"type": "string",
 																															"enum": [
 																																"AND",
 																																"OR"
-																															],
-																															"type": "string"
+																															]
 																														}
 																													},
 																													"required": [
@@ -4842,15 +4849,14 @@
 																												}
 																											]
 																										},
-																										"minItems": 1,
-																										"type": "array"
+																										"minItems": 1
 																									},
 																									"logical_operator": {
+																										"type": "string",
 																										"enum": [
 																											"AND",
 																											"OR"
-																										],
-																										"type": "string"
+																										]
 																									}
 																								},
 																								"required": [
@@ -4861,15 +4867,14 @@
 																							}
 																						]
 																					},
-																					"minItems": 1,
-																					"type": "array"
+																					"minItems": 1
 																				},
 																				"logical_operator": {
+																					"type": "string",
 																					"enum": [
 																						"AND",
 																						"OR"
-																					],
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"required": [
@@ -4880,15 +4885,14 @@
 																		}
 																	]
 																},
-																"minItems": 1,
-																"type": "array"
+																"minItems": 1
 															},
 															"logical_operator": {
+																"type": "string",
 																"enum": [
 																	"AND",
 																	"OR"
-																],
-																"type": "string"
+																]
 															}
 														},
 														"required": [
@@ -4898,38 +4902,37 @@
 														"type": "object"
 													}
 												]
-											},
-											"type": "array"
+											}
 										},
 										"priority": {
 											"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-											"minimum": 1,
-											"type": "integer"
+											"type": "integer",
+											"minimum": 1
 										},
 										"rollout": {
+											"type": "object",
 											"additionalProperties": false,
 											"properties": {
 												"attribute": {
 													"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-													"minLength": 1,
-													"type": "string"
+													"type": "string",
+													"minLength": 1
 												},
 												"percentage": {
 													"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+													"type": "number",
 													"maximum": 100,
-													"minimum": 0,
-													"type": "number"
+													"minimum": 0
 												}
 											},
 											"required": [
 												"percentage"
-											],
-											"type": "object"
+											]
 										},
 										"serve_variation": {
 											"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-											"minLength": 1,
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										}
 									},
 									"required": [
@@ -4938,20 +4941,21 @@
 										"serve_variation"
 									],
 									"type": "object"
-								},
-								"type": "array"
+								}
 							},
 							"type": {
 								"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+								"type": "string",
 								"enum": [
 									"boolean",
 									"string",
 									"number",
 									"json"
-								],
-								"type": "string"
+								]
 							},
 							"variations": {
+								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+								"type": "object",
 								"additionalProperties": {
 									"oneOf": [
 										{
@@ -4973,31 +4977,31 @@
 											"type": "array"
 										}
 									]
-								},
-								"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-								"type": "object"
+								}
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"key",
 							"default_variation",
 							"variations",
 							"rules",
 							"enabled"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Updated flag.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -5008,10 +5012,10 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
@@ -5022,21 +5026,20 @@
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
-									"additionalProperties": false,
+									"type": "object",
 									"properties": {
 										"default_variation": {
 											"description": "Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`.",
-											"minLength": 1,
-											"type": "string"
+											"type": "string",
+											"minLength": 1
 										},
 										"description": {
+											"type": "string",
 											"maxLength": 512,
-											"nullable": true,
-											"type": "string"
+											"nullable": true
 										},
 										"enabled": {
 											"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
@@ -5044,29 +5047,32 @@
 										},
 										"key": {
 											"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+											"type": "string",
 											"maxLength": 64,
 											"minLength": 1,
-											"pattern": "^[a-zA-Z0-9_-]+$",
-											"type": "string"
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										},
 										"rules": {
 											"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+											"type": "array",
 											"items": {
 												"additionalProperties": false,
 												"properties": {
 													"conditions": {
 														"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+														"type": "array",
 														"items": {
 															"anyOf": [
 																{
 																	"additionalProperties": false,
 																	"properties": {
 																		"attribute": {
+																			"type": "string",
 																			"maxLength": 64,
-																			"minLength": 1,
-																			"type": "string"
+																			"minLength": 1
 																		},
 																		"operator": {
+																			"type": "string",
 																			"enum": [
 																				"equals",
 																				"not_equals",
@@ -5079,8 +5085,7 @@
 																				"ends_with",
 																				"in",
 																				"not_in"
-																			],
-																			"type": "string"
+																			]
 																		},
 																		"value": {
 																			"oneOf": [
@@ -5116,17 +5121,19 @@
 																	"additionalProperties": false,
 																	"properties": {
 																		"clauses": {
+																			"type": "array",
 																			"items": {
 																				"anyOf": [
 																					{
 																						"additionalProperties": false,
 																						"properties": {
 																							"attribute": {
+																								"type": "string",
 																								"maxLength": 64,
-																								"minLength": 1,
-																								"type": "string"
+																								"minLength": 1
 																							},
 																							"operator": {
+																								"type": "string",
 																								"enum": [
 																									"equals",
 																									"not_equals",
@@ -5139,8 +5146,7 @@
 																									"ends_with",
 																									"in",
 																									"not_in"
-																								],
-																								"type": "string"
+																								]
 																							},
 																							"value": {
 																								"oneOf": [
@@ -5176,17 +5182,19 @@
 																						"additionalProperties": false,
 																						"properties": {
 																							"clauses": {
+																								"type": "array",
 																								"items": {
 																									"anyOf": [
 																										{
 																											"additionalProperties": false,
 																											"properties": {
 																												"attribute": {
+																													"type": "string",
 																													"maxLength": 64,
-																													"minLength": 1,
-																													"type": "string"
+																													"minLength": 1
 																												},
 																												"operator": {
+																													"type": "string",
 																													"enum": [
 																														"equals",
 																														"not_equals",
@@ -5199,8 +5207,7 @@
 																														"ends_with",
 																														"in",
 																														"not_in"
-																													],
-																													"type": "string"
+																													]
 																												},
 																												"value": {
 																													"oneOf": [
@@ -5236,17 +5243,19 @@
 																											"additionalProperties": false,
 																											"properties": {
 																												"clauses": {
+																													"type": "array",
 																													"items": {
 																														"anyOf": [
 																															{
 																																"additionalProperties": false,
 																																"properties": {
 																																	"attribute": {
+																																		"type": "string",
 																																		"maxLength": 64,
-																																		"minLength": 1,
-																																		"type": "string"
+																																		"minLength": 1
 																																	},
 																																	"operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"equals",
 																																			"not_equals",
@@ -5259,8 +5268,7 @@
 																																			"ends_with",
 																																			"in",
 																																			"not_in"
-																																		],
-																																		"type": "string"
+																																		]
 																																	},
 																																	"value": {
 																																		"oneOf": [
@@ -5296,17 +5304,19 @@
 																																"additionalProperties": false,
 																																"properties": {
 																																	"clauses": {
+																																		"type": "array",
 																																		"items": {
 																																			"anyOf": [
 																																				{
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"attribute": {
+																																							"type": "string",
 																																							"maxLength": 64,
-																																							"minLength": 1,
-																																							"type": "string"
+																																							"minLength": 1
 																																						},
 																																						"operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"equals",
 																																								"not_equals",
@@ -5319,8 +5329,7 @@
 																																								"ends_with",
 																																								"in",
 																																								"not_in"
-																																							],
-																																							"type": "string"
+																																							]
 																																						},
 																																						"value": {
 																																							"oneOf": [
@@ -5356,17 +5365,19 @@
 																																					"additionalProperties": false,
 																																					"properties": {
 																																						"clauses": {
+																																							"type": "array",
 																																							"items": {
 																																								"anyOf": [
 																																									{
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"attribute": {
+																																												"type": "string",
 																																												"maxLength": 64,
-																																												"minLength": 1,
-																																												"type": "string"
+																																												"minLength": 1
 																																											},
 																																											"operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"equals",
 																																													"not_equals",
@@ -5379,8 +5390,7 @@
 																																													"ends_with",
 																																													"in",
 																																													"not_in"
-																																												],
-																																												"type": "string"
+																																												]
 																																											},
 																																											"value": {
 																																												"oneOf": [
@@ -5416,6 +5426,7 @@
 																																										"additionalProperties": false,
 																																										"properties": {
 																																											"clauses": {
+																																												"type": "array",
 																																												"items": {
 																																													"oneOf": [
 																																														{
@@ -5438,15 +5449,14 @@
 																																														}
 																																													]
 																																												},
-																																												"minItems": 1,
-																																												"type": "array"
+																																												"minItems": 1
 																																											},
 																																											"logical_operator": {
+																																												"type": "string",
 																																												"enum": [
 																																													"AND",
 																																													"OR"
-																																												],
-																																												"type": "string"
+																																												]
 																																											}
 																																										},
 																																										"required": [
@@ -5457,15 +5467,14 @@
 																																									}
 																																								]
 																																							},
-																																							"minItems": 1,
-																																							"type": "array"
+																																							"minItems": 1
 																																						},
 																																						"logical_operator": {
+																																							"type": "string",
 																																							"enum": [
 																																								"AND",
 																																								"OR"
-																																							],
-																																							"type": "string"
+																																							]
 																																						}
 																																					},
 																																					"required": [
@@ -5476,15 +5485,14 @@
 																																				}
 																																			]
 																																		},
-																																		"minItems": 1,
-																																		"type": "array"
+																																		"minItems": 1
 																																	},
 																																	"logical_operator": {
+																																		"type": "string",
 																																		"enum": [
 																																			"AND",
 																																			"OR"
-																																		],
-																																		"type": "string"
+																																		]
 																																	}
 																																},
 																																"required": [
@@ -5495,15 +5503,14 @@
 																															}
 																														]
 																													},
-																													"minItems": 1,
-																													"type": "array"
+																													"minItems": 1
 																												},
 																												"logical_operator": {
+																													"type": "string",
 																													"enum": [
 																														"AND",
 																														"OR"
-																													],
-																													"type": "string"
+																													]
 																												}
 																											},
 																											"required": [
@@ -5514,15 +5521,14 @@
 																										}
 																									]
 																								},
-																								"minItems": 1,
-																								"type": "array"
+																								"minItems": 1
 																							},
 																							"logical_operator": {
+																								"type": "string",
 																								"enum": [
 																									"AND",
 																									"OR"
-																								],
-																								"type": "string"
+																								]
 																							}
 																						},
 																						"required": [
@@ -5533,15 +5539,14 @@
 																					}
 																				]
 																			},
-																			"minItems": 1,
-																			"type": "array"
+																			"minItems": 1
 																		},
 																		"logical_operator": {
+																			"type": "string",
 																			"enum": [
 																				"AND",
 																				"OR"
-																			],
-																			"type": "string"
+																			]
 																		}
 																	},
 																	"required": [
@@ -5551,38 +5556,37 @@
 																	"type": "object"
 																}
 															]
-														},
-														"type": "array"
+														}
 													},
 													"priority": {
 														"description": "Evaluation order: the API evaluates rules with lower numbers first. Must be unique across the flag's rules.",
-														"minimum": 1,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1
 													},
 													"rollout": {
+														"type": "object",
 														"additionalProperties": false,
 														"properties": {
 															"attribute": {
 																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
-																"minLength": 1,
-																"type": "string"
+																"type": "string",
+																"minLength": 1
 															},
 															"percentage": {
 																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"type": "number",
 																"maximum": 100,
-																"minimum": 0,
-																"type": "number"
+																"minimum": 0
 															}
 														},
 														"required": [
 															"percentage"
-														],
-														"type": "object"
+														]
 													},
 													"serve_variation": {
 														"description": "Variation the API serves when this rule matches. Must be a key in `variations`.",
-														"minLength": 1,
-														"type": "string"
+														"type": "string",
+														"minLength": 1
 													}
 												},
 												"required": [
@@ -5591,18 +5595,17 @@
 													"serve_variation"
 												],
 												"type": "object"
-											},
-											"type": "array"
+											}
 										},
 										"type": {
 											"description": "Value type of the flag's variations. The API infers this from the variation values on write, so you can omit it in requests.",
+											"type": "string",
 											"enum": [
 												"boolean",
 												"string",
 												"number",
 												"json"
-											],
-											"type": "string"
+											]
 										},
 										"updated_at": {
 											"type": "string"
@@ -5611,6 +5614,8 @@
 											"type": "string"
 										},
 										"variations": {
+											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
+											"type": "object",
 											"additionalProperties": {
 												"oneOf": [
 													{
@@ -5632,19 +5637,17 @@
 														"type": "array"
 													}
 												]
-											},
-											"description": "Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.",
-											"type": "object"
+											}
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"key",
 										"default_variation",
 										"variations",
 										"rules",
 										"enabled"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
 									"type": "boolean"
@@ -5655,20 +5658,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Updated flag."
+				}
 			},
 			"400": {
+				"description": "Bad request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5676,13 +5681,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5690,17 +5695,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -5711,20 +5714,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad request."
+				}
 			},
 			"401": {
+				"description": "Unauthorized.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5732,13 +5737,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5746,17 +5751,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -5767,20 +5770,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Unauthorized."
+				}
 			},
 			"403": {
+				"description": "Forbidden.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5788,13 +5793,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5802,17 +5807,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -5823,20 +5826,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Forbidden."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5844,13 +5849,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5858,17 +5863,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -5879,20 +5882,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			},
 			"429": {
+				"description": "Too many requests.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5900,13 +5905,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5914,17 +5919,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -5935,20 +5938,22 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Too many requests."
+				}
 			},
 			"500": {
+				"description": "Internal server error.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5956,13 +5961,13 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"message": {
 												"type": "string"
@@ -5970,17 +5975,15 @@
 										},
 										"required": [
 											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										]
+									}
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean"
@@ -5991,12 +5994,10 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Internal server error."
+				}
 			}
 		},
 		"security": [
@@ -6008,7 +6009,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update flag",
 		"tags": [
 			"Flags"
 		],

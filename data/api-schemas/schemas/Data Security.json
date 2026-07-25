@@ -1,7 +1,8 @@
 {
 	"POST /accounts/{account_id}/analytics/query/data-security/content-findings/top-n": {
-		"description": "Returns the top N integrations ranked by total content findings.\n",
 		"operationId": "data-security-content-findings-top-n",
+		"summary": "Top integrations by content findings",
+		"description": "Returns the top N integrations ranked by total content findings.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -9,14 +10,15 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -32,30 +34,28 @@
 					},
 					"schema": {
 						"description": "Returns the top N integrations for content findings.",
+						"type": "object",
 						"properties": {
 							"filters": {
 								"description": "Filters to apply. `findingType = content` is applied automatically for CASB data.",
-								"example": [],
+								"type": "array",
 								"items": {
 									"description": "A filter to apply to the query.",
+									"type": "object",
 									"properties": {
 										"name": {
 											"description": "Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`).",
-											"example": "country",
-											"type": "string"
+											"type": "string",
+											"example": "country"
 										},
 										"op": {
 											"description": "Filter operator. Common values: `eq`, `neq`, `in`, `not_in`, `gt`, `lt`, `gte`, `lte`.\n",
-											"example": "in",
-											"type": "string"
+											"type": "string",
+											"example": "in"
 										},
 										"values": {
 											"description": "Values to match against. Type depends on the column.",
-											"example": [
-												"US",
-												"CA",
-												"GB"
-											],
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -72,36 +72,39 @@
 													}
 												]
 											},
-											"type": "array"
+											"example": [
+												"US",
+												"CA",
+												"GB"
+											]
 										}
 									},
 									"required": [
 										"name",
 										"op",
 										"values"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array"
+								"example": []
 							},
 							"from": {
 								"description": "Start of the query time range (inclusive). RFC3339.",
-								"example": "2024-11-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-11-01T00:00:00Z"
 							},
 							"n": {
 								"description": "Maximum number of integrations to return.",
-								"example": 10,
+								"type": "integer",
 								"format": "int64",
-								"minimum": 1,
-								"type": "integer"
+								"example": 10,
+								"minimum": 1
 							},
 							"to": {
 								"description": "End of the query time range (exclusive). RFC3339.",
-								"example": "2024-11-08T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-11-08T00:00:00Z"
 							}
 						},
 						"required": [
@@ -109,15 +112,14 @@
 							"to",
 							"n",
 							"filters"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Top integrations result.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -148,55 +150,56 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
+									"type": "array",
 									"items": {
-										"additionalProperties": true,
 										"description": "Maps field names to values. Keys represent stat names and group-by column names. Values depend on the dataset (strings, numbers, booleans).\n",
+										"type": "object",
 										"example": {
 											"attemptsTotal": 1234,
 											"country": "US"
 										},
-										"type": "object"
-									},
-									"type": "array"
+										"additionalProperties": true
+									}
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -204,14 +207,13 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Top integrations result."
+				}
 			},
 			"400": {
+				"description": "Invalid request body. Common causes: missing required fields, invalid timestamp format (must be RFC3339), or unknown dataset/column/stat names.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -255,60 +257,60 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request body. Common causes: missing required fields, invalid timestamp format (must be RFC3339), or unknown dataset/column/stat names.\n"
+				}
 			},
 			"401": {
+				"description": "Authentication required. Provide a valid API token or key.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -328,60 +330,60 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Authentication required. Provide a valid API token or key."
+				}
 			},
 			"403": {
+				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -415,58 +417,57 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n"
+				}
 			}
 		},
 		"security": [
@@ -478,7 +479,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Top integrations by content findings",
 		"tags": [
 			"Data Security"
 		],
@@ -487,8 +487,9 @@
 		]
 	},
 	"POST /accounts/{account_id}/analytics/query/data-security/findings/summary": {
-		"description": "Returns aggregate current-period and previous-period totals for CASB findings.\n",
 		"operationId": "data-security-findings-summary",
+		"summary": "Data security findings summary",
+		"description": "Returns aggregate current-period and previous-period totals for CASB findings.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -496,14 +497,15 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -518,30 +520,28 @@
 					},
 					"schema": {
 						"description": "Query for aggregate findings summary.",
+						"type": "object",
 						"properties": {
 							"filters": {
 								"description": "Filters to apply.",
-								"example": [],
+								"type": "array",
 								"items": {
 									"description": "A filter to apply to the query.",
+									"type": "object",
 									"properties": {
 										"name": {
 											"description": "Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`).",
-											"example": "country",
-											"type": "string"
+											"type": "string",
+											"example": "country"
 										},
 										"op": {
 											"description": "Filter operator. Common values: `eq`, `neq`, `in`, `not_in`, `gt`, `lt`, `gte`, `lte`.\n",
-											"example": "in",
-											"type": "string"
+											"type": "string",
+											"example": "in"
 										},
 										"values": {
 											"description": "Values to match against. Type depends on the column.",
-											"example": [
-												"US",
-												"CA",
-												"GB"
-											],
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -558,44 +558,46 @@
 													}
 												]
 											},
-											"type": "array"
+											"example": [
+												"US",
+												"CA",
+												"GB"
+											]
 										}
 									},
 									"required": [
 										"name",
 										"op",
 										"values"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array"
+								"example": []
 							},
 							"from": {
 								"description": "Start of the query time range (inclusive). RFC3339.",
-								"example": "2024-11-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-11-01T00:00:00Z"
 							},
 							"to": {
 								"description": "End of the query time range (exclusive). RFC3339.",
-								"example": "2024-11-08T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-11-08T00:00:00Z"
 							}
 						},
 						"required": [
 							"from",
 							"to",
 							"filters"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Findings summary result.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -640,88 +642,89 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
+									"type": "object",
 									"properties": {
 										"currentTotal": {
 											"description": "Aggregated stats for the requested time range.",
+											"type": "array",
+											"items": {
+												"description": "Maps field names to values. Keys represent stat names and group-by column names. Values depend on the dataset (strings, numbers, booleans).\n",
+												"type": "object",
+												"example": {
+													"attemptsTotal": 1234,
+													"country": "US"
+												},
+												"additionalProperties": true
+											},
 											"example": [
 												{
 													"attemptsTotal": 48291
 												}
-											],
+											]
+										},
+										"previousTotal": {
+											"description": "Aggregated stats for the equivalent preceding time range, for trend comparison.\n",
+											"type": "array",
 											"items": {
-												"additionalProperties": true,
 												"description": "Maps field names to values. Keys represent stat names and group-by column names. Values depend on the dataset (strings, numbers, booleans).\n",
+												"type": "object",
 												"example": {
 													"attemptsTotal": 1234,
 													"country": "US"
 												},
-												"type": "object"
+												"additionalProperties": true
 											},
-											"type": "array"
-										},
-										"previousTotal": {
-											"description": "Aggregated stats for the equivalent preceding time range, for trend comparison.\n",
 											"example": [
 												{
 													"attemptsTotal": 41033
 												}
-											],
-											"items": {
-												"additionalProperties": true,
-												"description": "Maps field names to values. Keys represent stat names and group-by column names. Values depend on the dataset (strings, numbers, booleans).\n",
-												"example": {
-													"attemptsTotal": 1234,
-													"country": "US"
-												},
-												"type": "object"
-											},
-											"type": "array"
+											]
 										}
 									},
 									"required": [
 										"currentTotal",
 										"previousTotal"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -729,14 +732,13 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Findings summary result."
+				}
 			},
 			"400": {
+				"description": "Invalid request body. Common causes: missing required fields, invalid timestamp format (must be RFC3339), or unknown dataset/column/stat names.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -780,60 +782,60 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request body. Common causes: missing required fields, invalid timestamp format (must be RFC3339), or unknown dataset/column/stat names.\n"
+				}
 			},
 			"401": {
+				"description": "Authentication required. Provide a valid API token or key.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -853,60 +855,60 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Authentication required. Provide a valid API token or key."
+				}
 			},
 			"403": {
+				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -940,58 +942,57 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n"
+				}
 			}
 		},
 		"security": [
@@ -1003,7 +1004,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Data security findings summary",
 		"tags": [
 			"Data Security"
 		],
@@ -1012,8 +1012,9 @@
 		]
 	},
 	"POST /accounts/{account_id}/analytics/query/data-security/findings/timeseries": {
-		"description": "Returns merged time-bucketed CASB findings.\n",
 		"operationId": "data-security-findings-timeseries",
+		"summary": "Data security findings timeseries",
+		"description": "Returns merged time-bucketed CASB findings.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -1021,14 +1022,15 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"pattern": "^[0-9a-f]{32}$",
-					"type": "string"
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"examples": {
@@ -1043,30 +1045,28 @@
 					},
 					"schema": {
 						"description": "Query for findings timeseries.",
+						"type": "object",
 						"properties": {
 							"filters": {
 								"description": "Filters to apply.",
-								"example": [],
+								"type": "array",
 								"items": {
 									"description": "A filter to apply to the query.",
+									"type": "object",
 									"properties": {
 										"name": {
 											"description": "Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`).",
-											"example": "country",
-											"type": "string"
+											"type": "string",
+											"example": "country"
 										},
 										"op": {
 											"description": "Filter operator. Common values: `eq`, `neq`, `in`, `not_in`, `gt`, `lt`, `gte`, `lte`.\n",
-											"example": "in",
-											"type": "string"
+											"type": "string",
+											"example": "in"
 										},
 										"values": {
 											"description": "Values to match against. Type depends on the column.",
-											"example": [
-												"US",
-												"CA",
-												"GB"
-											],
+											"type": "array",
 											"items": {
 												"oneOf": [
 													{
@@ -1083,44 +1083,46 @@
 													}
 												]
 											},
-											"type": "array"
+											"example": [
+												"US",
+												"CA",
+												"GB"
+											]
 										}
 									},
 									"required": [
 										"name",
 										"op",
 										"values"
-									],
-									"type": "object"
+									]
 								},
-								"type": "array"
+								"example": []
 							},
 							"from": {
 								"description": "Start of the query time range (inclusive). RFC3339.",
-								"example": "2024-11-01T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-11-01T00:00:00Z"
 							},
 							"to": {
 								"description": "End of the query time range (exclusive). RFC3339.",
-								"example": "2024-11-08T00:00:00Z",
+								"type": "string",
 								"format": "date-time",
-								"type": "string"
+								"example": "2024-11-08T00:00:00Z"
 							}
 						},
 						"required": [
 							"from",
 							"to",
 							"filters"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Findings timeseries result.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1165,50 +1167,62 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
+										}
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
 									"description": "Merged CASB and CDE findings timeseries result.",
+									"type": "object",
 									"properties": {
 										"resolution": {
 											"description": "Always null for this endpoint.",
-											"nullable": true,
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"slots": {
 											"description": "Contains time-bucketed result rows. Each slot includes a `timestamp` plus `content` and `posture` maps with `cloud` and `saas` keys.\n",
+											"type": "array",
+											"items": {
+												"description": "Maps field names to values. Keys represent stat names and group-by column names. Values depend on the dataset (strings, numbers, booleans).\n",
+												"type": "object",
+												"example": {
+													"attemptsTotal": 1234,
+													"country": "US"
+												},
+												"additionalProperties": true
+											},
 											"example": [
 												{
 													"content": {
@@ -1221,27 +1235,16 @@
 													},
 													"timestamp": "2024-11-05T00:00:00Z"
 												}
-											],
-											"items": {
-												"additionalProperties": true,
-												"description": "Maps field names to values. Keys represent stat names and group-by column names. Values depend on the dataset (strings, numbers, booleans).\n",
-												"example": {
-													"attemptsTotal": 1234,
-													"country": "US"
-												},
-												"type": "object"
-											},
-											"type": "array"
+											]
 										}
 									},
 									"required": [
 										"slots"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
@@ -1249,14 +1252,13 @@
 								"result",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Findings timeseries result."
+				}
 			},
 			"400": {
+				"description": "Invalid request body. Common causes: missing required fields, invalid timestamp format (must be RFC3339), or unknown dataset/column/stat names.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1300,60 +1302,60 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Invalid request body. Common causes: missing required fields, invalid timestamp format (must be RFC3339), or unknown dataset/column/stat names.\n"
+				}
 			},
 			"401": {
+				"description": "Authentication required. Provide a valid API token or key.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1373,60 +1375,60 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Authentication required. Provide a valid API token or key."
+				}
 			},
 			"403": {
+				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1460,58 +1462,57 @@
 							}
 						},
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 11005,
-												"type": "integer"
+												"type": "integer",
+												"example": 11005
 											},
 											"message": {
-												"example": "art.api.parameter.invalid",
-												"type": "string"
+												"type": "string",
+												"example": "art.api.parameter.invalid"
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"messages": {
+									"type": "array",
 									"items": {
+										"type": "object",
 										"properties": {
 											"code": {
-												"example": 1000,
-												"type": "integer"
+												"type": "integer",
+												"example": 1000
 											},
 											"message": {
-												"example": "API in beta: expect breaking changes.",
-												"type": "string"
+												"type": "string",
+												"example": "API in beta: expect breaking changes."
 											}
-										},
-										"type": "object"
-									},
-									"type": "array"
+										}
+									}
 								},
 								"result": {
-									"nullable": true,
-									"type": "object"
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
-									"example": false,
-									"type": "boolean"
+									"type": "boolean",
+									"example": false
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Insufficient permissions. The authenticated user does not have access to the requested dataset or account.\n"
+				}
 			}
 		},
 		"security": [
@@ -1523,7 +1524,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Data security findings timeseries",
 		"tags": [
 			"Data Security"
 		],

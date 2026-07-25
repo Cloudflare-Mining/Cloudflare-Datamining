@@ -1,76 +1,81 @@
 {
 	"GET /radar/entities/ip": {
-		"description": "Retrieves IP address information.",
 		"operationId": "radar-get-entities-ip",
+		"summary": "Get IP address details",
+		"description": "Retrieves IP address information.",
 		"parameters": [
 			{
-				"description": "IP address.",
-				"in": "query",
 				"name": "ip",
+				"in": "query",
+				"description": "IP address.",
 				"required": true,
 				"schema": {
 					"description": "IP address.",
-					"example": "8.8.8.8",
+					"type": "string",
 					"format": "ip",
-					"type": "string"
+					"example": "8.8.8.8"
 				}
 			},
 			{
-				"description": "Format in which results will be returned.",
-				"in": "query",
 				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
 				"schema": {
 					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
 					"enum": [
 						"JSON",
 						"CSV"
-					],
-					"example": "json",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Successful response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"result": {
+									"type": "object",
 									"properties": {
 										"ip": {
+											"type": "object",
 											"properties": {
 												"asn": {
-													"example": "15169",
-													"type": "string"
+													"type": "string",
+													"example": "15169"
 												},
 												"asnLocation": {
-													"example": "US",
-													"type": "string"
+													"type": "string",
+													"example": "US"
 												},
 												"asnName": {
-													"example": "GOOGLE",
-													"type": "string"
+													"type": "string",
+													"example": "GOOGLE"
 												},
 												"asnOrgName": {
-													"example": "Google LLC",
-													"type": "string"
+													"type": "string",
+													"example": "Google LLC"
 												},
 												"ip": {
-													"example": "8.8.8.8",
-													"type": "string"
+													"type": "string",
+													"example": "8.8.8.8"
 												},
 												"ipVersion": {
-													"example": "IPv4",
-													"type": "string"
+													"type": "string",
+													"example": "IPv4"
 												},
 												"location": {
-													"example": "GB",
-													"type": "string"
+													"type": "string",
+													"example": "GB"
 												},
 												"locationName": {
-													"example": "United Kingdom",
-													"type": "string"
+													"type": "string",
+													"example": "United Kingdom"
 												}
 											},
 											"required": [
@@ -82,48 +87,44 @@
 												"asnName",
 												"asnLocation",
 												"asnOrgName"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"required": [
 										"ip"
-									],
-									"type": "object"
+									]
 								},
 								"success": {
-									"example": true,
-									"type": "boolean"
+									"type": "boolean",
+									"example": true
 								}
 							},
 							"required": [
 								"result",
 								"success"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Successful response."
+				}
 			},
 			"404": {
+				"description": "Not found.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"error": {
-									"example": "Not Found.",
-									"type": "string"
+									"type": "string",
+									"example": "Not Found."
 								}
 							},
 							"required": [
 								"error"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Not found."
+				}
 			}
 		},
 		"security": [
@@ -133,7 +134,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get IP address details",
 		"tags": [
 			"Radar IP"
 		],

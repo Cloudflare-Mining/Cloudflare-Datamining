@@ -1,7 +1,8 @@
 {
 	"GET /accounts/{account_id}/data-security/posture/finding_types": {
-		"description": "List all available finding types with pagination support.",
 		"operationId": "ListFindingTypes",
+		"summary": "List all finding types",
+		"description": "List all available finding types with pagination support.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -32,43 +33,46 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Response structure for paginated collections.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -77,39 +81,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -118,57 +122,57 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"result_info": {
 											"description": "Pagination and result information.",
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results for the requested service.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"cursor": {
 													"description": "Cursor for cursor-based pagination.",
+													"type": "string",
 													"example": "eyJpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImFmZmxpY3Rpb25fZGF0ZSI6IjE5NzAtMDEtMDFUMDA6MDA6MDAuMDAwMDAwWiJ9",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"next": {
 													"description": "URL to the next page of results.",
+													"type": "string",
 													"format": "uri",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"page": {
 													"description": "Current page within paginated list of results.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page of results.",
-													"example": 20,
-													"type": "integer"
+													"type": "integer",
+													"example": 20
 												},
 												"previous": {
 													"description": "URL to the previous page of results.",
+													"type": "string",
 													"format": "uri",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters.",
-													"example": 2000,
-													"type": "integer"
+													"type": "integer",
+													"example": 2000
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -176,86 +180,87 @@
 										"errors",
 										"messages",
 										"result_info"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Array of finding type objects.",
+											"type": "array",
 											"items": {
 												"description": "Basic finding type information.",
+												"type": "object",
 												"properties": {
 													"category": {
 														"description": "Category information for a finding.",
+														"type": "object",
+														"properties": {
+															"observation": {
+																"description": "The type of the observation.",
+																"type": "string",
+																"example": "Issue",
+																"enum": [
+																	"Issue",
+																	"Insight",
+																	"Activity"
+																]
+															},
+															"product": {
+																"description": "The product category.",
+																"type": "string",
+																"example": "SaaS",
+																"enum": [
+																	"SaaS",
+																	"Cloud"
+																]
+															},
+															"type": {
+																"description": "The type of the finding category.",
+																"type": "string",
+																"example": "Content",
+																"enum": [
+																	"Content",
+																	"Posture"
+																]
+															}
+														},
 														"example": {
 															"observation": "Issue",
 															"product": "SaaS",
 															"type": "Posture"
 														},
-														"properties": {
-															"observation": {
-																"description": "The type of the observation.",
-																"enum": [
-																	"Issue",
-																	"Insight",
-																	"Activity"
-																],
-																"example": "Issue",
-																"type": "string"
-															},
-															"product": {
-																"description": "The product category.",
-																"enum": [
-																	"SaaS",
-																	"Cloud"
-																],
-																"example": "SaaS",
-																"type": "string"
-															},
-															"type": {
-																"description": "The type of the finding category.",
-																"enum": [
-																	"Content",
-																	"Posture"
-																],
-																"example": "Content",
-																"type": "string"
-															}
-														},
 														"required": [
 															"observation",
 															"product",
 															"type"
-														],
-														"type": "object"
+														]
 													},
 													"id": {
 														"description": "The unique identifier of the finding.",
-														"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+														"type": "string",
 														"format": "uuid",
-														"type": "string"
+														"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
 													},
 													"name": {
 														"description": "The name of the finding.",
-														"example": "Slack File Publicly Accessible",
-														"type": "string"
+														"type": "string",
+														"example": "Slack File Publicly Accessible"
 													},
 													"severity": {
 														"description": "The severity level of a finding.",
+														"type": "string",
+														"example": "High",
 														"enum": [
 															"Critical",
 															"High",
 															"Medium",
 															"Low"
-														],
-														"example": "High",
-														"type": "string"
+														]
 													},
 													"vendor": {
 														"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
-														"example": "Google Workspace",
-														"type": "string"
+														"type": "string",
+														"example": "Google Workspace"
 													}
 												},
 												"required": [
@@ -264,20 +269,16 @@
 													"category",
 													"vendor",
 													"severity"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -288,7 +289,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List all finding types",
 		"tags": [
 			"finding_types"
 		],
@@ -302,8 +302,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
-		"description": "Retrieve a specific finding type by its unique identifier.",
 		"operationId": "GetFindingType",
+		"summary": "Get finding by ID",
+		"description": "Retrieve a specific finding type by its unique identifier.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -321,50 +322,53 @@
 				"name": "finding_type_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Common response structure for all API endpoints.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -373,39 +377,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -414,97 +418,97 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Basic finding type information.",
+											"type": "object",
 											"properties": {
 												"category": {
 													"description": "Category information for a finding.",
+													"type": "object",
+													"properties": {
+														"observation": {
+															"description": "The type of the observation.",
+															"type": "string",
+															"example": "Issue",
+															"enum": [
+																"Issue",
+																"Insight",
+																"Activity"
+															]
+														},
+														"product": {
+															"description": "The product category.",
+															"type": "string",
+															"example": "SaaS",
+															"enum": [
+																"SaaS",
+																"Cloud"
+															]
+														},
+														"type": {
+															"description": "The type of the finding category.",
+															"type": "string",
+															"example": "Content",
+															"enum": [
+																"Content",
+																"Posture"
+															]
+														}
+													},
 													"example": {
 														"observation": "Issue",
 														"product": "SaaS",
 														"type": "Posture"
 													},
-													"properties": {
-														"observation": {
-															"description": "The type of the observation.",
-															"enum": [
-																"Issue",
-																"Insight",
-																"Activity"
-															],
-															"example": "Issue",
-															"type": "string"
-														},
-														"product": {
-															"description": "The product category.",
-															"enum": [
-																"SaaS",
-																"Cloud"
-															],
-															"example": "SaaS",
-															"type": "string"
-														},
-														"type": {
-															"description": "The type of the finding category.",
-															"enum": [
-																"Content",
-																"Posture"
-															],
-															"example": "Content",
-															"type": "string"
-														}
-													},
 													"required": [
 														"observation",
 														"product",
 														"type"
-													],
-													"type": "object"
+													]
 												},
 												"id": {
 													"description": "The unique identifier of the finding.",
-													"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94",
+													"type": "string",
 													"format": "uuid",
-													"type": "string"
+													"example": "a20895dd-9c3b-43bd-a608-71c98c6c2d94"
 												},
 												"name": {
 													"description": "The name of the finding.",
-													"example": "Slack File Publicly Accessible",
-													"type": "string"
+													"type": "string",
+													"example": "Slack File Publicly Accessible"
 												},
 												"severity": {
 													"description": "The severity level of a finding.",
+													"type": "string",
+													"example": "High",
 													"enum": [
 														"Critical",
 														"High",
 														"Medium",
 														"Low"
-													],
-													"example": "High",
-													"type": "string"
+													]
 												},
 												"vendor": {
 													"description": "The SaaS/Cloud vendor of the platform with which the finding is associated.",
-													"example": "Google Workspace",
-													"type": "string"
+													"type": "string",
+													"example": "Google Workspace"
 												}
 											},
 											"required": [
@@ -513,18 +517,15 @@
 												"category",
 												"vendor",
 												"severity"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -538,7 +539,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get finding by ID",
 		"tags": [
 			"finding_types"
 		],
@@ -552,8 +552,9 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}/remediation_types": {
-		"description": "List all remediation types for a given finding type.\nThis endpoint supports both cursor and offset pagination.\nNote that `cursor` and `page` are mutually exclusive.",
 		"operationId": "GetRemediationTypesForFindingType",
+		"summary": "List remediation types for a finding type",
+		"description": "List all remediation types for a given finding type.\nThis endpoint supports both cursor and offset pagination.\nNote that `cursor` and `page` are mutually exclusive.",
 		"parameters": [
 			{
 				"description": "Cloudflare account ID for the user making the request.",
@@ -571,8 +572,8 @@
 				"name": "finding_type_id",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
@@ -580,14 +581,14 @@
 				"in": "query",
 				"name": "integration_id",
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			},
 			{
-				"description": "A cursor for pagination.",
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
+				"description": "A cursor for pagination.",
 				"schema": {
 					"type": "string"
 				}
@@ -611,43 +612,46 @@
 		],
 		"responses": {
 			"200": {
+				"description": "OK: Successful HTTP request",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
 									"description": "Response structure for paginated collections.",
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -656,39 +660,39 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
 														"description": "Error or message code.",
+														"type": "integer",
 														"example": 1000,
-														"minimum": 1000,
-														"type": "integer"
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"description": "Link to relevant documentation.",
-														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"type": "string",
 														"format": "uri",
-														"type": "string"
+														"example": "https://developers.cloudflare.com/api/operations/list-findings"
 													},
 													"message": {
 														"description": "Human-readable message.",
-														"example": "Request processed successfully",
-														"type": "string"
+														"type": "string",
+														"example": "Request processed successfully"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"description": "JSON pointer to the source of the error.",
-																"example": "/data/attributes/name",
-																"type": "string"
+																"type": "string",
+																"example": "/data/attributes/name"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -697,57 +701,57 @@
 												],
 												"type": "object"
 											},
-											"type": "array",
+											"example": [],
 											"uniqueItems": true
 										},
 										"result_info": {
 											"description": "Pagination and result information.",
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Total number of results for the requested service.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"cursor": {
 													"description": "Cursor for cursor-based pagination.",
+													"type": "string",
 													"example": "eyJpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImFmZmxpY3Rpb25fZGF0ZSI6IjE5NzAtMDEtMDFUMDA6MDA6MDAuMDAwMDAwWiJ9",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"next": {
 													"description": "URL to the next page of results.",
+													"type": "string",
 													"format": "uri",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"page": {
 													"description": "Current page within paginated list of results.",
-													"example": 1,
-													"type": "integer"
+													"type": "integer",
+													"example": 1
 												},
 												"per_page": {
 													"description": "Number of results per page of results.",
-													"example": 20,
-													"type": "integer"
+													"type": "integer",
+													"example": 20
 												},
 												"previous": {
 													"description": "URL to the previous page of results.",
+													"type": "string",
 													"format": "uri",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"total_count": {
 													"description": "Total results available without any search parameters.",
-													"example": 2000,
-													"type": "integer"
+													"type": "integer",
+													"example": 2000
 												}
-											},
-											"type": "object"
+											}
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
-											"example": true,
-											"type": "boolean"
+											"type": "boolean",
+											"example": true
 										}
 									},
 									"required": [
@@ -755,42 +759,43 @@
 										"errors",
 										"messages",
 										"result_info"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Array of remediation type objects.",
+											"type": "array",
 											"items": {
 												"description": "Information about a remediation type.",
+												"type": "object",
 												"properties": {
 													"description": {
 														"description": "A description of the action(s) taken by the remediation type.",
-														"example": "Remove publicly accessible URL granting edit access",
-														"type": "string"
+														"type": "string",
+														"example": "Remove publicly accessible URL granting edit access"
 													},
 													"display_name": {
 														"description": "The name of the remediation type as displayed in the cloudflare dashboard.",
-														"example": "Remove Publicly Accessible URL - Edit Access",
-														"type": "string"
+														"type": "string",
+														"example": "Remove Publicly Accessible URL - Edit Access"
 													},
 													"finding_type_id": {
 														"description": "The identifier of the finding_type which this remediation type should remediate.",
-														"example": "6a790513-bbb5-4933-8971-76a744ec5448",
+														"type": "string",
 														"format": "uuid",
-														"type": "string"
+														"example": "6a790513-bbb5-4933-8971-76a744ec5448"
 													},
 													"id": {
 														"description": "The identifier for the remediation type.",
-														"example": "7d736ac5-ed3b-46d5-9375-7025175ba1d9",
+														"type": "string",
 														"format": "uuid",
-														"type": "string"
+														"example": "7d736ac5-ed3b-46d5-9375-7025175ba1d9"
 													},
 													"remediation_type": {
 														"description": "The name of the remediation type.",
-														"example": "Microsoft: Remove Publicly Accessible URL - Edit Access",
-														"type": "string"
+														"type": "string",
+														"example": "Microsoft: Remove Publicly Accessible URL - Edit Access"
 													}
 												},
 												"required": [
@@ -799,20 +804,16 @@
 													"remediation_type",
 													"display_name",
 													"description"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "OK: Successful HTTP request"
+				}
 			},
 			"400": {
 				"description": "Bad Request: Invalid request parameters"
@@ -826,7 +827,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List remediation types for a finding type",
 		"tags": [
 			"finding_types"
 		],

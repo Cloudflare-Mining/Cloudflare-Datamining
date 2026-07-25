@@ -1,51 +1,55 @@
 {
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
-		"description": "Gets the configuration for a remotely-managed tunnel",
 		"operationId": "cloudflare-tunnel-configuration-get-configuration",
+		"summary": "Get configuration",
+		"description": "Gets the configuration for a remotely-managed tunnel",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "tunnel_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"type": "string",
 					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -54,12 +58,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -69,15 +73,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -86,12 +90,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -101,80 +105,83 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Cloudflare Tunnel configuration",
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Identifier.",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"config": {
 													"description": "The tunnel configuration and ingress rules.",
+													"type": "object",
 													"properties": {
 														"ingress": {
 															"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
+															"type": "array",
 															"items": {
 																"description": "Public hostname",
+																"type": "object",
 																"properties": {
 																	"hostname": {
 																		"description": "Public hostname for this service.",
-																		"example": "tunnel.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"example": "tunnel.example.com"
 																	},
 																	"originRequest": {
 																		"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+																		"type": "object",
 																		"properties": {
 																			"access": {
 																				"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																				"type": "object",
 																				"properties": {
 																					"audTag": {
 																						"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																						"type": "array",
 																						"items": {
 																							"type": "string"
-																						},
-																						"type": "array"
+																						}
 																					},
 																					"required": {
 																						"description": "Deny traffic that has not fulfilled Access authorization.",
-																						"example": false,
-																						"type": "boolean"
+																						"type": "boolean",
+																						"example": false
 																					},
 																					"teamName": {
-																						"example": "zero-trust-organization-name",
-																						"type": "string"
+																						"type": "string",
+																						"example": "zero-trust-organization-name"
 																					}
 																				},
 																				"required": [
 																					"audTag",
 																					"teamName"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"caPool": {
 																				"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
@@ -182,8 +189,8 @@
 																			},
 																			"connectTimeout": {
 																				"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-																				"example": 10,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 10
 																			},
 																			"disableChunkedEncoding": {
 																				"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
@@ -199,18 +206,18 @@
 																			},
 																			"keepAliveConnections": {
 																				"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-																				"example": 100,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 100
 																			},
 																			"keepAliveTimeout": {
 																				"description": "Timeout after which an idle keepalive connection can be discarded.",
-																				"example": 90,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 90
 																			},
 																			"matchSNItoHost": {
 																				"description": "Auto configure the Hostname on the origin server certificate.",
-																				"example": false,
 																				"type": "boolean",
+																				"example": false,
 																				"x-stainless-naming": {
 																					"python": {
 																						"name": "match_sni_to_host"
@@ -219,13 +226,13 @@
 																			},
 																			"noHappyEyeballs": {
 																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-																				"example": false,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"example": false
 																			},
 																			"noTLSVerify": {
 																				"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-																				"example": false,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"example": false
 																			},
 																			"originServerName": {
 																				"description": "Hostname that cloudflared should expect from your origin server certificate.",
@@ -237,65 +244,63 @@
 																			},
 																			"tcpKeepAlive": {
 																				"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-																				"example": 30,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 30
 																			},
 																			"tlsTimeout": {
 																				"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-																				"example": 10,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 10
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"path": {
 																		"description": "Requests with this path route to this public hostname.",
-																		"example": "subpath",
-																		"type": "string"
+																		"type": "string",
+																		"example": "subpath"
 																	},
 																	"service": {
 																		"description": "Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'.\n",
-																		"example": "https://localhost:8001",
-																		"type": "string"
+																		"type": "string",
+																		"example": "https://localhost:8001"
 																	}
 																},
 																"required": [
 																	"hostname",
 																	"service"
-																],
-																"type": "object"
+																]
 															},
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"originRequest": {
 															"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+															"type": "object",
 															"properties": {
 																"access": {
 																	"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																	"type": "object",
 																	"properties": {
 																		"audTag": {
 																			"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																			"type": "array",
 																			"items": {
 																				"type": "string"
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"required": {
 																			"description": "Deny traffic that has not fulfilled Access authorization.",
-																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"example": false
 																		},
 																		"teamName": {
-																			"example": "zero-trust-organization-name",
-																			"type": "string"
+																			"type": "string",
+																			"example": "zero-trust-organization-name"
 																		}
 																	},
 																	"required": [
 																		"audTag",
 																		"teamName"
-																	],
-																	"type": "object"
+																	]
 																},
 																"caPool": {
 																	"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
@@ -303,8 +308,8 @@
 																},
 																"connectTimeout": {
 																	"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-																	"example": 10,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 10
 																},
 																"disableChunkedEncoding": {
 																	"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
@@ -320,18 +325,18 @@
 																},
 																"keepAliveConnections": {
 																	"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-																	"example": 100,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 100
 																},
 																"keepAliveTimeout": {
 																	"description": "Timeout after which an idle keepalive connection can be discarded.",
-																	"example": 90,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 90
 																},
 																"matchSNItoHost": {
 																	"description": "Auto configure the Hostname on the origin server certificate.",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-stainless-naming": {
 																		"python": {
 																			"name": "match_sni_to_host"
@@ -340,13 +345,13 @@
 																},
 																"noHappyEyeballs": {
 																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": false
 																},
 																"noTLSVerify": {
 																	"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": false
 																},
 																"originServerName": {
 																	"description": "Hostname that cloudflared should expect from your origin server certificate.",
@@ -358,129 +363,90 @@
 																},
 																"tcpKeepAlive": {
 																	"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-																	"example": 30,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 30
 																},
 																"tlsTimeout": {
 																	"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-																	"example": 10,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 10
 																}
-															},
-															"type": "object"
+															}
 														},
 														"warp-routing": {
-															"deprecated": true,
 															"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
+															"type": "object",
+															"deprecated": true,
 															"properties": {
 																"enabled": {
 																	"type": "boolean"
 																}
 															},
 															"readOnly": true,
-															"type": "object",
 															"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
 															"x-stainless-skip": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"source": {
 													"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.",
+													"type": "string",
+													"example": "cloudflare",
 													"enum": [
 														"local",
 														"cloudflare"
 													],
-													"example": "cloudflare",
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"version": {
 													"description": "The version of the Tunnel Configuration.",
 													"type": "integer"
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Get configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -489,12 +455,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -504,25 +470,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -530,12 +533,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -550,7 +551,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Get configuration",
 		"tags": [
 			"Cloudflare Tunnel Configuration"
 		],
@@ -568,52 +568,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
-		"description": "Gets the high-availability configuration for a WARP Connector tunnel.",
 		"operationId": "cloudflare-tunnel-configuration-get-warp-connector-configuration",
+		"summary": "Get WARP Connector HA configuration",
+		"description": "Gets the high-availability configuration for a WARP Connector tunnel.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "tunnel_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"type": "string",
 					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get WARP Connector HA configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -622,12 +626,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -637,15 +641,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -654,12 +658,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -669,95 +673,94 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config": {
 													"description": "Provider-specific configuration. Present for `aws` and `local` modes.",
+													"type": "object",
 													"nullable": true,
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"fnr_id": {
 																	"description": "Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.",
-																	"example": "eni-0123456789abcdef0",
-																	"type": "string"
+																	"type": "string",
+																	"example": "eni-0123456789abcdef0"
 																}
 															},
 															"required": [
 																"fnr_id"
-															],
-															"type": "object"
+															]
 														},
 														{
+															"type": "object",
 															"properties": {
 																"vips": {
 																	"description": "VIPs to assign on the CloudflareWARP interface.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"address": {
 																				"description": "Virtual IP address (IPv4 or IPv6).",
-																				"example": "10.0.0.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "10.0.0.1"
 																			}
 																		},
 																		"required": [
 																			"address"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"maxItems": 8,
-																	"minItems": 1,
-																	"type": "array"
+																	"minItems": 1
 																},
 																"vips_previous": {
 																	"description": "VIPs to clean up on demotion or version drift.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"address": {
 																				"description": "Virtual IP address (IPv4 or IPv6).",
-																				"example": "10.0.0.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "10.0.0.1"
 																			}
 																		},
 																		"required": [
 																			"address"
-																		],
-																		"type": "object"
+																		]
 																	},
-																	"maxItems": 8,
-																	"type": "array"
+																	"maxItems": 8
 																}
 															},
 															"required": [
 																"vips"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"type": "object"
+													]
 												},
 												"configuration_version": {
 													"description": "Monotonically increasing configuration version, incremented on each PUT.",
@@ -765,38 +768,38 @@
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"ha_mode": {
 													"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+													"type": "string",
+													"example": "aws",
 													"enum": [
 														"none",
 														"disabled",
 														"aws",
 														"local"
 													],
-													"example": "aws",
-													"type": "string",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"updated_at": {
 													"description": "Timestamp of the last update. Null if never updated.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2021-01-25T18:22:34.317854Z",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												}
 											},
 											"required": [
@@ -804,8 +807,7 @@
 												"configuration_version",
 												"ha_mode",
 												"created_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -813,66 +815,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get WARP Connector HA configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Get WARP Connector HA configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -881,12 +847,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -896,25 +862,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -922,12 +925,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get WARP Connector HA configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -942,7 +943,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Get WARP Connector HA configuration",
 		"tags": [
 			"Cloudflare Tunnel Configuration"
 		],
@@ -954,81 +954,88 @@
 		]
 	},
 	"PUT /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
-		"description": "Adds or updates the configuration for a remotely-managed tunnel.",
 		"operationId": "cloudflare-tunnel-configuration-put-configuration",
+		"summary": "Put configuration",
+		"description": "Adds or updates the configuration for a remotely-managed tunnel.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "tunnel_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"type": "string",
 					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"config": {
 								"description": "The tunnel configuration and ingress rules.",
+								"type": "object",
 								"properties": {
 									"ingress": {
 										"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
+										"type": "array",
 										"items": {
 											"description": "Public hostname",
+											"type": "object",
 											"properties": {
 												"hostname": {
 													"description": "Public hostname for this service.",
-													"example": "tunnel.example.com",
-													"type": "string"
+													"type": "string",
+													"example": "tunnel.example.com"
 												},
 												"originRequest": {
 													"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+													"type": "object",
 													"properties": {
 														"access": {
 															"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+															"type": "object",
 															"properties": {
 																"audTag": {
 																	"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																	"type": "array",
 																	"items": {
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"required": {
 																	"description": "Deny traffic that has not fulfilled Access authorization.",
-																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": false
 																},
 																"teamName": {
-																	"example": "zero-trust-organization-name",
-																	"type": "string"
+																	"type": "string",
+																	"example": "zero-trust-organization-name"
 																}
 															},
 															"required": [
 																"audTag",
 																"teamName"
-															],
-															"type": "object"
+															]
 														},
 														"caPool": {
 															"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
@@ -1036,8 +1043,8 @@
 														},
 														"connectTimeout": {
 															"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-															"example": 10,
-															"type": "integer"
+															"type": "integer",
+															"example": 10
 														},
 														"disableChunkedEncoding": {
 															"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
@@ -1053,18 +1060,18 @@
 														},
 														"keepAliveConnections": {
 															"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-															"example": 100,
-															"type": "integer"
+															"type": "integer",
+															"example": 100
 														},
 														"keepAliveTimeout": {
 															"description": "Timeout after which an idle keepalive connection can be discarded.",
-															"example": 90,
-															"type": "integer"
+															"type": "integer",
+															"example": 90
 														},
 														"matchSNItoHost": {
 															"description": "Auto configure the Hostname on the origin server certificate.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-stainless-naming": {
 																"python": {
 																	"name": "match_sni_to_host"
@@ -1073,13 +1080,13 @@
 														},
 														"noHappyEyeballs": {
 															"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"noTLSVerify": {
 															"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-															"example": false,
-															"type": "boolean"
+															"type": "boolean",
+															"example": false
 														},
 														"originServerName": {
 															"description": "Hostname that cloudflared should expect from your origin server certificate.",
@@ -1091,65 +1098,63 @@
 														},
 														"tcpKeepAlive": {
 															"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-															"example": 30,
-															"type": "integer"
+															"type": "integer",
+															"example": 30
 														},
 														"tlsTimeout": {
 															"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-															"example": 10,
-															"type": "integer"
+															"type": "integer",
+															"example": 10
 														}
-													},
-													"type": "object"
+													}
 												},
 												"path": {
 													"description": "Requests with this path route to this public hostname.",
-													"example": "subpath",
-													"type": "string"
+													"type": "string",
+													"example": "subpath"
 												},
 												"service": {
 													"description": "Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'.\n",
-													"example": "https://localhost:8001",
-													"type": "string"
+													"type": "string",
+													"example": "https://localhost:8001"
 												}
 											},
 											"required": [
 												"hostname",
 												"service"
-											],
-											"type": "object"
+											]
 										},
-										"minItems": 1,
-										"type": "array"
+										"minItems": 1
 									},
 									"originRequest": {
 										"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+										"type": "object",
 										"properties": {
 											"access": {
 												"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+												"type": "object",
 												"properties": {
 													"audTag": {
 														"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+														"type": "array",
 														"items": {
 															"type": "string"
-														},
-														"type": "array"
+														}
 													},
 													"required": {
 														"description": "Deny traffic that has not fulfilled Access authorization.",
-														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"example": false
 													},
 													"teamName": {
-														"example": "zero-trust-organization-name",
-														"type": "string"
+														"type": "string",
+														"example": "zero-trust-organization-name"
 													}
 												},
 												"required": [
 													"audTag",
 													"teamName"
-												],
-												"type": "object"
+												]
 											},
 											"caPool": {
 												"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
@@ -1157,8 +1162,8 @@
 											},
 											"connectTimeout": {
 												"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-												"example": 10,
-												"type": "integer"
+												"type": "integer",
+												"example": 10
 											},
 											"disableChunkedEncoding": {
 												"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
@@ -1174,18 +1179,18 @@
 											},
 											"keepAliveConnections": {
 												"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-												"example": 100,
-												"type": "integer"
+												"type": "integer",
+												"example": 100
 											},
 											"keepAliveTimeout": {
 												"description": "Timeout after which an idle keepalive connection can be discarded.",
-												"example": 90,
-												"type": "integer"
+												"type": "integer",
+												"example": 90
 											},
 											"matchSNItoHost": {
 												"description": "Auto configure the Hostname on the origin server certificate.",
-												"example": false,
 												"type": "boolean",
+												"example": false,
 												"x-stainless-naming": {
 													"python": {
 														"name": "match_sni_to_host"
@@ -1194,13 +1199,13 @@
 											},
 											"noHappyEyeballs": {
 												"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"example": false
 											},
 											"noTLSVerify": {
 												"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-												"example": false,
-												"type": "boolean"
+												"type": "boolean",
+												"example": false
 											},
 											"originServerName": {
 												"description": "Hostname that cloudflared should expect from your origin server certificate.",
@@ -1212,57 +1217,56 @@
 											},
 											"tcpKeepAlive": {
 												"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-												"example": 30,
-												"type": "integer"
+												"type": "integer",
+												"example": 30
 											},
 											"tlsTimeout": {
 												"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-												"example": 10,
-												"type": "integer"
+												"type": "integer",
+												"example": 10
 											}
-										},
-										"type": "object"
+										}
 									},
 									"warp-routing": {
-										"deprecated": true,
 										"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
+										"type": "object",
+										"deprecated": true,
 										"properties": {
 											"enabled": {
 												"type": "boolean"
 											}
 										},
 										"readOnly": true,
-										"type": "object",
 										"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
 										"x-stainless-skip": true
 									}
-								},
-								"type": "object"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Put configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1271,12 +1275,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1286,15 +1290,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1303,12 +1307,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1318,80 +1322,83 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Cloudflare Tunnel configuration",
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Identifier.",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"config": {
 													"description": "The tunnel configuration and ingress rules.",
+													"type": "object",
 													"properties": {
 														"ingress": {
 															"description": "List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.",
+															"type": "array",
 															"items": {
 																"description": "Public hostname",
+																"type": "object",
 																"properties": {
 																	"hostname": {
 																		"description": "Public hostname for this service.",
-																		"example": "tunnel.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"example": "tunnel.example.com"
 																	},
 																	"originRequest": {
 																		"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+																		"type": "object",
 																		"properties": {
 																			"access": {
 																				"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																				"type": "object",
 																				"properties": {
 																					"audTag": {
 																						"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																						"type": "array",
 																						"items": {
 																							"type": "string"
-																						},
-																						"type": "array"
+																						}
 																					},
 																					"required": {
 																						"description": "Deny traffic that has not fulfilled Access authorization.",
-																						"example": false,
-																						"type": "boolean"
+																						"type": "boolean",
+																						"example": false
 																					},
 																					"teamName": {
-																						"example": "zero-trust-organization-name",
-																						"type": "string"
+																						"type": "string",
+																						"example": "zero-trust-organization-name"
 																					}
 																				},
 																				"required": [
 																					"audTag",
 																					"teamName"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"caPool": {
 																				"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
@@ -1399,8 +1406,8 @@
 																			},
 																			"connectTimeout": {
 																				"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-																				"example": 10,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 10
 																			},
 																			"disableChunkedEncoding": {
 																				"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
@@ -1416,18 +1423,18 @@
 																			},
 																			"keepAliveConnections": {
 																				"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-																				"example": 100,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 100
 																			},
 																			"keepAliveTimeout": {
 																				"description": "Timeout after which an idle keepalive connection can be discarded.",
-																				"example": 90,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 90
 																			},
 																			"matchSNItoHost": {
 																				"description": "Auto configure the Hostname on the origin server certificate.",
-																				"example": false,
 																				"type": "boolean",
+																				"example": false,
 																				"x-stainless-naming": {
 																					"python": {
 																						"name": "match_sni_to_host"
@@ -1436,13 +1443,13 @@
 																			},
 																			"noHappyEyeballs": {
 																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-																				"example": false,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"example": false
 																			},
 																			"noTLSVerify": {
 																				"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-																				"example": false,
-																				"type": "boolean"
+																				"type": "boolean",
+																				"example": false
 																			},
 																			"originServerName": {
 																				"description": "Hostname that cloudflared should expect from your origin server certificate.",
@@ -1454,65 +1461,63 @@
 																			},
 																			"tcpKeepAlive": {
 																				"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-																				"example": 30,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 30
 																			},
 																			"tlsTimeout": {
 																				"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-																				"example": 10,
-																				"type": "integer"
+																				"type": "integer",
+																				"example": 10
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"path": {
 																		"description": "Requests with this path route to this public hostname.",
-																		"example": "subpath",
-																		"type": "string"
+																		"type": "string",
+																		"example": "subpath"
 																	},
 																	"service": {
 																		"description": "Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http_status:[code] e.g. 'http_status:404'.\n",
-																		"example": "https://localhost:8001",
-																		"type": "string"
+																		"type": "string",
+																		"example": "https://localhost:8001"
 																	}
 																},
 																"required": [
 																	"hostname",
 																	"service"
-																],
-																"type": "object"
+																]
 															},
-															"minItems": 1,
-															"type": "array"
+															"minItems": 1
 														},
 														"originRequest": {
 															"description": "Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.",
+															"type": "object",
 															"properties": {
 																"access": {
 																	"description": "For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.",
+																	"type": "object",
 																	"properties": {
 																		"audTag": {
 																			"description": "Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.",
+																			"type": "array",
 																			"items": {
 																				"type": "string"
-																			},
-																			"type": "array"
+																			}
 																		},
 																		"required": {
 																			"description": "Deny traffic that has not fulfilled Access authorization.",
-																			"example": false,
-																			"type": "boolean"
+																			"type": "boolean",
+																			"example": false
 																		},
 																		"teamName": {
-																			"example": "zero-trust-organization-name",
-																			"type": "string"
+																			"type": "string",
+																			"example": "zero-trust-organization-name"
 																		}
 																	},
 																	"required": [
 																		"audTag",
 																		"teamName"
-																	],
-																	"type": "object"
+																	]
 																},
 																"caPool": {
 																	"description": "Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.",
@@ -1520,8 +1525,8 @@
 																},
 																"connectTimeout": {
 																	"description": "Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.",
-																	"example": 10,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 10
 																},
 																"disableChunkedEncoding": {
 																	"description": "Disables chunked transfer encoding. Useful if you are running a WSGI server.",
@@ -1537,18 +1542,18 @@
 																},
 																"keepAliveConnections": {
 																	"description": "Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.",
-																	"example": 100,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 100
 																},
 																"keepAliveTimeout": {
 																	"description": "Timeout after which an idle keepalive connection can be discarded.",
-																	"example": 90,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 90
 																},
 																"matchSNItoHost": {
 																	"description": "Auto configure the Hostname on the origin server certificate.",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-stainless-naming": {
 																		"python": {
 																			"name": "match_sni_to_host"
@@ -1557,13 +1562,13 @@
 																},
 																"noHappyEyeballs": {
 																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
-																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": false
 																},
 																"noTLSVerify": {
 																	"description": "Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.",
-																	"example": false,
-																	"type": "boolean"
+																	"type": "boolean",
+																	"example": false
 																},
 																"originServerName": {
 																	"description": "Hostname that cloudflared should expect from your origin server certificate.",
@@ -1575,129 +1580,90 @@
 																},
 																"tcpKeepAlive": {
 																	"description": "The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.",
-																	"example": 30,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 30
 																},
 																"tlsTimeout": {
 																	"description": "Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.",
-																	"example": 10,
-																	"type": "integer"
+																	"type": "integer",
+																	"example": 10
 																}
-															},
-															"type": "object"
+															}
 														},
 														"warp-routing": {
-															"deprecated": true,
 															"description": "Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.",
+															"type": "object",
+															"deprecated": true,
 															"properties": {
 																"enabled": {
 																	"type": "boolean"
 																}
 															},
 															"readOnly": true,
-															"type": "object",
 															"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
 															"x-stainless-skip": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"source": {
 													"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.",
+													"type": "string",
+													"example": "cloudflare",
 													"enum": [
 														"local",
 														"cloudflare"
 													],
-													"example": "cloudflare",
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"version": {
 													"description": "The version of the Tunnel Configuration.",
 													"type": "integer"
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Put configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Put configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1706,12 +1672,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1721,25 +1687,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1747,12 +1750,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Put configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -1767,7 +1768,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Put configuration",
 		"tags": [
 			"Cloudflare Tunnel Configuration"
 		],
@@ -1782,149 +1782,153 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
-		"description": "Adds or updates the high-availability configuration for a WARP Connector tunnel.",
 		"operationId": "cloudflare-tunnel-configuration-update-warp-connector-configuration",
+		"summary": "Update WARP Connector HA configuration",
+		"description": "Adds or updates the high-availability configuration for a WARP Connector tunnel.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "tunnel_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "UUID of the tunnel.",
-					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"type": "string",
 					"format": "uuid",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
-					"type": "string"
+					"readOnly": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"config": {
 								"description": "Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.",
+								"type": "object",
 								"nullable": true,
 								"oneOf": [
 									{
+										"type": "object",
 										"properties": {
 											"fnr_id": {
 												"description": "Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.",
-												"example": "eni-0123456789abcdef0",
-												"type": "string"
+												"type": "string",
+												"example": "eni-0123456789abcdef0"
 											}
 										},
 										"required": [
 											"fnr_id"
-										],
-										"type": "object"
+										]
 									},
 									{
+										"type": "object",
 										"properties": {
 											"vips": {
 												"description": "VIPs to assign on the CloudflareWARP interface.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "Virtual IP address (IPv4 or IPv6).",
-															"example": "10.0.0.1",
-															"type": "string"
+															"type": "string",
+															"example": "10.0.0.1"
 														}
 													},
 													"required": [
 														"address"
-													],
-													"type": "object"
+													]
 												},
 												"maxItems": 8,
-												"minItems": 1,
-												"type": "array"
+												"minItems": 1
 											},
 											"vips_previous": {
 												"description": "VIPs to clean up on demotion or version drift.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"address": {
 															"description": "Virtual IP address (IPv4 or IPv6).",
-															"example": "10.0.0.1",
-															"type": "string"
+															"type": "string",
+															"example": "10.0.0.1"
 														}
 													},
 													"required": [
 														"address"
-													],
-													"type": "object"
+													]
 												},
-												"maxItems": 8,
-												"type": "array"
+												"maxItems": 8
 											}
 										},
 										"required": [
 											"vips"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"additionalProperties": false,
 										"description": "Empty object for none/disabled modes.",
 										"type": "object"
 									}
-								],
-								"type": "object"
+								]
 							},
 							"ha_mode": {
 								"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+								"type": "string",
+								"example": "aws",
 								"enum": [
 									"none",
 									"disabled",
 									"aws",
 									"local"
 								],
-								"example": "aws",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"ha_mode"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update WARP Connector HA configuration response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1933,12 +1937,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1948,15 +1952,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1965,12 +1969,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1980,95 +1984,94 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config": {
 													"description": "Provider-specific configuration. Present for `aws` and `local` modes.",
+													"type": "object",
 													"nullable": true,
 													"oneOf": [
 														{
+															"type": "object",
 															"properties": {
 																"fnr_id": {
 																	"description": "Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.",
-																	"example": "eni-0123456789abcdef0",
-																	"type": "string"
+																	"type": "string",
+																	"example": "eni-0123456789abcdef0"
 																}
 															},
 															"required": [
 																"fnr_id"
-															],
-															"type": "object"
+															]
 														},
 														{
+															"type": "object",
 															"properties": {
 																"vips": {
 																	"description": "VIPs to assign on the CloudflareWARP interface.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"address": {
 																				"description": "Virtual IP address (IPv4 or IPv6).",
-																				"example": "10.0.0.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "10.0.0.1"
 																			}
 																		},
 																		"required": [
 																			"address"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"maxItems": 8,
-																	"minItems": 1,
-																	"type": "array"
+																	"minItems": 1
 																},
 																"vips_previous": {
 																	"description": "VIPs to clean up on demotion or version drift.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"address": {
 																				"description": "Virtual IP address (IPv4 or IPv6).",
-																				"example": "10.0.0.1",
-																				"type": "string"
+																				"type": "string",
+																				"example": "10.0.0.1"
 																			}
 																		},
 																		"required": [
 																			"address"
-																		],
-																		"type": "object"
+																		]
 																	},
-																	"maxItems": 8,
-																	"type": "array"
+																	"maxItems": 8
 																}
 															},
 															"required": [
 																"vips"
-															],
-															"type": "object"
+															]
 														}
-													],
-													"type": "object"
+													]
 												},
 												"configuration_version": {
 													"description": "Monotonically increasing configuration version, incremented on each PUT.",
@@ -2076,38 +2079,38 @@
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2021-01-25T18:22:34.317854Z",
+													"readOnly": true
 												},
 												"ha_mode": {
 													"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+													"type": "string",
+													"example": "aws",
 													"enum": [
 														"none",
 														"disabled",
 														"aws",
 														"local"
 													],
-													"example": "aws",
-													"type": "string",
 													"x-auditable": true
 												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
-													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"type": "string",
 													"format": "uuid",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												},
 												"updated_at": {
 													"description": "Timestamp of the last update. Null if never updated.",
-													"example": "2021-01-25T18:22:34.317854Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2021-01-25T18:22:34.317854Z",
 													"nullable": true,
-													"readOnly": true,
-													"type": "string"
+													"readOnly": true
 												}
 											},
 											"required": [
@@ -2115,8 +2118,7 @@
 												"configuration_version",
 												"ha_mode",
 												"created_at"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -2124,66 +2126,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update WARP Connector HA configuration response"
+				}
 			},
 			"4XX": {
+				"description": "Update WARP Connector HA configuration response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2192,12 +2158,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2207,25 +2173,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2233,12 +2236,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update WARP Connector HA configuration response failure"
+				}
 			}
 		},
 		"security": [
@@ -2253,7 +2254,6 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Update WARP Connector HA configuration",
 		"tags": [
 			"Cloudflare Tunnel Configuration"
 		],

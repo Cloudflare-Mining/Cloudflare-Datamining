@@ -1,12 +1,13 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/targetIndustries": {
-		"description": "List all target industries referenced in events for a specific dataset.",
 		"operationId": "get_TargetIndustryListByDataset",
+		"summary": "Lists all target industries for a specific dataset",
+		"description": "List all target industries referenced in events for a specific dataset.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -14,69 +15,71 @@
 				}
 			},
 			{
-				"description": "Dataset UUID.",
-				"in": "path",
 				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset UUID.",
 				"required": true,
 				"schema": {
 					"description": "Dataset UUID.",
-					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"format": "uuid"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of target industries for the dataset.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"items": {
+									"type": "object",
 									"properties": {
 										"type": {
-											"example": "string",
-											"type": "string"
+											"type": "string",
+											"example": "string"
 										}
 									},
 									"required": [
 										"type"
-									],
-									"type": "object"
+									]
 								},
 								"type": {
-									"example": "array",
-									"type": "string"
+									"type": "string",
+									"example": "array"
 								}
 							},
 							"required": [
 								"type",
 								"items"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of target industries for the dataset."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -89,12 +92,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -102,7 +103,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists all target industries for a specific dataset",
 		"tags": [
 			"Target Industry"
 		],
@@ -112,13 +112,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries": {
-		"description": "List target industries referenced in events across one or more datasets.",
 		"operationId": "get_TargetIndustryList",
+		"summary": "Lists target industries across multiple datasets",
+		"description": "List target industries referenced in events across one or more datasets.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -126,70 +127,72 @@
 				}
 			},
 			{
-				"description": "Array of dataset IDs to query target industries from. If not provided, uses the default dataset.",
-				"in": "query",
 				"name": "datasetIds",
+				"in": "query",
+				"description": "Array of dataset IDs to query target industries from. If not provided, uses the default dataset.",
 				"schema": {
 					"description": "Array of dataset IDs to query target industries from. If not provided, uses the default dataset.",
+					"type": "array",
 					"items": {
 						"type": "string"
-					},
-					"type": "array"
+					}
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Returns a list of target industries.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"items": {
+									"type": "object",
 									"properties": {
 										"type": {
-											"example": "string",
-											"type": "string"
+											"type": "string",
+											"example": "string"
 										}
 									},
 									"required": [
 										"type"
-									],
-									"type": "object"
+									]
 								},
 								"type": {
-									"example": "array",
-									"type": "string"
+									"type": "string",
+									"example": "array"
 								}
 							},
 							"required": [
 								"type",
 								"items"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns a list of target industries."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -202,12 +205,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -215,7 +216,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists target industries across multiple datasets",
 		"tags": [
 			"Target Industry"
 		],
@@ -225,13 +225,14 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries/catalog": {
-		"description": "List all predefined target industries from the industry map catalog.",
 		"operationId": "get_TargetIndustryListComplete",
+		"summary": "Lists all target industries from industry map catalog",
+		"description": "List all predefined target industries from the industry map catalog.",
 		"parameters": [
 			{
-				"description": "Account ID.",
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
 				"required": true,
 				"schema": {
 					"description": "Account ID.",
@@ -241,56 +242,58 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Returns all target industries from industry map catalog.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"items": {
+									"type": "object",
 									"properties": {
 										"type": {
-											"example": "string",
-											"type": "string"
+											"type": "string",
+											"example": "string"
 										}
 									},
 									"required": [
 										"type"
-									],
-									"type": "object"
+									]
 								},
 								"type": {
-									"example": "array",
-									"type": "string"
+									"type": "string",
+									"example": "array"
 								}
 							},
 							"required": [
 								"type",
 								"items"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Returns all target industries from industry map catalog."
+				}
 			},
 			"400": {
+				"description": "Bad Request.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
+									"type": "array",
 									"items": {
 										"properties": {
 											"message": {
-												"example": "An error occurred.",
-												"type": "string"
+												"type": "string",
+												"example": "An error occurred."
 											}
 										},
 										"required": [
 											"message"
 										],
 										"type": "object"
-									},
-									"type": "array"
+									}
 								},
 								"result": {
 									"type": "object"
@@ -303,12 +306,10 @@
 								"result",
 								"success",
 								"errors"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Bad Request."
+				}
 			}
 		},
 		"security": [
@@ -316,7 +317,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists all target industries from industry map catalog",
 		"tags": [
 			"Target Industry"
 		],

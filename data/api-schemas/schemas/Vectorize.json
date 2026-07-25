@@ -1,50 +1,54 @@
 {
 	"DELETE /accounts/{account_id}/vectorize/v2/indexes/{index_name}": {
-		"description": "Deletes the specified Vectorize Index.",
 		"operationId": "vectorize-delete-vectorize-index",
+		"summary": "Delete Vectorize Index",
+		"description": "Deletes the specified Vectorize Index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Vectorize Index Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -57,15 +61,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -78,7 +82,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -96,11 +100,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -108,12 +112,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -122,29 +126,27 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
-											"nullable": true,
-											"type": "object"
+											"type": "object",
+											"nullable": true
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Vectorize Index Response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Vectorize Index Failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -152,16 +154,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -174,15 +178,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -195,7 +199,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -213,11 +217,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -225,12 +229,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -239,19 +243,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -259,48 +261,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -313,25 +290,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -339,14 +342,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Vectorize Index Failure"
+				}
 			}
 		},
 		"security": [
@@ -358,7 +359,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Vectorize Index",
 		"tags": [
 			"Vectorize"
 		],
@@ -372,38 +372,41 @@
 		}
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes": {
-		"description": "Returns a list of Vectorize Indexes",
 		"operationId": "vectorize-list-vectorize-indexes",
+		"summary": "List Vectorize Indexes",
+		"description": "Returns a list of Vectorize Indexes",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Vectorize Index Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -416,15 +419,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"message": {
 														"type": "string"
@@ -437,7 +440,7 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"result": {
 											"anyOf": [
@@ -455,11 +458,11 @@
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -467,83 +470,82 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"config": {
+														"type": "object",
 														"properties": {
 															"dimensions": {
 																"description": "Specifies the number of dimensions for the index",
+																"type": "integer",
 																"example": 768,
 																"maximum": 1536,
 																"minimum": 1,
-																"type": "integer",
 																"x-auditable": true
 															},
 															"metric": {
 																"description": "Specifies the type of metric to use calculating distance.",
+																"type": "string",
 																"enum": [
 																	"cosine",
 																	"euclidean",
 																	"dot-product"
 																],
-																"type": "string",
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"dimensions",
 															"metric"
-														],
-														"type": "object"
+														]
 													},
 													"created_on": {
 														"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-														"example": "2022-11-15T18:25:44.442097Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2022-11-15T18:25:44.442097Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"description": {
 														"description": "Specifies the description of the index.",
-														"example": "This is my example index.",
 														"type": "string",
+														"example": "This is my example index.",
 														"x-auditable": true
 													},
 													"modified_on": {
 														"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
-														"example": "2022-11-15T18:25:44.442097Z",
-														"format": "date-time",
-														"readOnly": true,
 														"type": "string",
+														"format": "date-time",
+														"example": "2022-11-15T18:25:44.442097Z",
+														"readOnly": true,
 														"x-auditable": true
 													},
 													"name": {
+														"type": "string",
 														"example": "example-index",
 														"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-														"type": "string",
 														"x-auditable": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Vectorize Index Response"
+				}
 			},
 			"4XX": {
+				"description": "List Vectorize Index Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -551,16 +553,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -573,15 +577,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -594,7 +598,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -612,11 +616,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -624,12 +628,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -638,19 +642,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -658,48 +660,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -712,25 +689,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -738,14 +741,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Vectorize Index Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -757,7 +758,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Vectorize Indexes",
 		"tags": [
 			"Vectorize"
 		],
@@ -772,51 +772,55 @@
 		}
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}": {
-		"description": "Returns the specified Vectorize Index.",
 		"operationId": "vectorize-get-vectorize-index",
+		"summary": "Get Vectorize Index",
+		"description": "Returns the specified Vectorize Index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Vectorize Index Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -829,15 +833,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -850,7 +854,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -868,11 +872,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -880,12 +884,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -894,85 +898,83 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config": {
+													"type": "object",
 													"properties": {
 														"dimensions": {
 															"description": "Specifies the number of dimensions for the index",
+															"type": "integer",
 															"example": 768,
 															"maximum": 1536,
 															"minimum": 1,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"metric": {
 															"description": "Specifies the type of metric to use calculating distance.",
+															"type": "string",
 															"enum": [
 																"cosine",
 																"euclidean",
 																"dot-product"
 															],
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"dimensions",
 														"metric"
-													],
-													"type": "object"
+													]
 												},
 												"created_on": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "Specifies the description of the index.",
-													"example": "This is my example index.",
 													"type": "string",
+													"example": "This is my example index.",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
+													"type": "string",
 													"example": "example-index",
 													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Vectorize Index Response"
+				}
 			},
 			"4XX": {
+				"description": "Get Vectorize Index Failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -980,16 +982,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1002,15 +1006,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1023,7 +1027,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1041,11 +1045,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1053,12 +1057,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -1067,19 +1071,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -1087,48 +1089,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1141,25 +1118,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1167,14 +1170,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Vectorize Index Failure"
+				}
 			}
 		},
 		"security": [
@@ -1186,7 +1187,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Vectorize Index",
 		"tags": [
 			"Vectorize"
 		],
@@ -1201,51 +1201,55 @@
 		}
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/info": {
-		"description": "Get information about a vectorize index.",
 		"operationId": "vectorize-index-info",
+		"summary": "Get Vectorize Index Info",
+		"description": "Get information about a vectorize index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Get Vectorize Index Info Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1258,15 +1262,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1279,7 +1283,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1297,11 +1301,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1309,12 +1313,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -1323,33 +1327,32 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"dimensions": {
 													"description": "Specifies the number of dimensions for the index",
+													"type": "integer",
 													"example": 768,
 													"maximum": 1536,
 													"minimum": 1,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"processedUpToDatetime": {
 													"description": "Specifies the timestamp the last mutation batch was processed as an ISO8601 string.",
-													"example": "2024-07-22T18:25:44.442097Z",
+													"type": "string",
 													"format": "date-time",
+													"example": "2024-07-22T18:25:44.442097Z",
 													"nullable": true,
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true
 												},
 												"processedUpToMutation": {
@@ -1360,22 +1363,21 @@
 												},
 												"vectorCount": {
 													"description": "Specifies the number of vectors present in the index",
-													"example": 300000,
 													"type": "integer",
+													"example": 300000,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Vectorize Index Info Response"
+				}
 			},
 			"4XX": {
+				"description": "Get Vectorize Index Info Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1383,16 +1385,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1405,15 +1409,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1426,7 +1430,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1444,11 +1448,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1456,12 +1460,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -1470,19 +1474,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -1490,48 +1492,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1544,25 +1521,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1570,14 +1573,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Vectorize Index Info Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -1589,7 +1590,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Vectorize Index Info",
 		"tags": [
 			"Vectorize"
 		],
@@ -1604,72 +1604,76 @@
 		}
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/list": {
-		"description": "Returns a paginated list of vector identifiers from the specified index.",
 		"operationId": "vectorize-list-vectors",
+		"summary": "List Vectors",
+		"description": "Returns a paginated list of vector identifiers from the specified index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "count",
+				"in": "query",
 				"schema": {
-					"default": 100,
 					"description": "Maximum number of vectors to return",
+					"type": "integer",
 					"example": 50,
+					"default": 100,
 					"maximum": 1000,
-					"minimum": 1,
-					"type": "integer"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "cursor",
+				"in": "query",
 				"schema": {
 					"description": "Cursor for pagination to get the next page of results",
-					"example": "suUTaDY5PFUiRweVccnzyt9n75suNPbXHPshvCzue5mHjtj7Letjvzlza9eGj099",
-					"type": "string"
+					"type": "string",
+					"example": "suUTaDY5PFUiRweVccnzyt9n75suNPbXHPshvCzue5mHjtj7Letjvzlza9eGj099"
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Vectors Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1682,15 +1686,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1703,7 +1707,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -1721,11 +1725,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -1733,12 +1737,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -1747,64 +1751,63 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Number of vectors returned in this response",
-													"example": 100,
-													"type": "integer"
+													"type": "integer",
+													"example": 100
 												},
 												"cursorExpirationTimestamp": {
 													"description": "When the cursor expires as an ISO8601 string",
-													"example": "2025-08-12T20:32:52.469144957+00:00",
+													"type": "string",
 													"format": "date-time",
-													"nullable": true,
-													"type": "string"
+													"example": "2025-08-12T20:32:52.469144957+00:00",
+													"nullable": true
 												},
 												"isTruncated": {
 													"description": "Whether there are more vectors available beyond this response",
-													"example": true,
-													"type": "boolean"
+													"type": "boolean",
+													"example": true
 												},
 												"nextCursor": {
 													"description": "Cursor for the next page of results",
+													"type": "string",
 													"example": "suUTaDY5PFUiRweVccnzyt9n75suNPbXHPshvCzue5mHjtj7Letjvzlza9eGj099",
-													"nullable": true,
-													"type": "string"
+													"nullable": true
 												},
 												"totalCount": {
 													"description": "Total number of vectors in the index",
-													"example": 500,
-													"type": "integer"
+													"type": "integer",
+													"example": 500
 												},
 												"vectors": {
 													"description": "Array of vector items",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "Identifier for a Vector",
+																"type": "string",
 																"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 64,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															}
 														},
 														"required": [
 															"id"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"required": [
@@ -1812,18 +1815,17 @@
 												"totalCount",
 												"isTruncated",
 												"vectors"
-											],
-											"type": "object"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Vectors Response"
+				}
 			},
 			"4XX": {
+				"description": "List Vectors Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1831,16 +1833,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1853,15 +1857,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1874,7 +1878,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -1892,11 +1896,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -1904,12 +1908,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -1918,19 +1922,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -1938,48 +1940,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1992,25 +1969,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2018,14 +2021,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Vectors Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -2037,7 +2038,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Vectors",
 		"tags": [
 			"Vectorize"
 		],
@@ -2052,51 +2052,55 @@
 		}
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/list": {
-		"description": "List Metadata Indexes for the specified Vectorize Index.",
 		"operationId": "vectorize-list-metadata-indexes",
+		"summary": "List Metadata Indexes",
+		"description": "List Metadata Indexes for the specified Vectorize Index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Metadata Index Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2109,15 +2113,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2130,7 +2134,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2148,11 +2152,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2160,12 +2164,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -2174,17 +2178,43 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
+											"properties": {
+												"metadataIndexes": {
+													"description": "Array of indexed metadata properties.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"indexType": {
+																"description": "Specifies the type of indexed metadata property.",
+																"type": "string",
+																"enum": [
+																	"string",
+																	"number",
+																	"boolean"
+																],
+																"x-auditable": true
+															},
+															"propertyName": {
+																"description": "Specifies the indexed metadata property.",
+																"type": "string",
+																"example": "random_metadata_property",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													}
+												}
+											},
 											"example": {
 												"metadataIndexes": [
 													{
@@ -2200,45 +2230,17 @@
 														"propertyName": "some-bool-prop"
 													}
 												]
-											},
-											"properties": {
-												"metadataIndexes": {
-													"description": "Array of indexed metadata properties.",
-													"items": {
-														"properties": {
-															"indexType": {
-																"description": "Specifies the type of indexed metadata property.",
-																"enum": [
-																	"string",
-																	"number",
-																	"boolean"
-																],
-																"type": "string",
-																"x-auditable": true
-															},
-															"propertyName": {
-																"description": "Specifies the indexed metadata property.",
-																"example": "random_metadata_property",
-																"type": "string",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
-													},
-													"type": "array"
-												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List Metadata Index Response"
+				}
 			},
 			"4XX": {
+				"description": "List Metadata Index Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2246,16 +2248,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2268,15 +2272,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2289,7 +2293,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2307,11 +2311,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2319,12 +2323,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -2333,19 +2337,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -2353,48 +2355,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2407,25 +2384,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2433,14 +2436,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List Metadata Index Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -2452,7 +2453,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Metadata Indexes",
 		"tags": [
 			"Vectorize"
 		],
@@ -2462,27 +2462,30 @@
 		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes": {
-		"description": "Creates and returns a new Vectorize Index.",
 		"operationId": "vectorize-create-vectorize-index",
+		"summary": "Create Vectorize Index",
+		"description": "Creates and returns a new Vectorize Index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"config": {
 								"allOf": [
@@ -2490,36 +2493,39 @@
 										"description": "Specifies the type of configuration to use for the index.",
 										"oneOf": [
 											{
+												"type": "object",
 												"properties": {
 													"dimensions": {
 														"description": "Specifies the number of dimensions for the index",
+														"type": "integer",
 														"example": 768,
 														"maximum": 1536,
 														"minimum": 1,
-														"type": "integer",
 														"x-auditable": true
 													},
 													"metric": {
 														"description": "Specifies the type of metric to use calculating distance.",
+														"type": "string",
 														"enum": [
 															"cosine",
 															"euclidean",
 															"dot-product"
 														],
-														"type": "string",
 														"x-auditable": true
 													}
 												},
 												"required": [
 													"dimensions",
 													"metric"
-												],
-												"type": "object"
+												]
 											},
 											{
+												"type": "object",
 												"properties": {
 													"preset": {
 														"description": "Specifies the preset to use for the index.",
+														"type": "string",
+														"example": "@cf/baai/bge-small-en-v1.5",
 														"enum": [
 															"@cf/baai/bge-small-en-v1.5",
 															"@cf/baai/bge-base-en-v1.5",
@@ -2527,15 +2533,12 @@
 															"openai/text-embedding-ada-002",
 															"cohere/embed-multilingual-v2.0"
 														],
-														"example": "@cf/baai/bge-small-en-v1.5",
-														"type": "string",
 														"x-auditable": true
 													}
 												},
 												"required": [
 													"preset"
-												],
-												"type": "object"
+												]
 											}
 										]
 									}
@@ -2543,44 +2546,45 @@
 							},
 							"description": {
 								"description": "Specifies the description of the index.",
-								"example": "This is my example index.",
 								"type": "string",
+								"example": "This is my example index.",
 								"x-auditable": true
 							},
 							"name": {
+								"type": "string",
 								"example": "example-index",
 								"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"name",
 							"config"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Vectorize Index Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2593,15 +2597,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2614,7 +2618,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -2632,11 +2636,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -2644,12 +2648,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -2658,85 +2662,83 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"config": {
+													"type": "object",
 													"properties": {
 														"dimensions": {
 															"description": "Specifies the number of dimensions for the index",
+															"type": "integer",
 															"example": 768,
 															"maximum": 1536,
 															"minimum": 1,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"metric": {
 															"description": "Specifies the type of metric to use calculating distance.",
+															"type": "string",
 															"enum": [
 																"cosine",
 																"euclidean",
 																"dot-product"
 															],
-															"type": "string",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"dimensions",
 														"metric"
-													],
-													"type": "object"
+													]
 												},
 												"created_on": {
 													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"description": {
 													"description": "Specifies the description of the index.",
-													"example": "This is my example index.",
 													"type": "string",
+													"example": "This is my example index.",
 													"x-auditable": true
 												},
 												"modified_on": {
 													"description": "Specifies the timestamp the resource was modified as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"format": "date-time",
-													"readOnly": true,
 													"type": "string",
+													"format": "date-time",
+													"example": "2022-11-15T18:25:44.442097Z",
+													"readOnly": true,
 													"x-auditable": true
 												},
 												"name": {
+													"type": "string",
 													"example": "example-index",
 													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Vectorize Index Response"
+				}
 			},
 			"4XX": {
+				"description": "Create Vectorize Index Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2744,16 +2746,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2766,15 +2770,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2787,7 +2791,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -2805,11 +2809,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -2817,12 +2821,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -2831,19 +2835,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -2851,48 +2853,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2905,25 +2882,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2931,14 +2934,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Vectorize Index Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -2950,7 +2951,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Vectorize Index",
 		"tags": [
 			"Vectorize"
 		],
@@ -2964,78 +2964,82 @@
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids": {
-		"description": "Delete a set of vectors from an index by their vector identifiers.",
 		"operationId": "vectorize-delete-vectors-by-id",
+		"summary": "Delete Vectors By Identifier",
+		"description": "Delete a set of vectors from an index by their vector identifiers.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"ids": {
 								"description": "A list of vector identifiers to delete from the index indicated by the path.",
+								"type": "array",
+								"items": {
+									"description": "Identifier for a Vector",
+									"type": "string",
+									"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
+									"maxLength": 64,
+									"readOnly": true
+								},
 								"example": [
 									"5121db81354a40c6aedc3fe1ace51c59",
 									"f90eb49c2107486abdfd78c67e853430"
-								],
-								"items": {
-									"description": "Identifier for a Vector",
-									"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 64,
-									"readOnly": true,
-									"type": "string"
-								},
-								"type": "array"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Vector Identifiers Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3048,15 +3052,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3069,7 +3073,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3087,11 +3091,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3099,12 +3103,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -3113,17 +3117,16 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"mutationId": {
 													"description": "The unique identifier for the async mutation operation containing the changeset.",
@@ -3131,18 +3134,17 @@
 													"maxLength": 36,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Vector Identifiers Response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Vector Identifiers Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3150,16 +3152,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3172,15 +3176,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3193,7 +3197,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -3211,11 +3215,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -3223,12 +3227,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -3237,19 +3241,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -3257,48 +3259,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3311,25 +3288,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3337,14 +3340,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Vector Identifiers Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -3356,7 +3357,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Vectors By Identifier",
 		"tags": [
 			"Vectorize"
 		],
@@ -3370,78 +3370,82 @@
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids": {
-		"description": "Get a set of vectors from an index by their vector identifiers.",
 		"operationId": "vectorize-get-vectors-by-id",
+		"summary": "Get Vectors By Identifier",
+		"description": "Get a set of vectors from an index by their vector identifiers.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"ids": {
 								"description": "A list of vector identifiers to retrieve from the index indicated by the path.",
+								"type": "array",
+								"items": {
+									"description": "Identifier for a Vector",
+									"type": "string",
+									"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
+									"maxLength": 64,
+									"readOnly": true
+								},
 								"example": [
 									"5121db81354a40c6aedc3fe1ace51c59",
 									"f90eb49c2107486abdfd78c67e853430"
-								],
-								"items": {
-									"description": "Identifier for a Vector",
-									"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 64,
-									"readOnly": true,
-									"type": "string"
-								},
-								"type": "array"
+								]
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Get Vectors By Identifier Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3454,15 +3458,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3475,7 +3479,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3493,11 +3497,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3505,12 +3509,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -3519,18 +3523,42 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"description": "Array of vectors with matching ids.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"id": {
+														"description": "Identifier for a Vector",
+														"type": "string",
+														"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 64,
+														"readOnly": true
+													},
+													"metadata": {
+														"type": "object"
+													},
+													"namespace": {
+														"type": "string",
+														"nullable": true
+													},
+													"values": {
+														"type": "array",
+														"items": {
+															"type": "number"
+														}
+													}
+												},
+												"type": "object"
+											},
 											"example": [
 												{
 													"id": "some-vector-id",
@@ -3557,43 +3585,17 @@
 														0.661
 													]
 												}
-											],
-											"items": {
-												"properties": {
-													"id": {
-														"description": "Identifier for a Vector",
-														"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 64,
-														"readOnly": true,
-														"type": "string"
-													},
-													"metadata": {
-														"type": "object"
-													},
-													"namespace": {
-														"nullable": true,
-														"type": "string"
-													},
-													"values": {
-														"items": {
-															"type": "number"
-														},
-														"type": "array"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+											]
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Vectors By Identifier Response"
+				}
 			},
 			"4XX": {
+				"description": "Get Vectors By Identifier Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3601,16 +3603,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3623,15 +3627,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3644,7 +3648,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -3662,11 +3666,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -3674,12 +3678,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -3688,19 +3692,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -3708,48 +3710,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3762,25 +3739,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3788,14 +3791,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Get Vectors By Identifier Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -3807,7 +3808,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Vectors By Identifier",
 		"tags": [
 			"Vectorize"
 		],
@@ -3817,76 +3817,80 @@
 		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert": {
-		"description": "Inserts vectors into the specified index and returns a mutation id corresponding to the vectors enqueued for insertion.",
 		"operationId": "vectorize-insert-vector",
+		"summary": "Insert Vectors",
+		"description": "Inserts vectors into the specified index and returns a mutation id corresponding to the vectors enqueued for insertion.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "unparsable-behavior",
+				"in": "query",
 				"schema": {
 					"description": "Behavior for ndjson parse failures.",
+					"type": "string",
 					"enum": [
 						"error",
 						"discard"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/x-ndjson": {
 					"schema": {
 						"description": "ndjson file containing vectors to insert.",
-						"example": "@/path/to/vectors.ndjson",
+						"type": "string",
 						"format": "binary",
-						"type": "string"
+						"example": "@/path/to/vectors.ndjson"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Insert Vectors Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3899,15 +3903,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3920,7 +3924,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -3938,11 +3942,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -3950,12 +3954,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -3964,17 +3968,16 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"mutationId": {
 													"description": "The unique identifier for the async mutation operation containing the changeset.",
@@ -3982,18 +3985,17 @@
 													"maxLength": 36,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Insert Vectors Response"
+				}
 			},
 			"4XX": {
+				"description": "Insert Vectors Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4001,16 +4003,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -4023,15 +4027,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -4044,7 +4048,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -4062,11 +4066,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -4074,12 +4078,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -4088,19 +4092,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -4108,48 +4110,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4162,25 +4139,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4188,14 +4191,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Insert Vectors Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -4207,7 +4208,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Insert Vectors",
 		"tags": [
 			"Vectorize"
 		],
@@ -4216,83 +4216,87 @@
 		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/create": {
-		"description": "Enable metadata filtering based on metadata property. Limited to 10 properties.",
 		"operationId": "vectorize-create-metadata-index",
+		"summary": "Create Metadata Index",
+		"description": "Enable metadata filtering based on metadata property. Limited to 10 properties.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"indexType": {
 								"description": "Specifies the type of metadata property to index.",
+								"type": "string",
 								"enum": [
 									"string",
 									"number",
 									"boolean"
 								],
-								"type": "string",
 								"x-auditable": true
 							},
 							"propertyName": {
 								"description": "Specifies the metadata property to index.",
-								"example": "random_metadata_property",
 								"type": "string",
+								"example": "random_metadata_property",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"propertyName",
 							"indexType"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Metadata Index Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4305,15 +4309,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4326,7 +4330,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -4344,11 +4348,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -4356,12 +4360,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -4370,17 +4374,16 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"mutationId": {
 													"description": "The unique identifier for the async mutation operation containing the changeset.",
@@ -4388,18 +4391,17 @@
 													"maxLength": 36,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Metadata Index Response"
+				}
 			},
 			"4XX": {
+				"description": "Create Metadata Index Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4407,16 +4409,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -4429,15 +4433,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -4450,7 +4454,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -4468,11 +4472,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -4480,12 +4484,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -4494,19 +4498,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -4514,48 +4516,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4568,25 +4545,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4594,14 +4597,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create Metadata Index Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -4613,7 +4614,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Metadata Index",
 		"tags": [
 			"Vectorize"
 		],
@@ -4627,72 +4627,76 @@
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/delete": {
-		"description": "Allow Vectorize to delete the specified metadata index.",
 		"operationId": "vectorize-delete-metadata-index",
+		"summary": "Delete Metadata Index",
+		"description": "Allow Vectorize to delete the specified metadata index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"propertyName": {
 								"description": "Specifies the metadata property for which the index must be deleted.",
-								"example": "random_metadata_property",
 								"type": "string",
+								"example": "random_metadata_property",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"propertyName"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete Metadata Index Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4705,15 +4709,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4726,7 +4730,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -4744,11 +4748,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -4756,12 +4760,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -4770,17 +4774,16 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"mutationId": {
 													"description": "The unique identifier for the async mutation operation containing the changeset.",
@@ -4788,18 +4791,17 @@
 													"maxLength": 36,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Metadata Index Response"
+				}
 			},
 			"4XX": {
+				"description": "Delete Metadata Index Failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4807,16 +4809,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -4829,15 +4833,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -4850,7 +4854,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -4868,11 +4872,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -4880,12 +4884,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -4894,19 +4898,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -4914,48 +4916,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4968,25 +4945,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4994,14 +4997,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Delete Metadata Index Failure"
+				}
 			}
 		},
 		"security": [
@@ -5013,7 +5014,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Metadata Index",
 		"tags": [
 			"Vectorize"
 		],
@@ -5027,109 +5027,113 @@
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/query": {
-		"description": "Finds vectors closest to a given vector in an index.",
 		"operationId": "vectorize-query-vector",
+		"summary": "Query Vectors",
+		"description": "Finds vectors closest to a given vector in an index.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"filter": {
 								"description": "A metadata filter expression used to limit nearest neighbor results.",
+								"type": "object",
 								"example": {
 									"has_viewed": {
 										"$ne": true
 									},
 									"streaming_platform": "netflix"
-								},
-								"type": "object"
+								}
 							},
 							"returnMetadata": {
-								"default": "none",
 								"description": "Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors.",
+								"type": "string",
+								"default": "none",
 								"enum": [
 									"none",
 									"indexed",
 									"all"
-								],
-								"type": "string"
+								]
 							},
 							"returnValues": {
-								"default": false,
 								"description": "Whether to return the values associated with the closest vectors.",
-								"type": "boolean"
+								"type": "boolean",
+								"default": false
 							},
 							"topK": {
-								"default": 5,
 								"description": "The number of nearest neighbors to find.",
+								"type": "number",
 								"example": 5,
-								"type": "number"
+								"default": 5
 							},
 							"vector": {
 								"description": "The search vector that will be used to find the nearest neighbors.",
+								"type": "array",
+								"items": {
+									"type": "number"
+								},
 								"example": [
 									0.5,
 									0.5,
 									0.5
-								],
-								"items": {
-									"type": "number"
-								},
-								"type": "array"
+								]
 							}
 						},
 						"required": [
 							"vector"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Query Vectors Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -5142,15 +5146,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -5163,7 +5167,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -5181,11 +5185,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -5193,12 +5197,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -5207,17 +5211,16 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"count": {
 													"description": "Specifies the count of vectors returned by the search",
@@ -5225,51 +5228,50 @@
 												},
 												"matches": {
 													"description": "Array of vectors matched by the search",
+													"type": "array",
 													"items": {
 														"properties": {
 															"id": {
 																"description": "Identifier for a Vector",
+																"type": "string",
 																"example": "some-vector-id-023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 64,
-																"readOnly": true,
-																"type": "string"
+																"readOnly": true
 															},
 															"metadata": {
-																"nullable": true,
-																"type": "object"
+																"type": "object",
+																"nullable": true
 															},
 															"namespace": {
-																"nullable": true,
-																"type": "string"
+																"type": "string",
+																"nullable": true
 															},
 															"score": {
 																"description": "The score of the vector according to the index's distance metric",
 																"type": "number"
 															},
 															"values": {
+																"type": "array",
 																"items": {
 																	"type": "number"
 																},
-																"nullable": true,
-																"type": "array"
+																"nullable": true
 															}
 														},
 														"type": "object"
-													},
-													"type": "array"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Query Vectors Response"
+				}
 			},
 			"4XX": {
+				"description": "Query Vectors Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5277,16 +5279,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -5299,15 +5303,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -5320,7 +5324,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -5338,11 +5342,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -5350,12 +5354,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -5364,19 +5368,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -5384,48 +5386,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -5438,25 +5415,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -5464,14 +5467,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Query Vectors Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -5483,7 +5484,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Query Vectors",
 		"tags": [
 			"Vectorize"
 		],
@@ -5493,76 +5493,80 @@
 		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert": {
-		"description": "Upserts vectors into the specified index, creating them if they do not exist and returns a mutation id corresponding to the vectors enqueued for upsertion.",
 		"operationId": "vectorize-upsert-vector",
+		"summary": "Upsert Vectors",
+		"description": "Upserts vectors into the specified index, creating them if they do not exist and returns a mutation id corresponding to the vectors enqueued for upsertion.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "index_name",
+				"in": "path",
 				"required": true,
 				"schema": {
+					"type": "string",
 					"example": "example-index",
 					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "unparsable-behavior",
+				"in": "query",
 				"schema": {
 					"description": "Behavior for ndjson parse failures.",
+					"type": "string",
 					"enum": [
 						"error",
 						"discard"
-					],
-					"type": "string"
+					]
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/x-ndjson": {
 					"schema": {
 						"description": "ndjson file containing vectors to upsert.",
-						"example": "@/path/to/vectors.ndjson",
+						"type": "string",
 						"format": "binary",
-						"type": "string"
+						"example": "@/path/to/vectors.ndjson"
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Upsert Vectors Response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -5575,15 +5579,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -5596,7 +5600,7 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"result": {
 													"anyOf": [
@@ -5614,11 +5618,11 @@
 												},
 												"success": {
 													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
@@ -5626,12 +5630,12 @@
 												"errors",
 												"messages",
 												"result"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"anyOf": [
 														{
 															"type": "object"
@@ -5640,17 +5644,16 @@
 															"type": "string"
 														}
 													],
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											}
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"mutationId": {
 													"description": "The unique identifier for the async mutation operation containing the changeset.",
@@ -5658,18 +5661,17 @@
 													"maxLength": 36,
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Upsert Vectors Response"
+				}
 			},
 			"4XX": {
+				"description": "Upsert Vectors Failure Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5677,16 +5679,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -5699,15 +5703,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -5720,7 +5724,7 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"result": {
 															"anyOf": [
@@ -5738,11 +5742,11 @@
 														},
 														"success": {
 															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
@@ -5750,12 +5754,12 @@
 														"errors",
 														"messages",
 														"result"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result": {
+															"type": "object",
 															"anyOf": [
 																{
 																	"type": "object"
@@ -5764,19 +5768,17 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true,
-															"type": "object"
+															"nullable": true
 														}
 													}
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
-													"nullable": true,
-													"type": "object"
+													"type": "object",
+													"nullable": true
 												}
 											},
 											"type": "object"
@@ -5784,48 +5786,23 @@
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -5838,25 +5815,51 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -5864,14 +5867,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Upsert Vectors Failure Response"
+				}
 			}
 		},
 		"security": [
@@ -5883,7 +5884,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Upsert Vectors",
 		"tags": [
 			"Vectorize"
 		],

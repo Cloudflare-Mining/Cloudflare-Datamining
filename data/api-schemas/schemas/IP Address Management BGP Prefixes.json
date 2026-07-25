@@ -1,58 +1,61 @@
 {
 	"DELETE /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
-		"description": "Delete a BGP Prefix associated with the specified IP Prefix. A BGP Prefix must be withdrawn before it can be deleted.",
 		"operationId": "ip-address-management-prefixes-delete-bgp-prefix",
+		"summary": "Delete BGP Prefix",
+		"description": "Delete a BGP Prefix associated with the specified IP Prefix. A BGP Prefix must be withdrawn before it can be deleted.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "bgp_prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of BGP Prefix.",
+					"type": "string",
 					"example": "7009ba364c7a5760798ceb430e603b74",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Delete BGP Prefix response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -61,12 +64,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -76,15 +79,15 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"messages": {
-									"example": [],
+									"type": "array",
 									"items": {
 										"properties": {
 											"code": {
-												"minimum": 1000,
-												"type": "integer"
+												"type": "integer",
+												"minimum": 1000
 											},
 											"documentation_url": {
 												"type": "string"
@@ -93,12 +96,12 @@
 												"type": "string"
 											},
 											"source": {
+												"type": "object",
 												"properties": {
 													"pointer": {
 														"type": "string"
 													}
-												},
-												"type": "object"
+												}
 											}
 										},
 										"required": [
@@ -108,85 +111,48 @@
 										"type": "object",
 										"uniqueItems": true
 									},
-									"type": "array"
+									"example": []
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true,
 									"enum": [
 										true
-									],
-									"example": true,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
 								"success",
 								"errors",
 								"messages"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete BGP Prefix response"
+				}
 			},
 			"4XX": {
+				"description": "Delete BGP Prefix response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -195,12 +161,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -210,25 +176,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -236,12 +239,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete BGP Prefix response failure"
+				}
 			}
 		},
 		"security": [
@@ -250,57 +251,60 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete BGP Prefix",
 		"tags": [
 			"IP Address Management BGP Prefixes"
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
-		"description": "List all BGP Prefixes within the specified IP Prefix. BGP Prefixes are used to control which specific subnets are advertised to the Internet. It is possible to advertise subnets more specific than an IP Prefix by creating more specific BGP Prefixes.",
 		"operationId": "ip-address-management-prefixes-list-bgp-prefixes",
+		"summary": "List BGP Prefixes",
+		"description": "List all BGP Prefixes within the specified IP Prefix. BGP Prefixes are used to control which specific subnets are advertised to the Internet. It is possible to advertise subnets more specific than an IP Prefix by creating more specific BGP Prefixes.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List BGP Prefixes response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -309,12 +313,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -324,15 +328,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -341,12 +345,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -356,145 +360,143 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"asn": {
 														"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+														"type": "integer",
 														"example": 13335,
 														"nullable": true,
-														"type": "integer",
 														"x-auditable": true
 													},
 													"asn_prepend_count": {
-														"default": 0,
 														"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+														"type": "integer",
 														"example": 2,
+														"default": 0,
 														"maximum": 3,
 														"minimum": 0,
-														"type": "integer",
 														"x-auditable": true
 													},
 													"auto_advertise_withdraw": {
-														"default": false,
 														"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-														"example": true,
 														"type": "boolean",
+														"example": true,
+														"default": false,
 														"x-auditable": true
 													},
 													"bgp_signal_opts": {
+														"type": "object",
 														"properties": {
 															"enabled": {
 																"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"modified_at": {
 																"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"nullable": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"nullable": true,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													},
 													"cidr": {
 														"description": "IP Prefix in Classless Inter-Domain Routing format.",
-														"example": "192.0.2.0/24",
 														"type": "string",
+														"example": "192.0.2.0/24",
 														"x-auditable": true
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"id": {
 														"description": "Identifier of BGP Prefix.",
+														"type": "string",
 														"example": "7009ba364c7a5760798ceb430e603b74",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													},
 													"modified_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													},
 													"on_demand": {
+														"type": "object",
 														"properties": {
 															"advertised": {
 																"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+																"type": "boolean",
 																"example": true,
 																"nullable": true,
-																"type": "boolean",
 																"x-auditable": true
 															},
 															"advertised_modified_at": {
 																"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"nullable": true,
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"nullable": true,
 																"x-auditable": true
 															},
 															"on_demand_enabled": {
 																"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"on_demand_locked": {
 																"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															}
-														},
-														"type": "object"
+														}
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "List BGP Prefixes response"
+				}
 			},
 			"4XX": {
+				"description": "List BGP Prefixes response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -502,16 +504,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -520,12 +524,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -535,15 +539,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -552,12 +556,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -567,194 +571,156 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"asn": {
 																"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+																"type": "integer",
 																"example": 13335,
 																"nullable": true,
-																"type": "integer",
 																"x-auditable": true
 															},
 															"asn_prepend_count": {
-																"default": 0,
 																"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+																"type": "integer",
 																"example": 2,
+																"default": 0,
 																"maximum": 3,
 																"minimum": 0,
-																"type": "integer",
 																"x-auditable": true
 															},
 															"auto_advertise_withdraw": {
-																"default": false,
 																"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-																"example": true,
 																"type": "boolean",
+																"example": true,
+																"default": false,
 																"x-auditable": true
 															},
 															"bgp_signal_opts": {
+																"type": "object",
 																"properties": {
 																	"enabled": {
 																		"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-																		"example": false,
 																		"type": "boolean",
+																		"example": false,
 																		"x-auditable": true
 																	},
 																	"modified_at": {
 																		"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"nullable": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"cidr": {
 																"description": "IP Prefix in Classless Inter-Domain Routing format.",
-																"example": "192.0.2.0/24",
 																"type": "string",
+																"example": "192.0.2.0/24",
 																"x-auditable": true
 															},
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															"id": {
 																"description": "Identifier of BGP Prefix.",
+																"type": "string",
 																"example": "7009ba364c7a5760798ceb430e603b74",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"modified_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															},
 															"on_demand": {
+																"type": "object",
 																"properties": {
 																	"advertised": {
 																		"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+																		"type": "boolean",
 																		"example": true,
 																		"nullable": true,
-																		"type": "boolean",
 																		"x-auditable": true
 																	},
 																	"advertised_modified_at": {
 																		"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"nullable": true,
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
 																		"x-auditable": true
 																	},
 																	"on_demand_enabled": {
 																		"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true
 																	},
 																	"on_demand_locked": {
 																		"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-																		"example": false,
 																		"type": "boolean",
+																		"example": false,
 																		"x-auditable": true
 																	}
-																},
-																"type": "object"
+																}
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -763,12 +729,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -778,25 +744,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -804,14 +807,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "List BGP Prefixes response failure"
+				}
 			}
 		},
 		"security": [
@@ -820,7 +821,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List BGP Prefixes",
 		"tags": [
 			"IP Address Management BGP Prefixes"
 		],
@@ -834,63 +834,67 @@
 		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
-		"description": "Retrieve a single BGP Prefix according to its identifier",
 		"operationId": "ip-address-management-prefixes-fetch-bgp-prefix",
+		"summary": "Fetch BGP Prefix",
+		"description": "Retrieve a single BGP Prefix according to its identifier",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "bgp_prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of BGP Prefix.",
+					"type": "string",
 					"example": "7009ba364c7a5760798ceb430e603b74",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Fetch BGP Prefix response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -899,12 +903,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -914,15 +918,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -931,12 +935,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -946,142 +950,140 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"type": "integer",
 													"example": 13335,
 													"nullable": true,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"asn_prepend_count": {
-													"default": 0,
 													"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+													"type": "integer",
 													"example": 2,
+													"default": 0,
 													"maximum": 3,
 													"minimum": 0,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"auto_advertise_withdraw": {
-													"default": false,
 													"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"bgp_signal_opts": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"modified_at": {
 															"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of BGP Prefix.",
+													"type": "string",
 													"example": "7009ba364c7a5760798ceb430e603b74",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"on_demand": {
+													"type": "object",
 													"properties": {
 														"advertised": {
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+															"type": "boolean",
 															"example": true,
 															"nullable": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"advertised_modified_at": {
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"on_demand_locked": {
 															"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Fetch BGP Prefix response"
+				}
 			},
 			"4XX": {
+				"description": "Fetch BGP Prefix response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1089,16 +1091,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1107,12 +1111,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1122,15 +1126,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1139,12 +1143,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1154,191 +1158,153 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"type": "integer",
 															"example": 13335,
 															"nullable": true,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"asn_prepend_count": {
-															"default": 0,
 															"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+															"type": "integer",
 															"example": 2,
+															"default": 0,
 															"maximum": 3,
 															"minimum": 0,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"auto_advertise_withdraw": {
-															"default": false,
 															"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"bgp_signal_opts": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"modified_at": {
 																	"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"nullable": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of BGP Prefix.",
+															"type": "string",
 															"example": "7009ba364c7a5760798ceb430e603b74",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"on_demand": {
+															"type": "object",
 															"properties": {
 																"advertised": {
 																	"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+																	"type": "boolean",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"advertised_modified_at": {
 																	"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"nullable": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
 																	"x-auditable": true
 																},
 																"on_demand_enabled": {
 																	"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"on_demand_locked": {
 																	"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1347,12 +1313,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1362,25 +1328,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1388,14 +1391,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Fetch BGP Prefix response failure"
+				}
 			}
 		},
 		"security": [
@@ -1404,7 +1405,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Fetch BGP Prefix",
 		"tags": [
 			"IP Address Management BGP Prefixes"
 		],
@@ -1418,99 +1418,103 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
-		"description": "Update the properties of a BGP Prefix, such as the on demand advertisement status (advertised or withdrawn).",
 		"operationId": "ip-address-management-prefixes-update-bgp-prefix",
+		"summary": "Update BGP Prefix",
+		"description": "Update the properties of a BGP Prefix, such as the on demand advertisement status (advertised or withdrawn).",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "bgp_prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of BGP Prefix.",
+					"type": "string",
 					"example": "7009ba364c7a5760798ceb430e603b74",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"asn_prepend_count": {
-								"default": 0,
 								"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+								"type": "integer",
 								"example": 2,
+								"default": 0,
 								"maximum": 3,
 								"minimum": 0,
-								"type": "integer",
 								"x-auditable": true
 							},
 							"auto_advertise_withdraw": {
-								"default": false,
 								"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-								"example": true,
 								"type": "boolean",
+								"example": true,
+								"default": false,
 								"x-auditable": true
 							},
 							"on_demand": {
+								"type": "object",
 								"properties": {
 									"advertised": {
 										"type": "boolean"
 									}
-								},
-								"type": "object"
+								}
 							}
-						},
-						"type": "object"
+						}
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update BGP Prefix response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1519,12 +1523,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1534,15 +1538,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1551,12 +1555,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1566,142 +1570,140 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"type": "integer",
 													"example": 13335,
 													"nullable": true,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"asn_prepend_count": {
-													"default": 0,
 													"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+													"type": "integer",
 													"example": 2,
+													"default": 0,
 													"maximum": 3,
 													"minimum": 0,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"auto_advertise_withdraw": {
-													"default": false,
 													"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"bgp_signal_opts": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"modified_at": {
 															"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of BGP Prefix.",
+													"type": "string",
 													"example": "7009ba364c7a5760798ceb430e603b74",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"on_demand": {
+													"type": "object",
 													"properties": {
 														"advertised": {
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+															"type": "boolean",
 															"example": true,
 															"nullable": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"advertised_modified_at": {
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"on_demand_locked": {
 															"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Update BGP Prefix response"
+				}
 			},
 			"4XX": {
+				"description": "Update BGP Prefix response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1709,16 +1711,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1727,12 +1731,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1742,15 +1746,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1759,12 +1763,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1774,191 +1778,153 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"type": "integer",
 															"example": 13335,
 															"nullable": true,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"asn_prepend_count": {
-															"default": 0,
 															"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+															"type": "integer",
 															"example": 2,
+															"default": 0,
 															"maximum": 3,
 															"minimum": 0,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"auto_advertise_withdraw": {
-															"default": false,
 															"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"bgp_signal_opts": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"modified_at": {
 																	"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"nullable": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of BGP Prefix.",
+															"type": "string",
 															"example": "7009ba364c7a5760798ceb430e603b74",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"on_demand": {
+															"type": "object",
 															"properties": {
 																"advertised": {
 																	"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+																	"type": "boolean",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"advertised_modified_at": {
 																	"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"nullable": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
 																	"x-auditable": true
 																},
 																"on_demand_enabled": {
 																	"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"on_demand_locked": {
 																	"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1967,12 +1933,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1982,25 +1948,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2008,14 +2011,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Update BGP Prefix response failure"
+				}
 			}
 		},
 		"security": [
@@ -2024,7 +2025,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update BGP Prefix",
 		"tags": [
 			"IP Address Management BGP Prefixes"
 		],
@@ -2035,72 +2035,76 @@
 		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
-		"description": "Create a BGP prefix, controlling the BGP advertisement status of a specific subnet. When created, BGP prefixes are initially withdrawn, and can be advertised with the Update BGP Prefix API.",
 		"operationId": "ip-address-management-prefixes-create-bgp-prefix",
+		"summary": "Create BGP Prefix",
+		"description": "Create a BGP prefix, controlling the BGP advertisement status of a specific subnet. When created, BGP prefixes are initially withdrawn, and can be advertised with the Update BGP Prefix API.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of a Cloudflare account.",
+					"type": "string",
 					"example": "258def64c72dae45f3e4c8516e2111f2",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "prefix_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier of an IP Prefix.",
+					"type": "string",
 					"example": "2af39739cc4e3b5910c918468bb89828",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"cidr": {
 								"description": "IP Prefix in Classless Inter-Domain Routing format.",
-								"example": "192.0.2.0/24",
 								"type": "string",
+								"example": "192.0.2.0/24",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"cidr"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create BGP Prefix response",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2109,12 +2113,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2124,15 +2128,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2141,12 +2145,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2156,142 +2160,140 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"type": "integer",
 													"example": 13335,
 													"nullable": true,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"asn_prepend_count": {
-													"default": 0,
 													"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+													"type": "integer",
 													"example": 2,
+													"default": 0,
 													"maximum": 3,
 													"minimum": 0,
-													"type": "integer",
 													"x-auditable": true
 												},
 												"auto_advertise_withdraw": {
-													"default": false,
 													"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-													"example": true,
 													"type": "boolean",
+													"example": true,
+													"default": false,
 													"x-auditable": true
 												},
 												"bgp_signal_opts": {
+													"type": "object",
 													"properties": {
 														"enabled": {
 															"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"modified_at": {
 															"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												},
 												"cidr": {
 													"description": "IP Prefix in Classless Inter-Domain Routing format.",
-													"example": "192.0.2.0/24",
 													"type": "string",
+													"example": "192.0.2.0/24",
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"id": {
 													"description": "Identifier of BGP Prefix.",
+													"type": "string",
 													"example": "7009ba364c7a5760798ceb430e603b74",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												},
 												"modified_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
 													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
 													"x-auditable": true
 												},
 												"on_demand": {
+													"type": "object",
 													"properties": {
 														"advertised": {
 															"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+															"type": "boolean",
 															"example": true,
 															"nullable": true,
-															"type": "boolean",
 															"x-auditable": true
 														},
 														"advertised_modified_at": {
 															"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
 															"x-auditable": true
 														},
 														"on_demand_enabled": {
 															"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"on_demand_locked": {
 															"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														}
-													},
-													"type": "object"
+													}
 												}
-											},
-											"type": "object"
+											}
 										}
 									}
 								}
 							]
 						}
 					}
-				},
-				"description": "Create BGP Prefix response"
+				}
 			},
 			"4XX": {
+				"description": "Create BGP Prefix response failure",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2299,16 +2301,18 @@
 								{
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2317,12 +2321,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2332,15 +2336,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2349,12 +2353,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2364,191 +2368,153 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"type": "integer",
 															"example": 13335,
 															"nullable": true,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"asn_prepend_count": {
-															"default": 0,
 															"description": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute",
+															"type": "integer",
 															"example": 2,
+															"default": 0,
 															"maximum": 3,
 															"minimum": 0,
-															"type": "integer",
 															"x-auditable": true
 														},
 														"auto_advertise_withdraw": {
-															"default": false,
 															"description": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route.",
-															"example": true,
 															"type": "boolean",
+															"example": true,
+															"default": false,
 															"x-auditable": true
 														},
 														"bgp_signal_opts": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"modified_at": {
 																	"description": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled.",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"nullable": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														},
 														"cidr": {
 															"description": "IP Prefix in Classless Inter-Domain Routing format.",
-															"example": "192.0.2.0/24",
 															"type": "string",
+															"example": "192.0.2.0/24",
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"id": {
 															"description": "Identifier of BGP Prefix.",
+															"type": "string",
 															"example": "7009ba364c7a5760798ceb430e603b74",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														},
 														"on_demand": {
+															"type": "object",
 															"properties": {
 																"advertised": {
 																	"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+																	"type": "boolean",
 																	"example": true,
 																	"nullable": true,
-																	"type": "boolean",
 																	"x-auditable": true
 																},
 																"advertised_modified_at": {
 																	"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"nullable": true,
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
 																	"x-auditable": true
 																},
 																"on_demand_enabled": {
 																	"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"on_demand_locked": {
 																	"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																}
-															},
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											}
 										}
 									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2557,12 +2523,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2572,25 +2538,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2598,14 +2601,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
 							]
 						}
 					}
-				},
-				"description": "Create BGP Prefix response failure"
+				}
 			}
 		},
 		"security": [
@@ -2614,7 +2615,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create BGP Prefix",
 		"tags": [
 			"IP Address Management BGP Prefixes"
 		]

@@ -1,11 +1,12 @@
 {
 	"DELETE /zones/{zone_id}/spectrum/apps/{app_id}": {
-		"description": "Deletes a previously existing application.",
 		"operationId": "spectrum-applications-delete-spectrum-application",
+		"summary": "Delete Spectrum application",
+		"description": "Deletes a previously existing application.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -17,17 +18,17 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -39,9 +40,9 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
@@ -50,19 +51,22 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Delete Spectrum application response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -71,12 +75,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -86,15 +90,15 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"messages": {
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -103,12 +107,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -118,109 +122,71 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
 											"enum": [
 												true
-											],
-											"example": true,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
 										"success",
 										"errors",
 										"messages"
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"nullable": true,
 											"properties": {
 												"id": {
 													"description": "Identifier.",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
 											},
 											"required": [
 												"id"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Spectrum application response."
+				}
 			},
 			"4XX": {
+				"description": "Delete Spectrum application response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -229,12 +195,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -244,25 +210,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -270,12 +273,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete Spectrum application response failure."
+				}
 			}
 		},
 		"security": [
@@ -287,7 +288,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Spectrum application",
 		"tags": [
 			"Spectrum Applications"
 		],
@@ -300,12 +300,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/spectrum/apps": {
-		"description": "Retrieves a list of currently existing Spectrum applications inside a zone.",
 		"operationId": "spectrum-applications-list-spectrum-applications",
+		"summary": "List Spectrum applications",
+		"description": "Retrieves a list of currently existing Spectrum applications inside a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -317,84 +318,87 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
 					"description": "Page number of paginated results. This parameter is required in order to use other pagination parameters. If included in the query, `result_info` will be present in the response.",
+					"type": "number",
 					"example": 1,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Sets the maximum number of results per page.",
+					"type": "number",
+					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "direction",
+				"in": "query",
 				"schema": {
-					"default": "asc",
 					"description": "Sets the direction by which results are ordered.",
+					"type": "string",
+					"example": "desc",
+					"default": "asc",
 					"enum": [
 						"asc",
 						"desc"
-					],
-					"example": "desc",
-					"type": "string"
+					]
 				}
 			},
 			{
-				"in": "query",
 				"name": "order",
+				"in": "query",
 				"schema": {
-					"default": "dns",
 					"description": "Application field by which results are ordered.",
+					"type": "string",
+					"example": "protocol",
+					"default": "dns",
 					"enum": [
 						"protocol",
 						"app_id",
 						"created_on",
 						"modified_on",
 						"dns"
-					],
-					"example": "protocol",
-					"type": "string"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List Spectrum applications response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -403,12 +407,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -418,15 +422,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -435,12 +439,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -450,61 +454,59 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -514,6 +516,7 @@
 													"items": {
 														"allOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"created_on": {
 																		"allOf": [
@@ -524,9 +527,9 @@
 																				"readOnly": true
 																			},
 																			{
-																				"example": "2014-01-01T05:20:00.12345Z",
-																				"format": "date-time",
 																				"type": "string",
+																				"format": "date-time",
+																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
 																		]
@@ -541,9 +544,9 @@
 																			},
 																			{
 																				"description": "Identifier.",
+																				"type": "string",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
-																				"type": "string",
 																				"x-auditable": true
 																			}
 																		]
@@ -557,9 +560,9 @@
 																				"readOnly": true
 																			},
 																			{
-																				"example": "2014-01-01T05:20:00.12345Z",
-																				"format": "date-time",
 																				"type": "string",
+																				"format": "date-time",
+																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
 																		]
@@ -569,64 +572,63 @@
 																	"id",
 																	"created_on",
 																	"modified_on"
-																],
-																"type": "object"
+																]
 															},
 															{
 																"properties": {
 																	"argo_smart_routing": {
-																		"default": false,
 																		"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
+																		"type": "boolean",
 																		"example": true,
-																		"type": "boolean"
+																		"default": false
 																	},
 																	"dns": {
 																		"description": "The name and type of DNS record for the Spectrum application.",
+																		"type": "object",
 																		"properties": {
 																			"name": {
 																				"description": "The name of the DNS record associated with the application.",
-																				"example": "ssh.example.com",
+																				"type": "string",
 																				"format": "hostname",
-																				"type": "string"
+																				"example": "ssh.example.com"
 																			},
 																			"type": {
 																				"description": "The type of DNS record associated with the application.",
+																				"type": "string",
+																				"example": "CNAME",
 																				"enum": [
 																					"CNAME",
 																					"ADDRESS"
-																				],
-																				"example": "CNAME",
-																				"type": "string"
+																				]
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"edge_ips": {
+																		"description": "The anycast edge IP configuration for the hostname of this application.",
 																		"default": {
 																			"connectivity": "all",
 																			"type": "dynamic"
 																		},
-																		"description": "The anycast edge IP configuration for the hostname of this application.",
 																		"oneOf": [
 																			{
 																				"properties": {
 																					"connectivity": {
 																						"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+																						"type": "string",
+																						"example": "all",
 																						"enum": [
 																							"all",
 																							"ipv4",
 																							"ipv6"
-																						],
-																						"example": "all",
-																						"type": "string"
+																						]
 																					},
 																					"type": {
 																						"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+																						"type": "string",
+																						"example": "dynamic",
 																						"enum": [
 																							"dynamic"
-																						],
-																						"example": "dynamic",
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"type": "object"
@@ -635,23 +637,23 @@
 																				"properties": {
 																					"ips": {
 																						"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
-																						"example": [
-																							"192.0.2.1"
-																						],
+																						"type": "array",
 																						"items": {
 																							"description": "Edge anycast IPs.",
 																							"example": "192.0.2.1",
 																							"type": "string"
 																						},
-																						"type": "array"
+																						"example": [
+																							"192.0.2.1"
+																						]
 																					},
 																					"type": {
 																						"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+																						"type": "string",
+																						"example": "static",
 																						"enum": [
 																							"static"
-																						],
-																						"example": "static",
-																						"type": "string"
+																						]
 																					}
 																				},
 																				"type": "object"
@@ -659,49 +661,51 @@
 																		]
 																	},
 																	"ip_firewall": {
-																		"default": false,
 																		"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+																		"type": "boolean",
 																		"example": false,
-																		"type": "boolean"
+																		"default": false
 																	},
 																	"origin_direct": {
 																		"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																		"type": "array",
 																		"items": {
 																			"example": "tcp://127.0.0.1:8080",
 																			"format": "URI",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"origin_dns": {
 																		"description": "The name and type of DNS record for the Spectrum application.",
+																		"type": "object",
 																		"properties": {
 																			"name": {
 																				"description": "The name of the DNS record associated with the origin.",
-																				"example": "origin.example.com",
+																				"type": "string",
 																				"format": "hostname",
-																				"type": "string"
+																				"example": "origin.example.com"
 																			},
 																			"ttl": {
 																				"description": "The TTL of our resolution of your DNS record in seconds.",
-																				"minimum": 600,
-																				"type": "integer"
+																				"type": "integer",
+																				"minimum": 600
 																			},
 																			"type": {
 																				"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+																				"type": "string",
+																				"example": "",
 																				"enum": [
 																					"",
 																					"A",
 																					"AAAA",
 																					"SRV"
-																				],
-																				"example": "",
-																				"type": "string"
+																				]
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"origin_port": {
+																		"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+																		"example": 22,
 																		"anyOf": [
 																			{
 																				"type": "integer"
@@ -710,56 +714,54 @@
 																				"type": "string"
 																			}
 																		],
-																		"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
-																		"example": 22,
 																		"maximum": 65535,
 																		"minimum": 1
 																	},
 																	"protocol": {
 																		"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																		"example": "tcp/22",
-																		"type": "string"
+																		"type": "string",
+																		"example": "tcp/22"
 																	},
 																	"proxy_protocol": {
-																		"default": "off",
 																		"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+																		"type": "string",
+																		"example": "off",
+																		"default": "off",
 																		"enum": [
 																			"off",
 																			"v1",
 																			"v2",
 																			"simple"
-																		],
-																		"example": "off",
-																		"type": "string"
+																		]
 																	},
 																	"tls": {
-																		"default": "off",
 																		"description": "The type of TLS termination associated with the application.",
+																		"type": "string",
+																		"example": "off",
+																		"default": "off",
 																		"enum": [
 																			"off",
 																			"flexible",
 																			"full",
 																			"strict"
-																		],
-																		"example": "off",
-																		"type": "string"
+																		]
 																	},
 																	"traffic_type": {
-																		"default": "direct",
 																		"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																		"type": "string",
+																		"example": "direct",
+																		"default": "direct",
 																		"enum": [
 																			"direct",
 																			"http",
 																			"https"
-																		],
-																		"example": "direct",
-																		"type": "string"
+																		]
 																	},
 																	"virtual_network_id": {
 																		"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
-																		"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																		"type": "string",
 																		"format": "uuid",
-																		"type": "string"
+																		"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 																	}
 																},
 																"required": [
@@ -777,6 +779,7 @@
 													"items": {
 														"allOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"created_on": {
 																		"allOf": [
@@ -787,9 +790,9 @@
 																				"readOnly": true
 																			},
 																			{
-																				"example": "2014-01-01T05:20:00.12345Z",
-																				"format": "date-time",
 																				"type": "string",
+																				"format": "date-time",
+																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
 																		]
@@ -804,9 +807,9 @@
 																			},
 																			{
 																				"description": "Identifier.",
+																				"type": "string",
 																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																				"maxLength": 32,
-																				"type": "string",
 																				"x-auditable": true
 																			}
 																		]
@@ -820,9 +823,9 @@
 																				"readOnly": true
 																			},
 																			{
-																				"example": "2014-01-01T05:20:00.12345Z",
-																				"format": "date-time",
 																				"type": "string",
+																				"format": "date-time",
+																				"example": "2014-01-01T05:20:00.12345Z",
 																				"x-auditable": true
 																			}
 																		]
@@ -832,45 +835,44 @@
 																	"id",
 																	"created_on",
 																	"modified_on"
-																],
-																"type": "object"
+																]
 															},
 															{
 																"properties": {
 																	"dns": {
 																		"description": "The name and type of DNS record for the Spectrum application.",
+																		"type": "object",
 																		"properties": {
 																			"name": {
 																				"description": "The name of the DNS record associated with the application.",
-																				"example": "ssh.example.com",
+																				"type": "string",
 																				"format": "hostname",
-																				"type": "string"
+																				"example": "ssh.example.com"
 																			},
 																			"type": {
 																				"description": "The type of DNS record associated with the application.",
+																				"type": "string",
+																				"example": "CNAME",
 																				"enum": [
 																					"CNAME",
 																					"ADDRESS"
-																				],
-																				"example": "CNAME",
-																				"type": "string"
+																				]
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"origin_direct": {
 																		"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																		"type": "array",
 																		"items": {
 																			"example": "tcp://127.0.0.1:8080",
 																			"format": "URI",
 																			"type": "string"
-																		},
-																		"type": "array"
+																		}
 																	},
 																	"protocol": {
 																		"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																		"example": "tcp/22",
-																		"type": "string"
+																		"type": "string",
+																		"example": "tcp/22"
 																	}
 																},
 																"required": [
@@ -890,66 +892,30 @@
 							]
 						}
 					}
-				},
-				"description": "List Spectrum applications response."
+				}
 			},
 			"4XX": {
+				"description": "List Spectrum applications response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -958,12 +924,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -973,25 +939,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -999,12 +1002,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List Spectrum applications response failure."
+				}
 			}
 		},
 		"security": [
@@ -1016,7 +1017,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Spectrum applications",
 		"tags": [
 			"Spectrum Applications"
 		],
@@ -1030,12 +1030,13 @@
 		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/spectrum/apps/{app_id}": {
-		"description": "Gets the application configuration of a specific application inside a zone.",
 		"operationId": "spectrum-applications-get-spectrum-application-configuration",
+		"summary": "Get Spectrum application configuration",
+		"description": "Gets the application configuration of a specific application inside a zone.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -1047,17 +1048,17 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -1069,9 +1070,9 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
@@ -1080,21 +1081,24 @@
 		],
 		"responses": {
 			"200": {
+				"description": "Get Spectrum application configuration response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1103,12 +1107,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1118,15 +1122,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1135,12 +1139,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1150,26 +1154,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -1178,6 +1180,7 @@
 												{
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"allOf": [
@@ -1188,9 +1191,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -1205,9 +1208,9 @@
 																		},
 																		{
 																			"description": "Identifier.",
+																			"type": "string",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	]
@@ -1221,9 +1224,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -1233,64 +1236,63 @@
 																"id",
 																"created_on",
 																"modified_on"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"argo_smart_routing": {
-																	"default": false,
 																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
+																	"type": "boolean",
 																	"example": true,
-																	"type": "boolean"
+																	"default": false
 																},
 																"dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the application.",
-																			"example": "ssh.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "ssh.example.com"
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the application.",
+																			"type": "string",
+																			"example": "CNAME",
 																			"enum": [
 																				"CNAME",
 																				"ADDRESS"
-																			],
-																			"example": "CNAME",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"edge_ips": {
+																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"default": {
 																		"connectivity": "all",
 																		"type": "dynamic"
 																	},
-																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"oneOf": [
 																		{
 																			"properties": {
 																				"connectivity": {
 																					"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+																					"type": "string",
+																					"example": "all",
 																					"enum": [
 																						"all",
 																						"ipv4",
 																						"ipv6"
-																					],
-																					"example": "all",
-																					"type": "string"
+																					]
 																				},
 																				"type": {
 																					"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+																					"type": "string",
+																					"example": "dynamic",
 																					"enum": [
 																						"dynamic"
-																					],
-																					"example": "dynamic",
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -1299,23 +1301,23 @@
 																			"properties": {
 																				"ips": {
 																					"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
-																					"example": [
-																						"192.0.2.1"
-																					],
+																					"type": "array",
 																					"items": {
 																						"description": "Edge anycast IPs.",
 																						"example": "192.0.2.1",
 																						"type": "string"
 																					},
-																					"type": "array"
+																					"example": [
+																						"192.0.2.1"
+																					]
 																				},
 																				"type": {
 																					"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+																					"type": "string",
+																					"example": "static",
 																					"enum": [
 																						"static"
-																					],
-																					"example": "static",
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -1323,49 +1325,51 @@
 																	]
 																},
 																"ip_firewall": {
-																	"default": false,
 																	"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+																	"type": "boolean",
 																	"example": false,
-																	"type": "boolean"
+																	"default": false
 																},
 																"origin_direct": {
 																	"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																	"type": "array",
 																	"items": {
 																		"example": "tcp://127.0.0.1:8080",
 																		"format": "URI",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"origin_dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the origin.",
-																			"example": "origin.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "origin.example.com"
 																		},
 																		"ttl": {
 																			"description": "The TTL of our resolution of your DNS record in seconds.",
-																			"minimum": 600,
-																			"type": "integer"
+																			"type": "integer",
+																			"minimum": 600
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+																			"type": "string",
+																			"example": "",
 																			"enum": [
 																				"",
 																				"A",
 																				"AAAA",
 																				"SRV"
-																			],
-																			"example": "",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"origin_port": {
+																	"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+																	"example": 22,
 																	"anyOf": [
 																		{
 																			"type": "integer"
@@ -1374,56 +1378,54 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
-																	"example": 22,
 																	"maximum": 65535,
 																	"minimum": 1
 																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																	"example": "tcp/22",
-																	"type": "string"
+																	"type": "string",
+																	"example": "tcp/22"
 																},
 																"proxy_protocol": {
-																	"default": "off",
 																	"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+																	"type": "string",
+																	"example": "off",
+																	"default": "off",
 																	"enum": [
 																		"off",
 																		"v1",
 																		"v2",
 																		"simple"
-																	],
-																	"example": "off",
-																	"type": "string"
+																	]
 																},
 																"tls": {
-																	"default": "off",
 																	"description": "The type of TLS termination associated with the application.",
+																	"type": "string",
+																	"example": "off",
+																	"default": "off",
 																	"enum": [
 																		"off",
 																		"flexible",
 																		"full",
 																		"strict"
-																	],
-																	"example": "off",
-																	"type": "string"
+																	]
 																},
 																"traffic_type": {
-																	"default": "direct",
 																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																	"type": "string",
+																	"example": "direct",
+																	"default": "direct",
 																	"enum": [
 																		"direct",
 																		"http",
 																		"https"
-																	],
-																	"example": "direct",
-																	"type": "string"
+																	]
 																},
 																"virtual_network_id": {
 																	"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
-																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																	"type": "string",
 																	"format": "uuid",
-																	"type": "string"
+																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 																}
 															},
 															"required": [
@@ -1438,6 +1440,7 @@
 												{
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"allOf": [
@@ -1448,9 +1451,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -1465,9 +1468,9 @@
 																		},
 																		{
 																			"description": "Identifier.",
+																			"type": "string",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	]
@@ -1481,9 +1484,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -1493,45 +1496,44 @@
 																"id",
 																"created_on",
 																"modified_on"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the application.",
-																			"example": "ssh.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "ssh.example.com"
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the application.",
+																			"type": "string",
+																			"example": "CNAME",
 																			"enum": [
 																				"CNAME",
 																				"ADDRESS"
-																			],
-																			"example": "CNAME",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"origin_direct": {
 																	"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																	"type": "array",
 																	"items": {
 																		"example": "tcp://127.0.0.1:8080",
 																		"format": "URI",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																	"example": "tcp/22",
-																	"type": "string"
+																	"type": "string",
+																	"example": "tcp/22"
 																}
 															},
 															"required": [
@@ -1549,66 +1551,30 @@
 							]
 						}
 					}
-				},
-				"description": "Get Spectrum application configuration response."
+				}
 			},
 			"4XX": {
+				"description": "Get Spectrum application configuration response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -1617,12 +1583,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -1632,25 +1598,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -1658,12 +1661,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Get Spectrum application configuration response failure."
+				}
 			}
 		},
 		"security": [
@@ -1675,7 +1676,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Spectrum application configuration",
 		"tags": [
 			"Spectrum Applications"
 		],
@@ -1689,12 +1689,13 @@
 		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/spectrum/apps": {
-		"description": "Creates a new Spectrum application from a configuration using a name for the origin.",
 		"operationId": "spectrum-applications-create-spectrum-application-using-a-name-for-the-origin",
+		"summary": "Create Spectrum application using a name for the origin",
+		"description": "Creates a new Spectrum application from a configuration using a name for the origin.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -1706,9 +1707,9 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
@@ -1716,6 +1717,7 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -1723,6 +1725,7 @@
 							{
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"created_on": {
 												"allOf": [
@@ -1733,9 +1736,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -1750,9 +1753,9 @@
 													},
 													{
 														"description": "Identifier.",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													}
 												]
@@ -1766,9 +1769,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -1778,64 +1781,63 @@
 											"id",
 											"created_on",
 											"modified_on"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
 											"argo_smart_routing": {
-												"default": false,
 												"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
+												"type": "boolean",
 												"example": true,
-												"type": "boolean"
+												"default": false
 											},
 											"dns": {
 												"description": "The name and type of DNS record for the Spectrum application.",
+												"type": "object",
 												"properties": {
 													"name": {
 														"description": "The name of the DNS record associated with the application.",
-														"example": "ssh.example.com",
+														"type": "string",
 														"format": "hostname",
-														"type": "string"
+														"example": "ssh.example.com"
 													},
 													"type": {
 														"description": "The type of DNS record associated with the application.",
+														"type": "string",
+														"example": "CNAME",
 														"enum": [
 															"CNAME",
 															"ADDRESS"
-														],
-														"example": "CNAME",
-														"type": "string"
+														]
 													}
-												},
-												"type": "object"
+												}
 											},
 											"edge_ips": {
+												"description": "The anycast edge IP configuration for the hostname of this application.",
 												"default": {
 													"connectivity": "all",
 													"type": "dynamic"
 												},
-												"description": "The anycast edge IP configuration for the hostname of this application.",
 												"oneOf": [
 													{
 														"properties": {
 															"connectivity": {
 																"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+																"type": "string",
+																"example": "all",
 																"enum": [
 																	"all",
 																	"ipv4",
 																	"ipv6"
-																],
-																"example": "all",
-																"type": "string"
+																]
 															},
 															"type": {
 																"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+																"type": "string",
+																"example": "dynamic",
 																"enum": [
 																	"dynamic"
-																],
-																"example": "dynamic",
-																"type": "string"
+																]
 															}
 														},
 														"type": "object"
@@ -1844,23 +1846,23 @@
 														"properties": {
 															"ips": {
 																"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
-																"example": [
-																	"192.0.2.1"
-																],
+																"type": "array",
 																"items": {
 																	"description": "Edge anycast IPs.",
 																	"example": "192.0.2.1",
 																	"type": "string"
 																},
-																"type": "array"
+																"example": [
+																	"192.0.2.1"
+																]
 															},
 															"type": {
 																"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+																"type": "string",
+																"example": "static",
 																"enum": [
 																	"static"
-																],
-																"example": "static",
-																"type": "string"
+																]
 															}
 														},
 														"type": "object"
@@ -1868,49 +1870,51 @@
 												]
 											},
 											"ip_firewall": {
-												"default": false,
 												"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+												"type": "boolean",
 												"example": false,
-												"type": "boolean"
+												"default": false
 											},
 											"origin_direct": {
 												"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+												"type": "array",
 												"items": {
 													"example": "tcp://127.0.0.1:8080",
 													"format": "URI",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"origin_dns": {
 												"description": "The name and type of DNS record for the Spectrum application.",
+												"type": "object",
 												"properties": {
 													"name": {
 														"description": "The name of the DNS record associated with the origin.",
-														"example": "origin.example.com",
+														"type": "string",
 														"format": "hostname",
-														"type": "string"
+														"example": "origin.example.com"
 													},
 													"ttl": {
 														"description": "The TTL of our resolution of your DNS record in seconds.",
-														"minimum": 600,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 600
 													},
 													"type": {
 														"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+														"type": "string",
+														"example": "",
 														"enum": [
 															"",
 															"A",
 															"AAAA",
 															"SRV"
-														],
-														"example": "",
-														"type": "string"
+														]
 													}
-												},
-												"type": "object"
+												}
 											},
 											"origin_port": {
+												"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+												"example": 22,
 												"anyOf": [
 													{
 														"type": "integer"
@@ -1919,56 +1923,54 @@
 														"type": "string"
 													}
 												],
-												"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
-												"example": 22,
 												"maximum": 65535,
 												"minimum": 1
 											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-												"example": "tcp/22",
-												"type": "string"
+												"type": "string",
+												"example": "tcp/22"
 											},
 											"proxy_protocol": {
-												"default": "off",
 												"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+												"type": "string",
+												"example": "off",
+												"default": "off",
 												"enum": [
 													"off",
 													"v1",
 													"v2",
 													"simple"
-												],
-												"example": "off",
-												"type": "string"
+												]
 											},
 											"tls": {
-												"default": "off",
 												"description": "The type of TLS termination associated with the application.",
+												"type": "string",
+												"example": "off",
+												"default": "off",
 												"enum": [
 													"off",
 													"flexible",
 													"full",
 													"strict"
-												],
-												"example": "off",
-												"type": "string"
+												]
 											},
 											"traffic_type": {
-												"default": "direct",
 												"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+												"type": "string",
+												"example": "direct",
+												"default": "direct",
 												"enum": [
 													"direct",
 													"http",
 													"https"
-												],
-												"example": "direct",
-												"type": "string"
+												]
 											},
 											"virtual_network_id": {
 												"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
-												"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+												"type": "string",
 												"format": "uuid",
-												"type": "string"
+												"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 											}
 										},
 										"required": [
@@ -1983,6 +1985,7 @@
 							{
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"created_on": {
 												"allOf": [
@@ -1993,9 +1996,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -2010,9 +2013,9 @@
 													},
 													{
 														"description": "Identifier.",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													}
 												]
@@ -2026,9 +2029,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -2038,45 +2041,44 @@
 											"id",
 											"created_on",
 											"modified_on"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
 											"dns": {
 												"description": "The name and type of DNS record for the Spectrum application.",
+												"type": "object",
 												"properties": {
 													"name": {
 														"description": "The name of the DNS record associated with the application.",
-														"example": "ssh.example.com",
+														"type": "string",
 														"format": "hostname",
-														"type": "string"
+														"example": "ssh.example.com"
 													},
 													"type": {
 														"description": "The type of DNS record associated with the application.",
+														"type": "string",
+														"example": "CNAME",
 														"enum": [
 															"CNAME",
 															"ADDRESS"
-														],
-														"example": "CNAME",
-														"type": "string"
+														]
 													}
-												},
-												"type": "object"
+												}
 											},
 											"origin_direct": {
 												"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+												"type": "array",
 												"items": {
 													"example": "tcp://127.0.0.1:8080",
 													"format": "URI",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-												"example": "tcp/22",
-												"type": "string"
+												"type": "string",
+												"example": "tcp/22"
 											}
 										},
 										"required": [
@@ -2090,26 +2092,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create Spectrum application using a name for the origin response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2118,12 +2122,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2133,15 +2137,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2150,12 +2154,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2165,26 +2169,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -2193,6 +2195,7 @@
 												{
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"allOf": [
@@ -2203,9 +2206,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -2220,9 +2223,9 @@
 																		},
 																		{
 																			"description": "Identifier.",
+																			"type": "string",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	]
@@ -2236,9 +2239,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -2248,64 +2251,63 @@
 																"id",
 																"created_on",
 																"modified_on"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"argo_smart_routing": {
-																	"default": false,
 																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
+																	"type": "boolean",
 																	"example": true,
-																	"type": "boolean"
+																	"default": false
 																},
 																"dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the application.",
-																			"example": "ssh.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "ssh.example.com"
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the application.",
+																			"type": "string",
+																			"example": "CNAME",
 																			"enum": [
 																				"CNAME",
 																				"ADDRESS"
-																			],
-																			"example": "CNAME",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"edge_ips": {
+																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"default": {
 																		"connectivity": "all",
 																		"type": "dynamic"
 																	},
-																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"oneOf": [
 																		{
 																			"properties": {
 																				"connectivity": {
 																					"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+																					"type": "string",
+																					"example": "all",
 																					"enum": [
 																						"all",
 																						"ipv4",
 																						"ipv6"
-																					],
-																					"example": "all",
-																					"type": "string"
+																					]
 																				},
 																				"type": {
 																					"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+																					"type": "string",
+																					"example": "dynamic",
 																					"enum": [
 																						"dynamic"
-																					],
-																					"example": "dynamic",
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -2314,23 +2316,23 @@
 																			"properties": {
 																				"ips": {
 																					"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
-																					"example": [
-																						"192.0.2.1"
-																					],
+																					"type": "array",
 																					"items": {
 																						"description": "Edge anycast IPs.",
 																						"example": "192.0.2.1",
 																						"type": "string"
 																					},
-																					"type": "array"
+																					"example": [
+																						"192.0.2.1"
+																					]
 																				},
 																				"type": {
 																					"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+																					"type": "string",
+																					"example": "static",
 																					"enum": [
 																						"static"
-																					],
-																					"example": "static",
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -2338,49 +2340,51 @@
 																	]
 																},
 																"ip_firewall": {
-																	"default": false,
 																	"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+																	"type": "boolean",
 																	"example": false,
-																	"type": "boolean"
+																	"default": false
 																},
 																"origin_direct": {
 																	"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																	"type": "array",
 																	"items": {
 																		"example": "tcp://127.0.0.1:8080",
 																		"format": "URI",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"origin_dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the origin.",
-																			"example": "origin.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "origin.example.com"
 																		},
 																		"ttl": {
 																			"description": "The TTL of our resolution of your DNS record in seconds.",
-																			"minimum": 600,
-																			"type": "integer"
+																			"type": "integer",
+																			"minimum": 600
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+																			"type": "string",
+																			"example": "",
 																			"enum": [
 																				"",
 																				"A",
 																				"AAAA",
 																				"SRV"
-																			],
-																			"example": "",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"origin_port": {
+																	"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+																	"example": 22,
 																	"anyOf": [
 																		{
 																			"type": "integer"
@@ -2389,56 +2393,54 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
-																	"example": 22,
 																	"maximum": 65535,
 																	"minimum": 1
 																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																	"example": "tcp/22",
-																	"type": "string"
+																	"type": "string",
+																	"example": "tcp/22"
 																},
 																"proxy_protocol": {
-																	"default": "off",
 																	"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+																	"type": "string",
+																	"example": "off",
+																	"default": "off",
 																	"enum": [
 																		"off",
 																		"v1",
 																		"v2",
 																		"simple"
-																	],
-																	"example": "off",
-																	"type": "string"
+																	]
 																},
 																"tls": {
-																	"default": "off",
 																	"description": "The type of TLS termination associated with the application.",
+																	"type": "string",
+																	"example": "off",
+																	"default": "off",
 																	"enum": [
 																		"off",
 																		"flexible",
 																		"full",
 																		"strict"
-																	],
-																	"example": "off",
-																	"type": "string"
+																	]
 																},
 																"traffic_type": {
-																	"default": "direct",
 																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																	"type": "string",
+																	"example": "direct",
+																	"default": "direct",
 																	"enum": [
 																		"direct",
 																		"http",
 																		"https"
-																	],
-																	"example": "direct",
-																	"type": "string"
+																	]
 																},
 																"virtual_network_id": {
 																	"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
-																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																	"type": "string",
 																	"format": "uuid",
-																	"type": "string"
+																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 																}
 															},
 															"required": [
@@ -2453,6 +2455,7 @@
 												{
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"allOf": [
@@ -2463,9 +2466,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -2480,9 +2483,9 @@
 																		},
 																		{
 																			"description": "Identifier.",
+																			"type": "string",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	]
@@ -2496,9 +2499,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -2508,45 +2511,44 @@
 																"id",
 																"created_on",
 																"modified_on"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the application.",
-																			"example": "ssh.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "ssh.example.com"
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the application.",
+																			"type": "string",
+																			"example": "CNAME",
 																			"enum": [
 																				"CNAME",
 																				"ADDRESS"
-																			],
-																			"example": "CNAME",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"origin_direct": {
 																	"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																	"type": "array",
 																	"items": {
 																		"example": "tcp://127.0.0.1:8080",
 																		"format": "URI",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																	"example": "tcp/22",
-																	"type": "string"
+																	"type": "string",
+																	"example": "tcp/22"
 																}
 															},
 															"required": [
@@ -2564,66 +2566,30 @@
 							]
 						}
 					}
-				},
-				"description": "Create Spectrum application using a name for the origin response."
+				}
 			},
 			"4XX": {
+				"description": "Create Spectrum application using a name for the origin response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -2632,12 +2598,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -2647,25 +2613,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -2673,12 +2676,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create Spectrum application using a name for the origin response failure."
+				}
 			}
 		},
 		"security": [
@@ -2690,7 +2691,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Spectrum application using a name for the origin",
 		"tags": [
 			"Spectrum Applications"
 		],
@@ -2703,12 +2703,13 @@
 		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/spectrum/apps/{app_id}": {
-		"description": "Updates a previously existing application's configuration that uses a name for the origin.",
 		"operationId": "spectrum-applications-update-spectrum-application-configuration-using-a-name-for-the-origin",
+		"summary": "Update Spectrum application configuration using a name for the origin",
+		"description": "Updates a previously existing application's configuration that uses a name for the origin.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "app_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -2720,17 +2721,17 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
 				}
 			},
 			{
-				"in": "path",
 				"name": "zone_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"allOf": [
@@ -2742,9 +2743,9 @@
 						},
 						{
 							"description": "Identifier.",
+							"type": "string",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
-							"type": "string",
 							"x-auditable": true
 						}
 					]
@@ -2752,6 +2753,7 @@
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
@@ -2759,6 +2761,7 @@
 							{
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"created_on": {
 												"allOf": [
@@ -2769,9 +2772,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -2786,9 +2789,9 @@
 													},
 													{
 														"description": "Identifier.",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													}
 												]
@@ -2802,9 +2805,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -2814,64 +2817,63 @@
 											"id",
 											"created_on",
 											"modified_on"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
 											"argo_smart_routing": {
-												"default": false,
 												"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
+												"type": "boolean",
 												"example": true,
-												"type": "boolean"
+												"default": false
 											},
 											"dns": {
 												"description": "The name and type of DNS record for the Spectrum application.",
+												"type": "object",
 												"properties": {
 													"name": {
 														"description": "The name of the DNS record associated with the application.",
-														"example": "ssh.example.com",
+														"type": "string",
 														"format": "hostname",
-														"type": "string"
+														"example": "ssh.example.com"
 													},
 													"type": {
 														"description": "The type of DNS record associated with the application.",
+														"type": "string",
+														"example": "CNAME",
 														"enum": [
 															"CNAME",
 															"ADDRESS"
-														],
-														"example": "CNAME",
-														"type": "string"
+														]
 													}
-												},
-												"type": "object"
+												}
 											},
 											"edge_ips": {
+												"description": "The anycast edge IP configuration for the hostname of this application.",
 												"default": {
 													"connectivity": "all",
 													"type": "dynamic"
 												},
-												"description": "The anycast edge IP configuration for the hostname of this application.",
 												"oneOf": [
 													{
 														"properties": {
 															"connectivity": {
 																"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+																"type": "string",
+																"example": "all",
 																"enum": [
 																	"all",
 																	"ipv4",
 																	"ipv6"
-																],
-																"example": "all",
-																"type": "string"
+																]
 															},
 															"type": {
 																"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+																"type": "string",
+																"example": "dynamic",
 																"enum": [
 																	"dynamic"
-																],
-																"example": "dynamic",
-																"type": "string"
+																]
 															}
 														},
 														"type": "object"
@@ -2880,23 +2882,23 @@
 														"properties": {
 															"ips": {
 																"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
-																"example": [
-																	"192.0.2.1"
-																],
+																"type": "array",
 																"items": {
 																	"description": "Edge anycast IPs.",
 																	"example": "192.0.2.1",
 																	"type": "string"
 																},
-																"type": "array"
+																"example": [
+																	"192.0.2.1"
+																]
 															},
 															"type": {
 																"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+																"type": "string",
+																"example": "static",
 																"enum": [
 																	"static"
-																],
-																"example": "static",
-																"type": "string"
+																]
 															}
 														},
 														"type": "object"
@@ -2904,49 +2906,51 @@
 												]
 											},
 											"ip_firewall": {
-												"default": false,
 												"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+												"type": "boolean",
 												"example": false,
-												"type": "boolean"
+												"default": false
 											},
 											"origin_direct": {
 												"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+												"type": "array",
 												"items": {
 													"example": "tcp://127.0.0.1:8080",
 													"format": "URI",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"origin_dns": {
 												"description": "The name and type of DNS record for the Spectrum application.",
+												"type": "object",
 												"properties": {
 													"name": {
 														"description": "The name of the DNS record associated with the origin.",
-														"example": "origin.example.com",
+														"type": "string",
 														"format": "hostname",
-														"type": "string"
+														"example": "origin.example.com"
 													},
 													"ttl": {
 														"description": "The TTL of our resolution of your DNS record in seconds.",
-														"minimum": 600,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 600
 													},
 													"type": {
 														"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+														"type": "string",
+														"example": "",
 														"enum": [
 															"",
 															"A",
 															"AAAA",
 															"SRV"
-														],
-														"example": "",
-														"type": "string"
+														]
 													}
-												},
-												"type": "object"
+												}
 											},
 											"origin_port": {
+												"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+												"example": 22,
 												"anyOf": [
 													{
 														"type": "integer"
@@ -2955,56 +2959,54 @@
 														"type": "string"
 													}
 												],
-												"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
-												"example": 22,
 												"maximum": 65535,
 												"minimum": 1
 											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-												"example": "tcp/22",
-												"type": "string"
+												"type": "string",
+												"example": "tcp/22"
 											},
 											"proxy_protocol": {
-												"default": "off",
 												"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+												"type": "string",
+												"example": "off",
+												"default": "off",
 												"enum": [
 													"off",
 													"v1",
 													"v2",
 													"simple"
-												],
-												"example": "off",
-												"type": "string"
+												]
 											},
 											"tls": {
-												"default": "off",
 												"description": "The type of TLS termination associated with the application.",
+												"type": "string",
+												"example": "off",
+												"default": "off",
 												"enum": [
 													"off",
 													"flexible",
 													"full",
 													"strict"
-												],
-												"example": "off",
-												"type": "string"
+												]
 											},
 											"traffic_type": {
-												"default": "direct",
 												"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+												"type": "string",
+												"example": "direct",
+												"default": "direct",
 												"enum": [
 													"direct",
 													"http",
 													"https"
-												],
-												"example": "direct",
-												"type": "string"
+												]
 											},
 											"virtual_network_id": {
 												"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
-												"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+												"type": "string",
 												"format": "uuid",
-												"type": "string"
+												"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 											}
 										},
 										"required": [
@@ -3019,6 +3021,7 @@
 							{
 								"allOf": [
 									{
+										"type": "object",
 										"properties": {
 											"created_on": {
 												"allOf": [
@@ -3029,9 +3032,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -3046,9 +3049,9 @@
 													},
 													{
 														"description": "Identifier.",
+														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
-														"type": "string",
 														"x-auditable": true
 													}
 												]
@@ -3062,9 +3065,9 @@
 														"readOnly": true
 													},
 													{
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
 														"type": "string",
+														"format": "date-time",
+														"example": "2014-01-01T05:20:00.12345Z",
 														"x-auditable": true
 													}
 												]
@@ -3074,45 +3077,44 @@
 											"id",
 											"created_on",
 											"modified_on"
-										],
-										"type": "object"
+										]
 									},
 									{
 										"properties": {
 											"dns": {
 												"description": "The name and type of DNS record for the Spectrum application.",
+												"type": "object",
 												"properties": {
 													"name": {
 														"description": "The name of the DNS record associated with the application.",
-														"example": "ssh.example.com",
+														"type": "string",
 														"format": "hostname",
-														"type": "string"
+														"example": "ssh.example.com"
 													},
 													"type": {
 														"description": "The type of DNS record associated with the application.",
+														"type": "string",
+														"example": "CNAME",
 														"enum": [
 															"CNAME",
 															"ADDRESS"
-														],
-														"example": "CNAME",
-														"type": "string"
+														]
 													}
-												},
-												"type": "object"
+												}
 											},
 											"origin_direct": {
 												"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+												"type": "array",
 												"items": {
 													"example": "tcp://127.0.0.1:8080",
 													"format": "URI",
 													"type": "string"
-												},
-												"type": "array"
+												}
 											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-												"example": "tcp/22",
-												"type": "string"
+												"type": "string",
+												"example": "tcp/22"
 											}
 										},
 										"required": [
@@ -3126,26 +3128,28 @@
 						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update Spectrum application configuration using a name for the origin response.",
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3154,12 +3158,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3169,15 +3173,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3186,12 +3190,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3201,26 +3205,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -3229,6 +3231,7 @@
 												{
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"allOf": [
@@ -3239,9 +3242,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -3256,9 +3259,9 @@
 																		},
 																		{
 																			"description": "Identifier.",
+																			"type": "string",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	]
@@ -3272,9 +3275,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -3284,64 +3287,63 @@
 																"id",
 																"created_on",
 																"modified_on"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"argo_smart_routing": {
-																	"default": false,
 																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
+																	"type": "boolean",
 																	"example": true,
-																	"type": "boolean"
+																	"default": false
 																},
 																"dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the application.",
-																			"example": "ssh.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "ssh.example.com"
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the application.",
+																			"type": "string",
+																			"example": "CNAME",
 																			"enum": [
 																				"CNAME",
 																				"ADDRESS"
-																			],
-																			"example": "CNAME",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"edge_ips": {
+																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"default": {
 																		"connectivity": "all",
 																		"type": "dynamic"
 																	},
-																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"oneOf": [
 																		{
 																			"properties": {
 																				"connectivity": {
 																					"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+																					"type": "string",
+																					"example": "all",
 																					"enum": [
 																						"all",
 																						"ipv4",
 																						"ipv6"
-																					],
-																					"example": "all",
-																					"type": "string"
+																					]
 																				},
 																				"type": {
 																					"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+																					"type": "string",
+																					"example": "dynamic",
 																					"enum": [
 																						"dynamic"
-																					],
-																					"example": "dynamic",
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -3350,23 +3352,23 @@
 																			"properties": {
 																				"ips": {
 																					"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
-																					"example": [
-																						"192.0.2.1"
-																					],
+																					"type": "array",
 																					"items": {
 																						"description": "Edge anycast IPs.",
 																						"example": "192.0.2.1",
 																						"type": "string"
 																					},
-																					"type": "array"
+																					"example": [
+																						"192.0.2.1"
+																					]
 																				},
 																				"type": {
 																					"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+																					"type": "string",
+																					"example": "static",
 																					"enum": [
 																						"static"
-																					],
-																					"example": "static",
-																					"type": "string"
+																					]
 																				}
 																			},
 																			"type": "object"
@@ -3374,49 +3376,51 @@
 																	]
 																},
 																"ip_firewall": {
-																	"default": false,
 																	"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+																	"type": "boolean",
 																	"example": false,
-																	"type": "boolean"
+																	"default": false
 																},
 																"origin_direct": {
 																	"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																	"type": "array",
 																	"items": {
 																		"example": "tcp://127.0.0.1:8080",
 																		"format": "URI",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"origin_dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the origin.",
-																			"example": "origin.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "origin.example.com"
 																		},
 																		"ttl": {
 																			"description": "The TTL of our resolution of your DNS record in seconds.",
-																			"minimum": 600,
-																			"type": "integer"
+																			"type": "integer",
+																			"minimum": 600
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+																			"type": "string",
+																			"example": "",
 																			"enum": [
 																				"",
 																				"A",
 																				"AAAA",
 																				"SRV"
-																			],
-																			"example": "",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"origin_port": {
+																	"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+																	"example": 22,
 																	"anyOf": [
 																		{
 																			"type": "integer"
@@ -3425,56 +3429,54 @@
 																			"type": "string"
 																		}
 																	],
-																	"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
-																	"example": 22,
 																	"maximum": 65535,
 																	"minimum": 1
 																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																	"example": "tcp/22",
-																	"type": "string"
+																	"type": "string",
+																	"example": "tcp/22"
 																},
 																"proxy_protocol": {
-																	"default": "off",
 																	"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+																	"type": "string",
+																	"example": "off",
+																	"default": "off",
 																	"enum": [
 																		"off",
 																		"v1",
 																		"v2",
 																		"simple"
-																	],
-																	"example": "off",
-																	"type": "string"
+																	]
 																},
 																"tls": {
-																	"default": "off",
 																	"description": "The type of TLS termination associated with the application.",
+																	"type": "string",
+																	"example": "off",
+																	"default": "off",
 																	"enum": [
 																		"off",
 																		"flexible",
 																		"full",
 																		"strict"
-																	],
-																	"example": "off",
-																	"type": "string"
+																	]
 																},
 																"traffic_type": {
-																	"default": "direct",
 																	"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+																	"type": "string",
+																	"example": "direct",
+																	"default": "direct",
 																	"enum": [
 																		"direct",
 																		"http",
 																		"https"
-																	],
-																	"example": "direct",
-																	"type": "string"
+																	]
 																},
 																"virtual_network_id": {
 																	"description": "Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.",
-																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+																	"type": "string",
 																	"format": "uuid",
-																	"type": "string"
+																	"example": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 																}
 															},
 															"required": [
@@ -3489,6 +3491,7 @@
 												{
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"created_on": {
 																	"allOf": [
@@ -3499,9 +3502,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -3516,9 +3519,9 @@
 																		},
 																		{
 																			"description": "Identifier.",
+																			"type": "string",
 																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																			"maxLength": 32,
-																			"type": "string",
 																			"x-auditable": true
 																		}
 																	]
@@ -3532,9 +3535,9 @@
 																			"readOnly": true
 																		},
 																		{
-																			"example": "2014-01-01T05:20:00.12345Z",
-																			"format": "date-time",
 																			"type": "string",
+																			"format": "date-time",
+																			"example": "2014-01-01T05:20:00.12345Z",
 																			"x-auditable": true
 																		}
 																	]
@@ -3544,45 +3547,44 @@
 																"id",
 																"created_on",
 																"modified_on"
-															],
-															"type": "object"
+															]
 														},
 														{
 															"properties": {
 																"dns": {
 																	"description": "The name and type of DNS record for the Spectrum application.",
+																	"type": "object",
 																	"properties": {
 																		"name": {
 																			"description": "The name of the DNS record associated with the application.",
-																			"example": "ssh.example.com",
+																			"type": "string",
 																			"format": "hostname",
-																			"type": "string"
+																			"example": "ssh.example.com"
 																		},
 																		"type": {
 																			"description": "The type of DNS record associated with the application.",
+																			"type": "string",
+																			"example": "CNAME",
 																			"enum": [
 																				"CNAME",
 																				"ADDRESS"
-																			],
-																			"example": "CNAME",
-																			"type": "string"
+																			]
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"origin_direct": {
 																	"description": "List of origin IP addresses. Array may contain multiple IP addresses for load balancing.",
+																	"type": "array",
 																	"items": {
 																		"example": "tcp://127.0.0.1:8080",
 																		"format": "URI",
 																		"type": "string"
-																	},
-																	"type": "array"
+																	}
 																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
-																	"example": "tcp/22",
-																	"type": "string"
+																	"type": "string",
+																	"example": "tcp/22"
 																}
 															},
 															"required": [
@@ -3600,66 +3602,30 @@
 							]
 						}
 					}
-				},
-				"description": "Update Spectrum application configuration using a name for the origin response."
+				}
 			},
 			"4XX": {
+				"description": "Update Spectrum application configuration using a name for the origin response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"properties": {
 								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														},
-														"type": "object"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
 									"example": [
 										{
 											"code": 7003,
 											"message": "No route for the URI"
 										}
 									],
-									"minLength": 1
-								},
-								"messages": {
 									"allOf": [
 										{
-											"example": [],
+											"type": "array",
 											"items": {
 												"properties": {
 													"code": {
-														"minimum": 1000,
-														"type": "integer"
+														"type": "integer",
+														"minimum": 1000
 													},
 													"documentation_url": {
 														"type": "string"
@@ -3668,12 +3634,12 @@
 														"type": "string"
 													},
 													"source": {
+														"type": "object",
 														"properties": {
 															"pointer": {
 																"type": "string"
 															}
-														},
-														"type": "object"
+														}
 													}
 												},
 												"required": [
@@ -3683,25 +3649,62 @@
 												"type": "object",
 												"uniqueItems": true
 											},
-											"type": "array"
+											"example": []
 										}
 									],
-									"example": []
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
 								},
 								"result": {
+									"type": "object",
 									"enum": [
 										null
 									],
-									"nullable": true,
-									"type": "object"
+									"nullable": true
 								},
 								"success": {
 									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
 									"enum": [
 										false
-									],
-									"example": false,
-									"type": "boolean"
+									]
 								}
 							},
 							"required": [
@@ -3709,12 +3712,10 @@
 								"errors",
 								"messages",
 								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update Spectrum application configuration using a name for the origin response failure."
+				}
 			}
 		},
 		"security": [
@@ -3726,7 +3727,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Spectrum application configuration using a name for the origin",
 		"tags": [
 			"Spectrum Applications"
 		],

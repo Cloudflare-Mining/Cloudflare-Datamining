@@ -1,52 +1,57 @@
 {
 	"DELETE /accounts/{account_id}/gateway/locations/{location_id}": {
-		"description": "Delete a configured Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-delete-zero-trust-gateway-location",
+		"summary": "Delete a Zero Trust Gateway location",
+		"description": "Delete a configured Zero Trust Gateway location.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "location_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Deletes a Zero Trust Gateway location response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -59,15 +64,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -80,26 +85,24 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
@@ -109,31 +112,34 @@
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Deletes a Zero Trust Gateway location response."
+				}
 			},
 			"4XX": {
+				"description": "Deletes a Zero Trust Gateway location response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -146,15 +152,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -167,26 +173,24 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
@@ -196,53 +200,27 @@
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -255,26 +233,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -282,15 +286,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Deletes a Zero Trust Gateway location response failure."
+				}
 			}
 		},
 		"security": [
@@ -300,7 +301,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete a Zero Trust Gateway location",
 		"tags": [
 			"Zero Trust Gateway locations"
 		],
@@ -314,37 +314,42 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/locations": {
-		"description": "List Zero Trust Gateway locations for an account.",
 		"operationId": "zero-trust-gateway-locations-list-zero-trust-gateway-locations",
+		"summary": "List Zero Trust Gateway locations",
+		"description": "List Zero Trust Gateway locations for an account.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Lists Zero Trust Gateway locations response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -357,15 +362,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -378,361 +383,362 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"client_default": {
-														"default": false,
 														"description": "Indicate whether this location is the default location.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
+														"default": false,
 														"x-auditable": true
 													},
 													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													},
 													"dns_destination_ips_id": {
-														"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 														"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-														"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 														"type": "string",
+														"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+														"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"dns_destination_ipv6_block_id": {
 														"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+														"type": "string",
 														"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 														"nullable": true,
-														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "optional"
 													},
 													"doh_subdomain": {
 														"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+														"type": "string",
 														"example": "oli3n9zkz5",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed"
 													},
 													"ecs_support": {
-														"default": false,
 														"description": "Indicate whether the location must resolve EDNS queries.",
-														"example": false,
 														"type": "boolean",
+														"example": false,
+														"default": false,
 														"x-auditable": true
 													},
 													"endpoints": {
 														"description": "Configure the destination endpoints for this location.",
-														"nullable": true,
+														"type": "object",
 														"properties": {
 															"doh": {
+																"type": "object",
 																"properties": {
 																	"enabled": {
 																		"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"networks": {
 																		"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																		"type": "array",
 																		"items": {
+																			"type": "object",
 																			"properties": {
 																				"network": {
 																					"description": "Specify the IP address or IP CIDR.",
-																					"example": "2001:85a3::/64",
 																					"type": "string",
+																					"example": "2001:85a3::/64",
 																					"x-auditable": true
 																				}
 																			},
 																			"required": [
 																				"network"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"nullable": true,
-																		"type": "array",
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"require_token": {
 																		"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"dot": {
+																"type": "object",
 																"properties": {
 																	"enabled": {
 																		"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"networks": {
 																		"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																		"type": "array",
 																		"items": {
+																			"type": "object",
 																			"properties": {
 																				"network": {
 																					"description": "Specify the IP address or IP CIDR.",
-																					"example": "2001:85a3::/64",
 																					"type": "string",
+																					"example": "2001:85a3::/64",
 																					"x-auditable": true
 																				}
 																			},
 																			"required": [
 																				"network"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"nullable": true,
-																		"type": "array",
 																		"x-stainless-terraform-configurability": "optional"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"ipv4": {
+																"type": "object",
 																"properties": {
 																	"enabled": {
 																		"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															"ipv6": {
+																"type": "object",
 																"properties": {
 																	"enabled": {
 																		"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"networks": {
 																		"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																		"type": "array",
 																		"items": {
+																			"type": "object",
 																			"properties": {
 																				"network": {
 																					"description": "Specify the IPv6 address or IPv6 CIDR.",
-																					"example": "2001:85a3::/64",
 																					"type": "string",
+																					"example": "2001:85a3::/64",
 																					"x-auditable": true
 																				}
 																			},
 																			"required": [
 																				"network"
-																			],
-																			"type": "object"
+																			]
 																		},
 																		"nullable": true,
-																		"type": "array",
 																		"x-stainless-terraform-configurability": "optional"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
+														"nullable": true,
 														"required": [
 															"ipv4",
 															"ipv6",
 															"doh",
 															"dot"
 														],
-														"type": "object",
 														"x-stainless-terraform-configurability": "optional"
 													},
 													"id": {
-														"example": "ed35569b41ce4d1facfe683550f54086",
 														"type": "string",
+														"example": "ed35569b41ce4d1facfe683550f54086",
 														"x-auditable": true
 													},
 													"ip": {
 														"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+														"type": "string",
 														"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 														"readOnly": true,
-														"type": "string",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed"
 													},
 													"ipv4_destination": {
 														"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+														"type": "string",
 														"example": "172.64.36.1",
 														"readOnly": true,
-														"type": "string",
 														"x-stainless-terraform-configurability": "computed"
 													},
 													"ipv4_destination_backup": {
 														"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+														"type": "string",
 														"example": "172.64.36.2",
 														"readOnly": true,
-														"type": "string",
 														"x-stainless-terraform-configurability": "computed"
 													},
 													"max_ttl": {
-														"default": {
-															"mode": "inherit"
-														},
 														"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-														"nullable": true,
+														"type": "object",
 														"properties": {
 															"mode": {
 																"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+																"type": "string",
+																"example": "override",
 																"enum": [
 																	"inherit",
 																	"override",
 																	"disabled"
 																],
-																"example": "override",
-																"type": "string",
 																"x-auditable": true
 															},
 															"ttl_secs": {
 																"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																"type": "integer",
 																"example": 3600,
 																"maximum": 36000,
 																"minimum": 60,
 																"nullable": true,
-																"type": "integer",
 																"x-auditable": true
 															}
 														},
+														"default": {
+															"mode": "inherit"
+														},
+														"nullable": true,
 														"required": [
 															"mode"
 														],
-														"type": "object",
 														"x-stainless-terraform-configurability": "optional"
 													},
 													"name": {
 														"description": "Specify the location name.",
-														"example": "Austin Office Location",
 														"type": "string",
+														"example": "Austin Office Location",
 														"x-auditable": true
 													},
 													"networks": {
 														"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"network": {
 																	"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																	"example": "192.0.2.1/32",
 																	"type": "string",
+																	"example": "192.0.2.1/32",
 																	"x-auditable": true
 																}
 															},
 															"required": [
 																"network"
-															],
-															"type": "object"
+															]
 														},
 														"nullable": true,
-														"type": "array",
 														"x-stainless-terraform-configurability": "optional"
 													},
 													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
+														"type": "string",
 														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"example": "2014-01-01T05:20:00.12345Z",
+														"readOnly": true
 													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+												}
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Lists Zero Trust Gateway locations response."
+				}
 			},
 			"4XX": {
+				"description": "Lists Zero Trust Gateway locations response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -745,15 +751,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -766,383 +772,355 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"client_default": {
-																"default": false,
 																"description": "Indicate whether this location is the default location.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
+																"default": false,
 																"x-auditable": true
 															},
 															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															},
 															"dns_destination_ips_id": {
-																"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 																"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-																"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 																"type": "string",
+																"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+																"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"dns_destination_ipv6_block_id": {
 																"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+																"type": "string",
 																"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 																"nullable": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"doh_subdomain": {
 																"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+																"type": "string",
 																"example": "oli3n9zkz5",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed"
 															},
 															"ecs_support": {
-																"default": false,
 																"description": "Indicate whether the location must resolve EDNS queries.",
-																"example": false,
 																"type": "boolean",
+																"example": false,
+																"default": false,
 																"x-auditable": true
 															},
 															"endpoints": {
 																"description": "Configure the destination endpoints for this location.",
-																"nullable": true,
+																"type": "object",
 																"properties": {
 																	"doh": {
+																		"type": "object",
 																		"properties": {
 																			"enabled": {
 																				"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"networks": {
 																				"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																				"type": "array",
 																				"items": {
+																					"type": "object",
 																					"properties": {
 																						"network": {
 																							"description": "Specify the IP address or IP CIDR.",
-																							"example": "2001:85a3::/64",
 																							"type": "string",
+																							"example": "2001:85a3::/64",
 																							"x-auditable": true
 																						}
 																					},
 																					"required": [
 																						"network"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				"nullable": true,
-																				"type": "array",
 																				"x-stainless-terraform-configurability": "optional"
 																			},
 																			"require_token": {
 																				"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"dot": {
+																		"type": "object",
 																		"properties": {
 																			"enabled": {
 																				"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"networks": {
 																				"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																				"type": "array",
 																				"items": {
+																					"type": "object",
 																					"properties": {
 																						"network": {
 																							"description": "Specify the IP address or IP CIDR.",
-																							"example": "2001:85a3::/64",
 																							"type": "string",
+																							"example": "2001:85a3::/64",
 																							"x-auditable": true
 																						}
 																					},
 																					"required": [
 																						"network"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				"nullable": true,
-																				"type": "array",
 																				"x-stainless-terraform-configurability": "optional"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"ipv4": {
+																		"type": "object",
 																		"properties": {
 																			"enabled": {
 																				"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	},
 																	"ipv6": {
+																		"type": "object",
 																		"properties": {
 																			"enabled": {
 																				"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
 																				"x-auditable": true,
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"networks": {
 																				"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																				"type": "array",
 																				"items": {
+																					"type": "object",
 																					"properties": {
 																						"network": {
 																							"description": "Specify the IPv6 address or IPv6 CIDR.",
-																							"example": "2001:85a3::/64",
 																							"type": "string",
+																							"example": "2001:85a3::/64",
 																							"x-auditable": true
 																						}
 																					},
 																					"required": [
 																						"network"
-																					],
-																					"type": "object"
+																					]
 																				},
 																				"nullable": true,
-																				"type": "array",
 																				"x-stainless-terraform-configurability": "optional"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
+																"nullable": true,
 																"required": [
 																	"ipv4",
 																	"ipv6",
 																	"doh",
 																	"dot"
 																],
-																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"id": {
-																"example": "ed35569b41ce4d1facfe683550f54086",
 																"type": "string",
+																"example": "ed35569b41ce4d1facfe683550f54086",
 																"x-auditable": true
 															},
 															"ip": {
 																"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+																"type": "string",
 																"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 																"readOnly": true,
-																"type": "string",
 																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed"
 															},
 															"ipv4_destination": {
 																"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+																"type": "string",
 																"example": "172.64.36.1",
 																"readOnly": true,
-																"type": "string",
 																"x-stainless-terraform-configurability": "computed"
 															},
 															"ipv4_destination_backup": {
 																"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+																"type": "string",
 																"example": "172.64.36.2",
 																"readOnly": true,
-																"type": "string",
 																"x-stainless-terraform-configurability": "computed"
 															},
 															"max_ttl": {
-																"default": {
-																	"mode": "inherit"
-																},
 																"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-																"nullable": true,
+																"type": "object",
 																"properties": {
 																	"mode": {
 																		"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+																		"type": "string",
+																		"example": "override",
 																		"enum": [
 																			"inherit",
 																			"override",
 																			"disabled"
 																		],
-																		"example": "override",
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"ttl_secs": {
 																		"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																		"type": "integer",
 																		"example": 3600,
 																		"maximum": 36000,
 																		"minimum": 60,
 																		"nullable": true,
-																		"type": "integer",
 																		"x-auditable": true
 																	}
 																},
+																"default": {
+																	"mode": "inherit"
+																},
+																"nullable": true,
 																"required": [
 																	"mode"
 																],
-																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"name": {
 																"description": "Specify the location name.",
-																"example": "Austin Office Location",
 																"type": "string",
+																"example": "Austin Office Location",
 																"x-auditable": true
 															},
 															"networks": {
 																"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+																"type": "array",
 																"items": {
+																	"type": "object",
 																	"properties": {
 																		"network": {
 																			"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																			"example": "192.0.2.1/32",
 																			"type": "string",
+																			"example": "192.0.2.1/32",
 																			"x-auditable": true
 																		}
 																	},
 																	"required": [
 																		"network"
-																	],
-																	"type": "object"
+																	]
 																},
 																"nullable": true,
-																"type": "array",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
+																"type": "string",
 																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
 															}
-														},
-														"type": "object"
-													},
-													"type": "array"
+														}
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1155,26 +1133,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1182,15 +1186,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Lists Zero Trust Gateway locations response failure."
+				}
 			}
 		},
 		"security": [
@@ -1200,7 +1201,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "List Zero Trust Gateway locations",
 		"tags": [
 			"Zero Trust Gateway locations"
 		],
@@ -1211,47 +1211,52 @@
 		]
 	},
 	"GET /accounts/{account_id}/gateway/locations/{location_id}": {
-		"description": "Get a single Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-zero-trust-gateway-location-details",
+		"summary": "Get Zero Trust Gateway location details",
+		"description": "Get a single Zero Trust Gateway location.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "location_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Gets Zero Trust Gateway location details response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1264,15 +1269,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1285,328 +1290,329 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"client_default": {
-													"default": false,
 													"description": "Indicate whether this location is the default location.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"dns_destination_ips_id": {
-													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
+													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ipv6_block_id": {
 													"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+													"type": "string",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"doh_subdomain": {
 													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+													"type": "string",
 													"example": "oli3n9zkz5",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ecs_support": {
-													"default": false,
 													"description": "Indicate whether the location must resolve EDNS queries.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"endpoints": {
 													"description": "Configure the destination endpoints for this location.",
-													"nullable": true,
+													"type": "object",
 													"properties": {
 														"doh": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IP address or IP CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"require_token": {
 																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"dot": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IP address or IP CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv4": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv6": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IPv6 address or IPv6 CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
+													"nullable": true,
 													"required": [
 														"ipv4",
 														"ipv6",
 														"doh",
 														"dot"
 													],
-													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
 													"type": "string",
+													"example": "ed35569b41ce4d1facfe683550f54086",
 													"x-auditable": true
 												},
 												"ip": {
 													"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+													"type": "string",
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination": {
 													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+													"type": "string",
 													"example": "172.64.36.1",
 													"readOnly": true,
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination_backup": {
 													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+													"type": "string",
 													"example": "172.64.36.2",
 													"readOnly": true,
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"max_ttl": {
-													"default": {
-														"mode": "inherit"
-													},
 													"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-													"nullable": true,
+													"type": "object",
 													"properties": {
 														"mode": {
 															"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+															"type": "string",
+															"example": "override",
 															"enum": [
 																"inherit",
 																"override",
 																"disabled"
 															],
-															"example": "override",
-															"type": "string",
 															"x-auditable": true
 														},
 														"ttl_secs": {
 															"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"type": "integer",
 															"example": 3600,
 															"maximum": 36000,
 															"minimum": 60,
 															"nullable": true,
-															"type": "integer",
 															"x-auditable": true
 														}
 													},
+													"default": {
+														"mode": "inherit"
+													},
+													"nullable": true,
 													"required": [
 														"mode"
 													],
-													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
-													"example": "Austin Office Location",
 													"type": "string",
+													"example": "Austin Office Location",
 													"x-auditable": true
 												},
 												"networks": {
 													"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"network": {
 																"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																"example": "192.0.2.1/32",
 																"type": "string",
+																"example": "192.0.2.1/32",
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"network"
-														],
-														"type": "object"
+														]
 													},
 													"nullable": true,
-													"type": "array",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Gets Zero Trust Gateway location details response."
+				}
 			},
 			"4XX": {
+				"description": "Gets Zero Trust Gateway location details response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1619,15 +1625,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -1640,350 +1646,322 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"client_default": {
-															"default": false,
 															"description": "Indicate whether this location is the default location.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"dns_destination_ips_id": {
-															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
+															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ipv6_block_id": {
 															"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+															"type": "string",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"doh_subdomain": {
 															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+															"type": "string",
 															"example": "oli3n9zkz5",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ecs_support": {
-															"default": false,
 															"description": "Indicate whether the location must resolve EDNS queries.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"endpoints": {
 															"description": "Configure the destination endpoints for this location.",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"doh": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IP address or IP CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"require_token": {
 																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"dot": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IP address or IP CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"ipv4": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"ipv6": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IPv6 address or IPv6 CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
 															},
+															"nullable": true,
 															"required": [
 																"ipv4",
 																"ipv6",
 																"doh",
 																"dot"
 															],
-															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"ip": {
 															"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+															"type": "string",
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination": {
 															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+															"type": "string",
 															"example": "172.64.36.1",
 															"readOnly": true,
-															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination_backup": {
 															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+															"type": "string",
 															"example": "172.64.36.2",
 															"readOnly": true,
-															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"max_ttl": {
-															"default": {
-																"mode": "inherit"
-															},
 															"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"mode": {
 																	"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+																	"type": "string",
+																	"example": "override",
 																	"enum": [
 																		"inherit",
 																		"override",
 																		"disabled"
 																	],
-																	"example": "override",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"ttl_secs": {
 																	"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"type": "integer",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
 																	"nullable": true,
-																	"type": "integer",
 																	"x-auditable": true
 																}
 															},
+															"default": {
+																"mode": "inherit"
+															},
+															"nullable": true,
 															"required": [
 																"mode"
 															],
-															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
-															"example": "Austin Office Location",
 															"type": "string",
+															"example": "Austin Office Location",
 															"x-auditable": true
 														},
 														"networks": {
 															"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"network": {
 																		"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																		"example": "192.0.2.1/32",
 																		"type": "string",
+																		"example": "192.0.2.1/32",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"network"
-																],
-																"type": "object"
+																]
 															},
 															"nullable": true,
-															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -1996,26 +1974,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2023,15 +2027,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Gets Zero Trust Gateway location details response failure."
+				}
 			}
 		},
 		"security": [
@@ -2041,7 +2042,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zero Trust Gateway location details",
 		"tags": [
 			"Zero Trust Gateway locations"
 		],
@@ -2052,262 +2052,267 @@
 		]
 	},
 	"POST /accounts/{account_id}/gateway/locations": {
-		"description": "Create a new Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-create-zero-trust-gateway-location",
+		"summary": "Create a Zero Trust Gateway location",
+		"description": "Create a new Zero Trust Gateway location.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"client_default": {
-								"default": false,
 								"description": "Indicate whether this location is the default location.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
+								"default": false,
 								"x-auditable": true
 							},
 							"dns_destination_ips_id": {
 								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
-								"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 								"type": "string",
+								"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"ecs_support": {
-								"default": false,
 								"description": "Indicate whether the location must resolve EDNS queries.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
+								"default": false,
 								"x-auditable": true
 							},
 							"endpoints": {
 								"description": "Configure the destination endpoints for this location.",
-								"nullable": true,
+								"type": "object",
 								"properties": {
 									"doh": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the DOH endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
 												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"network": {
 															"description": "Specify the IP address or IP CIDR.",
-															"example": "2001:85a3::/64",
 															"type": "string",
+															"example": "2001:85a3::/64",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"network"
-													],
-													"type": "object"
+													]
 												},
 												"nullable": true,
-												"type": "array",
 												"x-stainless-terraform-configurability": "optional"
 											},
 											"require_token": {
 												"description": "Specify whether the DOH endpoint requires user identity authentication.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"dot": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the DOT endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
 												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"network": {
 															"description": "Specify the IP address or IP CIDR.",
-															"example": "2001:85a3::/64",
 															"type": "string",
+															"example": "2001:85a3::/64",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"network"
-													],
-													"type": "object"
+													]
 												},
 												"nullable": true,
-												"type": "array",
 												"x-stainless-terraform-configurability": "optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"ipv4": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"ipv6": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
 												"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"network": {
 															"description": "Specify the IPv6 address or IPv6 CIDR.",
-															"example": "2001:85a3::/64",
 															"type": "string",
+															"example": "2001:85a3::/64",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"network"
-													],
-													"type": "object"
+													]
 												},
 												"nullable": true,
-												"type": "array",
 												"x-stainless-terraform-configurability": "optional"
 											}
-										},
-										"type": "object"
+										}
 									}
 								},
+								"nullable": true,
 								"required": [
 									"ipv4",
 									"ipv6",
 									"doh",
 									"dot"
 								],
-								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
 							"max_ttl": {
-								"default": {
-									"mode": "inherit"
-								},
 								"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-								"nullable": true,
+								"type": "object",
 								"properties": {
 									"mode": {
 										"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+										"type": "string",
+										"example": "override",
 										"enum": [
 											"inherit",
 											"override",
 											"disabled"
 										],
-										"example": "override",
-										"type": "string",
 										"x-auditable": true
 									},
 									"ttl_secs": {
 										"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+										"type": "integer",
 										"example": 3600,
 										"maximum": 36000,
 										"minimum": 60,
 										"nullable": true,
-										"type": "integer",
 										"x-auditable": true
 									}
 								},
+								"default": {
+									"mode": "inherit"
+								},
+								"nullable": true,
 								"required": [
 									"mode"
 								],
-								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
 							"name": {
 								"description": "Specify the location name.",
-								"example": "Austin Office Location",
 								"type": "string",
+								"example": "Austin Office Location",
 								"x-auditable": true
 							},
 							"networks": {
 								"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"network": {
 											"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-											"example": "192.0.2.1/32",
 											"type": "string",
+											"example": "192.0.2.1/32",
 											"x-auditable": true
 										}
 									},
 									"required": [
 										"network"
-									],
-									"type": "object"
+									]
 								},
 								"nullable": true,
-								"type": "array",
 								"x-stainless-terraform-configurability": "optional"
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Creates a Zero Trust Gateway location response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2320,15 +2325,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -2341,328 +2346,329 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"client_default": {
-													"default": false,
 													"description": "Indicate whether this location is the default location.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"dns_destination_ips_id": {
-													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
+													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ipv6_block_id": {
 													"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+													"type": "string",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"doh_subdomain": {
 													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+													"type": "string",
 													"example": "oli3n9zkz5",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ecs_support": {
-													"default": false,
 													"description": "Indicate whether the location must resolve EDNS queries.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"endpoints": {
 													"description": "Configure the destination endpoints for this location.",
-													"nullable": true,
+													"type": "object",
 													"properties": {
 														"doh": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IP address or IP CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"require_token": {
 																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"dot": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IP address or IP CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv4": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv6": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IPv6 address or IPv6 CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
+													"nullable": true,
 													"required": [
 														"ipv4",
 														"ipv6",
 														"doh",
 														"dot"
 													],
-													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
 													"type": "string",
+													"example": "ed35569b41ce4d1facfe683550f54086",
 													"x-auditable": true
 												},
 												"ip": {
 													"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+													"type": "string",
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination": {
 													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+													"type": "string",
 													"example": "172.64.36.1",
 													"readOnly": true,
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination_backup": {
 													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+													"type": "string",
 													"example": "172.64.36.2",
 													"readOnly": true,
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"max_ttl": {
-													"default": {
-														"mode": "inherit"
-													},
 													"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-													"nullable": true,
+													"type": "object",
 													"properties": {
 														"mode": {
 															"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+															"type": "string",
+															"example": "override",
 															"enum": [
 																"inherit",
 																"override",
 																"disabled"
 															],
-															"example": "override",
-															"type": "string",
 															"x-auditable": true
 														},
 														"ttl_secs": {
 															"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"type": "integer",
 															"example": 3600,
 															"maximum": 36000,
 															"minimum": 60,
 															"nullable": true,
-															"type": "integer",
 															"x-auditable": true
 														}
 													},
+													"default": {
+														"mode": "inherit"
+													},
+													"nullable": true,
 													"required": [
 														"mode"
 													],
-													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
-													"example": "Austin Office Location",
 													"type": "string",
+													"example": "Austin Office Location",
 													"x-auditable": true
 												},
 												"networks": {
 													"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"network": {
 																"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																"example": "192.0.2.1/32",
 																"type": "string",
+																"example": "192.0.2.1/32",
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"network"
-														],
-														"type": "object"
+														]
 													},
 													"nullable": true,
-													"type": "array",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Creates a Zero Trust Gateway location response."
+				}
 			},
 			"4XX": {
+				"description": "Creates a Zero Trust Gateway location response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2675,15 +2681,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -2696,350 +2702,322 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"client_default": {
-															"default": false,
 															"description": "Indicate whether this location is the default location.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"dns_destination_ips_id": {
-															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
+															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ipv6_block_id": {
 															"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+															"type": "string",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"doh_subdomain": {
 															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+															"type": "string",
 															"example": "oli3n9zkz5",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ecs_support": {
-															"default": false,
 															"description": "Indicate whether the location must resolve EDNS queries.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"endpoints": {
 															"description": "Configure the destination endpoints for this location.",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"doh": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IP address or IP CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"require_token": {
 																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"dot": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IP address or IP CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"ipv4": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"ipv6": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IPv6 address or IPv6 CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
 															},
+															"nullable": true,
 															"required": [
 																"ipv4",
 																"ipv6",
 																"doh",
 																"dot"
 															],
-															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"ip": {
 															"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+															"type": "string",
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination": {
 															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+															"type": "string",
 															"example": "172.64.36.1",
 															"readOnly": true,
-															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination_backup": {
 															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+															"type": "string",
 															"example": "172.64.36.2",
 															"readOnly": true,
-															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"max_ttl": {
-															"default": {
-																"mode": "inherit"
-															},
 															"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"mode": {
 																	"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+																	"type": "string",
+																	"example": "override",
 																	"enum": [
 																		"inherit",
 																		"override",
 																		"disabled"
 																	],
-																	"example": "override",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"ttl_secs": {
 																	"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"type": "integer",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
 																	"nullable": true,
-																	"type": "integer",
 																	"x-auditable": true
 																}
 															},
+															"default": {
+																"mode": "inherit"
+															},
+															"nullable": true,
 															"required": [
 																"mode"
 															],
-															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
-															"example": "Austin Office Location",
 															"type": "string",
+															"example": "Austin Office Location",
 															"x-auditable": true
 														},
 														"networks": {
 															"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"network": {
 																		"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																		"example": "192.0.2.1/32",
 																		"type": "string",
+																		"example": "192.0.2.1/32",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"network"
-																],
-																"type": "object"
+																]
 															},
 															"nullable": true,
-															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3052,26 +3030,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3079,15 +3083,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Creates a Zero Trust Gateway location response failure."
+				}
 			}
 		},
 		"security": [
@@ -3097,7 +3098,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Create a Zero Trust Gateway location",
 		"tags": [
 			"Zero Trust Gateway locations"
 		],
@@ -3111,272 +3111,277 @@
 		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/locations/{location_id}": {
-		"description": "Update a configured Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-update-zero-trust-gateway-location",
+		"summary": "Update a Zero Trust Gateway location",
+		"description": "Update a configured Zero Trust Gateway location.",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "location_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "ed35569b41ce4d1facfe683550f54086",
 					"type": "string",
+					"example": "ed35569b41ce4d1facfe683550f54086",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
-					"example": "699d98642c564d2e855e9661899b7252",
 					"type": "string",
+					"example": "699d98642c564d2e855e9661899b7252",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"client_default": {
-								"default": false,
 								"description": "Indicate whether this location is the default location.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
+								"default": false,
 								"x-auditable": true
 							},
 							"dns_destination_ips_id": {
 								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
-								"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 								"type": "string",
+								"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"ecs_support": {
-								"default": false,
 								"description": "Indicate whether the location must resolve EDNS queries.",
-								"example": false,
 								"type": "boolean",
+								"example": false,
+								"default": false,
 								"x-auditable": true
 							},
 							"endpoints": {
 								"description": "Configure the destination endpoints for this location.",
-								"nullable": true,
+								"type": "object",
 								"properties": {
 									"doh": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the DOH endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
 												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"network": {
 															"description": "Specify the IP address or IP CIDR.",
-															"example": "2001:85a3::/64",
 															"type": "string",
+															"example": "2001:85a3::/64",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"network"
-													],
-													"type": "object"
+													]
 												},
 												"nullable": true,
-												"type": "array",
 												"x-stainless-terraform-configurability": "optional"
 											},
 											"require_token": {
 												"description": "Specify whether the DOH endpoint requires user identity authentication.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"dot": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the DOT endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
 												"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"network": {
 															"description": "Specify the IP address or IP CIDR.",
-															"example": "2001:85a3::/64",
 															"type": "string",
+															"example": "2001:85a3::/64",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"network"
-													],
-													"type": "object"
+													]
 												},
 												"nullable": true,
-												"type": "array",
 												"x-stainless-terraform-configurability": "optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"ipv4": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										},
-										"type": "object"
+										}
 									},
 									"ipv6": {
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"networks": {
 												"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+												"type": "array",
 												"items": {
+													"type": "object",
 													"properties": {
 														"network": {
 															"description": "Specify the IPv6 address or IPv6 CIDR.",
-															"example": "2001:85a3::/64",
 															"type": "string",
+															"example": "2001:85a3::/64",
 															"x-auditable": true
 														}
 													},
 													"required": [
 														"network"
-													],
-													"type": "object"
+													]
 												},
 												"nullable": true,
-												"type": "array",
 												"x-stainless-terraform-configurability": "optional"
 											}
-										},
-										"type": "object"
+										}
 									}
 								},
+								"nullable": true,
 								"required": [
 									"ipv4",
 									"ipv6",
 									"doh",
 									"dot"
 								],
-								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
 							"max_ttl": {
-								"default": {
-									"mode": "inherit"
-								},
 								"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-								"nullable": true,
+								"type": "object",
 								"properties": {
 									"mode": {
 										"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+										"type": "string",
+										"example": "override",
 										"enum": [
 											"inherit",
 											"override",
 											"disabled"
 										],
-										"example": "override",
-										"type": "string",
 										"x-auditable": true
 									},
 									"ttl_secs": {
 										"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+										"type": "integer",
 										"example": 3600,
 										"maximum": 36000,
 										"minimum": 60,
 										"nullable": true,
-										"type": "integer",
 										"x-auditable": true
 									}
 								},
+								"default": {
+									"mode": "inherit"
+								},
+								"nullable": true,
 								"required": [
 									"mode"
 								],
-								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
 							"name": {
 								"description": "Specify the location name.",
-								"example": "Austin Office Location",
 								"type": "string",
+								"example": "Austin Office Location",
 								"x-auditable": true
 							},
 							"networks": {
 								"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+								"type": "array",
 								"items": {
+									"type": "object",
 									"properties": {
 										"network": {
 											"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-											"example": "192.0.2.1/32",
 											"type": "string",
+											"example": "192.0.2.1/32",
 											"x-auditable": true
 										}
 									},
 									"required": [
 										"network"
-									],
-									"type": "object"
+									]
 								},
 								"nullable": true,
-								"type": "array",
 								"x-stainless-terraform-configurability": "optional"
 							}
 						},
 						"required": [
 							"name"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Updates a Zero Trust Gateway location response.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3389,15 +3394,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -3410,328 +3415,329 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Indicate whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"client_default": {
-													"default": false,
 													"description": "Indicate whether this location is the default location.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												},
 												"dns_destination_ips_id": {
-													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"type": "string",
+													"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+													"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ipv6_block_id": {
 													"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+													"type": "string",
 													"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 													"nullable": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"doh_subdomain": {
 													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+													"type": "string",
 													"example": "oli3n9zkz5",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ecs_support": {
-													"default": false,
 													"description": "Indicate whether the location must resolve EDNS queries.",
-													"example": false,
 													"type": "boolean",
+													"example": false,
+													"default": false,
 													"x-auditable": true
 												},
 												"endpoints": {
 													"description": "Configure the destination endpoints for this location.",
-													"nullable": true,
+													"type": "object",
 													"properties": {
 														"doh": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IP address or IP CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"require_token": {
 																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"dot": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IP address or IP CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv4": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															},
-															"type": "object"
+															}
 														},
 														"ipv6": {
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"networks": {
 																	"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																	"type": "array",
 																	"items": {
+																		"type": "object",
 																		"properties": {
 																			"network": {
 																				"description": "Specify the IPv6 address or IPv6 CIDR.",
-																				"example": "2001:85a3::/64",
 																				"type": "string",
+																				"example": "2001:85a3::/64",
 																				"x-auditable": true
 																			}
 																		},
 																		"required": [
 																			"network"
-																		],
-																		"type": "object"
+																		]
 																	},
 																	"nullable": true,
-																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
+													"nullable": true,
 													"required": [
 														"ipv4",
 														"ipv6",
 														"doh",
 														"dot"
 													],
-													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
 													"type": "string",
+													"example": "ed35569b41ce4d1facfe683550f54086",
 													"x-auditable": true
 												},
 												"ip": {
 													"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+													"type": "string",
 													"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 													"readOnly": true,
-													"type": "string",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination": {
 													"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+													"type": "string",
 													"example": "172.64.36.1",
 													"readOnly": true,
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"ipv4_destination_backup": {
 													"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+													"type": "string",
 													"example": "172.64.36.2",
 													"readOnly": true,
-													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
 												"max_ttl": {
-													"default": {
-														"mode": "inherit"
-													},
 													"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-													"nullable": true,
+													"type": "object",
 													"properties": {
 														"mode": {
 															"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+															"type": "string",
+															"example": "override",
 															"enum": [
 																"inherit",
 																"override",
 																"disabled"
 															],
-															"example": "override",
-															"type": "string",
 															"x-auditable": true
 														},
 														"ttl_secs": {
 															"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"type": "integer",
 															"example": 3600,
 															"maximum": 36000,
 															"minimum": 60,
 															"nullable": true,
-															"type": "integer",
 															"x-auditable": true
 														}
 													},
+													"default": {
+														"mode": "inherit"
+													},
+													"nullable": true,
 													"required": [
 														"mode"
 													],
-													"type": "object",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
-													"example": "Austin Office Location",
 													"type": "string",
+													"example": "Austin Office Location",
 													"x-auditable": true
 												},
 												"networks": {
 													"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"network": {
 																"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																"example": "192.0.2.1/32",
 																"type": "string",
+																"example": "192.0.2.1/32",
 																"x-auditable": true
 															}
 														},
 														"required": [
 															"network"
-														],
-														"type": "object"
+														]
 													},
 													"nullable": true,
-													"type": "array",
 													"x-stainless-terraform-configurability": "optional"
 												},
 												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
+													"type": "string",
 													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"readOnly": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Updates a Zero Trust Gateway location response."
+				}
 			},
 			"4XX": {
+				"description": "Updates a Zero Trust Gateway location response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3744,15 +3750,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"message": {
 																		"type": "string"
@@ -3765,350 +3771,322 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Indicate whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"properties": {
 														"client_default": {
-															"default": false,
 															"description": "Indicate whether this location is the default location.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														},
 														"dns_destination_ips_id": {
-															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
-															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"type": "string",
+															"example": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
+															"default": "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ipv6_block_id": {
 															"description": "Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.",
+															"type": "string",
 															"example": "b08f7231-d458-495c-98ef-190604c9ee83",
 															"nullable": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"doh_subdomain": {
 															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
+															"type": "string",
 															"example": "oli3n9zkz5",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ecs_support": {
-															"default": false,
 															"description": "Indicate whether the location must resolve EDNS queries.",
-															"example": false,
 															"type": "boolean",
+															"example": false,
+															"default": false,
 															"x-auditable": true
 														},
 														"endpoints": {
 															"description": "Configure the destination endpoints for this location.",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"doh": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the DOH endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IP address or IP CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"require_token": {
 																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"dot": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the DOT endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IP address or IP CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"ipv4": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the IPv4 endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																},
 																"ipv6": {
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "Indicate whether the IPV6 endpoint is enabled for this location.",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"networks": {
 																			"description": "Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.",
+																			"type": "array",
 																			"items": {
+																				"type": "object",
 																				"properties": {
 																					"network": {
 																						"description": "Specify the IPv6 address or IPv6 CIDR.",
-																						"example": "2001:85a3::/64",
 																						"type": "string",
+																						"example": "2001:85a3::/64",
 																						"x-auditable": true
 																					}
 																				},
 																				"required": [
 																					"network"
-																				],
-																				"type": "object"
+																				]
 																			},
 																			"nullable": true,
-																			"type": "array",
 																			"x-stainless-terraform-configurability": "optional"
 																		}
-																	},
-																	"type": "object"
+																	}
 																}
 															},
+															"nullable": true,
 															"required": [
 																"ipv4",
 																"ipv6",
 																"doh",
 																"dot"
 															],
-															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"x-auditable": true
 														},
 														"ip": {
 															"description": "Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.",
+															"type": "string",
 															"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 															"readOnly": true,
-															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination": {
 															"description": "Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+															"type": "string",
 															"example": "172.64.36.1",
 															"readOnly": true,
-															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"ipv4_destination_backup": {
 															"description": "Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.",
+															"type": "string",
 															"example": "172.64.36.2",
 															"readOnly": true,
-															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
 														},
 														"max_ttl": {
-															"default": {
-																"mode": "inherit"
-															},
 															"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"mode": {
 																	"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+																	"type": "string",
+																	"example": "override",
 																	"enum": [
 																		"inherit",
 																		"override",
 																		"disabled"
 																	],
-																	"example": "override",
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"ttl_secs": {
 																	"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"type": "integer",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
 																	"nullable": true,
-																	"type": "integer",
 																	"x-auditable": true
 																}
 															},
+															"default": {
+																"mode": "inherit"
+															},
+															"nullable": true,
 															"required": [
 																"mode"
 															],
-															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
-															"example": "Austin Office Location",
 															"type": "string",
+															"example": "Austin Office Location",
 															"x-auditable": true
 														},
 														"networks": {
 															"description": "Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.",
+															"type": "array",
 															"items": {
+																"type": "object",
 																"properties": {
 																	"network": {
 																		"description": "Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.",
-																		"example": "192.0.2.1/32",
 																		"type": "string",
+																		"example": "192.0.2.1/32",
 																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"network"
-																],
-																"type": "object"
+																]
 															},
 															"nullable": true,
-															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
+															"type": "string",
 															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
+											"type": "object",
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1,
-											"type": "object"
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"message": {
 																"type": "string"
@@ -4121,26 +4099,52 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "object",
 											"example": [],
-											"type": "object"
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Indicate whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4148,15 +4152,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Updates a Zero Trust Gateway location response failure."
+				}
 			}
 		},
 		"security": [
@@ -4166,7 +4167,6 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update a Zero Trust Gateway location",
 		"tags": [
 			"Zero Trust Gateway locations"
 		],

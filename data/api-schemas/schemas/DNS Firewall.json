@@ -1,56 +1,61 @@
 {
 	"DELETE /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
-		"description": "Delete a DNS Firewall cluster",
 		"operationId": "dns-firewall-delete-dns-firewall-cluster",
+		"summary": "Delete DNS Firewall Cluster",
+		"description": "Delete a DNS Firewall cluster",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "dns_firewall_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Delete DNS Firewall Cluster response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -59,12 +64,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -74,15 +79,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -91,12 +96,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -106,67 +111,67 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier.",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete DNS Firewall Cluster response"
+				}
 			},
 			"4XX": {
+				"description": "Delete DNS Firewall Cluster response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -175,12 +180,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -190,15 +195,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -207,12 +212,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -222,98 +227,60 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Identifier.",
+													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
-													"type": "string",
 													"x-auditable": true
 												}
-											},
-											"type": "object"
+											}
 										}
 									},
 									"type": "object"
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -322,12 +289,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -337,25 +304,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -363,15 +367,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Delete DNS Firewall Cluster response failure"
+				}
 			}
 		},
 		"security": [
@@ -383,7 +384,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete DNS Firewall Cluster",
 		"tags": [
 			"DNS Firewall"
 		],
@@ -407,60 +407,65 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dns_firewall": {
-		"description": "List DNS Firewall clusters for an account",
 		"operationId": "dns-firewall-list-dns-firewall-clusters",
+		"summary": "List DNS Firewall Clusters",
+		"description": "List DNS Firewall clusters for an account",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "query",
 				"name": "page",
+				"in": "query",
 				"schema": {
-					"default": 1,
 					"description": "Page number of paginated results",
-					"minimum": 1,
-					"type": "number"
+					"type": "number",
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
-				"in": "query",
 				"name": "per_page",
+				"in": "query",
 				"schema": {
-					"default": 20,
 					"description": "Number of clusters per page",
+					"type": "number",
+					"default": 20,
 					"maximum": 100,
-					"minimum": 1,
-					"type": "number"
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "List DNS Firewall Clusters response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -469,12 +474,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -484,15 +489,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -501,12 +506,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -516,160 +521,157 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result_info": {
+													"type": "object",
 													"properties": {
 														"count": {
 															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
+															"type": "number",
+															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
+															"type": "number",
+															"example": 20
 														},
 														"total_count": {
 															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
+															"type": "number",
+															"example": 2000
 														},
 														"total_pages": {
 															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
+															"type": "number",
+															"example": 100
 														}
-													},
-													"type": "object"
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "array",
 											"items": {
+												"type": "object",
 												"allOf": [
 													{
+														"type": "object",
 														"properties": {
 															"attack_mitigation": {
 																"description": "Attack mitigation settings",
-																"nullable": true,
+																"type": "object",
 																"properties": {
 																	"enabled": {
 																		"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true
 																	},
 																	"only_when_upstream_unhealthy": {
-																		"default": true,
 																		"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																		"example": false,
 																		"type": "boolean",
+																		"example": false,
+																		"default": true,
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"nullable": true
 															},
 															"deprecate_any_requests": {
 																"description": "Whether to refuse to answer queries for the ANY type",
-																"example": true,
 																"type": "boolean",
+																"example": true,
 																"x-auditable": true
 															},
 															"ecs_fallback": {
 																"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-																"example": false,
 																"type": "boolean",
+																"example": false,
 																"x-auditable": true
 															},
 															"maximum_cache_ttl": {
-																"default": 900,
 																"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																"type": "number",
 																"example": 900,
+																"default": 900,
 																"maximum": 36000,
 																"minimum": 30,
-																"type": "number",
 																"x-auditable": true
 															},
 															"minimum_cache_ttl": {
-																"default": 60,
 																"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+																"type": "number",
 																"example": 60,
+																"default": 60,
 																"maximum": 36000,
 																"minimum": 30,
-																"type": "number",
 																"x-auditable": true
 															},
 															"name": {
 																"description": "DNS Firewall cluster name",
+																"type": "string",
 																"example": "My Awesome DNS Firewall cluster",
 																"maxLength": 160,
 																"minLength": 1,
-																"type": "string",
 																"x-auditable": true
 															},
 															"negative_cache_ttl": {
 																"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																"type": "number",
 																"example": 900,
 																"maximum": 36000,
 																"minimum": 30,
 																"nullable": true,
-																"type": "number",
 																"x-auditable": true
 															},
 															"ratelimit": {
 																"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+																"type": "number",
 																"example": 600,
 																"maximum": 1000000000,
 																"minimum": 100,
 																"nullable": true,
-																"type": "number",
 																"x-auditable": true
 															},
 															"retries": {
-																"default": 2,
 																"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																"type": "number",
 																"example": 2,
+																"default": 2,
 																"maximum": 2,
 																"minimum": 0,
-																"type": "number",
 																"x-auditable": true
 															},
 															"upstream_ips": {
-																"example": [
-																	"192.0.2.1",
-																	"198.51.100.1",
-																	"2001:DB8:100::CF"
-																],
+																"type": "array",
 																"items": {
 																	"anyOf": [
 																		{
@@ -689,22 +691,20 @@
 																	],
 																	"type": "string"
 																},
+																"example": [
+																	"192.0.2.1",
+																	"198.51.100.1",
+																	"2001:DB8:100::CF"
+																],
 																"minLength": 1,
-																"type": "array",
 																"x-stainless-collection-type": "set"
 															}
-														},
-														"type": "object"
+														}
 													},
 													{
 														"properties": {
 															"dns_firewall_ips": {
-																"example": [
-																	"203.0.113.1",
-																	"203.0.113.254",
-																	"2001:DB8:AB::CF",
-																	"2001:DB8:CD::CF"
-																],
+																"type": "array",
 																"items": {
 																	"anyOf": [
 																		{
@@ -724,21 +724,26 @@
 																	],
 																	"type": "string"
 																},
-																"type": "array",
+																"example": [
+																	"203.0.113.1",
+																	"203.0.113.254",
+																	"2001:DB8:AB::CF",
+																	"2001:DB8:CD::CF"
+																],
 																"x-stainless-collection-type": "set"
 															},
 															"id": {
 																"description": "Identifier.",
+																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
-																"type": "string",
 																"x-auditable": true
 															},
 															"modified_on": {
 																"description": "Last modification of DNS Firewall cluster",
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
 																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
 																"x-auditable": true
 															}
 														},
@@ -760,39 +765,40 @@
 													"ecs_fallback",
 													"ratelimit",
 													"retries"
-												],
-												"type": "object"
-											},
-											"type": "array"
+												]
+											}
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List DNS Firewall Clusters response"
+				}
 			},
 			"4XX": {
+				"description": "List DNS Firewall Clusters response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -801,12 +807,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -816,15 +822,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -833,12 +839,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -848,160 +854,157 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												},
 												{
 													"properties": {
 														"result_info": {
+															"type": "object",
 															"properties": {
 																"count": {
 																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"page": {
 																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"example": 1
 																},
 																"per_page": {
 																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
+																	"type": "number",
+																	"example": 20
 																},
 																"total_count": {
 																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
+																	"type": "number",
+																	"example": 2000
 																},
 																"total_pages": {
 																	"description": "The number of total pages in the entire result set.",
-																	"example": 100,
-																	"type": "number"
+																	"type": "number",
+																	"example": 100
 																}
-															},
-															"type": "object"
+															}
 														}
 													},
 													"type": "object"
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "array",
 													"items": {
+														"type": "object",
 														"allOf": [
 															{
+																"type": "object",
 																"properties": {
 																	"attack_mitigation": {
 																		"description": "Attack mitigation settings",
-																		"nullable": true,
+																		"type": "object",
 																		"properties": {
 																			"enabled": {
 																				"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																				"example": true,
 																				"type": "boolean",
+																				"example": true,
 																				"x-auditable": true
 																			},
 																			"only_when_upstream_unhealthy": {
-																				"default": true,
 																				"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																				"example": false,
 																				"type": "boolean",
+																				"example": false,
+																				"default": true,
 																				"x-auditable": true
 																			}
 																		},
-																		"type": "object"
+																		"nullable": true
 																	},
 																	"deprecate_any_requests": {
 																		"description": "Whether to refuse to answer queries for the ANY type",
-																		"example": true,
 																		"type": "boolean",
+																		"example": true,
 																		"x-auditable": true
 																	},
 																	"ecs_fallback": {
 																		"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-																		"example": false,
 																		"type": "boolean",
+																		"example": false,
 																		"x-auditable": true
 																	},
 																	"maximum_cache_ttl": {
-																		"default": 900,
 																		"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																		"type": "number",
 																		"example": 900,
+																		"default": 900,
 																		"maximum": 36000,
 																		"minimum": 30,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"minimum_cache_ttl": {
-																		"default": 60,
 																		"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+																		"type": "number",
 																		"example": 60,
+																		"default": 60,
 																		"maximum": 36000,
 																		"minimum": 30,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"name": {
 																		"description": "DNS Firewall cluster name",
+																		"type": "string",
 																		"example": "My Awesome DNS Firewall cluster",
 																		"maxLength": 160,
 																		"minLength": 1,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"negative_cache_ttl": {
 																		"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																		"type": "number",
 																		"example": 900,
 																		"maximum": 36000,
 																		"minimum": 30,
 																		"nullable": true,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"ratelimit": {
 																		"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+																		"type": "number",
 																		"example": 600,
 																		"maximum": 1000000000,
 																		"minimum": 100,
 																		"nullable": true,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"retries": {
-																		"default": 2,
 																		"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																		"type": "number",
 																		"example": 2,
+																		"default": 2,
 																		"maximum": 2,
 																		"minimum": 0,
-																		"type": "number",
 																		"x-auditable": true
 																	},
 																	"upstream_ips": {
-																		"example": [
-																			"192.0.2.1",
-																			"198.51.100.1",
-																			"2001:DB8:100::CF"
-																		],
+																		"type": "array",
 																		"items": {
 																			"anyOf": [
 																				{
@@ -1021,22 +1024,20 @@
 																			],
 																			"type": "string"
 																		},
+																		"example": [
+																			"192.0.2.1",
+																			"198.51.100.1",
+																			"2001:DB8:100::CF"
+																		],
 																		"minLength": 1,
-																		"type": "array",
 																		"x-stainless-collection-type": "set"
 																	}
-																},
-																"type": "object"
+																}
 															},
 															{
 																"properties": {
 																	"dns_firewall_ips": {
-																		"example": [
-																			"203.0.113.1",
-																			"203.0.113.254",
-																			"2001:DB8:AB::CF",
-																			"2001:DB8:CD::CF"
-																		],
+																		"type": "array",
 																		"items": {
 																			"anyOf": [
 																				{
@@ -1056,21 +1057,26 @@
 																			],
 																			"type": "string"
 																		},
-																		"type": "array",
+																		"example": [
+																			"203.0.113.1",
+																			"203.0.113.254",
+																			"2001:DB8:AB::CF",
+																			"2001:DB8:CD::CF"
+																		],
 																		"x-stainless-collection-type": "set"
 																	},
 																	"id": {
 																		"description": "Identifier.",
+																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																		"maxLength": 32,
-																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"modified_on": {
 																		"description": "Last modification of DNS Firewall cluster",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
 																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
 																		"x-auditable": true
 																	}
 																},
@@ -1092,71 +1098,32 @@
 															"ecs_fallback",
 															"ratelimit",
 															"retries"
-														],
-														"type": "object"
-													},
-													"type": "array"
+														]
+													}
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1165,12 +1132,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1180,25 +1147,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1206,15 +1210,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "List DNS Firewall Clusters response failure"
+				}
 			}
 		},
 		"security": [
@@ -1226,7 +1227,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "List DNS Firewall Clusters",
 		"tags": [
 			"DNS Firewall"
 		],
@@ -1251,51 +1251,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
-		"description": "Show a single DNS Firewall cluster for an account",
 		"operationId": "dns-firewall-dns-firewall-cluster-details",
+		"summary": "DNS Firewall Cluster Details",
+		"description": "Show a single DNS Firewall cluster for an account",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "dns_firewall_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "DNS Firewall Cluster Details response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1304,12 +1309,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1319,15 +1324,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1336,12 +1341,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1351,124 +1356,120 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"attack_mitigation": {
 															"description": "Attack mitigation settings",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"only_when_upstream_unhealthy": {
-																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
+																	"default": true,
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"nullable": true
 														},
 														"deprecate_any_requests": {
 															"description": "Whether to refuse to answer queries for the ANY type",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"ecs_fallback": {
 															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"maximum_cache_ttl": {
-															"default": 900,
 															"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+															"type": "number",
 															"example": 900,
+															"default": 900,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number",
 															"x-auditable": true
 														},
 														"minimum_cache_ttl": {
-															"default": 60,
 															"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+															"type": "number",
 															"example": 60,
+															"default": 60,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "DNS Firewall cluster name",
+															"type": "string",
 															"example": "My Awesome DNS Firewall cluster",
 															"maxLength": 160,
 															"minLength": 1,
-															"type": "string",
 															"x-auditable": true
 														},
 														"negative_cache_ttl": {
 															"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+															"type": "number",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
 															"nullable": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"ratelimit": {
 															"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+															"type": "number",
 															"example": 600,
 															"maximum": 1000000000,
 															"minimum": 100,
 															"nullable": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"retries": {
-															"default": 2,
 															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+															"type": "number",
 															"example": 2,
+															"default": 2,
 															"maximum": 2,
 															"minimum": 0,
-															"type": "number",
 															"x-auditable": true
 														},
 														"upstream_ips": {
-															"example": [
-																"192.0.2.1",
-																"198.51.100.1",
-																"2001:DB8:100::CF"
-															],
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
@@ -1488,22 +1489,20 @@
 																],
 																"type": "string"
 															},
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
 															"minLength": 1,
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
 														"dns_firewall_ips": {
-															"example": [
-																"203.0.113.1",
-																"203.0.113.254",
-																"2001:DB8:AB::CF",
-																"2001:DB8:CD::CF"
-															],
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
@@ -1523,21 +1522,26 @@
 																],
 																"type": "string"
 															},
-															"type": "array",
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
 															"x-stainless-collection-type": "set"
 														},
 														"id": {
 															"description": "Identifier.",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last modification of DNS Firewall cluster",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													},
@@ -1559,37 +1563,39 @@
 												"ecs_fallback",
 												"ratelimit",
 												"retries"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "DNS Firewall Cluster Details response"
+				}
 			},
 			"4XX": {
+				"description": "DNS Firewall Cluster Details response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1598,12 +1604,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1613,15 +1619,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -1630,12 +1636,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -1645,124 +1651,120 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"attack_mitigation": {
 																	"description": "Attack mitigation settings",
-																	"nullable": true,
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true
 																		},
 																		"only_when_upstream_unhealthy": {
-																			"default": true,
 																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																			"example": false,
 																			"type": "boolean",
+																			"example": false,
+																			"default": true,
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"nullable": true
 																},
 																"deprecate_any_requests": {
 																	"description": "Whether to refuse to answer queries for the ANY type",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"ecs_fallback": {
 																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"maximum_cache_ttl": {
-																	"default": 900,
 																	"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																	"type": "number",
 																	"example": 900,
+																	"default": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"minimum_cache_ttl": {
-																	"default": 60,
 																	"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+																	"type": "number",
 																	"example": 60,
+																	"default": 60,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "DNS Firewall cluster name",
+																	"type": "string",
 																	"example": "My Awesome DNS Firewall cluster",
 																	"maxLength": 160,
 																	"minLength": 1,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"negative_cache_ttl": {
 																	"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																	"type": "number",
 																	"example": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
 																	"nullable": true,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"ratelimit": {
 																	"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+																	"type": "number",
 																	"example": 600,
 																	"maximum": 1000000000,
 																	"minimum": 100,
 																	"nullable": true,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"retries": {
-																	"default": 2,
 																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																	"type": "number",
 																	"example": 2,
+																	"default": 2,
 																	"maximum": 2,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"upstream_ips": {
-																	"example": [
-																		"192.0.2.1",
-																		"198.51.100.1",
-																		"2001:DB8:100::CF"
-																	],
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -1782,22 +1784,20 @@
 																		],
 																		"type": "string"
 																	},
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
 																	"minLength": 1,
-																	"type": "array",
 																	"x-stainless-collection-type": "set"
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
 															"properties": {
 																"dns_firewall_ips": {
-																	"example": [
-																		"203.0.113.1",
-																		"203.0.113.254",
-																		"2001:DB8:AB::CF",
-																		"2001:DB8:CD::CF"
-																	],
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -1817,21 +1817,26 @@
 																		],
 																		"type": "string"
 																	},
-																	"type": "array",
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
 																	"x-stainless-collection-type": "set"
 																},
 																"id": {
 																	"description": "Identifier.",
+																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"modified_on": {
 																	"description": "Last modification of DNS Firewall cluster",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																}
 															},
@@ -1853,69 +1858,31 @@
 														"ecs_fallback",
 														"ratelimit",
 														"retries"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -1924,12 +1891,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -1939,25 +1906,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -1965,15 +1969,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "DNS Firewall Cluster Details response failure"
+				}
 			}
 		},
 		"security": [
@@ -1985,7 +1986,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "DNS Firewall Cluster Details",
 		"tags": [
 			"DNS Firewall"
 		],
@@ -2010,51 +2010,56 @@
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns": {
-		"description": "Show reverse DNS configuration (PTR records) for a DNS Firewall cluster",
 		"operationId": "dns-firewall-show-dns-firewall-cluster-reverse-dns",
+		"summary": "Show DNS Firewall Cluster Reverse DNS",
+		"description": "Show reverse DNS configuration (PTR records) for a DNS Firewall cluster",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "dns_firewall_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"responses": {
 			"200": {
+				"description": "Show DNS Firewall Cluster Reverse DNS response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2063,12 +2068,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2078,15 +2083,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2095,12 +2100,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2110,78 +2115,79 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"ptr": {
+															"description": "Map of cluster IP addresses to PTR record contents",
+															"type": "object",
 															"additionalProperties": {
 																"description": "PTR record content",
 																"type": "string"
-															},
-															"description": "Map of cluster IP addresses to PTR record contents",
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											],
 											"required": [
 												"ptr"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Show DNS Firewall Cluster Reverse DNS response"
+				}
 			},
 			"4XX": {
+				"description": "Show DNS Firewall Cluster Reverse DNS response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2190,12 +2196,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2205,15 +2211,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2222,12 +2228,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2237,110 +2243,71 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"ptr": {
+																	"description": "Map of cluster IP addresses to PTR record contents",
+																	"type": "object",
 																	"additionalProperties": {
 																		"description": "PTR record content",
 																		"type": "string"
-																	},
-																	"description": "Map of cluster IP addresses to PTR record contents",
-																	"type": "object"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														}
 													],
 													"required": [
 														"ptr"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2349,12 +2316,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2364,25 +2331,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -2390,15 +2394,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Show DNS Firewall Cluster Reverse DNS response failure"
+				}
 			}
 		},
 		"security": [
@@ -2410,7 +2411,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Show DNS Firewall Cluster Reverse DNS",
 		"tags": [
 			"DNS Firewall"
 		],
@@ -2435,132 +2435,132 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
-		"description": "Modify the configuration of a DNS Firewall cluster",
 		"operationId": "dns-firewall-update-dns-firewall-cluster",
+		"summary": "Update DNS Firewall Cluster",
+		"description": "Modify the configuration of a DNS Firewall cluster",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "dns_firewall_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"attack_mitigation": {
 										"description": "Attack mitigation settings",
-										"nullable": true,
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true
 											},
 											"only_when_upstream_unhealthy": {
-												"default": true,
 												"description": "Only mitigate attacks when upstream servers seem unhealthy",
-												"example": false,
 												"type": "boolean",
+												"example": false,
+												"default": true,
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"nullable": true
 									},
 									"deprecate_any_requests": {
 										"description": "Whether to refuse to answer queries for the ANY type",
-										"example": true,
 										"type": "boolean",
+										"example": true,
 										"x-auditable": true
 									},
 									"ecs_fallback": {
 										"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-										"example": false,
 										"type": "boolean",
+										"example": false,
 										"x-auditable": true
 									},
 									"maximum_cache_ttl": {
-										"default": 900,
 										"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+										"type": "number",
 										"example": 900,
+										"default": 900,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number",
 										"x-auditable": true
 									},
 									"minimum_cache_ttl": {
-										"default": 60,
 										"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+										"type": "number",
 										"example": 60,
+										"default": 60,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number",
 										"x-auditable": true
 									},
 									"name": {
 										"description": "DNS Firewall cluster name",
+										"type": "string",
 										"example": "My Awesome DNS Firewall cluster",
 										"maxLength": 160,
 										"minLength": 1,
-										"type": "string",
 										"x-auditable": true
 									},
 									"negative_cache_ttl": {
 										"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+										"type": "number",
 										"example": 900,
 										"maximum": 36000,
 										"minimum": 30,
 										"nullable": true,
-										"type": "number",
 										"x-auditable": true
 									},
 									"ratelimit": {
 										"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+										"type": "number",
 										"example": 600,
 										"maximum": 1000000000,
 										"minimum": 100,
 										"nullable": true,
-										"type": "number",
 										"x-auditable": true
 									},
 									"retries": {
-										"default": 2,
 										"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+										"type": "number",
 										"example": 2,
+										"default": 2,
 										"maximum": 2,
 										"minimum": 0,
-										"type": "number",
 										"x-auditable": true
 									},
 									"upstream_ips": {
-										"example": [
-											"192.0.2.1",
-											"198.51.100.1",
-											"2001:DB8:100::CF"
-										],
+										"type": "array",
 										"items": {
 											"anyOf": [
 												{
@@ -2580,37 +2580,42 @@
 											],
 											"type": "string"
 										},
+										"example": [
+											"192.0.2.1",
+											"198.51.100.1",
+											"2001:DB8:100::CF"
+										],
 										"minLength": 1,
-										"type": "array",
 										"x-stainless-collection-type": "set"
 									}
-								},
-								"type": "object"
+								}
 							}
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update DNS Firewall Cluster response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2619,12 +2624,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2634,15 +2639,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -2651,12 +2656,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -2666,124 +2671,120 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"attack_mitigation": {
 															"description": "Attack mitigation settings",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"only_when_upstream_unhealthy": {
-																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
+																	"default": true,
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"nullable": true
 														},
 														"deprecate_any_requests": {
 															"description": "Whether to refuse to answer queries for the ANY type",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"ecs_fallback": {
 															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"maximum_cache_ttl": {
-															"default": 900,
 															"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+															"type": "number",
 															"example": 900,
+															"default": 900,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number",
 															"x-auditable": true
 														},
 														"minimum_cache_ttl": {
-															"default": 60,
 															"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+															"type": "number",
 															"example": 60,
+															"default": 60,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "DNS Firewall cluster name",
+															"type": "string",
 															"example": "My Awesome DNS Firewall cluster",
 															"maxLength": 160,
 															"minLength": 1,
-															"type": "string",
 															"x-auditable": true
 														},
 														"negative_cache_ttl": {
 															"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+															"type": "number",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
 															"nullable": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"ratelimit": {
 															"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+															"type": "number",
 															"example": 600,
 															"maximum": 1000000000,
 															"minimum": 100,
 															"nullable": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"retries": {
-															"default": 2,
 															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+															"type": "number",
 															"example": 2,
+															"default": 2,
 															"maximum": 2,
 															"minimum": 0,
-															"type": "number",
 															"x-auditable": true
 														},
 														"upstream_ips": {
-															"example": [
-																"192.0.2.1",
-																"198.51.100.1",
-																"2001:DB8:100::CF"
-															],
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
@@ -2803,22 +2804,20 @@
 																],
 																"type": "string"
 															},
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
 															"minLength": 1,
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
 														"dns_firewall_ips": {
-															"example": [
-																"203.0.113.1",
-																"203.0.113.254",
-																"2001:DB8:AB::CF",
-																"2001:DB8:CD::CF"
-															],
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
@@ -2838,21 +2837,26 @@
 																],
 																"type": "string"
 															},
-															"type": "array",
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
 															"x-stainless-collection-type": "set"
 														},
 														"id": {
 															"description": "Identifier.",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last modification of DNS Firewall cluster",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													},
@@ -2874,37 +2878,39 @@
 												"ecs_fallback",
 												"ratelimit",
 												"retries"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update DNS Firewall Cluster response"
+				}
 			},
 			"4XX": {
+				"description": "Update DNS Firewall Cluster response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2913,12 +2919,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2928,15 +2934,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -2945,12 +2951,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -2960,124 +2966,120 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"attack_mitigation": {
 																	"description": "Attack mitigation settings",
-																	"nullable": true,
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true
 																		},
 																		"only_when_upstream_unhealthy": {
-																			"default": true,
 																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																			"example": false,
 																			"type": "boolean",
+																			"example": false,
+																			"default": true,
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"nullable": true
 																},
 																"deprecate_any_requests": {
 																	"description": "Whether to refuse to answer queries for the ANY type",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"ecs_fallback": {
 																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"maximum_cache_ttl": {
-																	"default": 900,
 																	"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																	"type": "number",
 																	"example": 900,
+																	"default": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"minimum_cache_ttl": {
-																	"default": 60,
 																	"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+																	"type": "number",
 																	"example": 60,
+																	"default": 60,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "DNS Firewall cluster name",
+																	"type": "string",
 																	"example": "My Awesome DNS Firewall cluster",
 																	"maxLength": 160,
 																	"minLength": 1,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"negative_cache_ttl": {
 																	"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																	"type": "number",
 																	"example": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
 																	"nullable": true,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"ratelimit": {
 																	"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+																	"type": "number",
 																	"example": 600,
 																	"maximum": 1000000000,
 																	"minimum": 100,
 																	"nullable": true,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"retries": {
-																	"default": 2,
 																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																	"type": "number",
 																	"example": 2,
+																	"default": 2,
 																	"maximum": 2,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"upstream_ips": {
-																	"example": [
-																		"192.0.2.1",
-																		"198.51.100.1",
-																		"2001:DB8:100::CF"
-																	],
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -3097,22 +3099,20 @@
 																		],
 																		"type": "string"
 																	},
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
 																	"minLength": 1,
-																	"type": "array",
 																	"x-stainless-collection-type": "set"
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
 															"properties": {
 																"dns_firewall_ips": {
-																	"example": [
-																		"203.0.113.1",
-																		"203.0.113.254",
-																		"2001:DB8:AB::CF",
-																		"2001:DB8:CD::CF"
-																	],
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -3132,21 +3132,26 @@
 																		],
 																		"type": "string"
 																	},
-																	"type": "array",
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
 																	"x-stainless-collection-type": "set"
 																},
 																"id": {
 																	"description": "Identifier.",
+																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"modified_on": {
 																	"description": "Last modification of DNS Firewall cluster",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																}
 															},
@@ -3168,69 +3173,31 @@
 														"ecs_fallback",
 														"ratelimit",
 														"retries"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3239,12 +3206,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3254,25 +3221,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3280,15 +3284,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update DNS Firewall Cluster response failure"
+				}
 			}
 		},
 		"security": [
@@ -3300,7 +3301,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update DNS Firewall Cluster",
 		"tags": [
 			"DNS Firewall"
 		],
@@ -3324,76 +3324,81 @@
 		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns": {
-		"description": "Update reverse DNS configuration (PTR records) for a DNS Firewall cluster",
 		"operationId": "dns-firewall-update-dns-firewall-cluster-reverse-dns",
+		"summary": "Update DNS Firewall Cluster Reverse DNS",
+		"description": "Update reverse DNS configuration (PTR records) for a DNS Firewall cluster",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "dns_firewall_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			},
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"ptr": {
+										"description": "Map of cluster IP addresses to PTR record contents",
+										"type": "object",
 										"additionalProperties": {
 											"description": "PTR record content",
 											"type": "string"
-										},
-										"description": "Map of cluster IP addresses to PTR record contents",
-										"type": "object"
+										}
 									}
-								},
-								"type": "object"
+								}
 							}
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Update DNS Firewall Cluster Reverse DNS response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3402,12 +3407,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3417,15 +3422,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3434,12 +3439,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3449,78 +3454,79 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"ptr": {
+															"description": "Map of cluster IP addresses to PTR record contents",
+															"type": "object",
 															"additionalProperties": {
 																"description": "PTR record content",
 																"type": "string"
-															},
-															"description": "Map of cluster IP addresses to PTR record contents",
-															"type": "object"
+															}
 														}
-													},
-													"type": "object"
+													}
 												}
 											],
 											"required": [
 												"ptr"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update DNS Firewall Cluster Reverse DNS response"
+				}
 			},
 			"4XX": {
+				"description": "Update DNS Firewall Cluster Reverse DNS response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3529,12 +3535,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3544,15 +3550,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -3561,12 +3567,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -3576,110 +3582,71 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"ptr": {
+																	"description": "Map of cluster IP addresses to PTR record contents",
+																	"type": "object",
 																	"additionalProperties": {
 																		"description": "PTR record content",
 																		"type": "string"
-																	},
-																	"description": "Map of cluster IP addresses to PTR record contents",
-																	"type": "object"
+																	}
 																}
-															},
-															"type": "object"
+															}
 														}
 													],
 													"required": [
 														"ptr"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3688,12 +3655,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3703,25 +3670,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -3729,15 +3733,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Update DNS Firewall Cluster Reverse DNS response failure"
+				}
 			}
 		},
 		"security": [
@@ -3749,7 +3750,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update DNS Firewall Cluster Reverse DNS",
 		"tags": [
 			"DNS Firewall"
 		],
@@ -3773,120 +3773,120 @@
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dns_firewall": {
-		"description": "Create a DNS Firewall cluster",
 		"operationId": "dns-firewall-create-dns-firewall-cluster",
+		"summary": "Create DNS Firewall Cluster",
+		"description": "Create a DNS Firewall cluster",
 		"parameters": [
 			{
-				"in": "path",
 				"name": "account_id",
+				"in": "path",
 				"required": true,
 				"schema": {
 					"description": "Identifier.",
+					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
-					"type": "string",
 					"x-auditable": true
 				}
 			}
 		],
 		"requestBody": {
+			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"allOf": [
 							{
+								"type": "object",
 								"properties": {
 									"attack_mitigation": {
 										"description": "Attack mitigation settings",
-										"nullable": true,
+										"type": "object",
 										"properties": {
 											"enabled": {
 												"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-												"example": true,
 												"type": "boolean",
+												"example": true,
 												"x-auditable": true
 											},
 											"only_when_upstream_unhealthy": {
-												"default": true,
 												"description": "Only mitigate attacks when upstream servers seem unhealthy",
-												"example": false,
 												"type": "boolean",
+												"example": false,
+												"default": true,
 												"x-auditable": true
 											}
 										},
-										"type": "object"
+										"nullable": true
 									},
 									"deprecate_any_requests": {
 										"description": "Whether to refuse to answer queries for the ANY type",
-										"example": true,
 										"type": "boolean",
+										"example": true,
 										"x-auditable": true
 									},
 									"ecs_fallback": {
 										"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-										"example": false,
 										"type": "boolean",
+										"example": false,
 										"x-auditable": true
 									},
 									"maximum_cache_ttl": {
-										"default": 900,
 										"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+										"type": "number",
 										"example": 900,
+										"default": 900,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number",
 										"x-auditable": true
 									},
 									"minimum_cache_ttl": {
-										"default": 60,
 										"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+										"type": "number",
 										"example": 60,
+										"default": 60,
 										"maximum": 36000,
 										"minimum": 30,
-										"type": "number",
 										"x-auditable": true
 									},
 									"name": {
 										"description": "DNS Firewall cluster name",
+										"type": "string",
 										"example": "My Awesome DNS Firewall cluster",
 										"maxLength": 160,
 										"minLength": 1,
-										"type": "string",
 										"x-auditable": true
 									},
 									"negative_cache_ttl": {
 										"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+										"type": "number",
 										"example": 900,
 										"maximum": 36000,
 										"minimum": 30,
 										"nullable": true,
-										"type": "number",
 										"x-auditable": true
 									},
 									"ratelimit": {
 										"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+										"type": "number",
 										"example": 600,
 										"maximum": 1000000000,
 										"minimum": 100,
 										"nullable": true,
-										"type": "number",
 										"x-auditable": true
 									},
 									"retries": {
-										"default": 2,
 										"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+										"type": "number",
 										"example": 2,
+										"default": 2,
 										"maximum": 2,
 										"minimum": 0,
-										"type": "number",
 										"x-auditable": true
 									},
 									"upstream_ips": {
-										"example": [
-											"192.0.2.1",
-											"198.51.100.1",
-											"2001:DB8:100::CF"
-										],
+										"type": "array",
 										"items": {
 											"anyOf": [
 												{
@@ -3906,22 +3906,25 @@
 											],
 											"type": "string"
 										},
+										"example": [
+											"192.0.2.1",
+											"198.51.100.1",
+											"2001:DB8:100::CF"
+										],
 										"minLength": 1,
-										"type": "array",
 										"x-stainless-collection-type": "set"
 									}
-								},
-								"type": "object"
+								}
 							},
 							{
 								"properties": {
 									"dns_firewall_ip_count": {
-										"default": 2,
 										"description": "Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.",
+										"type": "integer",
 										"example": 2,
+										"default": 2,
 										"maximum": 10,
-										"minimum": 1,
-										"type": "integer"
+										"minimum": 1
 									}
 								},
 								"type": "object"
@@ -3930,30 +3933,32 @@
 						"required": [
 							"name",
 							"upstream_ips"
-						],
-						"type": "object"
+						]
 					}
 				}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
+				"description": "Create DNS Firewall Cluster response",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"properties": {
 												"errors": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3962,12 +3967,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -3977,15 +3982,15 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"messages": {
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -3994,12 +3999,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -4009,124 +4014,120 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												},
 												"success": {
 													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
 													"enum": [
 														true
-													],
-													"example": true,
-													"type": "boolean"
+													]
 												}
 											},
 											"required": [
 												"success",
 												"errors",
 												"messages"
-											],
-											"type": "object"
+											]
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"attack_mitigation": {
 															"description": "Attack mitigation settings",
-															"nullable": true,
+															"type": "object",
 															"properties": {
 																"enabled": {
 																	"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"only_when_upstream_unhealthy": {
-																	"default": true,
 																	"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
+																	"default": true,
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"nullable": true
 														},
 														"deprecate_any_requests": {
 															"description": "Whether to refuse to answer queries for the ANY type",
-															"example": true,
 															"type": "boolean",
+															"example": true,
 															"x-auditable": true
 														},
 														"ecs_fallback": {
 															"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-															"example": false,
 															"type": "boolean",
+															"example": false,
 															"x-auditable": true
 														},
 														"maximum_cache_ttl": {
-															"default": 900,
 															"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+															"type": "number",
 															"example": 900,
+															"default": 900,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number",
 															"x-auditable": true
 														},
 														"minimum_cache_ttl": {
-															"default": 60,
 															"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+															"type": "number",
 															"example": 60,
+															"default": 60,
 															"maximum": 36000,
 															"minimum": 30,
-															"type": "number",
 															"x-auditable": true
 														},
 														"name": {
 															"description": "DNS Firewall cluster name",
+															"type": "string",
 															"example": "My Awesome DNS Firewall cluster",
 															"maxLength": 160,
 															"minLength": 1,
-															"type": "string",
 															"x-auditable": true
 														},
 														"negative_cache_ttl": {
 															"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+															"type": "number",
 															"example": 900,
 															"maximum": 36000,
 															"minimum": 30,
 															"nullable": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"ratelimit": {
 															"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+															"type": "number",
 															"example": 600,
 															"maximum": 1000000000,
 															"minimum": 100,
 															"nullable": true,
-															"type": "number",
 															"x-auditable": true
 														},
 														"retries": {
-															"default": 2,
 															"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+															"type": "number",
 															"example": 2,
+															"default": 2,
 															"maximum": 2,
 															"minimum": 0,
-															"type": "number",
 															"x-auditable": true
 														},
 														"upstream_ips": {
-															"example": [
-																"192.0.2.1",
-																"198.51.100.1",
-																"2001:DB8:100::CF"
-															],
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
@@ -4146,22 +4147,20 @@
 																],
 																"type": "string"
 															},
+															"example": [
+																"192.0.2.1",
+																"198.51.100.1",
+																"2001:DB8:100::CF"
+															],
 															"minLength": 1,
-															"type": "array",
 															"x-stainless-collection-type": "set"
 														}
-													},
-													"type": "object"
+													}
 												},
 												{
 													"properties": {
 														"dns_firewall_ips": {
-															"example": [
-																"203.0.113.1",
-																"203.0.113.254",
-																"2001:DB8:AB::CF",
-																"2001:DB8:CD::CF"
-															],
+															"type": "array",
 															"items": {
 																"anyOf": [
 																	{
@@ -4181,21 +4180,26 @@
 																],
 																"type": "string"
 															},
-															"type": "array",
+															"example": [
+																"203.0.113.1",
+																"203.0.113.254",
+																"2001:DB8:AB::CF",
+																"2001:DB8:CD::CF"
+															],
 															"x-stainless-collection-type": "set"
 														},
 														"id": {
 															"description": "Identifier.",
+															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
-															"type": "string",
 															"x-auditable": true
 														},
 														"modified_on": {
 															"description": "Last modification of DNS Firewall cluster",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
 															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
 															"x-auditable": true
 														}
 													},
@@ -4217,37 +4221,39 @@
 												"ecs_fallback",
 												"ratelimit",
 												"retries"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create DNS Firewall Cluster response"
+				}
 			},
 			"4XX": {
+				"description": "Create DNS Firewall Cluster response failure",
 				"content": {
 					"application/json": {
 						"schema": {
+							"type": "object",
 							"allOf": [
 								{
+									"type": "object",
 									"allOf": [
 										{
+											"type": "object",
 											"allOf": [
 												{
+													"type": "object",
 													"properties": {
 														"errors": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -4256,12 +4262,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -4271,15 +4277,15 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"messages": {
-															"example": [],
+															"type": "array",
 															"items": {
 																"properties": {
 																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
+																		"type": "integer",
+																		"minimum": 1000
 																	},
 																	"documentation_url": {
 																		"type": "string"
@@ -4288,12 +4294,12 @@
 																		"type": "string"
 																	},
 																	"source": {
+																		"type": "object",
 																		"properties": {
 																			"pointer": {
 																				"type": "string"
 																			}
-																		},
-																		"type": "object"
+																		}
 																	}
 																},
 																"required": [
@@ -4303,124 +4309,120 @@
 																"type": "object",
 																"uniqueItems": true
 															},
-															"type": "array"
+															"example": []
 														},
 														"success": {
 															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
 															"enum": [
 																true
-															],
-															"example": true,
-															"type": "boolean"
+															]
 														}
 													},
 													"required": [
 														"success",
 														"errors",
 														"messages"
-													],
-													"type": "object"
+													]
 												}
-											],
-											"type": "object"
+											]
 										},
 										{
 											"properties": {
 												"result": {
+													"type": "object",
 													"allOf": [
 														{
+															"type": "object",
 															"properties": {
 																"attack_mitigation": {
 																	"description": "Attack mitigation settings",
-																	"nullable": true,
+																	"type": "object",
 																	"properties": {
 																		"enabled": {
 																			"description": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers",
-																			"example": true,
 																			"type": "boolean",
+																			"example": true,
 																			"x-auditable": true
 																		},
 																		"only_when_upstream_unhealthy": {
-																			"default": true,
 																			"description": "Only mitigate attacks when upstream servers seem unhealthy",
-																			"example": false,
 																			"type": "boolean",
+																			"example": false,
+																			"default": true,
 																			"x-auditable": true
 																		}
 																	},
-																	"type": "object"
+																	"nullable": true
 																},
 																"deprecate_any_requests": {
 																	"description": "Whether to refuse to answer queries for the ANY type",
-																	"example": true,
 																	"type": "boolean",
+																	"example": true,
 																	"x-auditable": true
 																},
 																"ecs_fallback": {
 																	"description": "Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent",
-																	"example": false,
 																	"type": "boolean",
+																	"example": false,
 																	"x-auditable": true
 																},
 																"maximum_cache_ttl": {
-																	"default": 900,
 																	"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets an upper bound on this duration. For caching purposes, higher TTLs\nwill be decreased to the maximum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																	"type": "number",
 																	"example": 900,
+																	"default": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"minimum_cache_ttl": {
-																	"default": 60,
 																	"description": "By default, Cloudflare attempts to cache responses for as long as\nindicated by the TTL received from upstream nameservers. This setting\nsets a lower bound on this duration. For caching purposes, lower TTLs\nwill be increased to the minimum value defined by this setting.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n\nNote that, even with this setting, there is no guarantee that a\nresponse will be cached for at least the specified duration. Cached\nresponses may be removed earlier for capacity or other operational\nreasons.\n",
+																	"type": "number",
 																	"example": 60,
+																	"default": 60,
 																	"maximum": 36000,
 																	"minimum": 30,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"name": {
 																	"description": "DNS Firewall cluster name",
+																	"type": "string",
 																	"example": "My Awesome DNS Firewall cluster",
 																	"maxLength": 160,
 																	"minLength": 1,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"negative_cache_ttl": {
 																	"description": "This setting controls how long DNS Firewall should cache negative\nresponses (e.g., NXDOMAIN) from the upstream servers.\n\nThis setting does not affect the TTL value in the DNS response\nCloudflare returns to clients. Cloudflare will always forward the TTL\nvalue received from upstream nameservers.\n",
+																	"type": "number",
 																	"example": 900,
 																	"maximum": 36000,
 																	"minimum": 30,
 																	"nullable": true,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"ratelimit": {
 																	"description": "Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.",
+																	"type": "number",
 																	"example": 600,
 																	"maximum": 1000000000,
 																	"minimum": 100,
 																	"nullable": true,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"retries": {
-																	"default": 2,
 																	"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)",
+																	"type": "number",
 																	"example": 2,
+																	"default": 2,
 																	"maximum": 2,
 																	"minimum": 0,
-																	"type": "number",
 																	"x-auditable": true
 																},
 																"upstream_ips": {
-																	"example": [
-																		"192.0.2.1",
-																		"198.51.100.1",
-																		"2001:DB8:100::CF"
-																	],
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -4440,22 +4442,20 @@
 																		],
 																		"type": "string"
 																	},
+																	"example": [
+																		"192.0.2.1",
+																		"198.51.100.1",
+																		"2001:DB8:100::CF"
+																	],
 																	"minLength": 1,
-																	"type": "array",
 																	"x-stainless-collection-type": "set"
 																}
-															},
-															"type": "object"
+															}
 														},
 														{
 															"properties": {
 																"dns_firewall_ips": {
-																	"example": [
-																		"203.0.113.1",
-																		"203.0.113.254",
-																		"2001:DB8:AB::CF",
-																		"2001:DB8:CD::CF"
-																	],
+																	"type": "array",
 																	"items": {
 																		"anyOf": [
 																			{
@@ -4475,21 +4475,26 @@
 																		],
 																		"type": "string"
 																	},
-																	"type": "array",
+																	"example": [
+																		"203.0.113.1",
+																		"203.0.113.254",
+																		"2001:DB8:AB::CF",
+																		"2001:DB8:CD::CF"
+																	],
 																	"x-stainless-collection-type": "set"
 																},
 																"id": {
 																	"description": "Identifier.",
+																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
-																	"type": "string",
 																	"x-auditable": true
 																},
 																"modified_on": {
 																	"description": "Last modification of DNS Firewall cluster",
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
 																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
 																	"x-auditable": true
 																}
 															},
@@ -4511,69 +4516,31 @@
 														"ecs_fallback",
 														"ratelimit",
 														"retries"
-													],
-													"type": "object"
+													]
 												}
 											},
 											"type": "object"
 										}
-									],
-									"type": "object"
+									]
 								},
 								{
+									"type": "object",
 									"properties": {
 										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
 											"example": [
 												{
 													"code": 7003,
 													"message": "No route for the URI"
 												}
 											],
-											"minLength": 1
-										},
-										"messages": {
 											"allOf": [
 												{
-													"example": [],
+													"type": "array",
 													"items": {
 														"properties": {
 															"code": {
-																"minimum": 1000,
-																"type": "integer"
+																"type": "integer",
+																"minimum": 1000
 															},
 															"documentation_url": {
 																"type": "string"
@@ -4582,12 +4549,12 @@
 																"type": "string"
 															},
 															"source": {
+																"type": "object",
 																"properties": {
 																	"pointer": {
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																}
 															}
 														},
 														"required": [
@@ -4597,25 +4564,62 @@
 														"type": "object",
 														"uniqueItems": true
 													},
-													"type": "array"
+													"example": []
 												}
 											],
-											"example": []
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
 										},
 										"result": {
+											"type": "object",
 											"enum": [
 												null
 											],
-											"nullable": true,
-											"type": "object"
+											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
 											"enum": [
 												false
-											],
-											"example": false,
-											"type": "boolean"
+											]
 										}
 									},
 									"required": [
@@ -4623,15 +4627,12 @@
 										"errors",
 										"messages",
 										"result"
-									],
-									"type": "object"
+									]
 								}
-							],
-							"type": "object"
+							]
 						}
 					}
-				},
-				"description": "Create DNS Firewall Cluster response failure"
+				}
 			}
 		},
 		"security": [
@@ -4643,7 +4644,6 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create DNS Firewall Cluster",
 		"tags": [
 			"DNS Firewall"
 		],
